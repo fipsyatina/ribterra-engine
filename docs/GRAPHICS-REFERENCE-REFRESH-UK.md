@@ -1,13 +1,15 @@
-# Оновлення графіки за референсами — 15.09.2026
+# Updates to the chart by reference — 15.09.2026
 
-Нові матеріали вже підключені до гри. Окремий запуск на робочому столі: **Ribterra - New Graphics**. Виконуваний файл: `dist/reference-refresh/Ribterra/Ribterra.exe`.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Підготовлено 30 аркушів із 256 кадрами й текстурами: усі 20 типів споруд, етапи будівництва, зимові варіанти, земля, вода, сніг, печери, дерева, каміння, руда, підлісок, мешканці та чотири види тварин. Оригінали, опис і параметри генерації збережені в `art-source/reference-refresh/`.
+New material is already connected to the game. A separate launch on the desktop: **Ribterra - New Graphics**. The completed file: `dist/reference-refresh/Ribterra/Ribterra.exe`.
 
-У грі працюють дим із димарів, прибережна імла, відблиски й піна на воді, вогонь, м’які тіні будівель та тепле світіння вночі. Камеру можна наближати до 3,0. Прибрано рожеві краї листя, шви між дорожніми ділянками та накладання борозен на сніг. Збережено наявну мережеву інтерполяцію руху.
+30 sheets are made with 256 frames and textures: all 20 building types, construction stages, winter options, land, water, snow, caves, wood, stone, ore, pebbles, dwellings, and four types of animals. The originals, description and generation parameters are stored in `art-source/reference-refresh/`.
 
-Перевірено справжнім рендерером Direct3D 12: денний, нічний і зимовий вигляд, каталог будівель, компактний екран, переходи між біомами та запуск зібраної гри. Кадри в `artifacts/reference-refresh/showcase/` показують спеціально розставлене поселення для оцінки графіки. Звичайний новий світ залишається світом зі стартовим табором; ці кадри не є демонстрацією автоматичної генерації міста.
+The game features smoke from the chimneys, coastal mud, flashes and foam on the water, fire, dark shadows of buildings, and warm glow at night. The camera can be approached at 3,0. The pink edge of the leaves is removed, seams between the road sections are made and the snow is applied. The network traffic interpolation is preserved.
 
-Контрольна онлайн-сесія: 2 клієнти, по 10 мешканців, RTX 3050 Laptop GPU, 240 кадрів після прогріву, обмеження 60 FPS. До: 59,98 FPS, середня робота кадру 8,81 мс. Після: 59,97 FPS, 9,54 мс; 95-й процентиль 12,52 мс. Це коротка перевірка конкретної сцени, а не замір великого міста. Тести прозорості, атмосфери та руху пройдено.
+Verified by a true renderer Direct3D 12: day, night and winter appearance, building catalog, compact screen, transitions between biomes and launch of the collected game. The frames in `artifacts/reference-refresh/showcase/` show a specially arranged settlement for charting. The usual new world remains a world with a launch camp; These images are not a demonstration of automatic city generation.
 
-Результат використовує нинішній ізометричний рендерер Ribterra. Попіксельна відповідність концепт-артам не досягнута: залишаються інші пропорції світу, інтерфейс та спосіб освітлення. Малюнки другого рівня будівель і частина декоративних предметів підготовлені окремо; вони не означають, що в цьому оновленні реалізовані нові дослідження чи всі дії з панелей на референсах.
+Online control session: 2 clients, by 10 residents, RTX 3050 laptop GPU, 240 frames after warm-up, restrictions 60 FPS. To: 59,98 FPS, the average work of the frame 8,81 ms. After: 59,97 FPS, 9,54 ms; Percentile 95 was 12,52 ms. This is a short check of one specific scene, rather than a large-city benchmark. The transparency, atmosphere and movement tests have been completed.
+
+The result uses the current Ribterra isometric renderer. The pixel-performance of the concept art is not achieved: other proportions of the world, interface and lighting mode remain. The drawings of second-level buildings and part of the decorative items are prepared separately; They don't mean that this update is implementing new research or all the actions from the reference panels.

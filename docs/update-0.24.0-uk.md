@@ -1,33 +1,35 @@
-# Ribterra 0.24.0 — Живі околиці та експедиції
+# Ribterra 0.24.0 — Living environment and expeditions
 
-Виберіть до 16 дорослих мешканців і відкрийте «Експедиції». Вкажіть полювання, ресурси або розвідку, обсяг і точку на карті. Перед відправленням підтвердьте склад, спорядження та обсяг. Натискання на видиму тварину з вибраними людьми відкриває полювання на конкретну ціль.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Межі доручення
+Choose up to 16 adult residents and open Expeditions». Enter the hunt, resources or exploration, volume and point on the map. Please confirm the order, order and quantity before dispatch. Pressing a visible animal with selected humans opens up a hunt for a specific target.
 
-Полювання та ресурси обмежені колом радіуса 12 клітинок. Пошук триває не більше 3 хвилин ігрового часу. Полювання: 1–10 тварин; ресурси: 1–10 одиниць деревини або каменю. Розвідка доходить до обраної точки й повертається; її маршрут відкриває місцевість. Експедицію можна відкликати, знайти камерою або перенаправити наказом відступу. Побутова автономність не відправляє експедицій.
+## The Limits of the Commission
 
-Олені живуть стадами й передають тривогу; зайці швидші за мисливців; кабани захищаються при зближенні та пораненні; вовки переслідують здобич і можуть нападати на слабкі групи. Розміщення враховує біом. Узимку використовується зимове забарвлення, менші переходи між годуванням і відпочинком. Початкова популяція обмежена 96 тваринами; розмноження й повноцінна міграція не входять до цієї версії.
+Hunting and resources are limited to the radius 12 of the cells. The search lasts no more than 3 minutes of game time. Hunting: 1–10 animals; Resources: 1–10 units of wood or stone. The intelligence comes to a chosen point and comes back. It's a route that opens up the landscape. The expedition can be called back, found by a camera, or redirected by order of retreat. The autonomy of the building does not send expeditions.
 
-## Здобич і спорядження
+The deer live in herds and transmit anxiety; The rabbits are quicker than the hunters; The cabin shall be protected in the event of approach and injury; Wolves chase prey and can attack vulnerable groups. The location takes into account the biome. In winter, winter coloring is used, with fewer transitions between feeding and resting. The initial population is restricted to 96 animals; reproduction and full migration are not included in this version.
 
-Успіх залежить від реальної дистанції й поведінки тварини. Утеча, відсутність цілей і порожнє повернення — можливі результати. Після здобуття потрібні збір людей біля туші та 8 секунд обробки. Заєць дає 2 м’яса, більша тварина — 8; також утворюється 1 шкіра.
+## The cost of living and equipment
 
-М’ясо й шкіра фізичні: запаси зростають після доставки. Місткість людини — 10 одиниць одного виду вантажу. Другий мисливець несе шкіру; коли мисливець один, шкіра залишається на землі для перевезення. За відсутності місця на складі вантаж також залишається фізично на карті. М’ясо потрібно приготувати на кухні за рецептом попередньої версії.
+Success depends on the actual distance and behavior of the animal. Escape, lack of goals and empty return are possible outcomes. After the acquisition, you need to gather people around the shower and 8 seconds of processing. The hare gives 2 meat, the larger animal — 8; It also produces 1 skin.
 
-Майстерня виготовляє спис із 2 дощок та 1 каменю за 15 секунд. Експедиція бере доступні незарезервовані списи, максимум один на мешканця. Наявність спорядження показано перед відправленням. Після повернення списи передаються логістиці поселення.
+Meat and skin are physical: supplies increase after delivery. The capacity of a human being — 10 units of a single type of cargo. The second hunter carries a skin; When the hunter is alone, the skin remains on the ground to be transported. In the absence of space in the cargo hold, the cargo also remains physically on the map. The meat should be cooked in the kitchen according to the previous version's recipe.
 
-## Ніч, небезпека та їжа
+The workshop makes a copy of 2 board and 1 stone in 15 seconds. The expedition takes available unreserved items, one per inhabitant at most. The presence of the device is indicated before dispatch. After the return, the records are transferred to the settlement logistics.
 
-На початку ночі загін за межами поселення автоматично повертається. «Продовжити цієї ночі» дозволяє саме це завдання саме цієї ночі та один раз додає 5 невдоволення. Повторне підтвердження не стягує плату. Втоми й штрафів наступного дня немає.
+## Night, danger and food
 
-Фактичний напад перериває завдання та відкриває повідомлення загону. Доступні перехід камерою, атака нападника і відступ до місця. Люди поблизу допомагають оборонятися; межа поселення не зупиняє ворога.
+At night, the outpost automatically returns. “Continue tonight” allows for this very task this very night and adds once more 5 dissatisfaction. Re-confirmation is free of charge. There's no fatigue and no fines the next day.
 
-За малого запасу готової їжі панель показує фактичний запас прийомів їжі та пропонує вибрати мисливців і район. Скорочення порцій удвічі зменшує частоту споживання і додає 10 невдоволення лише на час дії. Прогноз дати врожаю не вигадується: ферми працюють за конкретними замовленнями.
+The actual attack interrupts the task and opens up the convoy's message. Camera transition, assailant attack and retreat are available. People around help defend themselves; The border of the settlement does not stop the enemy.
 
-## Сумісність
+For a small supply of ready food, the panel shows the actual supply of food and suggests choosing the hunters and the area. Reducing portions by half reduces consumption and adds 10 dissatisfaction only for the duration of action. The harvest forecast is not made up: farms are running on specific orders.
 
-Стан тварин, експедицій, вантажів, раціону та нічного дозволу зберігається й передається сервером. Підтримано імпорт 0.23.0 і старіших підтримуваних збережень. Протокол 17; усім учасникам мережевої гри потрібна 0.24.0.
+## Compatibility
 
-## Візуальне уточнення: темп ходьби
+The status of animals, expeditions, cargo, ration and night leave are stored and transmitted by the server. Import 0.23.0 and older supported backups are supported. Protocol 17; All the people in the game need 0.24.0.
 
-Цикли ходьби мешканців і всіх чотирьох видів тварин, включно із зимовими варіантами, сповільнено вдвічі. Швидкість пересування та перебіг симуляції залишилися поточними. Окрема система монстрів у цій версії ще відсутня.
+## Visual specification: pace of the walk
+
+The walking cycles of the inhabitants and all four species, including winter variants, are halved. The speed of the movement and the simulation run remained constant. The particular monster system in this version is still missing.

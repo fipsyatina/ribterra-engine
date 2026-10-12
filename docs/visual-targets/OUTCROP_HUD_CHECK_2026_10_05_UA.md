@@ -1,42 +1,44 @@
-# Кам’яні виступи та HUD — 05.10.2026
+# The rocks of the speeches and HUD — 05.10.2026
 
-**Проміжний крок повної переробки V01–V03. Загальна художня відповідність: REBUILD. Не реліз.**
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-[Кадри до/після й концепт поруч](OUTCROP_HUD_COMPARE_2026_10_05.html). Переглянуті справжні native PNG; сторінку порівняння не відкривали й не перевіряли в браузері. На прохання користувача робота лише фонова: жодних клавіш, кліків чи перезапусків його відкритої гри.
+**Intermediate step of complete processing V01–V03. The overall artistic correspondence: REBUILD. Not a release.**
 
-## Що змінено
+[Figures before/after and concept next to ](OUTCROP_HUD_COMPARE_2026_10_05.html). Reviewed true native PNG; The comparison page was not opened and checked in the browser. At the user's request, the user only works in the background: no keys, clicks, or restarts of his open game.
 
-- `relief_details.hpp`: невеликі групи з 2–3 каменів на реальних крутих схилах. Усі чотири кутові профілі мають повністю відому область семплування. Середня експозиція каменю ≥0.60, середній градієнт ≥4.5, два сусідні кути з експозицією ≥0.70. Лише порожня розвідана Grass, без ресурсів, протоптаної стежки чи основи споруди.
-- Координатний пріоритет не дозволяє двом групам сусідити по стороні. Це розрідження, а не гарантія каміння в кожному seed. У синтетичній придатній області 60×60 отримано 720 груп; справжні стартові карти перевірені окремо нижче.
-- Повторно використані чинні 4 літні / 4 зимові берегові силуети й той самий draw path. Літня й зимова позиції та розміри незмінні. Немає нових ресурсів, колізій, геометрії висоти, залежностей чи окремого renderer.
-- Берег і схил мають спільний бюджет: одна клітина не отримує обидва види груп. Проєкція, fog та painter depth беруть фактичну точку деталі; додатково перевіряється основа будівлі в цій точці.
-- Трава й квіти відсіюються на оголеному камені за інтерпольованою експозицією кожної деталі. Не очищується ціла квадратна клітина. Ресурсні кущі не змінюються.
-- `hud-v01.rcss`: видима смуга існуючої декоративної рамки 12→16, ресурсні іконки 42→46, цифри 28→30; трохи більші іконки й назви дій. Позиції панелей, геометрія мінікарти, DOM, команди й локалізації збережені. Прогноз і °C не підмінені статичними числами — це залежність V04.
+## Changes made
 
-## Перевірки цього стану
+- `relief_details.hpp`: small groups of 2–3 rocks on real steep slopes. All four angular profiles have a fully known sampling area. Average exposure of the stone ≥0.60, average gradient ≥4.5, two adjacent angles with exposure ≥0.70. Only the Grass is discovered empty, with no resources, prototyped paths or building foundations.
+- Coordinated priority does not allow two groups to live side by side. It's a cutting, not a guarantee of the stones in each seed. In the synthetic fit region 60×60 720 groups are obtained; The actual start cards are checked separately below.
+- Reused current 4 summer/4 winter coastal silhouettes and the same draw path. Summer and winter positions and sizes are unchanged. There are no new resources, collisions, altitude geometry, dependencies or a single renderer.
+- The edge and slope share a common budget: one cell does not get both types of groups. The projection, fog and painter depth take the actual point of detail; The base of the building at this point is also checked.
+- The grass and flowers are sown on a bare rock with interpolated exposure to each detail. You can't clean a whole square cell. The resource bushes are unchanged.
+- `hud-v01.rcss`: the visible band of the existing decorative frame 12→16, resource icons 42→46, numbers 28→30; A little bit bigger icons and action names. The panel positions, the miniature map geometry, DOM, commands and locations are preserved. The forecast and °C are not substituted by static numbers — this dependence V04.
 
-Корінь доказів: `artifacts/outcrop-hud-2026-10-05`.
+## Checks on the status
 
-| Перевірка | Результат |
+So the evidence is rooted in `artifacts/outcrop-hud-2026-10-05`.
+
+| The verification | The result |
 |---|---|
-| Ribterra, ReworkVisualProbe, ClientInputTests, TerrainV02Tests, UiTests | Зібрані; старий staging збережений, не видалений |
-| UiCheck / локалізації | Native RmlUi геометрія й шрифти пройшли; 5 мов, 172 потрібні символи |
-| Ізольований runtime | 279 файлів з checksum до/після копіювання; `check/snapshot.json` |
-| Цільові CTest | `check/selected.xml`: **3/3 PASS** — terrain_v02 107.50 s, ui 8.37 s, client_input 32.14 s |
-| Звичайні старти | `ordinary-outcrops/ordinary-seeds-report.json`: **8/8**, справжній `World(seed,10)`, 1 табір / 10 людей / 861 відома клітина |
-| Коротка native-матриця | `matrix-outcrops/report.json`: **6/6**, 15 кадрів, F1 hide/restore true |
-| Повна native-матриця | `matrix-full/report.json`: **60/60**, 123 кадри; 5 мов × 4 масштаби × 3 роздільності; F1 hide/restore true |
-| Незалежний code / pixel review | Вузький крок прийнятий; загальний вигляд не прийнятий |
+| Ribterra, ReworkVisualProbe, ClientInputTests, TerrainV02Tests, UiTests | Collected; old staging preserved, not deleted |
+| UiCheck / Location | Native RmlUi geometry and fonts passed; 5 languages, 172 you need characters |
+| Isolated runtime | 279 files from the checksum before/after copying; `check/snapshot.json` |
+| Target CTest | `check/selected.xml`: **3/3 PASS** — terrain_v02 107.50 s, ui 8.37 s, client_input 32.14 s |
+| The usual start | `ordinary-outcrops/ordinary-seeds-report.json`: **8/8**, real `World(seed,10)`, 1 camp / 10 people / 861 known cell |
+| Short native matrix | `matrix-outcrops/report.json`: ** 6/6 **, 15 frames, F1 hide/restore true |
+| Full native matrix | `matrix-full/report.json`: **60/60**, 123 frames; 5 languages × 4 scale × 3 resolution; F1 hide/restore true |
+| Independent code / pixel review | The narrow step is taken; general appearance not accepted |
 
-Native backend: Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU. Повна матриця перевіряє рендеринг і layout, не приймає всю графіку. Усі 123 файли існують; ручний pixel-review вибірковий, а не всіх 123 кадрів. Переглянуті seed1337/70421, літнє EN100 1080p, зимове UK85 720p, UK130/ES130 720p та додаткові PL130/RU115/ES100 кадри.
+Native backend: Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU. The full array checks the rendering and layout, doesn't take all the graphics. All 123 files are there; The manual pixel review is selective, not all 123 images. Reviewed seed1337/70421, summer EN100 1080p, winter UK85 720p, UK130/ES130 720p and additional PL130/RU115/ES100 footage.
 
-Явного нового обрізання HUD, перекриття панелей, швів рельєфу або зависання каміння у цих кадрах не виявлено. Це не доказ неможливості природного перекриття ресурсів сусіднім спрайтом у всіх станах. Окремого нового інтерактивного desktop-прогону та outcrop pixel-прогону на всіх zoom немає.
+No apparent new circumcision HUD, overlapping of panels, seams of relief or hanging of stone in these frames were found. This is not proof of the impossibility of natural overlapping of resources by neighboring spray in all states. There's no separate new interactive desktop drive and outcrop pixel drive on all zooms.
 
-## Справжні стартові карти, не синтетичний тест
+## Real start cards, not synthetic tests
 
-[Діагностика](../../artifacts/outcrop-hud-2026-10-05/diagnostic/actual-start-results.json) рахує helper + apron composition до екранного culling, не видимі на екрані камені. Джерело, команда збірки, exe та obj збережені поруч.
+[Diagnosis](../../artifacts/outcrop-hud-2026-10-05/diagnostic/actual-start-results.json) counts the helper + apron composition to screen culling, not visible on the stone screen. Source, assembly command, exe and obj are stored next to each other.
 
-| Seed | Придатні клітини після cell-apron | Групи після відстані й subcell-apron | Деталі |
+| Seed | Useful cells after cell-apron | Groups after distance and subcell-apron | Details |
 |---|---:|---:|---:|
 | 70421 | 11 | 2 | 5 |
 | 4204434016 | 12 | 2 | 6 |
@@ -47,11 +49,11 @@ Native backend: Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU. Повна ма
 | 1337 | 32 | 7 | 17 |
 | 3735928559 | 12 | 3 | 7 |
 
-В усіх 8 checksum світу до/після однаковий і немає сезонного зсуву деталей. Групи є в 7/8: у seed301968671 обидві придатні клітини відсіяні координатним пріоритетом. Це не прихований пропуск seed і не гарантія видимого виступу на кожній стартовій карті. Ні seed, ні землю, ні ресурси для цього не редагували.
+In all 8 world checksums before/after is the same and there is no seasonal shift of details. The groups are in 7/8: in seed301968671 both suitable cells are seeded with a coordinate priority. It's not a hidden seed pass, and it's not guaranteed to be visible on every starting map. Neither seed, land, nor resources were edited for this purpose.
 
-## Ідентичність збірки та межі
+## Identification of the collection and boundaries
 
-185 assets; content SHA-256 `87e0581403150f6e81ab259a233643f622a91d184ee910bcc1bf9a4e9d81639b`. П’ять виконуваних файлів після тестів повторно звірені з runtime snapshot:
+185 assets; content SHA-256 `87e0581403150f6e81ab259a233643f622a91d184ee910bcc1bf9a4e9d81639b`. Five executable files after the tests are reset from the runtime snapshot:
 
 - Ribterra: `7990C4E1E01D1E551622003D2282C01B2DF20D5AFAD533C7AAC7CC5C0FE2850D`
 - ReworkVisualProbe: `9CB6D832182738BD90158D4FC6B35C5CA68988A75AF9C64A5C8037E6384E0ADD`
@@ -59,14 +61,14 @@ Native backend: Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU. Повна ма
 - TerrainV02Tests: `8ECAEE83F7C6753C93F5664795C091DD23CF2B1F28E0E2E9EB96A0E276A4B4EC`
 - UiTests: `B9E7CAA0AED209811525E661A860EF9C2B4051E48D7B4849275945C7965E6598`
 
-Звичайні PNG до/після мають однакові заявлені seed/камеру, але не повний per-capture checksum/погодний паспорт. Наведена діагностика доводить немутуючість helper, не тотожність усіх станів у кадрах. Контент HUD між проходами відрізняється. Snapshot ізольований за вихідними файлами, не герметична копія всього репозиторію.
+The usual PNG before/after have the same declared seed/camera but not a complete per-capture checksum/weather passport. The diagnosis is the helplessness of the helper, not the integrity of all the stages in the frame. The content HUD varies between passages. The snapshot is isolated from the source files, not a sealed copy of the entire repository.
 
-Повного CTest suite на цьому стані не запускали. Останній загальний Gen8-прогін лишається **84/92**, з наступними успішними вибірковими виправленнями; свіжого єдиного 92/92 немає. Старі 92/92 preview r2 цього не замінюють. `Play Ribterra Rework.cmd` та встановлений r2 не змінені; його exe SHA-256 `DCF9514876AD73ED0B4EDA8E6DFBE1C452835A4E478B6AF007DB657E58706B35` повторно підтверджений. Не було commit/push, публікації релізу чи two-PC/WAN-приймання.
+The full CTest suite was not launched at this stage. The last general Gen8 strain remains **84/92**, with subsequent successful selective patches; There's no fresh one 92/92. The old 92/92 preview r2 doesn't replace that. `Play Ribterra Rework.cmd` and the installed r2 are unchanged; His exe SHA-256 `DCF9514876AD73ED0B4EDA8E6DFBE1C452835A4E478B6AF007DB657E58706B35` is reconfirmed. There was no commit/push, no release releases or two-PC/WAN- reception.
 
-Тести видалили лише власні збереження/settings у новому `check`, про точні шляхи повідомлено до запуску. Попередні файли, докази й користувацькі збереження збережені.
+The tests removed only their own save/settings in the new `check`, with exact paths reported prior to launch. Previous files, evidence and user savings are saved.
 
-## Вплив запитаних навичок і наступний критерій
+## The impact of the skills in question and the next criteria
 
-`ponytail` спрямувала повторне використання існуючого кам’яного арту та draw path без нової підсистеми. `karpathy-guidelines` — явні умови приймання й вузькі зміни; `cpp-coding-standards` — чистий value-based helper на `std::array` без володіння raw pointers. `ultrawork` — окремі паралельні виконавці HUD і helper, незалежна code/pixel перевірка; спільну збірку й тести виконував root.
+`ponytail` directed reuse of existing stone art and draw path without a new subsystem. `karpathy-guidelines` — clear conditions of acceptance and narrow changes; `cpp-coding-standards` — pure value-based helper on `std::array` without owning raw pointers. `ultrawork` — separate parallel performers HUD and helper, independent code/pixel verification; The root was doing the test.
 
-Поточні берегові силуети вже повторюються на схилах; їх не слід просто множити. Наступний окремий художній крок — літні/зимові напрямлені скельні уступи з виразною підошвою та верхнім краєм, прив’язані до справжнього градієнта/кривизни з тими самими масками. Потрібні нові same-seed native порівняння й контроль сезонної геометрії. Велика сіра межа розвідки, композиція/щільність поселення та відповідність усіх деталей концепту залишаються відкритими. Глобальний zoom або штучне розкриття карти не застосовані.
+Current coastal silhouettes are already repeating on the slopes; And you don't have to just multiply them. The next distinct artistic step is the summer/winter oriented rock steps with a distinct pedestrian and upper edge attached to the actual gradient/curve with the same masks. New same-seed native comparisons and control of seasonal geometry are needed. The large gray exploration boundary, composition/density of the settlement and the correspondence of all the details of the concept remain open. Global zoom or artificial map unlocking is not used.

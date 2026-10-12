@@ -1,37 +1,37 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ribterra — справжні кам’яні схили, 05.10.2026</title>
+<title>Ribterra — actual rocky slopes, October 5, 2026</title>
 <style>
 body{margin:0;padding:24px;background:#0c1826;color:#eee2c5;font:18px/1.5 Georgia,serif}main{max-width:1800px;margin:auto}h1{font-size:28px}p{max-width:1100px}figure{margin:20px 0}img{display:block;width:100%;height:auto}figcaption{padding:8px 0}a{color:#99d2ed}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}.viewer{position:relative;aspect-ratio:16/9;border:1px solid #bd975d}.viewer img{position:absolute;inset:0}.viewer .after{clip-path:inset(0 50% 0 0)}label{display:block;margin:12px 0}input{width:min(600px,100%)}@media(max-width:900px){.pair{grid-template-columns:1fr}}
 </style>
 <main>
-<h1>Схили: посилення каменю на наявній висоті</h1>
-<p>Проміжний крок переробки V01–V03, не художнє приймання. Знімки — прихований native D3D12; вікном користувача не керували. Рельєф і ресурси не редаговані. Збігаються задекларовані seed, камера, масштаб, контент і версії генератора. Звичайні кадри не містять повного per-capture checksum/погодного паспорта, тому це візуальне порівняння зі вказаними обмеженнями, а не pixel-perfect доказ однакового стану.</p>
-<p><a href="RELIEF_FACE_CHECK_2026_10_05_UA.md">Перевірки, ідентичність збірок і залишкові проблеми</a> · <a href="MAP_GROUND_COMPARE_2026_10_05.html">Попередні проходи</a></p>
-<h2>Seed 1337: до / після</h2>
+<h1>Slopes: stronger rock coverage on existing elevation</h1>
+<p>This is an intermediate step in the V01–V03 rebuild, not art acceptance. The captures come from hidden native D3D12 runs; the user's window was not controlled. Terrain and resources were not edited. The reported seed, camera, scale, content, and generator versions match. Ordinary captures do not contain a complete per-capture checksum and weather manifest, so this is a qualified visual comparison rather than pixel-perfect proof of an identical state.</p>
+<p><a href="RELIEF_FACE_CHECK_2026_10_05_UA.md">Checks, build identity, and remaining issues</a> · <a href="MAP_GROUND_COMPARE_2026_10_05.html">Earlier passes</a></p>
+<h2>Seed 1337: before / after</h2>
 <div class="pair">
-<figure><img src="../../artifacts/concept-rebuild-2026-10-05-map-ground/ordinary-nature-variety/ordinary-seed-1337-uk-100-1920x1080.png" alt="До: верхній правий схил переважно трав’яний"><figcaption>До: висота вже була, кам’яна поверхня губилася під травою.</figcaption></figure>
-<figure><img src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-1337-uk-100-1920x1080.png" alt="Після: реальний схил читається суцільним сірим каменем"><figcaption>Після: домінантний камінь на крутому схилі. Рівнина біля табору збережена. Маса каменю поки надто однорідна.</figcaption></figure>
+<figure><img src="../../artifacts/concept-rebuild-2026-10-05-map-ground/ordinary-nature-variety/ordinary-seed-1337-uk-100-1920x1080.png" alt="Before: the upper-right slope is mostly grass"><figcaption>Before: the elevation already existed, but grass obscured the rocky surface.</figcaption></figure>
+<figure><img src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-1337-uk-100-1920x1080.png" alt="After: the actual slope reads as a continuous gray rock face"><figcaption>After: rock dominates the steep slope. The level ground around the camp is preserved. The rock mass is still too uniform.</figcaption></figure>
 </div>
-<h2>Порівняння на одному кадрі</h2>
-<label for="wipe">Межа порівняння: після ліворуч / до праворуч</label>
+<h2>Single-frame comparison</h2>
+<label for="wipe">Comparison boundary: after on the left / before on the right</label>
 <input id="wipe" type="range" min="0" max="100" value="50">
-<label><input id="overlay" type="checkbox" style="width:auto"> Замість межі — напівпрозоре накладання 50/50</label>
+<label><input id="overlay" type="checkbox" style="width:auto"> Replace the boundary with a semitransparent 50/50 overlay</label>
 <div class="viewer">
-<img src="../../artifacts/concept-rebuild-2026-10-05-map-ground/ordinary-nature-variety/ordinary-seed-1337-uk-100-1920x1080.png" alt="Базовий native кадр seed 1337">
-<img class="after" src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-1337-uk-100-1920x1080.png" alt="Новий native кадр seed 1337 поверх базового">
+<img src="../../artifacts/concept-rebuild-2026-10-05-map-ground/ordinary-nature-variety/ordinary-seed-1337-uk-100-1920x1080.png" alt="Baseline native capture for seed 1337">
+<img class="after" src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-1337-uk-100-1920x1080.png" alt="New native capture for seed 1337 over the baseline">
 </div>
-<h2>Інша геометрія та зимовий стан</h2>
+<h2>Different geometry and winter state</h2>
 <div class="pair">
-<figure><img src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-70421-uk-100-1920x1080.png" alt="Звичайний старт seed 70421 з кам’яним схилом ліворуч"><figcaption>Seed 70421: помірніший ефект, відповідно до його реального схилу.</figcaption></figure>
-<figure><img src="../../artifacts/relief-face-2026-10-05/matrix-rock-face/uk-85-1280x720-staged-winter-selected-stockpile.png" alt="Зимове постановочне поселення, сніг на схилах збережений"><figcaption>Зима, постановочне поселення: камінь не стирає сніговий покрив. Дерева, кущі й будівлі не переміщені заради кадру.</figcaption></figure>
+<figure><img src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-70421-uk-100-1920x1080.png" alt="Ordinary seed 70421 start with a rocky slope on the left"><figcaption>Seed 70421: a more moderate effect that follows its actual slope.</figcaption></figure>
+<figure><img src="../../artifacts/relief-face-2026-10-05/matrix-rock-face/uk-85-1280x720-staged-winter-selected-stockpile.png" alt="Staged winter settlement with snow preserved on the slopes"><figcaption>Winter, staged settlement: the rock does not erase the snow cover. Trees, bushes, and buildings were not moved for the capture.</figcaption></figure>
 </div>
-<h2>Ціль та поточне поселення</h2>
+<h2>Target and current settlement</h2>
 <div class="pair">
-<figure><img src="images/target-0262.png" alt="Концепт 0.26.2"><figcaption>Концепт: рельєф зі згрупованими скельними масами та виразним краєм.</figcaption></figure>
-<figure><img src="../../artifacts/relief-face-2026-10-05/matrix-rock-face/en-100-1920x1080-staged-selected-stockpile.png" alt="Поточний справжній рендер постановочного поселення"><figcaption>Поточний рендер: відповідність ще не досягнута. Відрізняються композиція, щільність, кам’яні виступи, межа розвідки та повнота HUD.</figcaption></figure>
+<figure><img src="images/target-0262.png" alt="0.26.2 concept"><figcaption>Concept: terrain with grouped rock masses and a pronounced edge.</figcaption></figure>
+<figure><img src="../../artifacts/relief-face-2026-10-05/matrix-rock-face/en-100-1920x1080-staged-selected-stockpile.png" alt="Current actual render of the staged settlement"><figcaption>Current render: parity has not been reached. Composition, density, rock outcrops, the exploration boundary, and HUD completeness still differ.</figcaption></figure>
 </div>
 </main>
 <script>

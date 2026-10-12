@@ -1,50 +1,52 @@
-# Ribterra — майбутнє динамічне освітлення і перемикач
+# Ribterra — Future of dynamic lighting and switch
 
-**Базові оновлення перед DL:** [детальний план V01–V05 від 28.09](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md).
-Рішення користувача: 27.09.2026. **Зараз — лише заготовка в рушії. Повне освітлення і налаштування відкладені. Версію та дату випуску ще не призначено.**
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Цей документ має пріоритет над попередньою вимогою зробити повне динамічне освітлення обов'язковим у 0.26.1. Воно не блокує базове оновлення UI, світу, текстур, будівель і погоди. Референси з динамічним світлом — майбутня ціль; не критерій уже виконаної заготовки.
+**Base update before DL:** [ the detailed plan V01–V05 from 28.09](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md).
+The user's decision: 27.09.2026. **Now it's just a build in progress. Full lighting and setup are delayed. A release date and version have not yet been determined.**
 
-## Що зроблено зараз
-- [Renderer2D API](../../include/ribterra/renderer2d.hpp): `LightingMode::Legacy/Dynamic`, `LightingStatus` із requested/effective/availability/reason, запит `set_lighting_mode()`.
-- За замовчуванням чинний renderer працює як раніше. `dynamic_available=false`.
-- Runtime-запит Dynamic повертає false, лишає effective=Legacy і повідомляє NotImplemented. Невідоме enum значення відхиляється без зміни стану.
-- Явний запуск через RendererOptions із Dynamic відхиляється до GPU allocation. Немає мовчазного увімкнення або прихованої підміни.
-- Немає нового шейдера, графічних ресурсів, UI-перемикача або запису налаштування. Немає нового освітлення на екрані.
-- [Render contract tests](../../tests/render_frame_tests.cpp) перевіряють відмову, статус, незмінний кадр і повернення до Legacy на software та Direct3D 12.
+This document takes precedence over the prior requirement to make full dynamic lighting mandatory in 0.26.1. It doesn't block basic update UI, the world, texture, buildings and weather. Dynamic lighting references — future target; It's not a criterion for a finished product.
 
-## Майбутні малі етапи
-Номери DL — пакети розробки, не вже випущені версії гри.
+## What's done now
+- [Renderer2D API](../../include/ribterra/renderer2d.hpp): `LightingMode::Legacy/Dynamic`, `LightingStatus` from requested/effective/availability/reason, request `set_lighting_mode()`.
+- By default, the current renderer works as before. `dynamic_available=false`.
+- The Dynamic runtime query returns false, leaves effective=Legacy and reports NotImplemented. The unknown enum value deviates without changing state.
+- The direct start through RendererOptions from Dynamic deviates to the GPU allocation. There is no silent activation or hidden replacement.
+- There's no new shader, graphics resources, UI- switch or setup record. There's no new lighting on the screen.
+- [Render contract tests](../../tests/render_frame_tests.cpp) check the rejection, status, unchanged frame and return to Legacy on the software and Direct3D 12.
 
-| Етап | Додати / змінити | Приймання |
+## Future small steps
+Numbers DL — development packages, not previously released versions of the game.
+
+| Stage | Adding/altering | Acceptance |
 |---|---|---|
-| DL-01 — можливості GPU | Формати, material/shader contracts, capability/status; Legacy залишається окремим шляхом | Native query + offscreen test; Unsupported має зрозумілу причину |
-| DL-02 — малий lit kit | Neutral albedo, normal/roughness, depth, emission; будинок, дерево, мешканець, земля | Loader/atlas/basis validation, контрольні точки не зсуваються на різних zoom |
-| DL-03 — динамічне світло | Sun + локальні point/spot sources; земля, фасад, дах і мешканець реагують на рух джерела | Немонтоване native відео source off/on/move, warm/cold, actor crossing |
-| DL-04 — перекриття і матеріали | Moving occluders, per-light shadows, wet response; reveal filtering | Два різних джерела: blocker гасить лише одне; світло не розкриває fog |
-| DL-05 — продуктивність | Light/occluder culling, quality caps, atlas/target memory ledger | Виміряні p95/p99 CPU/GPU/VRAM на визначених ПК; немає прихованого вимкнення ефекту |
-| DL-06 — налаштування | Перемикач «Динамічне освітлення: Вимкнено / Увімкнено», локальне збереження, причина недоступності | Значення requested/effective не плутаються; unsupported не показує активний режим |
-| DL-07 — життєвий цикл | Restart/apply, safe failure, resize/minimize, load/reconnect; assets із пакета | Після помилки лишається доступний робочий режим; ресурси не витікають |
-| DL-08 — приймання | Реальна сцена з 20–30 мешканцями, дощем/снігом, світлом і UI | Обидва режими пройшли ті самі gameplay/save/co-op сценарії; publish тільки після доказів |
+| DL-01 — possibilities GPU | Forms, material/shader contracts, capability/status; Legacy remains a separate path | Native query + offscreen test; Unsupported has a good reason. |
+| DL-02 — small lit kit | Neutral albedo, normal/roughness, depth, emission; a house, a tree, a dwelling, land | Loader/atlas/basis validation, the checkpoints do not move on different zooms |
+| DL-03 — dynamic light | Sun + local point/spot sources; The earth, the facade, the roof and the inhabitants react to the movement of the source | Uninstalled native video source off/on/move, warm/cold, actor crossing |
+| DL-04 — Cover and materials | Moving occluders, per-light shadows, wet response; reveal filtering | Two different sources: blocker switches off only one; The light doesn't reveal the fog. |
+| DL-05 — productivity | Light/occluder culling, quality caps, atlas/target memory ledger | Measured p95/p99 CPU/GPU/VRAM on specified PCs; There's no hidden effect switch off. |
+| DL-06 — setting | Switch «Dynamic lighting: Off/Off», local storage, cause of unavailability | The values requested/effective are not confused; unsupported does not show active mode |
+| DL-07 Life cycle | Restart/apply, safe failure, resize/minimize, load/reconnect; assets from the package | The operating mode is available after the error; The resources are running out. |
+| DL-08 — reception | Real scene with 20–30 residents, rain/snow, light and UI | Both modes have gone through the same gameplay/save/co-op scenarios; Only publish after proof. |
 
-## Поведінка майбутнього перемикача
-Розташування — налаштування графіки RmlUi. Початкове значення — вимкнено. У першій реалізації зміна застосовується після перезапуску гри: явно написати це біля налаштування, зберегти бажаний режим локально. Безпечно перемикати GPU graph посеред кадру не є прихованою вимогою першої версії.
+## The behavior of the future movers
+The layout  setting of the chart RmlUi. The initial value — is turned off. In the first implementation, the change is applied after the game restarts: clearly write it to the settings, save the desired mode locally. Safely switching the GPU graph between frames is not a hidden requirement of the first version.
 
-Зараз `ui-settings.json` зберігає лише існуючі параметри locale/UI scale. У DL-06 потрібен versioned локальний graphics settings contract із migration/defaults/atomic write. Не додавати це поле в World save, protocol або rules hash. Host і guest можуть мати різні режими освітлення з однаковою симуляцією.
+Now `ui-settings.json` only keeps the existing parameters of the locale/UI scale. The DL-06 needs a versioned local graphics settings contract with migration/defaults/atomic write. Don't add this field to World save, protocol or rules hash. Host and guest may have different lighting modes with the same simulation.
 
-На непідтриманому GPU параметр неактивний і пояснює причину. Якщо користувач уже зберіг Dynamic на іншому ПК, startup перевіряє capability до створення renderer, показує повідомлення й явно обирає Legacy; не передає завідомо unsupported mode в ctor. Active state завжди читається з `LightingStatus::effective`, не зі старого options object.
+On the unsupported GPU parameter, it is inactive and explains the cause. If the user already has Dynamic stored on another PC, the startup checks the capability to create the renderer, displays the message, and explicitly selects Legacy; It doesn't transmit consciously unsupported mode to ctor. Active state is always read from `LightingStatus::effective`, not from the old options object.
 
-Назва Legacy лишається внутрішньою назвою API. У UI — «Динамічне освітлення: Вимкнено». Вимкнення не видаляє погоду, будівлі, gameplay або сезонні текстури. В обох режимах відсутній вплив на їжу, HP, маршрути й ресурси.
+The Legacy name remains the internal name API. In UI — Dynamic lighting: Off. The shutdown does not remove weather, buildings, gameplay or seasonal textures. In both modes, there is no impact on food, HP, routes and resources.
 
-## Архітектурні додатки
-- [Алгоритм динамічного освітлення](DYNAMIC_LIGHTING_SPEC_UA.md): normal/depth reconstruction, джерела, occlusion, обмеження і тести.
-- [Майбутній Render Core](RENDER_CORE_SPEC_UA.md): GPU graph, formats, resource lifetime, alpha/color space, viewport.
-- [Виробництво ассетів](ART_PRODUCTION_SPEC_UA.md): редаговані masters, material maps, pivots, атласи й бюджет.
-- [Ефекти світу](WORLD_FX_SPEC_UA.md): вода/димка/сліди, які не слід плутати з фізичним solver.
+## Architectural appliances
+- [Algorithm of dynamic lighting](DYNAMIC_LIGHTING_SPEC_UA.md): normal/depth reconstruction, source, occlusion, limitation and testing.
+- [Future Render Core](RENDER_CORE_SPEC_UA.md): GPU graph, formats, resource lifetime, alpha/color space, viewport.
+- [Manufacturing of assets](ART_PRODUCTION_SPEC_UA.md): edited masters, material maps, pivots, atlases and budget.
+- [Effects of the world](WORLD_FX_SPEC_UA.md): water/smoke/stains not to be confused with physical solver.
 
-Це технічні пропозиції, а не вже протестована архітектура. Після DL-03–05 може знадобитися їх уточнення. Повна 3D-фізика, GI, ray tracing і самотіні кожної деталі в цю пропозицію не входять.
+These are technical proposals, not protests about architecture. After DL-03–05 they may need clarification. Full 3D physics, GI, ray tracing and the solitude of every detail are not included in this proposition.
 
-## Базове графічне оновлення до цього етапу
-Окремі наочні кроки: поточний кадр → новий UI на старому світі → земля/береги/генерація → нові споруди й мешканці → погода. Кожний макет показує тільки додавання відповідного кроку. Цей візуальний порядок не дозволяє вмикати цифри погоди до server/save/network contract і не замінює технічні dependencies.
+## Basic graphical update to this stage
+Separate visual steps: current frame → new UI on the old world → land/coast/generation → new buildings and inhabitants → weather. Each layout shows only the addition of a corresponding step. This visual order does not allow the contract numbers to be switched to server/save/network contract and does not replace technical dependencies.
 
-Нові художні макети не є native screenshots. Порівнювати одну сцену й ракурс; приймання кожної реалізації — окремим справжнім кадром і відео. Новий UI не означає автоматично нові текстури, а дощ не означає готове dynamic lighting.
+The new artwork is not a set of native screenshots. Compare the same scene and camera angle; accept each implementation with a separate real capture and video. A new UI does not automatically imply new textures, and rain does not imply finished dynamic lighting.

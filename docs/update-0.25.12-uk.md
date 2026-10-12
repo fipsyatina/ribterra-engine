@@ -1,15 +1,17 @@
-# Ribterra 0.25.12 — Безпечне завантаження старих світів
+# Ribterra 0.25.12 — Safe loading of old worlds
 
-Підтримані сейви **0.25.7–0.25.10** (формат 8, правила 14–16, генератор 5) переносяться в окремий файл поруч із джерелом: `назва.alpha-0.25.12-<ідентифікатор>.save` або з початковим розширенням. Оригінал не змінюється. Копія перевіряється перед відкриттям; наявний файл з тим самим ім’ям не замінюється.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Гра повідомляє версію джерела та назву копії. F5, кнопка збереження, повторне продовження одиночної гри, збереження хоста й завершення сервера використовують копію. Окремий сервер показує її шлях у `save_path` при запуску; наступного разу передайте цей шлях у `--world`. Новий світ після відмови має окремий файл, тому не затирає відхилений сейв.
+Supported safes **0.25.7–0.25.10** (formatting 8, rules 14–16, generator 5) are transferred to a separate file next to the source: `name.alpha-0.25.12-<identifier>.save` or with the original extension. The original is unchanged. The copy shall be verified before opening; The file with the same name is not replaced.
 
-У підтриманих старих світах скорочені порції повертаються до нормальних для всіх націй. Запаси при цьому не змінюються. Старий Attacking та відкладені таймери атак скидаються без зміни здоров’я мешканців і товарів. Повідомлення прямо називає виконані зміни.
+The game reports the source version and the name of the copy. F5, save button, single game continuation, host saving, and server completion use copy. The separate server shows its path to `save_path` when running; Next time, go this way to `--world`. The new world after rejection has a separate file, so it doesn't delete the rejected save.
 
-Усі фази активної експедиції, зокрема вихід, полювання, повернення й самооборона, **відхиляються**. Оригінальний файл і вже відкрита гра залишаються незмінними. Так само відхиляються пошкоджений або невідомий формат, несумісні правила/ігрові дані, зламані зв’язки предметів і доставки. Примусова праця, активне виробництво відкладених інструментів/списів і незавершене будівництво прихованої споруди поки не переносяться.
+In the old worlds, the reduced portions are returning to normal for all nations. The stock is unchanged. The old Attacking and delayed attack timers are being dropped without changing the health of residents and goods. The message directly calls for changes made.
 
-Завершені історичні споруди, їхні власники, рівні II, мешканці та товари зберігаються, включно з інструментами, списами й шкурами. Звичайний вантаж виробництва продовжує доставку один раз. Завантаження мережевого світу відновлює господаря та його команду; помилка даних кімнати не замінює відкриту сесію.
+All phases of the active expedition, including departure, hunting, return, and self-defense, ** deviate**. The original file and the game already open remain unchanged. Also, a corrupted or unknown format, inconsistent rules/game data, broken item links and delivery are rejected. Forced labor, active production of deferred tools/lists and unfinished construction of the hidden structure are not yet carried over.
 
-Обмеження: номер правил 14 спільний для 0.25.7 і 0.25.8, тому інтерфейс чесно показує діапазон версій. Нові сейви 0.25.11/0.25.12 відкриваються штатно; підроблений неприпустимий стан у поточному форматі не виправляється навмання. Раніші наявні конвертери старих форматів з резервною копією залишені; нова гарантія перевірена для описаних станів 0.25.7 і не означає універсальну сумісність усіх історичних світів.
+The completed historic buildings, their owners, levels II, residents and goods are preserved, including tools, inscriptions and leather. The normal production load continues delivery once. Loading the network world restores the owner and his team; The room error does not replace the open session.
 
-Правила **17**, протокол **19**, формат **8**, генератор **5** не змінені. Нового періодичного автозбереження це оновлення не додає. [Результати перевірок](verification-0.25.12-uk.md).
+Limitation: the rule number 14 is common to 0.25.7 and 0.25.8, so the interface honestly displays the version range. New safes 0.25.11/0.25.12 are opened regularly; The false unacceptable state in the current format does not correct the inference. Previously available old format converters with a backup copy are left; The new warranty is tested for the described states 0.25.7 and does not imply universal compatibility of all historical worlds.
+
+The rules **17**, protocol **19**, format **8**, generator **5** are not changed. The new periodic car park does not add to this update. [Results of the tests](verification-0.25.12-uk.md).

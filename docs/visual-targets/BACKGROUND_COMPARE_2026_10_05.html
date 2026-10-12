@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ribterra — фонова звірка 05.10.2026</title>
+<title>Ribterra — background review, October 5, 2026</title>
 <style>
   :root { color-scheme: dark; font: 16px/1.5 system-ui, sans-serif; background: #101820; color: #eee5d4; }
   body { margin: 24px auto; padding: 0 20px; max-width: 1800px; }
@@ -14,32 +14,32 @@
   .status { color: #ffd493; } small { display: block; color: #b8c4cd; }
   @media (max-width: 900px) { .pair { grid-template-columns: 1fr; } }
 </style>
-<h1>Ribterra V01–V03 — фонова звірка 05.10.2026</h1>
-<p class="status">REBUILD / не прийнято. Це порівняння незавершеної реалізації з концептом, не підтвердження їхньої відповідності.</p>
-<p>Ігрові PNG отримані прихованими нативними D3D12-запусками без керування вікном користувача. Зображення не підмальовані. Поселення — явно постановочний тест на згенерованій землі; звичайна нова гра починається з Табору й 10 людей.</p>
-<h2>Концепт і поточний ігровий кадр</h2>
+<h1>Ribterra V01–V03 — background review, October 5, 2026</h1>
+<p class="status">REBUILD / not accepted. This comparison shows an incomplete implementation against the concept; it does not confirm parity.</p>
+<p>The game PNGs were captured from hidden native D3D12 runs without controlling the user's window. The images were not retouched. The settlement is an explicitly staged test on generated terrain; an ordinary new game starts with one Camp and 10 residents.</p>
+<h2>Concept and current in-game capture</h2>
 <div class="pair">
-  <figure><figcaption>Художній орієнтир — target-0262<small>Концепт, не screenshot гри.</small></figcaption><a href="images/target-0262.png"><img src="images/target-0262.png" alt="Концепт: деталізоване поселення з кам'янистими берегами й щільною рослинністю"></a></figure>
-  <figure><figcaption>Поточний native render — uk / 100% / 1920×1080<small>Постановочний Stockpile, реальні HUD і рендерер.</small></figcaption><a href="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-100-1920x1080-staged-selected-stockpile.png"><img src="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-100-1920x1080-staged-selected-stockpile.png" alt="Поточний кадр тестового поселення Ribterra"></a></figure>
+  <figure><figcaption>Art target — target-0262<small>Concept art, not a game screenshot.</small></figcaption><a href="images/target-0262.png"><img src="images/target-0262.png" alt="Concept: a detailed settlement with rocky banks and dense vegetation"></a></figure>
+  <figure><figcaption>Current native render — uk / 100% / 1920×1080<small>Staged Stockpile, actual HUD and renderer.</small></figcaption><a href="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-100-1920x1080-staged-selected-stockpile.png"><img src="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-100-1920x1080-staged-selected-stockpile.png" alt="Current capture of the Ribterra test settlement"></a></figure>
 </div>
-<p>Відкриті відмінності: великі порожні ділянки, сіра межа розвідки, м'які береги замість виразної скелястої форми, замала мінікарта, недостатня дрібна деталізація й атмосфера. Прогноз, температура та опади за поетапним контрактом належать до V04; фальшивих чисел у HUD немає.</p>
-<h2>Виправлена регресія HUD — однакові uk / 130% / 1280×720</h2>
+<p>Known differences include large empty areas, a gray exploration boundary, soft banks instead of a pronounced rocky profile, an undersized minimap, and insufficient fine detail and atmosphere. Under the staged contract, forecast, temperature, and precipitation belong to V04; the HUD does not display fabricated values.</p>
+<h2>Fixed HUD regression — matching uk / 130% / 1280×720</h2>
 <div class="pair">
-  <figure><figcaption>До: «Призначити» заходить на «Скасувати»</figcaption><a href="../../artifacts/concept-rebuild-2026-10-05/matrix-full/uk-130-1280x720-staged-selected-stockpile.png"><img src="../../artifacts/concept-rebuild-2026-10-05/matrix-full/uk-130-1280x720-staged-selected-stockpile.png" alt="До виправлення: накладання тексту нижньої панелі"></a></figure>
-  <figure><figcaption>Після: панель розширена зі збереженням розміру шрифту</figcaption><a href="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-130-1280x720-staged-selected-stockpile.png"><img src="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-130-1280x720-staged-selected-stockpile.png" alt="Після виправлення: чотири розділені читабельні підписи"></a></figure>
+  <figure><figcaption>Before: “Assign” overlaps “Cancel”</figcaption><a href="../../artifacts/concept-rebuild-2026-10-05/matrix-full/uk-130-1280x720-staged-selected-stockpile.png"><img src="../../artifacts/concept-rebuild-2026-10-05/matrix-full/uk-130-1280x720-staged-selected-stockpile.png" alt="Before the fix: overlapping text in the bottom panel"></a></figure>
+  <figure><figcaption>After: the panel is wider while the font size stays unchanged</figcaption><a href="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-130-1280x720-staged-selected-stockpile.png"><img src="../../artifacts/concept-rebuild-2026-10-05/matrix-hud-fixed/uk-130-1280x720-staged-selected-stockpile.png" alt="After the fix: four separate, legible labels"></a></figure>
 </div>
-<p>Регресійний тест спочатку зафіксував: ширина напису 133 px, ширина кнопки 126,9 px. Перевірка тепер використовує вимірювання тексту реальним шрифтовим рушієм, а не лише розмір flex-контейнера.</p>
-<h2>Вісім звичайних стартів — без постановочної забудови</h2>
-<p>У кожному кадрі — 1 Табір, 10 мешканців і 861 розвідана клітинка; однакові камера, zoom 1.3, uk100 і 1920×1080. Різні seed перевіряють різноманітність генерації. Це не новий тест вибору випадкового seed через інтерактивне меню.</p>
+<p>The regression test originally recorded a 133 px label inside a 126.9 px button. The check now measures text with the actual font engine instead of relying only on the flex container size.</p>
+<h2>Eight ordinary starts — no staged construction</h2>
+<p>Each capture contains one Camp, 10 residents, and 861 explored cells, with the same camera, zoom 1.3, uk100, and 1920×1080. Different seeds check generation variety. This is not a new test of random-seed selection through the interactive menu.</p>
 <div class="pair">
-  <figure><figcaption>Seed 70421</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-70421-uk-100-1920x1080.png" alt="Звичайний старт seed 70421"></figure>
-  <figure><figcaption>Seed 4204434016</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-4204434016-uk-100-1920x1080.png" alt="Звичайний старт seed 4204434016"></figure>
-  <figure><figcaption>Seed 572988801</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-572988801-uk-100-1920x1080.png" alt="Звичайний старт seed 572988801"></figure>
-  <figure><figcaption>Seed 2035859997</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-2035859997-uk-100-1920x1080.png" alt="Звичайний старт seed 2035859997"></figure>
-  <figure><figcaption>Seed 301968671</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-301968671-uk-100-1920x1080.png" alt="Звичайний старт seed 301968671"></figure>
-  <figure><figcaption>Seed 2247006640</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-2247006640-uk-100-1920x1080.png" alt="Звичайний старт seed 2247006640"></figure>
-  <figure><figcaption>Seed 1337</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-1337-uk-100-1920x1080.png" alt="Звичайний старт seed 1337"></figure>
-  <figure><figcaption>Seed 3735928559</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-3735928559-uk-100-1920x1080.png" alt="Звичайний старт seed 3735928559"></figure>
+  <figure><figcaption>Seed 70421</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-70421-uk-100-1920x1080.png" alt="Ordinary start with seed 70421"></figure>
+  <figure><figcaption>Seed 4204434016</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-4204434016-uk-100-1920x1080.png" alt="Ordinary start with seed 4204434016"></figure>
+  <figure><figcaption>Seed 572988801</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-572988801-uk-100-1920x1080.png" alt="Ordinary start with seed 572988801"></figure>
+  <figure><figcaption>Seed 2035859997</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-2035859997-uk-100-1920x1080.png" alt="Ordinary start with seed 2035859997"></figure>
+  <figure><figcaption>Seed 301968671</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-301968671-uk-100-1920x1080.png" alt="Ordinary start with seed 301968671"></figure>
+  <figure><figcaption>Seed 2247006640</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-2247006640-uk-100-1920x1080.png" alt="Ordinary start with seed 2247006640"></figure>
+  <figure><figcaption>Seed 1337</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-1337-uk-100-1920x1080.png" alt="Ordinary start with seed 1337"></figure>
+  <figure><figcaption>Seed 3735928559</figcaption><img loading="lazy" src="../../artifacts/concept-rebuild-2026-10-05/ordinary-seeds-hud-fixed/ordinary-seed-3735928559-uk-100-1920x1080.png" alt="Ordinary start with seed 3735928559"></figure>
 </div>
-<p><a href="BACKGROUND_CHECK_2026_10_05_UA.md">Докази, статус тестів і відкриті вимоги</a> · <a href="CONCEPT_REBUILD_2026_09_30_UA.md">Повний контракт результату</a></p>
+<p><a href="BACKGROUND_CHECK_2026_10_05_UA.md">Evidence, test status, and open requirements</a> · <a href="CONCEPT_REBUILD_2026_09_30_UA.md">Complete outcome contract</a></p>
 </html>

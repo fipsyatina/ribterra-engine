@@ -1,43 +1,45 @@
-# Ribterra — обов'язкове динамічне освітлення
+# Ribterra — mandatory dynamic lighting
 
-**Новий bounded checkpoint08.10:** [Environment V1](ENVIRONMENT_CHECK_2026_10_08_UA.md) спільно змінює Sun/Moon/ambient/atmosphere за діагностичними hour/cloud/haze. Fresh build02 і два actual native runs exit0; 42PNG+raw+JSON (44/44 exact). Причинно перевірені рух сонячних/місячних тіней, cloud/haze isolation, horizon source-on/off і незмінні authored local/emission. Це не authoritative time/weather, normal startup, концепт-арт або ≥120FPS; **E06 і всі E01–E17 OPEN**.
+> English translation of a historical project document. Technical literals and recorded results are preserved; these records describe their original snapshots and do not validate the current build. Original wording is available in import commit `7388a2f`.
 
-**Частковий authored checkpoint08.10:** [schema-2 importer/camera-relative adapter](AUTHORED_SKY_BRIDGE_CHECK_2026_10_08_UA.md) перевірено свіжою C++20 W4/WX збіркою і двома focused native loader runs. Світові трикутники незалежні від raster caster mask; directional shadow pixels через authored шлях ще NOT_RUN. Full Dynamic/GameView, concept fidelity та≥120FPS лишаються OPEN.
+**New bounded checkpoint 08.10:** [Environment V1](ENVIRONMENT_CHECK_2026_10_08_UA.md) changes Sun, Moon, ambient light, and atmosphere together from diagnostic hour/cloud/haze inputs. Fresh build02 and two actual native runs exited with code 0; 42 PNG+raw+JSON outputs were checked (44/44 exact). The checks causally covered solar and lunar shadow movement, cloud/haze isolation, horizon source on/off, and unchanged authored local light/emission. This is not authoritative time/weather, normal startup, concept art, or ≥120 FPS evidence; **E06 and all E01–E17 remain OPEN**.
 
-**Частковий engine-first checkpoint08.10:** [SkyShadowSlice](SKY_SHADOW_CHECK_2026_10_08_UA.md) додає незалежні opaque-triangle D32 depth maps Sun/Moon і source-specific visibility на ground/typed P. Це fixed-camera diagnostic proof, не повний Dynamic/GameView, art або120FPS. Новий material b3 має явний SkyMoonLighting192 (Moon32+Shadow160), не п'ять uniform buffers. Пізніша engine-first вимога має пріоритет над історичним deferred статусом нижче; E01–E17 OPEN.
+**Partial authored checkpoint 08.10:** The [schema-2 importer/camera-relative adapter](AUTHORED_SKY_BRIDGE_CHECK_2026_10_08_UA.md) was checked with a fresh C++20 W4/WX build and two focused native loader runs. World triangles are independent of the raster caster mask; directional shadow pixels through the authored path remain NOT_RUN. Full Dynamic/GameView, concept fidelity, and ≥120 FPS remain OPEN.
 
-**Актуальний engine-first checkpoint07.10:** пізніша пряма вимога користувача має
-пріоритет над історичним deferred/scaffold статусом нижче. [Незалежне direct Sun/Moon](SKY_DIRECT_CHECK_2026_10_07_UA.md)
-реалізовано лише в explicit SkyContactSlice; directional silhouettes, time/weather,
-всі художні категорії/GameView/full Dynamic/120FPS ще не прийняті. Старий384 sun/local
-ABI не розширювали прихованими полями — додано separateMoon32.
+**Partial engine-first checkpoint 08.10:** [SkyShadowSlice](SKY_SHADOW_CHECK_2026_10_08_UA.md) adds independent opaque-triangle D32 depth maps for the Sun and Moon and source-specific visibility on ground/typed P. This is fixed-camera diagnostic proof, not full Dynamic/GameView, art, or ≥120 FPS evidence. The new material b3 has an explicit SkyMoonLighting192 block (Moon32+Shadow160), not five uniform buffers. The later engine-first requirement takes precedence over the historical deferred status below; E01–E17 remain OPEN.
 
-**Відкладено за останнім рішенням користувача.** У поточній роботі лише engine scaffold. Повна система та перемикач — [майбутні DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md), без призначеного release. Обов’язкові критерії нижче стосуються майбутнього ввімкненого режиму, не 0.26.1 загалом.
-Дата: 27.09.2026. Статус: **PROPOSED / NOT IMPLEMENTED / NOT BENCHMARKED**.
+**Active engine-first checkpoint 07.10:** The user's later direct requirement takes
+priority over the historical deferred/scaffold status below. [Independent direct Sun/Moon](SKY_DIRECT_CHECK_2026_10_07_UA.md)
+is implemented only in explicit SkyContactSlice; directional silhouettes, time/weather,
+all art categories, GameView, full Dynamic, and ≥120 FPS have not been accepted. The previous 384-byte sun/local
+ABI was not expanded with hidden fields; a separate Moon32 block was added.
 
-Це уточнення вимоги користувача до [V2](GRAPHICS_ENGINE_PLAN_V2_UA.md). Освітлення повинно змінювати **землю, фасади, дахи, дерева і мешканців**, коли змінюється джерело або положення об'єкта. Emissive PNG, загальний tint і світлова пляма лише на землі не закривають цю вимогу. Алгоритми нижче — запропонований інженерний шлях, придатність якого ще треба довести у native dev.05/09.
+**Deferred by the user's latest decision.** The current work includes only the engine scaffold. The full system and switch belong to [future DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md), with no assigned release. The mandatory criteria below apply to the future enabled mode, not to 0.26.1 as a whole.
+Date: 27.09.2026. Status: **PROPOSED / NOT IMPLEMENTED / NOT BENCHMARKED**.
 
-## 1. Видимий контракт
-Обов'язкові керовані параметри джерела: position XYZ, direction, cone/radius, linear color, intensity, enabled. Світло/тінь оновлюються під час руху камери та об'єктів без повторного експорту PNG.
+This clarifies the user's requirement for [V2](GRAPHICS_ENGINE_PLAN_V2_UA.md). Lighting must change **terrain, facades, roofs, trees, and residents** when a light source or object position changes. An emissive PNG, a global tint, or a light spot confined to the ground does not satisfy this requirement. The algorithms below are a proposed engineering path whose suitability still must be proven in native dev.05/09.
 
-| Сцена | Що повинно відбутися |
+## 1. Visible contract
+Required controllable source parameters: position XYZ, direction, cone/radius, linear color, intensity, and enabled. Light and shadow update as the camera and objects move without re-exporting PNG files.
+
+| Scene | Required behavior |
 |---|---|
-| Вікно off→on | Світиться тільки emission mask; освітлюються земля і придатні сусідні поверхні в конусі |
-| Мешканець проходить повз джерело | Освітлений бік, інтенсивність і колір змінюються відповідно до normal/position; вантаж реагує теж |
-| Тестове світло пересувається зліва направо | Освітлюється інший бік видимого фасаду; намальований highlight не залишається назавжди |
-| Камінь/мешканець перетинає промінь | Видимість конкретного джерела змінюється; інше джерело продовжує освітлювати ділянку |
-| День→ніч | Зменшується directional/ambient contribution, локальні джерела залишаються читабельними |
-| Dry→wet | Змінюється roughness/specular землі, але light position і causal occlusion зберігаються |
+| Window off→on | Only the emission mask glows; terrain and eligible neighboring surfaces inside the cone are illuminated |
+| A resident passes the source | The lit side, intensity, and color change according to normal/position; carried cargo responds too |
+| A test light moves from left to right | The opposite side of the visible facade becomes lit; a painted highlight does not remain permanently |
+| A rock or resident crosses the beam | Visibility from that specific source changes; the other source continues lighting the area |
+| Day→night | Directional and ambient contributions decrease while local sources remain legible |
+| Dry→wet | Terrain roughness/specular response changes while light position and causal occlusion remain intact |
 
-Рухоме джерело у proof — diagnostic control. Воно не додає у demo нової механіки факела, предмета інвентарю або мережевої команди. Production lights походять із visual profiles і справжнього дозволеного стану об'єкта.
+The moving source in the proof is a diagnostic control. It does not add a new torch mechanic, inventory item, or network command to the demo. Production lights derive from visual profiles and the object's actual permitted state.
 
-## 2. Обраний шлях: lit 2.5D із даними форми
-Зберігаємо фіксовану камеру, painter order, SimCore і RmlUi. Terrain використовує geometry/world position; building/unit/tree sprites отримують **neutral albedo + normal/material map + camera-depth map + emission**. Це динамічний розрахунок освітлення видимої поверхні зі спрайтовими даними форми. Це не повна 3D-сцена і не підтримка довільного обертання камери.
+## 2. Selected path: lit 2.5D with shape data
+Keep the fixed camera, painter order, SimCore, and RmlUi. Terrain uses geometry/world position; building, unit, and tree sprites receive **neutral albedo + normal/material map + camera-depth map + emission**. This dynamically calculates lighting on the visible surface using sprite shape data. It is not a full 3D scene and does not support arbitrary camera rotation.
 
-Якщо цей спосіб не дає прийнятного світла на малому kit або не вкладається у виміряний бюджет, dev.09 провалений. До масового арту потрібно змінити алгоритм/геометричний шлях. Не переводити фасади назад на baked-only material і не називати це виконаним dynamic lighting.
+If this method cannot produce acceptable lighting on a small kit or fit within a measured budget, dev.09 fails. The algorithm or geometry path must change before mass art production. Do not move facades back to baked-only materials and call that completed dynamic lighting.
 
-## 3. Геометрія кожного пікселя спрайта
-Render metric із Core: X/Y у клітинах, Z = legacyElevation × 2.4 / 29. Канонічні constants і CPU helpers визначені в `include/ribterra/world_projection.hpp`. Affine projection до zoom:
+## 3. Geometry for each sprite pixel
+Core render metric: X/Y in cells, Z = legacyElevation × 2.4 / 29. Canonical constants and CPU helpers are defined in `include/ribterra/world_projection.hpp`. Affine projection before zoom:
 
 ```text
 sx = 29 * (x - y)
@@ -49,28 +51,28 @@ local_xyz = inverse(M) * float3(local_sx, local_sy, local_d)
 world_xyz = object_world_anchor + local_xyz
 ```
 
-`local_sx/local_sy` беруться з source pixel відносно pivot і переводяться через `export_pixels_per_reference_pixel`; не використовувати масштабовані framebuffer coordinates без зворотного zoom. `local_d` — linear camera-depth, розпакований із R16_UNORM за per-asset `depth_min/depth_max`. Це **texture data**, не runtime depth target. Для source іншого basis exporter застосовує повний affine transform у render metric до запису карт. Normal перетворюється inverse-transpose, потім normalizes; проста заміна координат normal некоректна при nonuniform scale.
+`local_sx/local_sy` come from the source pixel relative to the pivot and are converted through `export_pixels_per_reference_pixel`; do not use scaled framebuffer coordinates without reversing zoom. `local_d` is linear camera depth unpacked from R16_UNORM using per-asset `depth_min/depth_max`. This is **texture data**, not a runtime depth target. For a source with a different basis, the exporter applies the full affine transform into the render metric before writing the maps. The normal is transformed by the inverse transpose and then normalized; simply swapping normal coordinates is invalid under nonuniform scale.
 
-Спрайт не обертається довільно в runtime. Кожний facing/animation frame експортує normal/depth у спільному world basis тієї самої камери. Ці дані охоплюють тіло й реальний cargo. Сезонна маска без зміни геометрії може повторно використовувати карти; новий дах або змінений силует потребує нового depth/normal.
+The sprite does not rotate arbitrarily at runtime. Every facing/animation frame exports normal/depth data in the shared world basis of the same camera. The data covers both the body and actual cargo. A seasonal mask that does not change geometry can reuse the maps; a new roof or changed silhouette requires new depth/normal maps.
 
-Calibration test: offline points XYZ → export → shader reconstruction → reproject; помилка ≤1 native pixel на контрольному zoom і world error ≤0.02 tile у валідних opaque pixels. Це початкові acceptance tolerances. Перевірити кути будинку, коник даху, стопи, голову і кінці колод; не оцінювати лише центр PNG.
+Calibration test: offline XYZ points → export → shader reconstruction → reproject; error ≤1 native pixel at the control zoom and world error ≤0.02 tile in valid opaque pixels. These are the initial acceptance tolerances. Check house corners, the roof ridge, feet, heads, and log ends; do not evaluate only the center of the PNG.
 
 ## 4. Material contract
-| Карта | Початковий формат | Дані |
+| Map | Initial format | Data |
 |---|---|---|
-| Albedo | RGBA8, sRGB source | neutral color + alpha; без directional/local light і ground shadow |
+| Albedo | RGBA8, sRGB source | neutral color + alpha; no directional/local light or ground shadow |
 | NormalMaterial | RGBA8 linear | RG: octahedral normal; B: roughness; A: bounded authored AO |
-| CameraDepth | R16_UNORM linear | depth range metadata; invalid alpha не використовується для reconstruction |
-| EmissionMask | R8 linear | window/fire coverage; emitter color/intensity із profile |
+| CameraDepth | R16_UNORM linear | depth range metadata; invalid alpha is not used for reconstruction |
+| EmissionMask | R8 linear | window/fire coverage; emitter color/intensity comes from the profile |
 
-Це стартові GPU formats, їх support/usage перевіряє dev.01–02. Внутрішній loader повинен підтримати data formats; не пропускати R16 через старий 8-bit RGBA image loader. Якщо source має 16-bit PNG/EXR, offline exporter конвертує у перевірений runtime data blob із width/height/format/byte count/hash. Повний EXR decoder у shipping client не потрібний.
+These are the initial GPU formats; dev.01–02 verifies their support and usage. The internal loader must support the data formats; do not pass R16 through the old 8-bit RGBA image loader. If the source is a 16-bit PNG or EXR, the offline exporter converts it into a verified runtime data blob with width, height, format, byte count, and hash. The shipping client does not need a full EXR decoder.
 
-Заборонено виводити справжню normal/depth просто з яскравості довільного AI PNG: темне вікно не означає геометричну яму. Такі реконструкції можуть бути чернеткою, але проходять ті самі geometry tests. Рекомендований source — узгоджений offline master.
+Do not derive authoritative normal/depth data solely from the brightness of an arbitrary AI-generated PNG: a dark window does not imply a geometric cavity. Such reconstructions may serve as drafts, but they must pass the same geometry tests. The recommended source is a coordinated offline master.
 
-Світові матеріали повертають linear radiance; emission додається після освітлення. UI лишається поза світовим освітленням. Жодного повторного night tint над кінцевим світлом.
+World materials return linear radiance; emission is added after lighting. The UI remains outside world lighting. Do not apply a second night tint over the final light.
 
-## 5. Розрахунок світла
-Для кожної видимої точки P та normal N:
+## 5. Light calculation
+For every visible point P and normal N:
 
 ```text
 L = light.position - P
@@ -84,46 +86,46 @@ local = diffuse * range_fade * cone * visibility
 result = albedo * ambient * authored_AO + sun_term + sum(local) + specular + emission
 ```
 
-Point light використовує cone=1. Spot використовує нормалізований direction XYZ; ground-only direction XY недостатній для світла на даху або людині. Майбутній LightGpu у Core містить float4 directionXYZ/outerCos та innerCos у п’ятому float4, з 80-byte stride. Перед DL-01 звірити C++/HLSL offsets; поточна заготовка цих GPU structs ще не має. Одна спільна declaration/offset test, не дві різні structs у Core і FX.
+Point lights use cone=1. Spotlights use normalized XYZ direction; a ground-only XY direction is insufficient for lighting a roof or person. The future LightGpu in Core contains float4 directionXYZ/outerCos and innerCos in the fifth float4, with an 80-byte stride. Before DL-01, verify C++/HLSL offsets; the current scaffold does not yet contain these GPU structs. Use one shared declaration/offset test, not separate structs in Core and FX.
 
-Для ground/water і грубих lit sprite materials допустимий bounded Blinn-Phong specular: H=normalize(Ldir+V), exponent=lerp(8,96,1-roughness), strength із family; помножити на N·L, visibility і range/cone. Це керована модель для стилізованого результату, не повний physical PBR. Soil не стає металом. Wetness зменшує roughness у заданих межах і збільшує specular strength; water використовує власні flow normals. Ambient не множиться на shadow конкретного local light.
+For ground/water and rough lit sprite materials, bounded Blinn-Phong specular is acceptable: H=normalize(Ldir+V), exponent=lerp(8,96,1-roughness), strength from the material family, multiplied by N·L, visibility, and range/cone. This is a controlled model for a stylized result, not full physical PBR. Soil must not look metallic. Wetness lowers roughness within defined limits and increases specular strength; water uses its own flow normals. Do not multiply ambient light by the shadow of a specific local light.
 
-Sun — directional source із versioned azimuth/elevation curve, linear color/intensity за calendar/presentation adapter. Початковий production діапазон elevation 20°–65°, нижче — fade to zero без нескінченної довгої тіні. Azimuth і погоджені контрольні стани фіксуються у dev.03; diagnostic контролює напрям незалежно для перевірки normals. Це художнє правило гри, не географічна симуляція сонця.
+The Sun is a directional source with a versioned azimuth/elevation curve and linear color/intensity supplied by the calendar/presentation adapter. The initial production elevation range is 20°–65°; below that, fade to zero without creating an infinitely long shadow. Record azimuth and approved control states in dev.03; diagnostics control direction independently to validate normals. This is an artistic game rule, not a geographic solar simulation.
 
-## 6. Occlusion і межі тіней
-CPU збирає кандидати за light influence, видимістю і layer; moving units додають оновлювані capsule-призми. Будівлі/дерева — author-validated OBB/capsule sets. Для відрізка P→light:
+## 6. Occlusion and shadow limits
+The CPU gathers candidates by light influence, visibility, and layer; moving units add updated capsule prisms, while buildings and trees use author-validated OBB/capsule sets. For segment P→light:
 
-1. Перевести XY у basis OBB; перетнути slab intervals X/Y і height slab Z.
-2. Перетин існує, якщо непорожній t-інтервал лежить усередині (bias, 1-bias).
-3. Capsule використовує XY segment/capsule intersection плюс Z interval. Дотик у межах epsilon не створює випадкового миготіння.
-4. Виключити receiver owner із self-occlusion цього approximation. Це не дає справжніх самотіней між деталями одного фасаду; межа явно приймається окремо.
-5. Для інших об'єктів не вимикати occlusion через нестачу місця у buffer. Overflow реєструється і провалює acceptance.
+1. Transform XY into the OBB basis; intersect the X/Y slab intervals and Z height slab.
+2. An intersection exists when a nonempty t interval lies inside (bias, 1-bias).
+3. A capsule uses the XY segment/capsule intersection plus the Z interval. Contact within epsilon must not cause random flicker.
+4. Exclude the receiver owner from this approximation's self-occlusion. This does not produce true self-shadowing between details of a single facade; accept that limitation separately and explicitly.
+5. Do not disable one object's occlusion of another because the buffer lacks space. Record overflow and fail acceptance.
 
-Sun shadows на землі використовують authored silhouette/height і receiver projection, local shadows — visibility конкретного джерела. Точність тіні обмежена author geometry: capsule не відтворює кожен палець. Тіні даху на власний фасад, світло через складні внутрішні кімнати, GI, ray tracing, volumetric light shafts і довільні 3D self-shadows не обіцяються. Це межі якості, а не право вимкнути світло на всіх фасадах.
+Sun shadows on terrain use authored silhouette/height and receiver projection; local shadows use visibility from a specific source. Shadow precision is limited by authored geometry: a capsule does not reproduce every finger. Roof shadows on their own facade, light through complex interior rooms, GI, ray tracing, volumetric light shafts, and arbitrary 3D self-shadows are not promised. These are quality limits, not permission to disable lighting on every facade.
 
-Показати ground shadow і освітлення на іншому об'єкті окремо: silhouette не може одночасно вдавати ray blocker для всіх джерел. Window anchor змістити назовні owner prism і направити cone назовні; не прибирати owner із усіх чужих lighting queries.
+Demonstrate ground shadow and lighting on another object separately: a silhouette cannot simultaneously impersonate a ray blocker for every source. Move a window anchor outside the owner prism and direct its cone outward; do not remove the owner from every other light's lighting query.
 
-## 7. Інтеграція, вартість і порядок
-Canonical render graph і formats — [Core](RENDER_CORE_SPEC_UA.md). Ground lighting споживає albedo/normal/world position/flags; World sprite shader сам обчислює світло на реконструйованій поверхні. Готовий ground light buffer не накладається поверх мешканця або даху як screen-space tint.
+## 7. Integration, cost, and order
+The canonical render graph and formats are defined in [Core](RENDER_CORE_SPEC_UA.md). Ground lighting consumes albedo, normal, world position, and flags; the world sprite shader calculates light on the reconstructed surface itself. A finished ground-light buffer is not overlaid on a resident or roof as a screen-space tint.
 
-Light lists будуються для ground tile/receiver batch і sprite bounds. Початковий per-receiver cap 4/8/12 local lights для Low/Medium/High; per-light occluders 16/32/48, global 128/256/384. Це **не виміряні** числа. Culling за distance/range має довести, що відкинуте джерело не впливає на receiver. Якщо справді перекривається більше джерел, не називати їхнє зникнення коректним: зафіксувати overflow і переглянути budget або content density перед прийманням.
+Light lists are built for ground tile/receiver batches and sprite bounds. Initial per-receiver caps are 4/8/12 local lights for Low/Medium/High; per-light occluder caps are 16/32/48, with global caps of 128/256/384. These are **unmeasured** numbers. Distance/range culling must prove that a discarded source does not affect the receiver. If more sources actually overlap, do not call their disappearance correct: record the overflow and revise the budget or content density before acceptance.
 
-Додаткові data maps оплачуються в asset ledger. Приклад без reuse: 256 кадрів ×128² × (4 albedo +4 normal +2 depth +1 emission) bytes =44 MiB без mips, ≈58.67 MiB із повним mip chain. Geometry/cargo variants можуть збільшити число кадрів. Стартовий resident budget64 MiB проходить тільки якщо фактичний комплект поміщається; числа не є доказом.
+Additional data maps are charged to the asset ledger. Example without reuse: 256 frames ×128² × (4 albedo +4 normal +2 depth +1 emission) bytes =44 MiB without mips, ≈58.67 MiB with a full mip chain. Geometry and cargo variants can increase the frame count. The initial 64 MiB resident budget passes only if the actual set fits; arithmetic alone is not proof.
 
-Dev.02 фіксує GPU/material contracts; dev.03 створює neutral-lit kit і geometry maps; dev.04 додає position reconstruction/receiver/occluder validation; dev.05 доводить dynamic light на землі та спрайтах; dev.09 — всі ефекти разом із вимірюванням. Dev.16/17 розширюють вже прийняті lit materials на весь доступний каталог.
+Dev.02 fixes the GPU/material contracts; dev.03 creates a neutral-lit kit and geometry maps; dev.04 adds position reconstruction and receiver/occluder validation; dev.05 proves dynamic light on terrain and sprites; dev.09 combines all effects with measurement. Dev.16/17 extend already accepted lit materials across the available catalog.
 
-## 8. Обов'язкові тести dev.05/09
-| ID | Перевірка і критерій |
+## 8. Mandatory tests for dev.05/09
+| ID | Check and criterion |
 |---|---|
-| DL-01 | Світло off/on: diffuse/emission змінюються окремо; albedo asset hash незмінний |
-| DL-02 | Рух джерела навколо контрольного куба/будинку: нормалі дають правильний освітлений бік |
-| DL-03 | Мешканець + вантаж проходять світловий конус: змінюються освітлення і тінь, без baked tint |
-| DL-04 | Occluder закриває одне з двох різнокольорових джерел: гасне тільки його внесок |
-| DL-05 | Roof/фасад/земля отримують світло за різними N/P; uniform screen glow не проходить |
-| DL-06 | Reproject depth/normal data на трьох zoom; немає drift і frame/facing discontinuity |
-| DL-07 | Hidden source/caster не змінює revealed output; pan/zoom не змінює світло у world coordinates |
-| DL-08 | Sun/night/wetness переходи, pause/2×/reload; emission не темніє вдруге |
-| DL-09 | Low і Medium із 20–30 мешканцями та погодою: raw frame-time/VRAM/overflow logs, усі обов'язкові категорії збережені |
-| DL-10 | Missing normal/depth/bad range/NaN: asset transaction відхиляється; albedo-only legacy не зараховується за lit proof |
+| DL-01 | Light off/on: diffuse/emission vary separately; albedo asset hash unchanged |
+| DL-02 | A source moves around the control cube/house: normals produce the correct lit side |
+| DL-03 | A resident and cargo pass through a light cone: lighting and shadow change without baked tint |
+| DL-04 | An occluder blocks one of two differently colored sources: only that source's contribution disappears |
+| DL-05 | Roof/facade/terrain receive light from their distinct N/P; uniform screen glow fails |
+| DL-06 | Reproject depth/normal data at three zoom levels; no drift or frame/facing discontinuity |
+| DL-07 | Hidden source/caster does not change revealed output; pan/zoom does not change light in world coordinates |
+| DL-08 | Sun/night/wetness transitions, pause/2×/reload; emission does not darken a second time |
+| DL-09 | Low and Medium with 20–30 residents and weather: raw frame-time/VRAM/overflow logs, with all required categories preserved |
+| DL-10 | Missing normal/depth, bad range, or NaN: reject the asset transaction; albedo-only legacy does not count as lit proof |
 
-Критерій готовності — нативне немонтоване відео та вимірювання на тому самому build. Це оновлення специфікації, а не заява, що динамічне освітлення вже реалізоване.
+Readiness requires native unedited video and measurements from the same build. This is a specification update, not a claim that dynamic lighting is already implemented.

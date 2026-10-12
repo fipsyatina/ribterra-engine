@@ -1,9 +1,11 @@
-# Ribterra: чинний план першої альфи та демо
+# Ribterra: the current plan of the first alpha and demo
 
-Попередній план переглянуто після заперечення автора. Чинний документ: [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md).
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Майстерня, Глиняний кар'єр, дошки, цегла й наявні покращення залишаються основою прогресії. Сім порожніх спеціальних будівель лише тимчасово приховуються з нового будівництва; код, арт і старі світи зберігаються. Пропонується 12 будованих типів плюс Табір.
+The original plan was revised after the author's objection. The official document: [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md).
 
-Конкретний порядок уточнений у [плані 16 малих версій](ALPHA_DEMO_SMALL_RELEASES_UA.md): 0.25.8–0.25.12 — керування й безпечна основа; 0.26.0–0.26.2 — матеріали, покращення, житло й ферма; 0.26.3–0.26.6 — баланс, навчання та внутрішня альфа; 0.26.7–0.27.0 — надійність, пакет і зовнішнє демо. Перша альфа тепер позначена 0.26.6. Повні задачі, критерії, залежності та межі доказів — у деталізації.
+The workshop, the clay quarry, the boards, the bricks, and the improvements made remain the foundation of progress. The seven empty special buildings are only temporarily hidden from the new building; The code, the art, and the old worlds are preserved. 12 building types plus Taber are offered.
 
-Монстри, різновиди мінералів, дерево націй та інші великі системи відкладені. Новий план ще не реалізований. [Повний аудит поточного стану](FEATURE_AUDIT_UA.md).
+The specific order is specified in the [plan 16 of the smaller versions ](ALPHA_DEMO_SMALL_RELEASES_UA.md): 0.25.8–0.25.12 — control and secure base; 0.26.0–0.26.2  materials, improvements, housing and farm; 0.26.3–0.26.6 — balance, learning and inner alpha; 0.26.7–0.27.0 — reliability, package and external demo. The first alpha is now labeled 0.26.6. The full tasks, criteria, dependencies and limits of the evidence are detailed.
+
+Monsters, mineral species, the tree of nations and other large systems are put off. The new plan has not yet been implemented. [Full audit of the current status](FEATURE_AUDIT_UA.md).

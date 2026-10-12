@@ -1,71 +1,74 @@
-# Ribterra — контракт World FX для 0.26.1
+# Ribterra — World FX contract for 0.26.1
 
-**Bounded Environment checkpoint08.10:** [Environment V1](ENVIRONMENT_CHECK_2026_10_08_UA.md) спільно проєктує diagnostic hour/cloud/haze у Sun/Moon/ambient/atmosphere. Fresh build02 та native01–02 actual exit0,44/44 derived outputs exact; causal cloud/haze/source-specific shadows та незмінні local/emission перевірені. Normal startup, authoritative WeatherFxFrame, precipitation/wind/video/performance й усі full E01–E17 лишаються OPEN.
+> English translation of a historical project document. Technical literals and recorded results are preserved; these records describe their original snapshots and do not validate the current build. Original wording is available in import commit `7388a2f`.
 
-**Bounded native E10 checkpoint 08.10:** [AnalyticAtmosphere V1](ANALYTIC_ATMOSPHERE_CHECK_2026_10_08_UA.md) пройшов build03/native02–03 на RTX 3050/D3D12; 29/29 derived outputs exact, causal depth/height/coast/time/weather та unchanged raw carrier. Це діагностичний шар, не full-world/authority/video/performance або повний E10.
+**Bounded Environment checkpoint 08.10:** [Environment V1](ENVIRONMENT_CHECK_2026_10_08_UA.md) synchronizes diagnostic hour/cloud/haze across Sun, Moon, ambient light, and atmosphere. Fresh build02 and native01–02 actually exited with code 0; 44/44 derived outputs were exact. Checks causally covered cloud/haze, source-specific shadows, and unchanged local light/emission. Normal startup, authoritative WeatherFxFrame, precipitation, wind, video, performance, and full E01–E17 remain OPEN.
 
-**Уточнення алгоритму E10 08.10:** [AnalyticAtmosphere V1](ANALYTIC_ATMOSPHERE_V1_CONTRACT_UA.md) для нового `WaterAtmosphereSlice` замінює запропоновані у §6 fog quads/HazeBandCache аналітичною world-space густиною з окремими far/morning/coastal кольорами. Це не скасовує візуальні вимоги й не приймає старі cache/quad checks або повний E10. b0=1024 тільки в трьох нових варіантах, старий384 і attachment-memory незмінні. Нативний доказ оформлюється окремо після фактичного прогону.
+**Bounded native E10 checkpoint 08.10:** [AnalyticAtmosphere V1](ANALYTIC_ATMOSPHERE_CHECK_2026_10_08_UA.md) passed build03/native02–03 on RTX 3050/D3D12; 29/29 derived outputs were exact, with causal depth/height/coast/time/weather behavior and an unchanged raw carrier. This is a diagnostic layer, not full-world, authority, video, performance, or full E10 acceptance.
 
-**Новіший bounded follow-up 08.10:** [binary GPU carrier та odd resize](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md) перевірено fresh build02/native05–06. Raw binary packing прийнято лише в цій контрольній сцені; intermediate AA, довільні recovery failures і всі повні пороги відкриті. Нижчий checkpoint описує попередню source cohort.
+**Specified E10 algorithm 08.10:** [AnalyticAtmosphere V1](ANALYTIC_ATMOSPHERE_V1_CONTRACT_UA.md) for the new `WaterAtmosphereSlice` replaces the proposed six fog quads/HazeBandCache with analytic world-space distance using separate far/morning/coastal terms. This does not remove visual requirements or accept the older cache/quad checks or full E10. b0=1024 is only a new proposal; separate native proof must establish that the existing 384-byte prefix and attachment-memory totals remain unchanged after actual implementation.
 
-**Поточний стан 08.10:** [Water / Reflection V1](WATER_REFLECTION_CHECK_2026_10_08_UA.md) має bounded native checkpoint у спільному production renderer, не лише overlay. [Його окремий контракт](WATER_REFLECTION_V1_CONTRACT_UA.md) уточнює carrier, класи суша/вода/настил, world-anchored flow, берегову піну й half-resolution Reflection. Нормальний startup, raw coverage/AA, ввід/відео, весь World FX, концепт-арт і 120 FPS ще не прийняті.
+**New bounded follow-up 08.10:** [binary GPU carrier and odd resize](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md) was checked with fresh build02/native05–06. Raw binary packing is proven only in this control scene; intermediate AA, every recovery failure, and all full-engine gates remain open. The checkpoint describes a previous source cohort.
 
-**Історична межа обсягу 27.09:** scaffold/deferred рішення нижче не скасовує нову пряму вимогу [спочатку повний двигун](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md). Гра й генератор чекають E01–E17. Нижчі work packages і опис старого runtime лишаються специфікацією/історією, а не поточним доказом готовності.
+**Current status 08.10:** [Water / Reflection V1](WATER_REFLECTION_CHECK_2026_10_08_UA.md) has a bounded native checkpoint in the shared production renderer, not merely an overlay. Its [contract](WATER_REFLECTION_V1_CONTRACT_UA.md) defines the coverage carrier, Land/Water/Reflection typing, world-anchored flow, shoreline foam, and half-resolution Reflection. Normal startup, raw coverage/AA, input/video, all World FX, concept art, and ≥120 FPS have not been accepted.
 
-**Статус:** технічна специфікація для `0.26.1-dev.06…dev.09`; усе, позначене **PROPOSED**, ще треба реалізувати й виміряти.  
-**Мета:** довести воду, віддзеркалення, серпанок, погоду й сліди до одного переконливого 2.5D-зображення, не підміняючи симуляцію декоративними ефектами.  
-**Пов'язані документи:** [план наступних оновлень](NEXT_UPDATES_DETAILED_UA.md), [контракт візуальної перевірки](AGENT_VISUAL_CONTRACT_UA.md), [ядро рендера](RENDER_CORE_SPEC_UA.md).
+**Historical scope boundary 27.09:** The scaffold/deferred decision below does not override the newer [full engine first](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md) requirement. Game and generator integration wait for E01–E17. The work packages and old-runtime description below are specification/history, not current readiness evidence.
 
-Цей документ не обіцяє фізичну воду, повноцінне 3D-освітлення або деформацію снігу. Ціль — контрольована 2.5D-система, яка витримує рух камери, zoom, паузу, 2×, reconnect і Fog of War. Якщо агент намагається закрити цю фазу новими спрайтами поверх старої плоскої води, повноекранною сірою пеленою або випадковим снігом поза diagnostic fixture чи майбутнім авторитетним `WeatherView`, роботу не приймати.
+**Status:** technical specification for `0.26.1-dev.06…dev.09`; every selected design is **PROPOSED** and still must be implemented and measured.
 
-## 1. Перевірений стан і межа змін
+**Goal:** combine water, reflections, haze, weather, and footprints into one convincing 2.5D image without letting decorative effects override simulation.
+**Related documents:** [future update plan](NEXT_UPDATES_DETAILED_UA.md), [visual test contract](AGENT_VISUAL_CONTRACT_UA.md), [render core](RENDER_CORE_SPEC_UA.md).
 
-### 1.1. Що є зараз
+This document does not promise physical water, full 3D lighting, or snow deformation. It defines a 2.5D system that supports camera movement, zoom, pause, 2× speed, reconnect, and Fog of War. Do not accept the work if an agent tries to close this stage with new sprites over the old flat water, a full-screen dark-gray overlay, or randomness outside the diagnostic fixture or future authoritative `WeatherView`.
 
-- `src/client/view.cpp` проєктує світ у фіксовану ізометрію: ширина клітини `58 × zoom`, висота `29 × zoom`; висота рельєфу віднімається від екранного `y` у логічних пікселях.
-- Вода в presentation snapshot має єдину висоту `z = 0`. Чинний ефект — до 96 анімованих `fx.4`/`fx.5`-оверлеїв і до 12 берегових `fx.2`; це блиск і піна, а не водний матеріал.
-- `render::Frame2D` має проходи `Terrain`, `WorldOrdered`, `Atmosphere`, `Fog`, `Ui`. GPU-шлях використовує один texture × vertex-color fragment shader; surface metadata, material-specific water pipeline і reflection target відсутні.
-- `UnitMotion` інтерполює показану позицію мешканця з авторитетних samples. `UnitAnimation` має вісім напрямків і чотири кадри ходи; кісток, стоп та IK немає.
-- Зимові варіанти тайлів/будівель є сезонним оформленням. Вони не доводять поточні опади. `WeatherView` і `snow_cover_permille` зараз існують лише у погодній специфікації; у runtime header/snapshot їх ще немає.
-- Fog of War визначає розкриття клітин. Атмосферний серпанок не має права відкривати приховане.
+## 1. Verified state and change boundaries
 
-Ці твердження — **CURRENT / VERIFIED IN SOURCE**. Усі нові структури, шейдери, caps і шляхи нижче — **PROPOSED**, доки не з'являться код, тести та native evidence.
+### 1.1. Current state
 
-### 1.2. Жорстка межа 0.26.1
+- `src/client/view.cpp` places the world in fixed isometry: cell width `58 × zoom`, height `29 × zoom`; terrain height is subtracted from screen `y` in logical pixels.
+- Water in the presentation snapshot has one height: `z = 0`. Anchored effects include up to 96 animated `fx.4`/`fx.5` items and 12 `fx.2` links; these are sparkles and foam, not a water material.
+- `render::Frame2D` has passes `Terrain`, `WorldOrdered`, `Atmosphere`, `Fog`, `Ui`. GPU-path uses one texture × vertex-color fragment shader; surface metadata, a material-specific water pipeline, and a reflection target are missing.
+- `UnitMotion` interpolates the displayed position between authoritative samples. `UnitAnimation` has eight directions and four walking frames; there are no bones, feet, or IK.
+- In winter, trees and buildings have seasonal variants, but they do not prove current snow cover. `WeatherView` and `snow_cover_permille` currently exist only in the weather specification; they are absent from runtime headers/snapshots.
+- Fog of War controls cell discovery; atmospheric effects must not reveal hidden cells.
 
-Робимо:
+These statements are **CURRENT / VERIFIED IN SOURCE**. All new structures, shaders, caps, and paths below are **PROPOSED** until code, tests, and native evidence show otherwise.
 
-- один рівень води на Surface;
-- world-anchored UV, normal map, берегову піну й контрольований блиск;
-- обмежені спрайтові віддзеркалення для видимих об'єктів;
-- локальні смуги серпанку, дощ, сніг і пориви: у dev.06–09 від явно позначеного diagnostic input, після dev.14/18 — лише за авторитетним `WeatherView`;
-- косметичні L/R-сліди від фактично показаного руху;
-- quality presets, fault diagnostics, culling і native video checks.
+### 1.2. Hard 0.26.1 boundary
 
-Не робимо:
+Included:
 
-- SSR, planar capture усього кадру, ray tracing;
-- симуляцію хвиль, течії, рівня або замерзання води;
-- водоспади, каскади чи кілька висот води;
-- мокру фізику, ковзання, collision/path зміни;
-- деформацію terrain mesh або збереження слідів у save;
-- ручні дороги, дорожні колії чи сліди возів;
-- фортеці, армії, облоги, паливо або утеплення лише тому, що вони намальовані в концепті.
+- one water level on Surface;
+- world-anchored UVs, a normal map, foam, and controlled sparkle;
+- limited sprite reflection for visible objects;
+- local haze bands, rain, snow, and wind streaks: in dev.06–09 from explicitly selected diagnostic input, and after dev.14/18 only from authoritative `WeatherView`;
+- cosmetic left/right tracks derived from actual displayed movement;
+- quality presets, fault diagnostics, culling and native video checks.
 
-## 2. Системи координат і час
+Excluded:
 
-### 2.1. Координати
+- SSR, full-frame planar capture, or ray tracing;
+- simulation of water waves, currents, level, or freezing;
+- waterfalls, cascades, or multiple water planes;
+- wet physics, slip, collision/path changes;
+- terrain-mesh deformation or saved footprints;
+- constructed roads, road lines, or flora footprints;
+- fortresses, armies, sieges, fuel, or heating merely because they appear in the concept.
 
-У контрактах нижче використовуються чотири простори:
+## 2. Coordinate Systems and Time
 
-| Простір | Одиниця | Призначення |
+### 2.1. Coordinates
+
+The contracts below use four spaces:
+
+| Space | Unit | Purpose |
 |---|---|---|
-| `renderXY` | tile unit, `float2` | якір матеріалу, частинки, сліди, culling; одна клітина = `1×1` |
-| `renderZ` | tile-height unit, `float` | `legacyElevation / 29`; вода завжди `0` |
-| `drawable_px` | фізичний drawable pixel | quad, streak, scissor, native capture; не window points і не старі logical 1440×900 |
-| `uv` | нормалізовані координати текстури | albedo/normal/foam/mask samples |
+| `renderXY` | tile unit, `float2` | material quality, particles, traces, culling; one cell = `1×1` |
+| `renderZ` | tile-height unit, `float` | `legacyElevation / 29`; water always `0` |
+| `drawable_px` | physical drawable pixel | quad, streak, scissor, native capture; not window points and not old logical 1440×900 |
+| `uv` | normalized texture coordinates | albedo/normal/foam/mask samples |
 
-Чинна проєкція, яку новий FX-код мусить викликати через один render-core helper, а не дублювати по файлах:
+Every new FX object must use one render-core helper rather than duplicating the formulas:
 
 ```text
 effective_zoom = user_zoom * drawable_height / 900
@@ -77,21 +80,21 @@ screen_y_at_z0 = origin_y + (renderX + renderY - cam_x - cam_y) * tile_h / 2
 screen_y = screen_y_at_z0 - 29 * renderZ * effective_zoom
 ```
 
-`origin_x/origin_y` належать drawable camera/viewport state рендерного ядра. World FX отримує готовий `RenderToDrawable`, а не читає camera globals із `GameView`. Camera origin віднімається на CPU до float32 upload. Усі radius, prism height, reflection proximity, lateral footprint offset і culling distance задаються в render tile units. Змішувати `legacyElevation`, drawable pixels і `renderZ` в одному spatial test заборонено.
+`origin_x/origin_y` belong to the render core's drawable camera/viewport state. World FX receives a prepared `RenderToDrawable` and does not read `GameView` camera globals. Subtract the camera origin on the CPU before float32 upload. All radii, prism heights, reflection proximity, lateral footprint offsets, and culling distances use render-tile units. Do not mix `legacyElevation`, drawable pixels, and `renderZ` in one spatial test.
 
-### 2.2. Єдиний presentation clock
+### 2.2. One presentation clock
 
-**PROPOSED interface:** render core один раз на кадр передає `presentation_time_s`, `shown_simulation_tick`, `control_epoch`, `paused`, `speed`. Вода, віддзеркалення, haze, weather particles і footprints не заводять окремі wall-clock генератори.
+**PROPOSED interface:** once per frame, render core supplies `presentation_time_s`, `shown_simulation_tick`, `control_epoch`, `paused`, and `speed`. Water, reflections, haze, weather particles, and footprints must not create independent wall-clock generators.
 
-- При pause `shown_simulation_tick` і всі погодні частинки завмирають. Камеру можна рухати: перераховується лише проєкція.
-- При 2× час FX іде вдвічі швидше разом із показаною симуляцією; кількість активних частинок не подвоюється.
-- Якщо tick пішов назад, стрибнув більше ніж на 2 секунди симуляції, змінився `control_epoch`, session/layer або клієнт входить після reconnect, transient pools haze/particles/footprints очищаються. Не програвати пропущену бурю «в прискоренні».
-- Глобальна фаза води є pure-функцією `shown_simulation_tick` і versioned material constants. Teleport/reset локального emitter не перезапускає воду; reconnect просто семплує фазу нового показаного tick без накопичення backlog.
-- Save/load і reconnect можуть скинути haze, particles та footprints. Це дозволена косметична різниця і не може потрапляти в save, checksum, snapshot або replay authority.
+- While paused, `shown_simulation_tick` and every weather-particle TTL stop. The camera may move, but only projection is recalculated.
+- At 2× speed, FX moves twice as fast with the displayed simulation; the active-particle count does not double.
+- If the tick moves backward, jumps by more than two seconds of simulation, `control_epoch` changes, the session/layer changes, or the client returns after reconnect, clear transient haze/particle/footprint pools rather than fast-forwarding through missed storm time.
+- The global water phase is a pure function of `shown_simulation_tick` and versioned material constants. Teleporting/resetting a local emitter does not restart water; reconnect reconstructs the phase from the new displayed tick without accumulated backlog.
+- Save/load and reconnect can drop haze, particles and footprints. This is an allowed cosmetic difference and cannot get into save, checksum, snapshot or replay authority.
 
-## 3. Сумісний render-core контракт
+## 3. Compatible render-core contract
 
-Назви цього розділу узгоджені з `RENDER_CORE_SPEC_UA.md` як межа між world data та renderer, але залишаються **PROPOSED** до появи header-ів та implementation.
+The names in this section align with `RENDER_CORE_SPEC_UA.md` as the boundary between world data and renderer, but remain **PROPOSED** until corresponding headers and implementation exist.
 
 ```cpp
 struct SurfaceInstance {
@@ -103,7 +106,7 @@ struct SurfaceInstance {
 
 struct Occluder2D {
     WorldPoint world_anchor;
-    AuthoredPrismShape shape; // OBB або capsule; CPU converts to bounded convex vertices
+    AuthoredPrismShape shape; // OBB or capsule; CPU converts to bounded convex vertices
     float base_render_z;
     float top_render_z;
     ShadowClass shadow_class;
@@ -123,14 +126,14 @@ struct WeatherFxFrame {
 };
 ```
 
-`Occluder2D` не відкриває довільний polygon API для GPU. Початковий authored polygon може лишитися CPU validation/debug source, але frame preparation апроксимує його валідованою OBB або capsule prism у `renderXY/renderZ`. Невалідна, самоперетинна або надмірна форма відхиляється loader-ом, а не обрізається шейдером навмання.
+`Occluder2D` does not expose an arbitrary polygon API to the GPU. The original authored polygon may remain as a CPU validation/debug source, but frame preparation reduces it to an OBB or capsule prism in `renderXY/renderZ`. The loader rejects invalid, self-intersecting, or excessively complex shapes instead of allowing the shader to truncate them arbitrarily.
 
-`WeatherFxFrame` є presentation projection, а не новим джерелом правди. Два дозволені джерела існують у різні dev-фази:
+`WeatherFxFrame` is a presentation projection, not a new source of truth. Two sources are allowed at different development stages:
 
-1. **dev.06–09 diagnostic only:** versioned `DiagnosticWeatherFxInput` усередині `visual_slice_v2`, значення якого записані в capture manifest. Він не доступний звичайному world, save, network або HUD і не називається прогнозом.
-2. **після dev.14, shipping integration у dev.18:** майбутній авторитетний `WeatherView` із host snapshot через `ClientSession`. На перевіреному зараз source цього runtime type ще немає; назви полів нижче походять із **PROPOSED** weather spec, а не з реалізованого API.
+1. **dev.06–09 diagnostic only:** versioned `DiagnosticWeatherFxInput` inside `visual_slice_v2`, with values recorded in the capture manifest. It is unavailable to the normal world, save, network, or HUD and must not be called a forecast.
+2. **after dev.14, shipping integration in dev.18:** future authoritative `WeatherView` from the host snapshot through `ClientSession`. Source inspection confirms that this runtime type does not yet exist; the field names below come from the **PROPOSED** weather specification, not an implemented API.
 
-Фінальний adapter будує frame з `WeatherView.current`, `snow_cover_permille` і єдиного interpolated clock:
+The final adapter builds a frame from `WeatherView.current`, `snow_cover_permille` and one interpolated clock:
 
 ```text
 rain01 = precipitation == Rain ? precipitation_permille / 1000 : 0
@@ -141,27 +144,27 @@ temperature_c = temperature_deci_c / 10
 accumulation01 = snow_cover_permille / 1000
 ```
 
-`wind_world` отримується з восьми запланованих `WindDirection` і масштабується `wind_permille / 1000`. Один global climate означає однакові числа для всіх гравців. Quality preset може змінювати тільки щільність і caps. Звичайна гра не має права fallback-нути з відсутнього/unknown `WeatherView` на client RNG: precipitation дорівнює нулю, показується diagnostic status, а delivery gate лишається failed.
+`wind_world` derives from eight planned `WindDirection` values and is scaled by `wind_permille / 1000`. One global weather state means all players receive the same values. A quality preset may change only density and caps. A normal game must not replace missing/unknown `WeatherView` with client RNG: precipitation remains zero, a diagnostic status is shown, and the delivery gate remains failed.
 
-### 3.1. Майбутній render graph
-Канонічний graph має шість passes і вісім attachments, визначених у Core: Reflection → GroundGBuffer → GroundLighting → WorldForward → Composite → UI. GroundGBuffer містить albedo/world/material/flags; GroundLighting читає їх і reflection, пише scene/meta; WorldForward пише scene/meta, не читаючи meta; Composite робить output/FoW. Haze застосовується один раз до alpha blending у GroundLighting/WorldForward.
+### 3.1. Future render graph
+The canonical graph has six passes and eight attachments defined in Core: Reflection → GroundGBuffer → GroundLighting → WorldForward → Composite → UI. GroundGBuffer contains albedo/world/material/flags; GroundLighting reads them and reflection, then writes scene/meta; WorldForward writes scene/meta without reading meta; Composite handles output/FoW. Haze is applied once before alpha blending in GroundLighting/WorldForward.
 
-Water/reflection composite виконується у GroundLighting лише для water receivers. Bridge/bank мають власні flags, тому відбиття там не з’являється. Footprints у GroundGBuffer до WorldForward; не змінюють position/reveal/receiver flags. Metadata packing лише з Core: surface_flags B = shore для Water або snow cover для суші; world_meta = depth/reveal, не water coverage.
+Water/reflection compositing runs in GroundLighting only for water receivers. Bridge/bank surfaces have their own flags and receive no reflection. Footprints are applied in GroundGBuffer before WorldForward and do not change position/reveal/receiver flags. Metadata packing comes only from Core: surface_flags B = shore for Water or snow cover for land; world_meta = depth/reveal, not water coverage.
 
-Старий half LocalLight target прибраний: повне освітлення використовує sharp material/normal. Reflection лишається half-resolution; жодного окремого water-mask attachment. Усі shader reads/writes відокремлені.
+The old half-resolution LocalLight target is removed; full lighting uses sharp material/normal data. Reflection remains half-resolution, with no separate water-mask attachment. All shader reads and writes remain separated.
 
-## 4. Водний матеріал
+## 4. Water material
 
-### 4.1. Геометрія і receiver mask
+### 4.1. Geometry and receiver mask
 
-- Кожна розкрита Surface-клітина `Terrain::Water` у Ground pass пише water bit у `surface_flags` на `renderZ=0`. Нерозкрита не подається до effect preparation.
-- Сусідні water cells можуть батчитися у chunk mesh, але межа authored water/shore data збігається з receiver triangles, без прямокутних швів.
-- GroundGBuffer спершу фіксує water/bank/bridge receivers. GroundLighting семплує reflection тільки для water; bank/deck flags відкидають відбиття. Під мостом вода видима лише у відкритих отворах.
-- Terrain elevation, picking, pathfinding і collision не змінюються. Vertex displacement води дорівнює нулю.
+- Every revealed Surface cell with `Terrain::Water` writes a water bit to `surface_flags` in the Ground pass at `renderZ=0`. Unrevealed cells do not enter effect preparation.
+- Neighboring water cells may be batched into a chunk mesh, but the boundary from authored water/shore data must match receiver triangles without rectangular seams.
+- GroundGBuffer first establishes water/bank/bridge receivers. GroundLighting samples reflection only for water; bank/deck flags receive no reflection, and water beneath a bridge is visible only through open gaps.
+- Terrain elevation, picking, pathfinding, and collision remain unchanged. Water vertex displacement is zero.
 
-### 4.2. Стабільні UV і візуальна течія
+### 4.2. Stable UV and visual flow
 
-UV обчислюються з `renderXY`, тому малюнок не «приклеюється» до екрана:
+UVs are calculated from `renderXY`, so the picture is not "glued" to the screen:
 
 ```text
 uv_base = renderXY * 0.18
@@ -171,13 +174,13 @@ uv0 = uv_base + flow * t
 uv1 = rotate_37deg(uv_base * 1.73) - flow * 0.61 * t
 ```
 
-`valley_flow_world` для 0.26.1 — нормалізований presentation vector з versioned map/generator visual metadata. Якщо metadata ще немає, використовується один явно заданий vector demo profile; не виводити напрямок із порядку контейнера, frame RNG або pathfinding. Це декоративна течія, вона не переносить об'єкти.
+For 0.26.1, `valley_flow_world` is a normalized presentation vector from versioned map/generator visual metadata. If the metadata does not exist yet, use one explicitly specified demo-profile vector; do not derive it from container order, frame RNG, or pathfinding. This is decorative flow and does not move objects.
 
-Water fragment shader (**PROPOSED**) читає:
+Water fragment shader (**PROPOSED**) reads:
 
-- базову water albedo/gradient texture;
-- tileable two-channel normal map двічі (`uv0`, `uv1`);
-- authored water/shore atlas data та material flags;
+- base water albedo/gradient texture;
+- a tileable two-channel normal map sampled twice (`uv0`, `uv1`);
+- authored water/shore atlas data and material flags;
 - frame constants: `t`, `wind01`, tint, fixed camera light direction.
 
 ```text
@@ -191,11 +194,11 @@ color += sparkle * (0.04 + 0.10*wind01)
 alpha = 1
 ```
 
-Це fake 2.5D lighting. Немає scene refraction, depth reconstruction або SSR. Амплітуда normal distortion мусить бути малою: берег не повинен «плисти» більше ніж приблизно десята частина висоти тайла на 100% zoom.
+This is stylized 2.5D lighting. There is no scene refraction, depth reconstruction, or SSR. Normal-distortion amplitude must remain small: the shoreline must not move by more than one tenth of a tile height at 100% zoom.
 
-### 4.3. Берегова піна
+### 4.3. Shoreline foam
 
-`shore01` будується детерміновано з чотирьох orthogonal water/non-water сусідів і, за потреби, чотирьох diagonal для згладження. Піна з'являється лише на water-side смузі:
+`shore01` derives from four orthogonal water/non-water neighbors and, if needed, four diagonals for smoothing. Foam appears only in the water-side band:
 
 ```text
 foam = smoothstep(0.62, 0.92, shore01 + normal_noise*0.12)
@@ -203,31 +206,31 @@ foam *= 0.35 + 0.35*wind01 + 0.30*max(rain01, snow01)
 foam *= reveal01
 ```
 
-Вона не проходить поверх bridge deck, не малюється в unknown і не перетворює кожну внутрішню межу chunk на берег. Старі `fx.4/fx.5` можуть бути тимчасовим fallback, але не мають дублюватися поверх нового material у прийнятому кадрі.
+It does not pass through the bridge deck, paint unrevealed areas, or turn every internal chunk boundary into a shoreline. `fx.4/fx.5` may serve as temporary fallback, but must not be layered over the new material in an accepted frame.
 
-## 5. Обмежені спрайтові віддзеркалення
+## 5. Bounded sprite reflections
 
-### 5.1. Що відбивається
+### 5.1. Eligible reflections
 
-У dev.06 кандидатами є видимі будівлі, дерева, bridge supports і великі статичні props із `Reflectable2D`. На Medium/High можна додати мешканців та тварин, якщо caps витримані. Частинки, UI, Fog of War, selection rings, progress bars, smoke і самі reflections не відбиваються.
+In dev.06, candidates are visible buildings, trees, bridge supports, and large static props with `Reflectable2D`. Medium/High may add residents and animals if caps hold. Particles, UI, Fog of War, selection rings, progress bars, smoke, and reflections themselves do not reflect.
 
-Кандидат приймається лише якщо:
+Candidates are accepted only when:
 
-- `reveal_u8 > 0`, Surface layer, sprite/atlas handle валідний;
-- його ground anchor не далі ніж 2.5 `renderXY` tile units від видимої water receiver;
-- його projected bounds перетинають drawable viewport + 32 reference px, масштабовані через `drawable_height/900`;
-- base/top height не перевищують затверджений 2.5D діапазон; величезна декорація не може залити озеро.
+- `reveal_u8 > 0`, the object is on the Surface layer, and the sprite/atlas handle is valid;
+- its ground anchor is no farther than 2.5 `renderXY` tile units from a visible water receiver;
+- its projected bounds intersect the drawable viewport + 32 reference px, scaled by `drawable_height/900`;
+- base/top height lies inside the accepted 2.5D range; an enormous decoration cannot fill the lake.
 
-### 5.2. Обмежене віддзеркалення billboard
+### 5.2. Bounded flipped billboard
 
-Для кожного джерела беремо `A = world_anchor` у `renderXY`, `H = max(0, top_render_z - base_render_z)`, `B = project(A.x, A.y, renderZ=0)`. `B.y` — локальна лінія води для цього спрайта. Кожну вершину source quad у drawable space відбиваємо:
+For each source, let `A = world_anchor` in `renderXY`, `H = max(0, top_render_z - base_render_z)`, and `B = project(A.x, A.y, renderZ=0)`. `B.y` is the local waterline for that sprite. Reflect every source-quad vertex in drawable space:
 
 ```text
 x_ref = x_source
 y_ref = 2 * B.y - y_source
 ```
 
-Це наближене billboard віддзеркалення, не точна проєкція 3D форми. Використовується та сама atlas region, вертикально перевернута shader flag/UV; dynamic depth map сама не дає правильного forward warp одним quad. Quad далі зсувається вниз на `0.06 * projected_height`, щоб основа не лишала світлого шва. Alpha:
+This approximates a billboard reflection rather than the correct projection of a 3D shape. Use the same shaped atlas region with a vertical-flip shader flag/UV; a dynamic depth map alone cannot produce the correct perspective warp for a single quad. Shift the quad downward by `0.06 * projected_height` so the foundation does not leave a bright gap. Alpha:
 
 ```text
 distance01 = saturate(abs(y_ref - B.y) / max(1, projected_height))
@@ -235,71 +238,71 @@ alpha = source_alpha * reveal01 * (1 - distance01)^1.7 * reflection_strength
 reflection_strength = clamp(0.16 + 0.18*(1-wind01), 0.12, 0.34)
 ```
 
-Water normals зсувають reflection sample у межах `±1.5` reference px при `drawable_height=900`, масштабованих разом із viewport; більший зсув робить віддзеркалення желеподібним. Це subdraw у `Reflection` pass до Ground/World. Він не є screen capture і не має права відбити вже готовий framebuffer. Reflection target може містити pixels поза майбутньою водою; вони ніколи не потрапляють у `scene_linear`, бо лише GroundLighting water branch семплує його за water/shore inputs.
+Water normals shift the reflection sample within `±1.5` reference px at `drawable_height=900`, scaled with the viewport; a larger shift makes the reflection shimmer. This is a subdraw in the `Reflection` pass before Ground/World. It is not a screen capture and must not read an already completed framebuffer. The reflection target may contain pixels outside future water, but they never enter `scene_linear` because only the GroundLighting water branch composites them using water/shore inputs.
 
 ### 5.3. Clipping, banks, bridges, Fog of War
 
-Reflection pixel потрапляє у `scene_linear` лише за authored water receiver, reveal, reflection bit і nonzero antialiased coverage у **carrier явно заданого full-engine graph version**. Старий roadmap припускав coverage уSurfaceWorld.W; для Contact V1 це заборонено: W — discrete0/1/2, point/opaque, не coverage. [Contact GPU partial proof](CONTACT_GPU_CHECK_2026_10_07_UA.md) уже реалізований, але **Reflection/Water не підтримує**. Full-engine coverage carrier лишаєтьсяOPEN; доReflection потрібні explicitABI/memory/resize amendment іnative edge proof. ВимогаReflection не скасована. Ground bank/bridge deck перезаписує water output; supports/foreground sprites — пізніше. Local OBB/capsule prisms не замінюють authored берег/receiver geometry.
+Reflection pixels enter `scene_linear` only through an authored water receiver, reveal, the reflection bit, and nonzero antialiased coverage in a **carrier explicitly defined by the full-engine graph version**. The old roadmap assumed coverage in SurfaceWorld.W; Contact V1 forbids that interpretation because W is discrete 0/1/2, point-sampled/opaque, and not coverage. The [Contact GPU partial proof](CONTACT_GPU_CHECK_2026_10_07_UA.md) is implemented but **does not support Reflection/Water**. The full-engine coverage carrier remains OPEN; Reflection requires an explicit ABI/memory/resize amendment and native edge proof. The Reflection requirement is not removed. Ground bank/bridge deck overwrite water output; supports/foreground sprites render later. Local OBB/capsule prisms do not replace authored shoreline/receiver geometry.
 
-Нульова терпимість до витоку: жодного reflected pixel у unknown, на суші, поверх deck або поверх foreground bank. Якщо точний clip не працює, reflections вимикаються з diagnostic fault; це не release pass.
+Zero tolerance: no reflected pixel may appear in unrevealed space, on land, on the bridge deck, or over the foreground bank. If exact clipping fails, reflections turn off with a diagnostic fault; that does not pass release acceptance.
 
-### 5.4. Cache і culling
+### 5.4. Cache and culling
 
-`ReflectionCandidateCache` ключується stable object id + atlas generation + terrain/surface/reveal revision. Статичний кандидат перевіряє proximity/bounds не рідше ніж раз на 8 rendered frames і негайно при camera, zoom, reveal, layer або terrain revision. Dynamic candidate — кожен frame. Cache очищається на epoch/session reset; він не серіалізується. Перевищення cap відкидає найдальші від центра viewport кандидати стабільним tie-break за id.
+`ReflectionCandidateCache` keys entries by stable object ID + atlas generation + terrain/surface/reveal revision. Static candidates recheck proximity/bounds at least once every 8 rendered frames and immediately after camera, zoom, reveal, layer, or terrain revision changes. Dynamic candidates recheck every frame. Clear the cache on epoch/session reset; do not serialize or transfer it. When over cap, discard the candidate farthest from viewport center, with stable ID as the tie-breaker.
 
-## 6. Серпанок і глибина сцени
+## 6. Haze and scene depth
 
-Серпанок — локальні world-anchored шари, а не сірий fullscreen rectangle.
+Use local world-anchored layers instead of a gray full-screen rectangle.
 
 ### 6.1. Depth bands
 
-World depth визначається `d = renderX + renderY`; `screen_y_at_z0` є його проєкцією. Видимий діапазон ділиться на `haze_bands`. Кожна смуга має 2–4 детерміновані soft quads із render-space anchors і low-contrast noise. Anchor seed:
+World depth is `d = renderX + renderY`; `screen_y_at_z0` is its projection. Divide the visible range into `haze_bands`. Each band contains 2–4 deterministic soft quads with render-space anchors and low-contrast noise. Anchor seed:
 
 ```text
 hash(world_seed, band_index, floor(shown_simulation_tick / 1200), fx_algorithm_version)
 ```
 
-Положення не перекидається кожен кадр. Quads дрейфують уздовж `wind_world` на 0.02–0.06 cell/s і wrap у межах своєї смуги. Типова прозорість 0.03–0.12; у Storm дозволено до 0.20, але чорні/сірі непрозорі штори заборонені.
+Positions do not reshuffle every frame. Quads drift along `wind_world` at 0.02–0.06 cell/s and wrap within their band. Default opacity is 0.03–0.12; Storm may reach 0.20, but black or gray curtains are forbidden.
 
-### 6.2. Відмінність від secrecy fog
+### 6.2. Difference from secrecy fog
 
-- Haze може зменшити локальний контраст, але силует розкритої будівлі лишається читабельним.
-- Haze не створюється для unrevealed anchors і множиться на receiver/source `reveal01`.
-- Fog of War малюється після atmosphere й остаточно маскує unknown.
-- Жодна haze texture, reflection або particle не бере колір/форму з прихованого тайла.
+- Haze can reduce local contrast, but the silhouette of a revealed building remains readable.
+- Haze is not created for unrevealed anchors and is multiplied by receiver/source `reveal01`.
+- Fog of War is drawn after atmosphere and finally masks unrevealed areas.
+- No haze texture, reflection, or particle may derive color or shape from a hidden background.
 
-`HazeBandCache` живе 60 presentation ticks після виходу смуги за expanded viewport, щоб camera pan не викликав миготіння. Epoch/layer/algorithm reset очищає cache. TTL не впливає на simulation.
+`HazeBandCache` retains a band for 60 presentation ticks after it exits the expanded viewport so camera panning does not cause popping. Epoch/layer/algorithm reset clears the cache. TTL has no effect on simulation.
 
-## 7. Дощ, сніг і вітер
+## 7. Rain, snow and wind
 
-### 7.1. Diagnostic input і майбутній авторитетний input
+### 7.1. Diagnostic input and future authority input
 
-У dev.06–09 рендер отримує лише `DiagnosticWeatherFxInput` контрольної сцени з тими самими нормалізованими полями `WeatherFxFrame`. Це дозволяє перевірити shader/pool/pause/quality до появи погоди, але не доводить simulation, forecast, save, network або reconnect authority.
+In dev.06–09, use only `DiagnosticWeatherFxInput` in the control scene with the same normalized fields as `WeatherFxFrame`. This validates the shader, pool, pause, and quality behavior before weather exists, but does not prove simulation, forecast, save, network, or reconnect authority.
 
-Після dev.14/18 рендер отримує запланований `WeatherView`, де:
+After dev.14/18, use the planned `WeatherView`, where:
 
-- `precipitation_permille` і `wind_permille` — цілі `0…1000`, не м/с;
-- `temperature_deci_c` — десяті °C;
-- `PrecipitationKind` визначає Rain/Snow; renderer не вгадує вид опадів за сезоном;
-- `snow_cover_permille` — глобальний покрив долини, а не кількість particle sprites;
-- `evaluated_simulation_tick` задає, якому authoritative tick відповідає sample.
+- `precipitation_permille` and `wind_permille` — integers in `0…1000`, not m/s;
+- `temperature_deci_c` — tenths of a degree Celsius;
+- `PrecipitationKind` defines Rain/Snow; the renderer does not infer precipitation type from the season;
+- `snow_cover_permille` is global valley cover, not the number of particle sprites;
+- `evaluated_simulation_tick` records the authoritative tick to which the sample corresponds.
 
-Позитивна температура + Rain ніколи не показує сніг. Winter material без current Snow не породжує snowfall. Forecast не запускає ефект до фактичної boundary. У shipping build diagnostic provider не реєструється і не може підмінити unknown network weather.
+Positive temperature + Rain never displays snow. A winter material without current snow does not produce snowfall. A forecast does not activate an effect before its actual boundary. In a shipping build, the diagnostic provider is not connected and cannot replace unknown network weather.
 
-### 7.2. Напрямок вітру
+### 7.2. Wind direction
 
-Вісім напрямків мапляться в unit world vector. Для drawable screen:
+Eight directions map to a unit world vector. For drawable screen:
 
 ```text
 wind_screen = normalize(project_vector(wind_world, z=0))
 wind01 = wind_permille / 1000
 ```
 
-Rain streak має горизонтальний drift `80 * wind_screen.x * wind01` reference px/s та вертикальну швидкість 520–760 reference px/s. Snow flake: 55–120 reference px/s вниз, 18–65 reference px/s lateral drift, sin wobble зі stable slot phase. Усі reference pixels задані для drawable height 900 і множаться на `drawable_height/900`. Числа **PROPOSED**, налаштовуються native video, але одиниці й залежність фіксовані.
+A rain streak has a horizontal drift `80 * wind_screen.x * wind01` reference px/s and vertical speed 520–760 reference px/s. Snow flake: 55–120 reference px/s down, 18–65 reference px/s lateral drift, sin wobble from stable slot phase. All reference pixels given for drawable height 900 and multiply by `drawable_height/900`. The numbers are **PROPOSED** and must be calibrated with native video, but the units and dependencies are fixed.
 
-### 7.3. Pool, spawn і TTL
+### 7.3. Pool, spawn and TTL
 
-Particle slot seed = hash(`control_epoch`, weather period start, slot id, algorithm version). Це presentation RNG; він не входить у simulation hash.
+Particle slot seed = hash(`control_epoch`, weather-period start, slot ID, algorithm version). This is presentation RNG and does not enter the simulation hash.
 
 ```text
 target_rain = round(cap_rain * rain01)
@@ -307,20 +310,20 @@ target_snow = round(cap_snow * snow01)
 spawn_budget_per_frame = min(missing, ceil(cap * 0.08))
 ```
 
-- Rain TTL: 0.45–0.85 s; kill нижче viewport + 32 px.
-- Snow TTL: 3–7 s; kill нижче ground receiver або viewport + 48 px.
-- Wind gust pixel/ribbon TTL: 0.8–1.8 s; вони дозволені лише при `wind01 >= 0.55` і не заміняють Rain/Snow.
-- Spawn area — expanded drawable viewport. Rain є screen-oriented, snow має world anchor для parallax; обидва проходять reveal filtering до GPU upload і receiver clip у production graph.
-- Камера не телепортує старий snow: world-anchored flakes повторно проєктуються. Screen rain можна пересіяти після camera jump > 1 tile.
-- Pause не старить TTL. 2× старить TTL і рух удвічі швидше. Reconnect reset не replay-ить backlog.
+- Rain TTL: 0.45–0.85 s; kill below the viewport + 32 px.
+- Snow TTL: 3–7 s; kill below the ground receiver or viewport + 48 px.
+- Wind-gust pixel/ribbon TTL: 0.8–1.8 s; gusts are allowed only at `wind01 >= 0.55` and do not replace Rain/Snow.
+- The spawn area is the expanded drawable viewport. Rain is screen-oriented; snow has world anchors for parallax. Both pass reveal filtering before GPU upload and receiver clipping in the production graph.
+- The camera does not teleport old snow: world-anchored flakes reproject. Screen-oriented rain may be cleared after a camera jump greater than 1 tile.
+- Pause freezes TTL. At 2×, TTL and movement advance twice as fast. Reconnect resets instead of replaying backlog.
 
-Particle draw не змінює accumulation. У dev.06–09 cover/melt є полем diagnostic fixture; після dev.18 вони приходять лише з authoritative simulation `snow_cover_permille`.
+Particle drawing does not change accumulation. In dev.06–09, cover/melt is a field in the diagnostic fixture; after dev.18 it comes only from authoritative simulation through `snow_cover_permille`.
 
-## 8. Сліди на снігу
+## 8. Footprints in snow
 
-### 8.1. Джерело руху
+### 8.1. Motion source
 
-Слід випускає `FootprintEmitter` із фактично показаної `resident_position()` / `UnitMotion::sample(animation_tick)`, а не з майбутнього path, packet arrival або tile command. Чотири кадри ходи не дають точного контакту стопи, тому footfall є чесною 2.5D-апроксимацією за відстанню.
+Each displayed resident receives a `FootprintEmitter`. It uses the actual displayed `resident_position()` / `UnitMotion::sample(animation_tick)`, not a future path, packet arrival, or tile command. Four-frame animation does not provide exact foot-contact events, so footfall is an honest 2.5D approximation based on distance.
 
 ```cpp
 struct FootprintEmitter { // PROPOSED, cosmetic only
@@ -332,19 +335,19 @@ struct FootprintEmitter { // PROPOSED, cosmetic only
 };
 ```
 
-На кожному кадрі:
+On each frame:
 
-1. Обчислити `delta` між попередньою і поточною displayed `renderXY` position.
-2. Якщо layer змінився, distance > discontinuity bound або clock reset — скинути emitter без stamp.
-3. Додати Euclidean distance у render tile units. Кожні `stride = 0.34` для дорослого (`0.28` для young visual scale) інтерполювати точку всередині поточного segment.
-4. Нормалізувати напрямок `dir`; lateral `perp = (-dir.y, dir.x)`. Stamp anchor = point `± 0.085 cell * perp`, почергово L/R.
-5. Orientation = `atan2(dir.y, dir.x)` або найближчий з восьми atlas directions. Не брати випадковий кут.
+1. Calculate `delta` between previous and current displayed `renderXY` position.
+2. If the layer changed, distance exceeds the discontinuity bound, or the clock reset, reset the emitter without a stamp.
+3. Accumulate Euclidean distance in render-tile units. At every `stride = 0.34` for adults (`0.28` for the young visual scale), interpolate a point inside the current movement segment.
+4. Normalize direction `dir`; lateral `perp = (-dir.y, dir.x)`. Stamp anchor = point `± 0.085 cell * perp`, one-by-one L/R.
+5. Orientation = `atan2(dir.y, dir.x)` or nearest of 8 atlas directions. Do not take random angle.
 
-Якщо один кадр містить велику, але допустиму інтерпольовану відстань, цикл може поставити кілька stamp із max 4 на emitter/frame. Більше означає discontinuity і reset, щоб телепорт не намалював пряму доріжку.
+If one frame contains enough distance for several stride intervals, the loop may place several stamps, capped at 4 per emitter/frame. More indicates a discontinuity and resets the emitter so a teleport does not draw a straight trail.
 
 ### 8.2. Receiver eligibility
 
-Stamp створюється лише коли:
+A stamp is created only when:
 
 ```text
 Surface layer
@@ -355,11 +358,11 @@ AND not Water
 AND not bridge deck / building footprint / exposed rock
 ```
 
-Stamp використовує наявний `ground_height()` тільки для проєкції. Він не змінює height field, mesh, collision, path cost або movement bonus. Ручної Road немає; road receiver/колії не додавати.
+The stamp uses the existing `ground_height()` and does not change the height field, mesh, collision, path cost, or movement bonus. There are no manually built roads; do not add a road receiver or road tracks.
 
-### 8.3. Життя, засипання і танення
+### 8.3. Lifetime, burial, and melting
 
-`FootprintStamp` зберігає anchor, side, orientation, birth shown tick, cover at birth і opacity seed у локальному ring buffer.
+`FootprintStamp` stores anchor, side, orientation, displayed birth tick, cover at birth, and opacity seed in a local ring buffer.
 
 ```text
 age_s = (shown_tick - birth_tick) / 20
@@ -370,15 +373,15 @@ melt = current_cover < cover_at_birth ?
 opacity = base * age_fade * (1 - 0.85*burial) * (1 - melt) * reveal01
 ```
 
-Пороги **PROPOSED** і перевіряються у dev.08. Rain при температурі >0 не видаляє stamps окремою локальною формулою: fixture/authoritative adapter подає нове accumulation, а renderer реагує на його зменшення. Після dev.18 це значення походить лише з host cover. Stamp з opacity < 0.02 або age > 90 s видаляється. Camera culling не видаляє його до TTL, але ring cap може витіснити найстаріший.
+The numbers are **PROPOSED** and must be calibrated in dev.08. Rain at temperature >0 does not delete stamps through a local formula: the fixture/authoritative adapter changes accumulation, and the renderer responds to that decrease. In dev.18, this value comes only from host cover. Evict stamps with opacity < 0.02 or age > 90 s. Camera culling does not remove a stamp before TTL, but the ring cap may evict the oldest.
 
-Footprints не серіалізуються, не реплікуються й не хешуються. Після load/reconnect вони можуть зникнути. UI або release notes не мають називати їх збереженим станом снігу.
+Footprints are not serialized, networked, or checksummed. They may disappear after load/reconnect. UI or release notes must not call them persisted snow state.
 
-## 9. Quality presets і budgets
+## 9. Quality presets and budgets
 
-Це **PROPOSED, UNMEASURED** caps. Low перевіряється на 1280×720, Medium — на 1920×1080; High наведено як окрему початкову пропозицію. Вони є вихідною точкою dev.06–09, а не твердженням про FPS. Caps масштабують кількість ефектів, але не `WeatherFxFrame`, reveal, water geometry чи snow cover.
+These are **PROPOSED, UNMEASURED** caps. Validate Low at 1280×720 and Medium at 1920×1080; High is a separate initial proposal. This is a dev.06–09 starting point, not FPS proof. Caps scale effect counts, not `WeatherFxFrame`, reveal, water geometry, or snow cover.
 
-| Ресурс | Low | Medium | High |
+| Resource | Low | Medium | High |
 |---|---:|---:|---:|
 | reflection target scale | 0.50 | 0.50 | 0.50 |
 | local lights | 24 | 48 | 72 |
@@ -387,147 +390,147 @@ Footprints не серіалізуються, не реплікуються й �
 | reflection casters | 8 | 16 | 32 |
 | haze bands | 3 | 6 | 8 |
 | haze quads | 24 | 48 | 72 |
-| weather particles разом | 1000 | 2000 | 3000 |
+| weather particles together | 1000 | 2000 | 3000 |
 | footprint ring capacity | 2048 | 4096 | 6144 |
 
-Medium — архітектурний baseline. Rain і Snow взаємовиключні за одним authoritative/diagnostic sample, тому ділять спільний weather particle pool. Resolution scaling для particle caps дозволений лише після замірів; hidden multiplier за FPS заборонений, бо робить capture неповторюваним. Stable culling order: visibility → expanded viewport → distance to viewport center → stable id/slot.
+Medium is the architectural baseline. Rain and Snow are mutually exclusive in one authoritative/diagnostic sample and therefore share the weather-particle pool. Resolution scaling for particle caps is allowed only after measurement; a hidden FPS-based multiplier is forbidden because it makes captures non-reproducible. Stable culling order: visibility → expanded viewport → distance to viewport center → stable ID/slot.
 
-Global occluder cap не дозволяє мовчки викинути blocker, який реально впливає на вже прийняте світло. Підготовка спочатку відсікає lights за reveal/viewport, потім збирає всі їхні blockers. Якщо accepted light потребує понад per-light cap або сукупність перевищує global cap, counter/diagnostic є обов'язковим, а контрольна сцена й release acceptance провалені. Агент має зменшити overlap, уточнити authored prisms або обґрунтовано змінити budget і повторити proof; кадр із протіканням світла не стає pass через stable cull.
+The global occluder cap does not allow silently discarding a blocker that actually affects an accepted light. First cull lights by reveal/viewport, then gather all blockers for the remaining lights. If an accepted light needs more than the per-light cap or the population exceeds the global cap, a counter/diagnostic is mandatory and the control scene and release acceptance fail. Reduce overlap, simplify authored prisms, or deliberately change the budget and repeat the proof; a frame with light leaking due to stable culling does not pass.
 
-Обов'язкові telemetry counters у debug overlay/log: submitted/drawn/culled water chunks, reflection casters, haze quads, rain, snow, footprints, lights і occluders; усі вісім attachment dimensions/formats; active quality preset; overflow/reset reason. Telemetry не показується гравцю у release UI.
+Required telemetry counters in the debug overlay/log: submitted/drawn/culled water chunks, reflection casters, haze quads, rain, snow, footprints, lights, and occluders; dimensions/formats of all eight attachments; active quality preset; overflow/reset reason. Telemetry is not shown to the player in release UI.
 
 ## 10. Fault policy
 
-| Відмова | Дозволений runtime fallback | Статус delivery |
+| Failure | Allowed runtime fallback | Delivery status |
 |---|---|---|
-| water shader/normal missing | flat/current water + diagnostic | **FAIL**, не приймати dev.06 |
-| `surface_flags`/shore metadata invalid | reflections off + diagnostic | **FAIL**, не приймати dev.06 |
-| reflection clip leak | reflections off | **FAIL**, поки нема native proof |
+| water shader/normal missing | flat/current water + diagnostic | **FAIL**, do not accept dev.06 |
+| `surface_flags`/shore metadata invalid | reflections off + diagnostic | **FAIL**, do not accept dev.06 |
+| reflection clip leak | reflections off | **FAIL** until corrected native proof exists |
 | haze asset missing | haze off | **FAIL** dev.07 |
-| weather particle asset/pipeline missing | particles off, diagnostic/authoritative frame лишається доступним для debug | **FAIL** dev.07 |
+| weather particle asset/pipeline missing | particles off, diagnostic/authoritative frame remains available for debugging | **FAIL** dev.07 |
 | footprint atlas/pool failure | footprints off | **FAIL** dev.08 |
-| non-blocking particle/reflection/decal overflow | stable cull до cap, counter increments | дозволено лише поза обов'язковою контрольної сценою й без втрати rubric |
-| blocker/required-category overflow | diagnostic; кадр може продовжити без crash | **FAIL**, silent drop не приймається |
+| non-blocking particle/reflection/decal overflow | stable cull to cap, counter increments | allowed only outside the required control scene and without losing required rubric items |
+| blocker/required-category overflow | diagnostic; frame may continue without crash | **FAIL**, silent drop does not accept |
 
-Fallback потрібен, щоб гра не падала. Він не є способом видати фічу за готову. Silent disable заборонений. Software test backend може перевірити command generation, але не доводить D3D12 shader result.
+A fallback is not a path to a completed delivery. Silent disabling is forbidden. The software test backend may verify command generation but does not prove D3D12 shader output.
 
-## 11. Файли й межі володіння
+## 11. Files and ownership boundaries
 
-### 11.1. Наявні точки (**CURRENT**)
+### 11.1. Existing integration points (**CURRENT**)
 
 - `src/client/view.cpp` — projection, terrain/water overlays, displayed residents, atmosphere;
-- `include/ribterra/render_frame.hpp`, `include/ribterra/renderer2d.hpp`, `src/render/renderer2d.cpp` — чинний Frame2D і D3D12/software paths;
-- `shaders/sprite.vert.hlsl`, `shaders/sprite.frag.hlsl` — чинний texture × color;
-- `include/ribterra/unit_motion.hpp`, `include/ribterra/unit_animation.hpp` — displayed movement і 4-frame walk;
-- `include/ribterra/weather.hpp` — **PROPOSED weather plan path**, авторитетні типи мають з'явитися через weather task, не через FX shortcut.
+- `include/ribterra/render_frame.hpp`, `include/ribterra/renderer2d.hpp`, `src/render/renderer2d.cpp` — the existing Frame2D and D3D12/software paths;
+- `shaders/sprite.vert.hlsl`, `shaders/sprite.frag.hlsl` — valid texture × color;
+- `include/ribterra/unit_motion.hpp`, `include/ribterra/unit_animation.hpp` — displayed movement and 4-frame walk;
+- `include/ribterra/weather.hpp` — **PROPOSED weather-plan path**; authoritative types must arrive through the weather task, not an FX shortcut.
 
-### 11.2. Рекомендоване розділення (**PROPOSED**, узгодити з render core до створення)
+### 11.2. Recommended split (**PROPOSED**, coordinate creation with render core)
 
 - `include/ribterra/world_fx.hpp` — POD frame inputs, quality, counters, reset reasons;
-- `src/client/world_fx.cpp` — diagnostic/future-WeatherView adapters, pools/caches/culling, без simulation mutations;
-- `include/ribterra/render_materials.hpp` — `SurfaceInstance`, receiver flags і material IDs, якщо саме цей path затвердить render core;
+- `src/client/world_fx.cpp` — diagnostic/future-WeatherView adapters, pools/caches/culling, no simulation mutations;
+- `include/ribterra/render_materials.hpp` — `SurfaceInstance`, receiver flags, and material IDs if the render core approves this shared path;
 - `src/render/world_fx_renderer.cpp` — water/reflection/haze/particle GPU passes;
 - `shaders/water.vert.hlsl`, `shaders/water.frag.hlsl`, `shaders/reflection.frag.hlsl`, `shaders/world_fx.frag.hlsl`;
 - `assets/art/fx/water_normal.*`, `water_foam.*`, `rain.*`, `snow.*`, `footprint_left.*`, `footprint_right.*`;
 - `tests/world_fx_tests.cpp` — pure projection/pool/reset/culling contracts;
-- `tools/world_fx_visual_probe.*` — за потреби isolated probe, але він не замінює native game capture.
+- `tools/world_fx_visual_probe.*` — an isolated probe if needed, but it does not replace native game capture.
 
-Не редагувати generated shader binaries вручну; build/package має компілювати/копіювати їх тим самим шляхом, що sprite shaders. Канонічні назви проходів і attachments належать `RENDER_CORE_SPEC_UA.md`. World FX використовує їх без aliases і не створює паралельний renderer.
+Do not edit generated shader binaries manually; build/package must compile or copy them through the same mechanism as sprite shaders. Canonical pass names and attachment ownership come from `RENDER_CORE_SPEC_UA.md`. World FX uses them without aliases and does not create a parallel renderer.
 
-## 12. Порядок реалізації dev.06–dev.09
+## 12. Implementation order dev.06–dev.09
 
 ### `0.26.1-dev.06` — water proof
 
-Видима зміна: world-anchored water normals, shoreline foam, bounded reflections, правильні banks/bridge/FoW clips. Стабільними лишаються terrain height, picking, water level, paths і gameplay.
+Visible changes: world-anchored water normals, shoreline foam, bounded reflections, and correct bank/bridge/FoW clipping. Terrain height, picking, water level, paths, and gameplay remain unchanged.
 
-Потрібні докази:
+Required evidence:
 
-- native D3D12 відео 20–30 s: повільний pan + zoom над берегом і мостом;
-- друге відео з рухомим reflectable unit на Medium/High;
-- кадри same seed/view при pause і після resume;
-- automated mask/projection/culling tests та counters без cap overflow у контрольній сцені.
+- native D3D12 video 20–30 s: slow pan + zoom over the shore and bridge;
+- second video with moving reflectable unit on Medium/High;
+- frames same seed/view in pause and after resume;
+- automated mask/projection/culling tests and counters showing no cap overflow in the control scene.
 
-### `0.26.1-dev.07` — haze і diagnostic weather prototype
+### `0.26.1-dev.07` — haze and diagnostic weather prototype
 
-Видима зміна: depth-banded haze, Rain/Snow/Wind з versioned `DiagnosticWeatherFxInput` лише у `visual_slice_v2`; Storm не стає сірою завісою. Стабільними лишаються reveal і water proof. Forecast, work modifier та runtime weather тут ще не заявляються; host-authoritative wiring належить dev.13–14/18.
+Visible changes: depth-banded haze and Rain/Snow/Wind driven only by versioned `DiagnosticWeatherFxInput` in `visual_slice_v2`; Storm does not become a gray curtain. Reveal and water proof remain intact. Forecast, work modifiers, and runtime weather are still absent; host-authoritative wiring belongs to dev.13–14/18.
 
-Потрібні докази:
+Required evidence:
 
-- native відео Clear → Rain, Snow/Storm, pause → resume, 1× → 2×;
-- diagnostic epoch reset, еквівалентний майбутньому reconnect: без backlog burst і без зміни виду опадів;
-- positive-temperature Rain case без жодної snow particle;
-- той самий diagnostic frame на двох клієнтах: однакові нормалізовані weather values, дозволена різна particle density preset; це не network-authority proof.
+- native video Clear → Rain, Snow/Storm, pause → resume, 1× → 2×;
+- diagnostic epoch reset equivalent to future reconnect: no backlog burst and no rain appearing from nothing;
+- positive-temperature Rain case no snow particle;
+- the same diagnostic frame on two clients: identical normalized weather values, allowing for preset-based particle-density differences; this is not network-authority proof.
 
 ### `0.26.1-dev.08` — displayed-motion footprints
 
-Видима зміна: чергування L/R, правильний напрям, fade/burial/melt на snow receivers. Стабільними лишаються movement, speed, collision і save schema. До dev.14 cover у fixture є diagnostic input; після dev.18 та сама формула читає authoritative cover.
+Visible change: alternating L/R footprints with correct direction, fade/burial/melt on snow receivers. Movement, speed, collision, and save schema remain unchanged. Before dev.14, cover in the fixture is diagnostic input; after dev.18, the same formula reads authoritative cover.
 
-Потрібні докази:
+Required evidence:
 
-- native відео одного мешканця по снігу з поворотом на 90°;
-- перехід snow → rock/bridge/water edge без stamps на забороненій surface;
-- pause/2×, teleport/discontinuity і load/reconnect reset;
-- programmed tests stride interpolation, max 4 stamps/frame, L/R, cap eviction, receiver mask.
+- native video of one resident walking through snow with a 90° turn;
+- transition from snow → rock/bridge/water edge with no stamps on forbidden surfaces;
+- pause/2×, teleport/discontinuity and load/reconnect reset;
+- automated tests for stride interpolation, the maximum of 4 stamps/frame, L/R alternation, cap eviction, and the receiver mask.
 
 ### `0.26.1-dev.09` — combined slice
 
-Видима зміна: вода, reflections, haze, diagnostic weather і footprints працюють одночасно у контрольній сцені до масового виробництва art assets. Стабільними лишаються UI readability, Fog of War і bridge occlusion. Це G1 render proof, не доказ майбутнього authoritative weather state.
+Visible change: water, reflections, haze, diagnostic weather, and footprints work simultaneously in a control scene before mass production of art assets. UI readability, Fog of War, and bridge occlusion remain stable. This is G1 render proof, not proof of the future authoritative weather state.
 
-Потрібні докази:
+Required evidence:
 
-- 60–90 s native video same seed/view на Low/Medium/High;
-- GPU timing/counters і frame-time capture; конкретна test machine/driver/resolution;
-- storm біля води з bridge, будівлями, resident movement і camera pan;
-- failure-injection runs для missing shader/asset із явним diagnostic;
-- side-by-side із попереднім native кадром. Цільовий AI-макет можна показати лише як reference, не як proof.
+- 60–90 s native video same seed/view on Low/Medium/High;
+- GPU timing/counters and frame-time capture; specific test machine/driver/resolution;
+- storm by water from bridge, buildings, resident movement and camera pan;
+- failure-injection runs for missing shader/asset with explicit diagnostic;
+- side-by-side comparison with the previous native build; an AI-only mockup may be shown as a reference, never as proof.
 
-## 13. Перевірки й acceptance IDs
+## 13. Checks and acceptance IDs
 
-### 13.1. Автоматизовані контракти
+### 13.1. Automated contracts
 
-| ID | Перевірка |
+| ID | Check |
 |---|---|
-| `WFX-WAT-01` | camera pan/zoom не змінює world UV фази в тій самій world point |
-| `WFX-WAT-02` | GroundLighting water branch/`surface_flags` не лишають reflection на land, unknown, bridge deck |
-| `WFX-REF-01` | quad mirror виконує `y'=2B.y-y`, `x'=x` для fixed iso camera |
-| `WFX-REF-02` | stable culling дає той самий список при тому самому frame input |
-| `WFX-REF-03` | source або receiver reveal 0 дає нуль reflected pixels/commands |
-| `WFX-HAZ-01` | haze anchors стабільні між frames і reset при epoch |
-| `WFX-HAZ-02` | unknown tiles не породжують quads; secrecy fog лишається останнім |
-| `WFX-WEA-01` | dev.07 diagnostic input, а після dev.18 `WeatherView`, точно проєктуються в ті самі `WeatherFxFrame` units |
-| `WFX-WEA-02` | pause не рухає/не старить particles; 2× масштабує presentation delta |
-| `WFX-WEA-03` | tick rollback/jump/reconnect очищає pool без backlog spawn |
-| `WFX-FPT-01` | stamps виникають за displayed distance, чергують L/R і мають correct lateral sign |
-| `WFX-FPT-02` | receiver/reveal/cover gates блокують water, rock, deck, unknown |
-| `WFX-FPT-03` | footprint pool не входить у save/network/checksum і reset без mutation world |
-| `WFX-BUD-01` | кожен preset дотримується hard caps і stable eviction |
+| `WFX-WAT-01` | camera pan/zoom does not change world UV phase in the same world point |
+| `WFX-WAT-02` | GroundLighting water branch/`surface_flags` prevents reflection on land, unrevealed areas, and the bridge deck |
+| `WFX-REF-01` | quad mirror executes `y'=2B.y-y`, `x'=x` for fixed iso camera |
+| `WFX-REF-02` | stable culling gives the same list for the same frame input |
+| `WFX-REF-03` | Source or receiver reveal 0 produces zero reflected pixels/commands |
+| `WFX-HAZ-01` | haze anchors remain stable between frames and reset when the epoch changes |
+| `WFX-HAZ-02` | unrevealed tiles produce no quads; secrecy fog remains last |
+| `WFX-WEA-01` | dev.07 diagnostic input, and `WeatherView` after dev.18, map exactly into the same `WeatherFxFrame` units |
+| `WFX-WEA-02` | pause neither moves nor fades particles; 2× scales presentation delta |
+| `WFX-WEA-03` | tick rollback/jump/reconnect clears the pool without backlog spawn |
+| `WFX-FPT-01` | stamps appear by displayed distance, alternate L/R, and use the correct lateral sign |
+| `WFX-FPT-02` | receiver/reveal/cover gates block water, rock, deck, and unrevealed areas |
+| `WFX-FPT-03` | Footprint pool does not enter save/network/checksum, and reset does not mutate the world |
+| `WFX-BUD-01` | Every preset enforces hard caps and stable eviction |
 
-Pixel tests допустимі для masks і projection probe. Вони не заміняють native відео, бо не показують temporal shimmer, particle cadence, camera anchoring і bridge occlusion у русі.
+Pixel tests cover masks and the projection probe. They do not replace native video because they cannot show temporal shimmer, particle cadence, camera anchoring, or bridge occlusion in motion.
 
-### 13.2. Візуальна рубрика
+### 13.2. Visual rubric
 
-Прийнято лише якщо спостережувано виконано все:
+Accept only when an observer confirms:
 
-- вода читається як одна поверхня, а не набір однакових наклейок; UV не їдуть за камерою;
-- берегова піна й reflection clip не заходять на сушу/міст/unknown навіть на zoom extremes;
-- reflected sprite залишається слабшим за source і розпадається вниз, без дзеркала UI/туману;
-- haze додає глибину між планами, але не закриває завдання, selection і HUD;
-- Rain/Snow відповідають зафіксованому diagnostic frame у dev.07–09, а після dev.18 — current authoritative state; pause/2×/epoch reset виглядають логічно;
-- сліди мають зрозумілу L/R ходу, не утворюють лінію при teleport і зникають через покрив/вік;
-- Medium baseline не перевищує свої caps; будь-який cull видимий у counter, а не прихований;
-- жодна з цих фіч не змінює terrain, рух, path, cover simulation, save або network authority.
+- water reads as one surface rather than a set of identical stickers; UVs do not follow the camera;
+- shoreline foam and reflection clipping do not enter land, bridge, or unrevealed space, even at extreme zoom levels;
+- a reflected sprite remains weaker than its source and fades downward, without mirroring UI or fog;
+- haze adds depth between scene layers but does not obscure tasks, selection indicators, or the HUD;
+- Rain/Snow matches the fixed diagnostic frame in dev.07–09 and the current authoritative state after dev.18; pause/2×/epoch reset behave coherently;
+- footprints clearly alternate L/R, turn without drawing a line during teleport, and disappear through cover/age;
+- the Medium baseline does not exceed its caps; any culling is visible in counters rather than hidden;
+- none of these effects changes terrain, movement, paths, cover simulation, save data, or network authority.
 
 ## 14. Stop conditions
 
-Фазу не можна назвати завершеною, якщо:
+The phase is not allowed to be completed if:
 
-- є лише згенерований target або isolated shader probe без native game video;
-- water/reflection працюють тільки в одному статичному кадрі;
-- weather у dev.06–09 береться не з versioned diagnostic fixture, а після dev.18 — не з host `WeatherView`;
-- gray overlay видається за haze;
-- footprint stamps ставляться за command path, а не displayed motion;
-- fallback тихо вимикає required effect;
-- масове виробництво нових будівель/персонажів почалося до combined dev.09 proof;
-- performance numbers не містять machine, backend, resolution, preset і capture method.
+- only a generated target or isolated shader probe exists, with no native game video;
+- water/reflection only works in one static frame;
+- weather in dev.06–09 does not come from the versioned diagnostic fixture, or after dev.18 does not come from host `WeatherView`;
+- haze appears as a gray overlay;
+- footprint stamps are based on command paths instead of displayed motion;
+- a fallback silently disables a required effect;
+- mass production of new buildings / characters began before combined dev.09 proof;
+- performance numbers omit the machine, backend, resolution, preset, or capture method.
 
-Після dev.09 дозволено масштабувати бібліотеку art assets. До цього моменту головний ризик не «бракує красивих спрайтів», а те, що вода, атмосфера, маски й час не утворюють стабільну систему.
+After dev.09, the art-asset library may scale. Until then, the main risk is not “missing beautiful sprites,” but that water, atmosphere, masks, and time do not yet form a stable system.

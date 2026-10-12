@@ -1,119 +1,121 @@
-# Water / Reflection V1 — окремий кумулятивний контракт
+# Water / Reflection V1 — separate cumulative contract
 
-Дата: 2026-10-08. Стан: код і bounded native GPU checkpoint перевірені;
-повне приймання води та двигуна відкрите. Докази й межі:
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
+
+The date is 2026-10-08. Status: Code and bounded native GPU checkpoint verified;
+The water intake and engine are open. Evidence and limits:
 [Water / Reflection check](WATER_REFLECTION_CHECK_2026_10_08_UA.md).
-Це уточнення контракту Render Core / World FX, а не приймання E09 або всього двигуна.
+This is a specification of the Render Core/World FX contract, not the E09 or the entire engine.
 
-## Діагностичний raw readback — окремий follow-up
+## Diagnostic raw readback — separate follow-up
 
-`Renderer2D::read_water_coverage_v1()` повертає tightly packed RGBA8,
-фактичний GPU row pitch, розмір, frame slot і generation останнього
-успішно submitted Water кадру. Це synchronous diagnostic: власні
-transfer/fence, не per-frame шлях і не GPU timing. Виклик серіалізований
-із renderer на main thread; під час render, до успішного кадру, на іншому
-графі або stale generation — reject. Окремий transfer не торкається
-normal capture `FrameResources::transfers` або render telemetry.
+`Renderer2D::read_water_coverage_v1()` returns tightly packed RGBA8,
+actual GPU row pitch, size, frame slot and generation of last
+Successfully submitted Water to the staff. This is synchronous diagnostic: own
+transfer/fence, not per-frame path and not GPU timing. The Call is Serialised
+from the renderer on the main thread; During the rendering, to the successful frame, to the other
+graph or stale generation — reject. Separate transfer is not touched
+normal capture `FrameResources::transfers` or render telemetry.
 
-Commit нових targets інвалідовує старий readback; відхилений candidate
-залишає попередній slot/generation придатним. Часткове recovery submission,
-яке могло перезаписати той slot, інвалідовує його, а не видає старі bytes.
-Raw tuples поточної binary реалізації: clear=(0,0,0,0), Land=(0,1,0,0),
+Committing new targets disables old readback; rejected candidate
+leaves the previous slot/generation fit. Partial recovery submission,
+It's the one that could rewrite that slot, disable it, not release the old bytes.
+Raw tuples of the current binary implementation: clear=(0,0,0,0), Land=(0,1,0,0),
 BridgeDeck=(0,3,0,0), Water=(255,2,shore*17,255).
 
-Свіжа follow-up build02 та native05/06 пройшли: actual 1279×719 drawable
-→ fault36 на останньому reflection candidate → old raw bytes exact
-→ retry54 з ceil-half640×360 → restore72 у1080p і baseline exact.
-[Актуальні докази](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md).
-Це перевірка binary packing і конкретної послідовності rollback, не
-intermediate coverage AA, усіх recovery failures або total/peak VRAM.
-Recovery консервативно інвалідовує readback при повторному використанні
-того самого slot; довільні серії failures цим тестом не прийняті.
-Попередній native01/02 checkpoint використовує стару source cohort
-і зберігається як історичний.
+Recent follow-up build02 and native05/06 have passed: actual 1279×719 drawable
+→ fault36 on the last reflection candidate → old raw bytes exact
+→ retry54 from ceil-half640×360 → restore72 from 1080p and baseline exact.
+[Current evidence](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md).
+This is a binary packing check and a specific rollback sequence, not
+intermediate coverage AA, all recovery failures or total/peak VRAM.
+Recovery conservatively disables readback when reused
+the same slot; The random series of failures on this test is not accepted.
+The previous native01/02 checkpoint uses the old source cohort
+And it's preserved as historic.
 
-## ABI і граф
+## ABI and the Count
 
-`WorldGraph::WaterReflectionSlice` зберігає SkyShadow, незалежний Moon,
-Contact V1 і локальне освітлення. Старі графи не отримують нові проходи.
-Порядок: SunShadow → MoonShadow → Reflection → GroundGBuffer →
-GroundContact (якщо є його вхід) → GroundLighting → WorldForward → Composite → UI.
+`WorldGraph::WaterReflectionSlice` keeps SkyShadow, an independent Moon,
+Contact V1 and local lighting. Old graphs don't get new passes.
+This is the order: SunShadow → MoonShadow → Reflection → GroundGBuffer →
+GroundContact (if there is an input) → GroundLighting → WorldForward → Composite → UI.
 
-Перші чотири GBuffer і всі їх канали зберігаються. SurfaceWorld.W залишається
-точним Contact V1 тегом 0/1/2: це не покриття, не маска, не вага змішування.
-GroundMaterialGpu залишається 48 байт. CPU-обгортка GroundMaterialDraw — 80;
-її колишній хвіст містить клас @68, берегові біти @72, покриття @76.
+The first four GBuffers and all their channels are stored. SurfaceWorld.W remains
+The exact Contact V1 tag 0/1/2: it's not a cover, it's a mask, it' s not a mix weight.
+GroundMaterialGpu remains the 48 byte. CPU-shutterbox GroundMaterialDraw — 80;
+Its former tail contains the class @68, coastal bits @72, cover @76.
 
-П'ятий MRT `WaterCoverageV1`, full-resolution RGBA8 UNORM, clear=(0,0,0,0):
+The fifth MRT `WaterCoverageV1`, full-resolution RGBA8 UNORM, clear=(0,0,0,0:
 
-| Канал | Значення |
+| Channel | The Meaning |
 | --- | --- |
-| R | Геометричне покриття води; суша й настил пишуть 0 |
-| G | Клас/255: Land=1, Water=2, BridgeDeck=3 |
-| B | Береги/15: N=1, E=2, S=4, W=8; невідомий сусід не берег |
-| A | Дозвіл відображення: 1 лише для води |
+| R | The geometrical coverage of water; The drought and the mud write 0 |
+| G | Class/255: Land=1, Water=2, BridgeDeck=3 |
+| B | Beware/15: N=1, E=2, S=4, W=8; Unknown neighbor not shore |
+| A | Display authorisation: 1 only for water |
 
-Цей носій point/clamp-семплюється. Reveal лишається окремо в SurfaceFlags.A.
-RGBA8 обрано замість R8, бо потрібні також клас, береги й дозвіл; зайняті
-старі канали не перепаковуються. Це не мінімальна кількість байтів, але
-окремий перевірний контракт без пошкодження наявних ABI.
+This carrier point/clamp- is simplified. Reveal is left alone in SurfaceFlags.A.
+RGBA8 is chosen instead of R8 because class, shores, and permits are also required; I'm busy
+The old canals don't repackage. It's not a minimum number of bytes, but
+the individual verification contract without prejudice to the existing ABI.
 
-Поточний producer — opaque, sample count 1. CPU coverage/reveal у новому графі
-приймають тільки 0 або 1. Наявність RGBA8 не є доказом AA. Дробове покриття
-краю, його raw readback і допустимий AA-контур залишаються відкритими.
+Current producer — opaque, sample count 1. CPU coverage/reveal in the new graph
+They only accept 0 or 1. The presence of RGBA8 is not evidence of AA. Wood coating
+edge, its raw readback and permissible AA- contours remain open.
 
-WaterSurfaceGpu — 64 байти: абсолютний origin XY/показаний час/wind;
-нормалізований flow/strength/normal strength; лінійний tint/roughness;
-distortion ≤1.5 reference pixels при reference height=900, reserved zero.
-Нормаль — окрема typed linear tileable текстура. Дві нормативні UV-фази
-прив'язані до абсолютних XY, із поворотом 37°, швидкістю .018+.022·wind;
-геометрія води лишається render Z=0. Піна змінює diffuse albedo перед BRDF,
-а не додає нічне світіння. Берегова фаза використовує origin XY і +.5 для
-цілоцентричних клітин, тому не рухається разом із камерою.
+WaterSurfaceGpu — 64 bytes: absolute origin XY/indicated time/wind;
+the normalized flow/strength/normal strength; the linear tint/roughness;
+distortion ≤1.5 reference pixels at reference height=900, reserved zero.
+Normal — is a distinctly typed linear tileable texture. Two normative UV- phases
+bound to the absolute XY, with a rotation of 37°, at speed .018+.022·wind;
+the water geometry remains render Z=0. The pin changes the diffuse albedo before BRDF,
+It's not adding brightness at night. The coastal phase uses origin XY and +.5 for
+It's a cell that's not moving with the camera.
 
-Reflection — окрема half-resolution RGBA16F texture, clear transparent.
-Віддзеркалена геометрія використовує незмінні atlas UV, source P/N та
-освітлення джерела. RGB premultiplied; blending ONE / ONE_MINUS_SRC_ALPHA.
-Strength і fade застосовуються один раз. GroundLighting змішує відображення
-лише за актуальним full-resolution receiver: Water, coverage>0, reveal=1,
-allow=1. Суша/настил/невідкрита територія його не отримують незалежно від
-білінійного семплу чи distortion. Фінальна scene/final alpha — 1.
+Reflection — separate half-resolution RGBA16F texture, clear transparent.
+The reflected geometry uses the fixed atlas UV, source P/N and
+The light source. RGB premultiplied; blending ONE / ONE_MINUS_SRC_ALPHA.
+Strength and fade are applied once. GroundLighting mixing the display
+only by the current full-resolution receiver: Water, coverage>0, reveal=1,
+allow=1. Dry/natural/unopened territory is not obtained regardless of the
+The result is a linear sample or distortion. The final scene/final alpha — 1.
 
-## Пам'ять і resize
+## Memory and Size
 
-Перші сім target records зберігають порядок; записи 7/8 — Coverage і Reflection.
-Старі графи мають нулі в останніх двох записах. Новий граф — 9 attachments
-на кожен із двох frame sets. Reflection dimensions: ceil(W/2), ceil(H/2).
+The first seven target records keep order; recordings 7/8 — Coverage and Reflection.
+The old graphs have zeros in the last two records. New Count — 9 attachments
+on each of the two frame sets. Reflection dimensions: ceil(W/2), ceil(H/2).
 
-Номінальний active payload: `2 × [40WH + 8ceil(W/2)ceil(H/2)]` bytes.
-Для парних розмірів — 84WH: 1920×1080 = 174182400 B / 166.11 MiB;
-2560×1440 = 309657600 B / 295.31 MiB. Це не driver allocation/VRAM measurement.
-Resize створює повний candidate перед publication; old+candidate тимчасово
-співіснують (1080p→1440p ≈461.43 MiB лише цих targets). Sky maps, sampled art,
-upload buffers і driver overhead сюди не входять. Capability/pipeline failure
-не має тихо вимикати воду чи міняти бекенд; resize failure зберігає старий set.
+Nominal active payload: `2 × [40WH + 8ceil(W/2)ceil(H/2)]` bytes.
+For pairs — 84WH: 1920×1080 = 174182400 B / 166.11 MiB;
+2560×1440 = 309657600 B / 295.31 MiB. This is not a driver allocation/VRAM measurement.
+Resize creates a full candidate before publication; old+candidate temporarily
+are co-located (1080p→1440p ≈461.43 MiB only these targets). Sky maps, sampled art,
+Upload buffers and driver overhead don't go in here. Capability/pipeline failure
+shall not turn off the water or change the beaker silently; resize failure keeps the old set.
 
-## Межі поточного checkpoint
+## The limits of the current checkpoint
 
-`compose_engine_control` тепер читає фактичні Terrain::Water, revealed neighbours
-і завершені Bridge із ClientSession. Технічні вузькі настили пишуть BridgeDeck
-до GroundLighting, а не закривають цілу клітину; з'єднані секції узгоджують вісь.
-Приховані клітини не створюють receiver/shore/reflection data. Геометрія землі
-й picks походять із того самого terrain mesh. Normal GameView/startup незмінені.
+`compose_engine_control` now reads actual Terrain::Water, revealed neighbours
+and completed the bridge from ClientSession. The technical narrow layers write BridgeDeck
+to GroundLighting, rather than enclosing the entire cell; The connected sections align the axis.
+Hidden cells do not create receiver/shore/reflection data. The Geometry of the Earth
+And the picks are from the same terrain mesh. Normal GameView/startup is unchanged.
 
-Native probe створює окремий current-schema diagnostic world із нерівною
-річкою, двома берегами, трьома справді побудованими Bridge і reveal frontier.
-Це не доказ випадкового генератора або нового фінального арту. Clock/camera
-контроли програмні; вони не доводять keyboard/mouse/pause interaction/video.
-CPU raster classifier з межею 1 physical pixel — діагностика leakage, не raw
-GBuffer readback. Концепти, AA, повний input/video, нормальна сцена, погода,
-усі E01–E17, full suite і ≥120 FPS залишаються OPEN до власних фактичних доказів.
+Native probe creates a separate current-schema diagnostic world with an uneven
+river, two banks, three really built bridges and reveal frontier.
+It's not evidence of a random generator or a new finite art. Clock/camera
+the controls of the software; They don't prove keyboard/mouse/pause interaction/video.
+CPU raster classifier with boundary 1 physical pixel — leakage diagnosis, not raw
+GBuffer readback. Concepts, AA, full input/video, normal scene, weather,
+all E01–E17, full suite and ≥120 FPS remain OPEN to their own factual proofs.
 
-## Збереження файлів
+## File preservation
 
-Новий build/probe використовує окремі bounded roots ≤128 MiB. Старий latest
-і перевірений rollback не видаляються. Компілятор може прибирати власні
-transient files тільки в заздалегідь названому новому compiler-temp. Atomic save
-fixture може прибрати свої failed `.tmp`/`.bak.tmp`; ці точні шляхи потрібно
-назвати користувачу перед запуском. Ніякої зміни launcher/pointer/install,
-публікації GitHub або очищення старих roots цей checkpoint не виконує.
+The new build/probe uses separate bounded roots ≤128 MiB. Old latest
+and the verified rollback is not removed. The compiler can clean their own
+transient files only in the pre-named new compiler-temp. Atomic save
+fixture can clean up its failures `.tmp`/`.bak.tmp`; These are the exact ways we need to
+name the user before launching. There's no change launcher/pointer/install,
+GitHub or clearing old roots this checkpoint doesn't do.

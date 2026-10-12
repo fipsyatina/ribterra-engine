@@ -1,32 +1,34 @@
-# Ribterra — графічні оновлення по кроках
+# Ribterra — step-by-step graphics updates
 
-**Детальний актуальний план 28.09:** [повні технічні картки V01–V05 і DL](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md), [аудит ассетів і рушія](ASSET_ENGINE_AUDIT_2026_09_28_UA.md).
-Оновлено27.09.2026. **Поточний порядок: V00 → V01 UI → V02 світ → V03 об’єкти → V04 дощ → V05 зима. Повний Dynamic — пізніше.**
+> English translation of a historical project document. Technical literals and recorded results are preserved; these records describe their original snapshots and do not validate the current build. Original wording is available in import commit `7388a2f`.
 
-## Головні файли
-| Файл | Для чого |
+**Detailed current plan, 28.09:** [complete technical cards for V01–V05 and DL](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md), [asset and engine audit](ASSET_ENGINE_AUDIT_2026_09_28_UA.md).
+Updated 27.09.2026. **Current order: V00 → V01 UI → V02 world → V03 objects → V04 rain → V05 winter. Full Dynamic mode comes later.**
+
+## Main files
+| File | Purpose |
 |---|---|
-| [Нова галерея](index.html) | Реальний старий кадр і5 послідовних макетів; порівняння з попереднім кроком |
-| [План V00–V05](GRAPHICS_PROGRESS_UA.md) | Що змінюється, що залишається, де реалізувати й чим приймати кожний крок |
-| [Майбутнє освітлення](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) | Зроблена заготовка API, відкладений перемикач, майбутні DL-01–08 |
-| [Контракт агентів](AGENT_VISUAL_CONTRACT_UA.md) | Масштаб, HUD, правдиві дані та native докази |
-| [Старі13 targets](public-versions.html) | Макети публічних gameplay-версій0.26.1–0.27.0; не шкала зміни графіки |
-| [Картки gameplay-версій](NEXT_UPDATES_DETAILED_UA.md) | Майбутні житло, їжа, логістика, навчання, кооператив і demo acceptance |
+| [New gallery](index.html) | Actual previous capture and five sequential mockups, with comparison against the preceding stage |
+| [V00–V05 plan](GRAPHICS_PROGRESS_UA.md) | What changes, what remains, where to implement it, and what evidence accepts each stage |
+| [Future lighting](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) | Existing API scaffold, deferred switch, and future DL-01–08 |
+| [Agent contract](AGENT_VISUAL_CONTRACT_UA.md) | Scale, HUD, truthful data, and native evidence |
+| [Earlier 13 targets](public-versions.html) | Mockups for public gameplay versions 0.26.1–0.27.0, not a graphics-progression scale |
+| [Gameplay-version cards](NEXT_UPDATES_DETAILED_UA.md) | Future housing, food, logistics, tutorial, cooperative play, and demo acceptance |
 
-V00 є незміненим збереженим кадром0.26.0. V01–V05 створені built-in imagegen шляхом послідовних edits. Незмінність геометрії приблизна; точні pivots/picking/правильність тексту доводить гра. Показані погодні числа ілюстративні. Готовність не можна оголошувати за generated PNG.
+V00 is an unchanged preserved 0.26.0 capture. V01–V05 were created with built-in image generation through sequential edits. Geometry preservation is approximate; the game must prove exact pivots, picking, and text correctness. Displayed weather values are illustrative. A generated PNG cannot establish readiness.
 
-## Технічні додатки
-- [Аудит і карта графічних робіт V2](GRAPHICS_ENGINE_PLAN_V2_UA.md): поточні можливості, розрив до концептів, work packages. Попередні24 dev-пакети не є новою обов’язковою послідовністю базової0.26.1.
-- [Майбутній Render Core](RENDER_CORE_SPEC_UA.md) і [Dynamic Lighting](DYNAMIC_LIGHTING_SPEC_UA.md): пропозиція повного режиму, ще не реалізація.
-- [World FX](WORLD_FX_SPEC_UA.md): вода, haze, precipitation, footprints. Ефекти потребують окремого native proof; наявність картинки їх не реалізує.
-- [Asset production](ART_PRODUCTION_SPEC_UA.md): art masters/export/матеріали/бюджети; normal/depth обов’язкові тільки для майбутнього Dynamic2_5D.
+## Technical supplements
+- [V2 graphics audit and work map](GRAPHICS_ENGINE_PLAN_V2_UA.md): current capabilities, the gap to the concepts, and work packages. The earlier 24 development packages do not define a new mandatory sequence for the 0.26.1 baseline.
+- [Future Render Core](RENDER_CORE_SPEC_UA.md) and [Dynamic Lighting](DYNAMIC_LIGHTING_SPEC_UA.md): proposal for the full mode, not an implementation yet.
+- [World FX](WORLD_FX_SPEC_UA.md): water, haze, precipitation, and footprints. Effects require separate native proof; an image does not implement them.
+- [Asset production](ART_PRODUCTION_SPEC_UA.md): art masters, export, materials, and budgets; normal and depth maps are required only for the future Dynamic2_5D mode.
 - [World/UI](../../.omx/plans/2026-09-26-world-ui-implementation-spec-ua.md), [weather](../../.omx/plans/2026-09-26-weather-implementation-spec-ua.md): simulation/path/build/save/network dependencies.
 
-## Походження
-Нові сцени: [дані](progress/scenes.json), [промпти](progress/prompts.json), [маніфест](progress/manifest.json).
-Старі13 зображень: [оригінальні промпти](generation-prompts.json), [оригінальний маніфест](manifest.json). Їхні PNG і hashes не змінюються.
+## Provenance
+New scenes: [data](progress/scenes.json), [prompts](progress/prompts.json), [manifest](progress/manifest.json).
+Earlier 13 images: [original prompts](generation-prompts.json), [original manifest](manifest.json). Their PNG files and hashes remain unchanged.
 
-## Початок виконання
-Брати один V-крок, не всю графіку одразу. Звірити HEAD і чужі зміни. Реалізувати через справжні renderer/RmlUi/sim interfaces, потім зняти ту саму сцену до/після. Для погоди спершу пройти authority/save/net, для об’єктів — калібрування малого kit. Не додавати Road, замки, нову фізику або dynamic lighting приховано.
+## Start implementation
+Take one V-stage at a time instead of changing all graphics at once. Check `HEAD` and other contributors' changes. Implement through the actual renderer, RmlUi, and simulation interfaces, then capture the same scene before and after. For weather, establish authority/save/network behavior first; for objects, calibrate a small asset kit first. Do not add roads, castles, new physics, or hidden dynamic lighting.
 
-Динамічне освітлення наразі недоступне: API чесно лишає effective=Legacy або відхиляє явний unsupported startup. Перемикача в UI немає. Коли настане DL-етап, його введення не змінить simulation/save/protocol.
+Dynamic lighting is currently unavailable: the API truthfully keeps `effective=Legacy` or rejects an explicitly requested unsupported startup mode. There is no UI switch. When the DL stage begins, its introduction must not change simulation, save, or protocol behavior.

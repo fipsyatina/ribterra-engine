@@ -1,20 +1,22 @@
-# Повідомлення перед видаленням старих compiled-копій
+# Messages before deleting old compiled copies
 
-08.10.2026. Цей файл повідомляє точні цілі **до** видалення; він сам не є доказом виконаного очищення.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Причина: authored attempts06–09 замінені перевіреною attempt10. Зберігаються вся latest attempt10 та rollback attempt05, свіжі GameView/native докази, усі нецільові source/report/log/PNG/asset/shader/kit/font файли і чинні launcher targets. Незалежна звірка 4359 записів: 56 кандидатів та 4303 protected, без розбіжностей.
+08.10.2026. This file reports the exact purposes of **to** deletion; He himself is not proof of the purge.
 
-Цілі: тільки 56 наведених файлів, 228 214 270 логічних байтів (228,21 MB). Каталогів не видаляють. Локальне видалення остаточне, не через кошик; GitHub uploads не виконуються. Код для повторної збірки збережений, але відновлення історичного byte-exact executable не гарантується. Старі build reports лишаються історичними hash-записами, не доступними executable для повторного запуску.
+Reason: authored attempts06–09 replaced by a verified attempt10. All latest attempt10 and rollback attempt05 are stored, fresh GameView/native evidence, all non-target source/report/log/PNG/asset/shader/kit/font files and current launcher targets. Independent scraping of 4359 records: 56 candidates and 4303 protected, without discrepancies.
 
-Точний manifest: `.omx/plans/authored-build-prune-2026-10-08-03.json`.
+Purposes: only 56 specified files, 228 214 270 logical bytes (228,21 MB). The catalogs are not deleted. Local removal is final, not through the basket; GitHub uploads are not executed. The code for the replay is saved, but recovery of the historical byte-exact executable is not guaranteed. The old build reports are left with historical hash records, not available to executable for reboot.
+
+The exact manifest is `.omx/plans/authored-build-prune-2026-10-08-03.json`.
 
 SHA-256 manifest: `D3F8AEE41442573E0CD14217275F7DA81E2B9D34B5D807F31F4247C9AF219BE2`.
 
 SHA-256 helper: `1EB552D10F1F0D1FD545E892E0DB39EA1930EE63ACA55D253DC1AC01358A0639`.
 
-Це історичне повідомлення plan03: його Apply зупинився до першого видалення. Після виправлення зіставлення за точним шляхом створено [нове повідомлення plan04](AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_02_UA.md) і виконано [окремо задокументоване очищення](AUTHORED_BUILD_COMPACTION_2026_10_08_UA.md). Це повідомлення саме по собі не є доказом виконання plan03.
+This is historic plan03 message: its Apply stopped before the first deletion. After correcting the match, the [ plan04](AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_02_UA.md) message was created and the [ separate documented clearance was performed](AUTHORED_BUILD_COMPACTION_2026_10_08_UA.md). This message itself is not evidence of plan03 execution.
 
-## Всі 56 точних шляхів
+## All 56 exact paths
 
 - `C:\Users\fipst\Desktop\ribterra\build\sky-authored-2026-10-08-attempt06\AuthoredSkyBridgeProbe.exe`
 - `C:\Users\fipst\Desktop\ribterra\build\sky-authored-2026-10-08-attempt06\AuthoredSkyNativeProbe.exe`

@@ -1,31 +1,33 @@
-# Перевірка Ribterra 0.25.6
+# Ribterra verification 0.25.6
 
-Дата: 20 вересня 2026. Локальна Windows-збірка Release, MSVC.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Виправлення
+The date is 20 September 2026. The local Windows release, MSVC.
 
-Прибрано відкриття HUD одразу після `connect_remote`. Клієнт очікує застосування всіх частин повного знімка, потім показує авторитетне лобі або готовий світ. Початковий delta-пакет не створює порожню базу. Після втрати готовності мережі скидається готовність показаного знімка; зміна world id або control epoch також змушує оновити клієнтський стан. На час очікування є повідомлення п’ятьма мовами.
+## Correction
 
-## Результати
+Open HUD immediately after `connect_remote`. The client expects all parts of the full picture to be applied, then shows the authoritative lobby or ready world. The initial delta packet does not create an empty base. After the network is lost, the image display is discarded; The change in world id or control epoch also makes the customer state change. There are five languages for the waiting time.
 
-Успішно пройшли 18 різних цільових CTest-перевірок:
+## Results
+
+Successful 18 of various targeted CTest checks:
 
 - `lobby`, `server`, `protocol`, `network_conform`, `network_session`, `network_join`, `network_lobby_join`, `chunk_network`.
 - `lobby_client_rendered`, `localization`, `ui`, `ui_lifecycle`, `client_input`, `host_lobby_flow`, `online_entry_flow`, `client_smoke`, `network_client_rendered`.
-- `network_adverse_3pct`: 150 мс базового RTT, 3% випадкової втрати UDP-пакетів, дублювання, зміна порядку та тимчасовий розрив з’єднання. Тест завершився за 137,52 с.
+- `network_adverse_3pct`: 150 mS of the base RTT, 3% accidental loss of UDP- packets, duplication, change of order and temporary disconnection. The test was completed in 137,52 p.
 
-Нові перевірки навмисно затримують handshake та частини повного знімка, відхиляють початковий delta і перевіряють відновлення повним знімком. Реальний сервер перевірено з гостем до старту, після старту та після завантаження збереження. Стан території, мешканців і запасів гостя збігається з його серверною проєкцією. Повернення автентифікованого хоста підтверджує збереження його території, мешканців і запасів після приєднання нового гравця.
+New checks deliberately delay the handshake and portions of the full image, reject the original delta, and check the full image recovery. The real server is checked with the guest before, after, and after the backup is loaded. The state of the territory, residents, and guest stocks coincides with its server projection. Returning an authenticated host confirms the preservation of its territory, residents, and reserves after a new player joins.
 
-Графічний тест використовує шість справжніх локальних UDP-клієнтів: лобі, команди, готовність, старт, чат, нації та синхронізація часу. Додано перевірку, що перед першим серверним пакетом примусово відкритий HUD закривається, а повідомлення про підключення видиме. Окремий тест клієнта перевіряє скидання готовності після вимкнення сервера.
+The graphics test uses six real local UDP- clients: lobbying, teams, readiness, startup, chat, nation, and time synchronization. A verification is added that the forced open HUD closes before the first server packet and the connection message is visible. A separate test of the client checks the readiness of the server after the server is turned off.
 
-Встановлений пакет `dist/releases/0.25.6/Ribterra` пройшов окремий запуск dedicated server + два незалежні процеси RibterraNetProbe + графічний клієнт Direct3D 12. Обидва probes отримали однаковий стан після будівництва: 10 мешканців, 2 будівлі, 50 дерева; перевірено чат, відповіді на команди та доставку матеріалів.
+The installed package `dist/releases/0.25.6/Ribterra` went through a separate dedicated server launch + two independent processes RibterraNetProbe + a graphics client Direct3D 12. Both probes received the same status after construction: 10 residents, 2 buildings, 50 trees; I've checked the chat, the response to the orders and the delivery of the materials.
 
-Збірка завершилася успішно; у повній збірці залишаються попередні попередження у файлах симуляції та рендерингу. `git diff --check` пройшов. Повний набір усіх CTest-тестів у цьому виправленні не запускався.
+The collection was completed successfully; The full set of pre-warnings in the simulation and rendering files remain. `git diff --check` passed. The full set of CTest tests in this patch did not run.
 
-## Докази та межі
+## Evidence and limitations
 
-- Журнали: `build/0256-build.log`, `build/0256-final-build.log`, `build/0256-network-tests.log`, `build/0256-client-tests.log`, `build/0256-adverse-tests.log`, `build/0256-installed-network.log`.
-- У першому мережевому прогоні перевірка збереження порівняла проєкцію відключеного хоста, яка навмисно порожня. Тест виправлено: перед порівнянням хост відновлює свою сесію. Виправлений `network_lobby_join` пройшов у журналі `0256-client-tests.log`.
-- Кадри: `artifacts/online-0.25.6/connecting.png`, `lobby.png`, `world.png`, `installed-network.png`.
+- The journals are: `build/0256-build.log`, `build/0256-final-build.log`, `build/0256-network-tests.log`, `build/0256-client-tests.log`, `build/0256-adverse-tests.log`, `build/0256-installed-network.log`.
+- In the first network run, the retention check compared the project of the disabled host, which is intentionally empty. The test is fixed: the host resumes its session before the comparison. Corrected `network_lobby_join` went through the journal `0256-client-tests.log`.
+- The frames are: `artifacts/online-0.25.6/connecting.png`, `lobby.png`, `world.png`, `installed-network.png`.
 
-Фізичний другий комп’ютер та зовнішній інтернет у цій сесії недоступні для перевірки. Мережеві процеси й імітація несприятливого з’єднання запускалися на одному ПК. Для користувацької перевірки обидва ПК мають запускати повністю розпакований пакет 0.25.6.
+The physical second computer and external Internet in this session are not available for verification. Network processes and simulation of an unfavorable connection were launched on one PC. For user verification, both PCs must run a fully unpacked 0.25.6 package.

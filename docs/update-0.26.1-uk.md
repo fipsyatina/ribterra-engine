@@ -1,23 +1,25 @@
-# Ribterra 0.26.1 — компактний HUD V01
+# Ribterra 0.26.1 — compact HUD V01
 
-0.26.1 реалізує лише перший графічний етап V01: активний RmlUi HUD став компактним і звільнив центр екрана. Земля, камера, проєкція, освітлення, будівлі, рослинність і мешканці не замінювалися; V02–V05 залишаються окремими майбутніми етапами.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Що бачить гравець
+0.26.1 only realizes the first graphical stage V01: the active RmlUi HUD became compact and released the center of the screen. Land, camera, projection, lighting, buildings, plants and inhabitants have not been replaced; V02–V05 remain separate future stages.
 
-- F1 приховує весь ігровий HUD; повторне натискання повертає його без паузи, скидання вибору або зміни стану світу.
-- Зверху ліворуч показано доступні дерево, камінь і їжу та кількість населення. Клік по ресурсу відкриває повну панель запасів, клік по населенню — поселення.
-- Зверху праворуч з’являється одне дієве харчове попередження, коли доступної їжі немає або є голодні мешканці. Воно відкриває деталі запасів, а не імітує нову механіку.
-- Знизу ліворуч показано короткий інспектор одного мешканця або будівлі. Кнопка «Деталі» відкриває наявні повні дані про накази, здоров’я, вантаж, виробництво й покращення. Для групового вибору показано тільки кількість і спільні дії.
-- Знизу по центру розташовано «Будувати», «Збирати», «Призначити» та «Скасувати». Перші три відкривають чинні каталоги й панелі. Недоступна дія має реальну причину: немає вибору, вибір не під контролем або будівництво можливе лише на поверхні.
-- Знизу праворуч збережено паузу, 1×/2×/4×, запаси, підприємства, save/load, допомогу й меню. Шари, календар, чат і керування власністю лишилися доступними.
-- На масштабах 1.15 і 1.30 підписи ресурсів скорочуються, а інспектор підіймається над нижнім рядом, щоб не перекривати дії.
+## What the Player Sees
 
-## Поведінка «Скасувати»
+- F1 hides the whole game HUD; Repeatedly pressing it back without pausing, dropping a choice or changing the state of the world.
+- The top left shows the available trees, stones, and food and population. A click on the resource opens a full inventory panel, a click on the population — settlement.
+- A good food warning is shown at the top right when food is not available or when the inhabitants are hungry. It reveals the details of the inventory, not imitates the new mechanics.
+- Below on the left is a brief inspector of a resident or building. The  Details» button opens up the available full order, health, cargo, production and improvement data. For group selection, only the number and joint actions are shown.
+- Below the center are Build», Collect,  Name» and Delete». The first three open up the current directories and dashboards. The unavailable action has a real reason: there is no choice, no choice out of control, or construction is only possible on the surface.
+- Below on the right is a pause, 1×/2×/ 4×, stocks, enterprise, save/load, help and menu. Balls, calendars, chat and control of ownership remained available.
+- On the 1.15 and 1.30 scales, the resource signatures are reduced, and the inspector is raised above the bottom row to avoid overshadowing the action.
 
-Кнопка скасовує тільки поточну клієнтську взаємодію: розміщення споруди, вибір робочого місця або drag-selection. Вона не скасовує вже поставлене будівництво, виробничу чергу чи наказ мешканця і не емулює Escape.
+## The behavior of the victim
 
-## Сумісність
+The button only deletes current customer interactions: location of the facility, location selection, or drag-selection. It does not cancel an existing construction, production line, or a resident's order, nor does it emulate Escape.
 
-Правила **17**, протокол **19**, формат сейва **8** і генератор **5** не змінені. Версійне вікно для цього формату розширено до 0.26.1; жодного нового поля симуляції, сейва або мережевого повідомлення не додано.
+## Compatibility
 
-[Локальні перевірки 0.26.1](verification-0.26.1-uk.md).
+The rules **17**, protocol **19**, format of the file **8** and generator **5** are not changed. The version window for this format is extended to 0.26.1; No new simulation field, safe or network message is added.
+
+[Local checks 0.26.1](verification-0.26.1-uk.md).

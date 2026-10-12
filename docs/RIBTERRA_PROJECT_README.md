@@ -1,136 +1,138 @@
 # Ribterra 0.26.3
 
-[Зберігання збірок і перевірок](docs/ARTIFACT_RETENTION_UA.md): після заміни зберігати актуальний пакет і одну перевірену резервну версію, а не повні копії кожного тестового runtime. Перед очищенням повідомляти точні шляхи; вихідники, оригінали арту, збереження та чинні залежності захищені.
+> English translation of a historical project document. Technical literals and recorded results are preserved; they describe their named snapshots and do not validate the current build. Original wording is available in import commit `7388a2f`.
 
-**Переробка V01–V03, 30.09 — PARTIAL:** [список приймання](docs/visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md) та [остаточний звіт](docs/verification-rework-0.26.3-uk.md) відділяють реалізований код від ще непідтвердженої художньої відповідності. Пройшли 91/91 CTests і 60 native D3D12 matrix cases. Локальний перевірений пакет запускається через `Play Ribterra Rework.cmd`; звичайний `Play Ribterra.cmd` використовує окремий шлях опублікованого релізу.
+[Build and validation retention](docs/ARTIFACT_RETENTION_UA.md): after replacement, retain the current package and one verified rollback version instead of full copies of every test runtime. Announce exact paths before cleanup; source code, original art, saves, and active dependencies are protected.
 
-[Будівлі та мешканці V03 у 0.26.3](docs/update-0.26.3-uk.md): чинні детальні спрайти отримали єдиний runtime-resolver, стабільний масштаб і контакт із землею; Будинок II та Майстерня II тепер справді мають окремий вигляд, directional-мешканці стали читабельнішими, а вантаж і робочі ефекти показують тільки фактичний стан. [Локальні перевірки](docs/verification-0.26.3-uk.md).
+**V01–V03 rework, 30 September — PARTIAL:** the [acceptance list](docs/visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md) and [final report](docs/verification-rework-0.26.3-uk.md) separate implemented code from artistic fidelity that remains unconfirmed. 91/91 CTests and 60 native D3D12 matrix cases passed. The locally verified package launches through `Play Ribterra Rework.cmd`; the ordinary `Play Ribterra.cmd` uses a separate published-release path.
 
-[Долина, річка й протоптані стежки V02 у 0.26.2](docs/update-0.26.2-uk.md): новий детермінований профіль поверхні, спільні правила руху/будівництва, згрупована природа і стежки, які поступово залишають юніти. Ручна Дорога вилучена, Міст збережений. [Локальні перевірки](docs/verification-0.26.2-uk.md).
+[Buildings and residents V03 in 0.26.3](docs/update-0.26.3-uk.md): existing detailed sprites now use one runtime resolver, stable scale, and ground contact. House II and Workshop II now have distinct appearances, directional residents are easier to read, and cargo and work effects show only actual state. [Local validation](docs/verification-0.26.3-uk.md).
 
-[Компактний HUD V01 у 0.26.1](docs/update-0.26.1-uk.md): ресурси, попередження, короткий інспектор і контекстні дії розкладено по краях екрана; повні панелі та всі чинні команди збережено. Світ, симуляція, протокол і формат сейва не змінені. [Перевірки](docs/verification-0.26.1-uk.md).
+[Valley, river, and worn paths V02 in 0.26.2](docs/update-0.26.2-uk.md): a new deterministic surface profile, shared movement/building rules, grouped nature, and paths gradually left by units. The manual Road was removed; Bridge remains. [Local validation](docs/verification-0.26.2-uk.md).
 
-[Матеріали та покращення 0.26.0](docs/update-0.26.0-uk.md): доступні Будинок II (+4 місця) та Майстерня II (робоча фаза вдвічі коротша) за 6 дощок і 4 цеглини. Склад II прихований. [Перевірки](docs/verification-0.26.0-uk.md).
+[Compact HUD V01 in 0.26.1](docs/update-0.26.1-uk.md): resources, warnings, a compact inspector, and contextual actions are arranged around the screen edges. Full panels and all current commands remain available. The world, simulation, protocol, and save format were unchanged. [Validation](docs/verification-0.26.1-uk.md).
 
-[Виправлення вильоту після дій 0.25.13](docs/update-0.25.13-uk.md): вибір мешканця, будівництво й повідомлення про накази більше не передають готовий текст як ключ перекладу.
+[Materials and upgrades 0.26.0](docs/update-0.26.0-uk.md): House II (+4 capacity) and Workshop II (work phase twice as fast) are available for 6 planks and 4 bricks. Stockpile II is hidden. [Validation](docs/verification-0.26.0-uk.md).
 
-[Безпечні старі світи 0.25.12](docs/update-0.25.12-uk.md): перенесення підтриманих сейвів 0.25.7 у нову копію, нормальні порції, скидання старих атак і збереження товарів. Активні експедиції відхиляються зі збереженням джерела. [Перевірки](docs/verification-0.25.12-uk.md).
+[Post-action crash fix 0.25.13](docs/update-0.25.13-uk.md): resident selection, construction, and order notifications no longer pass ready-made text as a translation key.
 
-[Склад альфи 0.25.11](docs/update-0.25.11-uk.md): Табір і 12 будованих типів, реальні запаси, спільні обмеження клієнта та симуляції. Майстерня й глиняний кар’єр збережені; нові експедиції та атаки вимкнені. [Перевірки](docs/verification-0.25.11-uk.md).
+[Safe old worlds 0.25.12](docs/update-0.25.12-uk.md): supported 0.25.7 saves migrate into a new copy, yields use normal quantities, old attacks are cleared, and goods persist. Active expeditions are rejected while preserving the source save. [Validation](docs/verification-0.25.12-uk.md).
 
-[Кооперативний старт і власність 0.25.10](docs/update-0.25.10-uk.md): спільна команда за замовчуванням, власні підприємства для кожної команди, явне керування працівниками. [Локальні перевірки](docs/verification-0.25.10-uk.md). **Перевірку на двох фізичних Windows-ПК не виконано: другий ПК недоступний.**
+[Alpha storage 0.25.11](docs/update-0.25.11-uk.md): Camp and 12 buildable types, real inventories, and shared client/simulation constraints. Workshop and Clay Quarry remain; new expeditions and attacks are disabled. [Validation](docs/verification-0.25.11-uk.md).
 
-[Керування виробництвом 0.25.9](docs/update-0.25.9-uk.md): партії, явний вибір працівника, збереження професії та безпечне скасування з вантажем. [Перевірка](docs/verification-0.25.9-uk.md).
+[Cooperative start and ownership 0.25.10](docs/update-0.25.10-uk.md): one shared team by default, team-owned enterprises, and explicit worker control. [Local validation](docs/verification-0.25.10-uk.md). **Testing on two physical Windows PCs was not performed because a second PC was unavailable.**
 
-[Інспектор будівлі 0.25.8](docs/update-0.25.8-uk.md): стан, причина простою, рецепт і фізична доставка. [Локальна перевірка](docs/verification-0.25.8-uk.md).
+[Production management 0.25.9](docs/update-0.25.9-uk.md): batches, explicit worker selection, profession persistence, and safe cancellation while carrying cargo. [Validation](docs/verification-0.25.9-uk.md).
 
-[Чинний план першої альфи та демо](docs/ALPHA_DEMO_PLAN_UA.md): завершити розвиток поселення, матеріальні ланцюги й наявні покращення, потім довести зовнішній кооператив. Майстерня й Глиняний кар'єр залишаються. Панель «Експедиції» та її спливні пропозиції прибрано з інтерфейсу; попередні описи цієї панелі нижче й у журналах версій є історичними.
+[Building inspector 0.25.8](docs/update-0.25.8-uk.md): state, idle reason, recipe, and physical delivery. [Local validation](docs/verification-0.25.8-uk.md).
 
-[Аудит фактичної функціональності](docs/FEATURE_AUDIT_UA.md): усі будівлі, ресурси, рецепти, професії та показані заглушки; доповнений перевіркою нового світу через симуляційні команди. Приховування майбутніх систем реалізовано у 0.25.11; решта плану виконується наступними версіями.
+[Current first-alpha and demo plan](docs/ALPHA_DEMO_PLAN_UA.md): complete settlement development, material chains, and existing upgrades, then prove external cooperative play. Workshop and Clay Quarry remain. The Expeditions panel and its pop-up offers were removed from the UI; earlier descriptions of that panel below and in version logs are historical.
 
-[Детальний план малих версій](docs/ALPHA_DEMO_SMALL_RELEASES_UA.md): для кожної — додавання, усунення, покращення та критерії. V01 реалізовано локально як 0.26.1, V02 — як 0.26.2, V03 — як 0.26.3; V04–V05 лишаються окремими графічними етапами. Приймання на двох фізичних ПК очікує перевірки.
+[Actual feature audit](docs/FEATURE_AUDIT_UA.md): every building, resource, recipe, profession, and displayed placeholder, extended with a new-world check through simulation commands. Future systems were hidden in 0.25.11; the remaining plan continues in later versions.
 
-[Онлайн-лобі та команди 0.25.0](docs/update-0.25.0-uk.md).
+[Detailed small-release plan](docs/ALPHA_DEMO_SMALL_RELEASES_UA.md): additions, removals, improvements, and criteria for each release. V01 was implemented locally as 0.26.1, V02 as 0.26.2, and V03 as 0.26.3; V04–V05 remain separate graphics stages. Acceptance on two physical PCs remains pending.
 
-Після ручних наказів: [30 секунд очікування у 0.24.1](docs/update-0.24.1-uk.md).
+[Online lobby and commands 0.25.0](docs/update-0.25.0-uk.md).
 
-Працюючі експедиції, полювання та живі околиці: [правила 0.24.0](docs/update-0.24.0-uk.md).
+After manual orders: [30-second timeout in 0.24.1](docs/update-0.24.1-uk.md).
+
+Working expeditions, hunting, and living surroundings: [rules for 0.24.0](docs/update-0.24.0-uk.md).
 
 # Ribterra
 
-Приватна розробка кооперативної ізометричної стратегії про поселення, виживання та іменних мешканців. Авторитетне джерело вимог — редакція 1.4 плану від 7 вересня 2026 року в `docs/source`.
+Private development of a cooperative isometric strategy game about settlement, survival, and named residents. The authoritative requirements source is revision 1.4 of the plan dated 7 September 2026 under `docs/source`.
 
-Код **0.10** додає чергу до восьми ручних наказів на мешканця, часткові результати групових Move/Gather та явний вибір збору: одна доставка або до вичерпання ресурсу. Панель «Накази» показує чергу й причини завершення; окремий наказ можна скасувати, а керування мешканцем — відпустити або передати іншому підключеному гравцеві. Фізичний вантаж завершує доставку до зміни заняття. [Контракт ручних наказів](docs/MANUAL_ORDERS.md) продовжує [професії](docs/PROFESSIONS_PLAN_UA.md), [вісім незалежних навичок](docs/SKILLS.md) і [фізичну логістику](docs/LOGISTICS_PLAN.md).
+Code **0.10** adds a queue of up to eight manual orders per resident, partial results for group Move/Gather, and an explicit gather mode: one delivery or until the resource is exhausted. The Orders panel shows the queue and completion reasons. One order can be cancelled, while control of a resident can be released or transferred to another connected player. Physical cargo completes delivery before a profession change. The [manual-order contract](docs/MANUAL_ORDERS.md) extends [professions](docs/PROFESSIONS_PLAN_UA.md), [eight independent skills](docs/SKILLS.md), and [physical logistics](docs/LOGISTICS_PLAN.md).
 
-**Локальна версія — 0.23.0.** Підприємства отримують обмежені замовлення з працівником, матеріалами й фізичною доставкою продукції. Додано лісопилку, млин, кухню, глиняний кар’єр, дороги та перші покращення. Кнопка «Підприємства» — ліворуч унизу. [Правила й рецепти 0.23.0](docs/update-0.23.0-uk.md).
+**Local version — 0.23.0.** Enterprises receive bounded orders with a worker, materials, and physical delivery of output. Sawmill, Mill, Kitchen, Clay Quarry, roads, and initial upgrades were added. The Enterprises button is at the lower left. [Rules and recipes for 0.23.0](docs/update-0.23.0-uk.md).
 
-**Оновлення 0.18.0.** Ситість 10/10 означає ситого мешканця; чотири нові образи з анімацією ходьби, 12 нових дерев і 6 текстур трави. [Зміни 0.18.0](docs/LIVING_WORLD_0_18_UA.md).
+**Update 0.18.0.** Satiety 10/10 means a well-fed resident; four new appearances with walk animation, 12 new trees, and 6 grass textures. [Changes in 0.18.0](docs/LIVING_WORLD_0_18_UA.md).
 
-**Курсор та узбережжя 0.16.1.** Курсор відображається системою незалежно від кадрів гри, береги отримали плавні переходи та пологі схили. [Зміни 0.16.1](docs/COAST_CURSOR_0_16_1_UA.md).
+**Cursor and coastline 0.16.1.** The system renders the cursor independently from game frames, and shores received smooth transitions and gentle slopes. [Changes in 0.16.1](docs/COAST_CURSOR_0_16_1_UA.md).
 
-**Атмосфера 0.16.0.** Біоми плавно змішуються, туман прилягає до рельєфу та має м’яку межу. Огляд збільшено в 1,5 раза. Попередження про нестачу їжі пояснює втрату здоров’я від голоду. [Зміни 0.16.0](docs/ATMOSPHERE_0_16_UA.md).
+**Atmosphere 0.16.0.** Biomes blend smoothly, fog follows the terrain with a soft boundary, and the view distance increased by 1.5×. The food-shortage warning explains health loss from hunger. [Changes in 0.16.0](docs/ATMOSPHERE_0_16_UA.md).
 
-**Фермерська праця 0.15.0.** Ферма дає їжу лише завдяки роботі мешканців на місці. Фермери збирають урожай і відносять його на склад. Оберіть мешканців і натисніть правою кнопкою по готовій фермі. [Зміни 0.15.0](docs/FARMING_0_15_UA.md).
+**Farm work 0.15.0.** A Farm produces food only through residents working on site. Farmers harvest crops and carry them to storage. Select residents and right-click a completed Farm. [Changes in 0.15.0](docs/FARMING_0_15_UA.md).
 
-У версії 0.14.0: Додано 10 будівель з окремими текстурами, етапами зведення, зимовим виглядом та іконками каталогу. Шахту потрібно збудувати; рибальська станція працює на березі. [Будівлі 0.14.0](docs/BUILDINGS_0_14_UA.md).
+Version 0.14.0 added 10 buildings with separate textures, construction stages, winter appearances, and catalog icons. A Mine must be built; the Fishing Station operates on a shore. [Buildings in 0.14.0](docs/BUILDINGS_0_14_UA.md).
 
-Об’ємний рельєф: Пагорби, низини, гірські схили та підняті плато утворюють суцільну поверхню; мешканці й об’єкти враховують висоту землі. Новий рельєф генерується в нових світах. Карта 832×832 (692 224 клітинки на шар, у 10,56 раза більша за 256×256), озера, ліси, поляни, гори, пустелі й постійні сніжні варіанти. Нерозвідану територію вкриває туман із наявних асетів. [Рельєф 0.13.0](docs/TERRAIN_0_13_UA.md).
+Volumetric terrain: hills, depressions, mountain slopes, and raised plateaus form one continuous surface; residents and objects account for ground elevation. New terrain is generated in new worlds. The map is 832×832 (692,224 cells per layer, 10.56 times larger than 256×256), with lakes, forests, clearings, mountains, deserts, and permanent snow variants. Unexplored territory is covered by fog using existing assets. [Terrain in 0.13.0](docs/TERRAIN_0_13_UA.md).
 
-**Історичне приймання 0.10.1.** Виправлено пропущене через затриманий ACK оновлення на паузі, додано автоматичне перепідключення й безпечний повтор непідтверджених наказів. Локально пройшли 52/52 тести, два профілі мережі з RTT 150 мс і втратами 1%/3%, GPU-перевірка та 4/4 перевірки розпакованого пакета. CI джерела `13ed5c2` пройшов Windows 52/52, Linux 35/35 і UBSan 13/13 без C++ warnings/errors. [Зміни та запуск 0.10.1](docs/RELEASE_0_10_UA.md), [докази й межі перевірок](docs/VALIDATION.md).
+**Historical acceptance for 0.10.1.** The paused update missed because of a delayed ACK was fixed; automatic reconnect and safe replay of unacknowledged orders were added. Local checks passed 52/52 tests, two network profiles at 150 ms RTT with 1%/3% loss, the GPU check, and 4/4 extracted-package checks. CI source `13ed5c2` passed Windows 52/52, Linux 35/35, and UBSan 13/13 without C++ warnings or errors. [Changes and launch for 0.10.1](docs/RELEASE_0_10_UA.md), [evidence and validation limits](docs/VALIDATION.md).
 
-Повний рушій, P0/P1 і Steam-реліз залишаються наступною роботою. Усі 38 рядків вихідного плану й додані користувачем ассети, великий рельєф за концептами та координатний індикатор у [реєстрі вимог](docs/ENGINE_REQUIREMENTS.md) залишаються чинними. 0.11.1 оновлює презентацію; наступні системи рушія не додаються зміною текстур.
+The complete engine, P0/P1, and Steam release remain future work. All 38 original plan rows and the user-added assets, large concept-based terrain, and coordinate indicator in the [requirements register](docs/ENGINE_REQUIREMENTS.md) remain in force. Version 0.11.1 updates presentation; changing textures does not add later engine systems.
 
-## Локальна гра на Windows
+## Local game on Windows
 
-**Play Ribterra.cmd** запускає поточну перевірену збірку. У розпакованому ZIP відкрийте `Ribterra/Ribterra.exe`. Команди нижче наведено для папки репозиторію; у переносному пакеті запускайте відповідний EXE безпосередньо з папки Ribterra.
+**Play Ribterra.cmd** launches the current verified build. In an extracted ZIP, open `Ribterra/Ribterra.exe`. The commands below are for the repository directory; in the portable package, run the corresponding executable directly from the Ribterra directory.
 
-Із репозиторію пакет можна запустити так:
+Launch the packaged build from the repository:
 
 ```powershell
 .\dist\releases\0.21.0\Ribterra\Ribterra.exe
 ```
 
-Локальна гра використовує той самий авторитетний `GameServer`, що й dedicated-режим. Графічний клієнт бачить лише його відфільтрований знімок стану та надсилає команди через перевірювану серверну чергу.
+A local game uses the same authoritative `GameServer` as dedicated mode. The graphical client sees only its filtered state snapshot and submits commands through the validated server queue.
 
-Керування:
+Controls:
 
-- ліва кнопка — вибір мешканця; Shift — додати; A — вибрати всіх;
-- права кнопка — рух або збір ресурсу; по готовій фермі — призначити вибраних мешканців фермерами; Shift + права кнопка додає наказ руху/збору до черги;
-- **Накази** на картці вибору — режим збору, черга, скасування окремого наказу, відпускання та передача керування;
-- H / F / B — будинок / ферма / склад; ліва кнопка — розміщення;
-- **Запаси** на верхній панелі — доступні та зарезервовані предмети, вантажі, будівельні доставки й стан працівників; активне будівництво можна скасувати;
-- стрілки / середня кнопка — камера; колесо — масштаб; C — центр;
-- Page Up / Page Down — показати поверхню або шахту; ці клавіші змінюють лише вид;
-- Space — пауза; 1 / 2 / 3 — швидкість 1× / 2× / 4×;
-- F1 — сховати/показати весь HUD; F5 — зберегти; F9 — завантажити; F12 — знімок.
+- Left mouse button selects a resident; Shift adds to the selection; A selects everyone.
+- Right mouse button moves or gathers a resource. On a completed Farm, it assigns selected residents as farmers. Shift + right-click appends a move/gather order.
+- **Orders** on the selection card controls gather mode, queue, single-order cancellation, release, and transfer.
+- H / F / B selects House / Farm / Stockpile; left-click places it.
+- **Inventory** on the top bar shows available and reserved items, cargo, construction deliveries, and worker status; active construction can be cancelled.
+- Arrow keys / middle mouse button move the camera; the wheel zooms; C centers.
+- Page Up / Page Down shows Surface or Mine; these keys change only the view.
+- Space pauses; 1 / 2 / 3 selects 1× / 2× / 4× speed.
+- F1 hides/shows the complete HUD; F5 saves; F9 loads; F12 captures a screenshot.
 
-Локальний сейв: `%APPDATA%\Ribterra\Ribterra\settlement.save`. Пакет 0.10 використовує формат 8: до chunk-ів, шарів, порталів, професій/XP, маршрутів, фізичних предметів і намірів роботи додано ручні черги та зв'язки з їхніми виконавцями. Міграція 7→8 зберігає старий пошук, логістику й XP та залишає точний оригінал у `.v7.bak`; 25 справжніх v7 fixtures перевірено на всіх 65 історичних контрольних станах. Права керування належать сесії: завантаження зберігає накази, але починає нову епоху керування. FlatBuffers payload стискається zstd у 96-байтовому контейнері `RIBSV2`. Попередні явні міграції 6/5/4/3/2 і текстового 1 збережені; деталі й межі — у [SAVE_FORMAT.md](docs/SAVE_FORMAT.md). Автозбереження локального клієнта ще не реалізовано.
+Local save: `%APPDATA%\Ribterra\Ribterra\settlement.save`. Package 0.10 uses format 8: manual queues and executor links were added to chunks, layers, portals, professions/XP, routes, physical items, and work intents. Migration 7→8 preserves old search, logistics, and XP and retains the exact original at `.v7.bak`; 25 genuine v7 fixtures were checked across all 65 historical control states. Control rights belong to the session: loading preserves orders but starts a new control epoch. The FlatBuffers payload is compressed with zstd in a 96-byte `RIBSV2` container. Earlier explicit migrations 6/5/4/3/2 and text format 1 remain; details and limits are in [SAVE_FORMAT.md](docs/SAVE_FORMAT.md). Local-client autosave is not implemented yet.
 
-Дерево, камінь і їжа існують на землі, у складі, у руках мешканця або на будмайданчику. Верхня панель показує доступну кількість; панель «Запаси» пояснює резерв і загальну кількість. Стартові ресурси лежать у таборі. Мешканець переносить до 10 одиниць одного виду, проходить шахтний портал і кладе вантаж фізично. Матеріали для споруди резервуються відразу, а витрачаються лише після повної доставки. На майданчику синя шкала показує доставку, золота — роботу. Скасування зберігає матеріали в їхніх місцях; повернення до складу потребує перевезення. Дороги, ризик маршруту, повний каталог ресурсів і виробничі рецепти ще очікують реалізації.
+Wood, Stone, and Food exist on the ground, in storage, in a resident's hands, or at a construction site. The top bar shows available quantities; Inventory explains reservations and totals. Starting resources are stored in Camp. A resident carries up to 10 units of one kind, traverses a mine portal, and physically places cargo. Construction materials are reserved immediately but consumed only after full delivery. A blue site bar shows delivery; a gold bar shows work. Cancellation leaves materials where they are; returning them to storage requires transport. Roads, route danger, the complete resource catalog, and production recipes remain pending.
 
-Після доставки мешканець може чекати повернення до збору, якщо черга маршрутів заповнена. HUD відрізняє це автоматичне очікування від помилки та нормального завершення через вичерпаний ресурс. Оплачена споруда без працівника зберігає прогрес і чекає вільного мешканця своєї нації; робота поновлюється після його прибуття. Панель показує очікування, дорогу або роботу будівельників. Прийнятий ручний рух чи збір замінює попередній автоматичний намір; відхилена постановка наказу його не змінює. Якщо новий прийнятий маршрут згодом не знайдено, попередній намір сам не відновлюється.
+After delivery, a resident may wait to return to gathering when the path queue is full. The HUD distinguishes this automatic wait from an error and from normal completion caused by resource exhaustion. A paid construction without a worker preserves progress and waits for an available resident of its nation; work resumes after arrival. The panel shows whether builders are waiting, travelling, or working. An accepted manual move or gather replaces the previous automatic intent; a rejected order does not change it. If a newly accepted route later cannot be found, the old intent is not restored automatically.
 
-RmlUi-меню доступне до створення світу. Воно зберігає мову та масштаб інтерфейсу в `%APPDATA%\Ribterra\Ribterra\ui-settings.json`. HUD показує ресурси, день, населення, вибраного мешканця, його шар і стан маршруту, паузу/швидкість, будівництво, save/load, довідку та локальний або мережевий чат. `Queued`, `Applied`, `Rejected` і типізовані причини відмови мають повідомлення в English, українській, русский, polski й español через ICU MessageFormat. Кнопки Surface/Mine і Page Up/Page Down перемикають вид, не переміщуючи юнітів. Дія Use passage надсилає звичайну серверну команду переходу для вибраного мешканця біля відомого порталу. FreeType рендерить staged Noto Sans. F1 приховує весь HUD без паузи чи виходу зі світу, а повторне натискання відновлює його. Continue відновлює приховану локальну або віддалену сесію без її перезапуску.
+The RmlUi menu is available before world creation. It stores language and UI scale in `%APPDATA%\Ribterra\Ribterra\ui-settings.json`. The HUD shows resources, day, population, selected resident, layer and path state, pause/speed, construction, save/load, help, and local or network chat. `Queued`, `Applied`, `Rejected`, and typed rejection reasons have messages in English, Ukrainian, Russian, Polish, and Spanish through ICU MessageFormat. Surface/Mine buttons and Page Up/Page Down switch the view without moving units. Use passage sends an ordinary server transition command for a selected resident near a known portal. FreeType renders staged Noto Sans. F1 hides the complete HUD without pausing or leaving the world; pressing it again restores the HUD. Continue restores a hidden local or remote session without restarting it.
 
-Кнопка **«Професія та навички»** відкриває призначення вибраного мешканця або групи: автоматична робота, вибір робочого місця на карті, п'ять пріоритетів і Stop. Доступні лісоруб, шахтар, збирач, будівельник і носій; фермер, коваль, медик і вартовий ще не мають виконавчих сценаріїв. Наведення або клавіатурний фокус на навичці показує серверний breakdown, зокрема на паузі. Нові Assign/Stop скасовують старий режим вибору місця, а заміна світу очищає вибір і незавершену форму. Професії та навички впроваджені у 0.9 й доступні в поточному пакеті 0.10.
+The **Profession and Skills** button opens assignments for the selected resident or group: automatic work, workplace selection on the map, five priorities, and Stop. Lumberjack, Miner, Gatherer, Builder, and Carrier are available; Farmer, Blacksmith, Medic, and Guard do not yet have execution scenarios. Hover or keyboard focus on a skill shows the server breakdown, including while paused. New Assign/Stop clears the old workplace-selection mode, while replacing the world clears the selection and an unfinished form. Professions and skills were introduced in 0.9 and are available in the current 0.10 package.
 
-## Dedicated server і direct IP
+## Dedicated server and direct IP
 
-Сервер за замовчуванням слухає `127.0.0.1:27020`. У першому PowerShell-вікні задайте пароль і запустіть світ:
+The server listens on `127.0.0.1:27020` by default. Set a password and start the world in the first PowerShell window:
 
 ```powershell
 $env:RIBTERRA_SERVER_PASSWORD = '<strong private password>'
 .\dist\releases\0.21.0\Ribterra\RibterraServer.exe --bind 127.0.0.1 --port 27020 --world .\worlds\settlement.save
 ```
 
-У другому вікні задайте той самий пароль і підключіть клієнт:
+Set the same password and connect the client in a second window:
 
 ```powershell
 $env:RIBTERRA_SERVER_PASSWORD = '<strong private password>'
 .\dist\releases\0.21.0\Ribterra\Ribterra.exe --connect 127.0.0.1:27020 --name 'Player 1'
 ```
 
-Ctrl+C коректно зберігає серверний світ. За наявності `--world` сервер також зберігає його кожні 60 секунд. Віддалений клієнт не може використовувати F5/F9: сейвом володіє сервер.
+Ctrl+C cleanly saves the server world. When `--world` is present, the server also saves it every 60 seconds. A remote client cannot use F5/F9 because the server owns the save.
 
-Для ручного direct IP у локальній мережі запустіть сервер із `--bind 0.0.0.0`, дозвольте UDP-порт у брандмауері та підключайтеся до LAN-адреси хоста. Автоматичного LAN-пошуку ще немає, а робота на двох фізичних ПК не підтверджена поточною перевіркою.
+For manual direct IP on a local network, run the server with `--bind 0.0.0.0`, allow the UDP port through the firewall, and connect to the host's LAN address. Automatic LAN discovery is not implemented, and operation on two physical PCs is not confirmed by the current validation.
 
-Пакет 0.10 узгоджує **protocol 7/rules 7/generator 2** і gameplay hash `5cace4260fbbaf80c55177f5b78e6356e1d1f996dfd99dce9caf818c25360606`. Клієнт та сервер мають використовувати однакові версії. Сеанс використовує challenge/password proof, токен повторного підключення, окремі пріоритетні канали команд, чату й знімків, а також повні та дельта-знімки з ack/resync. Великі chunk-знімки діляться максимум на 128 частин. Клієнт збирає їх атомарно з межею 16 MiB і тайм-аутом 10 секунд. До власних запасів, вантажів, work status, професій і восьми серверних skill breakdown додано ручні накази, їхні фази та право керування. Внутрішні timestamps практики, task IDs, таблиці резервів, повні маршрути й приховані координати залишаються на сервері. Локальний мережевий smoke та CI 0.10 пройдено; несприятлива мережа й перевірка на фізичних ПК залишаються у плані.
+Package 0.10 aligns **protocol 7/rules 7/generator 2** and gameplay hash `5cace4260fbbaf80c55177f5b78e6356e1d1f996dfd99dce9caf818c25360606`. Client and server must use identical versions. The session uses challenge/password proof, a reconnect token, separate priority channels for commands, chat, and snapshots, plus full and delta snapshots with ACK/resync. Large chunk snapshots split into at most 128 parts. The client assembles them atomically with a 16 MiB limit and 10-second timeout. Manual orders, phases, and control rights extend the owner's inventory, cargo, work status, professions, and eight server skill breakdowns. Internal practice timestamps, task IDs, reservation tables, complete routes, and hidden coordinates remain server-side. Local network smoke and CI 0.10 passed; adverse-network and physical-PC validation remain planned.
 
-Команда спочатку отримує `Queued`, а після серверної перевірки — `Applied` або `Rejected` із типізованою причиною та поіменними результатами. Для Move/Gather `Applied` означає прийняття ручного наказу до черги. Подальший пошук маршруту, рух, збір, доставка й завершення показуються окремо в проєкції наказу. Внутрішні маршрути логістики та work intents не створюють відповіді на команди гравця. Підтвердження terminal-фази відповіді також прибирає непідтверджений `Queued`; повтори, переставлені фази й reconnect не мають створювати суперечливий результат. Після disconnect керування зберігається 30 секунд монотонного часу, включно з паузою: коротке перепідключення відновлює його, а сплив строку виконує Release зі збереженням фізичної доставки вантажу. Terminal-відповідь зберігається для reconnect у межах часу життя процесу. Графічний клієнт автоматично намагається повернутися в ту саму сесію протягом 30 секунд після виявленого обриву. Непідтверджені накази молодші за 30 секунд повторюються з тим самим ID та повним payload лише в тому самому світі, для того самого гравця, токена й control epoch. Серверне dedupe не допускає другого ефекту. Застарілий або несумісний намір не запускається автоматично; HUD просить перевірити поселення. Повторна історія чату не дублюється. Сесійні токени та request-кеш після перезапуску ще не відновлюються.
+A command first receives `Queued` and, after server validation, `Applied` or `Rejected` with a typed reason and per-resident outcomes. For Move/Gather, `Applied` means that the manual order entered the queue. Later path search, movement, gathering, delivery, and completion appear separately in the order projection. Internal logistics routes and work intents do not create responses to player commands. A terminal reply also clears the unacknowledged `Queued` state; duplicates, reordered phases, and reconnect must not produce contradictory results. After disconnect, control is retained for 30 seconds of monotonic time, including while paused: a short reconnect restores it, while expiry performs Release without losing physical cargo delivery. Terminal replies remain available for reconnect during the process lifetime. The graphical client tries to return to the same session automatically for 30 seconds after detecting an interruption. Unacknowledged orders younger than 30 seconds replay with the same ID and complete payload only in the same world, for the same player, token, and control epoch. Server deduplication prevents a second effect. A stale or incompatible intent does not start automatically; the HUD asks the player to inspect the settlement. Replayed chat history is deduplicated. Session tokens and the request cache are not yet restored after restart.
 
-## Збірка
+## Building
 
-Потрібні Git, Python 3 і Visual Studio Build Tools із **Desktop development with C++**, Windows SDK та C++ CMake tools. Із кореня репозиторію:
+Required: Git, Python 3, Visual Studio Build Tools with **Desktop development with C++**, the Windows SDK, and C++ CMake tools. From the repository root:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/build.ps1
 ```
 
-Скрипт перевіряє й розпаковує SDL3 3.4.16 та SDL_ttf 3.2.2, готує vcpkg на зафіксованому baseline `04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4`, збирає Release, запускає CTest і після успіху встановлює поточний код у `dist/releases/0.15.0/Ribterra`, зберігаючи відкриті попередні версії. `Play Ribterra.cmd` вказує на 0.15.0 через `dist/current-build.txt`. Build-time інструменти компілюють HLSL у DXIL/reflection і таблицю `data/skills.json`, перевіряють каталог активів, п'ять ICU-каталогів, шрифтові гліфи та RML/RCSS. Окремий `AtlasTool` експортує PNG-атласи з metadata за вхідним JSON. У пакет входять лише staged assets і готові шейдери, без runtime-компіляторів. Headless-конфігурація має CMake-прапорець `RIBTERRA_ENABLE_UBSAN` і preset `headless-ubsan`; актуальні результати 0.10 наведено у [VALIDATION.md](docs/VALIDATION.md). Деталі активів — у [ASSETS.md](docs/ASSETS.md). Перша збірка потребує інтернету. Локальний CMake-каталог — `build/engine-windows`.
+The script verifies and extracts SDL3 3.4.16 and SDL_ttf 3.2.2, prepares vcpkg at pinned baseline `04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4`, builds Release, runs CTest, and after success installs the current code under `dist/releases/0.15.0/Ribterra` while preserving open previous versions. `Play Ribterra.cmd` points to 0.15.0 through `dist/current-build.txt`. Build-time tools compile HLSL into DXIL/reflection and generate `data/skills.json`, validate the asset catalog, five ICU catalogs, font glyphs, and RML/RCSS. `AtlasTool` separately exports PNG atlases with metadata from input JSON. The package contains only staged assets and ready shaders, without runtime compilers. The headless configuration provides CMake option `RIBTERRA_ENABLE_UBSAN` and preset `headless-ubsan`; current 0.10 results are in [VALIDATION.md](docs/VALIDATION.md). Asset details are in [ASSETS.md](docs/ASSETS.md). The first build requires internet access. The local CMake directory is `build/engine-windows`.
 
-Windows-клієнт за замовчуванням запитує SDL_GPU backend `direct3d12` без прихованого fallback. `--software` вмикає окремий SDL_Renderer backend для автоматичних тестів; `--gpu-debug` запитує GPU validation, а `--renderer-info <file.json>` записує фактично вибрані backend/device/driver і прапорець software. Цей JSON описує вибір backend, але сам по собі не доводить фізичний GPU або продуктивність.
+The Windows client requests SDL_GPU backend `direct3d12` by default without a hidden fallback. `--software` enables a separate SDL_Renderer backend for automated tests; `--gpu-debug` requests GPU validation, and `--renderer-info <file.json>` records the selected backend/device/driver and software flag. That JSON describes backend selection but does not by itself prove physical-GPU execution or performance.
 
-Після збірки можна повторити перевірки:
+After a build, repeat the checks with:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -SkipBootstrap
@@ -140,45 +142,45 @@ powershell -ExecutionPolicy Bypass -File scripts/build.ps1 -SkipBootstrap
 .\build\engine-windows\SimRunner.exe --benchmark-professions --ticks 10000
 ```
 
-Архів перевіреної збірки створює `powershell -ExecutionPolicy Bypass -File scripts/package.ps1 -SkipBuild`; без `-SkipBuild` скрипт спочатку виконує повну збірку та CTest.
+Create an archive of an already verified build with `powershell -ExecutionPolicy Bypass -File scripts/package.ps1 -SkipBuild`. Without `-SkipBuild`, the script first performs a complete build and CTest.
 
-Історично після виправлення `d9e35cc` локальна Windows-збірка 0.5 пройшла **30/30 тестів за 32.60 с** без попереджень MSVC; `SimRunner` для seed 70421 і 160 ticks зберіг checksum `9495560223965183407`. Великий мережевий знімок усіх 128 chunk-ів у перевіреному сценарії складався з 19 частин. Нативні D3D12 renderer і MineVisualProbe, окремий server + два probes + графічний GPU-клієнт та повторний smoke розпакованого виправленого архіву пройшли. Ці результати не є перевіркою коду 0.7.
+Historically, after fix `d9e35cc`, local Windows build 0.5 passed **30/30 tests in 32.60 s** without MSVC warnings. `SimRunner` for seed 70421 and 160 ticks recorded checksum `9495560223965183407`. A large network snapshot containing all 128 chunks consisted of 19 parts in the verified scenario. Native D3D12 renderer and MineVisualProbe, a separate server plus two probes, the graphical GPU client, and repeated smoke of the extracted corrected archive passed. These results are not validation of 0.7 code.
 
-[CI 0.5](https://github.com/fipsyatina/ribterra/actions/runs/34213349737) для початкового commit `036b08b` має Windows success — 30/30 за 26.88 с — і Linux 10/19. Дев'ять Linux-тестів завершувалися `std::bad_alloc` через undefined behavior: координати множилися як signed `int` до перетворення на `uint32_t` у генераторі рельєфу. `asset_tool` у цьому run пройшов. Commit `d9e35cc` виконує множення як `uint32_t`, додає три регресійні перевірки граничного terrain і прибирає GCC warning у structured binding. [Новий CI для виправлення](https://github.com/fipsyatina/ribterra/actions/runs/34214848608) має Linux success: 19/19 за 15.06 с і чотири цільові UBSan suites за 1.68 с без runtime errors або compiler warnings; Windows також успішний: 30/30 за 27.86 с. Повний рушій, 60 FPS, Steam, фізична LAN-сесія й повний performance gate залишаються відкритими; актуальні докази наведено в [VALIDATION.md](docs/VALIDATION.md).
+[CI 0.5](https://github.com/fipsyatina/ribterra/actions/runs/34213349737) for initial commit `036b08b` had Windows success, 30/30 in 26.88 s, and Linux 10/19. Nine Linux tests ended with `std::bad_alloc` because of undefined behavior: coordinates were multiplied as signed `int` before conversion to `uint32_t` in the terrain generator. `asset_tool` passed in that run. Commit `d9e35cc` performs multiplication as `uint32_t`, adds three boundary terrain regression checks, and removes a GCC warning in a structured binding. The [new CI for the fix](https://github.com/fipsyatina/ribterra/actions/runs/34214848608) had Linux success: 19/19 in 15.06 s and four targeted UBSan suites in 1.68 s without runtime errors or compiler warnings; Windows also succeeded: 30/30 in 27.86 s. The complete engine, 60 FPS, Steam, a physical LAN session, and the complete performance gate remain open; current evidence is in [VALIDATION.md](docs/VALIDATION.md).
 
-Перевірений рубіж **0.6**: локально 33/33 тести, D3D12 HUD п'ятьма мовами й smoke розпакованого архіву; [CI `1ef93e9`](https://github.com/fipsyatina/ribterra/actions/runs/34221544539) має Windows 33/33, Linux 21/21 та UBSan 5/5. У вузькому planner fixture 4×1500 усі чотири накази завершились, p95 tick — 3,069 ms, p99 — 4,701 ms. Повний performance gate та решта рушія залишаються у роботі; [деталі й архівна контрольна сума](docs/VALIDATION.md).
+Verified milestone **0.6**: local 33/33 tests, D3D12 HUD in five languages, and smoke of the extracted archive. [CI `1ef93e9`](https://github.com/fipsyatina/ribterra/actions/runs/34221544539) had Windows 33/33, Linux 21/21, and UBSan 5/5. In the narrow planner fixture at 4×1500, all four orders completed, p95 tick was 3.069 ms, and p99 was 4.701 ms. The complete performance gate and the rest of the engine remain in progress; see [details and archive checksum](docs/VALIDATION.md).
 
-## Документація
+## Documentation
 
-- [Повний реєстр вимог і доказів](docs/ENGINE_REQUIREMENTS.md)
-- [Стан розробки](docs/DEVELOPMENT_UA.md)
-- [Архітектура](docs/ARCHITECTURE.md)
-- [Продовження роботи та призначення будівельників 0.8](docs/WORK_INTENTS.md)
-- [Професії: обсяг і критерії приймання 0.9](docs/PROFESSIONS_PLAN_UA.md)
-- [Навички, практика та серверні модифікатори](docs/SKILLS.md)
-- [Ручні черги та право керування 0.10](docs/MANUAL_ORDERS.md)
-- [План розвитку керування](docs/CONTROL_PLAN_UA.md)
-- [Збереження 0.9 для перевірки майбутніх міграцій](tests/fixtures/WORLD_SAVE_V7.md)
-- [Збереження 0.10 для перевірки майбутніх міграцій](tests/fixtures/WORLD_SAVE_V8.md)
-- [Фізична логістика та її межі](docs/LOGISTICS_PLAN.md)
-- [Фактичні перевірки](docs/VALIDATION.md)
-- [Черга розробки](docs/BACKLOG_UA.md)
-- [Артнапрям](docs/ART_DIRECTION.md)
-- [Вихідні матеріали](docs/source/README.md)
-- [Залежності та ліцензії](THIRD_PARTY_NOTICES.md)
+- [Complete requirements and evidence register](docs/ENGINE_REQUIREMENTS.md)
+- [Development status](docs/DEVELOPMENT_UA.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Work continuation and builder assignment 0.8](docs/WORK_INTENTS.md)
+- [Professions: scope and acceptance criteria 0.9](docs/PROFESSIONS_PLAN_UA.md)
+- [Skills, practice, and server modifiers](docs/SKILLS.md)
+- [Manual queues and control rights 0.10](docs/MANUAL_ORDERS.md)
+- [Control development plan](docs/CONTROL_PLAN_UA.md)
+- [0.9 save fixture for future migration checks](tests/fixtures/WORLD_SAVE_V7.md)
+- [0.10 save fixture for future migration checks](tests/fixtures/WORLD_SAVE_V8.md)
+- [Physical logistics and its limits](docs/LOGISTICS_PLAN.md)
+- [Actual validation](docs/VALIDATION.md)
+- [Development backlog](docs/BACKLOG_UA.md)
+- [Art direction](docs/ART_DIRECTION.md)
+- [Source material](docs/source/README.md)
+- [Dependencies and licenses](THIRD_PARTY_NOTICES.md)
 
-Код Ribterra приватний, усі права збережено. Концепти з документа — AI-згенеровані візуальні референси, а не кадри гри.
+Ribterra code is private; all rights reserved. Concepts from the document are AI-generated visual references, not game screenshots.
 
-[0.25.1 — Лобі за концептом і боти](docs/update-0.25.1-uk.md)
+[0.25.1 — concept-based lobby and bots](docs/update-0.25.1-uk.md)
 
-[0.25.2 — Початковий онлайн-екран і виправлення створення кімнати](docs/update-0.25.2-uk.md)
+[0.25.2 — initial online screen and room-creation fix](docs/update-0.25.2-uk.md)
 
-Оновлення 0.25.3: [плавність онлайн-гри та природні старти](docs/update-0.25.3-uk.md).
+Update 0.25.3: [online smoothness and natural starts](docs/update-0.25.3-uk.md).
 
-Оновлення 0.25.4: [керування швидкістю та продовження онлайн-світу](docs/update-0.25.4-uk.md).
+Update 0.25.4: [speed control and continuation of the online world](docs/update-0.25.4-uk.md).
 
-Оновлення 0.25.5: [плавний рух онлайн і кешування геометрії рельєфу](docs/update-0.25.5-uk.md).
+Update 0.25.5: [smooth online movement and terrain-geometry caching](docs/update-0.25.5-uk.md).
 
-Оновлення 0.25.6: [очікування повного світу та коректний вхід у лобі](docs/update-0.25.6-uk.md).
+Update 0.25.6: [waiting for the complete world and correct lobby entry](docs/update-0.25.6-uk.md).
 
-Оновлення 0.25.7: [вибір мережевої адреси та підключення через інтернет](docs/update-0.25.7-uk.md).
+Update 0.25.7: [network-address selection and internet connection](docs/update-0.25.7-uk.md).

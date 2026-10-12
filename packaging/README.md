@@ -1,49 +1,49 @@
-# Ribterra 0.26.3 — локальний concept-rebuild preview для Windows x64
+# Ribterra 0.26.3 — local concept rebuild preview for Windows x64
 
-Це локальне прев’ю повної переробки V01–V03. Воно не є опублікованим релізом і ще не прийняте як точна копія концепт-артів. На 05.10.2026 пройдено 92/92 локальних тестів, 60/60 конфігурацій native D3D12 render та 8/8 звичайних fixed-seed стартів. Графічна відповідність лишається незавершеною. Актуальні докази й обмеження — у `BACKGROUND_CHECK_2026_10_05_UA.md` та `CONCEPT_PREVIEW_LIMITATIONS_UA.md`. Шляхи `artifacts/...` і HTML-порівняння зі звіту належать checkout репозиторію, не окремому portable-пакету.
+This is a locally built preview of the complete V01–V03 rebuild. It is not a published release and has not yet been accepted as an accurate match for the concept art. As of October 5, 2026, it has passed 92/92 local tests, 60/60 native D3D12 render configurations, and 8/8 ordinary fixed-seed starts. Visual parity remains incomplete. Current evidence and limitations are documented in `BACKGROUND_CHECK_2026_10_05_UA.md` and `CONCEPT_PREVIEW_LIMITATIONS_UA.md`. The `artifacts/...` paths and HTML comparisons referenced by those reports belong to the repository checkout, not to the standalone portable package.
 
-## Запуск локального прев’ю
+## Run the local preview
 
-1. Розпакуйте весь локально зібраний пакет в одну папку.
-2. Залиште `Ribterra.exe`, DLL, `assets` і `licenses` разом.
-3. Запустіть `Play Ribterra.cmd` із цієї папки або безпосередньо `Ribterra.exe`.
-4. Перевірте заголовок вікна: він має показувати `Ribterra 0.26.3`.
+1. Extract the entire locally built package into one folder.
+2. Keep `Ribterra.exe`, the DLLs, `assets`, and `licenses` together.
+3. Run `Play Ribterra.cmd` from that folder, or run `Ribterra.exe` directly.
+4. Check the window title. It must show `Ribterra 0.26.3`.
 
-Не використовуйте старий публічний пакет як доказ цієї переробки. Цей README описує лише свіжий локально зібраний concept-rebuild preview.
+Do not use an older public package as evidence for this rebuild. This README describes only the freshly built local concept rebuild preview.
 
-## Нова гра та генерація
+## New games and world generation
 
-- Звичайна нова гра починається з Табору й 10 мешканців. Розвинуте поселення у перевірочних кадрах є окремою постановочною сценою, а не стартом гравця.
-- Кожна інтерактивно створена нова гра отримує новий випадковий seed. Параметр `--seed <число>` залишає генерацію відтворюваною для діагностики й порівняння кадрів.
-- Нові світи використовують generator profile 7: звивистішу річку, висотний рельєф, природніші змішані групи ресурсів і придатну стартову зону.
-- Підтримані старі збереження не перегенеровуються і зберігають власний generator profile та початкову поверхню.
-- Ручної будованої Дороги немає. Мешканці поступово протоптують видимі стежки лише фактичним рухом; стежка не дає прихованого бонусу швидкості.
+- A normal new game starts with one Camp and 10 residents. The developed settlement shown in validation captures is a separate staged scene, not the player's starting state.
+- Every new game created interactively receives a new random seed. Use `--seed <number>` to make generation reproducible for diagnostics and screenshot comparisons.
+- New worlds use generator profile 7: a more winding river, elevation-based terrain, more natural mixed resource groups, and a viable starting area.
+- Supported older saves are not regenerated. They retain their own generator profile and original terrain.
+- Players cannot construct roads manually. Residents gradually wear visible paths only by actually walking over terrain; paths provide no hidden speed bonus.
 
-## Основне керування
+## Basic controls
 
-- Ліва кнопка миші — вибрати мешканця або об’єкт; Shift додає до вибору; A вибирає всіх мешканців.
-- Права кнопка — наказ рухатися або вручну збирати дерево, камінь чи дику їжу. Shift + права кнопка додає наказ до черги.
-- H / F / B — розміщення Будинку / Ферми / Складу; доступні споруди також відкриваються кнопкою «Будувати».
-- Стрілки або середня кнопка миші — камера; колесо — масштаб; C — центр поселення.
-- Page Up / Page Down — показати поверхню або шахту. Перемикання огляду не переміщує юнітів.
-- Space — пауза; 1 / 2 / 3 — швидкість 1× / 2× / 4×.
-- F1 — приховати весь HUD разом із маркерами; повторне натискання повертає його.
-- F5 — зберегти локальний світ; F9 — завантажити локальний світ; F12 — записати PNG-кадр.
+- Left-click to select a resident or object; hold Shift to add to the selection; press A to select all residents.
+- Right-click to order movement or manually gather wood, stone, or wild food. Shift + right-click adds the order to the queue.
+- Press H / F / B to place a House / Farm / Stockpile. Available buildings are also accessible through the **Build** button.
+- Use the arrow keys or middle mouse button to move the camera, the mouse wheel to zoom, and C to center the settlement.
+- Press Page Up / Page Down to show the surface or mine. Changing the view does not move units.
+- Press Space to pause; press 1 / 2 / 3 for 1× / 2× / 4× speed.
+- Press F1 to hide the entire HUD, including markers; press it again to restore the HUD.
+- Press F5 to save the local world, F9 to load it, and F12 to capture a PNG screenshot.
 
-## Збереження
+## Saves
 
-Локальні файли розміщені у `%APPDATA%\Ribterra\Ribterra`. Поточний формат — save 8, rules 18, generator 7. Перед перевіркою важливого старого світу зробіть окрему копію його файла. Не замінюйте єдину резервну копію новим збереженням, доки не перевірите світ у грі.
+Local files are stored in `%APPDATA%\Ribterra\Ribterra`. The current formats are save 8, rules 18, and generator 7. Before testing an important older world, make a separate copy of its file. Do not overwrite the only backup with a new save until you have verified the world in the game.
 
-F5 і F9 керують локальним світом. Віддалений світ зберігає хост або dedicated server; локальні F5/F9 для нього недоступні. Завантаження підтриманого старого світу не повинно змінювати його generator profile або перебудовувати рельєф.
+F5 and F9 control the local world. The host or dedicated server saves a remote world; local F5/F9 controls are unavailable for it. Loading a supported older world must not change its generator profile or rebuild its terrain.
 
-## Кооператив
+## Cooperative play
 
-Клієнт і сервер мають використовувати одну версію протоколу 21 та однакові rules/content. Змішані локальні пакети можуть бути несумісними, навіть якщо в обох вікнах написано 0.26.3.
+The client and server must use protocol version 21 and identical rules and content. Mixed local packages can be incompatible even if both windows display version 0.26.3.
 
-Локальні мережеві перевірки не замінюють випробування на двох фізичних Windows-ПК. Для цього concept-rebuild preview зовнішній сценарій «два ПК через реальну мережу» ще не підтверджено, тому пакет не слід видавати за перевірений кооперативний реліз.
+Local network checks do not replace testing on two physical Windows PCs. The external “two PCs over a real network” scenario has not yet been confirmed for this concept rebuild preview, so the package must not be presented as a verified cooperative release.
 
-## Що свідомо не входить у V01–V03
+## Intentionally outside V01–V03
 
-Чотириденний прогноз, температура, дощ, буря та повна система динамічного освітлення належать до V04 і наступних етапів. Прев’ю не повинно показувати вигадані погодні числа з концепт-арту. Їхня відсутність у 0.26.3 є межою цього етапу, а не доказом завершеної погодної системи.
+The four-day forecast, temperature, rain, storms, and the full dynamic lighting system belong to V04 and later stages. The preview must not display fabricated weather values from the concept art. Their absence from 0.26.3 marks the boundary of this stage; it does not demonstrate a completed weather system.
 
-Потрібна відеокарта з підтримкою Direct3D 12. Остаточний статус візуальної відповідності, тестів і відомих обмежень перевіряйте за документацією, що додається саме до свіжого локального пакета.
+A Direct3D 12-capable graphics card is required. Check the documentation included with the freshly built local package for the final visual-parity status, test results, and known limitations.

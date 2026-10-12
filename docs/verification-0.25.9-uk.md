@@ -1,34 +1,36 @@
-# Перевірка Ribterra 0.25.9
+# Ribterra verification 0.25.9
 
-23 вересня 2026. Локальна Windows Release-збірка, MSVC, `C:\Users\fipst\Desktop\ribterra`, гілка `AInora/first-playable`.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Результат
+23 September 2026. The local Windows Release collection, MSVC, `C:\Users\fipst\Desktop\ribterra`, branch `AInora/first-playable`.
 
-Реалізовано вибір 1–20 партій, автоматичного чи конкретного працівника, пояснення зайнятості, перехід до наявного керування професіями та пооб’єктний звіт групового наказу. Автовибір читає серверну проєкцію професії, пропускає неповнолітніх і постійно призначених мешканців. Явно зупиненого спеціаліста можна вибрати вручну; професія, робоче місце та пріоритети зберігаються. Група не повторює споруди чи працівників.
+## Result
 
-Скасування — збережуваний намір. Вантаж завершує фізичну доставку, наступна партія не запускається, працівник звільняється. Незавершена робота повертає сировину на землю. Завершення фізичної доставки обробляється до перевірки здоров’я працівника, тому готова продукція після невдалої доставки не спричиняє повторного повернення витраченої сировини. Повернення кількох інгредієнтів перевіряє ліміти до будь-якої зміни кількості.
+Selection of 1–20 parties, automatic or specific employee, explanation of employment, transition to existing management of professions and group order report are implemented. AutoSelection reads the server projection of the profession, skipping minors and permanent residents. The obviously stopped specialist can be selected manually; occupations, jobs and priorities remain. The group does not repeat the construction or the workers.
 
-## Перевірки
+Cancellation is the preserved intention. The cargo completes the physical delivery, the next batch is not launched, the worker is dismissed. Unfinished work returns the raw materials to the ground. The completion of physical delivery is processed to check the health of the worker, so the finished product after the failed delivery does not cause the waste material to be returned again. The return of several ingredients checks the limits for any change in quantity.
 
-- **18/18 CTest**, 198,82 с: production_control, production_control_ui, economy, economy_ui, professions, profession_ui, logistics, logistics_adversarial, persistence, manual_orders, manual_order_persistence, protocol, network_session, client_input, ui_lifecycle, ui, localization, building_inspector. Журнал: `build/0259-tests.log`.
-- Після останніх змін читабельності й повідомлень — **6/6 повторних перевірок**, 66,98 с: production_control, production_control_ui, building_inspector, economy_ui, ui, localization. Журнал: `build/0259-final-tests.log`. Компіляція: `build/0259-final-build.log`.
-- `ProductionControlTests`: дві партії = 12 доставлених дощок із 6 деревини; продовження другого циклу після збереження; дев’ять меж скасування, включно з отриманням сировини, вантажем, пошуком шляху, початком/серединою роботи, готовою продукцією в дорозі й уже завершеною доставкою. Після кожного скасування — перевірка збереження кількості предметів, звільнення працівника та детермінованого продовження після save/load.
-- Окремо: відмова забрати призначеного фермера без зміни світу; збереження професії після явної зупинки; відмова одночасним виробничим, професійним і ручним наказам; загибель носія готового товару; повернення двох інгредієнтів; блокування другого повернення лімітом предметів і повторна спроба без дублювання першого; старий JSON замовлення без прапорця скасування; передавання нового прапорця мережею.
-- `ProductionControlProbe`: **13 сценаріїв у справжньому RmlUi**, із введенням числа партій та вибором працівника клавіатурними подіями, переходом до керування, явною зупинкою фермера, скасуванням вантажу й завантаженням, частковим груповим результатом, повтореним ID споруди, явним одним працівником для групи та скиданням полів при зміні споруди. У 1100×700 кнопку можна досягти прокручуванням через фокус. Звіт: `artifacts/production-0.25.9/report.txt`.
-- `BuildingInspectorProbe` повторно пройшов **53 сценарії** Лісопилки, Майстерні й Кухні з 0.25.8. `BuildingPanelVisualProbe` перевірив **20 панелей і два локальні мережеві клієнти**, різних працівників групи, збереження та відсутність дублювання повторених споруд. Звіт: `artifacts/production-0.25.9/catalog/building-render-report.json`.
-- Копія справжнього сейва 0.25.8 з правилами 14 (`artifacts/inspector-0.25.8/catalog/orders.save`) завантажена сервером 0.25.9, виконано 20 тактів і нове збереження; вихід 0. Оригінал залишено без змін. Журнал: `build/0259-legacy-save.log`.
-- П’ять локалізацій пройшли перевірки ключів, ICU-параметрів і шрифту. `git diff --check` пройшов.
+## Checks
 
-Переглянуті реальні кадри: `farmer-busy-details.png`, `farmer-management.png`, `group-partial.png`, `finishing-delivery.png`, `two-batches.png`, `compact-action.png` у `artifacts/production-0.25.9/`.
+- The following are the most commonly used methods for calculating the value of a business: **18/18 CTest**, 198,82 c: production_control, production_control_ui, economy, economy_ui, professions, profession_ui, logistics, logistics_adversarial, persistence, manual_orders, manual_order_persistence, protocol, network_session, client_input, ui_lifecycle, ui, localization, building_inspector. The magazine: `build/0259-tests.log`.
+- After recent readability changes and reports  **6/6 repeat checks**, 66,98 c: production_control, production_control_ui, building_inspector, economy_ui, ui, localization. The magazine: `build/0259-final-tests.log`. Compilation: `build/0259-final-build.log`.
+- `ProductionControlTests`: two batches = 12 delivered logs of 6 wood; the continuation of the second cycle after storage; nine cancellation limits, including with raw material, cargo, route search, start/mid-work, finished goods on the road and completed delivery. After each termination — verification of the number of items retained, dismissal of the employee and a fixed extension after save/load.
+- In particular, refusing to take away the assigned farmer without changing the world. the maintenance of the profession after a manifest cessation; the refusal of simultaneous production, professional and manual orders; the death of the carrier of the finished product; the return of two ingredients; blocking the second return by the item limit and repeating without duplicating the first; the old JSON order without cancellation flag; The new flag is being transmitted over the network.
+- `ProductionControlProbe`: **13 scenarios in real RmlUi**, with input of the number of batches and employee selection by keyboard events, switching to control, explicit farmer stop, unloading and loading, partial group result, repeated ID construction, visible by one employee to the group, and fielding when the structure changes. The 1100×700 button can be reached by scrolling through the focus. Report: `artifacts/production-0.25.9/report.txt`.
+- `BuildingInspectorProbe` repeated the **53 scenario** Forestry, Workshops and Kitchens from 0.25.8. `BuildingPanelVisualProbe` checked **20 panels and two local network clients**, different group employees, for the retention and absence of duplication of repeat devices. Report: `artifacts/production-0.25.9/catalog/building-render-report.json`.
+- A copy of the original 0.25.8 save with rules 14 (`artifacts/inspector-0.25.8/catalog/orders.save`) is loaded by the 0.25.9 server, runs 20 ticks, and is saved in the new format; exit code 0. The original remains unchanged. Log: `build/0259-legacy-save.log`.
+- Five locations have been checked for keys, ICU- parameters and font. `git diff --check` passed.
 
-## Пакет і запуск
+The actual frames that were viewed are: `farmer-busy-details.png`, `farmer-management.png`, `group-partial.png`, `finishing-delivery.png`, `two-batches.png`, `compact-action.png` in `artifacts/production-0.25.9/`.
 
-Установлено `dist/releases/0.25.9/Ribterra`. `dist/current-build.txt` вказує на його `Ribterra.exe`. Встановлену гру й штатний `Play Ribterra.cmd` запущено з `--smoke`; обидва завершилися з кодом 0. Обидва звіти рендерера підтверджують **0.25.9, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, software=false**. Обидва наявні ярлики Desktop спрямовані на цей launcher; ярлики не змінювалися.
+## Package and launch
 
-Архів: `dist/Ribterra-Windows-x64-0.25.9.zip`, 158808115 байтів. SHA256: `4668600d7e3e8d152949b70cb692444f173c0b1f013cef15f0fdf7f069b0ede6`. Цілісність ZIP перевірено; чотири EXE збігаються між збіркою, встановленням і ZIP. HUD, стилі, українська локалізація, launcher, README й опис оновлення також звірені. Докази: `artifacts/production-0.25.9/package-verification.json`, `installed-renderer.json`, `launcher-renderer.json`, сусідній `.zip.sha256`.
+Set to `dist/releases/0.25.9/Ribterra`. `dist/current-build.txt` indicates his `Ribterra.exe`. Installed game and default `Play Ribterra.cmd` run from `--smoke`; Both ended with the code 0. Both of these reports confirm that **0.25.9, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, software=false**. Both available Desktop tags are directed at this launcher; The lights were unchanged.
 
-## Межі
+The archives: `dist/Ribterra-Windows-x64-0.25.9.zip`, 158808115 bytes. SHA256: `4668600d7e3e8d152949b70cb692444f173c0b1f013cef15f0fdf7f069b0ede6`. Integrity ZIP checked; four EXE coincide between the set, the installation and ZIP. HUD, style, Ukrainian localization, launcher, README and description of the update are also faithful. The evidence is `artifacts/production-0.25.9/package-verification.json`, `installed-renderer.json`, `launcher-renderer.json`, neighboring `.zip.sha256`.
 
-Це готовий **локальний** пакет. Git-коміт, push і публікація GitHub Release не виконувалися. Попередні незакомічені зміни 0.25.8, приховування «Експедицій» і документи плану збережено. Повний набір усіх CTest та зовнішній інтернет/NAT не перевірялися. Візуальні сценарії використовують програмний рендерер; встановлену гру окремо перевірено через Direct3D 12. Виправлення керування незалежними націями залишається 0.25.10.
+## Limitations
 
-Версія правил — 15; формат сейва — попередній, протокол — 19. Новий прапорець скасування додано до JSON економіки; старі записи без нього читаються як звичайні активні замовлення. Клієнти та сервер для спільної гри мають бути однієї версії.
+This is a ready **local** package. The Git committee, push and publish GitHub Release failed. Previous unmodified 0.25.8, hidden Expeditions» and plan documents are preserved. The full set of all CTest and external internet/NAT were not verified. Visual scripts are rendered by software; The installed game is individually checked via Direct3D 12. The correction of the rule of independent nations remains 0.25.10.
+
+The version of the rules — 15; the file format — prefix, the protocol — 19. A new flag of abolition has been added to the JSON economy; Old records without it read like regular active orders. The client and server for the shared game must be the same version.

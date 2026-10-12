@@ -1,24 +1,26 @@
 # Ribterra 0.21.1 + 0.21.2
 
-Обидва оновлення входять до локальної версії 0.21.2. Панель поселення відкривається натисканням на населення у верхній смузі.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## 0.21.1 — розклад і рішення поселення
+Both updates are in the local version 0.21.2. The settlement panel opens by clicking on the population in the upper band.
 
-- День триває з 06:00 до 18:00, ніч — з 18:00 до 06:00; кожна частина займає 12 хвилин на швидкості 1×.
-- Звичайна праця та шлях до її виконання зупиняються на ніч і продовжуються вдень. Вже взятий вантаж доставляється до складу; доручення не втрачаються. Побутове пересування й харчування продовжуються.
-- Нічна зміна дозволяє працювати до найближчого ранку. Рішення доступне лише вночі, додає +5 невдоволення один раз за ніч; наступної ночі потрібне нове рішення. Втоми та штрафу продуктивності наступного дня немає.
-- Панель показує загальне невдоволення 0–100 і внесок кожної причини. У цій версії причини не зникають автоматично; конфлікти й інші наслідки ще не додані.
-- Назва професії сама по собі не запускає пошук роботи: потрібне призначене місце роботи або явне доручення. Збір дерева, каменю й дикої їжі залишається обмеженим ручним дорученням з 0.21.0.
-- Для готових пабів і домів релігії передбачений дозвіл нічної роботи. Їхні виробничі та соціальні функції поки не реалізовані; це не нове джерело ресурсів чи зниження невдоволення.
+## 0.21.1 — Settlement settlement and settlement decision
 
-## 0.21.2 — нові мешканці та молодість
+- Day goes from 06:00 to 18:00, night — from 18:00 to 06:00; Each part takes 12 minutes at the rate of 1 times.
+- The usual work and the path to its completion is stopped at night and continued during the day. The cargo already taken is delivered to the warehouse; The assignments are not lost. The house movements and feeding continue.
+- Night shift allows you to work until the next morning. The solution is available only at night, adds +5 dissatisfaction once a night; The next night, we need a new solution. There's no fatigue and no productivity penalty the next day.
+- The panel shows the overall dissatisfaction 0–100 and the contribution of each cause. In this version, the causes don't go away automatically; conflicts and other consequences have not yet been added.
+- The name of a profession does not initiate a job search: it is a job assignment or a job assignments. The collection of wood, stone and wild food remains a limited manual task with 0.21.0.
+- For ready-made pubs and religious houses, night work is allowed. Their productive and social functions have not yet been realized; It's not a new source of resources or a decrease in dissatisfaction.
 
-- Запрошення одразу списує 50 вільної їжі зі складів. Одночасно очікується один мешканець; за нестачі їжі або досягнення межі населення 1500 рішення недоступне.
-- Через 2 хвилини на 1× прибуває молодий мешканець. Ще через 3 хвилини він стає дорослим.
-- Молодь їсть і гуляє, відображається меншого розміру та має позначку віку. Звичайні робочі доручення й призначення блокуються до дорослішання.
-- Окрема кнопка дозволяє працю конкретного молодого мешканця: +10 невдоволення один раз за його молодість. Нічний розклад продовжує діяти. Дозвіл не створює автоматичного видобутку.
-- Обидва таймери використовують час симуляції: на паузі стоять, на 2×/4× прискорюються. Період очікування, вік, рішення й причини невдоволення зберігаються та передаються іншим гравцям. Одночасні повторні рішення не списують плату двічі.
+## 0.21.2 New residents and youth
 
-Величини +5 і +10 — початковий баланс цієї реалізації. Зміни харчування й зимової роботи ферм з 0.21.3 не входять до цього пакета.
+- The invitation immediately lists 50 free food from the warehouse. One resident is expected at a time; for food shortages or reaching the population threshold 1500 solution is not available.
+- In 2 minutes on 1× a young resident arrives. In 3 minutes, he becomes an adult.
+- The young eat and play, are smaller in size and have an age mark. The usual work assignments and assignments are blocked until adulthood.
+- A specific button allows the work of a particular young resident: +10 dissatisfaction once in his youth. The night shift continues to operate. Permission does not create automatic mining.
+- Both timers use simulation time: they stand at a pause, accelerate at 2×/4×. The waiting period, age, decision and reasons for dissatisfaction are stored and passed on to other players. The same re-decisions do not charge twice.
 
-Формат збережень 8, rules 14, мережевий протокол 15. Збереження 0.21.0 сумісні; для спільної гри клієнт і сервер мають бути оновлені.
+The quantities +5 and +10 — are the initial balance of this realization. Changes in food and winter farm work from 0.21.3 are not included in this package.
+
+The format of the stored data is 8, rules 14, network protocol 15. Reserves 0.21.0 are compatible; For a joint game, the client and server must be updated.

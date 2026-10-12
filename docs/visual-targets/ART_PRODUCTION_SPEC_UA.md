@@ -1,120 +1,122 @@
-# Ribterra — виробництво графіки для renderer V2
+# Ribterra — graphics production for Renderer V2
 
-**Dynamic lighting відкладено:** паспорти normal/depth нижче потрібні для майбутнього lit mode; поточна заготовка їх не завантажує. До продовження DL-01–08 не починати масовий lit export. [План](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md).
-Дата: 27.09.2026. Статус: **специфікація майбутнього виробництва; комплект ще не створений**.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Порядок робіт визначає [план V2](GRAPHICS_ENGINE_PLAN_V2_UA.md), GPU/координати — [Render Core](RENDER_CORE_SPEC_UA.md), поведінку ефектів — [World FX](WORLD_FX_SPEC_UA.md). Цей документ визначає, які вихідні матеріали потрібні цим алгоритмам. Згенерована картинка не містить готових масок, геометрії, прив'язок, анімацій або runtime-даних.
+**Dynamic lighting is deferred:** the normal/depth profiles below are required for the future lit mode; the current scaffold does not load them. Do not start mass lit export until DL-01–08 resumes. [Plan](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md).
+Date: 27.09.2026. Status: **future production specification; the kit has not been created yet**.
 
-## 1. Метод виробництва і межі
-Основний спосіб — один набір master-моделей будівель і персонажів, ортографічний offline render у спрайти, контрольована художня обробка та повторюваний export. 3D використовується у виробництві ассетів; гра залишається 2.5D. Ручне малювання дозволене, якщо проходить той самий паспорт і контроль геометрії. Imagegen придатний для пошуку форми/палiтри, але не як автоматичне джерело сумісних animation frames чи material maps.
+The [V2 plan](GRAPHICS_ENGINE_PLAN_V2_UA.md) defines the work order, [Render Core](RENDER_CORE_SPEC_UA.md) defines the GPU and coordinate contracts, and [World FX](WORLD_FX_SPEC_UA.md) defines effect behavior. This document specifies the source materials those algorithms require. A generated image does not contain production-ready masks, geometry, attachment points, animation, or runtime data.
 
-Початковий kit: будинок, склад, майстерня, дерево, камінь, один мешканець із вантажем, земля/берег/вода, міст. Робити лише те, що потрібне для dev.03–09. Повний каталог починається після спільного native proof, інакше помилка камери або освітлення помножиться на весь комплект.
+## 1. Production method and scope
+The main method uses one set of master models for buildings and characters, orthographic offline rendering to sprites, controlled art processing, and repeatable export. 3D is used to produce assets; the game remains 2.5D. Manual drawing is allowed when it passes the same asset-profile and geometry checks. Image generation is suitable for exploring shape and palette, but not as an automatic source of compatible animation frames or material maps.
 
-Художня мета: темне дерево, холодний камінь, сині тканини, теплі локальні вогні; великі читабельні силуети й деталі другого плану. Контраст деталей зменшується з відстанню. Малий розмір мешканця не виправляти надмірною різкістю всього екрану. Густина поселення виникає з композиції та справжніх робочих зон, а не випадкового декору в кожній клітині.
+Initial kit: house, warehouse, workshop, tree, stone, one resident with cargo, ground/shore/water, and bridge. Produce only what dev.03–09 requires. Start the full catalog only after the shared native proof; otherwise, a camera or lighting error will be multiplied across the entire kit.
 
-## 2. Камера, розмір і паспорт ассета
-Вихідна проєкція renderer — ромб 58×29 до zoom; справжні footprints беруться з [building_catalog.hpp](../../include/ribterra/building_catalog.hpp), проєкція й відбір спрайта — з [view.cpp](../../src/client/view.cpp). Жоден export не змінює simulation footprint.
+Art direction: dark wood, cold stone, blue cloth, and warm local lights; large readable silhouettes and secondary details. Detail contrast decreases with distance. Do not compensate for a resident's small size by oversharpening the entire screen. Settlement density comes from composition and real work areas, not random decoration in every cell.
 
-Початкова offline камера: orthographic, azimuth 45°, elevation близько 30° для ромба 2:1. Це старт калібрування, **не доказ відповідності**. Напрям осей, handedness, вертикальна одиниця та масштаб звіряються через render calibration grid. Використати куб із підписаними +X/+Y/+Z, плаский footprint і чотири точки контакту. Порівняти native fixture на трьох zoom до експорту першої будівлі; прийняті camera matrix/export settings зберегти у source control.
+## 2. Camera, size, and asset profile
+The renderer's output projection uses a 58×29 diamond before zoom. Actual footprints come from [building_catalog.hpp](../../include/ribterra/building_catalog.hpp), while sprite projection and selection come from [view.cpp](../../src/client/view.cpp). No export changes the simulation footprint.
 
-`VisualAssetProfile` schema 2 — запропонований новий контракт, не наявне поле JSON:
+Initial offline camera: orthographic, azimuth 45°, elevation about 30° for a 2:1 diamond. This starts calibration; it is **not proof of conformity**. Verify axis direction, handedness, vertical unit, and scale against the render calibration grid. Use a cube labelled +X/+Y/+Z, a flat footprint, and four contact points. Compare the native fixture at all three zoom levels before exporting the first building; store the accepted camera matrix and export settings in source control.
 
-| Поле | Семантика і перевірка |
+`VisualAssetProfile` schema 2 is a proposed new contract, not an existing JSON field:
+
+| Field | Data and validation |
 |---|---|
-| `asset_id`, `revision`, `source_hash` | Стабільний semantic ID, версія експорту, зв'язок із редагованим master |
-| `albedo`, `emissive`, `caster_mask`, `material_mask` | Посилання на окремі atlas regions; відсутній обов'язковий канал — помилка kit validation |
-| `normal` | Обов’язкові normal/material + camera-depth для майбутніх Dynamic2_5D фасадів і мешканців; для Legacy/BakedCompat не потрібні |
-| `pivot_px`, `ground_anchor`, `bounds` | Один ground anchor для всіх сезонів/фаз/вантажів; bounds охоплює alpha silhouette |
-| `footprint_id` | Посилання на чинну footprint definition, без незалежної копії правил у PNG |
-| `base_height`, `caster_height` | У render tile-equivalent units за Core; legacy elevation переводиться в одному adapter |
-| `occluders` | Авторські footprint polygons як source; exporter перевіряє й апроксимує обмеженими OBB/capsule-призмами |
+| `asset_id`, `revision`, `source_hash` | Stable semantic ID, export version, link to the edited master |
+| `albedo`, `emissive`, `caster_mask`, `material_mask` | References to separate atlas regions; a missing required channel fails kit validation |
+| `normal` | Required normal/material and camera-depth data for future Dynamic2_5D facades and residents; not required for Legacy/BakedCompat |
+| `pivot_px`, `ground_anchor`, `bounds` | One ground anchor for all seasons/phases/cargo states; bounds cover the alpha silhouette |
+| `footprint_id` | Reference to the current footprint definition, without a separate copy of the rules in the PNG |
+| `base_height`, `caster_height` | Render tile-equivalent units defined by Core; one adapter converts legacy elevation |
+| `occluders` | Authored footprint polygons as source data; the exporter validates and approximates them with bounded OBB/capsule prisms |
 | `window_lights` | ID, anchor XYZ, outward direction/cone, range, linear color/intensity, owner, allowed receiver kinds |
-| `reflection_class` | None/Building/Vegetation/Unit, anchor, opacity і eligibility; не автоматично всі об'єкти |
-| `surface_class` | Land/Water/Bridge/None; deck mask відрізняється від декоративного даху |
-| `snow_mask`, `wet_response` | Де може з'явитися сніг/волога; не вікна, не довільний прямокутник альфа |
-| `state`, `season`, `facing`, `frame`, `cargo` | Ключі тільки підтриманих ігрових/animation станів |
+| `reflection_class` | None/Building/Vegetation/Unit, anchor, opacity, and eligibility; objects do not qualify automatically |
+| `surface_class` | Land/Water/Bridge/None; the deck mask is distinct from a decorative roof |
+| `snow_mask`, `wet_response` | Where snow/wetness may appear; not windows or an arbitrary alpha rectangle |
+| `state`, `season`, `facing`, `frame`, `cargo` | Keys only for supported game/animation modes |
 
-Вікно повинно мати emission mask, зовнішній anchor і конус на правильному боці будівлі. Пляма світла не малюється в albedo землі. Початковий kit: два контрольні вікна на будинок, до чотирьох emitters на складну споруду; більше — окремий measured budget. Не ставити light origin усередині owner occluder: тоді будинок затінить власне джерело.
+A window must have an emission mask, an external anchor, and a cone on the correct side of the building. Do not paint the light patch into the ground albedo. Initial kit: two reference windows per house and up to four emitters per complex structure; anything more requires a separate measured budget. Do not place a light origin inside its owner's occluder, or the building will occlude its own source.
 
-## 3. Які карти експортувати
-| Канал | Дані | Чого не запікати |
+## 3. Maps to export
+| Channel | Data | What not to bake |
 |---|---|---|
-| Albedo RGBA, sRGB | Колір матеріалу, alpha silhouette; м'який authored AO для читабельності | Ground shadow, світлову пляму вікна на землі, нічне затемнення всього PNG |
-| Emissive, linear mask | Вікна/горни/вогні; intensity і color задає profile | Квадратний glow навколо будівлі, усю світлу штукатурку |
-| Ground normal, linear | Узгоджений tangent/world basis для ґрунту й води | sRGB gamma, normal від іншої камери |
-| Material mask, linear | Roughness/wet response/snow eligibility/coverage за family layout | Чотири різні семантики одного каналу без material family |
-| Caster alpha | Силует для напрямленої тіні, окремо від selection | Блакитний selection disc або стару baked ellipse |
-| Snow top mask | Дахи, горизонтальні поверхні, придатна земля | Біле вікно, сніг на річці без механіки льоду |
-| Water flow + shore mask | Напрям течії/модуль, плавний береговий перехід | Відбиття нерухомої будівлі, намальоване у tile texture |
-| Footprint alpha/normal | L/R відбиток, край втиснутого снігу | Великий темний овал під кожним кроком |
+| Albedo RGBA, sRGB | Material color, alpha silhouette; soft authored AO for readability | Ground shadow, window-light patch on the ground, or night darkening across the entire PNG |
+| Emissive, linear mask | Windows/forges/lights; intensity and color come from the profile | Square glow around the building or all light-colored plaster |
+| Ground normal, linear | Consistent tangent/world basis for ground and water | sRGB gamma or a normal from a different camera |
+| Material mask, linear | Roughness/wet response/snow eligibility/coverage for family layout | Four different semantics of a single channel without material family |
+| Caster alpha | Silhouette for directed shadow, separate from selection | Blue selection disc or old baked ellipse |
+| Snow top mask | Roofs, horizontal surfaces, suitable ground | A white window or snow on the river without ice mechanics |
+| Water flow + shore mask | Flow direction/magnitude, smooth shore transition | A stationary-building reflection painted into the tile texture |
+| Footprint alpha/normal | L/R imprint and the edge of compressed snow | A large dark oval beneath every step |
 
-Канали мають documented packing у material family. Колір і data maps не використовують один atlas із неоднозначним color space. Linear masks не отримують автоматичного sRGB decode. Premultiplied export не premultiply вдруге; boundary conversion визначає Core. У Dynamic2_5D albedo допускається тільки neutral material variation/soft AO, без запеченого directional/local light. Normal/depth reconstruction задає Dynamic Lighting spec. У майбутньому Dynamic sun elevation/інтенсивність змінюються в погоджених межах; для базових V01–V05 нового sun-light renderer немає.
+Channels use documented packing within each material family. Color maps and data maps do not share an atlas under ambiguous color spaces. Linear masks do not receive automatic sRGB decoding. Do not premultiply an already premultiplied export; Core defines the boundary conversion. Dynamic2_5D albedo may contain only neutral material variation and soft AO, with no baked directional or local light. The Dynamic Lighting specification defines normal/depth reconstruction. Future Dynamic sun elevation and intensity may change within agreed limits; the base V01–V05 stages do not add a new sunlight renderer.
 
-Roughness не означає повний PBR renderer: застосовується лише формула ground/water specular із Core. Фасад отримує dynamic diffuse за P/N, але не повний physical reflection. Для depth потрібна R16_UNORM data texture з range metadata; loader має перевіряти формат і byte count окремо.
+Roughness does not imply a full PBR renderer: only the Core ground/water specular formula is used. A facade receives dynamic diffuse from P/N, but not full physical reflection. Depth requires an R16_UNORM data texture with range metadata; the loader must validate format and byte count separately.
 
-## 4. Роздільність і atlas budget
-Розмір вихідного master не дорівнює видимому розміру в грі. Для кожної family у dev.03 записати projected bounds на zoom 0.62/1.30/3.0. Стартові export buckets: споруди 256 або 512 px по більшій стороні, мешканці 96–128 px на кадр, terrain/FX 128–512 px залежно від повторення. Ці числа — гіпотеза до native capture; не збільшувати все до 2048 px «для якості».
+## 4. Resolution and atlas budget
+The source master's size is not its visible in-game size. For each family in dev.03, record projected bounds at zoom 0.62/1.30/3.0. Initial export buckets: buildings at 256 or 512 px on the longer side, residents at 96–128 px per frame, and terrain/FX at 128–512 px depending on repetition. These numbers remain hypotheses until native capture; do not increase everything to 2048 px “for quality.”
 
-Чинний [loader](../../src/client/game_art.cpp:70) обмежує atlas page 4096×4096; це верхня межа, не рекомендація завжди її заповнювати. Планувати сторінки 2048×2048, окремі pages для різних sampler/color-space families. Упакування: мінімум 4 px extruded gutter на базовому рівні; mip generator зберігає alpha coverage, не підмішує сусідній region. Якщо mip рівень не може зберегти isolation, задавати max LOD або більше padding; перевіряти native віддалення, а не лише atlas preview.
+The [loader](../../src/client/game_art.cpp:70) limits each atlas page to 4096×4096; this is an upper bound, not a recommendation to fill every page. Plan for 2048×2048 pages, with separate pages for different sampler/color-space families. Packaging requires at least a 4 px extruded gutter at the base level; the mip generator must preserve alpha coverage without sampling a neighboring region. If a mip level cannot preserve isolation, set a maximum LOD or add more padding. Verify native separation, not only the atlas preview.
 
-Приклад вартості без стиснення: 2 типи мешканців × 8 напрямків × 4 walking frames × 4 види вантажу = 256 кадрів. 128²×256×4 bytes = 16 MiB на RGBA8 map без mips; повний mip chain ≈21.33 MiB. Три незалежні такі карти ≈64 MiB. Це арифметичний приклад, не обов'язок створити всі 256 кадрів: сумісні маски й cargo overlays потрібно повторно використовувати.
+Uncompressed-cost example: 2 resident types × 8 directions × 4 walking frames × 4 cargo types = 256 frames. 128²×256×4 bytes = 16 MiB for an RGBA8 map without mips; the full mip chain is ≈21.33 MiB. Three independent maps of this size are ≈64 MiB. This is an arithmetic example, not a requirement to create all 256 frames: compatible masks and cargo overlays should be reused.
 
-Початковий **цільовий** resident atlas budget ≤64 MiB, buildings/environment/FX ≤192 MiB, разом ≤256 MiB на Medium. Це лише content textures, окремо від render attachments, UI, upload buffers, старих atlas під час reload. Вести byte ledger: width×height×bytes×mips×pages; вимірювати resident і peak під час load/resize. Якщо бюджет не сходиться, зменшувати дублювання варіантів і кількість декоративних форм; не прибирати emission/caster metadata, потрібні прийнятому ефекту.
+The initial **target** resident atlas budget is ≤64 MiB, buildings/environment/FX ≤192 MiB, and total content textures ≤256 MiB on Medium. This excludes render attachments, UI, upload buffers, and old atlases retained during reload. Maintain a byte ledger: width×height×bytes×mips×pages; measure resident and peak memory during load/resize. If the budget does not fit, reduce duplicated variants and decorative forms; retain the emission/caster metadata required by accepted effects.
 
-## 5. Будівлі й середовище
-Повна матриця береться з доступного каталогу після вилучення Road: **11 типів + Camp**, чинні House II/Workshop II. Зафіксувати актуальний список у dev.01, а не копіювати недоступні споруди з концепту. Стан selected/hover — runtime outline/marker, а не окрема повна PNG-копія. Ghost/invalid preview використовує той самий footprint/anchor і зрозумілий color treatment.
+## 5. Buildings and environment
+The full matrix comes from the available catalog after Road is removed: **11 types + Camp**, including the current House II/Workshop II. Record the current list in dev.01 instead of copying unavailable buildings from the concept. Selected/hover state uses a runtime outline/marker rather than a separate full PNG copy. Ghost/invalid preview uses the same footprint/anchor and a clear color treatment.
 
-Для кожного типу:
-1. Ground anchor, непрозора основа, вхід і робоча зона збігаються з ігровими даними.
-2. Construction stages читаються без inspector; кількість стадій узгоджена з чинним progress, без вигаданих окремих jobs.
-3. Summer/winter варіанти мають ідентичний pivot, footprint і camera; можливий snow mask замість подвійного albedo, якщо native результат проходить.
-4. II рівень відрізняється силуетом і функціональною деталлю, зберігає чинне місце входу.
-5. Горн/дим/вогонь відображає справжній active state, коли це сигнал роботи. Декоративне світло окремо позначене в profile.
-6. Складські купи мають дискретні fill bands зі справжнього stored stock; carried/reserved не додаються двічі.
+For each type:
+1. Ground anchor, opaque base, entrance, and work area match the game data.
+2. Construction stages are readable without the inspector; their count matches current progress, without invented separate jobs.
+3. Summer/winter variants use identical pivot, footprint, and camera; a snow mask may replace a second albedo if the native result passes.
+4. Level II differs in silhouette and functional detail while retaining the current entrance location.
+5. Forge/smoke/fire reflects the real active state when it signals work. Decorative lighting is marked separately in the profile.
+6. Storage piles use discrete fill bands from actual stored stock; carried/reserved quantities are not added twice.
 
-Terrain kit: dry/wet/snow surface families, берег вода→ґрунт→трава, доступний ramp, cliff face, bridge approaches. Маски швів і спільні вершини відповідають topology. Міст перекриває water receiver тільки маскою deck, залишає воду видимою під відкритими частинами. Далекий backdrop не підробляє доступну для гри територію.
+Terrain kit: dry/wet/snow surface families, shore transitions water→ground→grass, accessible ramp, cliff face, and bridge approaches. Seam masks and shared vertices must match the topology. The bridge masks the water receiver only with its deck mask, leaving water visible beneath open sections. A distant backdrop does not make terrain playable.
 
-Рослинність: кілька узгоджених силуетів і масштабів, групи за world seed, контроль повторів, локальний wind pivot. Дерево не хитається разом із коренем. Камінь не розтягується випадковим nonuniform scale, який руйнує його освітлення. Не ставити непрозорий декор поверх реального входу/переходу.
+Vegetation: several coordinated silhouettes and scales, groups driven by the world seed, repetition control, and a local wind pivot. A tree must not sway from its roots. Do not stretch a stone with an accidental nonuniform scale that breaks its lighting. Do not place opaque decoration over a real entrance or passage.
 
-## 6. Мешканці, вантажі та стопи
-Чинні [animation](../../include/ribterra/unit_animation.hpp) і [cargo selection](../../include/ribterra/resident_art.hpp) — вихідна семантика. Спершу один персонаж, 8 facing, 4 walking frames, idle, empty/logs/sack/чинний cart. Нові коні й фізичні вози не входять.
+## 6. Residents, cargo, and footprints
+The current [animation](../../include/ribterra/unit_animation.hpp) and [cargo selection](../../include/ribterra/resident_art.hpp) define the source semantics. Start with one character, 8 facings, 4 walking frames, idle, and empty/logs/sack/current-cart cargo states. New horses and physical carts are out of scope.
 
-Усі кадри мають один ground anchor між стопами; pelvis/head не змінюють масштаб між facing. Метадані `left_foot_local/right_foot_local` і `contact_phase` потрібні presentation emitter, але authoritative movement не залежить від animation. Step events обмежуються накопиченою відстанню руху: idle/teleport не залишають сліди. Якщо 4 walking frames дають помітне ковзання у native proof, спершу виправити timing/poses; збільшення до 6–8 кадрів — measured art-budget change, не прихована обіцянка.
+All frames share one ground anchor between the feet; pelvis/head scale does not change between facings. The `left_foot_local/right_foot_local` and `contact_phase` metadata are required by the presentation emitter, but authoritative movement does not depend on animation. Step events are bounded by accumulated movement distance: idle/teleport leaves no tracks. If 4 walking frames produce visible sliding in native proof, first correct timing/poses; increasing to 6–8 frames is a measured art-budget change, not a hidden promise.
 
-Cargo overlay має attachment point і caster silhouette; колоди не проходять крізь голову, не плавають при зміні facing, не залишаються після реальної доставки. Тінь персонажа створюється для art-ready гілки теж. Інакше гарний мешканець знову висітиме над землею.
+The cargo overlay has an attachment point and caster silhouette; logs must not pass through the head, float when facing changes, or remain after actual delivery. Produce the character shadow for the art-ready branch as well. Otherwise, even a good-looking resident will appear to hang above the ground.
 
-Footprint stamps — окремий малий atlas, дві ноги, depth/normal look, alpha fade. Відбитки не є частиною walking PNG; їхня позиція залишається у світі після виходу персонажа. Дані й час життя — [World FX](WORLD_FX_SPEC_UA.md).
+Footprint stamps use a separate small atlas, two feet, a depth/normal appearance, and alpha fade. Prints are not part of the walking PNG; their positions remain in the world after the character leaves. [World FX](WORLD_FX_SPEC_UA.md) defines their data and lifetime.
 
-## 7. HUD із концепту
-Рамки, іконки й декоративні кути відокремлені від тексту. Текст залишається справжнім RmlUi/localization text: не запікати українські написи й числа в PNG. Nine-slice frame має padding/мінімальну висоту й читається при 720p/1080p/1440p, 100/125/150% UI scale. Невеликі іконки перевіряти у фактичному розмірі, а не лише у збільшеному export.
+## 7. HUD from the concept
+Frames, icons, and decorative corners remain separate from text. Text remains real RmlUi/localization text: do not bake Ukrainian labels or numbers into PNG files. The nine-slice frame defines padding/minimum height and remains readable at 720p/1080p/1440p and 100/125/150% UI scale. Check small icons at their actual displayed size, not only in an enlarged export.
 
-Основні зони з улюбленого концепту зберігаються: ресурси ліворуч угорі; прогноз і температура згори; контекстна небезпека праворуч; компактний inspector зліва внизу; чотири основні дії по центру; мінімапа справа. Weather/fuel/insulation макета не означає наявних даних. Погода з'являється після dev.14; паливо/утеплення не входять у цю версію.
+Preserve the main zones from the preferred concept: resources at the upper left; forecast and temperature at the top; contextual hazard at the right; compact inspector at the lower left; four primary actions at the center; minimap at the right. Weather/fuel/insulation shown in a mockup does not imply available data. Weather appears after dev.14; fuel and insulation are not part of this version.
 
-Справжня ієрархія й адаптація задані в [контракті UI](AGENT_VISUAL_CONTRACT_UA.md). Красиві орнаменти не повинні займати місце причини блокування та наступної дії гравця. Базовий HUD виконується на V01 у чинному renderer. Повний Dynamic proof не є його передумовою; lit assets приймаються пізніше в DL-гілці.
+The [UI contract](AGENT_VISUAL_CONTRACT_UA.md) defines the real hierarchy and adaptation. Decorative ornaments must not displace the reason an action is blocked or the player's next action. The base HUD is implemented in V01 on the current renderer. Full Dynamic proof is not a prerequisite; lit assets are accepted later in the DL branch.
 
-## 8. Інтеграція і перевірка експорту
-Розширити [register_reference_art.py](../../tools/register_reference_art.py), [register_resident_art.py](../../tools/register_resident_art.py), [atlas_tool.cpp](../../tools/atlas_tool.cpp) та schema loader. Окремий validator перевіряє passport, channel presence, dimensions, premultiply/color space, gutters, bounds, pivots, positive ranges, finite floats, winding/degenerate occluders, допустиму кількість emitters. HLSL-контракти перевіряє Core; PNG validator не може їх замінити.
+## 8. Export integration and validation
+Extend [register_reference_art.py](../../tools/register_reference_art.py), [register_resident_art.py](../../tools/register_resident_art.py), [atlas_tool.cpp](../../tools/atlas_tool.cpp), and the schema loader. A separate validator checks the profile, channel presence, dimensions, premultiplication/color space, gutters, bounds, pivots, positive ranges, finite floats, winding/degenerate occluders, and permitted emitter count. Core validates HLSL contracts; a PNG validator cannot replace those checks.
 
-Експорт має бути повторюваним: master revision → camera/settings hash → channels → atlas → manifest → package. Manifest включає source/license provenance для зовнішніх ассетів. Generated assets позначають походження. Не замінювати source master одним фінальним PNG без параметрів відтворення.
+Export must be repeatable: master revision → camera/settings hash → channels → atlas → manifest → package. The manifest includes source/license provenance for external assets. Generated assets record their origin. Do not replace the source master with a final PNG that lacks reproduction parameters.
 
-Негативні тести: missing mask, invalid atlas region, bad pivot, NaN light, negative height, unsupported schema, allocation failure. Loader відхиляє кандидат цілком і зберігає останній валідний комплект. Не перетворювати missing emission mask на «успішне» вимкнення світла. У production package має бути asset manifest, який перевірявся в acceptance.
+Negative tests: missing mask, invalid atlas region, bad pivot, NaN light, negative height, unsupported schema, allocation failure. The loader rejects the entire candidate and retains the last valid set. Do not treat a missing emission mask as a successful “light off” state. The production package must contain the asset manifest checked during acceptance.
 
-## 9. Приймання і трудомісткість
-| Gate | Потрібний результат |
+## 9. Acceptance and effort
+| Gate | Required result |
 |---|---|
-| ART-A / dev.03 | Calibration cube/grid; малий kit з усіма потрібними masks/anchors; валідний schema 2 export |
-| ART-B / dev.05–08 | Ефекти використовують конкретні metadata; on/off/occlusion/water/footstep native video; немає подвійного baked light |
-| ART-C / dev.09 | Kit прийнятий у спільній сцені: день/ніч/дощ/сніг, zoom 0.62/1.30/3.0, camera pan, slope/bridge/FoW; target budgets measured |
-| ART-D / dev.15–17 | Увесь доступний каталог, terrain і directional residents відповідають прийнятому kit; runtime contact sheets усіх доступних станів |
-| ART-E / dev.21–23 | Native package, alpha/mips/VRAM/resize/quality checks; немає missing regions або debug fallback |
+| ART-A / dev.03 | Calibration cube/grid; a small kit with all the necessary masks/anchors; valid schema 2 export |
+| ART-B / dev.05–08 | Effects use the specific metadata; native on/off/occlusion/water/footstep video; no double baked lighting |
+| ART-C / dev.09 | Kit accepted in the shared scene: day/night/rain/snow, zoom 0.62/1.30/3.0, camera pan, slope/bridge/FoW; target budgets measured |
+| ART-D / dev.15–17 | The full available catalog, terrain, and directional residents match the accepted kit; runtime contact sheets cover all available states |
+| ART-E / dev.21–23 | Native package, alpha/mips/VRAM/resize/quality checks; no missing regions or debug fallback |
 
-На dev.03 записати фактичний час на одну прийняту споруду, сезонний стан, персонажа, export і виправлення. Після dev.09 оцінити решту каталогу: кількість непокритих state families × виміряна трудомісткість + інтеграція + перевірка. Календарний строк до цього був би вигадкою. Один агент не може достовірно назвати kit прийнятим тільки тому, що сам згенерував його.
+At dev.03, record the actual time required for one accepted building, seasonal state, character, export, and correction. After dev.09, estimate the rest of the catalog as uncovered state families × measured effort + integration + validation. Any earlier calendar estimate would be fiction. An agent cannot credibly call a kit accepted merely because that agent generated it.
 
-Необхідні докази: source/extracted atlas contact sheet, byte ledger, validator log, native scene captures/video, список відхилень. Художній reviewer перевіряє однаковість масштабу/матеріалів, інженер — контракт/перекриття/пам'ять. Це ролі відповідальності, не твердження, що така команда вже найнята.
+Required evidence: source/extracted atlas contact sheet, byte ledger, validator log, native scene captures/video, and a deviation list. The art reviewer checks consistency of scale/materials; the engineer checks contracts/occlusion/memory. These are responsibility roles, not a claim that such a team has already been hired.
 
-## 10. Первинні джерела методу
-Ортографічна камера й окремі render passes дають відтворювані вихідні канали, але їх ще потрібно інтегрувати у власний renderer:
+## 10. Primary sources for the method
+An orthographic camera and separate render passes provide reproducible output channels, but those channels still require integration into Ribterra's renderer:
 - [Blender: camera projection](https://docs.blender.org/manual/en/4.1/render/cameras.html)
 - [Blender: EEVEE render passes](https://developer.blender.org/docs/features/eevee/render_passes/)
 
-Ці джерела обґрунтовують offline workflow; вони не доводять, що Ribterra вже підтримує ці ефекти.
+These sources justify the offline workflow; they do not prove that Ribterra already supports these effects.

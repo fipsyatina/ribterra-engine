@@ -1,30 +1,32 @@
-# Сертифікація першої снігової бурі й запасу їжі — 08.10.2026
+# Certification of the first snowstorm and food supply  08.10.2026
 
-Seed12 пройшов exhaustive domain scan і фактичний World trace у двох запусках із незалежним actual review CLEAR. Усі6913 ticks першої бурі — Snow, температура−13.3…−1.7°C. Це сертифікація погодної моделі та фізичного ration horizon; main ще не обирає цей seed, а графіка, FX, референси та повний рушій залишаються відкритими.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Використано авторитетне дерево `C:\Users\fipst\Desktop\ribterra`, `AInora/first-playable`, HEAD `bdc53e82c3d65eee4a5d8b13497aea67dff4a33b`, weather algorithm1/profile1/scenarioFirstWinterStorm1, save9/protocol23/rules19/generator8. Після подальших bound header змін exact cohort історична; production погоди в цій хвилі не змінено.
+Seed12 has undergone an exhaustive domain scan and an actual World trace in two launches with independent actual review CLEAR. All 6913 ticks of the first storm — Snow, temperature −13.3...−1.7°C. It's a certification of the weather model and the physical ration horizon; main hasn't selected this seed yet, and the graph, FX, the references and the full motion remain open.
 
-## Виконання
+The authority tree used is `C:\Users\fipst\Desktop\ribterra`, `AInora/first-playable`, HEAD `bdc53e82c3d65eee4a5d8b13497aea67dff4a33b`, weather algorithm1/profile1/scenarioFirstWinterStorm1, save9/protocol23/rules19/generator8. After further bound header changes the exact cohort is historical; Production weather in this wave has not changed.
+
+## The Execution
 
 - Build `build/weather-winter-2026-10-08-attempt01`:actual exit0,15 translation units/20 zero commands/420 source rows, C++20 `/O2 /MT /W4 /WX`.
 - `WeatherWinterProbe.exe`:7 966 208 bytes, SHA256 `A8F4D767F2A9204BC9A470C20D46CB50981B29AAB701CD6ED848D4F2FD21984C`.
-- Native `build/weather-winter-native-2026-10-08-attempt01` та `...attempt02`:actual exit0. Кожен має три boundary saves, report і два runner evidence files. Stable JSON fields повторюються точно; лише три save UUID payloads і чотири measured diagnostics можуть відрізнятися.
-- Parent read-only verifier actual exit0:420 sources/1020 bound paths/20 zero commands. Independent reviewer rehashed1020 unique files без розбіжностей і також фактично виконав verifier з exit0. Формальної автоматичної certification не оголошено.
+- Native `build/weather-winter-native-2026-10-08-attempt01` and `...attempt02`:actual exit0. Each has three boundary saves, a report and two runner evidence files. Stable JSON fields are repeated exactly; Only three save UUID payloads and four measured diagnostics can differ.
+- Parent read-only verifier actual exit0:420 sources/1020 bound paths/20 zero commands. Independent reviewer rehashed1020 unique files without any discrepancies and also actually performed verifier with exit0. No formal automatic certification has been announced.
 
 ```powershell
 C:\Python314\python.exe -B tests/weather_winter_evidence_tests.py build/weather-winter-2026-10-08-attempt01 build/weather-winter-native-2026-10-08-attempt01 build/weather-winter-native-2026-10-08-attempt02
 ```
 
-## Seed і справжня симуляція
+## Seed and real simulation
 
-Діагностичний ascending search0…4095 відхилив seeds0…11 і прийняв12 на13-й спробі. Це search cap, не нове правило балансу. Storm simulation interval `[14035,20948)`, calendar `[878035,884948)`, duration6913; start входить у9600…14400, duration у4800…7200. Усі ticks мають один canonical Storm period і Snow; Rain0. Domain та actual World storm digests збігаються:1222428438975540385. Exact start−1/start/end−1/end samples перевірено.
+Diagnostic ascending search0...4095 rejected seeds0... 11 and accepted 12 for 13 attempts. This is a search cap, not a new rule of thumb. Storm simulation interval `[14035,20948)`, calendar `[878035,884948)`, duration6913; start is in 9600...14400, duration is in 4800... 7200. All ticks have one canonical Storm period and Snow; Rain0. Domain and actual World storm digests are the same:1222428438975540385. Exact start−1/start/end−1/end samples have been verified.
 
-Негативний70421 залишається відхиленим: починається при+4.5°C Rain, загалом420Rain і5873Snow ticks. Сніг у кінці не підміняє all-Snow вимогу.
+Negative 70421 remains negative: it starts at +4.5°C Rain, with a total of 420Rain and 5873Snow ticks. The snow at the end does not replace the all-snow demand.
 
-Основний World створено в simulation tick0/calendar864000/day31/06:00 без програвання попередніх діб, snow650 і signed remainders0.10 мешканців мають1200 фізичного Food, Campcapacity10000; Standard лишаєтьсяFood100. Є лише один public stop для десяти actors, без import/time/inventory/actor mutation у main trace.
+The main World was created at simulation tick0/calendar864000/day31/06:00 without replaying previous days, with snow650 and signed remainder0.10 residents have1200 physical Food, Campcapacity10000; Standard remains Food100. There is only one public stop for ten actors, with no import/time/inventory/actor mutation in the main trace.
 
-Виконано24000 actual World ticks, кожен current/forecast/cover порівняно з незалежно просунутим domain runtime. Рівно120 нормальних ration checks через200 ticks реально споживають по10Food:1200→0, без іншого food output/reserved/carried. Усі10 actors залишаються здоровими з hunger0 і вимкненою автоматизацією. Final snowcover734, signed snow remainder24493. Це20 **simulation** minutes at1×;20 wall-clock minutes of play не перевірялися.
+Exactly24000 actual World ticks were run, with every current/forecast/cover compared against an independently advanced domain runtime. Exactly120 normal ration checks every200 ticks actually consume10Food each:1200→0, with no other food output/reserved/carried. All10 actors remain healthy with hunger0 and automation disabled. Final snowcover734, signed snow remainder24493. This is20 **simulation** minutes at1×;20 wall-clock minutes of play were not verified.
 
-На реально досягнутих simulation ticks14034/14035/20947 записано `winter-before.save`, `winter-start.save`, `winter-end.save`. Кожен load зберігає private ClimateRuntime/current/full WeatherView/checksum. Окремі direct/loaded pairs просуваються200 ticks із рівними checksum/current/forecast і final private climate; main trace тим часом стоїть. Перший наступний tick точно входить у бурю або виходить із end-exclusive boundary. Додаткові1200 pair-world ticks відокремлено від main24000.
+The actual simulation ticks14034/14035/20947 is written as `winter-before.save`, `winter-start.save`, `winter-end.save`. Each load is kept private ClimateRuntime/current/full WeatherView/checksum. Separate pairs direct/loaded move 200 ticks with equal checksum/current/forecast and final private climate; The main trace is still standing. The first tick next definitely enters the storm or exits the end-exclusive boundary. An additional 1200 pair-world ticks are separated from the main24000.
 
-Total4.526/4.163s і world-trace4.319/3.973s — diagnostic timings, не доказ≤1% overhead або FPS. Нових видалень не було. Ще потрібні shipping startup, renderer/HUD, precipitation/wind/матеріали/snow/footprints, reference/video/input, широкий suite, two-PC/WAN, full simulation/GPU performance та E01–E17/P01 acceptance.
+Total4.526/4.163s and world-trace4.319/3.973s — diagnostic timings, not proof≤1% overhead or FPS. There were no new deletions. We still need shipping startup, renderer/HUD, precipitation/wind/ materials/snow/footprints, reference/video/input, broad suite, two-PC/WAN, full simulation/GPU performance and E01–E17/P01 acceptance.

@@ -1,40 +1,42 @@
-# 0.25.10 — Коротка перевірка на двох Windows-ПК
+# 0.25.10 — Short check on two Windows PCs
 
-**Статус: НЕ ВИКОНАНО.** За відповіддю користувача другий фізичний ПК недоступний. Два клієнти на одному ПК не зараховуються. Цей документ — сценарій майбутньої перевірки, а не її результат.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-На обох ПК розпакуйте той самий `Ribterra-Windows-x64-0.25.10.zip`. Запустіть `Play Ribterra.cmd`, звірте 0.25.10 у заголовку. Для першої перевірки використайте одну локальну мережу або наявну спільну VPN. Господар копіює адресу потрібного адаптера з лобі; `127.0.0.1` непридатна для другого ПК. Не змінюйте правила маршрутизатора для локального сценарію.
+**Status: NOT VICKED.** The user replied that the second physical PC is unavailable. Two customers on the same PC don't count. This document is a scenario for future verification, not its outcome.
 
-## Спільна команда №1
+On both PCs, unpack the same `Ribterra-Windows-x64-0.25.10.zip`. Run `Play Ribterra.cmd`, and then fold 0.25.10 into the title. For the first test, use one local area network or an existing shared VPN. The master copies the address of the adapter from the front; `127.0.0.1` not suitable for a second PC. Don't change the rules of the router for the local scenario.
 
-1. На ПК A створіть нову онлайн-кімнату. На ПК B приєднайтеся за адресою A. Обидва бачать команду №1 та пояснення спільного поселення.
-2. Обидва натисніть «Готовий», господар — «Почати». Звірте табір, мешканців і початкові запаси: це одні об’єкти.
-3. На A поставте Лісопилку біля табору. На B простежте ту саму доставку сировини та завершення будівництва. Звірте витрати запасів.
-4. На A замовте дві партії дощок через інспектор. На обох ПК звірте працівника, рецепт, кількість партій, готову партію в дорозі та початок фізичної доставки. Готовий товар у руках ще не є складським запасом.
-5. На B спробуйте зупинити це замовлення, поки працівником керує A. Має бути відмова з ім’ям гравця A; сам наказ продовжується. На A через «Накази та керування» передайте мешканця гравцю B. Після завершення двох партій звірте **12 дощок у сховищі** на обох ПК. Потім B має почати одну нову партію цією людиною: після її доставки обидва бачать **18 дощок**.
-6. Господар зберігає світ. Обидва виходять; A продовжує збережену онлайн-гру, B повертається зі своєю сесією. Команда, споруди та результати залишаються тими самими.
+## Joint team No1
 
-## Спільна команда №2
+1. On PC A, create a new online room. Please join PC B at A. Both see the command No1 and an explanation of the common settlement.
+2. Both press Ready, Master Start. The camp, the residents, and the initial supplies: they're the same facilities.
+3. On A, put the log by the camp. On B, track the same delivery of raw materials and completion of construction. Keep the stock expenses down.
+4. On A, order two batches of boards through the inspector. On both PCs, verify the worker, recipe, batch count, completed batch in transit, and start of physical delivery. A finished product being carried does not yet count as stockpile inventory.
+5. Try to cancel this order on B while A controls the worker. The request must be rejected with player A's name, while the order continues. On A, transfer the resident to player B through control management. After the two batches finish, verify **12 boards in storage** on both PCs. B then starts one new batch with that resident; after delivery, both clients see **18 boards**.
+6. The master keeps the world. Both of them are coming out. A continues the saved online game, B returns with his session. The team, the structure and the results remain the same.
 
-Створіть нову кімнату. Господар змінює команду на №2 перед входом гостя. Гість автоматично отримує №2. Повторіть коротко кроки 2–5: власна Лісопилка доступна обом, виробництво та доставка працюють, контролер і підсумок збігаються.
+## Joint team No2
 
-## Незалежні поселення
+Create a new room. The master changes command to No2 before the guest enters. The guest automatically receives the No2. Repeat the short steps 2–5: your own Forestry is available to both, production and delivery are running, controller and summary are matching.
 
-В іншій новій кімнаті залиште A у №1, а B явно виберіть №2. Лобі має попередити про різні поселення. Після старту B будує й використовує власну Лісопилку. Дошки та витрати B не змінюють запасів A. Чужі споруди не мають з’являтися у власному виробничому списку. Серверну відмову для підставленого ID чужої споруди окремо перевіряє локальний автоматичний тест.
+## Independent settlements
 
-## Запис результату
+In the other new room, A will be left in No1, and B will obviously choose No2. The lobby should warn of the settlement. After launching, B builds and operates his own Forest Lawn. The B boards and expenses do not change the A stock. Other structures should not appear on their own production list. The server failure for the ID foreign construct is individually verified by a local automated test.
 
-Заповніть після фактичного виконання:
+## Record of the result
 
-| Поле | Результат |
+Fill in after actual execution:
+
+| Field | The result |
 |---|---|
-| Дата, імена/моделі двох різних фізичних ПК | Не виконано |
-| Версія й SHA256 пакета на A / B | Не звірено |
-| Тип з’єднання: LAN або VPN | Не перевірено |
-| Команда №1: будівництво, вантаж, 12 дощок | Не перевірено |
-| Команда №2: ті самі результати | Не перевірено |
-| Відмова чужому контролеру та явна передача | Не перевірено |
-| Збереження й повернення обох учасників | Не перевірено |
-| Незалежна команда №2: власні запаси | Не перевірено |
-| Кадри/журнали з обох ПК та виявлені помилки | Не надано |
+| Date, name/model of two different physical PCs | Not executed |
+| Version and SHA256 package on A/B | Not a freak |
+| Type of connection: LAN or VPN | Not verified |
+| Command No1: construction, cargo, 12 rack | Not verified |
+| Team No2: the same results | Not verified |
+| Refusal to a foreign controller and explicit transmission | Not verified |
+| Conservation and return of both participants | Not verified |
+| Independent command No2: own reserves | Not verified |
+| Both PCs and detected errors | Not provided |
 
-Якщо будь-який крок не пройшов, запишіть його номер, час, останній показаний стан та повідомлення. Не позначайте весь сценарій успішним за самим фактом підключення.
+If any of the steps are not completed, write down the number, time, last shown status and message. Don't label the whole scenario as successful just because you're connected.

@@ -1,32 +1,34 @@
-# Обмежене очищення старих test runtime — 08.10.2026
+# Restricted cleaning of old test runtime — 08.10.2026
 
-Очищення виконано після прямого прохання користувача не накопичувати старі версії та повідомлення точного списку файлів до видалення. Це не приймання двигуна чи нової версії гри.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Фактичний результат
+The cleaning is done after a user directly requests not to store old versions and a message of an exact list of files to be deleted. It's not about accepting the engine or a new version of the game.
 
-- Видалено **3 684** програмні копії у **41** історичному `artifacts/<cohort>/<attempt>/runtime`.
-- Сума логічних розмірів видалених файлів: **82 790 787 072 байти (82,79 GB)**.
-- Спостережуваний приріст вільного місця C: **78 086 017 024 байти (78,09 GB)**: від 21 080 940 544 до 99 166 957 568 байтів. Це вимір диска під час операції, не припущення, що логічний розмір дорівнює фізично звільненому.
-- Після операції `artifacts` займає **29 027 501 580 логічних байтів (29,03 GB)**. Не стверджується, що очищені всі інші історичні пакети чи весь `build/dist`.
-- Фактичний процес завершився з exit 0; звіт `complete=true`, `error=null`.
-- Окрема перевірка: **0** повідомлених цілей залишилися; **15/15** захищених hash anchors не змінилися.
+## Actual result
 
-## Межі видалення і докази
+- Removed **3 684** program copies in **41** historical `artifacts/<cohort>/<attempt>/runtime`.
+- The total logical size of the deleted files: **82 790 787 072 bytes (82,79 GB) **.
+- The observed increase in free space C: **78 086 017 024 bytes (78,09 GB) **: from 21 080 940 544 to 99 166 957 568 bytes. This is the size of the disk during the operation, not assuming that the logical size is equal to the physical size.
+- After the operation `artifacts` takes the **29 027 501 580 logical bytes (29,03 GB) **. It is not claimed that all other historical packets or the entire `build/dist` have been cleaned.
+- The actual process is completed with exit 0; The report `complete=true`, `error=null`.
+- Special verification: **0** reported targets remained; **15/15** protected hash anchors have not changed.
 
-Видалені тільки `.exe/.dll/.lib/.pdb/.obj/.ilk/.exp` з явних історичних cohorts 05–07.10: presentation, concept-rebuild/map-ground, HDR, ground-forward, material-bridge/master, local-occlusion, surface-lighting, outcrop-hud та relief-face. Каталогів не видаляли. Збереження, source snapshots, оригінали арту, текстури, PNG та звіти не входили до списку.
+## Limitations of Removal and Evidence
 
-- [Точний повідомлений manifest](../.omx/plans/artifact-runtime-prune-2026-10-08-03.json), SHA-256 `0CD77A47B732E1875AE7C43927BF45785BA4ABE4F65459197D84BB3F6972E028`.
-- [Фактичний журнал видалення](../.omx/plans/artifact-runtime-prune-2026-10-08-03.json.result.json), SHA-256 `B04B73CB2F6DA5A0DEFE6B255CC80F37EF7A6D831480EC4EDCDD51A0B54C45DF`.
-- [Обмежений скрипт](../tools/prune_artifact_runtime_copies.ps1), перевірений SHA-256 `16E745D9F8F4492A0B68AD3B4E5F68EAF7296DAFEBC79A331C197C2A58D763CF`.
+Only `.exe/.dll/.lib/.pdb/.obj/.ilk/.exp` are removed from the obvious historical cohorts 05–07.10: presentation, concept-rebuild/map-ground, HDR, ground-forward, material-bridge/master, local-occlusion, surface-lighting, outcrop-hud and relief-face. The catalogs were not deleted. Storages, source snapshots, art originals, textures, PNG and reports were not included in the list.
 
-Manifest має schema 2, унікальні абсолютні шляхи, розмір, UTC mtime і SHA-256 кожного файла. До першого видалення та безпосередньо перед кожним повторно перевірені цілі; reparse-переходи відхиляються. Відсутність активних процесів у цих runtime перевірена також після довгої звірки. Використано лише нерекурсивний `Remove-Item -LiteralPath` для конкретного файла. Негативна перевірка з неправильним hash manifest дала exit 1 до видалення. Buffered SHA-256 і звичайний SHA-256 дали однакові результати для скрипта, native EXE і master JSON.
+- [Accurate reported manifest](../.omx/plans/artifact-runtime-prune-2026-10-08-03.json), SHA-256 `0CD77A47B732E1875AE7C43927BF45785BA4ABE4F65459197D84BB3F6972E028`.
+- [Factual log of removal](../.omx/plans/artifact-runtime-prune-2026-10-08-03.json.result.json), SHA-256 `B04B73CB2F6DA5A0DEFE6B255CC80F37EF7A6D831480EC4EDCDD51A0B54C45DF`.
+- [Limited script](../tools/prune_artifact_runtime_copies.ps1), verified SHA-256 `16E745D9F8F4492A0B68AD3B4E5F68EAF7296DAFEBC79A331C197C2A58D763CF`.
 
-Захищені 15 файлів: `assets/art/world.json`, calibration master, targets 0261/0262/0263, authored05/06 і shadow09 EXE, поточні LocalOcclusion/GroundForward EXE, обидва EXE чинних launcher targets, `dist/current-build.txt` і два `Play Ribterra*.cmd`. Усі їхні hashes після очищення збіглися з виміряними до нього.
+Manifest has schema 2, unique absolute paths, size, UTC mtime and SHA-256 of each file. Prior to first removal and immediately before each re-checked target; The reparse transitions deviate. The absence of active processes in these runtimes was also verified after a long run. Only non-recursive `Remove-Item -LiteralPath` is used for a particular file. A negative check with an incorrect hash manifest gave exit 1 to be deleted. Buffered SHA-256 and conventional SHA-256 yielded the same results for the script, native EXE and master JSON.
 
-Видалення остаточне локально, не через кошик. Програмні копії можна зібрати заново; це не гарантія відновлення історичного byte-exact executable. Історичні посилання на видалені EXE вже не придатні до повторного запуску. GitHub uploads, commits, releases та зміни launcher не виконувалися.
+Protected 15 files: `assets/art/world.json`, calibration master, targets 0261/0262/0263, authored05/06 and shadow09 EXE, current LocalOcclusion/GroundForward EXE, both EXE current launcher targets, `dist/current-build.txt`, and two `Play Ribterra*.cmd`. All their hashes after cleaning went with those measured to it.
 
-## Надалі
+Removal is done locally, not through the basket. Software copies can be retrieved; It's not a guarantee of restoring a historic byte-exact executable. Historical links to deleted EXE are no longer suitable for re-launch. GitHub uploads, commits, releases and launcher changes were not executed.
 
-[Правило зберігання](ARTIFACT_RETENTION_UA.md): актуальна запускна збірка й одна перевірена резервна, компактні докази замість копії повного runtime у кожному тесті, окрема діагностика невдалих спроб і повідомлення конкретних цілей перед кожним наступним видаленням. Чинні launcher targets та активні залежності не видаляти до узгодженої заміни.
+## Continued
 
-Окремо після цієї операції виконано [компактування authored build-копій](AUTHORED_BUILD_COMPACTION_2026_10_08_UA.md): ще 56 файлів / 228 214 270 логічних байтів; додатковий спостережуваний приріст вільного місця 227 868 672 байти. Наведені вище 82,79 GB / 78,09 GB залишаються результатом лише первісного очищення artifacts; логічні та фізичні виміри не змішуються.
+[Save rule](ARTIFACT_RETENTION_UA.md): current runtime and one verified backup, compact evidence instead of a copy of full runtime in each test, separate diagnosis of failed attempts, and reporting specific targets before each subsequent removal. Active launcher targets and active dependencies shall not be removed until agreed replacement.
+
+Apart from this operation, the [compact authored build-copies](AUTHORED_BUILD_COMPACTION_2026_10_08_UA.md): further 56 files / 228 214 270 logical bytes; the additional observed increase in free space 227 868 672 bytes. The above 82,79 GB / 78,09 GB remain the result of only the original cleaning of the artifacts; The logical and the physical dimensions are not mixed.

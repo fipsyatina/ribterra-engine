@@ -1,87 +1,89 @@
-# 0.25 — Кооператив, яким можна користуватися
+# 0.25 — Cooperative that can be used
 
-Поточна реалізація: [0.25.0 — Онлайн-лобі та команди](update-0.25.0-uk.md). За останнім уточненням користувача кожен починає в окремій команді; вибір однакової команди дає спільне керування нацією. Реалізовані права: рішення нації доступні її команді; пауза доступна всім, відновлення й швидкість — господарю. Автоматичний пошук LAN, дипломатія, війна та Steam залишаються поза цим випуском. Нижче збережено початкову специфікацію; вона не є переліком готових можливостей.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Історичний статус: обсяг 0.25 за запитом користувача й повторний аудит коду 0.24.1 від 2026-09-13. Це специфікація, а не реалізований реліз. Вона переносить кооператив із попереднього плану 0.22 на 0.25 і зберігає наявні зміни 0.23–0.24.1. Користувач підтвердив: окремі поселення є окремими націями, у кожної все своє; можливі дипломатія й війна. Користувач підтвердив також: спочатку кооператив і незалежні нації; дипломатія та війна — наступний підвипуск. Правила повноважень очікують відповіді.
+Current implementation: [0.25.0 — Online lobby and teams](update-0.25.0-uk.md). Under the user's latest clarification, each player starts on a separate team; choosing the same team gives players shared control of one nation. Implemented permissions: nation decisions are available to its team; pause is available to everyone, while resume and speed controls belong to the host. Automatic LAN discovery, diplomacy, war, and Steam remain outside this release. The original specification is preserved below; it is not a list of completed features.
 
-## Сесія на 2–6 гравців
+Historical status: volume 0.25 at the user's request and re-audit of the code 0.24.1 from 2026-09-13. It's a specification, not a real release. It moves the cooperative from the previous plan 0.22 to 0.25 and retains the existing changes 0.23–0.24.1. The user confirmed: individual settlements are individual nations, each with its own; The possibility of diplomacy and war. The user also confirmed: initially a cooperative and independent nations; Diplomacy and war are the next step. The rules of authority are waiting for an answer.
 
-У меню: «Створити спільний світ» і «Приєднатися». Створення задає назву, пароль, кількість місць 2–6, seed, новий світ або продовження збереження. Підключення через LAN або адресу й порт. Пароль не потрапляє в чат, журнал або командний рядок.
+## Session for 2–6 players
 
-Кімната показує підключених учасників, їхні поселення та готовність. Гравець обирає приєднання до спільного поселення або заснування власного. До старту світ не симулюється. Господар запускає гру, коли всі присутні готові; порожні місця не блокують старт. Відключення скидає готовність, а зміна параметрів скидає її для всіх. Для пізнього приєднання вже запущений світ не повертається до кімнати.
+In the menu: Create a shared world» and Join». The creation specifies the name, password, number of places 2–6, seed, new world, or extension of storage. Connection via LAN or address and port. Password does not get into chat, log or command line.
 
-Окремий сервер використовує ті самі правила. LAN не потребує Steam. Пошук LAN-серверів має доповнювати введення адреси вручну; автоматичне відкриття портів і ретранслятор через інтернет не припускаються.
+The room shows the participants connected, their settlements and their willingness. The player chooses to join a joint settlement or to establish his own. The world doesn't simulate until it starts. The master starts the game when everyone is ready; The empty spaces do not block the start. Disconnecting reduces readiness, and changing parameters reduces it for everyone. For late connection, the world already launched does not return to the room.
 
-## Поселення й стартові місця
+A different server uses the same rules. LAN doesn't need Steam. The search for LAN-servers must be completed by entering the address manually; automatic port opening and the Internet retransmitter are not allowed.
 
-Підтверджено користувачем: окремі поселення — це окремі нації. Вони мають власних мешканців, ресурси, виробничі замовлення, раціон, невдоволення та події. Власність і розвідка також розділені за націями. Учасники одного поселення спільно керують ним, зберігаючи чинні правила контролю окремих мешканців. Передавання контролю над людиною не передає власність над поселенням чи його запасами.
+## Settlements and starting positions
 
-Місця визначає сервер за seed і кількістю стартових слотів. Генерується набір максимально рівномірно рознесених придатних майданчиків із мінімальними відстанями між ними та від країв. Для 4–6 точок неможливо забезпечити однакові попарні відстані на площині. Перевіряються прохідність, місце для будівництва, доступні дерево, камінь, їжа й вода. Призначення майданчиків гравцям перемішується відтворювано; непридатний набір перегенеровується обмежену кількість разів або створення завершується зрозумілою помилкою.
+User confirmed: individual settlements — are separate nations. They have their own people, their own resources, their own production orders, their own ration, their own discontent and their own events. Property and intelligence are also divided by nation. The members of a settlement jointly manage it, maintaining the rules in force for the control of individual residents. A transfer of control over a person does not transfer ownership of a settlement or its resources.
 
-Незайняті місця резервуються для пізнього приєднання. Наявні поселення не переміщуються. Зайняте місце не видається вдруге після відключення чи перезапуску сервера. Чужі приховані території не розкриваються через мережеві дані; правила спільної розвідки потрібно визначити окремо.
+The location is determined by the server's seed and the number of slots to start. A set of suitable terrains is generated with the least distance between them and the edges. For 4–6 points it is impossible to provide the same pairs of distances in the plane. They check the passage, the building site, the wood, the stones, the food and the water. The designation of the pitches to the players is mixed up and reproduced; An unsuitable set is reproduced a limited number of times or the creation ends up in a clear error.
 
-## Повноваження
+Unoccupied seats are reserved for later joining. The existing settlements are not moving. The location is not re-exposed once the server is turned off or restarted. No hidden areas are disclosed through network data. The rules of joint intelligence need to be determined separately.
 
-Пропозиція до вибору користувача: у кожного поселення є власник, який може призначати й відкликати співкерівників серед учасників свого поселення. Власник і співкерівники вирішують нічні зміни, зміну раціону, поповнення населення та відповіді на події. Володіння окремим мешканцем саме собою не надає цих повноважень. Інші учасники бачать автора й результат. Керівник загону керує його маршрутом, атакою та відступом; дозвіл нічної зміни підкоряється правам поселення.
+## Authority
 
-Господар сесії керує кімнатою та виключенням гравців. Ця роль не надає автоматичного доступу до чужих запасів або наказів. Після відключення керівника права не переходять випадково першому клієнту; потрібне явне правило передачі або наперед призначений заступник.
+User choice proposition: Each settlement has an owner who can appoint and withdraw co-directors from its settlement members. The owner and co-owners decide on night shift, diet change, population replenishment and response to events. Ownership of individual residents does not in itself confer these powers. The other participants see the author and the result. The commander of the convoy shall direct its route, attack and retreat; The night shift permit is subject to settlement rights.
 
-Час єдиний для всього світу. Поточна пропозиція до вибору користувача: поставити гру на паузу може кожен учасник; відновити гру й вибрати швидкість 1×/2×/4× може господар кімнати. Усі бачать автора паузи та поточну швидкість. Зміни часу застосовує сервер, включно з командами, отриманими під час паузи. Попередня пропозиція про окремі запити паузи та найповільнішу швидкість не вважається погодженою.
+The session master is in charge of the room and the players' exclusion. This role does not provide automatic access to other people's inventories or orders. After the termination of the principal, the principal shall not be transferred by accident to the first client; a clear rule of transfer or a predefined successor is required.
 
-## Рішення виконується один раз
+Time is shared across the whole world. The current proposal, pending the user’s choice, allows any participant to pause; the host may resume and select speed 1×/2×/4×. Everyone sees who paused and the current speed. The server applies time changes, including commands received during a pause. The earlier proposal for individual pause requests and the slowest requested speed has not been accepted.
 
-Команда містить стабільний ідентифікатор рішення або події, поселення, очікувану ревізію та конкретну відповідь. Сервер перевіряє автентифікованого автора, членство, право рішення й актуальність стану. Перевірка, списання ресурсів, зміна стану та запис результату відбуваються в одній впорядкованій операції.
+## A decision is applied once
 
-Для двох відповідей на одну подію приймається лише перша допустима. Повтор повертає вже відомий результат або повідомлення «Рішення вже ухвалено», без повторного списання, підвищення невдоволення чи створення загону. Новий request_id іншого гравця не дозволяє обійти захист: ключ пов'язаний із рішенням, а не лише мережевим запитом. Результати й застосовані ефекти зберігаються разом зі світом, включно з межею до/після підтвердження клієнту.
+The team contains a stable identifier of the decision or event, settlement, expected revision, and specific response. The server checks the authenticated author, membership, decision-making rights and status. Checking, writing down resources, changing status, and recording results are done in one orderly operation.
 
-Нічний дозвіл зберігає чинну семантику: поточна ніч і поточне завдання, одноразове невдоволення. Повторне відкривання повідомлення не є новим рішенням.
+For two answers to one event, only the first is acceptable. Repeat returns a known result or message Solution already adopted», without re-writing, increasing discontent or creating a drive. The new request_id of the other player does not allow the defense to bypass: the key is connected to the solution, not just the network request. Results and effects are kept together with the world, including the boundary before/after client confirmation.
 
-## Чат, повернення й збереження
+Night leave maintains a valid semantics: the current night and the current task, the one-time dissatisfaction. Reopening the message is not a new solution.
 
-Чат має обмеження довжини й частоти та безпечне відображення тексту. Пізній учасник отримує узгоджений знімок, потім зміни від його ревізії. До отримання повного знімка накази заблоковані.
+## Chat, reconnect, and saves
 
-Короткий розрив з'єднання зберігає ідентичність і контроль на обмежений час. Продовження після перезапуску сервера відновлює поселення та ролі через збережене посвідчення учасника, а не лише збіг імені. Секретні посвідчення не включаються в загальнодоступний знімок. Резервна копія світу містить зв'язки поселень, зайняті стартові місця та вже ухвалені рішення.
+The chat has a length and frequency limit and a secure display of text. The late participant receives a coordinated shot, then changes from its revision. Until we get a full picture, orders are blocked.
 
-## Що підтверджено читанням коду
+A short disconnect retains identity and control for a limited time. Continuing after the server restarts restores the settlement and role through the participant's saved credentials, not just a name match. Confidential certificates are not included in a public image. A world backup contains settlement links, occupied starting points, and decisions already made.
 
-- Є окремий сервер, пряме підключення, перевірка пароля, чат, пізнє отримання знімка й автоматичне короткочасне перепідключення: `network_session.hpp`, `src/net/network_session.cpp`, `src/client/client_session.cpp`.
-- Є контроль мешканців і його передавання, впорядковані команди та кеш повторних request_id: `game_server.hpp`, `src/server/game_server.cpp`.
-- Ліміт зараз 4, не 6: конструктор `GameServer`.
-- У меню немає створення сесії, форми підключення й кімнати готовності: `assets/ui/menu.rml`.
-- Віддалені пауза й швидкість зараз блокуються клієнтом: `src/client/main.cpp`.
-- Поселення та раціон глобальні; серверні проєкції й частина перевірок прив'язані до nation 1. Наявність поля nation сама собою не означає робочі окремі поселення.
-- Ревізії вже захищають поточні рішення про населення, нічну зміну та раціон від застарілого повтору. Окремі права поселень і стійкі ключі подій ще потрібні.
-- Завантаження GameServer очищає сесії гравців і права контролю. Відновлення світу не дорівнює відновленню членства після перезапуску.
+## What source inspection confirms
 
-Це аудит коду; нові функції цією перевіркою не запускалися й не тестувалися.
+- There is a separate server, direct connection, password verification, chat, late image capture, and automatic short-term interconnection: `network_session.hpp`, `src/net/network_session.cpp`, `src/client/client_session.cpp`.
+- There is inhabitant control and its transmission, ordered commands and cache of repeats request_id: `game_server.hpp`, `src/server/game_server.cpp`.
+- The limit is now 4, not 6: the constructor `GameServer`.
+- The menu does not have session creation, connection form and standby room: `assets/ui/menu.rml`.
+- The remote pause and speed are now blocked by the client: `src/client/main.cpp`.
+- Population and rationing are global; server projections and some of the checks are tied to nation 1. The presence of a nation field does not in itself mean a working-class individual settlement.
+- The revisions already protect current population decisions, overnight change, and diet from outdated repetition. Separate settlement rights and sustainable event keys are still needed.
+- The GameServer download clears the player sessions and control rights. Restoring the world is not the same as restoring membership after a reboot.
 
-## Порядок реалізації та приймання
+This is code audit; The new features were not launched or tested with this test.
 
-1. Відокремити стан поселень, членство й права; додати міграцію старого єдиного поселення. Перевірити ізоляцію запасів, населення, наказів та рішень.
-2. Додати 2–6 слотів і генерацію стартових місць. Перевірити відтворюваність, відстані, доступні ресурси й резервування для пізнього приєднання.
-3. Додати меню створення/приєднання, кімнату готовності й серверні правила часу. Перевірити реальними клієнтами готовність, відключення, переповнення та неправильний пароль.
-4. Завершити збереження членства, відновлення після перезапуску й одноразові рішення. Перевірити одночасні відповіді двох гравців, повтор пакета, розрив до підтвердження, збереження та повторне завантаження.
-5. Пройти сценарій шести клієнтів: щонайменше два поселення, спільне керування, передавання мешканця, чат, пізній вхід, перепідключення, пауза/швидкість, збереження й продовження. Перевірити інтерфейс на екрані та регресії 0.24.1.
+## Implementation and acceptance order
 
-Steam-лобі й запрошення друзів — окремий підвипуск після SDK/AppID. Вони мають використовувати ці самі ролі, права та серверну симуляцію.
+1. To uphold the status of settlements, membership and rights; Add the migration of the old single settlement. Check the insulation of stocks, population, orders and decisions.
+2. Add 2–6 slots and generate starting places. Verify playback, distance, available resources and reserve for later connection.
+3. Add the creation/connection menu, the standby room and the server timeline. Verify the readiness, disconnection, overload and wrong password by real customers.
+4. Complete membership retention, reset after rebooting and one-off decision. Verify the simultaneous responses of two players, repeat the packet, break to confirmation, save and re-load.
+5. Go through a six-client scenario: at least two settlements, co-management, residence transfer, chat, late entry, re-connection, pause/speed, retention and extension. Check the interface on the screen and the regressions 0.24.1.
 
-## Відкриті рішення перед зміною моделі світу
+Steam lobby and invite friends — separate upload after SDK/AppID. They're supposed to use the same roles, rights and server simulation.
 
-- Незалежність націй підтверджено: спільних запасів між ними немає. Кілька гравців можуть спільно керувати однією нацією.
-- Хто ухвалює рішення поселення: власник і призначені співкерівники (рекомендовано), лише власник або всі учасники.
-- Підтверджено: дипломатія й війна йдуть наступним підвипуском після кооперативу та незалежних націй. У базовій 0.25 немає міжнаціональних атак, обміну майном чи спільних запасів.
-- Розвідка спільна для учасників однієї нації. Правила добровільного обміну розвідданими між націями ще не визначено.
+## Open solutions to changing world models
 
-Номер встановленої гри залишається 0.24.1 до реалізації та проходження приймальних перевірок 0.25.
+- The independence of nations is confirmed: there are no common reserves between them. Several players can rule a nation together.
+- Who makes the settlement decision: owner and designated co-directors (recommended), only owner or all participants.
+- Confirmed: diplomacy and war are the next step after the co-operative and independent nations. The 0.25 base does not have any ethnic attacks, property exchanges or common stock.
+- Intelligence is shared by members of one nation. The rules for voluntary exchange of intelligence between nations have not yet been determined.
 
-## Нації, дипломатія та війна
+The installed game number remains 0.24.1 until implementation and passing acceptance checks 0.25.
 
-Нова вимога користувача: інші поселення є іншими націями; між ними можна вести дипломатію або війну. Це не лише додаткові табори зі спільним складом.
+## Nations, Diplomacy and War
 
-Сервер перевіряє націю автора при наказах мешканцям, будівництві, витратах, виробництві, наймі, нічних рішеннях та відповідях на події. Передавання контролю мешканця в межах кооперативу не повинне давати чужій нації власність над ним. Передача людей чи майна між націями потребує окремої явно погодженої дії.
+New user requirement: other settlements are other nations; You can have diplomacy or you can have war. These are not just extra camps with a common setup.
 
-Збереження й перепідключення відновлюють націю та роль гравця. Ім'я гравця не є доказом членства. Вільне місце в кімнаті не означає право приєднатися до чужої нації без її дозволу.
+The server checks the author's nation for orders to residents, construction, costs, production, rent, nighttime decisions and response to events. The transfer of control of the inhabitant within the cooperative must not give a foreign nation possession over it. The transfer of persons or property between nations requires separate, clearly agreed action.
 
-Для майбутньої дипломатії потрібен стан відносин між парами націй і явні повноваження на переговори. Мир, союз, торгівля, доступ до території та обмін розвідкою — різні домовленості; не вважати їх автоматичними наслідками кооперативного підключення.
+Preservation and reconnection restore the nation and the player's role. A player's name is not a membership document. A free space in a room does not mean the right to join a foreign nation without its permission.
 
-Дипломатія й війна відкладені користувачем на наступний підвипуск. Для нього окремо визначаються оголошення війни, допустимі цілі нападів, атака й відступ реальних мешканців, втрати та припинення бойових дій. Наявна самооборона від тварин цього не забезпечує. Захоплення споруд, облога й повне знищення нації поки не мають погодженого обсягу.
+Future diplomacy requires a relationship state between each pair of nations and explicit authority to negotiate. Peace, alliance, trade, territorial access, and intelligence sharing are different agreements; none should be treated as an automatic result of a cooperative connection.
+
+Diplomacy and war are postponed by the user for the next upgrade. It is defined separately by declarations of war, the permissible targets of attacks, the attack and retreat of real residents, the loss and cessation of hostilities. The lack of self-defense against animals does not provide this. The seizure of buildings, the siege and the complete destruction of the nation have not yet been agreed upon.

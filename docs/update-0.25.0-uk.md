@@ -1,25 +1,27 @@
-# Ribterra 0.25.0 — Онлайн-лобі та команди
+# Ribterra 0.25.0 — Online lobby and team
 
-У головному меню з’явилася «Онлайн-гра». Господар вводить ім’я, пароль за потреби та кількість місць 2–6 і натискає «Створити спільний світ». Друзі вводять адресу IP:порт і пароль та натискають «Приєднатися». LAN-адреси господаря показуються в кімнаті. Пряме інтернет-підключення використовує доступний ззовні UDP-порт сервера (типово 27020); Steam і ретранслятор не потрібні та не включені.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-За замовчуванням кожен учасник отримує окрему команду. До старту можна обрати однаковий номер команди — це спільна нація з одним поселенням. Зміна команди скидає готовність усіх учасників. Кожен натискає «Готовий», після чого господар запускає гру. Потрібні щонайменше двоє підключених гравців; незайняті місця не блокують старт. До старту світ не рухається.
+The main menu was online gaming. The master enters the name, password and number of places 2–6 and presses «Create a shared world». Friends enter the IP:port and password and click «Join». LAN-The addresses of the master are shown in the room. A direct Internet connection uses an external UDP-server port (typically 27020); Steam and the relay are not needed and not on.
 
-Різні команди отримують незалежних мешканців, склади, виробництво, раціон, невдоволення, рішення й розвідку. Стартові ділянки рознесені по світу за seed; біля кожного табору є дерево, камінь, їжа та вода. Учасники однієї команди спільно керують нацією. Передавання контролю над мешканцями доступне між учасниками своєї команди. Після початку гри змінити команду не можна.
+By default, each participant receives a separate team. You can select the same team number before the start — this is a common nation with one settlement. Team changes make everyone more prepared. Each presses Ready», after which the master starts the game. At least two connected players are required; The unoccupied seats don't block the start. The world doesn't move until the start.
 
-Рішення всередині команди можуть ухвалювати її учасники; ревізії стану захищають від одночасного повторного виконання. Зміна чужого раціону, витрата чужих запасів або наказ чужому мешканцю не дозволяються. Дипломатія та війна відкладені на наступний підвипуск.
+The teams get independent residents, warehouses, production, ration, discontent, solutions and intelligence. Start sites spread around the world by seed; There's trees, stones, food and water around each camp. Members of one team run the nation together. The transfer of control over the inhabitants is available between the members of their team. You can't change the team after the game.
 
-Поставити світ на паузу може кожен; зняти паузу й змінити швидкість 1×/2×/4× може господар. Правила діють і для кнопок, і для клавіш. Чат і короткочасне перепідключення працюють через наявний мережевий транспорт. Пізній учасник отримує актуальний світ; вільна команда отримує власне поселення.
+The decisions within the team may be made by its members; The state of the reviews protects against simultaneous repetition. Changing someone's diet, spending someone else's supplies, or ordering someone else' s food is not allowed. Diplomacy and war are postponed until further notice.
 
-Господар може зберегти гру кнопкою або F5; є автоматичне збереження. «Продовжити спільний світ» відкриває останній створений онлайн-світ. Команди, нації та посвідчення учасників зберігаються разом зі світом. Для повернення використовуйте той самий профіль гравця й адресу сервера. Продовжений світ починається на паузі: господар може дочекатися друзів і відновити гру. Локальні посвідчення зберігаються у файлі online-profiles.json у каталозі налаштувань гри; пароль туди не записується.
+Anyone may pause the world; the host may resume and change speed 1×/2×/4×. The rules apply to buttons and keys. Chat and short-term interconnection work through the available network transport. The late participant gets the actual world; The free team gets its own settlement.
 
-Окремий сервер:
+The master can save the game with the button or F5; It's an automatic storage. Promoting the common light» opens up the latest online world. Teams, nations and participant certificates are kept with the world. To return, use the same player profile and server address. The extended world begins on pause: the master can wait for friends and restart the game. Local credentials are stored in the online-profiles.json file in the game settings directory; The password is not written there.
+
+Other server:
 
 ```powershell
 .\RibterraServer.exe --bind 0.0.0.0 --port 27020 --players 6 --lobby 1 --world .\worlds\online.save
 ```
 
-Пароль окремого сервера передається через RIBTERRA_SERVER_PASSWORD. Для прямого запуску клієнта також збережено --connect IP:порт.
+The password of each server is transmitted via RIBTERRA_SERVER_PASSWORD. For direct client launch, --connect IP:port is also saved.
 
-Усі мережеві учасники мають використовувати 0.25.0 (протокол 18). Старі підтримувані одиночні збереження, зокрема 0.24.1, залишаються сумісними. Збережено 30 секунд очікування після завершення ручних наказів і сповільнені анімації ходьби.
+All network participants must use 0.25.0 (protocol 18). The old single-scale preservation, particularly 0.24.1, remains compatible. Saved 30 seconds of waiting after completing manual commands and slow walking animations.
 
-Steam-лобі та запрошення друзів — окремий підвипуск після SDK/AppID.
+Steam lobbying and inviting friends — separate upload after SDK/AppID.

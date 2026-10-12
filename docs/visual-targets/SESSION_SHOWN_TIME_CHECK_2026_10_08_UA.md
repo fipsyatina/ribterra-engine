@@ -1,50 +1,52 @@
-# Час сесії для світла, води й туману — 08.10.2026
+# Session time for light, water and fog  08.10.2026
 
-**Проміжний поріг пройдено:** opt-in `SessionShown` використовує той самий presentation `MotionClock`, що й рух мешканців. Світло, вода й туман отримують узгоджену фазу. Це локальна нативна перевірка двох нейтральних категорій; **повний E06, E01–E17 та reference fidelity залишаються OPEN / NOT_ACCEPTED**.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Реалізація
+**The interval is passed:** opt-in `SessionShown` uses the same presentation `MotionClock` as the resident movement. Light, water, and fog get a coordinated phase. It's a local native verification of two neutral categories; **full E06, E01–E17 and reference fidelity remain OPEN / NOT_ACCEPTED**.
 
-`EngineControlSettings::time_source` за замовчуванням залишається `ExplicitDiagnostic`. `SessionShown` вимагає готовий світ, water і environment V1. Він підміняє лише environment hour та water/fog time. Cloud, haze, wind і flow поки явні діагностичні входи, а не отримані від хоста погодні величини.
+## Implementation
 
-Підготовлений `MotionClock` копіюється й перевіряється разом із candidate. Кадр, камера, picking та contact queries публікуються до commit годинника. Відхилений candidate не змінює наступну фазу часу. Normal composition повторно використовує цей prepare/commit і одноразове оновлення motion tracks після reset.
+`EngineControlSettings::time_source` is default to `ExplicitDiagnostic`. `SessionShown` requires a ready world, water and environment V1. It just replaces environment hour and water/fog time. Cloud, haze, wind and flow are still obvious diagnostic inputs, not the weather magnitude of the host.
 
-Календар має початок 06:00: ticks 0/7200/14400/21600/28800 відповідають 06/12/18/00/06. Безпосередньо перед опівніччю перетворення double у float не дає невалідну годину 24. Межа shown seconds ≤1 000 000 явно збережена; довготривалий clock rebasing ще не реалізований.
+The prepared `MotionClock` is copied and checked together with the candidate. The frame, camera, picking and contact queries are posted before commit clock. A rejected candidate does not alter the next phase of time. Normal composition re-uses this prepare/commit and one-time update of motion tracks after reset.
 
-## Actual execution і source binding
+The calendar has a beginning 06:00: ticks 0/7200/14400/21600/28800 correspond to 06/12/18/00/06. Directly before midnight, converting double to float does not give an invalid clock 24. The shown seconds limit ≤1 000 000 is clearly saved; long-term clock rebasing has not yet been implemented.
 
-- Repo `C:\Users\fipst\Desktop\ribterra`, branch `AInora/first-playable`, HEAD `bdc53e82c3d65eee4a5d8b13497aea67dff4a33b`; наявний dirty source збережено.
-- Fresh build `build/gameview-session-time-2026-10-08-attempt02`: MSVC C++20 `/O2 /MT /W4 /WX`, 21 production translation units і новий probe; 158 source bindings, 120 команд із фактичним zero exit. 23 shader programs / 46 stages; root 528 файлів / 119 150 652 bytes.
+## Actual execution and source binding
+
+- Repo `C:\Users\fipst\Desktop\ribterra`, branch `AInora/first-playable`, HEAD `bdc53e82c3d65eee4a5d8b13497aea67dff4a33b`; The available dirty source is preserved.
+- Fresh build `build/gameview-session-time-2026-10-08-attempt02`: MSVC C++20 `/O2 /MT /W4 /WX`, 21 production translation units and a new probe; 158 source bindings, 120 commands with actual zero exit. 23 shader programs / 46 stages; root 528 files / 119 150 652 bytes.
 - Probe SHA256 `1B67C317295870723D992461C509F0BC314D1A9774A71CA6290DB9537F27B7A4`.
-- Два actual native runs: `build/gameview-session-time-native-2026-10-08-attempt01` і `attempt02`, кожен exit 0. Direct3D12, NVIDIA GeForce RTX 3050 Laptop GPU, driver `32.0.15.9282`, 1920×1080.
-- Кожен run: 17 GPU PNG, raw WaterCoverage RGBA8, JSON і п'ять current-schema world saves. Виконано cumulative eight-pass graph без contact rows.
+- Two actual native runs: `build/gameview-session-time-native-2026-10-08-attempt01` and `attempt02`, each exit 0. Direct3D12, NVIDIA GeForce RTX 3050 Laptop GPU, driver `32.0.15.9282`, 1920×1080.
+- Each run: 17 GPU PNG, raw WaterCoverage RGBA8, JSON and five current-schema world saves. A cumulative eight-pass graph is executed without contact rows.
 - Parent verifier actual exit 0: `session time current evidence checks passed; sources=158, bound_files=599, zero_commands=120, repeat_outputs=19`.
-- Усі 19 derived outputs — 17 PNG, raw carrier та JSON — byte-exact між actual runs. Лише п'ять точно названих saves виключені з cross-run comparison через власні випадкові World identities; кожен save окремо SHA256-bound до свого execution.
-- Independent source та actual-evidence review: CLEAR. Reviewer окремо перевірив snapshot/current hashes, обидва actual subprocess executions, усі 19 derived SHA256 і чотири calendar PNG.
+- All 19 derived outputs — 17 PNG, raw carrier and JSON — byte-exact between actual runs. Only five accurately named saves are excluded from cross-run comparison because of their own random World identities; Each save separately SHA256-bound to its execution.
+- Independent source and actual-evidence review: CLEAR. The reviewer individually checked snapshot/current hashes, both actual subprocess executions, all 19 derived SHA256 and four calendar PNG.
 
-Команда перевірки поточної cohort:
+The current cohort check command:
 
 ```powershell
 C:\Python314\python.exe tests/gameview_session_time_evidence_tests.py build/gameview-session-time-2026-10-08-attempt02 build/engine-cumulative-kit-2026-10-08-check01/export-a build/gameview-session-time-native-2026-10-08-attempt01 build/gameview-session-time-native-2026-10-08-attempt02
 ```
 
-Після наступної зміни bound source цей checkpoint стає історичним. Старий cumulative build04 також залишається історичним доказом контактів; він не видається за перевірку пізнішого source.
+After the next bound source change, this checkpoint becomes historic. The old cumulative build04 also remains a historic proof of contact; It doesn't appear to be verified by a later source.
 
-## Причинні контролі
+## Causal controls
 
-Чотири calendar landmarks мають точну рівність full frame payload і native PNG з еквівалентним `ExplicitDiagnostic`. Native changed pixels від ранкового кадру: noon 375 018, evening 375 018, midnight 374 613. Це зміна діагностичної сцени, а не вимір референсної якості.
+The four calendar landmarks have the exact equivalent of full frame payload and native PNG with the equivalent `ExplicitDiagnostic`. Native changed pixels from the morning frame: noon 375 018, evening 375 018, midnight 374 613. It's a change in the diagnostic scene, not a measurement of the reference quality.
 
-Вісім clock cases охоплюють actual ClientSession advancement, interpolation/catch-up без extrapolation, starvation, 1×/2×/4×, pause/resume, repeated-epoch production load/reset, pointer replacement, wall/authority rollback та actual changed epoch. Драйвер застосовує pause/speed policy нормального main loop: `ClientSession::advance()` сам по собі її не застосовує. За десять frame deltas по 0.1 секунди authority ticks становлять 20/40/80; shown endpoints 19/38/76. Кожна швидкість окремо перевірена через pause/resume без wall-time backlog. Окремий paused native repeat byte-exact.
+Eight clock cases include actual ClientSession advancement, interpolation/catch-up without extrapolation, starvation, 1×/2×/ 4×, pause/resume, repeated-epoch production load/reset, pointer replacement, wall/authority rollback and actual changed epoch. The driver applies the normal main loop policy pause/speed: `ClientSession::advance()` does not apply it itself. In ten frame deltas per 0.1 second, authority ticks form 20/40/80; shown endpoints 19/38/76. Each speed is individually checked through pause/resume without wall-time backlog. A separate paused native repeat byte-exact.
 
-Repeated-epoch load/reset є невакуумним: pointer, epoch 2 і authority tick 10 незмінні, wall time монотонний; shown tick до load 2.2, після production `reset_world_state()` — 10. Заміна pointer перевірена за однакових tick 14 / epoch 2; зміна epoch 1→2 — за незмінного authority tick 10. Великий tick gap або rollback не підміняє ці reset controls.
+Repeated-epoch load/reset is invariable: pointer, epoch 2 and authority tick 10 are unchanged, wall time is monotonous; shown tick to load 2.2, after production `reset_world_state()` — 10. The pointer replacement is tested for the same tick 14 / epoch 2; change epoch 1→2 — for the unchanged authority tick 10. A large tick gap or rollback does not replace these reset controls.
 
-Усі 18 invalid candidates відхилені: enum, відсутні environment/water, конфлікт manual atmosphere, version, cloud/haze bounds і NaN, camera, sprite/owner/occluder IDs, instance NaN і wall NaN. Retained frame/camera/pick та наступний shown clock збігаються з незалежно завантаженим GameView oracle. Recovery tick 2.2 менший за authority 4 і відрізняється від snap, який спричинив би неправильний ранній commit.
+All 18 invalid candidates are rejected: enum, missing environment/water, conflict manual atmosphere, version, cloud/haze bounds and NaN, camera, sprite/owner/occluder IDs, instance NaN and wall NaN. The retained frame/camera/pick and subsequent shown clock coincide with the independently loaded GameView oracle. The recovery tick 2.2 is smaller than the authority 4 and differs from the snap that would cause an incorrect early commit.
 
-У всіх captures exact raw carrier та UI marker RGBA `[31,189,78,255]`; local-light rows і emission/material metadata збережені. Відсутні невалідні WaterCoverage tuples; bridge deck 1 865, water 70 657 і land 302 496 pixels. Known UI marker не є перевіркою RmlUi HUD.
+In all captures exact raw carrier and UI marker RGBA `[31,189,78,255]`; local-light rows and emission/material metadata are saved. The absence of invalid WaterCoverage tuples; The bridge deck 1 865, water 70 657 and land 302 496 pixels. Known UI marker is not a verification of RmlUi HUD.
 
-## Помилки та межі
+## Mistakes and Limits
 
-Build01 збережений: actual compiler exit 2, probe `constexpr`-масив зі `std::string` вимагав persistent heap allocation під C++20. Виправлення лише `constexpr`→`const`; новий build02 збудований свіжо. Невдалий build не видається за успішний запуск.
+Build01 saved: actual compiler exit 2, probe `constexpr`-mass from `std::string` required persistent heap allocation under C++20. Correction only `constexpr`→`const`; The new build02 is freshly built. A failed build doesn't seem to be a successful launch.
 
-Перевірка використовує zero-population authored terrain fixture, два нейтральні sprites та три authored completed Bridge records. Вона не виконує будівництво мостів. Weather authority/save/wire, rain/snow/wind particles, wetness/drying, footprints, normal startup, референсний арт, RmlUi/DPI, physical input/video й два фізичні ПК ще потребують роботи.
+The test uses a zero-population authored terrain fixture, two neutral sprites and three authored completed Bridge records. She doesn't build bridges. Weather authority/save/wire, rain/snow/wind particles, wetness/drying, footprints, normal startup, reference art, RmlUi/DPI, physical input/video and two physical PCs still need work.
 
-FPS і GPU execution time не вимірювалися (`null`). 174 182 400 attachment bytes для двох frame sets — номінальний обсяг targets, не peak VRAM і не підтвердження 120 FPS. Goal залишається ACTIVE; це direct execution evidence, без автоматичної gate-check certification.
+FPS and GPU execution time were not measured (`null`). 174 182 400 attachment bytes for two frame sets — nominal volume of targets, not peak VRAM and not confirmation 120 FPS. The goal remains ACTIVE; It's direct execution evidence, without automatic gate-check certification.

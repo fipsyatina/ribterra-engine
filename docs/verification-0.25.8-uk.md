@@ -1,35 +1,37 @@
-# Перевірка Ribterra 0.25.8
+# Ribterra verification 0.25.8
 
-23 вересня 2026. Windows Release, MSVC, `C:\Users\fipst\Desktop\ribterra`, гілка `AInora/first-playable`.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Перевірений результат
+23 September 2026. Windows release, MSVC, `C:\Users\fipst\Desktop\ribterra`, branch `AInora/first-playable`.
 
-`BuildingInspectorProbe` відтворює **53 сценарії** в реальному RmlUi та рендері гри. Сценарії використовують авторитетну симуляцію, збереження та `ClientSession`; це не HTML-макет і не підміна текстів панелі.
+## Verified result
 
-Для Лісопилки (дошки), Майстерні (кам’яні інструменти) та Кухні (овочева страва) перевірено: відсутність замовлення, перенесення сировини, роботу, перемикання на іншу споруду й назад, готову партію в дорозі, завершення з товаром у сховищі, нестачу сировини, нічний відпочинок, поновлення після дозволу нічної зміни, відсутній шлях, заповнене сховище та поновлення доставки після звільнення місця. Окремо перевірено доставку вантажу вночі й завершення з товаром на землі після невдалої доставки.
+`BuildingInspectorProbe` reproduces the **53 script** in the real RmlUi and rendering game. The scenarios use authoritative simulation, preservation and `ClientSession`; It's not a HTML- layout or a change of panel text.
 
-За відсутності живого вільного працівника пояснення й помилка показані в панелі відповідної споруди; сусідня споруда їх не успадковує. Повідомлення з правого кліку на карті без вибраного мешканця споживається рівно один раз і потрапляє в RmlUi `status`. У вікні 1100×700 кнопка замовлення доступна після прокручування клавіатурним фокусом.
+For the Logging (Boards), Workshops (Stone Tools) and Kitchens (Food) checked: no order, transfer of raw materials, work, moving to another building and back, ready batch on the way, completion with goods in storage, shortage of raw materials; overnight rest, renewal after night shift permit, no route, filled storage and renewal of delivery after clearance. Separately checked the delivery of the cargo at night and the completion of the goods on the ground after the delivery failed.
 
-`BuildingPanelVisualProbe` перевірив 20 типів панелей, вибір будівлі кліком на карті, закриття, збереження/завантаження та два групові замовлення з різними працівниками у двох локальних мережевих клієнтів. Усі п’ять мовних каталогів пройшли перевірку ключів, ICU-параметрів і покриття шрифтом.
+In the absence of a live freelancer, the explanation and error shown in the panel of the relevant structure; The neighboring building doesn't inherit them. A message from a right-click on a map without a selected resident is consumed exactly once and gets to RmlUi `status`. In the 1100×700 window, the command button is available after you click the keypad.
 
-## Докази
+`BuildingPanelVisualProbe` checked 20 panel types, building selection by clicking on the map, closing, saving/loading, and two group orders with different employees at two local network clients. All five language directories have been checked for keys, ICU- parameters, and font coverage.
 
-- `artifacts/inspector-0.25.8/report.txt` — результат 53 сценаріїв.
-- `artifacts/inspector-0.25.8/` — кадри станів трьох споруд і компактного вікна; переглянуті `lumbermill-output.png`, `kitchen-materials.png`, `compact-action.png`.
-- `artifacts/inspector-0.25.8/catalog/building-render-report.json` — перевірка 20 панелей, двох локальних клієнтів і збереження.
-- `build/0258-first-tests.log` — перші 6/6 CTest-перевірок: economy, economy_ui, localization, ui, ui_lifecycle, client_input.
-- `build/0258-final-build.log`, `build/0258-install.log` — фінальна компіляція й установлення.
-- `artifacts/inspector-0.25.8/installed-renderer.json` і `launcher-renderer.json` — два успішні запуски встановленої гри та штатного launcher: `engine_version=0.25.8`, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, програмний рендерер вимкнений. Обидва процеси завершилися з кодом 0.
-- `artifacts/inspector-0.25.8/package-verification.json` — цілісність ZIP і збіг EXE, HUD, стилів, української локалізації, launcher та опису оновлення між установленою папкою й архівом. EXE також збігається зі щойно зібраним файлом.
+## Evidence
 
-Установлена папка: `dist/releases/0.25.8/Ribterra`. `dist/current-build.txt` вказує на її `Ribterra.exe`. Обидва наявні ярлики на Desktop посилаються на перевірений `Play Ribterra.cmd`; самі ярлики не змінювалися.
+- `artifacts/inspector-0.25.8/report.txt`  the result of 53 scenarios.
+- `artifacts/inspector-0.25.8/` — three-story frames and a compact window; and reviewed `lumbermill-output.png`, `kitchen-materials.png`, `compact-action.png`.
+- `artifacts/inspector-0.25.8/catalog/building-render-report.json` — Verify 20 panels, two local clients and save.
+- `build/0258-first-tests.log` — first 6/6 CTest-check: economy, economy_ui, localization, ui, ui_lifecycle, client_input.
+- `build/0258-final-build.log`, `build/0258-install.log` — final compilation and installation.
+- `artifacts/inspector-0.25.8/installed-renderer.json` and `launcher-renderer.json` — two successful launches of the installed game and the default launcher: `engine_version=0.25.8`, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, the software renderer turned off. Both processes ended with the code 0.
+- `artifacts/inspector-0.25.8/package-verification.json` — integrity ZIP and compatibility EXE, HUD, styles, Ukrainian localization, launcher and description of the update between the installed folder and the archive. EXE also matches the newly collected file.
 
-Архів: `dist/Ribterra-Windows-x64-0.25.8.zip`, 158 777 452 байти. SHA256: `7d2733a6f8f3b09844332d79f9aab37404c553e95434a1bce09f22f576a0e763`; контрольна сума записана також у сусідній `.zip.sha256`.
+The folder is set to `dist/releases/0.25.8/Ribterra`. `dist/current-build.txt` indicates its `Ribterra.exe`. Both available labels on the Desktop refer to the verified `Play Ribterra.cmd`; The lights themselves didn't change.
 
-## Межі
+The archives: `dist/Ribterra-Windows-x64-0.25.8.zip`, 158 777 452 bytes. SHA256: `7d2733a6f8f3b09844332d79f9aab37404c553e95434a1bce09f22f576a0e763`; the control amount is also recorded in the neighboring `.zip.sha256`.
 
-Фінальний прогін після компіляції 0.25.8: **12/12 CTest пройшли**, 176,51 с. Перевірки: buildings, economy, logistics, wilderness_ui, economy_ui, network_session, profession_ui, client_input, ui_lifecycle, ui, localization, building_inspector. Остання повторно виконала всі 53 сценарії за 75,23 с. Журнал: `build/0258-final-tests.log`; звіт: `build/engine-windows/building-inspector/report.txt`. `git diff --check` пройшов. Компілятор залишає попередні попередження перетворень/перекриття імен у view та C5054 у game_ui.
+## Limitations
 
-Візуальні сценарії інспектора використовують програмний рендерер; встановлену гру й launcher окремо перевірено через Direct3D 12. Повний набір усіх CTest не запускався. Попередні зміни приховування панелі «Експедиції» й документи плану збережено. Вихідний код не публікувався в GitHub у межах цього завдання.
+Final break after compilation 0.25.8: **12/12 CTest passed**, 176,51 p. The following are the most common types of checks: buildings, economy, logistics, wilderness_ui, economy_ui, network_session, profession_ui, client_input, ui_lifecycle, ui, localization, building_inspector. The latter repeated all 53 scenarios for 75,23 p. The journal is `build/0258-final-tests.log`; report: `build/engine-windows/building-inspector/report.txt`. `git diff --check` passed. The compiler leaves pre-conversion/switching warnings in view and C5054 in game_ui.
 
-Рецепти та симуляція виробництва не змінені. Інспектор показує виготовлені партії й поточний стан доставки; він не приписує всі виготовлені товари доступним складським запасам. Загальна переробка призначень працівників, скасування доставки та національної власності залишається наступними версіями плану. Доступ через зовнішній інтернет не перевірявся.
+The inspector's visual scenarios are rendered by a software; The game and launcher installed were independently verified via Direct3D 12. The full set of all CTest didn't start. Previous changes to the coverage of the Expedition panel and the plan documents are preserved. The source code was not published in GitHub within this task.
+
+The recipe and simulation of production remain unchanged. The inspector shall show the batches manufactured and the current delivery status; it does not attribute all manufactured goods to available stock. General reorganization of employee appointments, cancellation of delivery and national ownership remain the next versions of the plan. Access via the external Internet was not verified.

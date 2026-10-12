@@ -1,99 +1,101 @@
-# Ribterra — acceptance checklist повної переробки V01–V03
+# Ribterra — acceptance checklist of the complete recycling V01–V03
 
-Дата створення й перевірки: 30.09.2026. Статус документа: **построкова перевірка; загальний результат PARTIAL**.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Цей документ визначає один кумулятивний кінцевий стан після V03: **HUD V01 + світ V02 + об'єкти V03**. Позначка `[ ]` означає «ще не прийнято», навіть якщо код, тест або старий screenshot уже існує. Позначка може стати `[x]` лише після внесення конкретного evidence path, команди або запису.
+Date of establishment and verification: 30.09.2026. The document status: ** periodic verification; The total score is PARTIAL**.
 
-Позначення доказів **T/M/A/R/P** розшифровані у [звіті повторного приймання](../verification-rework-0.26.3-uk.md). `PASS` стосується лише конкретного рядка; `PARTIAL` означає наявний результат із зазначеним недоведеним залишком; `NOT RUN` не замінюється припущенням про працездатність.
+This document defines one cumulative final state after V03: **HUD V01 + world V02 + objects V03**. The `[ ]` symbol means «not yet accepted», even if the code, test, or old screenshot already exists. The mark can only become `[x]` after a specific evidence path, command, or record is entered.
 
-## 1. Джерела і межа трактування
+The proofs of **T/M/A/R/P** are decoded in [ light of re-reception](../verification-rework-0.26.3-uk.md). `PASS` is only for a particular row; `PARTIAL` means the result available with the indicated unfulfilled residual; `NOT RUN` is not replaced by the assumption of workability.
 
-- Основний художній напрям: оригінальне референсне зображення користувача; воно задає композицію, масштаб, ієрархію, матеріали й читабельність, але не вигадує gameplay-стан.
-- Локальні покрокові орієнтири: [V01 HUD](progress/v01-ui.png), [V02 terrain](progress/v02-terrain.png), [V03 objects](progress/v03-objects.png). Це generated targets, не runtime evidence і не вимога піксельної тотожності.
-- Технічний контракт: `GRAPHICS_PROGRESS_UA.md` і `.omx/plans/2026-09-28-graphics-updates-implementation-ua.md`.
-- Фактичні дані, доступні команди, collision, pathfinding, save і network authority мають пріоритет над декоративною схожістю.
-- V01–V03 не додають температуру, прогноз, дощ, мокрість, снігопад, snow-cover simulation або Dynamic Lighting; це наступні окремі етапи.
-- Старі public targets **S01 weather / S02 housing / S03 farm** не перейменовуються і не вважаються частиною цієї V01–V03 переробки. Їхній зв'язок із версіями очікує окремого уточнення користувача.
+## 1. Source and extent of the interpretation
 
-## 2. Верхньорівневий кумулятивний gate
+- The main artistic direction: the original reference image of the user; It sets the composition, scale, hierarchy, materials, and readability, but it doesn't invent the gameplay.
+- Local step directions are: [V01 HUD](progress/v01-ui.png), [V02 terrain](progress/v02-terrain.png), [V03 objects](progress/v03-objects.png). These are generated targets, not runtime evidence and not pixel clarity requirements.
+- The technical contract is `GRAPHICS_PROGRESS_UA.md` and `.omx/plans/2026-09-28-graphics-updates-implementation-ua.md`.
+- Actual data, available commands, collision, pathfinding, save, and network authority prioritize over the decorative similarity.
+- V01–V03 does not include temperature, forecast, rain, wet, snow, snow-cover simulation or Dynamic Lighting; These are the next individual stages.
+- Old public targets **S01 weather / S02 housing / S03 farm** are not renamed and are not considered part of this V01–V03 rework. Their relationship to versions is waiting for individual clarification from the user.
 
-| Gate | Критерій кінцевого стану після V03 | Статус | Evidence |
+## 2. The top layer cumulative gate
+
+| Gate | The final state criterion after V03 | The status | Evidence |
 |---|---|---|---|
-| G1 | HUD відповідає композиційній ієрархії референсу, лишає центр світу відкритим і показує тільки правдиві дані | [ ] PARTIAL | M/P: композиція HUD перероблена; художня відповідність і повна UI acceptance ще відкриті. |
-| G2 | F1 повністю приховує і повертає HUD без зміни selection, pause, simulation або camera | [ ] PARTIAL | M/P + ui: hide/restore і repeat перевірені; повний invariant placement/command stream окремо не доведений. |
-| G3 | Світ читається як долина: одна зв'язна річка, береги, проходи, широкі матеріальні зони й згрупована природа | [ ] PARTIAL | A/M + terrain_v02: долина й зв'язність; великі зимові матеріальні межі ще помітні. |
-| G4 | Реальні маршрути юнітів поступово утворюють видимі протоптані стежки; вони зберігаються й синхронізуються, але не дають speed bonus | [ ] PARTIAL | terrain_v02/save: wear від реального руху; немає native відео накопичення та окремого двоклієнтного wear comparison. |
-| G5 | Camp + усі 11 доступних buildable типів мають узгоджені construction/ready/winter стани; House II і Workshop II мають правдивий level-II вигляд | [ ] PARTIAL | A + v03_asset_passport: coverage/II/winter є; остаточна художня узгодженість не прийнята. |
-| G6 | Мешканці читабельні у 8 напрямках, несуть фактичний вантаж і правильно контактують із поверхнею | [ ] PARTIAL | R + unit_motion: 256 frames/actual deliveries; all-facing/painter-order video відсутнє. |
-| G7 | Той самий certified seed/save доводить кумулятивну сцену V03 у native D3D12, а не в imagegen або software probe | [x] PASS | M/A/R: certified native D3D12, seed/save/camera/zoom у manifest; staged fixture явно позначена. |
-| G8 | Немає регресій gameplay, save/load, local host/join, picking, UI input, package staging і старих підтриманих saves | [x] PASS | T: 91/91 на остаточній збірці + A/R/P; висновок обмежений перевіреним локальним набором, не physical/cross-network. |
+| G1 | HUD corresponds to the compositional hierarchy of reference, leaves the center of the world open and shows only true data | [ ] PARTIAL | M/P: the composition HUD is reworked; The artistic correspondence and full UI acceptance are still open. |
+| G2 | F1 completely hides and returns HUD without changing selection, pause, simulation or camera | [ ] PARTIAL | M/P + ui: hide/restore and repeat verified; The full invariant placement/command stream is not separately derived. |
+| G3 | The world reads like a valley: one river, one bank, one passage, one vast material area, and a grouped nature. | [ ] PARTIAL | A/M + terrain_v02: valley and connection; The great winter material limits are still visible. |
+| G4 | The real routes of the units gradually form visible protoplated paths; They're stored and synced, but they don't give a speed bonus. | [ ] PARTIAL | terrain_v02/save: wear from real movement; There's no native video storage and a separate dual-client wear comparison. |
+| G5 | Camp + all 11 available buildable types have a harmonised construction/ready/winter state; House II and Workshop II have a true level-II look | [ ] PARTIAL | A + v03_asset_passport: coverage/II/winter is; The final artistic consistency is not accepted. |
+| G6 | The beam is readable in 8 directions, carries actual load and is in correct contact with the surface | [ ] PARTIAL | R + unit_motion: 256 frames/actual deliveries; all-facing/painter-order The video is missing. |
+| G7 | The same certified seed/save leads the cumulative scene V03 in native D3D12 rather than imagegen or software probe | [x] PASS | M/A/R: certified native D3D12, seed/save/camera/zoom in manifest; The staged fixture is clearly marked. |
+| G8 | There are no gameplay regressions, save/load, local host/join, picking, UI input, package staging and old supported saves | [x] PASS | T: 91/91 on the final set + A/R/P; the result is limited to the verified local set, not physical/cross-network. |
 
-**Стоп-умова:** V01, V02 або V03 не називається `PASS`, доки всі обов'язкові пункти відповідного розділу та його evidence rows не мають `[x]` і відтворюваного доказу.
+**Stop condition:** V01, V02 or V03 is not called `PASS`, until all the mandatory points of the relevant section and its evidence rows have `[x]` and a reproduced proof.
 
-## 3. V01 — HUD і керування
+## 3. V01 — HUD and control
 
-| ID | Видимий або поведінковий критерій | Статус | Evidence |
+| ID | Extreme or behavioral criteria | The status | Evidence |
 |---|---|---|---|
-| V01-01 | Зверху ліворуч компактно показані available wood/stone/food і population; tooltip пояснює «доступно» | [x] PASS | ui + P: available resource counts і population беруться з ClientSession; доступність пояснює stocks. |
-| V01-02 | Клік ресурсу відкриває stocks із розділеними stored/reserved/carried/ground/manufactured; population відкриває settlement | [x] PASS | ui/settlement_ui/building_inspector + P: resource click, authority stock categories; population routing. |
-| V01-03 | Зверху праворуч є максимум одне дієве попередження з реальною причиною та наступною дією; без вигаданих температури чи прогнозу | [ ] PARTIAL | M + game_ui.cpp: одне real warning, transient feedback; longest localized warnings не охоплені всією матрицею. |
-| V01-04 | Календар і Surface/Mine лишаються доступними та не перекривають resources або warning | [x] PASS | M: календар/Surface/Mine у всіх 60 captures; польський Surface виправлений. |
-| V01-05 | Нижній лівий compact inspector показує type/name/level, стан, головну причину й наступний крок; `Деталі` відкриває повний inspector | [x] PASS | building_inspector + M: summary, level/status/next step, Details; реальний resolver thumbnail. |
-| V01-06 | Mixed/multi-selection показує count і тільки спільні дії, не копіює стан першого об'єкта | [x] PASS | building_inspector: group/mixed selection і common actions; жодних вигаданих загальних ресурсів. |
-| V01-07 | Нижній action strip містить `Будувати`, `Збирати`, `Призначити`, `Скасувати`; disabled state має видиму конкретну причину | [x] PASS | ui/input_feedback + M: чотири дії, disabled reason для keyboard focus. |
-| V01-08 | `Скасувати` завершує лише placement/worksite/drag; не знищує будівлю, production queue або resident order і не емулює Escape | [x] PASS | ui/client_input: типізований CancelInteraction, відновлення selection до drag; жодного delete/queue reset. |
-| V01-09 | Pause, 1×/2×/4×, stocks, enterprises, save/load, help, menu, chat, layer та ownership/order controls доступні | [x] PASS | ui/profession_ui/production_control_ui/settlement_ui + P: існуючі controls/routing збережені. |
-| V01-10 | F1 hide/show працює по edge-trigger: утримання не перемикає повторно; повернення відновлює повний HUD | [x] PASS | ui + M/P: F1 repeat=true не перемикає повторно, hide/restore підтверджено. |
-| V01-11 | Hide/show HUD не змінює selection, placement state, camera, pause/speed або authoritative command stream | [ ] PARTIAL | P: pause/time/resources/camera незмінні в ручному сценарії; не всі placement/selection/authority invariants автоматизовано. |
-| V01-12 | Navy/nine-patch panels, ivory text, gold 1–2 px border, blue active і red warning читаються; hit area ≥36 dp | [ ] PARTIAL | M: navy/ivory/brass та focus; ornate nine-patch і суцільна ≥36 dp перевірка не завершені. |
-| V01-13 | Hover/focus/pressed/disabled відрізняються не лише кольором; keyboard focus і IME/chat не ламаються | [ ] PARTIAL | ui: keyboard focus, disabled reason, text/IME/chat; повна visual state matrix відсутня. |
-| V01-14 | У звичайному стані union HUD panels займає не більш як 30% logical viewport; центр сцени відкритий | [ ] NOT RUN | Центр відкритий у M; union площі всіх панелей не виміряно — число ≤30% не підтверджене. |
-| V01-15 | Click/drag/wheel над HUD не керують світом; Escape спочатку закриває верхню panel | [x] PASS | ui/client_input + P: UI consumes pointer; stocks→Escape закриває panel і не змінює pause. |
-| V01-16 | 50 циклів open/close details після warm-up не збільшують texture count | [ ] NOT RUN | UiLifecycleTests перевіряє інші lifecycle помилки, не 50 циклів texture-count inspector. |
+| V01-01 | Upper left is the available wood/stone/food and population; tooltip explains available» | [x] PASS | ui + P: available resource counts and population are taken from ClientSession; Accessibility explains stocks. |
+| V01-02 | A resource click opens stocks with split stored/reserved/carried/ground/manufactured; population opens settlement | [x] PASS | ui/settlement_ui/building_inspector + P: resource click, authority stock categories; population routing. |
+| V01-03 | Upper right is at most one effective warning with the real cause and the next action; No imagined temperature or forecast | [ ] PARTIAL | M + game_ui.cpp: one real warning, transient feedback; The longest localized warnings are not covered by the entire matrix. |
+| V01-04 | Calendar and Surface/Mine remain available and do not override resources or warning | [x] PASS | M: calendar/Surface/Mine in all 60 captures; The Polish Surface is fixed. |
+| V01-05 | The lower left compact inspector shows type/name/level, the condition, the main cause and the next step; `Деталі` (Details) opens the full inspector | [x] PASS | building_inspector + M: summary, level/status/next step, Details; It's a real thumbnail resolver. |
+| V01-06 | Mixed/multi-selection shows count and only joint actions, not copying the state of the first object | [x] PASS | building_inspector: group/mixed selection and common actions; No invented common resources. |
+| V01-07 | The following action strip contains Build (`Будувати`), Gather (`Збирати`), Assign (`Призначити`), and Cancel (`Скасувати`); disabled state has a visible specific reason | [x] PASS | ui/input_feedback + M: four actions, disabled reason for keyboard focus. |
+| V01-08 | `Скасувати` (Cancel) only ends placement/worksite/drag; does not destroy the building, production queue or resident order and does not emulate escape | [x] PASS | ui/client_input: typed CancelInteraction, restore selection to drag; No delete/queue reset. |
+| V01-09 | Pause, 1×/2×/ 4×, stocks, enterprises, save/load, help, menu, chat, layer and ownership/order controls are available | [x] PASS | ui/profession_ui/production_control_ui/settlement_ui + P: the existing controls/routing are preserved. |
+| V01-10 | F1 hide/show works on the edge-trigger: the hold does not switch off again; return restores the full HUD | [x] PASS | ui + M/P: F1 repeat=true does not switch over again, hide/restore confirmed. |
+| V01-11 | Hide/show HUD does not change selection, placement state, camera, pause/speed or authoritative command stream | [ ] PARTIAL | P: pause/time/resources/camera is the constant in the manual scenario; Not all placement/selection/authority invariants are automated. |
+| V01-12 | Navy/nine-patch panels, ivory text, gold 1–2 px border, blue active and red warning are read; hit area ≥36 dp | [ ] PARTIAL | M: navy/ivory/brass and focus; ornate nine-patch and substantial ≥36 dp verification not completed. |
+| V01-13 | Hover/focus/pressed/disabled are not just different in color; keyboard focus and IME/chat do not break | [ ] PARTIAL | ui: keyboard focus, disabled reason, text/IME/chat; The full visual state matrix is missing. |
+| V01-14 | In the normal state, union HUD panels occupy no more than 30% of the logical viewport; The center of the scene is open. | [ ] NOT RUN | The center is open in M; union area of all panels not measured — number ≤30% not confirmed. |
+| V01-15 | Click/drag/wheel over HUD do not rule the world; Escape first closes the top panel | [x] PASS | ui/client_input + P: UI consumes pointer; stocks→Escape closes the panel and does not change the pause. |
+| V01-16 | 50 cycles open/close details after warm-up do not increase texture count | [ ] NOT RUN | UiLifecycleTests checks other lifecycle errors, not 50 cycles texture-count inspector. |
 
-## 4. V02 — долина, поверхні, річка і протоптані стежки
+## 4. V02 — valley, surface, river and protoplated trails
 
-| ID | Видимий або поведінковий критерій | Статус | Evidence |
+| ID | Extreme or behavioral criteria | The status | Evidence |
 |---|---|---|---|
-| V02-01 | Новий profile створює одну безперервну річку з одним water level; немає розривів, ізольованих калюж або води на суші | [ ] PARTIAL | terrain_v02: зв'язність річки на 10 seeds; повний огляд усіх water-level transitions не виконано. |
-| V02-02 | Береги мають безшовні переходи на chunk edges і negative coordinates; foam/waves не малюються поверх Bridge deck | [ ] PARTIAL | terrain_v02: shared UV edges/negative coordinates; bridge foam mask у code; native bridge/shore video відсутнє. |
-| V02-03 | Земля має широкі читабельні grass/soil/rock zones; дрібний контраст нижчий за контраст будівель і людей | [ ] PARTIAL | M: новий calm meadow і bounded mips; winter material boundaries лишаються видимими. |
-| V02-04 | Дерева, валуни, кущі й дика їжа утворюють групи, не рівномірний шум і не візуальну непрохідну стіну | [ ] PARTIAL | M: згрупована природа і jitter; щільність/біомна стилізація ще відрізняються від концепту. |
-| V02-05 | Є рівна стартова галявина, ≥80 reachable buildable cells і досяжні wood/stone/food/clay/mine для 10 fixed seeds | [ ] PARTIAL | terrain_v02: 10 seeds, ≥80 cells, wood/stone/food/mine PASS; окремої clay assertion немає. |
-| V02-06 | Renderer, movement, building preview/server validation, picking, resident feet, entry cells і bridge approaches використовують спільну surface geometry | [x] PASS | A: 1089 terrain picks, 3 zoom checks, uphill movement; terrain_v02/client_input: shared geometry. |
-| V02-07 | Юніт не проходить крізь видимий cliff, не зависає над ramp і не провалюється під surface | [ ] PARTIAL | A: uphill click and movement PASS; усі cliff/ramp/bridge occlusion cases не показані у video. |
-| V02-08 | Реальні traversed cells накопичують bounded wear і поступово стають видимою стежкою; невикористані клітинки не темнішають самі | [ ] PARTIAL | terrain_v02: реальний movement створює bounded wear; видимий time-lapse без руху/з рухом не знятий. |
-| V02-09 | Wear є authoritative state: deterministic, save/load roundtrip, checksum і host/guest snapshot/delta збігаються | [ ] PARTIAL | terrain_v02/persistence/protocol: field/save/checksum; dedicated wear host/guest delta comparison ще потрібний. |
-| V02-10 | Протоптана стежка не змінює speed, collision, path cost або buildability | [x] PASS | terrain_v02: arrival_tick однаковий, trail wear presentation-only; path planner regression. |
-| V02-11 | Нова ручна Road відсутня в catalog/hotkey/help/command; legacy Road ID і old-save object збережені без speed bonus | [x] PASS | terrain_v02/alpha_rules/ui: Road ID=19 збережено; new Road rejected, Bridge available. |
-| V02-12 | F1 і весь прийнятий HUD V01 працюють без регресій у новому світі | [x] PASS | M/P/ui: V01 HUD і F1 працюють на V02 generation; return не перегенеровує світ. |
-| V02-13 | Старий save не перегенеровує recorded chunks новим profile і зберігає старий terrain hash | [x] PASS | terrain_v02/save_compatibility: generator 5 roundtrip зберігає checksum, recorded chunks не перегенеровано. |
-| V02-14 | Native video показує рух берегом, через міст і накопичення стежки; screenshot сам не зараховується | [ ] NOT RUN | Немає немонтованого native відео bridge/shore/desire-path accumulation; screenshots не зараховані. |
+| V02-01 | The new profile creates one continuous river with one water level; No cracks, insulated sludge or water on land | [ ] PARTIAL | terrain_v02: the relationship of the river to 10 seeds; A full review of all water-level transitions has not been completed. |
+| V02-02 | The shores have seamless transitions to chunk edges and negative coordinates; foam/waves not painted over the bridge deck | [ ] PARTIAL | terrain_v02: shared UV edges/negative coordinates; bridge foam mask in code; native bridge/shore video is missing. |
+| V02-03 | The earth has wide readable grass/soil/rock zones; The contrast is slightly lower than the contrast of buildings and people. | [ ] PARTIAL | M: new calm meadow and bounded mips; The winter material boundaries remain visible. |
+| V02-04 | Trees, rocks, bushes, and wild food form groups, not a uniform noise and not a visual impervious wall | [ ] PARTIAL | M: combined nature and jitter; The density/biomatic stylisation is still different from the concept. |
+| V02-05 | There is a level starting point, ≥80 reachable buildable cells and reachable wood/stone/food/clay/mine for 10 fixed seeds | [ ] PARTIAL | terrain_v02: 10 seeds, ≥80 cells, wood/stone/food/mine PASS; There is no separate clay assertion. |
+| V02-06 | Renderer, movement, building preview/server validation, picking, resident feet, entry cells and bridge approaches use common surface geometry | [x] PASS | A: 1089 terrain picks, 3 zoom checks, uphill movement; terrain_v02/client_input: shared geometry. |
+| V02-07 | The unit does not pass through a visible cliff, does not hang over the ramp, and does not collapse under the surface | [ ] PARTIAL | A: uphill click and movement PASS; All cliff/ramp/bridge occlusion cases are not shown in the video. |
+| V02-08 | Real traversed cells accumulate bounded wear and gradually become a visible pathway. Unused cells don't get dark on their own. | [ ] PARTIAL | terrain_v02: real movement creates bounded wear; The time-lapse without motion is not recorded. |
+| V02-09 | Wear is the authoritative state: deterministic, save/load roundtrip, checksum and host/guest snapshot/delta coincide | [ ] PARTIAL | terrain_v02/persistence/protocol: field/save/checksum; dedicated wear host/guest delta comparison is still needed. |
+| V02-10 | A protopted track does not change speed, collision, path cost or buildability | [x] PASS | terrain_v02: arrival_tick the same, trail wear presentation-only; path planner regression. |
+| V02-11 | New handheld Road is missing at catalog/hotkey/help/command; legacy Road ID and old-save object saved without speed bonus | [x] PASS | terrain_v02/alpha_rules/ui: Road ID=19 is preserved; new Road rejected, Bridge available. |
+| V02-12 | F1 and all accepted HUD V01 work without regression in the new world | [x] PASS | M/P/ui: V01 HUD and F1 are running on V02 generation; The return doesn't regenerate the world. |
+| V02-13 | The old save does not reproduce the recorded chunks of the new profile and keeps the old terrain hash | [x] PASS | terrain_v02/save_compatibility: the generator 5 roundtrip stores checksum, recorded chunks not re-generated. |
+| V02-14 | Native video shows movement along the coast, across the bridge and the buildup of trails; The screenshot itself does not count | [ ] NOT RUN | There is no uninstalled native video bridge/shore/desire-path accumulation; screenshots are not recorded. |
 
-## 5. V03 — малий art kit, усі доступні споруди й мешканці
+## 5. V03 — small art kit, all available buildings and residents
 
-| ID | Видимий або поведінковий критерій | Статус | Evidence |
+| ID | Extreme or behavioral criteria | The status | Evidence |
 |---|---|---|---|
-| V03-01 | Спочатку прийнятий малий kit: House, Stockpile, Workshop і один resident на flat та slope V02 в однаковій calibration scene | [ ] PARTIAL | A: calibration/slope/zoom кадри малого kit є; окреме художнє приймання kit до розширення не закрите. |
-| V03-02 | Для малого kit зафіксовано pivot/feet anchor, entry reference, silhouette bounds, projected size і scale на zoom 0.62/1.30/3.00 | [x] PASS | A + passport/building_visual: anchors/entry/bounds, zoom 0.62/1.30/3.00 і picking. |
-| V03-03 | Після малого kit стиль поширений на Camp + 11 buildable types; Temple/Barracks та інші locked types не розблоковані | [ ] PARTIAL | v03_asset_passport/alpha_rules: Camp+11 covered, locked types не відкриті; gate малого kit ще PARTIAL. |
-| V03-04 | Кожна доступна family має stage1/stage2/stage3/ready/winter без missing sprite, magenta fringe або anchor jump | [ ] PARTIAL | A/v03_asset_passport: 5 states без missing IDs; all-family alpha-fringe/anchor visual acceptance не повна. |
-| V03-05 | `.level2` вибирають тільки завершені House II і Workshop II; upgrade до завершення показує чинний рівень і progress | [x] PASS | building_visual/upgrades/upgrade_flow: тільки завершені House II/Workshop II вибирають level2. |
-| V03-06 | Winter не повертає House II/Workshop II до level I; окремий plate або документований overlay/tint зберігає правильний silhouette | [x] PASS | M winter + A/building_visual/passport: окремі House II/Workshop II winter plates зберігають II. |
-| V03-07 | Візуальний scale не змінює simulation footprint, entry cell, collision або ізометричну проєкцію 58×29 | [x] PASS | building_visual/client_input/A: scale 1.35 presentation-only, bridge/Road винятки, footprint/projection не змінено. |
-| V03-08 | Renderer, inspector thumbnail і picking використовують один visual resolver та однаковий фактичний level/scale | [x] PASS | A/M/building_inspector: єдиний resolver, exact stockpile picks, thumbnail/level state. |
-| V03-09 | Resident coverage: 2 looks × 4 load states × 8 directions × 4 phases; anchor стабільний при русі й повороті | [ ] PARTIAL | A/R/unit_motion: 256 frames та anchors; усі повороти у безперервному native відео не перевірено. |
-| V03-10 | `walk/logs/sack/cart` походить із фактичних item+quantity; після delivery/cancel вантаж зникає | [ ] PARTIAL | R: фактичні вантажі/дві доставки/save-resume PASS; cancellation і всі item-to-cart варіанти окремо не відзняті. |
-| V03-11 | Contact shadow world-anchored під feet, намальована перед sprite; cart має ширший contact, але це не directional sunlight | [x] PASS | unit_motion/R: feet contact перед sprite, ширший cart shadow; не directional lighting. |
-| V03-12 | Resident проходить перед/за building/tree/bridge/cliff без неправильного painter-order перекриття | [ ] PARTIAL | A/R: slope і representative objects; перед/за всіма tree/bridge/cliff не перевірено відео. |
-| V03-13 | Smoke/fire/tool signal з'являється лише при фактичному active job у фазі Working | [ ] PARTIAL | work_client_rendered/code: Working gating збережено; повної native матриці inactive/paused/job фаз немає. |
-| V03-14 | Stockpile piles показуються лише за наявності bounded authoritative binding; інакше не додається фальшивий stock indicator | [x] PASS | M/code: не додані фальшиві кількісні piles; static art не заявляється як облік запасів. |
-| V03-15 | Atlas/passport містять stable ID, source/license, dimensions, pivot, alpha mode, family/state/season, hash і notice | [x] PASS | v03_asset_passport/asset_catalog/asset_staging: IDs/dimensions/pivot/hash/license/source/notice; provenance prompts збережені. |
-| V03-16 | Native video показує 8 facing, кожен cargo type, delivery, pause, 4× і рух з обох боків споруди | [ ] NOT RUN | 256-frame sheets і delivery PNG є, але це не немонтоване відео facing/cargo/pause/4×/occlusion. |
+| V03-01 | Initially adopted small kit: House, Stockpile, Workshop and one resident on flat and slope V02 in the same calibration scene | [ ] PARTIAL | A: calibration/slope/zoom the frames of a small kit are; The separate artistic reception kit is not closed until expansion. |
+| V03-02 | For the small kit fixed pivot/feet anchor, entry reference, silhouette bounds, projected size and scale on zoom 0.62/1.30/3.00. | [x] PASS | A + passport/building_visual: anchors/entry/bounds, zoom 0.62/1.30/3.00, and picking. |
+| V03-03 | After a small kit the style spread to Camp + 11 buildable types; Temple/Barracks and other locked types remain locked | [ ] PARTIAL | v03_asset_passport/alpha_rules: Camp+11 covered, locked types not open; the gate of the little kit yet PARTIAL. |
+| V03-04 | Each available family has stage1/stage2/stage3/ready/winter without missing sprite, magenta fringe or anchor jump | [ ] PARTIAL | A/v03_asset_passport: 5 states without missing IDs; all-family alpha-fringe/anchor visual acceptance is incomplete. |
+| V03-05 | `.level2` only select completed House II and Workshop II; Upgrade to completion shows current level and progress | [x] PASS | building_visual/upgrades/upgrade_flow: only completed House II/Workshop II select level2. |
+| V03-06 | Winter does not return House II/Workshop II to level I; a separate plate or documented overlay/tint retains the correct silhouette | [x] PASS | M winter + A/building_visual/passport: individual House II/Workshop II winter plates are stored II. |
+| V03-07 | The visual scale does not alter the simulation footprint, entry cell, collision or isometric projection 58×29 | [x] PASS | building_visual/client_input/A: scale 1.35 presentation-only, bridge/Road exceptions, footprint/projection not changed. |
+| V03-08 | Renderer, inspector thumbnail and picking use one visual resolver and the same actual level/scale | [x] PASS | A/M/building_inspector: single resolver, exact stockpile picks, thumbnail/level state. |
+| V03-09 | Resident coverage: 2 looks × 4 load states × 8 directions × 4 phases; anchor stable at turn and motion | [ ] PARTIAL | A/R/unit_motion: 256 frames and anchors; All spins in the continuous native video are unverified. |
+| V03-10 | `walk/logs/sack/cart` is derived from the actual item+quantity; After delivery/cancel the load disappears | [ ] PARTIAL | R: actual freight/two deliveries/save-resume PASS; cancellation and all item-to-cart options separately are not taken into account. |
+| V03-11 | Contact shadow world-anchored under feet, painted before the sprite; The cart has a wider contact, but it's not directional sunlight. | [x] PASS | unit_motion/R: feet contact before sprite, wider cart shadow; It's not directional lighting. |
+| V03-12 | Resident goes in/out building/tree/bridge/cliff without the wrong painter-order overlap | [ ] PARTIAL | A/R: slope and representative objects; before/after all tree/bridge/cliff unverified video. |
+| V03-13 | Smoke/fire/tool signal only appears when the actual active job is in the Working phase | [ ] PARTIAL | work_client_rendered/code: Working gating is saved; There is no complete native matrix inactive/paused/job phase. |
+| V03-14 | Stockpile piles are displayed only in the presence of bounded authoritative binding; Otherwise, no false stock indicator is added | [x] PASS | M/code: no false quantitative piles have been added; static art is not declared as inventory. |
+| V03-15 | Atlas/passport contains stable ID, source/license, dimensions, pivot, alpha mode, family/state/season, hash and notice | [x] PASS | v03_asset_passport/asset_catalog/asset_staging: IDs/dimensions/pivot/hash/license/source/notice; The provenance prompts are saved. |
+| V03-16 | Native video shows 8 facing, each cargo type, delivery, pause, 4× and movement from both sides of the building | [ ] NOT RUN | 256-frame sheets and delivery PNG are available, but this is not unassembled video facing/cargo/pause/4×/occlusion. |
 
-## 6. Обов'язкова UI visual matrix
+## 6. The required UI visual matrix
 
-Кожна клітинка означає окремий native capture з відкритим representative inspector і найдовшим локалізованим текстом; жодна клітинка не успадковує PASS від іншої.
+Each cell represents a separate native capture with an open representative inspector and the longest localized text; No cell inherits PASS from another cell.
 
 | Resolution \ UI scale | 0.85 | 1.00 | 1.15 | 1.30 |
 |---|---|---|---|---|
@@ -101,7 +103,7 @@
 | 1920×1080 | CAPTURED ×5 | CAPTURED ×5 | CAPTURED ×5 | CAPTURED ×5 |
 | 2560×1440 | CAPTURED ×5 | CAPTURED ×5 | CAPTURED ×5 | CAPTURED ×5 |
 
-| Locale | Resource strip | Warning | Inspector/details | Actions/controls | Статус |
+| Locale | Resource strip | Warning | Inspector/details | Actions/controls | The status |
 |---|---|---|---|---|---|
 | uk | M: 12 captures | longest warning NOT RUN | representative stockpile; Details NOT RUN | M: 12 captures | [ ] PARTIAL |
 | en | M: 12 captures | longest warning NOT RUN | representative stockpile; Details NOT RUN | M: 12 captures | [ ] PARTIAL |
@@ -109,35 +111,35 @@
 | pl | M: 12 captures | longest warning NOT RUN | representative stockpile; Details NOT RUN | M: 12 captures, Surface fit fixed | [ ] PARTIAL |
 | es | M: 12 captures | longest warning NOT RUN | representative stockpile; Details NOT RUN | M: 12 captures | [ ] PARTIAL |
 
-- [ ] NOT RUN — OS DPI 100/125/150% input mapping окремо від UI scale.
-- [ ] PARTIAL — representative visible rects оглянуті; автоматичного hit-rect overlap тесту кожної клітинки немає.
-- [ ] PARTIAL — RenderFrameTests software/GPU перевіряє resize і letterbox coordinate roundtrip; повний click/drag/wheel/tooltip набір у кожній роздільності не виконаний.
+- [ ] NOT RUN — OS DPI 100/125/150% input mapping separately from the UI scale.
+- [ ] PARTIAL — representative visible rects examined; There's no automatic hit-rect overlap test for each cell.
+- [ ] PARTIAL — RenderFrameTests software/GPU checks the resize and letterbox coordinate roundtrip; the full set click/drag/wheel/tooltip in each partition is not complete.
 
-M містить 60 ordinary + 60 staged captures, один winter та два F1 — разом 123 PNG. `CAPTURED` не є автоматичним `PASS` усіх visual/input умов.
+M contains 60 ordinary + 60 staged captures, one winter and two F1 — together 123 PNG. `CAPTURED` is not an automatic `PASS` of all visual/input conditions.
 
-## 7. Regression та evidence matrix
+## 7. Regression and evidence matrix
 
-| Область | Мінімальний доказ | Статус | Evidence path / command |
+| Area | Minimum evidence | The status | Evidence path / command |
 |---|---|---|---|
-| Source hygiene | scoped diff, `git diff --check`, без випадкового змішування weather/DL | [x] PASS | git diff --check exit0; лише CRLF warnings; unrelated dirty-tree changes збережені. |
-| Focused tests | UI/input/localization; terrain/path/build/save/network; art/resolver/animation/atlas/staging | [x] PASS | T: усі перелічені тести пройшли; додатково RenderFrameTests --gpu, A/R/M native D3D12. |
-| Full suite | повний configured CTest на фінальному executable/assets | [x] PASS | ctest-certified.xml: 91/91, 0 failures, 674.79 s. Попередній postfix із 2 failures збережено як історію. |
-| GPU | D3D12 hardware metadata, `software=false`, exact executable hash | [x] PASS | A/R/M: D3D12 RTX3050, software=false; executable hash у build-evidence.json. |
-| Native appearance | same seed/state/camera/zoom/resolution before/after для кожного V-step | [ ] PARTIAL | M: однакові seed/state/camera у certified fixtures; немає повного before/after окремих V1/V2/V3 binaries. |
-| Native interaction | немонтовані V01 action/F1, V02 bridge/path wear, V03 movement/cargo videos | [ ] PARTIAL | P: реальне native керування; обов'язкові немонтовані videos не записані. |
-| Save compatibility | current roundtrip + supported frozen old-save copy; оригінал не перезаписаний | [x] PASS | save_compatibility/terrain_v02 + R: frozen/current copies; користувацькі originals не змінено. |
-| Network | local host/join однаково бачать wear, cargo, levels і authoritative UI reasons | [ ] PARTIAL | local process/protocol/adverse tests у T; спеціальне native порівняння wear/levels/cargo двох клієнтів не закрите. |
-| Package | fresh output directory, manifest/hash, package-only launch і staging validation | [x] PASS | P: fresh rework package, 158 staged assets, точний збіг exe hash, ручний new-world/F1/Escape smoke. |
-| Physical scope | два фізичні Windows-ПК/cross-network позначені окремо; local loopback їх не замінює | [ ] NOT RUN | Два фізичні Windows-ПК і cross-network не запускались; loopback не прирівняний до них. |
-| Performance | cold generation, frame/compose, texture bytes і memory порівняні з baseline на тій самій сцені | [ ] PARTIAL | Cold generation <5s test; 310.01/411.68 MiB texel payload, бюджет не прийнятий; p95/p99/VRAM baseline відсутній. |
+| Source hygiene | scoped diff, `git diff --check`, without random mixing weather/DL | [x] PASS | git diff --check exit0; only CRLF warnings; unrelated dirty-tree changes are saved. |
+| Focused tests | UI/input/localization; terrain/path/build/save/network; art/resolver/animation/atlas/staging | [x] PASS | T: all the tests listed have been passed; Additionally RenderFrameTests --gpu, A/R/M native D3D12. |
+| Full suite | Full configured CTest on the final executable/assets | [x] PASS | ctest-certified.xml: 91/91, 0 failures, 674.79 s. The previous postfix with 2 failures is stored as history. |
+| GPU | D3D12 hardware metadata, `software=false`, exact executable hash | [x] PASS | A/R/M: D3D12 RTX3050, software=false; executable hash in build-evidence.json. |
+| Native appearance | same seed/state/camera/zoom/resolution before/after for each V-step | [ ] PARTIAL | M: equal to seed/state/camera in certified fixtures; There are no complete before/after single V1/V2/V3 binaries. |
+| Native interaction | Unassembled V01 action/F1 V02 bridge/path wear, V03 movement/cargo videos | [ ] PARTIAL | P: real native control; The mandatory unedited videos are not recorded. |
+| Save compatibility | current roundtrip + supported frozen old-save copy; The original is not transcribed | [x] PASS | save_compatibility/terrain_v02 + R: frozen/current copies; The user originals are unchanged. |
+| Network | local host/join see wear, cargo, levels and authoritative UI reasons alike | [ ] PARTIAL | local process/protocol/adverse tests in T; special native comparison wear/levels/cargo of two clients not closed. |
+| Package | fresh output directory, manifest/hash, package-only launch and staging validation | [x] PASS | P: fresh rework package, 158 staged assets, exact match exe hash, manual new-world/F1/Escape smoke. |
+| Physical scope | two physical Windows PC/cross-network marked separately; Local loopback doesn't replace them. | [ ] NOT RUN | Two physical Windows PCs and cross-network have not been launched; The loopback is not equal to them. |
+| Performance | cold generation, frame/compose, texture bytes and memory compared to baseline on the same scene | [ ] PARTIAL | Cold generation <5s test; 310.01/411.68 MiB texel payload, budget not accepted; p95/p99/VRAM baseline is missing. |
 
-## 8. Фінальне рішення
+## 8. The Final Solution
 
-- **PASS V01:** усі V01 rows, UI matrix та V01 evidence завершені; світові pixels/commands не змінені поза дозволеним HUD.
-- **PASS V02:** PASS V01 збережено; усі V02 rows і native river/bridge/path-wear evidence завершені.
-- **PASS V03:** PASS V01+V02 збережено; усі V03 rows, Camp+11 coverage, cargo/motion video, package й regressions завершені.
-- **PARTIAL:** є код або окремі тести/captures, але хоча б один обов'язковий row лишається `PENDING`.
-- **FAIL:** runtime суперечить authority/scope, регресує прийнятий попередній етап або evidence відтворює дефект.
-- **NOT IMPLEMENTED:** немає runtime diff та нативного доказу; generated target або документ не змінює цей статус.
+- **PASS V01:** all V01 rows, UI matrix and V01 evidence completed; The world pixels/commands is not changed outside the permissible HUD.
+- **PASS V02:** PASS V01 is preserved; All V02 rows and native river/bridge/path-wear evidence completed.
+- **PASS V03:** PASS V01+V02 is preserved; All V03 rows, Camp+11 coverage, cargo/motion video, package and regressions are complete.
+- **PARTIAL:** is code or separate tests/captures, but at least one mandatory row remains `PENDING`.
+- **FAIL:** runtime contradicts authority/scope, regressions the previous stage accepted or evidence reproduces the defect.
+- **NOT IMPLEMENTED:** there is no runtime diff and no native proof; The generated target or document does not change that status.
 
-Поточний verdict цього документа: **PARTIAL — повна художня переробка ще не прийнята**. Конкретні залишки: artist/style/detail parity, зимові матеріальні межі, longest-text/DPI/hit-rect matrix, native videos, texture lifecycle і performance/VRAM budget. Документ не оголошує публічний реліз і не змінює статус S01/S02/S03.
+The current verdict of this document: **PARTIAL — full artwork has not yet been accepted**. Specific remnants: artist/style/detail parity, winter material boundaries, longest-text/DPI/hit-rect matrix, native videos, texture lifecycle and performance/VRAM budget. The document does not announce a public release or change status S01/S02/S03.

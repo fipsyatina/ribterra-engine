@@ -1,213 +1,215 @@
-# Ribterra — технічна специфікація Render Core для 0.26.1
+# Ribterra — Render Core technical specification for 0.26.1
 
-**Новий контракт E10 08.10:** [AnalyticAtmosphere V1](ANALYTIC_ATMOSPHERE_V1_CONTRACT_UA.md) додає просторову far/morning/coastal густину в GroundLighting, WorldForward і Reflection source до alpha, не в Composite. Opt-in `WaterAtmosphereSlice`, SurfaceLighting384 prefix +Atmosphere640 =1024 bytes b0; без додаткових attachments або uniform slots. Повні engine gates лишаються OPEN; контракт не є доказом native/performance приймання.
+> English translation of a historical project document. Technical literals and recorded results are preserved; these records describe their original snapshots and do not validate the current build. Original wording is available in import commit `7388a2f`.
 
-**Новіший bounded follow-up 08.10:** [raw binary WaterCoverage / odd resize](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md), fresh build02/native05–06, має actual GPU tuples і fault36/retry54/restore72. Це не intermediate AA, усі recovery failures, normal startup або повне приймання. Нижчі checkpoint записи збережені як історія своїх source cohorts.
+**New E10 contract 08.10:** [AnalyticAtmosphere V1](ANALYTIC_ATMOSPHERE_V1_CONTRACT_UA.md) adds 3D distance/morning/coastal density in GroundLighting, WorldForward, and Reflection source alpha, not in Composite. The opt-in `WaterAtmosphereSlice` uses a SurfaceLighting384 prefix + Atmosphere640 =1024-byte b0; it adds no attachments or uniform slots. Higher-level engine gates remain OPEN; the contract is not native or performance acceptance evidence.
 
-**Поточний bounded checkpoint 08.10:** [Water / Reflection V1](WATER_REFLECTION_CHECK_2026_10_08_UA.md) працює в спільному native renderer через opt-in GameView adapter. [Окремий контракт](WATER_REFLECTION_V1_CONTRACT_UA.md) уточнює новий кумулятивний граф: 5 MRT, окремий RGBA8 carrier і half-resolution HDR Reflection; старі графи та Contact V1 W=0/1/2 незмінні. Це технічний контрольний набір, не концепт-арт або приймання E09. E01–E17/normal startup/AA/input/video/presets/120 FPS OPEN.
+**New bounded follow-up 08.10:** [raw binary WaterCoverage / odd resize](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md), fresh build02/native05–06, records actual GPU tuples and fault36/retry54/restore72. It does not cover intermediate AA, every recovery failure, normal startup, or full acceptance. Checkpoint records are preserved as their historical source cohorts.
 
-**Актуальний partial authored checkpoint08.10:** [GameArt sky-triangle bridge](AUTHORED_SKY_BRIDGE_CHECK_2026_10_08_UA.md) перевіряє незалежні schema-2 локальні XYZ трикутники, явний world-to-camera adapter і атомарність кадру/registry. Це ще не authored GPU shadow або повне приймання Render Core. E01–E17/GameView/art/presets/120FPS OPEN.
+**Current bounded checkpoint 08.10:** [Water / Reflection V1](WATER_REFLECTION_CHECK_2026_10_08_UA.md) runs in the shared native renderer through an opt-in GameView adapter. Its [single contract](WATER_REFLECTION_V1_CONTRACT_UA.md) defines a new graph: 5 MRTs, a separate RGBA8 coverage carrier, and half-resolution HDR Reflection; older graphs and Contact V1 W=0/1/2 remain unchanged. This is technical E09 proof, not concept-art acceptance. E01–E17, normal startup, AA, input, video, presets, and ≥120 FPS remain OPEN.
 
-**Актуальний partial checkpoint08.10:** [Sun/Moon SkyShadowSlice](SKY_SHADOW_CHECK_2026_10_08_UA.md) має source-specific D32 depth passes на opt-in production renderer, тільки для bounded fixed-camera opaque triangles. Це shadow-only geometry, не перехід гри на повний3D. Історична заборона depth target нижче не описує цей новий prerequisite; world HDR/UI і старі graph outputs збережені. E01–E17, authored art/GameView/full suite/presets/120FPS OPEN; engine-first порядок має пріоритет над старим scaffold/deferred планом.
+**Active partial authored checkpoint 08.10:** The [GameArt sky-triangle bridge](AUTHORED_SKY_BRIDGE_CHECK_2026_10_08_UA.md) verifies independent schema-2 local XYZ triangles, an explicit world-to-camera adapter, and frame-lifetime/registry behavior. It is not yet an authored GPU shadow or full Render Core acceptance. E01–E17, GameView, art, presets, and ≥120 FPS remain OPEN.
 
-**Історичне рішення 27.09 (не поточний стан bounded opt-in графів):** повний граф нижче описував майбутній режим Dynamic і scaffold API. Номер релізу не призначено; нормальний startup не переключено. Поточний порядок — [повний двигун перед грою](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md), а актуальні часткові докази наведено вище. [DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) та [Dynamic Lighting](DYNAMIC_LIGHTING_SPEC_UA.md) зберігаються як історичний план/алгоритм, не підтвердження готовності.
-**Дата:** 27 вересня 2026.
-**Статус:** **PROPOSED / UNMEASURED**. Це план реалізації; описаних passes, GPU layouts і нових ефектів у runtime ще немає.
-**Ціль:** довести керований 2.5D renderer на чинному SDL_GPU/D3D12 шляху до малого нативного зрізу до масового виробництва ассетів.
-**Головний план:** [Graphics Engine Plan V2](GRAPHICS_ENGINE_PLAN_V2_UA.md).
-**Суміжний контракт:** [World FX](WORLD_FX_SPEC_UA.md).
-**Первинні SDL-джерела:** посилання і межі доказу зібрані у [розділі 12 головного плану](GRAPHICS_ENGINE_PLAN_V2_UA.md#12-первинні-технічні-джерела).
+**Active partial checkpoint 08.10:** [Sun/Moon SkyShadowSlice](SKY_SHADOW_CHECK_2026_10_08_UA.md) adds source-specific D32 depth passes to the opt-in production renderer, limited to bounded fixed-camera opaque triangles. This is shadow-only geometry, not a transition of the entire game to 3D. The historical prohibition on a depth target below does not describe this new prerequisite; world HDR/UI and old graph outputs remain preserved. E01–E17, authored art, GameView, the full suite, presets, and ≥120 FPS remain OPEN; the engine-first order takes priority over the older scaffold/deferred plan.
 
-## 1. Рішення й межа
-Робоча архітектура — чинний 2.5D renderer із фіксованою ізометричною камерою, painter order для спрайтів і окремими bounded passes для матеріалів, локального світла та World FX.
-Це рішення діє, доки нативний доказ не покаже конкретну непереборну межу.
-Амбіційність концепт-арту сама по собі не дозволяє переписати рушій або перейти на повну 3D-сцену.
-У майбутньому режимі Dynamic заплановані:
-- динамічне світло на ground, фасадах і мешканцях за normal/depth material та окрема emission; контактні тіні для кожного мешканця й напрямлені authored silhouettes; local-light occlusion через OBB/capsule prism approximation;
-- wetness response на дозволених ground receivers; плоска річка, bounded reflections, shoreline masks і World FX; world-space haze, який не замінює Fog of War;
-- rain/snow particles і косметичні footprints/compressed-snow shading; один viewport/DPI/input контракт для світу й RmlUi; schema 2 для матеріалів із транзакційним upload і schema 1 adapter.
-Не входять:
-- depth target, perspective camera або повна 3D-геометрія; повний deferred PBR, GI, ray tracing, SSR або planar capture всього кадру; rigid-body, cloth чи fluid physics;
-- фізична деформація або collision снігу; водоспади, повінь, кілька рівнів води або simulation feedback із renderer; автоматичне переписування рушія після невдалого окремого shader experiment.
+**Historical decision 27.09, not the current bounded opt-in graph:** The full graph below describes the future Dynamic mode and scaffold API. No release number is assigned, and normal startup does not use it. The current order is [full engine before game integration](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md), with actual partial evidence recorded above. [DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) and [Dynamic Lighting](DYNAMIC_LIGHTING_SPEC_UA.md) are retained as roadmap/algorithm documents, not readiness confirmation.
+**Date:** 27 September 2026.
+**Status:** **PROPOSED / UNMEASURED**. This is an implementation plan; the described passes, GPU layouts, and new effects do not yet exist at runtime.
+**Goal:** establish a controlled 2.5D renderer on the current SDL_GPU/D3D12 path, from small acceptance samples through mass asset production.
+**Main Plan:** [Graphics Engine Plan V2](GRAPHICS_ENGINE_PLAN_V2_UA.md).
+**Public contract:** [World FX](WORLD_FX_SPEC_UA.md).
+**Primary SDL sources:** links and scope are listed in [section 12 of the main plan](GRAPHICS_ENGINE_PLAN_V2_UA.md#12-primary-technical-sources).
 
-## 2. Перевірена поточна база
-Нижче — **історичний source snapshot початкового плану**, не поточний стан після engine-first кроків 05–07.10.2026. Актуальну production opt-in основу та відкриті межі описують [GroundForward](GROUND_FORWARD_CHECK_2026_10_07_UA.md) і [local visibility](LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md); звичайний GameView ще BakedCompat. Таблицю збережено, щоб не переписувати provenance старого плану.
-| Місце | Поточний факт | Наслідок для V2 |
+## 1. Decision and boundaries
+The working architecture is a 2.5D renderer with a fixed isometric camera, painter ordering for sprites, and separate bounded passes for materials, local light, and World FX.
+This decision remains in effect until concrete proof demonstrates a specific insurmountable limitation.
+Concept-art terminology alone does not authorize replacing the engine or moving to a full 3D scene.
+The future Dynamic mode plans:
+- dynamic lighting on terrain, facades, and residents using normal/depth material data and separate emission; contact shadows for every resident and authored directional silhouettes; local-light occlusion through OBB/capsule-prism approximations;
+- wetness response on eligible ground receivers; a flat river, bounded reflections, shoreline masks, and World FX; world-space haze that does not replace Fog of War;
+- rain/snow particles and cosmetic footprint/compressed-snow shading; one viewport/DPI/input contract for the world and RmlUi; schema 2 for transactional material upload and a schema 1 adapter.
+Not included:
+- a depth target, perspective camera, or full 3D geometry; full deferred PBR, GI, ray tracing, SSR, or a full-frame planar capture; rigid-body, cloth, or fluid physics;
+- physical snow deformation or collisions; waterfalls, currents, multiple water levels, or simulation feedback from the renderer; automatically rewriting the engine after one shader experiment fails.
+
+## 2. Verified current baseline
+The table below is the **historical source snapshot from the initial plan**, not the current state after engine-first work on 05–07.10.2026. [GroundForward](GROUND_FORWARD_CHECK_2026_10_07_UA.md) and [local visibility](LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md) document the active production opt-in foundation and open boundaries; normal GameView remains BakedCompat. The table is preserved to retain the provenance of the earlier plan.
+| Location | Current fact | Required change for V2 |
 |---|---|---|
-| `include/ribterra/render_frame.hpp` | `Frame2D` має 2D vertex, UV, RGBA8 color, texture handle, painter commands і проходи Terrain/WorldOrdered/Atmosphere/Fog/Ui | Немає material, light, receiver, decal чи reflection контрактів |
-| `src/render/renderer2d.cpp` | GPU path створює один `R8G8B8A8_UNORM` offscreen target | Потрібні нові attachments, pipelines і lifecycle |
-| `src/render/renderer2d.cpp` | Дозволено два frames in flight; кожний frame має fence і upload buffers | Нові attachments також мають мати два незалежні набори |
-| `shaders/sprite.vert.hlsl` | Є лише `logical_extent` uniform | Нові програми потребують власних точних binding contracts |
-| `shaders/sprite.frag.hlsl` | Результат — sampled texture × vertex color | PNG сам не створить wetness, occlusion чи bounded reflection |
-| `tests/shader_contract.py` | Manifest schema 1 очікує один sampler у fragment і один uniform buffer у vertex | Тест і manifest треба розширити разом із програмами |
-| `src/client/game_art.cpp` | Loader приймає тільки `world.json` schema 1 і завантажує RGBA atlas page | Schema 2 має бути transactional; старий каталог проходить adapter |
-| `include/ribterra/world_projection.hpp`, `src/client/view.cpp` | Спільна affine-проєкція використовує еталонний ромб 58×29; view усе ще має logical 1440×900 | 1440×900 не може лишатися прихованим DPI контрактом |
-| `src/client/main.cpp` | Після `GameView::compose` frame знову отримує 1440×900, потім додається UI | Світ, UI та input мають перейти на один drawable-pixel viewport |
-| `src/render/renderer2d.cpp` | Pointer event конвертується через window/pixel/logical scale | Після V2 конвертація window→drawable виконується рівно один раз |
-Software backend корисний для command-generation тестів.
-Він не доводить DXIL bindings, HDR targets, blend, mask leakage, timing або зображення нативного D3D12 renderer.
+| `include/ribterra/render_frame.hpp` | `Frame2D` has 2D vertices, UVs, RGBA8 color, texture handles, and painter commands routed through Terrain/WorldOrdered/Atmosphere/Fog/Ui | No material, light, receiver, decal, or reflection contracts |
+| `src/render/renderer2d.cpp` | GPU path creates one `R8G8B8A8_UNORM` offscreen target | Requires new attachments, pipelines, and lifecycle management |
+| `src/render/renderer2d.cpp` | Two allowed frames in flight; each frame has fence and upload buffers | New attachments also have two independent sets |
+| `shaders/sprite.vert.hlsl` | Only the `logical_extent` uniform | New programs need their own exact binding contracts |
+| `shaders/sprite.frag.hlsl` | Output is sampled texture × vertex color | A PNG alone cannot create wetness, occlusion, or a bounded reflection |
+| `tests/shader_contract.py` | Manifest schema 1 expects one sampler in fragment and one uniform buffer in vertex | The test and manifest must expand by program |
+| `src/client/game_art.cpp` | Loader accepts only `world.json` schema 1 and loads an RGBA atlas page | Schema 2 must be transactional; the old catalog uses an adapter |
+| `include/ribterra/world_projection.hpp`, `src/client/view.cpp` | Shared affine projection uses a reference 58×29 diamond; view still has logical 1440×900 | 1440×900 cannot remain a hidden DPI contract |
+| `src/client/main.cpp` | After `GameView::compose`, the frame receives 1440×900 again before UI is added | World, UI, and input must move to one drawable-pixel viewport |
+| `src/render/renderer2d.cpp` | Pointer events are converted through window/pixel/logical scaling | After V2, convert window→drawable exactly once |
+The software backend is useful for command-generation tests.
+It does not prove DXIL bindings, HDR targets, blending, mask leakage, timing, or pixels from the actual D3D12 renderer.
 
-## 3. Нормативні простори координат
-### 3.1. Одна world metric
-Усі V2 world interfaces використовують `render_xyz` у tile-equivalent units:
-- `render_x` і `render_y` — позиція в клітинах світу; `render_z = legacy_elevation × 2.4 / 29.0`; camera-relative координати обчислюються на CPU перед float32 upload;
-- `screen_y` віднімає `29 × render_z × effective_zoom`; light, occluder, decal, reflection caster і receiver використовують ту саму metric; shader не вгадує висоту з painter order або alpha.
-Поточні authored polygons footprint переводяться в OBB або capsule prism approximation під час frame preparation.
-Оригінальний polygon лишається CPU validation/debug source; GPU не отримує довільний polygon solver.
-### 3.2. Camera й zoom
-Нормативний масштаб:
+## 3. Canonical coordinate spaces
+### 3.1. One world metric
+All V2 world interfaces use `render_xyz` in tile-equivalent units:
+- `render_x` and `render_y` — position in the cells of the world; `render_z = legacy_elevation × 2.4 / 29.0`; camera-relative coordinates are calculated on the CPU before float32 upload;
+- `screen_y` subtracts `29 × render_z × effective_zoom`; lights, occluders, decals, reflection casters, and receivers use the same metric; the shader does not infer height from painter order or alpha.
+Current authored footprint polygons are converted to OBB or capsule-prism approximations during frame preparation.
+The original polygon remains a CPU validation/debug source; the GPU does not receive an arbitrary polygon solver.
+### 3.2. Camera and zoom
+Canonical scale:
 `effective_zoom = user_zoom × drawable_height / 900`.
-`drawable_height` — physical drawable pixels поточного кадру, не window points і не старі logical 900.
-Camera origin віднімається до upload, щоб великі world coordinates не псували float precision.
-Контрольні zoom для dev.09:
-- `0.62` — широкий огляд і stress для mask seams; `1.30` — основний геймплейний кадр; `3.00` — перевірка leakage, anchor drift і authored silhouette.
-### 3.3. World depth без depth buffer
-Painter order лишається авторитетним для спрайтів.
-`world_meta.r` містить camera-relative depth metric для haze й діагностики, але не вмикає depth test.
-Кліфи, дахи й міст перекривають world objects через стабільний порядок і receiver/occlusion masks.
+`drawable_height` is the current frame's physical drawable-pixel height, not window points or the old logical 900.
+Subtract the camera origin before upload so large world coordinates do not degrade float precision.
+Control zoom levels for dev.09:
+- `0.62` — wide overview and stress test for mask seams; `1.30` — primary gameplay frame; `3.00` — leakage, anchor-drift, and authored-silhouette checks.
+### 3.3. World depth without a depth buffer
+Painter order remains authoritative for sprites.
+`world_meta.r` contains a camera-relative depth metric for haze and diagnostics, but does not enable depth testing.
+Cliffs, roofs, and the bridge overlap world objects through stable ordering and receiver/occlusion masks.
 
-## 4. Запропонований CPU frame contract
-`Frame2D` лишається верхнім контейнером кадру, але отримує V2 world inputs.
-Усі наведені типи — **PROPOSED interface names**, не наявні header declarations.
-| Тип | Мінімальні поля | Власник і правило |
+## 4. Proposed CPU frame contract
+`Frame2D` remains the top-level frame container, but receives V2 world inputs.
+All types below are **PROPOSED interface names**, not existing header declarations.
+| Type | Minimum fields | Owner and policy |
 |---|---|---|
-| `WorldFxFrame` | presentation time, epoch, rain/snow/haze, wind, temperature, snow cover, quality | Client projection із authoritative state; renderer не змінює simulation |
-| `MaterialDesc` | material id, albedo, normal/material map, camera-depth map, emission map, receiver flags, alpha mode, color space, dry/wet response | GameArt schema 2; immutable протягом submitted frame |
-| `LocalLight2D` | stable id, render XYZ anchor, radius, direction/cone, linear RGB/intensity, receiver mask, occluder range | GameView/renderer preparation; window light не є fullscreen glow |
-| `Occluder2D` | stable id, OBB або capsule prism, base/top render Z, shadow class, reveal | Підготовлений із authored footprint; не physics body |
-| `GroundDecal2D` | stable id, render XYZ anchor, axes/extent, material/decal id, opacity, receiver mask | Contact shadow або footprint; cosmetic only |
-| `ReflectionCaster2D` | stable id, sprite/material, anchor/bounds, water plane, strength, reveal | Лише дозволені видимі caster-и; UI/particles не входять |
-Frame preparation зберігає stable order.
-Жоден effect input не отримує callback у SimCore.
-Reveal filtering відбувається до GPU buffer upload.
+| `WorldFxFrame` | presentation time, epoch, rain/snow/haze, wind, temperature, snow cover, quality | Client projection of authoritative state; renderer does not change simulation |
+| `MaterialDesc` | material id, albedo, normal/material map, camera-depth map, emission map, receiver flags, alpha mode, color space, dry/wet response | GameArt schema 2; immutable during submitted frame |
+| `LocalLight2D` | stable id, render XYZ anchor, radius, direction/cone, linear RGB/intensity, receiver mask, occluder range | GameView/renderer preparation; window light is not fullscreen glow |
+| `Occluder2D` | stable id, OBB or capsule prism, base/top render Z, shadow class, reveal | Prepared from an authored footprint; not a physics body |
+| `GroundDecal2D` | stable id, render XYZ anchor, axes/extent, material/decal id, opacity, receiver mask | Contact shadow or footprint; cosmetic only |
+| `ReflectionCaster2D` | stable id, sprite/material, anchor/bounds, water plane, strength, reveal | Only eligible visible casters; UI and particles are excluded |
+Frame preparation preserves stable ordering.
+No effect input receives a callback into SimCore.
+Reveal filtering occurs before GPU buffer upload.
 
-## 5. Material і receiver contract
+## 5. Material and receiver contract
 ### 5.1. `MaterialDesc`
-Кожен world draw посилається на material id, а не на випадковий набір texture handles.
-Обов’язкові semantic bindings:
-| Binding | Color space | Alpha | Призначення |
+Every world draw references a material ID instead of an arbitrary set of texture handles.
+Required semantic bindings:
+| Binding | Color space | Alpha | Purpose |
 |---|---|---|---|
-| albedo | sRGB decode явно до linear | straight coverage | нейтральний base color |
-| normal/data | linear | linear data | authored normal XY, roughness/wet eligibility за затвердженим packing |
-| emission | sRGB RGB → linear; mask linear | straight mask | emissive RGB/strength без другого night darkening |
-| camera-depth | linear R16_UNORM + range | data | відновлення поверхні sprite за affine basis із Dynamic Lighting spec |
-| mask | linear | linear data | receiver, water, shore, snow або decal masks |
-| UI atlas | legacy byte path | legacy premultiplied | тільки UI pass, без world grade |
-World targets і всі lighting calculations працюють у linear color.
-Texture creation не покладається на неявний swapchain decode.
-Albedo RGB декодується з sRGB рівно один раз.
-Mask/normal/roughness значення ніколи не проходять sRGB transform.
-World albedo source використовує straight alpha.
-Перед linear alpha blend shader формує premultiplied output або pipeline явно використовує straight-alpha blend; один draw не може змішувати обидві конвенції.
-Manifest фіксує convention для кожної програми.
-UI зберігає чинні premultiplied bytes і відповідний blend path.
-### 5.2. Ground data і world metadata
-Чотири Ground G-buffer targets:
-- ground_albedo RGBA8_UNORM_SRGB: RGB neutral albedo, A contact/AO visibility; shader outputs linear, target encodes, sampler decodes рівно один раз.
-- surface_world RGBA16F: camera-relative render XYZ; семантика W залежить від explicit graph version, як нижче. Не трактувати contact tag як coverage.
+| albedo | explicit sRGB decode to linear | straight coverage | neutral base color |
+| normal/data | linear | linear data | authored normal XY, roughness/wet eligibility for approved packing |
+| emission | sRGB RGB → linear; mask linear | straight mask | emissive RGB/strength without another night-darkening pass |
+| camera-depth | linear R16_UNORM + range | data | sprite surface reconstruction using the affine basis from the Dynamic Lighting specification |
+| mask | linear | linear data | receiver, water, shore, snow or decal masks |
+| UI atlas | legacy byte path | legacy premultiplied | UI pass only, no world grading |
+World targets and all lighting calculations operate in linear color.
+Texture creation does not rely on implicit swapchain decoding.
+Albedo RGB is decoded from sRGB exactly once.
+Mask, normal, and roughness values never pass through an sRGB transform.
+World albedo sources use straight alpha.
+Before linear alpha blending, the shader either produces premultiplied output or the pipeline explicitly uses straight-alpha blending; one draw cannot mix both conventions.
+The manifest fixes the convention for each program.
+The UI retains its current premultiplied bytes and corresponding blend path.
+### 5.2. Ground data and world metadata
+Four Ground G-buffer targets:
+- ground_albedo RGBA8_UNORM_SRGB: RGB neutral albedo, A contact/AO visibility; shader outputs linear, target encodes, sampler decodes exactly once.
+- surface_world RGBA16F: camera-relative render XYZ; W semantics depend on the explicit graph version described below. Do not treat the contact tag as coverage.
 - surface_material RGBA8_UNORM: RG oct normal, B roughness, A sun visibility.
-- surface_flags RGBA8_UNORM: R receiver bitfield, G wetness, B shore01 для Water або snowCover01 для суші, A reveal.
+- surface_flags RGBA8_UNORM: R receiver bitfield, G wetness, B shore01 for Water or snowCover01 for land, A reveal.
 
-Flags семплуються point, coverage/material — за відповідним program contract. Contact shadow пише лише ground_albedo.A; directional silhouette лише surface_material.A. Blend множить destination visibility, не змінюючи RGB/normal. Footprint змінює лише затверджені albedo/normal/roughness channels, не world position, class або reveal.
+Flags use point sampling; coverage/material sampling follows the corresponding program contract. A contact shadow writes only ground_albedo.A; a directional silhouette writes only surface_material.A. Blending multiplies destination visibility without changing RGB or normal data. A footprint changes only approved albedo/normal/roughness channels, not world position, class, or reveal.
 
-**Versioned Contact V1 (2026-10-07; partial GPU proof, не full engine).** [Поточний звіт](CONTACT_GPU_CHECK_2026_10_07_UA.md). GroundForwardSlice лишає SurfaceWorld.W=`0` clear/invalid і `1` valid, старі readback asserts не послаблюються. Окремий opt-in GroundContactSlice використовує W=`0` invalid, `1` ordinary valid, `2` eligible valid. World target opaque/без blending, point/clamp. Contact приймає рівноW2/reveal1; новий Lighting — тількиW1/2. Усі8local bits і SurfaceFlags RGBA незмінні. Typed Ordinary/Flat/Slope/Bridge транспортується через копію GroundMaterialGpu.flags[1] лише в новому graph; caller-side reserved fields та весь старий lane лишаються zero. Native paired controls доводять receiver/reveal/plane exclusions, але нового raw-W readback немає.
+**Versioned Contact V1 (2026-10-07; partial GPU proof, not full engine).** See the [current report](CONTACT_GPU_CHECK_2026_10_07_UA.md). GroundForwardSlice leaves SurfaceWorld.W=`0` for clear/invalid and `1` for valid; existing readback assertions are not weakened. A separate opt-in GroundContactSlice uses W=`0` invalid, `1` ordinary valid, and `2` eligible valid. The world target is opaque with no blending and point/clamp sampling. Contact accepts exactly W2/reveal1; new Lighting accepts only W1/2. All 8 local bits and SurfaceFlags RGBA remain unchanged. Typed Ordinary/Flat/Slope/Bridge data is transported through a copy of GroundMaterialGpu.flags[1] only in the new graph; caller-side reserved fields and the entire old lane remain zero. Native paired controls prove receiver/reveal/plane exclusions, but there is no new raw-W readback.
 
-Цей bounded contact version **не підтримує Reflection/Water** і не зберігає antialiased coverage у W. Раніше описана майбутня coverage-семантика належить окремому full-engine graph, не цій версії. Перед full-engine Reflection потрібен окремий versioned coverage carrier з native edge proof та оновленим memory/resize/performance ledger; конкретний carrier ще не прийнятий. Заборонено `saturate(W)`, interpolation або reuse contact tag як coverage. Це не зняття вимоги Reflection і не full-engine acceptance.
+This bounded contact version **does not support Reflection/Water** and does not store antialiased coverage in W. The previously described future coverage semantics belong to a separate full-engine graph, not this version. Before full-engine Reflection, a separate versioned coverage carrier requires native edge proof and an updated memory/resize/performance ledger; no specific carrier has been accepted yet. Do not use `saturate(W)`, interpolation, or the contact tag as coverage. This does not remove the Reflection requirement and is not full-engine acceptance.
 
-ContactSurfaceGpu80: anchor/opacity, U/halfExtent, V/halfExtent, canonical texel-centre UV, pivot/planeTolerance/reserved0; offsets0/16/32/48/64. Prepared Draw112/zero padding, noncentral pivot, orthonormal tangents, extents≥1e-4, normalized plane band **[.02,.04]**, all4corners±band у±32, normal.z≥.5. Старий CPU prototype minimum1e-4 — історичний, не GPU tolerance. Це renderer policy, не terrain traversal/buildability. Reveal1, opacity(0,1], known facing, nonzero stable/owner та unique stable IDs; одинowner може мати кількаparts. Cap128provisional, overflowreject. Registry перевіряє alive generation, R8, integerrect/zero gutter, canonicalUV/facing до command acquisition; холодне release чекаєidle та неwrap-итьgeneration. Projection/scissor/GPUpass реалізовані, GameArt filtering/adapter й concept kit — ще ні.
+ContactSurfaceGpu80: anchor/opacity, U/halfExtent, V/halfExtent, canonical texel-centre UV, pivot/planeTolerance/reserved0; offsets 0/16/32/48/64. Prepared Draw112 with zero padding, a noncentral pivot, orthonormal tangents, extents≥1e-4, normalized plane band **[.02,.04]**, all four corners±band within ±32, and normal.z≥.5. The old CPU prototype minimum 1e-4 is historical, not the GPU tolerance. This is renderer policy, not terrain traversal/buildability. Require reveal1, opacity(0,1], known facing, nonzero stable/owner, and unique stable IDs; one owner may have several parts. Cap128 is provisional; overflow rejects. The registry checks an alive generation, R8, integer rect/zero gutter, and canonical UV/facing before command acquisition; cold release waits for idle and does not wrap a live generation. Projection/scissor/GPU pass are implemented; GameArt filtering/adapter and concept kit are not.
 
-Contact pass: fullscreen triangle, eight-corner bounded physical scissor зі спільної canonical projection. Reopen тільки ground_albedo LOAD/STORE; nearest World/Flags + linear-clamp R8 mask/LOD0. A-only write mask, alphaZERO/ONE_MINUS_SRC_ALPHA/ADD: newAO=oldAO*(1-mask*opacity), безactive-target reads або RGB зміни. Зберігаються7attachments/lighting384; graph5passes порожній /6populated. Registry≤256live/16MiBlogical R8,3..1024dimensions,≤1MiB/art; texel-centre endpoints уdeclaredrect≥3×3 зzeroouterringіnonzerointerior. Allocation/upload failurespublishnothing; handles-only framesstale-check доGPUwork. Native53checks×2,211CPUchecks таshader contracts — partial proof, не full Engine/FPS/art/motion acceptance.
+Contact pass: fullscreen triangle and an eight-corner bounded physical scissor from the shared canonical projection. Reopen only ground_albedo with LOAD/STORE; use nearest World/Flags plus a linear-clamp R8 mask at LOD0. A-only write mask with alpha ZERO/ONE_MINUS_SRC_ALPHA/ADD: newAO=oldAO*(1-mask*opacity), with no active-target reads or RGB changes. The existing 7 attachments/lighting384 remain; the graph has 5 passes when empty and 6 when populated. Registry limits are ≤256 live textures/16 MiB logical R8, dimensions 3..1024, and ≤1 MiB per art item; texel-centre endpoints must lie in a declared rect≥3×3 with a zero outer ring and nonzero interior. Allocation/upload failures publish nothing; handle-only frames perform stale checks before GPU work. Native 53 checks×2, 211 CPU checks, and shader contracts provide partial proof, not full engine/FPS/art/motion acceptance.
 
-world_meta RG16F створюється у GroundLighting: R haze depth, G reveal. World sprites потім пишуть depth/reveal фактичного видимого fragment. Для coverage output=float4(depth*coverage,reveal*coverage,0,coverage), blend ONE/ONE_MINUS_SRC_ALPHA. Native backend test має довести використання source alpha для RG16F; інакше promotion RGBA16F із новим memory ledger. World не sample-ить world_meta, поки пише її.
+world_meta RG16F is created in GroundLighting: R haze depth, G reveal. World sprites then write depth/reveal for the actual visible fragment. For coverage, output=float4(depth*coverage,reveal*coverage,0,coverage) with ONE/ONE_MINUS_SRC_ALPHA blending. A native backend test must prove source-alpha use for RG16F; otherwise promote to RGBA16F with a new memory ledger. World must not sample world_meta while writing it.
 
 ## 6. Explicit GPU layouts
-SDL shader program отримує `StructuredBuffer`, а CPU buffer має збігатися з HLSL полями за offset і size.
-Не посилатися на `std430`: це не контракт SDL/DXIL StructuredBuffer.
+When an SDL shader program receives a `StructuredBuffer`, the CPU buffer must match the HLSL fields by offset and size.
+Do not cite `std430`; it is not the SDL/DXIL StructuredBuffer contract.
 
-Production уточнення 07.10: pinned SDL 3.4.16 D3D12 створює RAW storage SRV, а pinned shadercross 3.0.0-preview.2 через SPIR-V round-trip lowering виробляє byte-addressed DXIL. Тому shader contract перевіряє або точний reflected struct, або саме відповідний RAW resource handle, `index << 6`, loads на 0/16/32/48 і byte-count → record-count `/64`. Наявності struct у початковому HLSL недостатньо. Native доказ і межі: [local visibility](LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md).
+Production clarification 07.10: pinned SDL 3.4.16 D3D12 creates a RAW storage SRV, while pinned shadercross 3.0.0-preview.2 produces byte-addressed DXIL through SPIR-V round-trip lowering. Therefore, the shader contract must verify either the exact reflected struct or the corresponding RAW resource handle, `index << 6`, loads at 0/16/32/48, and byte-count → record-count `/64`. Merely declaring a struct in the original HLSL is insufficient. Native proof and boundaries: [local visibility](LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md).
 ### 6.1. `LightGpu` — 80 bytes
-| Offset | HLSL поле | Значення |
+| Offset | HLSL field | Value |
 |---:|---|---|
 | 0 | `float4 anchor_radius` | camera-relative render XYZ, radius |
 | 16 | `float4 direction_cone` | normalized direction XYZ, outer cosine |
 | 32 | `float4 color_intensity` | linear RGB, intensity |
 | 48 | `uint4 occluder_range_flags` | first occluder, count, receiver mask, stable id |
 | 64 | `float4 height_falloff_reveal` | inner cosine, falloff exponent, reveal01, reserved=0 |
-CPU declaration має `alignas(16)` і п’ять 16-byte members.
-Обов’язкові compile-time checks: size 80; offsets 0/16/32/48/64.
-HLSL declaration має ті самі п’ять members у тому самому порядку.
+CPU declaration has `alignas(16)` and five 16-byte members.
+Mandatory compile-time checks: size 80; offsets 0/16/32/48/64.
+The HLSL declaration has the same five members in the same order.
 ### 6.2. `OccluderGpu` — 64 bytes
-| Offset | HLSL поле | Значення |
+| Offset | HLSL field | Value |
 |---:|---|---|
 | 0 | `float4 center_base` | center render XY, reserved Z=0, base height |
 | 16 | `float4 axis_x_extent` | normalized XY axis X, half extent X / capsule half length, top height |
-| 32 | `float4 axis_y_radius` | normalized XY axis Y для OBB, half extent Y, capsule radius |
+| 32 | `float4 axis_y_radius` | normalized XY axis Y for OBB, half extent Y, capsule radius |
 | 48 | `uint4 shape_flags_id` | shape 1=OBB / 2=capsule, fully-revealed flag=1, stable id, receiver owner id |
-CPU declaration має `alignas(16)`, size 64 й offsets 0/16/32/48.
-Capsule використовує axis X + half length + radius; axis Y/extent Y лишаються валідними нулями.
-OBB використовує обидві осі й extent-и; radius дорівнює нулю.
+CPU declaration has `alignas(16)`, size 64 and offsets 0/16/32/48.
+Capsules use axis X + half length + radius; axis Y/extent Y remain zero.
+OBBs use both axes and extents; radius is zero.
 
-**Версійоване уточнення reserved word, 07.10.2026:** `shape_flags_id.w` у production GroundForward local-visibility extension є ненульовим owner id, не reserved zero. Лише відповідний ненульовий receiver owner виключає свою approximation із local visibility; чужі blockers не виключаються. Ground owner=0. `ForwardMetadataGpu` розширено з 16 до 32 bytes: reveal `float4` на offset0 та `uint4(mask, owner, 0, 0)` на offset16. `SpriteSurfaceGpu`160 / `LightGpu`80 / lighting384 не змінені. Legacy не споживає local occluder list/ranges.
+**Versioned clarification of the reserved word, 07.10.2026:** `shape_flags_id.w` in the production GroundForward local-visibility extension is a nonzero owner ID, not reserved zero. Only the matching nonzero receiver owner excludes its own approximation from local visibility; unrelated blockers remain. Ground owner=0. `ForwardMetadataGpu` was extended from 16 to 32 bytes: reveal `float4` at offset 0 and `uint4(mask, owner, 0, 0)` at offset 16. `SpriteSurfaceGpu`160 / `LightGpu`80 / lighting384 remain unchanged. Legacy does not consume local occluder lists/ranges.
 
-OBB осі unit/orthogonal; capsule perpendicular виводиться з axis X, не з reserved axis Y. Min height, OBB half extents і capsule radius — `1e-4` у float32; capsule half length може бути нульовим. Export canonicalizes числа до float32 **до** validation/output; GameArt повторно перевіряє transformed dimensions транзакційно. При `reveal<1` blockers не отримують runtime IDs, не витрачають budget і не upload-яться. Поточний camera-relative GroundForward domain ±32 охоплює P, local-light anchors і весь prism footprint/Z; це не authoring/export domain ±8192 та не глобальне обмеження Legacy.
-### 6.3. Caps і overflow
-Початковий Medium cap — **256 global visible occluders** і **32 occluders per light**.
-32 per light — обране тут попереднє число, **PROPOSED / UNMEASURED**; його треба передати головному плану при наступній редакції.
+OBB axes are unit length and orthogonal; the capsule perpendicular derives from axis X, not reserved axis Y. Minimum height, OBB half extents, and capsule radius are `1e-4` in float32; capsule half length may be zero. Export canonicalizes numbers to float32 **before** validation/output; GameArt transactionally rechecks transformed dimensions. Blockers with `reveal<1` receive no runtime IDs, consume no budget, and are not uploaded. The current camera-relative GroundForward domain ±32 covers P, local-light anchors, and the entire prism footprint/Z; it is not the authoring/export domain ±8192 or a global Legacy limit.
+### 6.3. Caps and overflow
+The initial Medium cap is **256 global visible occluders** and **32 occluders per light**.
+The 32-per-light value is provisional and **PROPOSED / UNMEASURED**; carry it into the main plan at the next revision.
 CPU culling order:
-1. reveal і layer;
+1. reveal and layer;
 2. expanded viewport;
 3. light influence intersection;
-4. distance до light;
-5. stable id як tie-break.
-Global overflow не може відкидати потрібні blockers: консервативно вимкнути відповідний light contribution з diagnostic; acceptance провалений.
-Per-light overflow у контрольній сцені є debug/acceptance failure.
-Renderer не має права мовчки відкинути blocker і показати світло крізь будинок.
+4. distance to light;
+5. stable ID as the tie-breaker.
+Global overflow must not discard required blockers: conservatively disable the corresponding light contribution with a diagnostic; acceptance fails.
+Per-light overflow in the control scene is a debug/acceptance failure.
+The renderer must not silently discard a blocker and show light through a building.
 
-Реалізований bounded slice 07.10 має strict fail-closed rejection **усього некоректного кадру до GPU submission** при 257-му global/33-му per-light blocker або некоректному range, а не тихе truncation. Spatial culling/tiled light lists, залежні від preset caps і fallback окремого contribution ще не реалізовані й не виміряні. Ліміти 256/32 не доводять ≥120 FPS.
+The implemented bounded slice from 07.10 strictly fails closed by rejecting **the entire invalid frame before GPU submission** at the 257th global blocker, 33rd per-light blocker, or an invalid range, rather than truncating silently. Spatial culling/tiled light lists, preset-dependent caps, and fallback of an individual contribution are not yet implemented or measured. The 256/32 limits do not prove ≥120 FPS.
 
-## 7. Майбутній graph: шість passes, вісім attachments
-Цей graph уточнює попередню пропозицію із seven targets/half LocalLight. Вона була недостатня для матеріалів і dynamic-lit sprites та більше не використовується.
+## 7. Future graph: six passes, eight attachments
+This graph supersedes the previous seven-target/half-LocalLight proposal. That proposal was insufficient for materials and dynamically lit sprites and is no longer used.
 
-| Pass | Вхід і вихід |
+| Pass | Input and output |
 |---|---|
-| 1 Reflection | Half-resolution RGBA16F CLEAR/STORE; eligible caster forward-lit із normal/depth/emission, bounded billboard reflection. Повного кадру не копіює |
-| 2 GroundGBuffer | Чотири MRT CLEAR/STORE з розділу5.2: terrain/water/bridge base, footprint, AO і sun silhouettes. Жоден target не семплується під час запису |
-| 3 GroundLighting | Читає чотири G-buffer + reflection + CPU tile light/blocker lists. Пише full scene_linear RGBA16F і world_meta RG16F. Повний ground lighting зі sharp albedo/normal/specular; half LocalLight видалений |
-| 4 WorldForward | LOAD/STORE scene_linear + world_meta MRT. Ground buffers read-only. Painter-ordered lit sprites реконструюють P/N й рахують власні local lights; не накладають ground-light texture на фасад. Emission/weather мають явні material families |
-| 5 Composite | Читає scene/meta, робить output encode і фінальний secrecy FoW; пише final RGBA8_UNORM. UI й повторного night grade тут немає |
-| 6 UI | LOAD/STORE final, чинний RmlUi blend і text; без world grade/туману |
+| 1 Reflection | Half-resolution RGBA16F CLEAR/STORE; eligible casters are forward-lit using normal/depth/emission for bounded billboard reflections. It does not copy the full frame |
+| 2 GroundGBuffer | Four MRT CLEAR/STORE targets from section 5.2: terrain/water/bridge base, footprints, AO, and sun silhouettes. No target is sampled while it is written |
+| 3 GroundLighting | Reads four G-buffer targets + reflection + CPU tile light/blocker lists. Writes full-resolution scene_linear RGBA16F and world_meta RG16F. Provides complete ground lighting with sharp albedo/normal/specular; half LocalLight is removed |
+| 4 WorldForward | LOAD/STORE scene_linear + world_meta MRT. Ground buffers are read-only. Painter-ordered lit sprites reconstruct P/N and evaluate their own local lights; they do not overlay a ground-light texture on a facade. Emission/weather use explicit material families |
+| 5 Composite | Reads scene/meta, performs output encoding and final secrecy FoW, and writes final RGBA8_UNORM. No UI or second night grade is applied here |
+| 6 UI | LOAD/STORE final, current RmlUi blending and text, without world grading or fog |
 
-Haze застосовується у GroundLighting/WorldForward із фактичної P до alpha blend. Частинки теж отримують haze у своєму fragment; Composite не додає його вдруге. world_meta служить діагностиці й final reveal. Всі opaque/alpha матеріали використовують той самий haze function.
+Haze is applied in GroundLighting/WorldForward from actual P before alpha blending. Particles also receive haze in their fragment shader; Composite does not add it again. world_meta supports diagnostics and final reveal. All opaque/alpha materials use the same haze function.
 
-Half reflection використовує повні drawable координати/NDC при half viewport. Не ділити camera zoom вдруге. Texture UV нормовані за розміром target; distortion pixel amplitude множиться на internal scale.
+Half-resolution reflection uses full drawable coordinates/NDC with a half-size viewport. Do not divide camera zoom a second time. Texture UVs are normalized to target size; distortion pixel amplitude is multiplied by the internal scale.
 
-Full-resolution GroundLighting має CPU screen-tile lists, стартовий bin 32×32 px. Перевірити 4/8/12 lights per ground receiver для Low/Medium/High; не виконувати global48×32 ray tests у кожному pixel. Per-sprite lists обмежені окремо. Усі caps початкові, невиміряні.
+Full-resolution GroundLighting uses CPU screen-tile lists with an initial 32×32 px bin. Verify 4/8/12 lights per ground receiver for Low/Medium/High; do not execute global 48×32 ray tests in every pixel. Per-sprite lists are capped separately. All caps are initial and unmeasured.
 
-## 8. Світло, emission і тіні
-### 8.1. Порядок освітлення
-Для terrain і world sprite: decode albedo → reconstruct P/N → albedo*(ambient*AO + sun diffuse*sun visibility + local diffuse*per-light visibility) + material specular + emission → haze → output/FoW. Точна формула і depth basis у Dynamic Lighting spec. Sun shadow не затемнює інше local light.
-Немає другої night-grade операції після emission.
-Вікно вночі лишається emissive, а його projected ground light згасає за radius/cone й occlusion.
-Старий `fx.3` для переведених об’єктів прибирається, щоб не було подвійного glow.
+## 8. Light, emission and shadows
+### 8.1. Lighting order
+For terrain and world sprites: decode albedo → reconstruct P/N → albedo*(ambient*AO + sun diffuse*sun visibility + local diffuse*per-light visibility) + material specular + emission → haze → output/FoW. The exact formula and depth basis are defined in the Dynamic Lighting specification. A sun shadow does not darken another local light.
+Do not apply a second night-grade operation after emission.
+A window remains emissive at night, while its projected ground light falls off by radius/cone and occlusion.
+Remove the old `fx.3` from migrated objects to avoid double glow.
 ### 8.2. Contact shadows
-Кожен видимий unit, включно з directional resident sprite і carried cargo, має contact shadow decal.
-Contact shadow прив’язується до ground anchor, масштабується обмежено за render Z і не отримує input hit target.
-Вода, дах, UI й unrevealed surface не є contact receivers.
+Every visible unit, including directional resident sprites and carried cargo, has a contact-shadow decal.
+The contact shadow is tied to the ground anchor, scales within limits based on render Z, and receives no input hit target.
+Water, roofs, UI, and unrevealed surfaces are not contact receivers.
 ### 8.3. Directional silhouettes
 
-**Versioned direct-sky prerequisite07.10:** SkyContactSlice має окремий MoonLightingGpu32
-у ground b1/material-forward b3; lighting384 і сім targets незмінні. Moon direct term
-не використовує sunvisibility/contactAO/localvisibility. Це ще НЕ directional silhouette
-pass/carrier або time/weather implementation; деталі й докази — [Sky direct](SKY_DIRECT_CHECK_2026_10_07_UA.md).
-Authored directional shadow silhouette є окремим art channel від visual sprite.
-Вона обирається за facing/light class і проєктується на дозволений ground receiver.
-Per-light occlusion для window cone є окремою OBB/capsule prism системою; silhouette texture її не замінює.
-Обмеження:
-- довільна самотінь вертикального фасаду не підтримується; тінь не перегинається фізично через довільний cliff; підтриманий slope має окремий receiver proof;
-- на непідтриманому cliff тінь clip-иться або використовує задокументований fallback; leakage на невідоме, воду, дах або UI є failure.
+**Versioned direct-sky prerequisite 07.10:** SkyContactSlice has a separate MoonLightingGpu32
+in ground b1/material-forward b3; lighting384 and seven targets remain unchanged. The Moon direct term
+does not use sunvisibility/contactAO/localvisibility. This is still not a directional-silhouette
+pass/carrier or a time/weather implementation; see [Sky direct](SKY_DIRECT_CHECK_2026_10_07_UA.md) for details and evidence.
+An authored directional shadow silhouette is a separate art channel from the visual sprite.
+It is selected by facing/light class and projected onto an eligible ground receiver.
+Per-light occlusion for a window cone uses a separate OBB/capsule-prism system; a silhouette texture does not replace it.
+Limits:
+- arbitrary self-shadowing on a vertical facade is unsupported; shadows do not physically bend across an arbitrary cliff; a supported slope requires separate receiver proof;
+- on an unsupported cliff, the shadow is clipped or uses a documented fallback; leakage onto unknown terrain, water, a roof, or UI is a failure.
 
-## 9. Render targets і пам’ять
-Вісім attachments на кожний із двох frame sets:
+## 9. Render targets and memory
+Eight attachments for each of the two frame sets:
 
 | Attachment | Format | Bytes/full pixel |
 |---|---|---:|
@@ -220,163 +222,163 @@ Per-light occlusion для window cone є окремою OBB/capsule prism си�
 | world_meta full | RG16F | 4 |
 | final full | RGBA8_UNORM | 4 |
 
-Разом38 bytes/full pixel/set; два sets:1920×1080=150.29MiB,2560×1440=267.19MiB. Початкові attachment caps176/304MiB; це розрахунок, не профіль GPU. Asset atlases, UI, buffers, upload і тимчасовий resize overlap рахуються окремо. Транзакційний resize одночасно тримає старий і новий комплекти; цей peak перевіряється явно. RG16F→RGBA16F metadata fallback додає4bytes/fullpixel/set й потребує перерахунку.
+Total: 38 bytes/full pixel/set; two sets: 1920×1080=150.29 MiB, 2560×1440=267.19 MiB. Initial attachment caps are 176/304 MiB; this is arithmetic, not a GPU profile. Asset atlases, UI, buffers, upload, and temporary resize overlap are counted separately. Transactional resize holds both old and new sets simultaneously; verify this peak explicitly. An RG16F→RGBA16F metadata fallback adds 4 bytes/full pixel/set and requires recalculation.
 
-Немає depth target; R16 data texture спрайта не є depth attachment.
+There is no depth target; a sprite's R16 data texture is not a depth attachment.
 
-## 10. Capability query, resize і lifetime
-Перед створенням кожного target renderer викликає format support query з фактичним format і usage flags.
-Перевірка формату без `COLOR_TARGET | SAMPLER` usage не є доказом придатності.
+## 10. Capability query, resize and lifetime
+Before creating each target, the renderer calls a format-support query with the actual format and usage flags.
+A format check without `COLOR_TARGET | SAMPLER` usage is not evidence of suitability.
 Resize transaction:
-1. отримати non-zero drawable size;
-2. дочекатися fences обох старих frame sets;
-3. перевірити formats/usages для нового розміру;
-4. створити повний candidate набір із восьми attachments × два sets;
-5. створити/перевірити size-dependent views і pipelines;
-6. лише після повного успіху swap-нути active set;
-7. звільнити старі ресурси після завершених fences.
-При minimize/zero drawable renderer пропускає world submission і не створює 0×0 texture.
-При partial allocation failure candidate повністю звільняється, active set лишається валідним, а error/diagnostic записується.
-Такий fallback не дозволяє зарахувати dev stage як completed.
-Failure під час fence wait, shader creation, format query, target creation, upload або submit має містити program/format/usage/size/frame-set context.
-Silent disable обов’язкового pass заборонено.
+1. get non-zero drawable size;
+2. wait on fences for both old frame sets;
+3. test formats/usages for new size;
+4. create the complete candidate set of eight attachments × two sets;
+5. create / test size-dependent views and pipelines;
+6. swap the active set only after complete success;
+7. release old resources after the fences complete.
+When minimized or drawable size is zero, the renderer skips world submission and does not create a 0×0 texture.
+On partial allocation failure, release the entire candidate; the active set remains valid and an error/diagnostic is recorded.
+This fallback does not allow the development stage to count as complete.
+Failure during fence wait, shader creation, format query, target creation, upload or submit must contain program/format/usage/size/frame-set context.
+Silently disabling a required pass is forbidden.
 
 ## 11. Shader program contracts
-Один універсальний лічильник sampler/uniform із поточного `shader()` недостатній.
-Кожна program pair має окремий manifest record:
-- entry point і stage; vertex inputs/outputs; color target count/formats;
+The single generic sampler/uniform count from the current `shader()` is insufficient.
+Each program pair has a separate manifest record:
+- entry point and stage; vertex inputs/outputs; color target count/formats;
 - uniform buffers; samplers; read-only storage buffers;
-- storage textures, якщо вони з’являться; blend/write masks; source/DXIL/reflection hashes;
-- declared alpha і color-space convention.
-Заплановані program families:
-- ground material/MRT; water/reflection composite в Ground; reflection caster;
+- storage textures, if introduced; blend/write masks; source/DXIL/reflection hashes;
+- declared alpha and color-space convention.
+Scheduled program families:
+- ground material/MRT; water/reflection composite in Ground; reflection caster;
 - local light; world sprite Dynamic2_5D/albedo+normal+depth/emission; contact/directional shadow;
 - weather/decal; composite; UI legacy.
-`tests/shader_contract.py` переходить на schema 2 і порівнює program-specific counts із SDL create info.
-DXIL reflection має підтвердити точні `LightGpu`/`OccluderGpu` strides.
-C++ static assertions підтверджують sizes/offsets незалежно від reflection JSON.
+`tests/shader_contract.py` moves to schema 2 and compares program-specific counts against SDL create info.
+DXIL reflection must confirm the exact `LightGpu`/`OccluderGpu` strides.
+C++ static assertions confirm sizes/offsets independently of reflection JSON.
 
-## 12. Art schema 2 і транзакційний upload
+## 12. Art schema 2 and transactional upload
 ### 12.1. Schema 2
-`assets/art/world.json` schema 2 описує pages, textures, color space, alpha convention, materials, sprite regions, pivots і normal/depth/emission/mask channels за material family. Для Dynamic2_5D normal/depth обов’язкові, missing data відхиляє каталог; schema1/BakedCompat не проходить dynamic proof.
-Material не може послатися на page із несумісним semantic.
-Atlas limits і rectangle validation з schema 1 зберігаються.
+`assets/art/world.json` schema 2 describes pages, textures, color space, alpha convention, materials, sprite regions, pivots, and normal/depth/emission/mask channels by material family. Dynamic2_5D requires normal/depth data; missing data rejects the catalog, and schema1/BakedCompat does not pass dynamic proof.
+A material cannot reference a page with incompatible semantics.
+Atlas limits and rectangle validation from schema 1 remain.
 ### 12.2. Schema 1 adapter
-Schema 1 не видаляється в 0.26.1.
-Adapter створює albedo-only `MaterialDesc` із:
-- explicit sRGB albedo; straight alpha для world sprites; default neutral normal/data;
-- zero emission; no wet/light/reflection receiver, доки роль не додана явно; чинні pivot/rect/texture ids без перенумерації.
-Adapter забезпечує сумісне завантаження, але не видає старий asset за V2 material proof.
+Schema 1 is not removed in 0.26.1.
+The adapter creates an albedo-only `MaterialDesc` with:
+- explicit sRGB albedo; straight alpha for world sprites; default neutral normal/data;
+- zero emission; no wet/light/reflection receiver until the role is added explicitly; existing pivot/rect/texture IDs without renumbering.
+The adapter provides compatible loading but does not present an old asset as V2 material proof.
 ### 12.3. Transaction
-Loader спочатку parse-ить і повністю валідовує candidate catalog.
-Потім upload-ить усі candidate textures/material buffers у тимчасового owner-а.
-Будь-яка помилка видаляє весь candidate без зміни active catalog.
-Active catalog swap виконується лише після повного upload і validation.
-Старий catalog звільняється після fences кадрів, які ще посилаються на нього.
-Тестова ін’єкція failure має пройти на першій, середній і останній texture, а також на material buffer upload.
-Після кожної відмови active handles лишаються валідними, а leaked resource count дорівнює нулю.
+The loader first parses and fully validates a candidate catalog.
+It then uploads every candidate texture/material buffer under a temporary owner.
+Any error removes the entire candidate without changing the active catalog.
+The active catalog swaps only after complete upload and validation.
+The old catalog is released after fences for frames that still reference it.
+Failure injection must cover the first, middle, and last texture, as well as material-buffer upload.
+After every rejection, active handles remain valid and leaked resource count is zero.
 
-## 13. Viewport, DPI, input і RmlUi
-Поточна фіксація 1440×900 є невідповідністю цільовим 720p/1080p/1440p кадрам.
+## 13. Viewport, DPI, input and RmlUi
+The current fixed 1440×900 size does not match the target 720p/1080p/1440p captures.
 V2 contract:
-- `Frame2D.logical_size` дорівнює drawable width/height у physical pixels; world projection використовує той самий drawable viewport; `effective_zoom` множиться на `drawable_height / 900`;
-- RmlUi context dimensions дорівнюють тим самим drawable pixels; SDL mouse coordinates конвертуються window→drawable рівно один раз; renderer, GameView і RmlUi не виконують повторного letterbox conversion;
-- picking і scissor використовують drawable coordinates; user UI scale є окремим параметром від OS DPI й world zoom.
-Actual rasterized font size після всіх scale operations не може бути меншою за 15 physical pixels на 720p.
-Text layout, hit regions і visible glyph size перевіряються разом.
-Збільшення UI scale не змінює world zoom або mouse world position.
-Обов’язкові viewport cases:
-- 1280×720, 100% OS scale; 1920×1080, 100% і 150%; 2560×1440, 100% і 150%;
-- resize під час гри; minimize/restore; drag selection і minimap click після DPI transition.
+- `Frame2D.logical_size` equals drawable width/height in physical pixels; world projection uses the same drawable viewport; `effective_zoom` multiply by `drawable_height / 900`;
+- RmlUi context dimensions equal the same drawable pixels; SDL mouse coordinates convert window→drawable exactly once; renderer, GameView, and RmlUi do not perform another letterbox conversion;
+- picking and scissor use drawable coordinates; user UI scale is a separate parameter from OS DPI and world zoom.
+Actual rasterized font size after all scale operations cannot be less than 15 physical pixels on 720p.
+Text layout, hit regions, and visible glyph size are checked together.
+Increasing UI scale does not change world zoom or mouse world position.
+Mandatory viewport cases:
+- 1280×720, 100% OS scale; 1920×1080, 100% and 150%; 2560×1440, 100% and 150%;
+- resize during the game; minimize/restore; drag selection and minimap click after DPI transition.
 
 ## 14. Source integration map
-Позначення **CURRENT** означає наявний файл; **PROPOSED** — рекомендована точка, яку ще треба створити.
-| Path | Статус | Відповідальність V2 |
+**CURRENT** denotes an existing file; **PROPOSED** denotes a recommended integration point that still must be created.
+| Path | Status | V2 responsibility |
 |---|---|---|
 | `include/ribterra/render_frame.hpp` | CURRENT, change planned | Frame inputs, material/light/decal/reflection handles, drawable size |
 | `include/ribterra/renderer2d.hpp` | CURRENT, change planned | Renderer options, capabilities, telemetry, viewport conversion |
 | `src/render/renderer2d.cpp` | CURRENT, major change planned | resources, six passes, fences, shader programs, capture |
 | `src/client/view.cpp` | CURRENT, change planned | render XYZ, receiver geometry, painter inputs, shadows |
 | `src/client/main.cpp` | CURRENT, change planned | drawable sizing, one input conversion, UI/world frame order |
-| `src/client/game_art.cpp` | CURRENT, change planned | schema 2 transaction і schema 1 adapter |
+| `src/client/game_art.cpp` | CURRENT, change planned | schema 2 transaction and schema 1 adapter |
 | `include/ribterra/render_materials.hpp` | PROPOSED | `MaterialDesc`, receiver flags, CPU/GPU ABI |
 | `include/ribterra/world_fx.hpp` | PROPOSED | `WorldFxFrame`, decals, reflection casters, FX telemetry |
 | `src/render/world_fx_renderer.cpp` | PROPOSED | water/reflection/haze/weather/footprint draw preparation |
-| `shaders/*.hlsl` | CURRENT directory, new programs proposed | program-specific contracts із єдиним linear/alpha policy |
+| `shaders/*.hlsl` | CURRENT directory, new programs proposed | program-specific contracts with one linear/alpha policy |
 | `tests/render_frame_tests.cpp` | CURRENT, extend | validation, ordering, ABI, failure cases |
 | `tests/shader_contract.py` | CURRENT, extend | schema 2 program reflection/bindings/hashes |
-Матеріальні bindings задає `MaterialDesc`; довільний texture slot у view code не є новим material API.
-World FX використовує ті самі attachments і contracts, а не створює паралельний renderer.
+`MaterialDesc` defines material bindings; an arbitrary texture slot in view code is not a new material API.
+World FX uses the same attachments and contracts rather than creating a parallel renderer.
 
-## 15. Етапи й залежності
-Повний Dynamic відкладений користувачем. Виконувати [DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md), коли роботу буде продовжено. Ранні dev.01–09 зі старого графічного плану — технічні work packages, не наказ реалізувати Dynamic в поточній 0.26.1. Зараз реалізована лише заготовка API; 6-pass graph не додавався.
+## 15. Stages and dependencies
+The user deferred full Dynamic mode. Execute [DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) when that work resumes. The early dev.01–09 items from the older graphics plan are technical work packages, not an instruction to implement Dynamic in the current 0.26.1. Only the API scaffold exists now; the six-pass graph has not been added.
 
-Першими будуть capability/resource/material contracts, потім малий lit kit і реконструкція форми, далі source/occlusion proof, performance, тільки після цього UI setting/persistence. Масові lit assets не виготовляються до приймання малої сцени.
+Begin with capability/resource/material contracts, then a small lit kit and shape reconstruction, followed by source/occlusion proof and performance; add the UI setting/persistence only after those steps. Do not produce mass lit assets before the small scene is accepted.
 
-## 16. Майбутній stop/go для Dynamic
-Потрібні безперервні native D3D12 videos production executable, а не software probe:
-- zoom `0.62`, `1.30`, `3.00`; day і night; clear/dry, rain/wet, snow і storm;
-- camera pan над ground, slope, river, bank, bridge і revealed frontier; unit із contact/directional shadow і footprints; window emission/light з blocker до/після переміщення;
-- resize або restore без stale resource; debug counters для light/occluder overflow, attachments і memory ledger.
-Кожне відео/manifest фіксує commit, build, shader/asset hashes, GPU, driver, backend, drawable size, preset, seed/save hash, camera/zoom і diagnostic/authoritative source.
-Software capture, generated image або isolated shader sample не закриває gate.
-Dynamic proof проходить лише якщо:
-- усі шість passes працюють у production graph; occluder overflow у контрольній сцені дорівнює нулю; receiver metadata не пошкоджена decals, а world_meta оновлена lit sprites;
-- UI не grade-иться й input збігається після DPI conversion; mandatory effect не вимкнений fallback-ом; memory/resource numbers записані як виміряні, а не переписані з цього плану;
-- native відео показує temporal stability на всіх трьох zoom.
+## 16. Future stop/go gate for Dynamic
+The gate requires continuous native D3D12 videos from the production executable, not a software probe:
+- zoom `0.62`, `1.30`, `3.00`; day and night; clear/dry, rain/wet, snow and storm;
+- camera pan over terrain, slope, river, bank, bridge, and revealed frontier; a unit with contact/directional shadow and footprints; window emission/light with a blocker before/after movement;
+- resize or restore no stale resource; debug counters for light/occluder overflow, attachments and memory ledger.
+Every video/manifest records the commit, build, shader/asset hashes, GPU, driver, backend, drawable size, preset, seed/save hash, camera/zoom, and diagnostic/authoritative source.
+A software capture, generated image, or isolated shader sample does not close the gate.
+Dynamic proof only happens if:
+- all six passes work in the production graph; occluder overflow in the control scene is zero; decals do not corrupt receiver metadata, and lit sprites update world_meta;
+- the UI is not graded and input matches after DPI conversion; no mandatory effect is disabled by fallback; memory/resource numbers are recorded from measurements rather than copied from this plan;
+- native video shows temporal stability at all three zoom levels.
 
-## 17. Автоматизовані перевірки
-| ID | Перевірка |
+## 17. Automated tests
+| ID | Check |
 |---|---|
-| `RC-ABI-01` | `LightGpu` size/offset 80 і 0/16/32/48/64 збігаються C++/DXIL |
-| `RC-ABI-02` | `OccluderGpu` size/offset 64 і 0/16/32/48 збігаються C++/DXIL |
-| `RC-SHD-01` | кожна program pair має точні sampler/uniform/storage counts і target formats |
-| `RC-COL-01` | sRGB albedo decode один раз; linear mask не змінюється gamma path |
-| `RC-ALP-01` | straight world і premult UI test patterns не мають dark/bright fringe |
-| `RC-MRT-01` | Ground decal змінює scene color, але metadata bytes/halfs лишаються незмінні |
-| `RC-PAS-01` | resource state audit не допускає sample+target одного subresource в одному pass |
-| `RC-LGT-01` | ambient застосований до base до additive light/emission; Composite не затемнює emission вдруге |
-| `RC-OCC-01` | OBB/capsule selection stable; 33-й blocker дає overflow failure у acceptance fixture |
-| `RC-SHDW-01` | кожний unit має contact shadow; directional silhouette не стає light occluder shortcut |
-| `RC-MEM-01` | attachment ledger відповідає drawable size, two-set count і queried formats |
-| `RC-RSZ-01` | resize transaction не активує partial set і звільняє candidate після кожної injected failure |
-| `RC-UPL-01` | schema 2 failure на first/middle/last upload лишає active catalog і zero leaks |
-| `RC-DPI-01` | one window→drawable conversion дає однаковий world pick при 100%/150% DPI |
-| `RC-UI-01` | 720p actual font ≥15 px; UI не потрапляє у world Composite |
-| `RC-FOW-01` | hidden caster/light/particle не змінює revealed pixels понад AA boundary |
-| `RC-CAP-01` | native capture містить правильний final target без UI/world double conversion |
-Pixel/unit tests потрібні, але не заміняють video checks руху, shimmer, shadow leakage й DPI interaction.
+| `RC-ABI-01` | `LightGpu` size/offset 80 and 0/16/32/48/64 match in C++/DXIL |
+| `RC-ABI-02` | `OccluderGpu` size/offset 64 and 0/16/32/48 match in C++/DXIL |
+| `RC-SHD-01` | Every program pair has exact sampler/uniform/storage counts and target formats |
+| `RC-COL-01` | sRGB albedo decode once; linear mask does not change gamma path |
+| `RC-ALP-01` | straight world and premult UI test patterns do not have dark/bright fringe |
+| `RC-MRT-01` | A ground decal changes scene color while metadata bytes/half-floats remain unchanged |
+| `RC-PAS-01` | resource state audit does not allow sample+target one subresource in one pass |
+| `RC-LGT-01` | ambient applied to base to additive light/emission; Composite does not dim emission second |
+| `RC-OCC-01` | OBB/capsule selection is stable; the 33rd blocker produces overflow failure in the acceptance fixture |
+| `RC-SHDW-01` | each unit has contact shadow; directional silhouette does not become light occluder shortcut |
+| `RC-MEM-01` | attachment ledger matches drawable size, two-set count and queried formats |
+| `RC-RSZ-01` | Resize transaction does not activate a partial set and releases the candidate after every injected failure |
+| `RC-UPL-01` | schema 2 failure on first/middle/last upload leaves active catalog and zero leaks |
+| `RC-DPI-01` | One window→drawable conversion produces the same world pick at 100%/150% DPI |
+| `RC-UI-01` | 720p actual font ≥15 px; UI does not fall into world Composite |
+| `RC-FOW-01` | hidden caster/light/particle does not change revealed pixels beyond the AA boundary |
+| `RC-CAP-01` | native capture contains correct final target no UI/world double conversion |
+Pixel/unit tests are required but do not replace video checks for movement, shimmer, shadow leakage, and DPI interaction.
 
 ## 18. Failure matrix
-| Відмова | Runtime дія | Delivery статус |
+| Failure | Runtime action | Delivery status |
 |---|---|---|
-| RGBA16F/RG16F format+usage unsupported | abort V2 initialization із точним diagnostic; окремо переглянути formats/architecture | FAIL, не completed |
-| один із 16 attachments не створився | release candidate, keep valid old set якщо є | FAIL |
-| shader manifest/binding mismatch | program не створюється | FAIL |
-| per-light occluders >32 у acceptance scene | counter + diagnostic, blocker не відкидається мовчки | FAIL |
-| global occluders >quality cap | stable cull + visible counter | допустимо лише поза acceptance fixture й після review |
-| schema 2 asset/mask missing | rollback candidate catalog | FAIL відповідного dev |
-| reflection/local-light allocation failure | safe render path може лишитися для діагностики | mandatory effect не прийнято |
-| metadata overwrite decal-ом | disable bad program + diagnostic | FAIL |
-| zero-size minimized window | skip submission, preserve resources | допустимо |
-| device/submit/fence failure | stop frame, record SDL/backend context | FAIL; не рахувати успішним frame |
-| software probe green, D3D12 video відсутнє | не робити runtime claim | UNVERIFIED |
+| RGBA16F/RG16F format+usage unsupported | abort V2 initialization with an exact diagnostic; review formats/architecture separately | FAIL, not completed |
+| one of 16 attachments cannot be created | release the candidate, keep a valid old set if one exists | FAIL |
+| shader manifest/binding mismatch | program not created | FAIL |
+| per-light occluders >32 in the acceptance scene | counter + diagnostic, blocker is not silently discarded | FAIL |
+| global occluders >quality cap | stable cull + visible counter | allowed only outside the acceptance fixture and after review |
+| schema 2 asset/mask missing | rollback candidate catalog | FAIL corresponding dev |
+| reflection/local-light allocation failure | a safe render path may remain for diagnostics | mandatory effect not accepted |
+| metadata overwritten by a decal | disable bad program + diagnostic | FAIL |
+| zero-size minimized window | skip submission, preserve resources | allowed |
+| device/submit/fence failure | stop frame, record SDL/backend context | FAIL; do not count success frame |
+| software probe passes, D3D12 video absent | do not make a runtime claim | UNVERIFIED |
 
-## 19. Cross-platform і backend discipline
-Public CPU contracts, asset schema, color/alpha semantics і shader manifest не мають залежати від Windows-only struct packing.
-Усі GPU structs використовують fixed-width fields, explicit 16-byte members і compile-time offsets.
-Поточний release proof для 0.26.1 — native SDL_GPU Direct3D 12 на Windows.
-Це не дозволяє назвати software renderer доказом GPU correctness.
-Інший native SDL backend потребує окремих compiled shaders, capability query, native video й performance evidence; відсутність такого доказу позначається unverified, а не «працює кросплатформно».
+## 19. Cross-platform and backend discipline
+Public CPU contracts, asset schema, color/alpha semantics, and shader manifest must not depend on Windows-only struct packing.
+All GPU structs use fixed-width fields, explicit 16-byte members and compile-time offsets.
+Current release proof for 0.26.1 — native SDL_GPU Direct3D 12 on Windows.
+This does not allow a software renderer to count as proof of GPU correctness.
+Another native SDL backend requires its own compiled shaders, capability query, native video, and performance evidence; without that proof, mark it unverified rather than “works cross-platform.”
 
-## 20. Невирішені рішення до коду
-1. Підтвердити на target GPUs підтримку `RGBA16F` і `RG16F` саме з потрібними `COLOR_TARGET | SAMPLER` usage flags.
-2. Перевірити, чи final `RGBA8_UNORM` + explicit linear→sRGB conversion відповідає фактичному swapchain format; не додати друге перетворення під час blit.
-3. Довести packing/basis/depth precision із Dynamic Lighting spec на малому asset kit.
-4. Виміряти full-resolution ground lighting і per-sprite forward lighting; culling/caps не вважати оптимізованими до профілю.
-5. Перевірити попередній cap 32 occluders per light і global Medium 256 у `visual_slice_v2` та stress scene.
-6. Узгодити точний behavior тіні на підтриманому slope й documented fallback на cliff до dev.05.
-7. Визначити native timing method; CPU submit time не видавати за GPU time.
-8. Зафіксувати ownership final UI composition між Renderer2D і RmlUi adapter, щоб не виник другий hidden offscreen target.
-Жодне число budget/cap у цій специфікації ще не виміряне.
-Реалізація майбутнього режиму починається з DL-01; поточна робота обмежена заготовкою, UI setting відкладений.
+## 20. Unresolved decisions before implementation
+1. Confirm that target GPUs support `RGBA16F` and `RG16F` with the required `COLOR_TARGET | SAMPLER` usage flags.
+2. Check if final `RGBA8_UNORM` + explicit linear→sRGB conversion matches actual swapchain format; do not add second conversion during blit.
+3. Prove the packing/basis/depth precision from the Dynamic Lighting specification on a small asset kit.
+4. Measure full-resolution ground lighting and per-sprite forward lighting; do not treat culling/caps as optimized before profiling.
+5. Verify the provisional cap of 32 occluders per light and global Medium cap of 256 in `visual_slice_v2` and the stress scene.
+6. Define exact shadow behavior on a supported slope and the documented cliff fallback before dev.05.
+7. Define the native timing method; do not present CPU submit time as GPU time.
+8. Fix ownership of final UI composition between Renderer2D and the RmlUi adapter so a second hidden offscreen target cannot appear.
+No budget or cap number in this specification has been measured yet.
+Implementation of the future mode begins with DL-01; current work is limited to the scaffold, and the UI setting remains deferred.

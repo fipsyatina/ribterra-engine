@@ -1,9 +1,11 @@
-# Ribterra 0.25.13 — Виправлення вильоту після дій
+# Ribterra 0.25.13 — Correction of the takeoff after action
 
-Виправлено завершення гри з `Missing localization key: Мешканця обрано` та аналогічними помилками під час вибору мешканця, початку будівництва, скасування й наказів на карті.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Канал повідомлень містив і готовий текст, і ключі перекладу. Головний цикл помилково передавав кожне повідомлення як ключ. Тепер повідомлення карти повертається як готовий текст: відомий ключ перекладається, звичайний текст зберігається. Такий самий захист застосовано до причин відхилених наказів і повідомлень HUD. Сувора перевірка ключів звичайних підписів інтерфейсу залишається.
+Fixed the game ending with `Missing localization key: Мешканця обрано` and similar errors during the selection of the occupant, start of construction, cancellation and orders on the map.
 
-Додано перевірку вибору мешканця, режиму будівництва, фактичного розміщення будинку, скасування, руху та серверних повідомлень через справжній SDL/RmlUi у п’яти мовах. Попередня перевірка інспектора пропускала крок обробки повідомлення головним циклом; тепер вона використовує спільний з грою обробник.
+The message channel contained both the finished text and the translation keys. The main cycle mistakenly passed each message as a key. Now the card message returns as ready text: the known key is translated, the normal text is saved. The same protection is applied to the reasons for the rejection of orders and messages HUD. A rigorous key verification of the usual signature interface remains.
 
-Правила 17, протокол 19, формат збереження 8 та сумісність світів не змінені. Збереження й профіль гравця не видаляються. Ця версія є терміновим виправленням після 0.25.12; наступна планова версія залишається 0.26.0.
+A check of the choice of tenant, building regime, actual location of the house, cancellation, movement and server messages via real SDL/RmlUi is added in five languages. The inspector's previous inspection failed to process the message in the main cycle. Now she's using a game-compatible processor.
+
+The rules 17, protocol 19, storage format 8 and compatibility of worlds remain unchanged. The player's savings and profiles are not deleted. This version is a timely fix after 0.25.12; the next plan version is 0.26.0.

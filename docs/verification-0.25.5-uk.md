@@ -1,33 +1,35 @@
-# Перевірка Ribterra 0.25.5
+# Ribterra verification 0.25.5
 
-Дата: 15 вересня 2026. Windows, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Результат
+The date is 15 September 2026. Windows, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU.
 
-Між мережевими знімками тепер змінюється показана позиція мешканців і тварин. Виправлено скидання ходьби за звичайного переміщення на ×4. Повторне використання геометрії рельєфу зменшує роботу процесора під час побудови кадру.
+## Result
 
-| Контрольний замір ×1 | До | Після |
+The network images now change the position of the inhabitants and animals. Fixed walking drop for normal movement to ×4. Reusing relief geometry reduces the processor's performance during frame construction.
+
+| The control size ×1 | Before | After |
 | --- | ---: | ---: |
-| Обробка кадру, середнє | 12,54 мс | 8,93 мс |
-| Побудова двох сцен, середнє | 6,85 мс | 3,37 мс |
-| Найбільший крок мешканця між кадрами, клієнт 1 | 22,81 px | 2,27 px |
-| Кадри з рухом між пакетами, клієнт 1 | 0 | 315 |
-| Кадри з рухом між пакетами, клієнт 2 | 0 | 122 |
+| The average of the frame work | 12,54 ms | 8,93 ms |
+| Construction of two stages, average | 6,85 ms | 3,37 ms |
+| The biggest move of a resident between the cadres, client 1 | 22,81 px | 2,27 px |
+| The images moving between packets, client 1 | 0 | 315 |
+| The images moving between packets, client 2 | 0 | 122 |
 
-Обробка кадру скоротилася на 28,8%, побудова сцен — на 50,8%. Обидва запуски обмежені 60 FPS і досягли приблизно 60 FPS: цей замір підтверджує зменшення витрат кадру, але не вимірює приріст необмеженого FPS.
+The frame rate decreased by 28,8%, the stage build by — by 50,8%. Both launches are limited to 60 FPS and reached approximately 60 FPS: this measurement confirms a reduction in frame costs, but does not measure the increase in unlimited FPS.
 
-Контрольний варіант використовує попередній спосіб показу координат і побудови рельєфу з тією самою симуляцією, мережею та вимірювальним сценарієм. Це порівняння алгоритмів, а не запуск незміненого випуску 0.25.4. По 360 кадрів, два справжні UDP-клієнти, дві нації, 20 мешканців, 96 тварин, накази збору ресурсів і руху. Один графічний пристрій послідовно малює обидві сцени розміром 1280×720. Окремі перевірки ×2 і ×4 також пройшли; найбільший крок першого мешканця — відповідно 4,51 і 8,92 px.
+The control option uses a previous way of showing the coordinates and relief structures with the same simulation, network, and measurement scenario. It's a comparison of algorithms, not a continuous output 0.25.4. By 360 personnel, two real UDP- clients, two nations, 20 residents, 96 animals, resource collection and movement orders. One graphic device sequentially paints both scenes at the size of 1280×720. Separate checks ×2 and ×4 have also been carried out; the largest first inhabitant step — respectively 4,51 and 8,92 px.
 
-Мережевий рух показується з буфером приблизно 250 мс. Якщо пакети перестають надходити, клієнт доходить до останньої відомої позиції й чекає. Тривалу втрату зв'язку згладжування не усуває.
+Network motion is shown with a buffer approximately 250 ms. If the packages stop arriving, the customer comes to the last known position and waits. The permanent loss of communication is not eliminated by smoothing.
 
-## Перевірки
+## Checks
 
-- Збірка Release і встановлення клієнта та окремого сервера завершилися успішно.
-- Вісім цільових тестів пройшли: рух, введення, кадр, мережеві сесії, лобі, атмосфера, маршрути та запуск клієнта.
-- Після останньої правки відновлення часу відображення повторно пройшли чотири тести: unit_motion, client_input, lobby_client_rendered, network_client_rendered.
-- Автоматичні перевірки охоплюють ×1/×2/×4, нерівномірне надходження пакетів, паузу, відсутність пакетів, дороги, зміну шару, телепортацію, нову сесію та великий пропуск часу.
-- Кешований рельєф порівняно зі свіжою побудовою, зокрема після руху камери й завантаження іншого світу.
-- У звичайних вікнах встановленої 0.25.5 хост продовжив окрему копію збереженого світу, а гість приєднався до неї. На гості кнопки швидкості недоступні; наказ мешканцю, контрольованому хостом, відхилено з поясненням. Обидва вікна показують живий світ. Екранна перевірка підтверджує вигляд і взаємодію; числові оцінки руху взято з графічного вимірювального сценарію.
-- git diff --check завершився без помилок.
+- The release collection and installation of the client and individual server were completed successfully.
+- Eight targeted tests were performed: movement, input, frame, network sessions, lobby, atmosphere, routes and client launch.
+- After the last time the display time was restored, four tests were repeated: unit_motion, client_input, lobby_client_rendered, network_client_rendered.
+- Automatic checks include ×1/×2/×4, uneven packets arrival, pause, absence of packets, routes, shifting of the ball, teleportation, new session, and a large time lapse.
+- The cascading relief compared to the fresh build, particularly after the camera moved and another world loaded.
+- In the usual installed 0.25.5 window, the host continued a separate copy of the saved world, and the guest joined it. The speed buttons are not available to guests; The inhabitant's order, controlled by the host, is rejected with an explanation. Both windows show the world alive. The screen shall confirm the appearance and interaction; The numerical estimates of the movement are taken from a graphical measurement scenario.
+- git diff --check was completed without error.
 
-Журнали й JSON-результати розміщено в `artifacts/online-0.25.5/` і `build/0255-*.log`. Знімок гостя: `artifacts/online-0.25.5/live/guest-connected.png`. Перевірку через зовнішній інтернет та на іншому комп'ютері не виконували.
+The journals and JSON- results are placed in `artifacts/online-0.25.5/` and `build/0255-*.log`. The guest's photo is: `artifacts/online-0.25.5/live/guest-connected.png`. The search was not done via the external Internet and another computer.

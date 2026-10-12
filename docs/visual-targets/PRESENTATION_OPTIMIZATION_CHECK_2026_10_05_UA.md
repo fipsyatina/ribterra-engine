@@ -1,94 +1,96 @@
-# Виведення кадрів і оптимізація — перевірений частковий крок
+# The process of extracting and optimizing the images — verified partial step
 
-Дата етапу: 05.10.2026. Статус: **LOCAL FOUNDATION CHECKED / ENGINE NOT ACCEPTED**.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Реалізовані справжні presentation settings, повторне використання GPU upload buffers, кешування незмінної мінікарти та скорочення повторних GPU state binds. Поточні локальні перевірки пройдені. **Це не готовність Dynamic, не відповідність концептам і не приймання мінімуму 120 FPS у повній сцені. Усі E01–E17 залишаються відкритими.** Подальша робота над грою чекає [порога двигуна](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md).
+The date of the stage: 05.10.2026. Status: **LOCAL FOUNDATION CHECKED / ENGINE NOT ACCEPTED **.
 
-## Що змінено
+Real presentation settings are implemented, reuse of GPU upload buffers, cache of the immutable mini map, and shortening of repeated GPU state binds. The local inspections are complete. **It's not Dynamic readiness, it's not concept compliance, and it's a lack of acceptance of the 120 FPS minimum in the full scene. All E01–E17 remain open.** Further work on the game is expected [ engine threshold](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md).
 
-- **Справжнє керування виведенням:** VSync / Immediate / Mailbox, uncapped або FPS cap 0–1000, 1–3 кадри у польоті. Renderer перевіряє capability та діапазони, показує requested/effective/reason, застосовує повну конфігурацію після GPU idle. Unsupported не видається за працюючий режим. Software допускає власний FPS limiter, але не симулює GPU-керування.
-- **Локальні налаштування:** typed UI action → явне застосування головним циклом → acknowledgment. Конструктор UI сам не змінює renderer. Прийнята конфігурація зберігається; custom cap 77 та невідомі JSON-ключі не губляться. Некоректний presentation block не скидає коректні locale/scale. Явний CLI presentation argument вимикає автоматичне відновлення всієї presentation-конфігурації, а не довільно змішує поля.
-- **Apply / Reset:** Apply передає повний запит; Reset відкидає незастосовані правки до активних значень, не є display revert. Невдалий запис налаштувань не скасовує вже застосований режим і не залишає UI в pending: показується локалізоване «застосовано, але не збережено», доступна повторна спроба. Успішний перевірений запис очищає попередження. Atomic/fsync durability не заявляється.
-- **Pacing:** абсолютні часові deadlines, fractional carry, перевірки late wakeup/clock rollback/overflow; прибрано обов'язкову затримку 1 мс у звичайному uncapped-циклі. Minimize та remote polling мають окремі правила. FPS cap не є гарантією нижньої межі FPS або відсутності OS scheduling jitter.
-- **GPU lifetime:** upload transfer buffers належать frame slot і повторно використовуються лише після його fence. Ріст комплекту vertex/index/surface/upload buffers та offscreen target транзакційний. Fault tests перевіряють збереження попереднього кадру й успішну наступну спробу. При minimize нормальна GPU-робота пропускається; явний offscreen capture залишається доступним.
-- **Менше повторної роботи:** лише сусідні сумісні geometry draws об'єднуються, без сортування чи зміни painter order. Pipeline/sampler/scissor bind кешуються в межах одного render pass. Мінікарта перебудовується за потрібною зміною terrain/chunk/reveal/trail/season/session/viewport; живі markers і camera border малюються окремо. Compose scratch vectors та частина контейнерів повторно використовуються; повна відсутність allocations не заявляється.
-- **Чесна telemetry:** CPU update/compose/prepare/encoding/submit/wait/pacing відокремлені. CPU submit не називається GPU execution. Вбудовані `gpu_execution_ms` і `displayed_fps` залишаються `null`; зовнішні ETW-вимірювання збережені окремо.
+## Changes made
 
-Профілі Low/Medium/High/Custom, screen mode/resolution/render scale та якість майбутніх світла/тіней/води/туману/частинок **ще не реалізовані повністю**. Наявні три presentation controls не закривають E16.
+- **Real withdrawal control:** VSync / Immediate / Mailbox, uncapped or FPS cap 0–1000, 1–3 frames in flight. The Renderer checks capability and range, displays requested/effective/reason, applies full configuration after GPU idle. Unsupported does not appear to be running. The software allows its own FPS limiter, but does not simulate GPU- control.
+- **Local settings:** typed UI action → explicit application of main cycle → acknowledgment. The UI designer does not change the renderer itself. The accepted configuration is maintained; custom cap 77 and unknown JSON- keys are not lost. An incorrect presentation block does not drop the correct locale/scale. The explicit CLI presentation argument turns off the automatic recovery of the entire presentation configuration, rather than arbitrarily mixing the fields.
+- **Apply / Reset:** Apply transmits the full request; Reset rejects unused permissions to active values, there is no display revert. A failed recording of settings does not cancel the already applied mode and does not leave UI pending: it shows localized «applied but not saved», a repeat attempt is available. A successful verified record clears the warning. Atomic/fsync durability is not claimed.
+- **Pacing:** absolute time deadlines, fractional carry, late checks wakeup/clock rollback/overflow; The mandatory delay 1 MS in the normal uncapped cycle is removed. Minimize and remote polling have separate rules. The FPS cap is not a guarantee of the lower limit FPS or the absence of OS scheduling jitter.
+- **GPU lifetime:** upload transfer buffers belong to the frame slot and are only reused after its fence. The size of the vertex/index/surface/upload buffers and offscreen target transaction set. Fault tests check the retention of the previous frame and the successful next attempt. When minimizing normal GPU- work is omitted; Clear offscreen capture remains available.
+- **Less repeating work:** only adjacent compatible geometry draws are combined, without sorting or changing painter order. Pipeline/sampler/scissor binds are cached within one render pass. The mini-map is re-designed as required by the change terrain/chunk/reveal/trail/season/session/viewport; The live markers and camera border are drawn separately. Compose scratch vectors and part of the containers reused; The total absence of allocations is not declared.
+- **True telemetry:** CPU update/compose/prepare/encoding/submit/wait/pacing are separated. CPU submit is not called GPU execution. The built-in `gpu_execution_ms` and `displayed_fps` remain `null`; The external ETW- measurements are stored separately.
 
-## Фактичні умови вимірювання
+Profiles Low/Medium/High/Custom, screen mode/resolution/render scale and the quality of future light/shadows/waters/fumes/particles ** have not yet been fully realized**. The three presentation controls do not close E16.
+
+## Actual measurement conditions
 
 - NVIDIA GeForce RTX 3050 Laptop GPU; SDL driver `32.0.15.9282` (NVIDIA 592.82), D3D12; Ryzen 5 5600H, 6 cores / 12 threads.
-- Видиме **вікно**, client drawable **1920×1080**, monitor **144 Hz**, pixel density / display scale / render scale **1.0**. Це не exclusive fullscreen і не hidden-window throughput.
-- Живлення від мережі, Balanced power plan; план живлення не змінювався. 4096 MiB — місткість VRAM, **не виміряне пікове використання** під час гри.
-- Справжні GameView + RmlUi, звичайний legacy world seed **70421**, заморожений стан, **0 simulation ticks** під час sampling. `Dynamic_available=false`. Не повна контрольна сцена, немає pan/zoom/нових chunks/усіх майбутніх ефектів.
-- Кожен case: **750 мс warmup**, потім sampling. PNG readback, запис файлів і minimize/restore checks виконуються поза performance interval. CPU quantiles — nearest-rank; записані p50/p95/p99/max та кількість інтервалів понад **1000/120 мс**.
+- It will display ** window**, client drawable **1920×1080**, monitor **144 Hz**, pixel density / display scale / render scale **1.0**. It's not an exclusive fullscreen or a hidden-window throughput.
+- Networked livelihoods, balanced power plan; The food plan was unchanged. 4096 MiB — capacity VRAM, **unmeasured peak usage** during play.
+- True GameView + RmlUi, common legacy world seed **70421**, frozen state, **0 simulation ticks** during sampling. `Dynamic_available=false`. Not a full control scene, no pan/zoom/ new chunks/all future effects.
+- Each case: **750 ms warmup**, then sampling. PNG readback, file recording and minimize/restore checks are performed outside the performance interval. CPU quantiles — nearest-rank; recorded p50/p95/p99/max and the number of intervals over **1000/120 ms**.
 
-## Прогін без профілювальника: CPU-loop, 8 секунд на case
+## Profiling-free log: CPU-loop, 8 seconds per case
 
-Джерело: [повний native report](../../artifacts/presentation-2026-10-05/native-unprofiled-finalized/presentation-report.json). Той самий фінальний executable, без паралельного PresentMon/build/test. Probe завершився успішно, включно з minimize → offscreen capture → restore.
+Source: [full native report](../../artifacts/presentation-2026-10-05/native-unprofiled-finalized/presentation-report.json). The same final executable, without the parallel PresentMon/build/test. The probe was completed successfully, including with minimize → offscreen capture → restore.
 
-| Режим | CPU-loop FPS | p50, мс | p95, мс | p99, мс | max, мс | Понад бюджет / інтервалів |
+| Mode | CPU-loop FPS | p50, ms | p95, ms | p99, ms | max, ms | Over budget / intervals |
 |---|---:|---:|---:|---:|---:|---:|
 | VSync, HUD | 138.62 | 6.973 | 8.947 | 10.271 | 12.379 | 97 / 1107 |
 | Immediate, uncapped, HUD | **145.16** | **6.665** | **8.245** | **9.999** | **12.694** | **50 / 1161** |
-| Immediate, HUD приховано | 159.07 | 6.092 | 7.489 | 9.447 | 10.930 | 31 / 1271 |
+| Immediate, HUD hidden | 159.07 | 6.092 | 7.489 | 9.447 | 10.930 | 31 / 1271 |
 | Immediate, cap 120, HUD | 119.52 | 8.333 | 8.862 | 11.113 | 12.205 | 474 / 955 |
 | Mailbox, cap 120, HUD | 117.88 | 8.336 | 10.158 | 11.896 | 13.042 | 491 / 942 |
 
-**145.16 — середня швидкість CPU-циклу статичної legacy-сцени, не підтверджений displayed FPS повного двигуна.** p99/max перевищують бюджет. HUD-hidden рядок — лише діагностика, не заміна baseline. Біля cap 120 лічильник понад точний бюджет чутливий і до дуже малого jitter; не кожен такий інтервал є великим hitch.
+**145.16 — Average speed CPU- cycle of static legacy-scene, unconfirmed displayed FPS full engine.** p99/max exceed budget. HUD-hidden row — is just a diagnosis, not a replacement for the baseline. White cap 120 counter over budget precision sensitive and to very little jitter; Not every such interval is a big hitch.
 
-В Immediate/HUD основні CPU mean: world composition **4.704 мс**, UI update **0.938 мс**, UI compose **0.055 мс**, renderer total **1.184 мс**, зокрема encoding **0.379 мс**. Renderer total включає свої підфази — їх не треба додавати вдруге. За цим коротким прогоном найбільший CPU-компонент — scene composition. 3717 draws, 57960 vertices, 87468 indices, 1509072 upload bytes у середньому; геометрія не урізана.
+In Immediate/HUD the main CPU mean: world composition **4.704 ms**, UI update **0.938 ms**, UI compose **0.055 ms**, renderer total **1.184 ms**, in particular encoding **0.379 ms**. The total renderer includes its subphases — they do not need to be added a second time. The largest CPU- component behind this short run is — scene composition. 3717 draws, 57960 vertices, 87468 indexes, 1509072 upload bytes on average; The geometry is not cut.
 
-Раніші 5-секундні baseline/8-секундні проміжні runs збережені окремо. Через різну тривалість, прогрівання й стан живлення не заявляється контрольований точний відсоток приросту від кожної оптимізації.
+The earlier 5-second baseline/8-second interval runs are saved separately. Because of the different lengths, heating and power condition, no controlled accurate percentage of growth is claimed from each optimization.
 
-## Одноразовий дозволений PresentMon: окремий 10-секундний ETW-прогін
+## Unique allowed PresentMon: single 10-second ETW-short
 
-Використано **один** схвалений запуск portable PresentMon 2.6.0 з UAC, без інсталяції драйвера/служби чи постійної зміни permissions/groups. Monitor PID 14124, target probe PID 3376; обидва завершилися з exit 0. Повторний elevated запуск не виконано; цей дозвіл не є постійним.
+One **** approved portable launch PresentMon 2.6.0 from UAC was used, with no driver/service installation or permanent change permissions/groups. Monitor PID 14124, target probe PID 3376; Both ended with exit 0. Repeat elevated launch is not performed; This license is not permanent.
 
-Докази: [raw CSV](../../artifacts/presentation-2026-10-05/presentmon-finalized/presentmon.csv), [QPC-matched analysis](../../artifacts/presentation-2026-10-05/presentmon-finalized/analysis.json), [profiled probe](../../artifacts/presentation-2026-10-05/native-profiled-finalized/presentation-report.json), [tool provenance](../../artifacts/presentation-2026-10-05/presentmon-tool/provenance.json). Аналізатор: [summarize_presentmon.ps1](../../tools/summarize_presentmon.ps1).
+The evidence: [raw CSV](../../artifacts/presentation-2026-10-05/presentmon-finalized/presentmon.csv), [QPC-matched analysis](../../artifacts/presentation-2026-10-05/presentmon-finalized/analysis.json), [profiled probe](../../artifacts/presentation-2026-10-05/native-profiled-finalized/presentation-report.json), [tool provenance](../../artifacts/presentation-2026-10-05/presentmon-tool/provenance.json). The analyzer is: [summarize_presentmon.ps1](../../tools/summarize_presentmon.ps1).
 
-Відбір ETW за `CPUStartQPC` у `[sample_begin_qpc, sample_end_qpc)`; frequency 10000000. Один target process; кожен case має один swapchain. Warmup/capture/contracts не входять у вибрані CPU intervals; на межах CPU/present intervals можлива похибка. VSync має 1219 вибраних CSV rows проти 1220 queued presentations, а не приховане прирівнювання counts.
+Select ETW for `CPUStartQPC` in `[sample_begin_qpc, sample_end_qpc)`; frequency 10000000. One target process; Each case has a swapchain. Warmup/capture/contracts does not include the selected CPU intervals; within CPU/present intervals, a possible error is possible. VSync has 1219 selected CSV rows against 1220 queued presentations, rather than hidden equation counts.
 
-| Режим | ETW rows | GPU elapsed mean / p95, мс | GPU busy mean, мс | Частота валідних display intervals | Display p95, мс | Пропущені interval samples | Tearing allowed rows |
+| The Regime | ETW rows | GPU elapsed mean / p95, ms | GPU busy mean, ms | Frequency of valid display intervals | Display p95, ms | Missed interval samples | Tearing allowed rows |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | VSync, HUD | 1219 | 4.032 / 4.934 | 3.868 | 122.07 Hz | 13.907 | 0 | 0 |
 | Immediate, uncapped, HUD | 1190 | **3.621 / 4.130** | **3.556** | **118.72 Hz** | **15.000** | **3** | **1190** |
-| Immediate, HUD приховано | 1371 | 3.464 / 3.907 | 3.375 | 135.64 Hz | 13.985 | 14 | 1371 |
+| Immediate, HUD hidden | 1371 | 3.464 / 3.907 | 3.375 | 135.64 Hz | 13.985 | 14 | 1371 |
 | Immediate, cap 120, HUD | 1162 | 3.743 / 4.107 | 3.681 | 115.90 Hz | 15.212 | 4 | 1162 |
 | Mailbox, cap 120, HUD | 1175 | 3.507 / 3.984 | 3.421 | 117.50 Hz | 13.916 | 0 | 0 |
 
-Метод display column — **1000 / mean валідних `MsBetweenDisplayChange`**, не гарантована частота повних кадрів scanout, особливо в режимі, що дозволяє tearing. `AllowsTearing=1` не є доказом видимого tearing чи його кількості. `NA` пропускаються, а не замінюються нулем. Пропущений display interval **не називається dropped frame**; без відповідного доказу не заявляється нуль ETW losses. В усіх вибраних cases `MsUntilDisplayed` додатний для кожного row, але це не усуває вказаних обмежень interval/scanout.
+The display column — **1000 / mean valid `MsBetweenDisplayChange`** method, does not guarantee the frequency of full scanout frames, especially in a mode that allows tearing. `AllowsTearing=1` is not evidence of visible tearing or its amount. `NA` is passed, not replaced by zero. The missing display interval ** is not called the dropped frame**; without adequate evidence no ETW losses are declared. In all selected cases `MsUntilDisplayed` is added for each row, but this does not remove the specified constraints interval/scanout.
 
-GPU elapsed (`MsGPUTime`) включає GPU busy + wait; GPU busy показано окремо. Це зовнішній ETW-вимір, не перейменований CPU submit. В цьому прогоні Immediate/HUD CPU-loop FPS **119.00**, p95 **11.656 мс**; він не змішується з 145.16 у прогоні без trace. Різниця сумісна з впливом profiling/поточних умов, але точний внесок overhead не встановлено. Повні GPU/display p50/p95/p99/max/coverage є в analysis JSON.
+GPU elapsed (`MsGPUTime`) includes GPU busy + wait; GPU busy is shown separately. This is an external ETW- dimension, not renamed CPU submit. In this loop Immediate/HUD CPU-loop FPS ** 119.00 **, p95 ** 11.656 ms**; It doesn't mix with 145.16 in a no-trace run. The difference is consistent with the impact of profiling/flow conditions, but the exact contribution of overhead is not established. The full GPU/display p50/p95/p99/max/coverage is in the analysis JSON.
 
-Первинні джерела методики: [PresentMon 2.6.0 console documentation](https://github.com/GameTechDev/PresentMon/blob/v2.6.0/README-ConsoleApplication.md), [CSV output implementation](https://raw.githubusercontent.com/GameTechDev/PresentMon/v2.6.0/PresentMon/CsvOutput.cpp). Власні числові результати — з локального CSV, не з документації.
+The primary sources of the methodology are: [PresentMon 2.6.0 console documentation](https://github.com/GameTechDev/PresentMon/blob/v2.6.0/README-ConsoleApplication.md), [CSV output implementation](https://raw.githubusercontent.com/GameTechDev/PresentMon/v2.6.0/PresentMon/CsvOutput.cpp). The own numerical results — are from local CSV, not from documentation.
 
-## Поточні локальні перевірки
+## Current local checks
 
-| Перевірка | Фактичний результат / межа доказу |
+| The verification | The actual result / limit of the evidence |
 |---|---|
-| Release build | Поточні Ribterra/probes/tests зібрані; MSVC 14.51, Release `/O2 /Ob2 /DNDEBUG`. Не release publication. |
-| Targeted CTest | **10/10**, 53.37 с: ui, ui_lifecycle, presentation_ui, render_frame, frame_timing, render_batch, minimap_cache, presentation_contract, client_input, surface_lighting_contract. **Не всі 98 тестів**. [LastTest.log](../../artifacts/presentation-2026-10-05/check-finalized/runtime/Testing/Temporary/LastTest.log). |
-| Native GPU resource/text recovery | `RenderFrameTests --gpu`, exit 0; старий small red frame декодовано після injected buffer-growth failure до retry; glyph/upload recovery перевірено. |
-| Native draw barriers | `RenderBatchTests --gpu`, exit 0; lit/legacy/order barriers збережені. [captures](../../artifacts/presentation-2026-10-05/native-batch-finalized). |
-| Surface kernel regression | **18 captures**, exit 0, [report](../../artifacts/presentation-2026-10-05/native-surface-finalized/surface-lighting-report.json). Лише bounded opaque surface kernel; не full Dynamic/HDR. |
-| Native settings UI | **3/3 applied-and-captured cases**, 4 PNG; Ukrainian 720p / scale 130%, 1080p / scale 100%, фактичний D3D12. 720p після двох SDL wheel events і 14 animation-settling frames має доступні Apply/Reset/Back. [report](../../artifacts/presentation-2026-10-05/native-settings-finalized/presentation-settings-report.json). |
-| Legacy visual regression | **6/6 configurations, 15 PNG**, всі 15 SHA256 збігаються з попередньою outcrop-HUD matrix; F1 hide/restore, winter, 720p/1080p/1440p, 5 locales. [report](../../artifacts/presentation-2026-10-05/legacy-finalized/report.json). Це збереження наявного вигляду, **не подібність концептам**. |
-| Benchmark capture parity | **5/5 PNG** однакові в profiled та unprofiled runs; sampling не змінював fixture/art. |
-| Actual CLI process | Software cap 120 / frames 2 та D3D12 Immediate uncapped / frames 1: exit 0; [renderer info](../../artifacts/presentation-2026-10-05/cli-finalized/gpu.json). Три некоректні запити cap `120oops`, frames `0`, mode `made-up` відхилені з exit 1. ExitCode отримано через awaited Process, не stale `$LASTEXITCODE` GUI-launch. |
-| Source review | Окремий code-reviewer: фінальний UI/persistence review **APPROVE**; не візуальне приймання концептів. `git diff --check` пройдено, наявний dirty tree збережено. |
-| ETW analysis review | Незалежно перераховано source hashes, selected rows / NA counts, means, nearest-rank quantiles та display interval rates — **APPROVE**. Огляд claims відокремив дозволений tearing від фактично спостереженого; формулювання виправлено. |
+| Release build | The current Ribterra/probes/tests is collected; MSVC 14.51, Release `/O2 /Ob2 /DNDEBUG`. Not release publication. |
+| Targeted CTest | The following is a list of the most commonly used names for the name of the product: **10/10**, 53.37 c: ui, ui_lifecycle, presentation_ui, render_frame, frame_timing, render_batch, minimap_cache, presentation_contract, client_input, surface_lighting_contract. **Not all 98 tests**. [LastTest.log](../../artifacts/presentation-2026-10-05/check-finalized/runtime/Testing/Temporary/LastTest.log). |
+| Native GPU resource/text recovery | `RenderFrameTests --gpu`, exit 0; old small red frame decoded after injected buffer-growth failure to retry; glyph/upload recovery verified. |
+| Native draw barriers | `RenderBatchTests --gpu`, exit 0; lit/legacy/order barriers are preserved. [captures](../../artifacts/presentation-2026-10-05/native-batch-finalized). |
+| Surface kernel regression | **18 captures**, exit 0, [report](../../artifacts/presentation-2026-10-05/native-surface-finalized/surface-lighting-report.json). Only bounded opaque surface kernel; not full Dynamic/HDR. |
+| Native settings UI | **3/3 applied-and-captured cases**, 4 PNG; Ukrainian 720p/scale 130%, 1080p/scal 100%, actual D3D12. 720p after two SDL wheel events and 14 animation-settling frames has available Apply/Reset/Back. [report](../../artifacts/presentation-2026-10-05/native-settings-finalized/presentation-settings-report.json). |
+| Legacy visual regression | **6/6 configurations, 15 PNG**, all 15 SHA256 are matched to the previous outcrop-HUD matrix; F1 hide/restore, winter, 720p/1080p/1440p, 5 locales. [report](../../artifacts/presentation-2026-10-05/legacy-finalized/report.json). It is the preservation of the existing appearance, ** not the similarity of concepts**. |
+| Benchmark capture parity | **5/5 PNG** is the same in profiled and unprofiled runs; The sampling didn't change fixture/art. |
+| Actual CLI process | Software cap 120 / frames 2 and D3D12 Immediate uncapped / frames1: exit 0; [renderer info](../../artifacts/presentation-2026-10-05/cli-finalized/gpu.json). Three incorrect cap `120oops`, frames `0`, mode `made-up` queries are deviated from exit 1. ExitCode is obtained through the awaited process, not the stale `$LASTEXITCODE` GUI-launch. |
+| Source review | The code-reviewer is the final UI/persistence review **APPROVE**; It's not visual conceptual acceptance. `git diff --check` passed, the existing dirty tree is preserved. |
+| ETW analysis review | Independently listed source hashes, selected rows / NA counts, means, nearest-rank quantiles, and display interval rates — **APPROVE**. The review of claims separated the permitted tearing from the actually observed; The wording is corrected. |
 
-Приклади фактично переглянутих native зображень: [720p settings bottom](../../artifacts/presentation-2026-10-05/native-settings-finalized/uk-1280x720-scale130-immediate-cap120-frames1-settings-bottom.png), [1080p settings](../../artifacts/presentation-2026-10-05/native-settings-finalized/uk-1920x1080-scale100-vsync-uncapped-frames2-settings-top.png), [звичайний legacy світ](../../artifacts/presentation-2026-10-05/native-unprofiled-finalized/immediate-hud.png). Немає заяви, що це концепт-faithful нова сцена. Native computer-control API у цій сесії недоступний; PNG з реального SDL/D3D12 renderer та SDL input probes не видаються за ручну desktop automation.
+Examples of actually reviewed native images are: [720p settings bottom](../../artifacts/presentation-2026-10-05/native-settings-finalized/uk-1280x720-scale130-immediate-cap120-frames1-settings-bottom.png), [1080p settings](../../artifacts/presentation-2026-10-05/native-settings-finalized/uk-1920x1080-scale100-vsync-uncapped-frames2-settings-top.png), [, common legacy world](../../artifacts/presentation-2026-10-05/native-unprofiled-finalized/immediate-hud.png). There's no claim that this is a concept-faithful new scene. Native computer-control API is not available in this session; The PNG from the real SDL/D3D12 renderer and SDL input probes are not output by manual desktop automation.
 
-Невдалі проміжні fixture/scroll/tool-wrapper runs збережено: SDL driver-hint conflict, minimap fixture revisions, wheel loop без часу RmlUi animation та stale GUI `$LASTEXITCODE` виправлені й перевірені повторно. Вони не приховані видаленням artifacts і не використовуються як green proof.
+Recently intermittent fixture/scroll/tool-wrapper runs are preserved: SDL driver-hint conflict, minimap fixture revisions, wheel loop without time RmlUi animation and stale GUI `$LASTEXITCODE` corrected and re-checked. They're not hidden by the removal of artifacts and they're not used as green proof.
 
-## Прив'язка до перевірених файлів
+## Link to verified files
 
-Фінальний [snapshot](../../artifacts/presentation-2026-10-05/check-finalized/snapshot.json): **294 hash-verified runtime files**. Це output-isolated runtime, **не hermetic source snapshot**: Python tests/repository inputs залишаються live.
+Final [snapshot](../../artifacts/presentation-2026-10-05/check-finalized/snapshot.json): **294 hash-verified runtime files**. This is an output-isolated runtime, **no hermetic source snapshot**: Python tests/repository inputs remain live.
 
-| Файл / набір | SHA256 / content hash |
+| File / set | SHA256 / content hash |
 |---|---|
 | Ribterra.exe | `CE44B626EA1213861443648F9F2E9245EEA35635CB1621BBEC1AB77B69FD2D9B` |
 | PresentationProbe.exe | `4E6234E8365AAF9708FC5A65B00796FD3DCF95D70EF4E6BECBF1A90EA343A835` |
@@ -97,12 +99,12 @@ GPU elapsed (`MsGPUTime`) включає GPU busy + wait; GPU busy показа�
 | PresentMon executable | `B2A706BC6AD475749E3B7E3409263AA1E6906D45BDCF993F6DBC0F660188F1AF` |
 | Raw PresentMon CSV | `7A9E2219398F3AD95F2338E343A9E9FD76CD93916D70149E8FD7F364DEF8BE14` |
 
-Launcher **не оновлено**: `Play Ribterra Rework.cmd` досі вказує на `dist/concept-rebuild-0.26.3-preview-2026-10-05-r2/Ribterra/Ribterra.exe`. Цей етап — source/local validation, не встановлена нова версія, не Git commit/push/release. Файли не видалялися; prior asset-staging та failed runs збережені.
+Launcher ** is not updated**: `Play Ribterra Rework.cmd` still points to `dist/concept-rebuild-0.26.3-preview-2026-10-05-r2/Ribterra/Ribterra.exe`. This stage is — source/local validation, not a new version installed, not Git commit/push/release. The files were not deleted; Prior asset-staging and failed runs are saved.
 
-Застосовані ponytail/ultrawork допомогли розділити реалізацію й незалежний review; karpathy-guidelines/cpp-coding-standards — втримати локальний scope, typed state, transactional lifetime та явні failure contracts. Вони не дозволяють зарахувати неповні ефекти або середнє FPS як готовий двигун.
+Ponytail/ultrawork helped separate implementation and independent review; karpathy-guidelines/cpp-coding-standards helped keep scope local, state typed, lifetime transactional, and failure contracts explicit. They do not allow incomplete effects or average FPS to be presented as a finished engine.
 
-## Що далі і коли можна приймати
+## What to Do Next and When to Take
 
-Наступна робота залишається **над двигуном**: виробничий HDR/render graph, surface/material adapters для всіх receiver-категорій, emission, причинні тіні, sun/moon/time/weather, вода й просторова атмосфера. Після підключення — спільна concept matrix, довгий pan/zoom/cold-load run, GPU/display pacing і піковий VRAM, повний suite та незалежний visual review.
+The following work remains **over the engine**: production HDR/render graph, surface/material adapters for all receiver categories, emission, causal shadows, sun/moon/time/weather, water and space atmosphere. After connecting — a shared concept matrix, a long pan/zoom/cold-load run, GPU/display pacing and peak VRAM, a full suite and independent visual review.
 
-**Ціль ≥120 FPS у 1920×1080 на RTX 3050 із усіма потрібними ефектами ще не доведена.** Ані 145.16 CPU-loop FPS у статичному legacy world, ані окреме 3.62 мс GPU measurement її не закривають.
+**The goal ≥120 FPS in 1920×1080 on RTX 3050 with all the required effects has not yet been proven.** Neither the 145.16 CPU-loop FPS in the static legacy world nor the individual 3.62 ms GPU measurement closes it.

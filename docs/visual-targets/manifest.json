@@ -16,7 +16,7 @@
       "sha256": "12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S02",
@@ -28,7 +28,7 @@
       "sha256": "31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S03",
@@ -40,7 +40,7 @@
       "sha256": "08f8b1d69dabefc0081467c42436fa9d653e3b016ac8aea7f4c803e552bc4d3e",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S04",
@@ -52,7 +52,7 @@
       "sha256": "5daade3836b7e426b1fd82206e47fcbdb80a8a839cfd8b09a21914a2d1650ddf",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S05",
@@ -64,7 +64,7 @@
       "sha256": "354f3e69c3e883fa3ebe5beeac36c8432fe7359cab623abeddf6359ac6f1969c",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S06",
@@ -76,7 +76,7 @@
       "sha256": "f2fd404a3653f5272a167e80ac730818b97b3db850d678ac5ce6557e180cff23",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S07",
@@ -88,7 +88,7 @@
       "sha256": "adcefe9033bddf57c72e88e7cf0a22e91bc2d8b25e4591c297757b1750a126ff",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S08",
@@ -100,7 +100,7 @@
       "sha256": "3623d7fa7cbf3c48108652805e4f30494a106ff07c7fbba6dfd0d01fd32d5529",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S09",
@@ -112,7 +112,7 @@
       "sha256": "f79a2c7c53721b87f0c4b05359f5ef71f0fabb639551dd8b955bbc3e05e574a8",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S10",
@@ -124,7 +124,7 @@
       "sha256": "98b80128ccaa68e6a57009feb1e38bcac47420d916ca98caa8705ed7a6d740c2",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "S11",
@@ -136,7 +136,7 @@
       "sha256": "1a172e22e9f79506b638edadb9897273f5b454120d7dbebde1d8bc4f92ea9936",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "W01",
@@ -148,7 +148,7 @@
       "sha256": "6c0e730a3c8870a539e574d379b887256cd193d3266097e8ffd02dfeea7f5f71",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     },
     {
       "id": "W02",
@@ -160,7 +160,8 @@
       "sha256": "bdfb0fc0d09b87c2d910c75f2499c6351a90e26bf3b612ac26146807bae9f013",
       "status": "generated_target",
       "data": "illustrative_fixture",
-      "caption": "ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ"
+      "caption": "TARGET MOCKUP · ILLUSTRATIVE DATA"
     }
-  ]
+  ],
+  "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
 }

@@ -1,9 +1,11 @@
-# Ribterra 0.24.1 — Очікування після ручних наказів
+# Ribterra 0.24.1 — Waiting for manual orders
 
-Після завершення останнього ручного наказу юніт протягом 30 ігрових секунд залишається на місці й очікує нової команди. Побутові прогулянки, розмови, самостійне перевезення та автоматичне призначення роботи не забирають його в цей час.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Новий наказ виконується одразу. Накази, додані до черги через Shift, виконуються послідовно без затримки між ними. Очікування починається після завершення всієї черги, а не під час дороги. Дострокове відпускання керування зберігає свій попередній зміст — повернення до автономності.
+After the final manual order is completed, the unit for 30 game seconds remains in place and awaits a new team. Home walks, conversations, self-driving and automated assignments don't take him away at this time.
 
-Час збережено в стані мешканця: завантаження не скидає і не продовжує очікування. Пауза зупиняє відлік, прискорення гри прискорює його. Самооборона при фактичному нападі залишається доступною.
+The new order is executed immediately. The orders added to the line through Shift are executed sequentially without delay between them. Waiting begins after the whole line is finished, not during the journey. The temporary release of control retains its previous meaning — return to autonomy.
 
-Збережено сповільнені вдвічі анімації ходьби людей і тварин. Швидкість пересування не змінена. Підтримано збереження 0.24.0 та попередніх підтримуваних версій; для мережевої гри всі учасники мають оновитися до 0.24.1.
+Time is saved in the inhabitant's state: the load does not drop and does not continue to wait. Pause stops the count, acceleration of the game accelerates it. Self-defense in the face of actual attack remains available.
+
+The animation of the human and animal walk is preserved in a slow-motion double. The speed of movement has not changed. Supported storage of 0.24.0 and previous supported versions; for a network game, all participants must update to 0.24.1.

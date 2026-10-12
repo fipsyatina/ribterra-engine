@@ -1,23 +1,25 @@
-# Ribterra 0.25.8 — будівля пояснює свою роботу
+# Ribterra 0.25.8 — building explains its work
 
-Натисніть лівою кнопкою на споруду. Інспектор показує її назву, призначення, націю-власника, рівень, стан будівництва й працівника. Для підприємства є активний рецепт, сировина на одну партію, вихід партії, виготовлені предмети та залишок партій.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Кількість у формі означає **предмети**. Панель показує, скільки цілих партій потрібно: наприклад, замовлення 7 дощок округлюється до 2 партій, тобто 12 дощок. Активне замовлення зберігає власний рецепт, навіть якщо до його початку у формі був інший вибір.
+Press the left button on the structure. The inspector shows its name, destination, owner's nation, level, construction status, and employee. For the enterprise there is an active recipe, raw material per batch, batch output, manufactured items and batch residue.
 
-Пояснення стану стоїть над характеристиками:
+The quantity in the form represents **object**. The panel shows how many whole batches are needed: for example, ordering 7 the board is rounded to 2 the batches, that is, 12 the board. An active order retains its own recipe even if there was another choice in the form before it was started.
 
-- **Немає замовлення:** виберіть рецепт і почніть замовлення.
-- **Немає працівника:** звільніть дорослого мешканця та повторіть замовлення. Замовлення недоступного працівника спочатку зупиніть.
-- **Очікує сировину:** доставте перелічені матеріали до Табору або Складу.
-- **Переносить сировину / іде до споруди:** дочекайтеся прибуття.
-- **Немає шляху:** перевірте доступ до підприємства й сховища.
-- **Немає місця доставки:** звільніть або додайте доступний Склад.
-- **Нічний відпочинок:** дочекайтеся дня або дозвольте нічну зміну. Вантаж у руках завершує доставку й уночі.
-- **Виготовлено; доставка триває:** партія вже готова, але її ще несуть. Вона не зараховується в доступний запас до доставки.
-- **Товар на землі:** виготовлення завершене, доставка не вдалася; потрібне перенесення до сховища.
+The explanation of the condition is based on the characteristics:
 
-Панель «Підприємства» використовує ті самі пояснення. Помилки групового замовлення прив’язані до відповідної споруди й не переходять на іншу після зміни вибору. Вибір іншої споруди скидає область дії нової команди до «Цієї споруди». Повідомлення з карти передаються в чинний RmlUi HUD.
+- **No order:** select a recipe and start ordering.
+- **No worker:** fire an adult resident and repeat the order. The unavailable worker's order will be stopped first.
+- **Expect raw materials:** deliver the materials listed to the Warehouse or Warehouse.
+- **Carries raw materials/goes to the building:** wait for arrival.
+- **No way:** check access to the enterprise and the warehouse.
+- **No delivery location:** release or add the available Warehouse.
+- **Night rest:** wait for day or allow night shift. The cargo in hand completes the delivery at night.
+- **Made; Delivery is ongoing:** the batch is ready, but it's still in the bag. It is not counted in the available stock for delivery.
+- **Shipment on land:** manufacture completed, delivery failed; We need to move it to the storage room.
 
-Нові тексти доступні українською, англійською, польською, іспанською та російською. Збережено наявне оформлення, додано перенесення рядків і колір очікування. Довга панель прокручується; клавіатурний фокус прокручує її до кнопки.
+The Enterprise panel uses the same explanations. Group order errors are attached to the respective structure and do not change after a change in choice. Selecting another structure reduces the field of action of the new command to this structure. The message from the card is transmitted to the current RmlUi HUD.
 
-Рецепти, баланс, протокол і формат збереження не змінені. Переробка керування працівниками належить до 0.25.9, загальна власність у кооперативі — до 0.25.10. Ця версія не підтверджує роботу через зовнішній інтернет.
+The new texts are available in Ukrainian, English, Polish, Spanish and Russian. The existing layout is saved, the lines are moved and the waiting color is added. The long panel is rotating; The keypad focus spins it to the button.
+
+The recipes, balance, protocol and storage format remain unchanged. The reorganization of employee management belongs to 0.25.9, the common ownership in the cooperative — to 0.25.10. This version does not confirm the work via the external Internet.

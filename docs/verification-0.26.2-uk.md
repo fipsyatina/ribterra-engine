@@ -1,30 +1,32 @@
-# Перевірка Ribterra 0.26.2 V02
+# Ribterra verification 0.26.2 V02
 
-> Історичний звіт конкретної збірки нижче, не приймання візуальної відповідності. Після зауважень користувача 30.09 розпочато [кумулятивну переробку V01–V03](visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md); її статус має пріоритет для поточного результату.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Дата локальної перевірки: 28.09.2026. Конфігурація: Windows x64, `RelWithDebInfo`, Direct3D 12 для GPU smoke. Це звіт про локальний checkout; він не доводить опублікований реліз, два фізичні ПК або WAN/NAT.
+> The historical account of a particular collection is below, not of visual conformity. After user comments 30.09 the cumulative processing [ is started V01–V03](visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md); Its status is prioritized for the current outcome.
 
-## Підтверджено
+The date of the local verification: 28.09.2026. The configuration is Windows x64, `RelWithDebInfo`, Direct3D 12 for GPU smoke. This is a local checkout report; It doesn't prove a published release, two physical PCs or WAN/NAT.
 
-- Повна чиста перебудова Ninja та фінальне перелінкування всіх залежних executable завершились успішно.
-- Повний CTest: **89/89**, 0 падінь, 1153,03 с. До нього входять симуляція, save/schema compatibility, мережа, dedicated processes, UI, усі rendered probes та client smoke.
-- `terrain_v02`: 10 фіксованих seed-ів, зв’язна річка, досяжні стартові ресурси/шахта, мінімум 80 будівельних клітинок, симетрія ребер поверхні, стабільний Road ID, відсутність нового Road і його бонусу, протоптування та save/load стежки, збереження legacy generator profile. Фінальний окремий запуск: **169 мс** холодної генерації.
-- `network_adverse_1pct` і `network_adverse_3pct` пройшли у фінальному suite за 102,79 с та 113,31 с.
-- Виправлено виявлену V02-регресію: звичайна прохідна стартова клітина більше не обходить перевірку cliff edge під час пошуку маршруту; виняток залишено тільки для виходу з фактично заблокованої клітини. `lobby`, `path_planner`, `world_validation` і save roundtrip пройшли після виправлення.
-- Старий заморожений save 0.25.7 мігрує окремою копією; повторні roundtrip-и не змінюють стан і не перезаписують оригінал.
-- Staging перевірив 155 assets; content hash: `7e38f5a5621f4be1c247e4c2d14b6d513c4b8809bea68415e2662d30779c74a8`.
+## Confirmed
+
+- The complete clean-up of the Ninja and final linking of all dependent executables were completed successfully.
+- Full CTest: **89/89**, 0 falls, 1153,03 s. It includes simulation, save/schema compatibility, networking, dedicated processes, UI, all rendered probes and client smoke.
+- `terrain_v02`: 10 fixed seed, a bound river, accessible startup resources/shaft, minimum 80 building cells, surface rib symmetry, stable Road ID, absence of a new Road and its bonus, prototyping and save/load trail, preservation of legacy generator profile. Final single launch: **169 ms** cold generation.
+- `network_adverse_1pct` and `network_adverse_3pct` passed in the final suite for 102,79 s and 113,31 s.
+- Fixed detected V02- regression: the normal passing start cell no longer bypasses the cliff edge check when searching for the route; The exception is left only to exit the actually blocked cell. `lobby`, `path_planner`, `world_validation` and save roundtrip passed after the correction.
+- The old frozen save 0.25.7 migrates in a separate copy; Repeat roundtrip and do not change the state or rewrite the original.
+- Staging checked the 155 assets; content hash: `7e38f5a5621f4be1c247e4c2d14b6d513c4b8809bea68415e2662d30779c74a8`.
 - GPU contract: `direct3d12`, `NVIDIA GeForce RTX 3050 Laptop GPU`, driver `32.0.15.9282`, `software=false`, engine/window title `0.26.2`.
 
-## Візуальний доказ
+## The visual evidence
 
 - Native capture: [`../artifacts/graphics-v02-0.26.2/v02-native-1440x900.png`](../artifacts/graphics-v02-0.26.2/v02-native-1440x900.png)
 - Renderer metadata: [`../artifacts/graphics-v02-0.26.2/renderer-info.json`](../artifacts/graphics-v02-0.26.2/renderer-info.json)
-- Орієнтир V02, не runtime-доказ: [`visual-targets/progress/v02-terrain.png`](visual-targets/progress/v02-terrain.png)
+- Orientation V02, not runtime proof: [`visual-targets/progress/v02-terrain.png`](visual-targets/progress/v02-terrain.png)
 
-Кадр має довести одну помітну річку, береги без розривів, широкі спокійні матеріальні зони, групи дерев/каменю та збережений HUD V01. Протоптані стежки перевірені станом/roundtrip тестом; окремий довгий геймплейний capture їх накопичення не записувався.
+The frame should prove one notable river, shoreline without rifts, wide quiet material zones, group of trees/stones and preserved HUD V01. The tracks are tested by a state/roundtrip test; The individual long gameplay capture of their accumulation was not recorded.
 
-## Не підтверджено цим звітом
+## Not Confirmed by This Report
 
-- Два фізичні Windows-ПК, різні локальні мережі, WAN/NAT і реальний роутер.
-- Опублікований ZIP/реліз та інсталяція на чистому ПК.
-- Довготривала витрата пам’яті відносно 0.26.1 і багатогодинний soak.
+- Two physical Windows PCs, different local networks, WAN/NAT and a real router.
+- Published ZIP/release and installation on a pure PC.
+- It supported memory costs relative to 0.26.1 and the long-time soak.

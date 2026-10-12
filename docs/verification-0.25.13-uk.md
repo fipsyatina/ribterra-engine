@@ -1,24 +1,26 @@
-# Перевірка виправлення 0.25.13
+# The correction check 0.25.13
 
-24 вересня 2026, локальна Windows-збірка MSVC, `AInora/first-playable`.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Причина та виправлення
+24 September 2026, the local Windows collection MSVC, `AInora/first-playable`.
 
-Повідомлення зі скриншота користувача — `Missing localization key: Мешканця обрано`. `GameView` передавав готовий український текст, а головний цикл 0.25.12 викликав для нього суворий пошук ключа локалізації. Це спричиняло необроблений виняток і завершення гри. Та сама помилка стосувалася вибору ділянки, скасування, руху й інших повідомлень.
+## Cause and Correction
 
-`GameView::take_status_text` тепер повертає готовий текст. На межі старого каналу повідомлень відомі ключі перекладаються, решта тексту передається без повторного суворого пошуку. Такий самий захист застосовано до текстових причин відмов і мережевих повідомлень у головному циклі та HUD. `Localization::text/format` залишаються суворими для звичайних підписів; тест невідомого ключа все ще перевіряє виняток.
+The message from the user's screenshot — `Missing localization key: Мешканця обрано`. `GameView` transmitted the finished Ukrainian text, and the main cycle 0.25.12 caused him to search for a rigorous localization key. This caused an unprecedented exception and the end of the game. But the same mistake involved selecting the plot, cancelling, moving, and other messages.
 
-Попередній `BuildingInspectorProbe` передавав повідомлення прямо в HUD, оминаючи помилкове перетворення у головному циклі. Він оновлений і разом з новим `InputFeedbackProbe` використовує той самий обробник повідомлень, що й гра.
+`GameView::take_status_text` now returns the finished text. At the edge of the old channel, messages are translated by known keys, and the rest of the text is transmitted without repeated rigorous search. The same protection is applied to text rejection reasons and network messages in the main cycle and HUD. `Localization::text/format` remain strict for conventional signatures; The unknown key test is still testing the exception.
 
-## Докази
+The previous `BuildingInspectorProbe` transmitted the message directly to HUD, avoiding the error transform in the main cycle. It's updated and along with the new `InputFeedbackProbe` uses the same message processor as the game.
 
-**12/12 CTest пройшли, 82,05 с** (`build/02513-tests.log`): input_feedback, client_input, building_inspector, localization, ui, ui_lifecycle, production_control_ui, save_compatibility, save_compatibility_ui, client_smoke, host_lobby_flow, online_entry_flow.
+## Evidence
 
-- InputFeedbackProbe: реальні події SDL для вибору мешканця, розміщення будинку, скасування й руху. Перевірено, що після обробки наказу кількість споруд збільшується на одну. Повідомлення споживається один раз і видиме в RmlUi. Окремо перевірені переклад відомої серверної причини та безпечне відображення невідомого повідомлення. Усі сім сценаріїв пройшли для п’яти мов: **35 кадрів** у `artifacts/hotfix-0.25.13/`.
-- ClientInputTests: вибір, наказ руху, збір ресурсу, будівництво, збереження й продовження. BuildingInspectorProbe повторно перевіряє виробничі стани й повідомлення карти. Міграція сейвів пройшла повторну перевірку.
-- Існуючі готові українські повідомлення не перекладалися заново в інші мови в межах цього термінового виправлення. Перевірка п’яти мов доводить відсутність вильоту та правильне відображення, а не повну локалізацію історичних рядків.
-- Установлений EXE та штатний `Play Ribterra.cmd` завершили `--smoke` з кодом **0**: **0.25.13, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, software=false**. Обидва ярлики на робочому столі ведуть до цього launcher; `dist/current-build.txt` вказує на 0.25.13. Профіль і збереження користувача не видалялися.
+**12/12 CTest have been passed, 82,05 with ** (`build/02513-tests.log`): input_feedback, client_input, building_inspector, localization, ui, ui_lifecycle, production_control_ui, save_compatibility, save_compatibility_ui, client_smoke, host_lobby_flow, online_entry_flow.
 
-ZIP: `dist/Ribterra-Windows-x64-0.25.13.zip`, **158816834 байти**. SHA256: `903940fe287657f8bea9e09e7752e0969ad61a067506a283ab505ff3180616a4`. CRC архіву перевірено; чотири EXE збігаються між збіркою, встановленням і ZIP. Перевірено відповідність UI, мов, launcher, README та опису оновлення джерелам. Машиночитані докази: `artifacts/hotfix-0.25.13/test-results.json`, `package-verification.json`, `installed-renderer.json`, `launcher-renderer.json`.
+- InputFeedbackProbe: real events SDL for choosing a tenant, placing a house, cancellation and movement. It is verified that after the order is processed, the number of buildings increases by one. The message is consumed once and seen in RmlUi. Separately verified translation of known server cause and secure display of unknown message. All seven scenarios were submitted for five languages: **35 frameworks** to `artifacts/hotfix-0.25.13/`.
+- ClientInputTests: selection, movement order, resource collection, construction, conservation and extension. BuildingInspectorProbe re-checks the manufacturing status and the map message. The migration of the safe has been re-examined.
+- The existing ready-made Ukrainian messages were not re-translated into other languages within the scope of this term correction. The five-language check shows the absence of flight and correct display, rather than the full localization of historical lines.
+- The fixed EXE and the standard `Play Ribterra.cmd` completed `--smoke` with the code **0**: **0.25.13, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, software=false**. Both the labels on the desk lead to this launcher; `dist/current-build.txt` indicates that 0.25.13. The user's profile and save were not deleted.
 
-Повний набір CTest не запускався. Перевірка на двох фізичних ПК залишається невиконаною за попереднім повідомленням користувача. Правила 17, протокол 19, формат сейва 8 і генератор 5 не змінені. GitHub push і публікація релізу не виконувалися.
+ZIP: `dist/Ribterra-Windows-x64-0.25.13.zip`, **158816834 bytes **. SHA256: `903940fe287657f8bea9e09e7752e0969ad61a067506a283ab505ff3180616a4`. CRC the archive is checked; four EXE coincide between the set, the installation and ZIP. Verified UI, language, launcher, README and description of the source update. The machine-readable proofs are: `artifacts/hotfix-0.25.13/test-results.json`, `package-verification.json`, `installed-renderer.json`, `launcher-renderer.json`.
+
+The full set of CTest didn't start. A verification on two physical PCs remains unchecked after a user's previous notification. The rules 17, protocol 19, file format 8 and generator 5 have not been changed. GitHub push and release didn't work.

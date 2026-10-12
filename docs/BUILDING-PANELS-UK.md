@@ -1,36 +1,38 @@
-# Панелі будівель за референсами
+# Building panels by reference
 
-Оновлення від 15.09.2026. Це інтерфейс для наявної гри, з англійськими написами, а не нова реалізація всіх механік із концепт-артів.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Запуск
+Update from 15.09.2026. It's a game interface with English subtitles, not a new implementation of all the mechanics in the concept art.
 
-Закрийте попередню запущену гру та відкрийте **Ribterra - New Graphics** на робочому столі. Оновлена збірка знаходиться в `dist/building-panels/Ribterra/Ribterra.exe`. Старий уже запущений процес автоматично не оновлюється.
+## Launch
 
-Натисніть на споруду: праворуч відкриється її картка. Shift + натискання додає або прибирає споруди з вибору. Кнопка × закриває картку та знімає вибір.
+Close the previous game and open **Ribterra - New Graphics** on your desktop. The updated collection is at `dist/building-panels/Ribterra/Ribterra.exe`. The old process already running does not automatically update.
 
-## Оформлення й дії
+Press the device, and the card opens on the right. Shift + press adds or removes the structures of choice. The x button closes the card and takes the choice.
 
-Усі 20 типів отримали спільне оформлення: темне тло, золота рамка, назва, актуальна мініатюра будівлі, рівень, стан, основна дія та блок покращення. Вкладок мешканців і дослідників немає.
+## Declaration and Action
 
-Ферма, рибальська станція, майстерня, лісопилка, млин, кухня та глиняний кар’єр показують доступні рецепти, кількість, матеріали, працівника й перебіг реального замовлення. Кількість округлюється до цілої виробничої партії; точний результат видно в `Order per building` до відправлення. Час роботи не включає дорогу й очікування матеріалів.
+All 20 types have a common layout: dark floor, gold frame, name, current building miniature, level, condition, main action and improvement block. There's no deposit of residents and researchers.
 
-`Apply to` задає область нового виробничого наказу: ця будівля, вибрані споруди цього типу або всі власні споруди цього типу. Кожна отримує вказаний обсяг. Поселення використовує вільних дорослих мешканців, не забираючи учасників активних доручень чи людей під контролем іншого гравця. Зайняті будівлі та нестача працівників повідомляються як пропущені замовлення. Нові нескінченні завдання не створюються.
+The farm, fishing station, workshop, logging plant, mill, kitchen and clay quarry show the available recipes, quantity, materials, worker and actual ordering progress. The quantity is rounded to the entire production batch; The exact result is seen in `Order per building` before dispatch. The time of work does not include the journey and the waiting for materials.
 
-Замовлення групи надсилаються послідовно з підтвердженням сервера та актуальним станом світу. Повторений ідентифікатор будівлі не створює дубль. `Stop Order` стосується поточного замовлення конкретної будівлі; під час перенесення вантажу сервер може відхилити скасування — тоді треба повторити його після завершення перенесення.
+`Apply to` specifies the area of the new production order: this building, selected structures of this type or all of its own structures of this kind. Each receives a given volume. The settlement uses free adult residents without taking participants from active assignments or people under the control of another player. Occupied buildings and shortages of personnel are reported as missed orders. There are no new endless tasks.
 
-Табір відкриває наявні правила поселення, склад — запаси, шахта — підземний шар за наявності входу, дорога — продовження будівництва. Незавершену споруду можна скасувати. Чужі споруди доступні лише для перегляду.
+Group orders are sent in a sequence with the server's confirmation and current world status. Repeated building ID does not create duplicates. `Stop Order` refers to the current order for a particular building; the server may reject cancellation during the transfer of load — then it should be repeated after the transfer is completed.
 
-## Що залишається недоступним
+The camp opens up the existing settlement rules, the stockpile, the mine, the underground layer if there is an entrance, the road, the extension of construction. An unfinished building can be cancelled. Foreign buildings are only available for viewing.
 
-Картки досліджень можна обирати довільно. Самі дослідження, їхні ціни й час ще не реалізовані, тому `Start Research` вимкнено; вигаданого прогресу немає. Наявні покращення в старих збереженнях відображаються, але інтерфейс не пропонує нові покращення в обхід дослідження.
+## What is Still Unavailable
 
-Так само позначені недоступними ще відсутні механіки: індивідуальне опалення житла, зміна площі поля, правила окремого складу, прив’язаний до шахти відклик загону, служби храму, відвідувачі та бюджет таверни, стратегічна карта й мінікарта, виплавка, навчання в бібліотеці та тренування загонів. Глобальні показники підписані як показники поселення, а не конкретної споруди.
+The research cards can be chosen at will. The research itself, its costs and time have not yet been realized, so `Start Research` is turned off; There's no such thing as a fictitious progress. The existing improvements in the old archives are reflected, but the interface does not offer new improvements in research bypass.
 
-## Перевірка
+The following mechanics are also marked unavailable: heating individual homes, changing field size, rules for a separate warehouse, recalling a squad assigned to a mine, temple services, tavern visitors and budgets, a strategic map and minimap, smelting, library education, and squad training. Global indicators are labeled as settlement indicators, not as values for a specific building.
 
-- Справжні кадри Direct3D 12 для всіх 20 типів і екрану вибору дослідження: `artifacts/building-panels/`.
-- Натискання на будівлю на карті, закриття картки, вибір області наказу з клавіатури, два виробничі завдання з різними мешканцями.
-- Два мережеві клієнти бачать однакові замовлення; повторені будівлі не дублюють їх; збереження та завантаження зберігає завдання.
-- Тести `ui`, `client_input`, `economy` пройдено.
+## Validation
 
-Кадри показують спеціально розставлені споруди для перевірки панелей. Це не приклад автоматичного створення готового міста.
+- Real frames Direct3D 12 for all 20 types and screen of choice for the study: `artifacts/building-panels/`.
+- Pressing a building on a map, closing a card, selecting a command area from the keyboard, two production tasks with different occupants.
+- Two network customers see the same order; repeated buildings do not duplicate them; The storage and loading keeps the task.
+- Tests `ui`, `client_input`, `economy` have been passed.
+
+The frames show specially arranged structures for the inspection of the panels. This is not an example of an automatic ready-made city.

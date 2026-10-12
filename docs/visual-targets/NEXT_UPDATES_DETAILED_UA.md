@@ -1,270 +1,272 @@
-# Ribterra — детальні картки наступних оновлень і цільових кадрів
+# Ribterra — detailed update roadmap and target frames
 
-**Поточний порядок базової графіки:** [V00–V05 — старий вигляд → UI → земля → об’єкти → дощ → зима](GRAPHICS_PROGRESS_UA.md). Це головна послідовність видимих змін після відкладення Dynamic. Старі dev/GW/DL — технічні пакети, не готові знімки кожної версії. [Галерея прогресу](index.html); [старі 13 публічних targets](public-versions.html).
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-**Останнє рішення 27.09:** повне динамічне освітлення та перемикач відкладені. Зараз у коді лише безпечна заготовка. [Майбутній план DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) має пріоритет: Dynamic не є блокером базового оновлення світу/UI; його light/occlusion gates застосовуються лише до майбутнього ввімкненого режиму.
+**Current base-graphics sequence:** [V00–V05 — old view → UI → ground → objects → rain → winter](GRAPHICS_PROGRESS_UA.md). This is the main sequence of visible changes after Dynamic was deferred. The older dev/GW/DL entries are technical packages, not finished screenshots for every version. [Progress gallery](index.html); [older 13 public targets](public-versions.html).
 
-Оновлено 27 вересня 2026 після capability-аудиту рендера. Статус: **план; версії 0.26.1–0.27.0 не реалізовані**.
+**Latest decision, 27.09:** Full dynamic lighting and its toggle are deferred. The code currently contains only safe groundwork. [Future plan DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) takes precedence: Dynamic does not block the base world/UI update; its light/occlusion gates apply only to the future enabled mode.
 
-Цей документ поєднує чинний [roadmap малих версій](../ALPHA_DEMO_SMALL_RELEASES_UA.md) із серією з 11 згенерованих цільових кадрів `S01…S11`. Кадри потрібні як художня й композиційна специфікація для агента після кожного публічного оновлення. Вони не є доказом того, що гра вже має показану функцію.
+Updated 27 September 2026 after the renderer capability audit. Status: **plan; versions 0.26.1–0.27.0 are not implemented**.
 
-Чинний технічний пакет 0.26.1: [V2-план «Живий світ»](GRAPHICS_ENGINE_PLAN_V2_UA.md), [ядро рендера](RENDER_CORE_SPEC_UA.md) і [world FX](WORLD_FX_SPEC_UA.md). Канонічна таблиця V2 є єдиним джерелом внутрішньої dev-послідовності; цей документ не дублює її кількість. Реалізовані 0.25.x і 0.26.0, їхні номери та verification-звіти не змінюються. Перша внутрішня альфа — 0.26.7. 0.27.0 лишається цільовим маркером зовнішнього демо, а не датою.
+This document combines the current [small-release roadmap](../ALPHA_DEMO_SMALL_RELEASES_UA.md) with a series of 11 generated target frames, `S01…S11`. The frames serve as art and composition specifications for the agent after each public update. They do not prove that the game already contains the depicted feature.
 
-## Як використовувати цільові кадри
+The current technical package for 0.26.1 comprises the [V2 “Living World” plan](GRAPHICS_ENGINE_PLAN_V2_UA.md), [render core](RENDER_CORE_SPEC_UA.md), and [world FX](WORLD_FX_SPEC_UA.md). The canonical V2 table is the sole source of the internal development sequence; this document does not duplicate its counts. Implemented versions 0.25.x and 0.26.0, their numbers, and their verification reports remain unchanged. The first internal alpha is 0.26.7. Version 0.27.0 remains a target marker for the external demo, not a date.
 
-Кожен файл має містити видиму позначку **«ЦІЛЬОВИЙ МАКЕТ»**. Якщо в кадрі потрібні числа, яких ще не створила симуляція, підпис зображення або його sidecar/manifest має містити **«ІЛЮСТРАТИВНІ ДАНІ»**; image generator не зобов'язаний надійно відтворювати цей другий напис усередині bitmap. Зображення не можна класти до verification-звіту як gameplay screenshot і не можна порівнювати з реальною збіркою без однакових seed, камери, zoom, роздільності, часу й сезону.
+## How to Use Targeted Frames
 
-Текстовий контракт відповідної картки має вищий пріоритет за дрібні варіації layout, написів і декору, які дає image generator. Якщо PNG суперечить описаному UI state, поведінці або межі scope, виправляється чи відхиляється PNG; текст не переписується заднім числом під випадковий результат генерації.
+Each file must contain a visible **“TARGET MOCKUP”** label. If a frame requires numbers that the simulation has not produced, the image caption or its sidecar/manifest must contain **“ILLUSTRATIVE DATA”**; the image generator is not required to reproduce this second label reliably inside the bitmap. The image must not be included in a verification report as a gameplay screenshot or compared with a real build unless seed, camera, zoom, resolution, time, and season are identical.
 
-Спільний візуальний контракт усіх сцен:
+The text contract for each card takes precedence over minor variations in layout, labels, and decoration produced by the image generator. If a PNG conflicts with the described UI state, behavior, or scope boundary, the PNG is corrected or rejected; the text is not retroactively rewritten to match a random generation result.
 
-- ізометричний середньовічний світ Ribterra, камера й масштаб придатні для реальної гри, без кінематографічної перспективи;
-- компактні темно-сині панелі з латунною рамкою по краях; центр світу відкритий;
-- тепле світло вікон і вогню, читабельні земля, береги, входи, вантаж і робоча дія;
-- ручної Дороги немає ні у світі як будованого елемента, ні в каталозі; декоративний ґрунт біля входів не дає бонусу;
-- Міст залишається; доступний набір після 0.26.1 — Табір плюс 11 будованих типів;
-- не показувати нові руди, замок, армію, монстрів, лід, температурну смертність, опалення, паливо для опалення чи утеплення;
-- картка складу не змішує загальний, доступний, зарезервований, перенесений і власний запас сховища;
-- згенерована картинка задає вигляд і стан UI. Функціональність доводять лише збірка, тести та немонтований runtime-запис.
+A common visual contract of all scenes:
 
-### Типи доказів
+- Ribterra's isometric medieval world, with a camera and scale suitable for actual play and no cinematic perspective;
+- compact dark-blue panels with brass borders at the edges; the center of the world remains open;
+- warm window and fire light, with readable ground, shorelines, entrances, cargo, and work activity;
+- no manually built Road in the world or catalog; decorative ground near entrances provides no bonus;
+- the Bridge remains; the available set after 0.26.1 is the Camp plus 11 buildable types;
+- not to show new mines, castle, army, monsters, ice, temperature mortality, heating, fuel for heating or warming;
+- the storage card does not mix settlement-wide, available, reserved, carried, and storage-owned stock;
+- a generated image specifies visual appearance and UI state. Only a build, tests, and unedited runtime recording prove functionality.
 
-| Позначка | Що доводить | Чого не доводить |
+### Types of Evidence
+
+| The card | What Does It Prove | What is not proved |
 |---|---|---|
-| **V — visual** | Композицію, читабельність, стиль, відсутність накладень у зафіксованій сцені | Серверні правила, save/load, кліки, продуктивність |
-| **F — functional** | Тести, runtime-сценарій, журнал і snapshot підтверджують поведінку та дані | Роботу на іншому ПК або через зовнішню мережу |
-| **P — physical** | Запуск і сценарій на двох фізичних Windows-ПК, а де вказано — через різні мережі | Загальну якість для всіх конфігурацій |
+| **V — visual** | Composition, readability, style, lack of overlays in the recorded scene | Server rules, save/load, clicks, performance |
+| **F — functional** | Tests, runtime scenarios, logs and snapshots confirm the behavior and data | Work on another PC or via an external network |
+| **P — physical** | Launch and scenario on two physical Windows PCs and, where specified, across different networks | General quality for all configurations |
 
-## Карта кадрів
+## Frame map
 
-| ID | Версія | Файл | Головний зміст |
+| ID | Version | The file | Main content |
 |---|---|---|---|
-| S01 | 0.26.1 | [target-0261.png](images/target-0261.png) | Живий світ, погода, температура, concept HUD |
-| S02 | 0.26.2 | [target-0262.png](images/target-0262.png) | Житло й безпечний прийом мешканця |
-| S03 | 0.26.3 | [target-0263.png](images/target-0263.png) | Два несуперечливі режими ферми |
-| S04 | 0.26.4 | [target-0264.png](images/target-0264.png) | Стале базове харчування й нормальний цикл дня |
-| S05 | 0.26.5 | [target-0265.png](images/target-0265.png) | Корисний ланцюг млина й кухні |
-| S06 | 0.26.6 | [target-0266.png](images/target-0266.png) | Зрозуміла логістика, склад, міст і шахта |
-| S07 | 0.26.7 | [target-0267.png](images/target-0267.png) | Самостійне навчання й перша внутрішня альфа |
-| S08 | 0.26.8 | [target-0268.png](images/target-0268.png) | Автозбереження й відновлення |
-| S09 | 0.26.9 | [target-0269.png](images/target-0269.png) | Відновлення кооперативу двох гравців |
-| S10 | 0.26.10 | [target-02610.png](images/target-02610.png) | Перевірений Windows-кандидат |
-| S11 | 0.27.0 | [target-0270.png](images/target-0270.png) | Перше зовнішнє демо без нової механіки |
+| S01 | 0.26.1 | [target-0261.png](images/target-0261.png) | The living world, the weather, the temperature, the concept HUD |
+| S02 | 0.26.2 | [target-0262.png](images/target-0262.png) | Housing and safe resident admission |
+| S03 | 0.26.3 | [target-0263.png](images/target-0263.png) | Two mutually exclusive farm modes |
+| S04 | 0.26.4 | [target-0264.png](images/target-0264.png) | A stable diet and a normal daily cycle |
+| S05 | 0.26.5 | [target-0265.png](images/target-0265.png) | The useful chain of mills and kitchens |
+| S06 | 0.26.6 | [target-0266.png](images/target-0266.png) | Understanding logistics, storage, bridges and mining |
+| S07 | 0.26.7 | [target-0267.png](images/target-0267.png) | Self-guided onboarding and the first internal alpha |
+| S08 | 0.26.8 | [target-0268.png](images/target-0268.png) | Autosave and recovery |
+| S09 | 0.26.9 | [target-0269.png](images/target-0269.png) | Resilient two-player co-op |
+| S10 | 0.26.10 | [target-02610.png](images/target-02610.png) | Verified Windows candidate |
+| S11 | 0.27.0 | [target-0270.png](images/target-0270.png) | First external demo without new mechanics |
 
-## S01 — 0.26.1 «Живий світ»
+## S01 — 0.26.1 “Living World”
 
-**Результат для гравця.** Нова гра починається в читабельній долині з річкою, схилами, лісовими масивами й доступними ресурсами. Погода, температура, сніг і прогноз є серверним станом. Снігова погода змінює темп збирання та будівництва на Surface за одним поясненим правилом. Світ і HUD наближаються до затверджених концептів за композицією, а 2.5D renderer спочатку доводить потрібне світло, тіні, воду й атмосферу в малому нативному зрізі.
+**The result for the player.** The new game begins in a readable valley with a river, slopes, forest and available resources. Weather, temperature, snow and forecast are the server state. Snow weather is changing the pace of collection and construction on the Surface under one clear rule. The world and HUD are approaching the accepted concepts by composition, and the 2.5D renderer first demonstrates the required light, shade, water, and atmosphere in a small native cut.
 
-**Додається / усувається / покращується.** Додаються versioned-профіль генерації, погодний календар, сьогодні плюс три наступні дні прогнозу, температура, опади, вітер, буря, накопичення/танення снігу, compact HUD, правдива картка сховища й мінікарта. Базова графічна гілка йде за V01–V05; малий kit перевіряється в renderer перед масовим export. Повне light/occlusion освітлення та UI-перемикач перенесено у майбутні DL-01–08. Вилучаються ручна Дорога, серверна команда її будівництва та бонус руху; `BuildingKind::Road` лишається зарезервованим ID.
+**Added/removed/improved.** Adds a versioned generation profile, weather calendar, today plus the next three forecast days, temperature, precipitation, wind, storms, snow accumulation/melting, compact HUD, accurate storage card, and minimap. The base graphics branch follows V01–V05; a small kit is verified in the renderer before mass export. Full light/occlusion lighting and the UI toggle move to future DL-01–08. The manual Road, its server build command, and its movement bonus are removed; `BuildingKind::Road` remains a reserved ID.
 
-| Ефект V2 | Asset/data contract | Runtime cost contract | Native verification |
+| The effect V2 | Asset/data contract | Runtime cost contract | Native verification |
 |---|---|---|---|
-| Майбутній DL: projected light + emission | emissive/mask atlas, projection anchor, колір/радіус, час доби | bounded visible-source quads/pass і overdraw cap | paired day/night video, clipping, UI isolation |
-| Contact/directional shadows | shadow mask/shape, ground anchor, height class, light direction | bounded draw/overdraw per visible object | residents/buildings/trees on slopes, overlap і depth sorting |
+| Future DL: projected light + emission | emissive/mask atlas, projection anchor, color/radius, time of day | bounded visible-source quads/pass and overdraw cap | paired day/night video, clipping, UI isolation |
+| Contact/directional shadows | shadow mask/shape, ground anchor, height class, light direction | bounded draw/overdraw per visible object | residents/buildings/trees on slopes, overlap and depth sorting |
 | Wetness | wet masks/variants, WeatherState, drying transition | visible-material layer only, measured GPU/frame cost | rain→wet→dry, pause/save/load/reconnect, no gameplay topology change |
 | Real river render + bounded reflection | normal/foam/reflection masks, bank clip, presentation flow | dedicated bounded water pass or low-res/sprite projection; visible water only | bridge/banks/camera; no foam/reflection over land or UI; fail-safe off |
 | Haze distinct from FoW | depth bands/color LUT, visibility mask | 3–4 bounded world-space bands, no volumetric solver | unexplored world stays hidden; no grey fullscreen rectangle |
 | Actual rain/snow | particle atlases, spawn/wind data, authoritative period/tick | resolution/quality particle caps; no particle serialization | transition, pause, late join, save/load, reconnect, host/client video |
 | Footprints/compressed snow | decal atlas, movement cadence, bounded history/lifetime | bounded decals/memory/batches with expiry | cosmetic persistence only; no elevation, collision, pathing or buildability change |
 
-**Межа рендера.** План обирає керовану 2.5D-архітектуру з окремими bounded passes і fail-safe вимкненням ефекту. Перехід на інший рушій допускається лише після нативного доказу конкретної непереборної межі, а не автоматично через амбіційність концепту. Не додаються rigid-body/cloth/fluid physics, фізична snow deformation/collision або waterfall simulation.
+**Render boundary.** The plan selects a controlled 2.5D architecture with separate bounded passes and fail-safe effect disabling. A move to another engine is allowed only after native evidence establishes a specific insurmountable limit, not automatically because the concept is ambitious. No rigid-body, cloth, or fluid physics, physical snow deformation/collision, or waterfall simulation are added.
 
-**Точний стан кадру.** Зимова долина під час попередження про першу бурю: компактні реальні ресурси зверху ліворуч; календар і чотириденний прогноз зверху по центру; окрема поточна температура; одне дієве попередження зверху праворуч. Вибраний Склад унизу ліворуч показує власний фактичний запас/місткість і кнопку відкриття деталей. Унизу по центру — контекстні дії; справа — мінікарта з рамкою камери. Не показувати «паливо на N днів» або «утеплення %».
+**Exact frame state.** A winter valley during the first-storm warning: compact real resources at the top left; calendar and four-day forecast at the top center; a separate current temperature; one actionable warning at the top right. The selected Warehouse at the bottom left shows its own actual stock/capacity and a button to open details. Contextual actions sit at the bottom center; the right side contains a minimap with a camera frame. Do not show “fuel for N days” or “insulation %.”
 
-**Контракт поведінки й даних.** Хост визначає погоду; save, full snapshot, delta й reconnect відновлюють ту саму послідовність. Рендер не генерує температуру сам. Surface-модифікатор стосується лише визначених дій збирання/будівництва; він не додає голод, шкоду, смерть або замерзання води. `FirstStorm` має окремий буфер Food щонайменше на 20 хвилин; це підготовка до бурі, а не доказ сталої економіки 0.26.4. Мінікарта показує тільки розвідане. Старий світ не регенерується новим алгоритмом мовчки.
+**Contract of behavior and data.** The host determines the weather; save, full snapshot, delta and reconnect restore the same sequence. The temperature is not generated by the renderer itself. The surface modifier is only applicable to certain assembly/construction operations; It doesn't add hunger, damage, death or water freezing. `FirstStorm` has a separate Food buffer for at least 20 minutes; It's a storm preparedness, not evidence of a stable economy 0.26.4. The mini-map shows only the explored. The old world is not being regenerated by a new silent algorithm.
 
-**Послідовність і файли.** **Перевірено в 0.26.0:** основний HUD — RmlUi; стара мінікарта живе в legacy HUD; стартова галявина примусово плоска; висота не є правилом руху; weather snapshot відсутній; Road ще дозволена; water highlights, ground mist, smoke/night glow, winter variants і прості ellipse shadows є наближеннями, а не V2-системами. **Запропоновано:** виконувати лише canonical dev-table з V2-плану: baseline/contracts → native renderer proof → measured stop/go → mass art → world/weather/UI/network/package integration. Наявні місця змін: `include/ribterra/world_grid.hpp`, `include/ribterra/biomes.hpp`, `include/ribterra/seasons.hpp`, `include/ribterra/world.hpp`, `include/ribterra/game_server.hpp`, `include/ribterra/foundation.hpp`; `schemas/world_save.fbs`, `schemas/network.fbs`; `src/sim/world.cpp`, `src/sim/world_save.cpp`, `src/server/game_server.cpp`, `src/net/protocol.cpp`; `include/ribterra/terrain_surface.hpp`, `include/ribterra/terrain_appearance.hpp`, `src/client/view.cpp`, `src/client/game_art.cpp`, renderer/shader/material paths; `src/ui/game_ui.cpp`; `assets/ui`, `assets/art`, `assets/locales`.
+**Sequence and files.** **Verified in 0.26.0:** the main HUD uses RmlUi; the old minimap lives in the legacy HUD; the starting clearing is forced flat; height is not a movement rule; no weather snapshot exists; Road is still allowed; water highlights, ground mist, smoke/night glow, winter variants, and simple ellipse shadows are approximations rather than V2 systems. **Proposed:** follow only the canonical development table in the V2 plan: baseline/contracts → native renderer proof → measured stop/go → mass art → world/weather/UI/network/package integration. Existing change locations: `include/ribterra/world_grid.hpp`, `include/ribterra/biomes.hpp`, `include/ribterra/seasons.hpp`, `include/ribterra/world.hpp`, `include/ribterra/game_server.hpp`, `include/ribterra/foundation.hpp`; `schemas/world_save.fbs`, `schemas/network.fbs`; `src/sim/world.cpp`, `src/sim/world_save.cpp`, `src/server/game_server.cpp`, `src/net/protocol.cpp`; `include/ribterra/terrain_surface.hpp`, `include/ribterra/terrain_appearance.hpp`, `src/client/view.cpp`, `src/client/game_art.cpp`, renderer/shader/material paths; `src/ui/game_ui.cpp`; `assets/ui`, `assets/art`, `assets/locales`.
 
-Нові файли, якщо декомпозиція їх потребуватиме, є **proposed** до створення й мають бути окремо додані до master/manifest; цей документ не видає неіснуючий шлях за перевірений.
+New files, if decomposition requires them, are **proposed** to be created and should be added separately to master/manifest; This document does not give an inexistent path to verification.
 
-**Залежності й негативні випадки.** Залежить від 0.26.0 і зафіксованої політики сумісності. Перевірити шви чанків, недосяжні стартові ресурси, будівлю на перепаді, прохід крізь намальовану скелю, розходження preview/server, приховані сутності на мінікарті, стрибок погоди після load/reconnect, повторний бонус старої Road, довгі локалізовані рядки й drag через межу панелі. Окремо: reflection/foam на суші, haze як fullscreen rectangle, precipitation у FoW, тіні без ground anchor, footprint memory leak і будь-який вплив косметичного снігу на collision/pathing/building placement.
+**Dependencies and negative cases.** Depends on 0.26.0 and the fixed compatibility policy. Check chunk seams, unreachable starting resources, a building across an elevation change, passage through a painted rock, preview/server divergence, hidden entities on the minimap, a weather jump after load/reconnect, a repeated bonus from the old Road, long localized strings, and dragging across a panel boundary. Also check reflection/foam on land, haze as a fullscreen rectangle, precipitation inside FoW, shadows without a ground anchor, footprint memory leaks, and any effect of cosmetic snow on collision/pathing/building placement.
 
-**Доказ і gate.** V: однакові літні/зимові, денні/нічні кадри на 720p, 1080p і V2-профільній 1440p сцені та немонтовані native відео кожного рядка таблиці ефектів. Перед mass art обов'язкові frame-time/GPU/CPU/memory, caps, fallback і native failure cases; generated S01 і software probe цього не доводять. F: generator/path/build/weather/save/network/UI тести, матриця 10 seed, `FirstStorm`, повний налаштований CTest і запуск пакета. P: синхронний погодний стан на двох фізичних ПК у фінальному сценарії. Готово лише після фінального gate канонічної V2-таблиці; сам S01 нічого не закриває.
+**Proof and gate.** V: matching summer/winter and day/night frames at 720p, 1080p, and in the V2-profile 1440p scene, plus unedited native video for every row of the effects table. Before mass art, frame-time/GPU/CPU/memory measurements, caps, fallbacks, and native failure cases are mandatory; the software probe and generated S01 do not prove them. F: generator/path/build/weather/save/network/UI tests, a 10-seed matrix, `FirstStorm`, full configured CTest, and package launch. P: synchronized weather state on two physical PCs in the final scenario. Ready only after the final gate in the canonical V2 table; S01 alone closes nothing.
 
-**Scene brief для генерації.** Ізометрична зимова долина з 5–7 спорудами, 8–12 мешканцями, плоскою річкою й мостом, clipped shoreline foam, bounded reflections, мокрим каменем, теплим projected window light/emission, контактними/напрямленими тінями, world-space haze, фактичним снігопадом і косметичними слідами у візуально стисненому снігу. Concept HUD займає тільки краї. Вибраний склад, мінікарта й прогноз видимі. Немає дороги, замку, армії, льоду, паливного чи insulation UI, physical snow deformation або fluid physics. Позначка «S01 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief for generation.** Isometric winter valley with 5–7 buildings, 8–12 residents, a flat river and bridge, clipped shoreline foam, bounded reflections, wet stone, warm projected window light/emission, contact/directional shadows, world-space haze, actual snowfall, and cosmetic footprints in visually compressed snow. The concept HUD occupies only the edges. The selected Warehouse, minimap, and forecast are visible. No Road, castle, army, ice, fuel or insulation UI, physical snow deformation, or fluid physics. Label: “S01 · TARGET MOCKUP.”
 
-## S02 — 0.26.2 «Житло й поповнення»
+## S02 — 0.26.2 “Housing and Recruitment”
 
-**Результат для гравця.** Нову людину можна прийняти тільки за наявності реального вільного місця. Будинок і House II мають зрозумілу практичну роль.
+**The result for the player.** A new person can only be accepted if there is a real free space. The house and the House II have a clear practical role.
 
-**Додається / усувається / покращується.** Додаються авторитетний облік зайнятого, зарезервованого й загального житла, стан очікуваного прибуття та конкретні причини відмови. Усуваються прийом без місця, подвійне резервування останнього місця й оплата відхиленого запиту. Покращується вибір між новим Будинком і House II.
+**Added/removed/improved.** An authoritative account of occupied, reserved and common housing, the state of expected arrival and specific reasons for refusal are added. There is no admission fee, double reservation of last place and payment of refused application. The choice between the new House and House II is improving.
 
-**Точний стан кадру.** Літній ясний день після 0.26.1. Вибрано House II; compact-картка показує рівень, зайняті/вільні місця й один очікуваний arrival, а details розкриває джерела місткості. Панель поселення пропонує «Прийняти мешканця» тільки в дозволеному стані. У кадрі немає сімей, народження, меблів, опалення чи утеплення. Для будь-яких чисел застосовується загальне правило caption/manifest «ІЛЮСТРАТИВНІ ДАНІ».
+**Exact frame state.** Clear summer day after 0.26.1. House II is selected; the compact card shows the level, occupied/free spaces, and one pending arrival, while the details reveal the sources of capacity. The settlement panel offers “Admit resident” only in an allowed state. The frame contains no families, births, furniture, heating, or insulation. The general caption/manifest rule “ILLUSTRATIVE DATA” applies to every number.
 
-**Контракт поведінки й даних.** Сервер атомарно перевіряє й резервує місце перед списанням. Живий дорослий, молода людина й очікуваний прибулець займають по одному місцю; дорослішання не рахує людину вдруге; померлий не займає місце. Reservation переживає save/load і однаково відображається обом клієнтам.
+**Behavior and data contract.** The server atomically checks and reserves a place before charging the cost. A living adult, a young person, and a pending arrival each occupy one place; becoming an adult does not count a person twice; a dead person occupies no place. The reservation survives save/load and appears identically for both clients.
 
-**Послідовність і файли.** **Перевірено:** House II вже збільшує місткість і має UI у 0.26.0; recruitment ще не доведений як housing gate. **Запропоновано:** зафіксувати формулу → додати pending reservation → зробити server command атомарною → серіалізувати й проєктувати snapshot → підключити RmlUi й localization → тести гонок. Місця: `include/ribterra/settlement.hpp`, `include/ribterra/world.hpp`, `include/ribterra/game_server.hpp`; `src/sim/world.cpp`, `src/sim/world_settlement.inc`; `src/server/game_server.cpp`; `src/ui/game_ui_settlement.inc`; protocol/save schemas; settlement/network/UI тести.
+**Sequence and files.** **Verified:** House II already increases capacity and has UI in 0.26.0; recruitment has not yet been proven as a housing gate. **Proposed:** lock the formula → add a pending reservation → make the server command atomic → serialize and project the snapshot → connect RmlUi and localization → test races. Locations: `include/ribterra/settlement.hpp`, `include/ribterra/world.hpp`, `include/ribterra/game_server.hpp`; `src/sim/world.cpp`, `src/sim/world_settlement.inc`; `src/server/game_server.cpp`; `src/ui/game_ui_settlement.inc`; protocol/save schemas; settlement/network/UI tests.
 
-**Залежності й негативні випадки.** 0.26.1 прийнята; House II з 0.26.0 не зламаний. Відмова при повній місткості не списує Food; два одночасні запити не створюють двох людей; смерть, youth→adult, cancel, save під час очікування та reconnect не спотворюють рахунок.
+**Dependencies and negative cases.** Version 0.26.1 is accepted; House II from 0.26.0 remains intact. Refusal at full capacity must not deduct Food; two simultaneous requests must not create two people; death, youth→adult, cancellation, saving while waiting, and reconnecting must not distort the count.
 
-**Доказ і gate.** V: картка будинку, pending state, disabled/reason state на 720p/1080p. F: unit/save/network сценарії всіх переходів і двох локальних клієнтів. P: не є окремим gate внутрішньої 0.26.2; повторюється на фізичних ПК у 0.26.9. Готово, коли House II справді відкриває прийом, а останнє місце неможливо використати двічі.
+**Proof and gate.** V: house card, pending state, disabled/reason state at 720p/1080p. F: unit/save/network all transition scenarios and two local clients. P: is not a separate gate of the inner 0.26.2; It's repeated on the physical PC in 0.26.9. It's ready when House II really opens the door, and the last place can't be used twice.
 
-**Scene brief.** Затишне літнє поселення, House II виділений синім контуром, компактна картка житла внизу ліворуч, один зрозумілий recruitment action; кілька мешканців біля дому. Без немовлят, сімейної системи, диму опалення й доріг. «S02 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** A cozy summer settlement, House II highlighted with a blue outline, a compact housing card at the bottom left, and one clear recruitment action; several residents stand near the house. No babies, family system, heating smoke, or roads. “S02 · TARGET MOCKUP.”
 
-## S03 — 0.26.3 «Режими ферми»
+## S03 — 0.26.3 “Farm Modes”
 
-**Результат для гравця.** Ферма або дає базову готову Food через постійних фермерів, або виробляє сировину за замовленням. Обидва шляхи не працюють приховано одночасно.
+**Result for the player.** A farm either provides basic ready-to-eat Food through permanent farmers or produces raw materials on demand. The two paths do not run silently at the same time.
 
-**Додається / усувається / покращується.** Додаються явний mode selector, видимий вихід, працівники й стан безпечного перемикання. Усуваються подвійний випуск, непомітне захоплення одного працівника двома шляхами та мовчазне стирання професії. Покращуються пояснення про готову їжу й сировину.
+**Added/removed/improved.** Adds an explicit mode selector, visible output, workers, and safe switching status. Removes duplicate output, the unnoticed assignment of one worker to both paths, and silent profession removal. Improves explanations of finished Food and raw materials.
 
-**Точний стан кадру.** Осіння або літня ферма з видимими працівниками. Вибрана ферма; compact-картка називає активний режим, details порівнює «Базова їжа» і «Сировина для кухні», показує поточний вихід та безпечний стан «завершує доставку» перед перемиканням. Немає нової професії кухаря або нового farming engine.
+**Exact frame state.** An autumn or summer farm with visible workers. The farm is selected; the compact card names the active mode, while details compare “Basic Food” and “Raw materials for the kitchen,” show current output, and show the safe “finishing delivery” state before switching. No new cook profession or farming engine.
 
-**Контракт поведінки й даних.** Mode належить конкретній фермі й авторитетний на сервері. Перехід завершує/повертає вантаж за чинним контрактом 0.25.9; не перетворює вже наявну сировину на Food. Автовибір бере придатного вільного дорослого без постійного призначення; зайнятий фермер звільняється явно.
+**Behavior and data contract.** The mode belongs to a specific farm and is authoritative on the server. A transition completes or returns cargo under the current 0.25.9 contract; it does not convert existing raw material into Food. Automatic selection takes a suitable free adult without a permanent assignment; an assigned farmer is released explicitly.
 
-**Послідовність і файли.** **Перевірено:** існують постійний фермерський шлях і recipe path; 0.25.9 має безпечне керування працівником. **Запропоновано:** формалізувати enum/state mode → серверні переходи → save/network → UI/details → cancel/delivery тести. Місця: `src/sim/world.cpp`, `src/sim/world_economy_api.inc`, `src/sim/world_economy.inc`; `include/ribterra/settlement.hpp`, `include/ribterra/economy.hpp`; `src/ui/game_ui_buildings.inc`; `src/client/client_production_group.inc`; economy/settlement/network тести.
+**Sequence and files.** **Verified:** a permanent-farmer path and a recipe path exist; 0.25.9 provides safe worker control. **Proposed:** formalize the mode enum/state → server transitions → save/network → UI/details → cancellation/delivery tests. Locations: `src/sim/world.cpp`, `src/sim/world_economy_api.inc`, `src/sim/world_economy.inc`; `include/ribterra/settlement.hpp`, `include/ribterra/economy.hpp`; `src/ui/game_ui_buildings.inc`; `src/client/client_production_group.inc`; economy/settlement/network tests.
 
-**Залежності й негативні випадки.** Залежить від 0.25.9 і housing 0.26.2. Перевірити перемикання до роботи, під час праці, під час перенесення, після готового виходу, після save/load і за одночасних клієнтських команд. Жодна людина не лишається зайнятою без роботи.
+**Dependencies and negative cases.** Depends on 0.25.9 and housing in 0.26.2. Check switching before work, during work, during carrying, after output is ready, after save/load, and under simultaneous client commands. No person remains assigned without work.
 
-**Доказ і gate.** V: обидва mode states і transition state. F: кожен режим дає тільки свій результат, предмети й працівники не дублюються, обидва клієнти бачать той самий стан. P: відкладається до кооперативного проходження 0.26.9. Gate — кероване перемикання без втрати вантажу або професії.
+**Proof and gate.** V: both mode states and transition state. F: Each mode only yields its own result, objects and employees are not duplicated, both clients see the same state. P: deferred to the cooperative transit 0.26.9. Gate — controlled movement without loss of cargo or occupation.
 
-**Scene brief.** Ферма з полями й двома робітниками; у нижній картці активний режим та два великі взаємовиключні варіанти, один disabled під час доставки. Видимі кошики/вантаж відповідають дії. Без дороги й додаткових культур, яких немає у грі. «S03 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** A farm with fields and two workers; the lower card shows the active mode and two large mutually exclusive options, with one disabled during delivery. Visible baskets/cargo match the action. No Road and no additional crops absent from the game. “S03 · TARGET MOCKUP.”
 
-## S04 — 0.26.4 «Стале базове харчування»
+## S04 — 0.26.4 “Sustainable Basic Food”
 
-**Результат для гравця.** Стартові 10 людей мають час зрозуміти керування, а запущена базова ферма підтримує їх протягом контрольного циклу без аварійного ручного дозбирання.
+**Result for the player.** The starting 10 people have time to understand the controls, and an operating basic farm supports them throughout the control cycle without emergency manual gathering.
 
-**Додається / усувається / покращується.** Додається чесне пояснення доступної Food, темпу споживання або приблизного запасу часу. Усуваються стартова гонка, приймання балансу за рахунок проїдання стартового запасу й надмірне нічне очікування. Покращуються тільки зафіксовані числа: стартовий запас, споживання, виробіток, календар і recruitment.
+**Added/removed/improved.** Adds an honest explanation of available Food, consumption rate, or approximate reserve time. Removes the opening race, balance that only consumes the starting stock, and excessive overnight waiting. Improves only fixed numbers: starting stock, consumption, output, calendar, and recruitment.
 
-**Точний стан кадру.** Перехід вечір→ніч; базова ферма працює, носій доставляє Food у склад. HUD показує доступну Food окремо від вантажу, прогнозований час запасу з поясненням методу та day/night progress. Погодні поля з 0.26.1 залишаються, але кадр не приписує бурі новий податок на їжу.
+**Exact frame state.** Evening→night transition; the basic farm is operating and a carrier is delivering Food to the Warehouse. The HUD shows available Food separately from cargo, estimated reserve time with an explanation of the method, and day/night progress. Weather fields from 0.26.1 remain, but the frame does not imply that storms add a new food penalty.
 
-**Контракт поведінки й даних.** Вантаж працівника не є доступною Food. Ціль: стартовий буфер не менше 5 хвилин без надходження; ферма з двома дорослими підтримує 10 людей два повні day/night cycles; на другому циклі доставлено не менше, ніж спожито, запас не нижчий за початок циклу, hunger/HP не погіршились. Це окремо від `FirstStorm`-буфера 20 хвилин у 0.26.1. На 16–20 людях потрібне розширення харчування.
+**Behavior and data contract.** Cargo carried by a worker does not count as available Food. Target: a starting buffer of at least 5 minutes without incoming supplies; a farm with two adults supports 10 people for two full day/night cycles; in the second cycle, delivery is at least equal to consumption, stock is no lower than at the start of the cycle, and hunger/HP have not worsened. This is separate from the 20-minute `FirstStorm` buffer in 0.26.1. A population of 16–20 requires expanded food production.
 
-**Послідовність і файли.** **Перевірено:** чинний календар і споживання існують; попередні числа були вихідними даними, не прийнятим балансом. **Запропоновано:** telemetry доставлено/спожито → два контрольні seed → настройка одного параметра за раз → повтор погоди/ночі → UI estimate → regression. Місця: `include/ribterra/seasons.hpp`, `include/ribterra/economy.hpp`, `include/ribterra/settlement.hpp`; `src/sim/world.cpp`; `src/ui/game_ui.cpp`; інтеграційні balance fixtures (**proposed**).
+**Sequence and files.** **Verified:** the current calendar and consumption exist; previous numbers were inputs, not an accepted balance. **Proposed:** delivered/consumed telemetry → two control seeds → tune one parameter at a time → repeat weather/night → UI estimate → regression. Locations: `include/ribterra/seasons.hpp`, `include/ribterra/economy.hpp`, `include/ribterra/settlement.hpp`; `src/sim/world.cpp`; `src/ui/game_ui.cpp`; integration balance fixtures (**proposed**).
 
-**Залежності й негативні випадки.** Залежить від режимів ферми 0.26.3 і погодних правил 0.26.1. Перевірити віддалену ферму, ніч, носія з вантажем, save/load посеред циклу, дві карти та відсутність прихованих готових ресурсів. Не збільшувати таймери лише для штучної тривалості.
+**Dependencies and negative cases.** Depends on farm modes in 0.26.3 and weather rules in 0.26.1. Check a distant farm, night, a carrier with cargo, save/load in the middle of a cycle, two maps, and the absence of hidden ready-made resources. Do not merely increase timers to create artificial duration.
 
-**Доказ і gate.** V: food status зрозумілий без журналу. F: журнал двох повних циклів із окремими delivered/consumed/available/hunger/HP і повтор після змін календаря. P: не потрібний для внутрішнього gate; баланс повторюється у фінальній фізичній сесії. Gate — обидва seed проходять критерій без ручного food gathering.
+**Proof and gate.** V: food status is understandable without a journal. F: journal of two complete cycles with separate delivered/consumed/available/hunger/HP and repeat after changing calendar. P: not required for the internal gate; The balance is repeated in the final physical session. Gate — Both seeds pass the criteria without manual food gathering.
 
-**Scene brief.** Вечірнє поселення, ферма та склад у одному читабельному маршруті, носій із кошиком, compact HUD з Food і day/night progress. Теплі вікна, без голодної катастрофи й без фальшивих точних цифр. «S04 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** An evening settlement, with farm and Warehouse on one readable route, a carrier with a basket, and a compact HUD showing Food and day/night progress. Warm windows, no famine, and no false exact numbers. “S04 · TARGET MOCKUP.”
 
-## S05 — 0.26.5 «Млин і кухня з доведеною користю»
+## S05 — 0.26.5 “Mill and Kitchen with Proven Value”
 
-**Результат для гравця.** Інвестиція в млин/кухню має вимірювану перевагу для поселення, що росте, але не є примусовим бар'єром перших хвилин.
+**Result for the player.** Investment in a mill/kitchen has a measurable benefit for a growing settlement but is not a mandatory barrier in the opening minutes.
 
-**Додається / усувається / покращується.** Додається зрозумілий маршрут сировина→переробка→готова Food і повний облік праці, дров та доставки. Усувається враження, що сире зерно/риба вже є готовою Food або що output без витрат дорівнює вигоді. Покращуються наявні тривалості й виходи після вимірювання.
+**Added/removed/improved.** Added a clear raw material route→processing→ready Food and a full account of labor, wood and delivery. The impression is that the raw grain/fish is already ready Food or that the output without cost is equal to profit. The available lengths and outputs after measurement are improved.
 
-**Точний стан кадру.** Вибрана Кухня; compact-картка показує активну партію, працівника й стан, details — реальні входи, вихід, залишок замовлення й причину простою. У світі видно ферму, млин, кухню, склад і фізичну доставку. Не показувати нові продукти, якість, вітаміни чи псування.
+**Exact frame state.** The Kitchen is selected; the compact card shows the active batch, worker, and state, while details show real inputs, output, remaining order, and the reason for idling. The world shows a farm, mill, Kitchen, Warehouse, and physical delivery. Do not show new products, quality, vitamins, or spoilage.
 
-**Контракт поведінки й даних.** Порівняння базового й складного маршруту використовує однакові seed, людей, навички, запаси, місце й бюджет працівників. Початкова ціль сталого циклу — щонайменше +20% доставленої готової Food; окремо повний startup має наздогнати базовий маршрут у контрольній 30–60-хвилинній сесії. Ці числа — критерії tuning, не доказ готовності до вимірювання.
+**Behavior and data contract.** Comparing the basic and complex routes uses the same seed, people, skills, stock, location, and worker budget. The initial target for the steady cycle is at least +20% delivered finished Food; separately, a full startup must catch up with the basic route in a controlled 30–60-minute session. These numbers are tuning criteria, not proof of readiness before measurement.
 
-**Послідовність і файли.** **Перевірено:** рецепти млина/кухні, фізичні входи/виходи й виробничі замовлення існують. **Запропоновано:** вибрати один еталонний маршрут → виміряти baseline → включити всю працю/деревину/доставку → настроїти → перевірити решту залишених рецептів → UI і regression. Місця: `include/ribterra/economy.hpp`; `src/sim/world_economy.inc`; `src/ui/game_ui_economy.inc`, `src/ui/game_ui_buildings.inc`; `tests/economy_tests.cpp`; balance fixtures (**proposed**).
+**Sequence and files.** **Verified:** mill/Kitchen recipes, physical inputs/outputs, and production orders exist. **Proposed:** select one reference route → measure the baseline → include all labor/wood/delivery → tune → check the remaining retained recipes → UI and regression. Locations: `include/ribterra/economy.hpp`; `src/sim/world_economy.inc`; `src/ui/game_ui_economy.inc`, `src/ui/game_ui_buildings.inc`; `tests/economy_tests.cpp`; balance fixtures (**proposed**).
 
-**Залежності й негативні випадки.** Залежить від сталого базового харчування 0.26.4. Перевірити нестачу дров, відсутній вхід, повний склад, cancel під час доставки, save/load і відновлення постачання. Не давати безкоштовних готових входів і не приховувати працю будівництва.
+**Dependencies and negative cases.** Depends on sustainable basic food in 0.26.4. Check a shortage of firewood, missing input, a full Warehouse, cancellation during delivery, save/load, and resumed supply. Do not provide free finished inputs or hide construction labor.
 
-**Доказ і gate.** V: ланцюг і причина простою читаються в картці. F: парні логи baseline/complex із повною працею та матеріалами; item conservation і save/load. P: результат повторюється в 0.26.9, але не блокує окремий внутрішній gate. Готово після проходження сталого й startup-критерію, а не після появи кнопки.
+**Proof and gate.** V: chain and cause are read in plain language in the map. F: pair logs baseline/complex with full work and materials; The item conservation and save/load. P: the result is repeated in 0.26.9, but does not block a separate internal gate. It's ready after you pass the default and startup criteria, not after the button pops up.
 
-**Scene brief.** Щільне літнє виробниче подвір'я: ферма, млин, кухня, склад; мешканці несуть реальні мішки/кошики. Вибрана кухня й розгорнута production card, центр не перекритий. «S05 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** A dense summer production yard: farm, mill, Kitchen, Warehouse; residents carry real sacks/baskets. The Kitchen is selected and the production card is expanded, leaving the center unobstructed. “S05 · TARGET MOCKUP.”
 
-## S06 — 0.26.6 «Логістика й розширення»
+## S06 — 0.26.6 Logistics and expansion»
 
-**Результат для гравця.** Видно, де саме перебуває товар, чому будівля чекає та навіщо потрібні ближній Склад, Міст і Шахта.
+**Result for the player.** The player can see exactly where goods are, why a building is waiting, and why a nearby Warehouse, Bridge, and Mine are useful.
 
-**Додається / усувається / покращується.** Додаються чіткі рівні: загальний запас поселення, власний запас вибраного сховища, reserved, carried/in-transit і available. Для замовлення показується пункт доставки, коли його вже визначила симуляція. Усуваються загальний запас під назвою конкретного складу, обіцянки руд/експедицій та будь-яке повернення ручної Дороги. Покращуються причини unreachable і StorageFull.
+**Added/removed/improved.** Clear levels are added: total settlement stock, own stock of selected storage, reserved, carried/in-transit and available. The order shall show the delivery point when it has already been determined by the simulation. A general stockpile is removed with the name of the specific composition, promises of mines/expeditions and any return of the manual Road. The reasons unreachable and StorageFull are improving.
 
-**Точний стан кадру.** Вибрано Склад біля виробництва; картка показує його власне заповнення, details — breakdown запасів. У світі носій перетинає Міст із вантажем; Шахта видима як наявний перехід до підтриманого підземного каменю. Мінікарта показує розвіданий маршрут. Жодної кнопки Road.
+**Exact frame state.** A Warehouse near production is selected; its card shows its own fill level, while details show the stock breakdown. In the world, a carrier crosses the Bridge with cargo; the Mine appears as the existing transition to supported underground stone. The minimap shows the explored route. No Road button.
 
-**Контракт поведінки й даних.** Per-storage дані надходять із авторитетної проєкції, не обчислюються з глобального inventory. `available != total != stored != carried != reserved`. Ближчий склад скорочує фізичну доставку без нового route planner. Міст відкриває підтриманий перехід через воду; Шахта не обіцяє метал.
+**Behavior and data contract.** Per-storage data comes from an authoritative projection, not from global inventory. `available != total != stored != carried != reserved`. A nearby Warehouse shortens physical delivery without a new route planner. The Bridge opens a supported passage across water; the Mine does not promise metal.
 
-**Послідовність і файли.** **Перевірено:** фізичні товари, StorageState, aggregate InventorySummary, Міст і Mine portal існують; per-storage projection планується в канонічному data/UI-зрізі 0.26.1. **Запропоновано:** зафіксувати назви величин → підтвердити snapshot → підключити destination/reasons → порівняти ближній/далекий склад → bridge/mine/save тести → UI polish. Місця: `include/ribterra/world.hpp`, `include/ribterra/game_server.hpp`; `src/sim/world.cpp`, `src/sim/world_economy.inc`; `src/ui/game_ui_buildings.inc`; `schemas/network.fbs`, `schemas/world_save.fbs` та logistics tests.
+**Sequence and files.** **Verified:** physical goods, StorageState, aggregate InventorySummary, the Bridge, and the Mine portal exist; per-storage projection is planned in the canonical 0.26.1 data/UI slice. **Proposed:** establish names for the quantities → confirm the snapshot → connect destination/reasons → compare near/distant storage → bridge/mine/save tests → UI polish. Locations: `include/ribterra/world.hpp`, `include/ribterra/game_server.hpp`; `src/sim/world.cpp`, `src/sim/world_economy.inc`; `src/ui/game_ui_buildings.inc`; `schemas/network.fbs`, `schemas/world_save.fbs`; logistics tests.
 
-**Залежності й негативні випадки.** Залежить від 0.26.1 per-storage data і world height contract, а також food chain 0.26.5. Перевірити carried item під час save, два склади, rejected resource mask, повний склад, зруйнований/недобудований міст, недосяжний ресурс і зміну видимого шару.
+**Dependency and negative cases.** Depends on 0.26.1 per-storage data and world height contract, as well as food chain 0.26.5. Check carried item during save, two warehouses, rejected resource mask, full warehouse, destroyed/unbuilt bridge, unavailable resource and change in visible layer.
 
-**Доказ і gate.** V: один товар можна простежити від джерела до вибраного складу. F: item conservation, near/far comparison, bridge/mine path, save/load і два clients. P: повний маршрут повторюється у 0.26.9. Gate — UI ніколи не називає aggregate запасом конкретної будівлі, а головний маршрут не має тупика.
+**Proof and gate.** V: One item can be traced from source to selected item. F: item conservation, near/far comparison, bridge/mine path, save/load, and two clients. P: the full route is repeated in 0.26.9. Gate — UI never calls the aggregate a building stock, and the main route has no dead end.
 
-**Scene brief.** Річка, міст, склад біля майстерні, шахта на кам'яному схилі; один носій із видимим вантажем. Розгорнута складська картка з окремими категоріями, без вигаданих чисел і без Road. «S06 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** River, Bridge, Warehouse beside a workshop, and a Mine on a rocky slope; one carrier has a visible load. An expanded storage card shows separate categories, with no invented numbers and no Road. “S06 · TARGET MOCKUP.”
 
-## S07 — 0.26.7 «Навчання і перша внутрішня альфа»
+## S07 — 0.26.7 “Onboarding and the First Internal Alpha”
 
-**Результат для гравця.** Людина без знання коду самостійно запускає основний цикл: збір → будівництво → працівник → доставка → їжа → житло → новий мешканець → корисний Level II → save/load.
+**The result for the player.** A person without knowledge of the code starts the main cycle on his own: collection → construction → worker → delivery → food → housing → new dwelling → useful Level II → save/load.
 
-**Додається / усувається / покращується.** Додаються короткі контекстні кроки, завершені подіями світу, і можливість сховати допомогу. Усуваються інструкції до видалених дій, неправильний опис зими та неперекладені рядки головного шляху. Покращується перша сесія без довгої енциклопедії.
+**Added/removed/improved.** Adds short contextual steps completed by world events and the option to hide help. Removes instructions for deleted actions, an incorrect winter description, and untranslated lines on the main path. Improves the first session without requiring a long encyclopedia.
 
-**Точний стан кадру.** Початок самостійного проходження: невелика unobtrusive tutorial-картка вказує одну наступну дію, об'єкт у світі має м'який highlight, HUD лишається повністю робочим. Панель показує прогрес циклу, але не фальшивий «квест завершено». У кадрі видно вже новий світ і погодний HUD 0.26.1.
+**Exact frame state.** Start of an independent playthrough: a small unobtrusive tutorial card indicates one next action, an object in the world has a soft highlight, and the HUD remains fully functional. The panel shows progress through the cycle but no false “quest complete” message. The frame includes the new world and 0.26.1 weather HUD.
 
-**Контракт поведінки й даних.** Крок закривається підтвердженою server/world подією, а не кліком по кнопці. Після load/reconnect tutorial відновлює правильний крок. Skip не змінює симуляцію. Кроки не вимагають Road, Expeditions, Research або прихованих будівель.
+**Behavior and data contract.** A step completes on a confirmed server/world event, not on a button click. After load/reconnect, the tutorial restores the correct step. Skip does not change the simulation. Steps do not require Road, Expeditions, Research, or hidden buildings.
 
-**Послідовність і файли.** **Перевірено:** потрібні команди й інспектори існують поетапно до 0.26.6; старий tutorial не є активним RmlUi-шляхом. **Запропоновано:** event checklist → мінімальні тексти всіх локалей → RmlUi component → persistence → two-seed scripted check → два незалежні playtests → виправлення конкретних блокерів. Місця: `src/client/view.cpp`, `src/client/main.cpp`; `src/ui/game_ui.cpp` та інспектори; `assets/ui`, `assets/locales`; tutorial state/save і UI scenarios (**proposed**).
+**Sequence and files.** **Verified:** the required commands and inspectors exist incrementally through 0.26.6; the old tutorial is not an active RmlUi path. **Proposed:** event checklist → minimal text for every locale → RmlUi component → persistence → two-seed scripted check → two independent playtests → fixes for specific blockers. Locations: `src/client/view.cpp`, `src/client/main.cpp`; `src/ui/game_ui.cpp` and inspectors; `assets/ui`, `assets/locales`; tutorial state/save and UI scenarios (**proposed**).
 
-**Залежності й негативні випадки.** Усі 0.26.0–0.26.6 результати прийняті. Перевірити виконання кроку іншим гравцем, повторну подію, skip, load на кожній межі, недоступний ресурс, погану погоду, довгі локалі, 720p і відсутність голосових підказок.
+**Dependencies and negative cases.** All 0.26.0–0.26.6 outcomes are accepted. Check a step completed by another player, a repeated event, skip, load at every boundary, an unavailable resource, bad weather, long locale strings, 720p, and the absence of voice guidance.
 
-**Доказ і gate.** V: tutorial не закриває світ і має focus/keyboard state. F: дві контрольні карти, відновлення прогресу й відсутність crashes/softlocks. P: короткий physical co-op repeat корисний, але статус першої внутрішньої альфи визначають щонайменше два незалежні нові гравці без усного ведення. Gate — обидва проходять зафіксований цикл і продовжують після save/load.
+**Proof and gate.** V: the tutorial does not obscure the world and has focus/keyboard state. F: two control maps, progress restoration, and no crashes/softlocks. P: a short physical co-op repeat is useful, but at least two independent new players without verbal guidance determine first-internal-alpha status. Gate: both complete the defined cycle and continue after save/load.
 
-**Scene brief.** Живе поселення середнього розміру, один делікатний tutorial callout і highlight потрібної будівлі, відкритий центр, без модальних стін тексту. «S07 · ЦІЛЬОВИЙ МАКЕТ · ПЕРША ВНУТРІШНЯ АЛЬФА».
+**Scene brief.** A lively medium-sized settlement, one subtle tutorial callout, and a highlight on the required building, with an open center and no modal wall of text. “S07 · TARGET MOCKUP · FIRST INTERNAL ALPHA.”
 
-## S08 — 0.26.8 «Автозбереження й відновлення»
+## S08 — 0.26.8 “Autosave and Recovery”
 
-**Результат для гравця.** Гра регулярно зберігає прогрес і чесно повідомляє про успіх або помилку; остання справна резервна копія придатна до відновлення.
+**Result for the player.** The game regularly saves progress and honestly reports success or failure; the last valid backup can be restored.
 
-**Додається / усувається / покращується.** Додаються локальний periodic save через наявний writer/backup, час останнього успіху й ненав'язливий error state. Усуваються «збережено» до фактичного успіху, паралельна черга записів і перезапис справної копії несправним результатом. Ручні Save/Load залишаються.
+**Added/removed/improved.** Adds local periodic saving through the existing writer/backup, the time of the last success, and an unobtrusive error state. Removes “saved” before actual success, parallel write queues, and replacement of a valid copy with a failed result. Manual Save/Load remains.
 
-**Точний стан кадру.** Звичайна gameplay-сцена без паузи; компактний toast «Збережено» з часом або окремий target variant із non-modal помилкою й дією «Відкрити деталі». Системне меню показує останнє успішне збереження та доступну backup. Не показувати хмарне сховище чи багато слотів.
+**Exact frame state.** A normal gameplay scene without a pause; a compact “Saved” toast with a time, or a separate target variant with a non-modal error and an “Open details” action. The system menu shows the last successful save and the available backup. Do not show cloud storage or multiple slots.
 
-**Контракт поведінки й даних.** Початковий інтервал 60 секунд — tuning value, який перевіряється на навантаження. Одночасно виконується не більше одного запису. Success виникає після завершення writer. Основний і backup файли мають визначений atomic/rotation contract; відмова не знищує останню валідну копію.
+**Contract of behavior and data.** Initial interval 60 seconds — tuning value, which is checked at load. No more than one recording is performed at a time. Success comes after the writer's completion. The main and backup files have a defined atomic/rotation contract; The refusal does not destroy the last valid copy.
 
-**Послідовність і файли.** **Перевірено:** ручний writer/backup і host save path існують; результат деяких циклічних save треба показати. **Запропоновано:** state machine idle/writing/success/error → rotation contract → UI status → fault injection → recovery → performance measurement. Місця: `src/client/main.cpp`; `src/net/network_session.cpp`; `include/ribterra/network_session.hpp`; `src/sim/world_save.cpp`; `assets/ui/hud.rml`; persistence tests.
+**Sequence and files.** **Verified:** the manual writer/backup and host save path exist; the result of some periodic save cycles still needs to be shown. **Proposed:** state machine idle/writing/success/error → rotation contract → UI status → fault injection → recovery → performance measurement. Locations: `src/client/main.cpp`; `src/net/network_session.cpp`; `include/ribterra/network_session.hpp`; `src/sim/world_save.cpp`; `assets/ui/hud.rml`; persistence tests.
 
-**Залежності й негативні випадки.** Залежить від save compatibility і внутрішньої альфи 0.26.7. Перевірити read-only directory, disk error, damaged main file, interrupted write, repeated timer, save during production/weather/pending arrival й exit during write.
+**Dependencies and negative cases.** Depends on save compatibility and internal alpha 0.26.7. Check a read-only directory, disk error, damaged main file, interrupted write, repeated timer, saving during production/weather/pending arrival, and exit during a write.
 
-**Доказ і gate.** V: success/error/recovery states не перекривають гру. F: fault-injection, валідність main/backup, відновлені люди/власність/виробництво/вантаж/погода, вимір pause time. P: повторюється на Windows package у 0.26.10; окремий другий ПК тут не потрібний. Gate — помилка не маскується, а остання валідна копія реально завантажується.
+**Proof and gate.** V: success/error/recovery states do not obscure the game. F: fault injection, main/backup validity, restored people/property/production/cargo/weather, and measured pause time. P: repeated with the Windows package in 0.26.10; a separate second PC is not required here. Gate: the error is not hidden, and the last valid copy actually loads.
 
-**Scene brief.** Нічне поселення під легким снігом, маленький save-success toast у куті й відкрите компактне system menu з last successful save. Світ продовжує рухатися; без cloud icon і без фальшивого progress bar. «S08 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** A night settlement under light snow, a small save-success toast in the corner, and an open compact system menu with the last successful save. The world keeps moving; no cloud icon or fake progress bar. “S08 · TARGET MOCKUP.”
 
-## S09 — 0.26.9 «Стійкий кооператив»
+## S09 — 0.26.9 “Resilient Co-op”
 
-**Результат для гравця.** Хост і гість бачать той самий світ, а короткий обрив гостя та повернення не дублюють ресурси, людей, погоду або команди.
+**Result for the player.** The host and guest see the same world, and a brief guest disconnect and return do not duplicate resources, people, weather, or commands.
 
-**Додається / усувається / покращується.** Додаються завершені стани connecting, waiting for world, reconnecting, resumed і connection lost. Усуваються завислий контроль, повторна оплата/команда та розходження snapshot. Покращуються повідомлення version mismatch, timeout і неможливого resume. Host migration, relay, Steam і matchmaking не додаються.
+**Added/removed/improved.** Adds complete connecting, waiting for world, reconnecting, resumed, and connection lost states. Removes stuck controls, repeated payment/commands, and snapshot divergence. Improves messages for version mismatch, timeout, and an impossible resume. Host migration, relay, Steam, and matchmaking are not added.
 
-**Точний стан кадру.** Кооперативне поселення після успішного reconnect: компактний non-modal status «Гравець повернувся», два кольори selection/ownership без захаращення, однакові ресурси й погода. Альтернативний target state показує «Відновлення світу» до повного snapshot без доступу до команд.
+**Exact frame state.** Cooperative settlement after a successful reconnect: compact non-modal “Player returned” status, two selection/ownership colors without clutter, and unchanged resources and weather. The alternative target state shows “Restoring world” until a complete snapshot arrives, with commands unavailable during restoration.
 
-**Контракт поведінки й даних.** Геймплей починається після повного snapshot. Session token/resume не повторює підтверджену команду. Під час відсутності гостя хост лишається авторитетним. Повернення відновлює ownership/control, weather forecast, pending housing, виробництво й фізичний вантаж. Вихід хоста завершує доступність сесії.
+**Behavior and data contract.** Gameplay begins after a full snapshot. Session token/resume does not repeat a confirmed command. While the guest is absent, the host remains authoritative. Returning restores ownership/control, weather forecast, pending housing, production, and physical cargo. If the host exits, the session becomes unavailable.
 
-**Послідовність і файли.** **Перевірено:** handshake/snapshot/reconnect/resume й shared settlement мають основу; фізичний дво-PC criterion ще не доведений. **Запропоновано:** state diagram → повний snapshot gate → idempotency перевірка → UI statuses → disconnect у кожній критичній фазі → host restart from save → physical/network runs. Місця: `src/server/game_server.cpp`; `src/net/network_session.cpp`, `src/net/protocol.cpp`; `src/client/main.cpp`; `src/ui/game_ui_lobby.inc`; network/lobby/ownership tests.
+**Sequence and files.** **Verified:** handshake/snapshot/reconnect/resume and the shared settlement have a foundation; the physical two-PC criterion remains unproven. **Proposed:** state diagram → full snapshot gate → idempotency check → UI statuses → disconnect in each critical phase → host restart from save → physical/network runs. Locations: `src/server/game_server.cpp`; `src/net/network_session.cpp`, `src/net/protocol.cpp`; `src/client/main.cpp`; `src/ui/game_ui_lobby.inc`; network/lobby/ownership tests.
 
-**Залежності й негативні випадки.** Залежить від 0.26.8 та всіх shared states 0.26.1–0.26.6. Відключити гостя під час delivery, recruitment reservation, farm transition, storm і autosave; перевірити duplicate packet/command, wrong version, timeout, host exit і invalid resume.
+**Dependencies and negative cases.** Depends on 0.26.8 and all shared states from 0.26.1–0.26.6. Disconnect the guest during delivery, recruitment reservation, farm transition, a storm, and autosave; check duplicate packets/commands, wrong version, timeout, host exit, and invalid resume.
 
-**Доказ і gate.** V: усі network states і повернений control зрозумілі. F: локальні два клієнти, fault injection, item/population/weather equality. P: два фізичні Windows-ПК, 60 хв гри, disconnect/reconnect, host restart із save та одна сесія через різні мережі перевіреним способом; loopback не замінює це. Gate — усі P-критерії мають артефакти або версія лишається непідтвердженою.
+**Proof and gate.** V: all network states and restored control are clear. F: two local clients, fault injection, and equality of items/population/weather. P: two physical Windows PCs, 60 minutes of play, disconnect/reconnect, host restart from a save, and one verified session across different networks; loopback does not replace this. Gate: all P criteria have artifacts, or the version remains unconfirmed.
 
-**Scene brief.** Розвинене поселення, два виділення різних гравців, компактний reconnect-success banner, зимова або дощова погода однакова для обох. Без competitive nations, bot armies чи host migration. «S09 · ЦІЛЬОВИЙ МАКЕТ».
+**Scene brief.** A developed settlement, two differently colored player selections, a compact reconnect-success banner, and identical winter or rainy weather for both. No competitive nations, bot armies, or host migration. “S09 · TARGET MOCKUP.”
 
-## S10 — 0.26.10 «Windows-кандидат»
+## S10 — 0.26.10 «Windows candidate»
 
-**Результат для гравця.** Один ZIP запускається на чистому Windows-середовищі без dev tools, має однозначний build ID, інструкцію, відомі обмеження й шлях до багрепорту.
+**Result for the player.** One ZIP runs in a clean Windows environment without development tools and has an unambiguous build ID, instructions, known limitations, and a path for bug reports.
 
-**Додається / усувається / покращується.** Додаються package manifest, version/build/commit, SHA-256, launcher instructions і log location. Усуваються відсутні assets, змішані номери, старі інструкції Expeditions і package-only crashes. Покращуються 720p/1080p, UI scale, focus, keyboard/mouse та всі підтримані локалі. Новий контент не додається.
+**Added/removed/improved.** Adds a package manifest, version/build/commit, SHA-256, launcher instructions, and log location. Removes missing assets, mixed version numbers, old Expeditions instructions, and package-only crashes. Improves 720p/1080p, UI scale, focus, keyboard/mouse, and all supported locales. No new content is added.
 
-**Точний стан кадру.** Гра запущена з розпакованого кандидата; компактне About/Diagnostics в системному меню показує version/build (у target — placeholder), renderer, log action і known-limitations link. Позаду — звичайна gameplay-сцена, не dev showcase. Немає console, editor overlay або абсолютного dev path.
+**Exact frame state.** The game runs from an unpacked candidate; compact About/Diagnostics in the system menu shows version/build (a placeholder in the target), renderer, a log action, and a known-limitations link. Behind it is a normal gameplay scene, not a development showcase. There is no console, editor overlay, or absolute development path.
 
-**Контракт поведінки й даних.** Пакет містить рівно потрібні executable/assets/fonts/shaders/locales. Version у UI, network handshake, filename й manifest узгоджені. Hash рахується для фактично перевіреного ZIP. Нова упаковка або номер потребують повторної package verification.
+**Behavior and data contract.** The package contains exactly the required executable/assets/fonts/shaders/locales. The version in the UI, network handshake, filename, and manifest agree. The hash is calculated for the ZIP that was actually verified. A new package or version number requires package verification again.
 
-**Послідовність і файли.** **Перевірено:** `scripts/package.ps1` і `packaging/README.md` мають основу та перевіряють обов'язкові файли. **Запропоновано:** clean build → package → manifest/hash → unpack в окремий український path → launch/save/continue/host/join → resolution/locales → full configured CTest → package report (**proposed**). Місця: `scripts/package.ps1`; `packaging/README.md`; launcher artifact (**proposed packaging output**); `assets/ui`, `assets/locales`, fonts/shaders/art; build/CTest configuration.
+**Sequence and files.** **Verified:** `scripts/package.ps1` and `packaging/README.md` provide a foundation and verify required files. **Proposed:** clean build → package → manifest/hash → unpack into a separate Ukrainian path → launch/save/continue/host/join → resolutions/locales → full configured CTest → package report (**proposed**). Locations: `scripts/package.ps1`; `packaging/README.md`; launcher artifact (**proposed packaging output**); `assets/ui`, `assets/locales`, fonts/shaders/art; build/CTest configuration.
 
-**Залежності й негативні випадки.** Залежить від прийнятої 0.26.9. Перевірити path із пробілами/українськими літерами, відсутню DLL/asset, read-only location, second launch, incompatible client, 720p overflow, DPI scale, save permissions і packaged log path.
+**Dependencies and negatives.** Depends on the accepted 0.26.9. Check path with spaces/Ukrainian characters, missing DLL/asset, read-only location, second launch, incompatible client, 720p overflow, DPI scale, save permissions and packaged log path.
 
-**Доказ і gate.** V: реальний packaged build на 720p/1080p і всі UI states; target S10 лише задає вигляд diagnostics. F: SHA-256, manifest, clean-machine launch, full configured CTest, package-only smoke/save/host/join і performance run на 20–30 мешканцях із зазначеними ПК/seed/resolution. P: install/run та кооператив на двох фізичних Windows-ПК. Gate — один перевірений ZIP; зміна після hash скасовує статус кандидата.
+**Proof and gate.** V: a real packaged build at 720p/1080p and all UI states; target S10 specifies only the appearance of diagnostics. F: SHA-256, manifest, clean-machine launch, full configured CTest, package-only smoke/save/host/join, and a performance run with 20–30 residents using specified PCs/seed/resolution. P: install/run and co-op on two physical Windows PCs. Gate: one verified ZIP; any change after hashing invalidates candidate status.
 
-**Scene brief.** Фінальна gameplay-сцена з відкритим compact diagnostics panel: version/build placeholders, renderer, log button, known limitations. UI чіткий на 16:9, без dev console, без marketing badge «released». «S10 · ЦІЛЬОВИЙ МАКЕТ · WINDOWS CANDIDATE».
+**Scene brief.** Final gameplay scene with an open compact diagnostics panel: version/build placeholders, renderer, log button, and known limitations. The UI is clear at 16:9, with no development console and no “released” marketing badge. “S10 · TARGET MOCKUP · WINDOWS CANDIDATE.”
 
-## S11 — 0.27.0 «Перше зовнішнє демо»
+## S11 — 0.27.0 “First External Demo”
 
-**Результат для гравця.** Зовнішні люди встановлюють гру й без усного ведення проходять той самий зафіксований цикл. 0.27.0 не додає ще одну механіку; це статус прийнятого кандидата.
+**Result for the player.** External players install the game and complete the same defined cycle without verbal guidance. Version 0.27.0 adds no further mechanic; it marks an accepted candidate.
 
-**Додається / усувається / покращується.** Додаються фінальний номер/ідентифікатор пакета й звіт зовнішнього приймання. Усуваються тільки блокери: crash, втрата/дублювання прогресу, неможливе підключення, нерозв'язний food/development тупик. Покращується тільки те, що заважає самостійному проходженню; нова будівля, ресурс, ворог або система не допускаються як бонус перед випуском.
+**Added/removed/improved.** Adds the final package number/identifier and external acceptance report. Removes only blockers: crashes, lost/duplicated progress, inability to connect, and unsolvable food/development dead ends. Improves only what prevents independent completion; no new building, resource, enemy, or system is allowed as a pre-release bonus.
 
-**Точний стан кадру.** Звичайний фінальний gameplay, який реально має побачити тестер: поселення 16–20 людей, один корисний Level II, працюючі food і material chains, compact HUD, мінікарта, реальна погода, два кооперативні selection markers. Жодного «успішно протестовано» всередині гри. Version у системному меню — placeholder до фактичної збірки.
+**Exact frame state.** Normal final gameplay that a tester should actually see: a settlement of 16–20 people, one useful Level II, working food and material chains, compact HUD, minimap, real weather, and two co-op selection markers. No “successfully tested” claim appears inside the game. The version in the system menu remains a placeholder until the actual build exists.
 
-**Контракт поведінки й даних.** Фінальний package/hash/commit/protocol/rules/generator збігаються з evidence. Будь-яка функціональна правка повторює зачеплені сценарії; simulation/network change повторює повне кооперативне проходження. Відсутність тестерів або другого ПК лишає критерій невиконаним.
+**Behavior and data contract.** The final package/hash/commit/protocol/rules/generator match the evidence. Any functional fix repeats the affected scenarios; a simulation/network change repeats the full co-op playthrough. Missing testers or a second PC leaves the criterion unmet.
 
-**Послідовність і файли.** **Перевірено:** 0.27.0 є roadmap marker, не реалізований release. **Запропоновано:** freeze candidate → дати письмову інструкцію двом незалежним парам і одному solo tester → зібрати логи/баги → виправити лише blocker → rebuild/rehash/retest → одна фінальна двогодинна сесія → release report. Місця: package 0.26.10; verification report; tester instructions; logs/crash reports; без обов'язкової зміни game code.
+**Sequence and files.** **Verified:** 0.27.0 is a roadmap marker, not an implemented release. **Proposed:** freeze candidate → give written instructions to two independent pairs and one solo tester → collect logs/bugs → fix only blockers → rebuild/rehash/retest → one final two-hour session → release report. Locations: package 0.26.10; verification report; tester instructions; logs/crash reports; no game-code change is required by default.
 
-Package 0.26.10, verification report, tester instructions і release report тут є **proposed release artifacts**, доки їх не створено та не перевірено на точній фінальній збірці.
+Package 0.26.10, the verification report, tester instructions, and the release report are **proposed release artifacts** until they are created and verified against the exact final build.
 
-**Залежності й негативні випадки.** Залежить від незміненого прийнятого 0.26.10. Перевірити fresh install, solo, host/join, different network, save/continue, disconnect/reconnect, food expansion, House/Workshop II, weather, Ukrainian path і багрепорт. Не підміняти tester completion автоматичним script run.
+**Dependencies and negative cases.** Depends on an unchanged accepted 0.26.10. Check fresh install, solo, host/join, different network, save/continue, disconnect/reconnect, food expansion, House/Workshop II, weather, a Ukrainian path, and the bug-report path. Do not replace tester completion with an automated script run.
 
-**Доказ і gate.** V: фінальний package screenshot/video без dev overlay; S11 — тільки target composition. F: точні logs, hashes і повтор провалених кроків. P: дві незалежні кооперативні пари на фізичних Windows-ПК, один solo tester, збережені 60-хвилинний network run, cross-network run і фінальна двогодинна сесія без нового blocker. Gate — лише ці докази дозволяють назвати 0.27.0 першим зовнішнім демо.
+**Proof and gate.** V: final package screenshot/video without a development overlay; S11 provides only target composition. F: exact logs, hashes, and repetition of failed steps. P: two independent co-op pairs on physical Windows PCs, one solo tester, a recorded 60-minute network run, a cross-network run, and a final two-hour session without a new blocker. Gate: only this evidence allows 0.27.0 to be called the first external demo.
 
-**Scene brief.** Найбільш розвинене, але реалістичне поселення 16–20 людей у долині, літо після дощу або ясна зима, працюють ферма/млин/кухня й матеріальні споруди, видимий Міст, compact HUD і два player markers. Без замку, війська, монстрів, ручних доріг і декоративних survival metrics. «S11 · ЦІЛЬОВИЙ МАКЕТ · EXTERNAL DEMO TARGET».
+**Scene brief.** The most developed but still realistic settlement of 16–20 people in the valley, in summer after rain or a clear winter, with a working farm/mill/Kitchen and material buildings, a visible Bridge, compact HUD, and two player markers. No castle, army, monsters, manual roads, or decorative survival metrics. “S11 · TARGET MOCKUP · EXTERNAL DEMO TARGET.”
 
-## Правило зупинки для серії
+## Stop rule for series
 
-Після кожної версії агент генерує наступний target кадр окремо від runtime evidence. Якщо target суперечить доступним даним або scope, виправляється target, а не додається прихована механіка. Якщо реальна збірка не відповідає target за композицією, спочатку фіксується конкретний розрив у layout, матеріалі, масштабі чи стані; згенероване зображення не є підставою назвати реалізацію готовою.
+After each version, the agent generates the next target frame separately from the runtime evidence. If the target conflicts with the available data or scope, the target is corrected, not the hidden mechanics are added. If the actual set does not match the target for the composition, a specific gap in layout, material, scale, or condition is first fixed. The image generated is not a reason to call the implementation ready.

@@ -1,5 +1,7 @@
 # Ribterra 0.18.2
 
-У верхній панелі додано термометр і статичні +18 °C, без впливу на симуляцію. День перенесено поруч із перемикачами поверхні та шахти.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Календар показує чотири сезони по 10 днів: весна (1–10), літо (11–20), осінь (21–30), зима (31–40). Далі цикл повторюється. Осінні та зимові текстури узгоджені з календарем. Існуючі зимові правила та формат збереження збережено.
+The top panel has a thermometer and static +18 °C, without affecting the simulation. The day has been moved around with surface shifts and mines.
+
+The calendar shows four seasons of 10 days: spring (1–10), summer (11–20), autumn (21–30), winter (31–40). The cycle continues. The textures of autumn and winter are aligned with the calendar. The existing winter rules and format of conservation are preserved.

@@ -1,173 +1,175 @@
-# Ribterra — виправлений план графіки: рушій, ассети, світ і перевірка
+# Ribterra — corrected graphics plan: engine, assets, world, and verification
 
-**Поточний порядок базової графіки:** [V00–V05 — старий вигляд → UI → земля → об’єкти → дощ → зима](GRAPHICS_PROGRESS_UA.md). Це головна послідовність видимих змін після відкладення Dynamic. Старі dev/GW/DL — технічні пакети, не готові знімки кожної версії. [Галерея прогресу](index.html); [старі 13 публічних targets](public-versions.html).
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-**Останнє рішення 27.09:** повне динамічне освітлення та перемикач відкладені. Зараз у коді лише безпечна заготовка. [Майбутній план DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) має пріоритет: Dynamic не є блокером базового оновлення світу/UI; його light/occlusion gates застосовуються лише до майбутнього ввімкненого режиму.
-Дата: 27 вересня 2026. Редакція: **V2**. Статус: **план реалізації; нові ефекти не реалізовані й не виміряні**.
-Основа: checkout `C:\Users\fipst\Desktop\ribterra`, HEAD `bdc53e8`, 0.26.0. Документ виправляє недостатню технічну деталізацію плану від 26 вересня.
+**Current base-graphics order:** [V00–V05 — old appearance → UI → ground → objects → rain → winter](GRAPHICS_PROGRESS_UA.md). This is the main sequence of visible changes after Dynamic was deferred. The old dev/GW/DL items are technical packages, not finished screenshots of each version. [Progress gallery](index.html); [older 13 public targets](public-versions.html).
 
-## 1. Що виправлено і який документ головний
-Попередні макети показували світлові плями, мокрі відблиски, тіні, серпанок і воду, але формулювання «узгодити світло/переглянути воду» не визначали їх реалізацію. Це було недостатньою специфікацією. Цей документ зберігає аудит і технічні пакети; **поточний обсяг і порядок задає [план 28.09](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md)**, [ядро рендеру](RENDER_CORE_SPEC_UA.md) та [ефекти світу](WORLD_FX_SPEC_UA.md) — алгоритми й контракти, [виробництво ассетів](ART_PRODUCTION_SPEC_UA.md) — необхідний контент.
+**Latest decision 27.09:** full dynamic lighting and its switch are deferred. The code currently contains only safe groundwork. The [future DL-01–08 plan](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) takes precedence: Dynamic does not block the base world/UI update; its light/occlusion gates apply only to the future enabled mode.
+Date: 27 September 2026. Revision: **V2**. Status: **implementation plan; the new effects are neither implemented nor measured**.
+Basis: checkout `C:\Users\fipst\Desktop\ribterra`, HEAD `bdc53e8`, 0.26.0. This document corrects insufficient technical detail in the 26 September plan.
 
-[Старий план світу/UI](../../.omx/plans/2026-09-26-graphics-world-ui-update-ua.md) зберігає ігрові вимоги та пакети GW; [специфікація світу/UI](../../.omx/plans/2026-09-26-world-ui-implementation-spec-ua.md) — генерацію, path/build/UI; [погода](../../.omx/plans/2026-09-26-weather-implementation-spec-ua.md) — авторитетну симуляцію. Нижче збережені **24 технічні пакети повного початкового обсягу**; це не черга обов’язкових релізів. Публічні версії 0.26.1–0.27.0 не перенумеровуються.
+## 1. What this corrects and which document is authoritative
+Earlier concepts showed light patches, wet reflections, shadows, haze, and water, but phrases such as “align the lighting” and “review the water” did not define their implementation. That specification was insufficient. This document preserves the audit and technical packages; **the current scope and order are defined by the [28.09 plan](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md)**. [Render Core](RENDER_CORE_SPEC_UA.md) and [World FX](WORLD_FX_SPEC_UA.md) define algorithms and contracts; [Art production](ART_PRODUCTION_SPEC_UA.md) defines required content.
 
-Картинки S01–S11/W01/W02 залишаються незмінними художніми референсами. Нативні вимірювання й письмові межі мають пріоритет над їхніми неточностями. Немає гарантії попіксельного відтворення AI-зображення. Приймається конкретно описаний вигляд і поведінка у грі.
+[The old world/UI plan](../../.omx/plans/2026-09-26-graphics-world-ui-update-ua.md) preserves game requirements and GW packages; the [world/UI specification](../../.omx/plans/2026-09-26-world-ui-implementation-spec-ua.md) covers generation, path/build/UI; the [weather specification](../../.omx/plans/2026-09-26-weather-implementation-spec-ua.md) covers authoritative simulation. The **24 technical packages for the full original scope** remain below as references; they are not a queue of mandatory releases. Public versions 0.26.1–0.27.0 are not renumbered.
 
-## 2. Підтверджена база рушія
-Ці твердження перевірені в коді; вони не є новими runtime-тестами.
+The S01–S11/W01/W02 images remain unchanged artistic references. Native measurements and written boundaries take precedence over their inaccuracies. Pixel-perfect reproduction of an AI image is not guaranteed. Acceptance applies to the specifically described in-game appearance and behavior.
 
-| ID | Наявне | Реальна межа |
+## 2. Confirmed engine baseline
+These statements were verified in code; they are not new runtime tests.
+
+| ID | Existing capability | Actual boundary |
 |---|---|---|
-| E01 | [Frame2D](../../include/ribterra/render_frame.hpp:15) має позицію 2D, UV, колір, texture handle і painter order. | Немає material/light/receiver контрактів. |
-| E02 | [Фрагментний шейдер](../../shaders/sprite.frag.hlsl:11) повертає texture × color; [pipeline](../../src/render/renderer2d.cpp:437) має один color target без depth target. | Нормалі, wet specular, відбиття, світлова видимість не виникнуть від заміни PNG. |
-| E03 | [Night grade](../../src/client/view.cpp:1625) затемнює vertex colors, після нього [fx.3](../../src/client/view.cpp:1121) малює теплі плями. | Це не проєкція конкретного вікна й не реакція матеріалу на світло. |
-| E04 | [Будівлі](../../src/client/view.cpp:688) мають темну контактну накладку; [спрайтові мешканці](../../src/client/view.cpp:796) не отримують окремої автоматичної тіні. | Немає динамічного напрямленого силуету тіні. Не плутати rock fallback на рядку 623 з будівлею. |
-| E05 | [Вода](../../src/client/view.cpp:1032) використовує анімовані спрайтові накладки; [поверхня](../../include/ribterra/terrain_surface.hpp:8) має спільні кути. | Немає flow material, відбиттів і фізики води. Один рівень води зберігається. |
-| E06 | [Terrain appearance](../../include/ribterra/terrain_appearance.hpp:62) і ground mist приховують frontier. | Fog of war не дорівнює художньому серпанку між планами. |
-| E07 | [UnitAnimation](../../include/ribterra/unit_animation.hpp:15) має 8 facing і 4 фази ходьби; [вантаж](../../include/ribterra/resident_art.hpp:8) визначається справжнім carried stack. | Немає foot IK/footstep history/deformation. Наявний Cart — вид перенесення вантажу, не новий транспорт. |
-| E08 | [GameArt loader](../../src/client/game_art.cpp:70) читає schema 1 і atlas pages до 4096²; [shader contract](../../tests/shader_contract.py:31) жорстко очікує поточні bindings. | Loader, shader build, reflection tests і packaging потрібно змінити разом із новими матеріалами. |
-| E09 | [Compose](../../src/client/view.cpp:1610) задає logical 1440×900; [main](../../src/client/main.cpp:589) компонує RmlUi окремо. | Потрібен єдиний viewport/DPI contract; 16:9 картинки не доводять існуючий 16:9 layout. |
-| E10 | [Сезони](../../include/ribterra/seasons.hpp:8) і зимові art states уже існують. | Дощ/снігопад/буря, температура й accumulation — майбутні погодні системи. |
+| E01 | [Frame2D](../../include/ribterra/render_frame.hpp:15) has a 2D position, UV, color, texture handle and painter order. | There are no material/light/receiver contracts. |
+| E02 | The [fragment shader](../../shaders/sprite.frag.hlsl:11) returns texture × color; the [pipeline](../../src/render/renderer2d.cpp:437) has one color target and no depth target. | Normals, wet specular, reflections, and lighting visibility cannot appear merely by replacing PNG files. |
+| E03 | [Night grade](../../src/client/view.cpp:1625) darkens vertex colors; [fx.3](../../src/client/view.cpp:1121) then draws warm patches. | This is not a projection from a specific window or a material response to light. |
+| E04 | [Buildings](../../src/client/view.cpp:688) have a dark contact overlay; [sprite residents](../../src/client/view.cpp:796) do not receive separate automatic shadows. | There is no dynamic directional shadow silhouette. Do not confuse the rock fallback on line 623 with a building. |
+| E05 | [Water](../../src/client/view.cpp:1032) uses animated sprite overlays; the [surface](../../include/ribterra/terrain_surface.hpp:8) shares corner data. | There is no flow material, reflection, or water physics. A single water level remains. |
+| E06 | [Terrain appearance](../../include/ribterra/terrain_appearance.hpp:62) and ground mist conceal the frontier. | Fog of War is not artistic haze separating depth planes. |
+| E07 | [UnitAnimation](../../include/ribterra/unit_animation.hpp:15) has 8 facings and 4 walking phases; [cargo](../../include/ribterra/resident_art.hpp:8) comes from the real carried stack. | There is no foot IK, footstep history, or deformation. The existing Cart is a cargo-carrying appearance, not a new vehicle. |
+| E08 | [GameArt loader](../../src/client/game_art.cpp:70) reads schema 1 and atlas pages up to 4096²; [shader contract](../../tests/shader_contract.py:31) strictly expects current bindings. | Loader, shader build, reflection tests and packaging need to be changed along with new materials. |
+| E09 | [Compose](../../src/client/view.cpp:1610) uses logical 1440×900; [main](../../src/client/main.cpp:589) composites RmlUi separately. | A single viewport/DPI contract is required; 16:9 images do not prove that the existing layout is 16:9. |
+| E10 | [Seasons](../../include/ribterra/seasons.hpp:8) and winter art states already exist. | Rain/snow/storm, temperature and accumulation — future weather systems. |
 
-На цій машині 27.09 виявлені NVIDIA GeForce RTX 3050 Laptop GPU та AMD Radeon Graphics. Це інвентар обладнання, **не FPS-тест і не автоматично мінімальні вимоги**. Dev.01 має зафіксувати фактично обраний GPU, driver, power mode, executable і resolution.
+On 27.09, this machine reported an NVIDIA GeForce RTX 3050 Laptop GPU and AMD Radeon Graphics. This is hardware inventory, **not an FPS test or automatic minimum requirements**. Dev.01 must record the GPU actually selected, driver, power mode, executable, and resolution.
 
-## 3. Рішення щодо архітектури
-**Робоче рішення: розвинути чинний 2.5D renderer SDL_GPU/D3D12 із фіксованою камерою.** Світ лишається тайловою симуляцією; будівлі й мешканці — керовані спрайти з окремими метаданими. Нові light/material/decal/water passes є реальною роботою в рушії.
+## 3. Architecture decision
+**Working decision: extend the current fixed-camera 2.5D SDL_GPU/D3D12 renderer.** The world remains a tile simulation; buildings and residents remain controlled sprites with separate metadata. The new light/material/decal/water passes are real engine work.
 
-| Варіант | Перевага | Втрата/ризик | Рішення |
+| Option | Benefit | Cost/risk | Decision |
 |---|---|---|---|
-| Лише нові PNG і старі fx.3 | Мала зміна коду | Не дає світлової видимості, мокрих матеріалів, відбиттів і слідів | Відхилено як недостатній для цілі |
-| 2.5D + surface materials, projected lights/shadows, bounded FX | Зберігає sim/net/UI/камеру, дає потрібні видимі ефекти у вузькій постановці | Потрібні authored masks/occluders, не довільна 3D-геометрія | Обрано з перевіркою dev.09 |
-| Повна 3D-сцена/інший рушій | Дозволяє загальні 3D light/physics системи | Нові моделі/анімації/інтеграція/picking/render, великий ризик для демо | Не починати без провалу доказового 2.5D зрізу |
+| Only new PNG files and old fx.3 | Small code change | Does not provide lighting visibility, wet materials, reflections, or tracks | Rejected as insufficient for the target |
+| 2.5D + surface materials, projected lights/shadows, bounded FX | Preserves sim/net/UI/camera and provides the required visible effects within a bounded design | Requires authored masks/occluders rather than arbitrary 3D geometry | Selected, subject to dev.09 verification |
+| Full 3D scene/different engine | Enables general 3D lighting/physics systems | Requires new models/animations/integration/picking/rendering and creates major demo risk | Do not begin unless the evidence-driven 2.5D slice fails |
 
-Використання 3D master-моделей для **офлайн експорту 2D ассетів** не є переходом гри на 3D. Це спосіб узгодити масштаб, напрям камери, маски й анімацію.
+Using 3D master models for **offline export of 2D assets** does not move the game to 3D. It is a way to align scale, camera direction, masks, and animation.
 
-Dev.09 — перевірка обраного рішення, а не церемонія. Якщо світло/тіні/відбиття помітно неправдиві на допустимому схилі або бюджет не досягається, масовий export зупиняється. Записати конкретну проблему; виправити модель, або окремо переглянути обсяг/архітектуру. Не називати вимкнений обов'язковий ефект успіхом.
+Dev.09 verifies the chosen decision; it is not a ceremony. If lighting/shadows/reflections are visibly implausible on a supported slope or the budget is not met, mass export stops. Record the concrete problem, fix the model, or separately reconsider scope/architecture. Do not call a disabled mandatory effect a success.
 
-## 4. Які ефекти точно входять і якою ціною
-| Ефект | Обов'язкова реалізація | Потрібний контент/дані | Що НЕ обіцяється |
+## 4. Included effects and their cost
+| Effect | Required implementation | Required content/data | What is NOT promised |
 |---|---|---|---|
-| Світло з вікна | Ground receiver освітлюється за position/radius/cone/intensity; предмет перекриває промені; emission вікна окремо | Window anchors, cone, emission mask, occluder footprint/height | GI, ray tracing; фасади/мешканці — майбутній Dynamic за окремим DL-планом |
-| Тіні | Контактна тінь + напрямлена силуетна проєкція для будівель/дерев/мешканців; реагує на погоджений light direction | Caster silhouettes/height, receiver triangles, sunlight direction | Точні самотіні всіх деталей, довільна 3D тінь на будь-якій поверхні |
-| Мокра земля | Rain-driven wetness, normal/roughness response, світлові відблиски лише на придатній поверхні | Ground normal/material mask, dry/wet response | Дзеркальне відображення всієї сцени в кожній калюжі |
-| Річка | Flow UV, рябь, shore foam, світловий блиск; обмежена проєкція відображених спрайтів | Water/shore/flow masks, eligible reflection casters | Fluid solver, SSR, водоспади, повінь, плавучість |
-| Серпанок | World-anchored depth bands з поступовим tint/extinction, розділення планів | World depth, revealed mask, bounded noise | Фізичне об'ємне розсіювання та світлові промені крізь весь світ |
-| Дощ/сніг/вітер | Авторитетна погода керує частинками, шлейфом/поривами; дах/світ/UI/FoW мають коректні маски | WeatherFxFrame, roof/ground receivers, particle atlases | Фізика атмосфери, температурна шкода, утеплення |
-| Сліди кроків | Лівий/правий cosmetic decal за реальним переміщенням; залишається, старіє, засипається/тане | Snow receiver, movement distance, bounded local cache | Зміна elevation/collision, мережевий журнал кожного сліду |
-| Втиснутий сніг | Локальна shade/normal-маска сліду створює неглибокий рельєф на вигляд | Footprint normal/alpha, global snow cover | Реальна геометрична деформація снігу |
-| «Жива фізика» вигляду | Синхронні кроки/вантаж/робочі рухи, дим і рослинність із wind response | Узгоджені кадри, pivots, job/cargo state | Rigid bodies, cloth solver, ragdoll, руйнування |
+| Window light | A ground receiver is lit from position/radius/cone/intensity; objects block rays; window emission is separate | Window anchors, cone, emission mask, occluder footprint/height | GI, ray tracing; facade/resident lighting belongs to future Dynamic under the separate DL plan |
+| Shadows | Contact shadow + directional silhouette projection for buildings/trees/residents; responds to the agreed light direction | Caster silhouettes/height, receiver triangles, sunlight direction | Exact self-shadowing of every detail or arbitrary 3D shadows on every surface |
+| Wet ground | Rain-driven wetness, normal/roughness response, and lighting highlights only on suitable surfaces | Ground normal/material mask, dry/wet response | Mirror reflection of the entire scene in every puddle |
+| River | Flow UV, ripples, shore foam, lighting highlight; bounded projection of reflected sprites | Water/shore/flow masks, eligible reflection casters | Fluid solver, SSR, waterfalls, flooding, buoyancy |
+| Haze | World-anchored depth bands with gradual tint/extinction that separate planes | World depth, revealed mask, bounded noise | Physical volumetric scattering and light shafts across the whole world |
+| Rain/snow/wind | Authoritative weather controls particles and trails/gusts; roof/light/UI/FoW use correct masks | WeatherFxFrame, roof/ground receivers, particle atlases | Atmospheric physics, temperature damage, insulation |
+| Footprints | Left/right cosmetic decals follow real movement; they persist, age, and are covered/melt | Snow receiver, movement distance, bounded local cache | Changes to elevation/collision or a network log for every footprint |
+| Compressed snow | A local footprint shade/normal mask creates the appearance of shallow relief | Footprint normal/alpha, global snow cover | Real geometric deformation of snow |
+| “Living physics” appearance | Synchronized steps/cargo/work animations, smoke, and vegetation with wind response | Consistent frames, pivots, job/cargo state | Rigid bodies, cloth solver, ragdoll, destruction |
 
-Фраза «детальна фізика» не є acceptance criterion. Якщо потрібна справжня фізична взаємодія предметів, це окрема система, не прихована частина графічного оновлення.
+The phrase “detailed physics” is not an acceptance criterion. If real physical interaction between objects is required, it is a separate system rather than a hidden part of the graphics update.
 
-## 5. Загальні контракти інтеграції
-1. SimCore/сервер володіє temperature, precipitation, wind, cover, work modifier, calendar. Renderer не змінює правила роботи, їжі, HP чи маршруту.
-2. Один presentation clock із simulation tick interpolation, явними pause/speed/epoch. До dev.14 тестова погода дозволена тільки у позначеній diagnostic fixture. У production HUD до authoritative path погодні числа приховані.
-3. Ground receivers використовують ту саму поверхню, що feet/picking/build preview. Ground light, shadow, wetness і decals не проєктуються довільним екранним овалом.
-4. Light/occluder/reflection/particle/decals відсікаються за revealed state **до** підготовки effect buffers. Фінальний FoW не повинен лише замальовувати вже витеклі відбиття.
-5. Ручної Road, road bonus і прихованої auto-road немає. Footprints короткочасні й не змінюють швидкість.
-6. Blend/linear/sRGB/alpha, render target formats, ping-pong і ресурсна тривалість визначені у Core spec. Не читати target у shader, поки той самий subresource є render target.
-7. Мінімальна графічна якість зменшує кількість/роздільність, зберігаючи всі обов'язкові категорії ефектів. Відмова GPU allocation/shader — діагностована помилка/безпечне відновлення, не прихований «low mode» із зарахованим acceptance.
-8. Старі fx.3/нічне затемнення для переведених об'єктів прибираються з відповідної гілки, щоб не отримати подвійне світло/тіні. Старий software diagnostic не видається за перевірений D3D12 шлях.
-9. Виробничі тести RmlUi, resource lifetime, scissor/clip і GPU shader interface розширюються разом із renderer; зелений старий shader test для texture×color нічого не доводить про нові passes.
+## 5. Shared integration contracts
+1. SimCore/server owns temperature, precipitation, wind, cover, work modifier, and calendar. The renderer does not change rules for work, food, HP, or routing.
+2. One presentation clock uses simulation-tick interpolation with explicit pause/speed/epoch. Until dev.14, test weather is allowed only in a marked diagnostic fixture. Weather values remain hidden in the production HUD until the authoritative path exists.
+3. Ground receivers use the same surface as the feet/picking/build preview. Ground light, shadow, wetness and decals are not projected by an arbitrary screen oval.
+4. Light/occluder/reflection/particle/decal data is culled by revealed state **before** effect buffers are prepared. Final FoW must not merely paint over reflections that already leaked.
+5. There is no manual road, no road bonus and no hidden auto-road. Footprints are short-lived and do not change speed.
+6. Blend/linear/sRGB/alpha, render-target formats, ping-pong, and resource lifetime are defined in the Core spec. Do not sample a target in a shader while the same subresource is a render target.
+7. Minimum graphics quality reduces counts/resolution while retaining every mandatory effect category. GPU allocation/shader failure produces a diagnosed error/safe recovery, not a hidden “low mode” that still counts as accepted.
+8. Old fx.3/night darkening is removed for migrated objects in the corresponding branch to avoid double lighting/shadows. The old software diagnostic is not presented as a verified D3D12 path.
+9. Production RmlUi, resource-lifetime, scissor/clip, and GPU shader-interface tests expand with the renderer; a green old texture×color shader test proves nothing about the new passes.
 
-## 6. Контрольна сцена і вимірювана ціль
-**Proposed fixture** `visual_slice_v2`: будинок із 2 вікнами, склад, майстерня, 1 дерево, 1 камінь-occluder, 3 рухомі мешканці (порожній/колоди/мішок), річка з двома берегами і мостом, рівна ділянка та один підтриманий схил. 10 мешканців для ігрового прогона; 20–30 для навантаження. Це diagnostic scene, не звичайний старт.
+## 6. Control scene and measurable target
+**Proposed fixture** `visual_slice_v2`: a house with 2 windows, a warehouse, a workshop, 1 tree, 1 stone occluder, 3 moving residents (empty/logs/sack), a river with two shores and a bridge, a flat area, and one supported slope. Use 10 residents for the gameplay run and 20–30 for load. This is a diagnostic scene, not normal startup.
 
-Dev.01 створює її через чинний World/save lifecycle і зберігає seed/save hash, world origin, layout, camera center, zoom, native/render/logical sizes. Якщо fixture потребує test helper, він окремий; зміна правил або збереження не приховується. Матеріали/об'єкти проходять production renderer, а не окремий showcase shader.
+Dev.01 creates it through the current World/save lifecycle and records seed/save hash, world origin, layout, camera center, zoom, and native/render/logical sizes. If the fixture requires a test helper, keep it separate; do not hide changes to rules or persistence. Materials/objects use the production renderer, not a separate showcase shader.
 
-Контрольні стани: літо день/ніч; сухо→дощ→висихання; зима без опадів→сніг→буря→ясно; рух unit перед/за house/tree/bridge; terrain slope; revealed frontier; pause/2×/load/reconnect. На dev.09 це render fixtures; після dev.18 — той самий вигляд від справжньої погоди.
+Control states: summer day/night; dry→rain→drying; winter without precipitation→snow→storm→clear; unit movement in front of/behind house/tree/bridge; terrain slope; revealed frontier; pause/2×/load/reconnect. At dev.09 these are render fixtures; after dev.18, the same appearance comes from real weather.
 
-| Gate | Конкретний доказ |
+| Gate | Concrete evidence |
 |---|---|
-| LIGHT | Увімкнути одне вікно: його emission і пляма з'являються разом; вимкнути — зникають. Посунути occluder: тінь у плямі рухається; поза radius/cone немає освітлення. Камера pan/zoom не пересуває світло відносно землі. |
-| SHADOW | Мешканець і вантаж рухаються: окрема тінь прив'язана до їхнього anchor, змінює силует/напрям; не залишається тільки блакитне selection circle. Будівля/дерево затінюють правильний receiver без виходу на дах/UI/невідоме. |
-| WATER | Відео показує рух ряби й піни; reflection рухається/гасне з caster, не накриває берег/міст; відключення caster видаляє відображення. Водоспадів немає. |
-| WET | Та сама земля суха/мокра при тих самих lights: мокрі ділянки мають контрольований specular response; UI й сухий дах не стають блискучими. |
-| HAZE | Два однакові об'єкти на різній world depth мають різну контрольовану attenuation; pan не прив'язує haze до екрана, ближній unit залишається читабельним. Hidden object не видається силуетом. |
-| SNOW | Після проходу мешканця залишаються послідовні L/R сліди; standing/pause/teleport не штампують нові; сліди зникають від віку/засипання/танення й не з'являються на воді/даху/мості без snow receiver. |
-| INPUT | Візуальний FX не змінює picking або commands; частинки й тіні не отримують hit target. UI читається й не потрапляє в world grade. |
-| ART | 5–7 споруд читаються як один комплект: проєкція, масштаб, контакт, деталізація, матеріали й світло. Окремий красивий PNG не приймається замість сцени. |
+| LIGHT | Turn on one window: its emission and light patch appear together; turn it off and both disappear. Move the occluder: the shadow within the patch moves; there is no lighting outside radius/cone. Camera pan/zoom does not move the light relative to the ground. |
+| SHADOW | A resident and cargo move: each shadow remains anchored, changing silhouette/direction; a blue selection circle alone does not count. A building/tree shadows the correct receiver without leaking onto roof/UI/unknown areas. |
+| WATER | Video shows ripples and foam moving; a reflection moves/fades with its caster and does not cover the shore/bridge; disabling the caster removes the reflection. There are no waterfalls. |
+| WET | The same ground is dry/wet under the same lights: wet areas have a controlled specular response; the UI and dry roof do not become shiny. |
+| HAZE | Two identical objects at different world depths have different controlled attenuation; pan doesn't attach haze to the screen, the nearest unit remains readable. The hidden object is not silhouetted. |
+| SNOW | After a resident passes, sequential L/R footprints remain; standing/pause/teleport does not stamp new ones. Tracks disappear through aging/covering/melting and do not appear on water/roof/bridge without a snow receiver. |
+| INPUT | Visual FX does not change picking or commands; particles and shadows receive no hit target. The UI remains readable and outside the world grade. |
+| ART | 5–7 buildings read as one set in projection, scale, contact, detail, materials, and light. One attractive PNG is not accepted as a substitute for the scene. |
 
-Для spatial checks на native 1080p контрольному zoom використовувати debug receiver/occluder overlays й контрольні точки: стартовий допуск anchor drift ≤2 physical pixels на нерухомій поверхні; leakage поза маскою, крім ≤1 pixel AA boundary, — fail. Це **запропоновані пороги для proof**, їх не називати виміряними.
+For spatial checks at the native 1080p control zoom, use debug receiver/occluder overlays and control points: the initial tolerance for anchor drift is ≤2 physical pixels on a stationary surface; leakage outside the mask, except for a ≤1 pixel AA boundary, fails. These are **proposed proof thresholds** and must not be reported as measured.
 
-Художній критерій оцінюється окремо від correctness: 0/1/2 за композицію, масштаб, матеріали, контакт, світло, воду, атмосферу, рух, UI, читабельність. Dev.09: ≥16/20 і жодного 0; фінальна 0.26.1: ≥18/20 і жодного 0. Оцінювач не автор ассетів. Бал не замінює відео й не приховує проваленого функціонального критерію.
+Artistic quality is scored separately from correctness: 0/1/2 for composition, scale, materials, contact, light, water, atmosphere, motion, UI, and legibility. Dev.09 requires ≥16/20 with no 0; final 0.26.1 requires ≥18/20 with no 0. The evaluator is not the asset author. A score does not replace video or conceal a failed functional criterion.
 
-## 7. Довідкові24 технічні пакети повного графічного напряму
-Це деталізація попереднього повного обсягу, включно з відкладеним освітленням. Поточний порядок базової гілки — V00–V05, майбутнього Dynamic — DL-01–08. Номери нижче збережені як cross-reference work packages; вони більше не означають24 обов’язкові послідовні збірки0.26.1.
+## 7. Reference: 24 technical packages for the full graphics direction
+This details the previous full scope, including deferred lighting. The current base-branch order is V00–V05; the future Dynamic order is DL-01–08. The numbers below remain as cross-reference work packages; they no longer mean 24 mandatory sequential builds 0.26.1.
 
-| Dev | Результат і що змінюється | Основні місця | Обов'язковий вихід / залежність |
+| Dev | Result and change | Main locations | Required output/dependency |
 |---|---|---|---|
-| 01 | Baseline, fixture, camera/scale/perf, capability inventory | view, renderer, існуючі capture/probe tools | Manifest + реальний відеобейзлайн; нічого не «покращено» |
+| 01 | Baseline, fixture, camera/scale/perf, capability inventory | view, renderer, existing capture/probe tools | Manifest + real baseline video; nothing is mocked as “improved” |
 | 02 | Material/pipeline/resource contracts, shader reflection build, linear/alpha path | render_frame, renderer2d, shaders, cmake, shader tests | Offscreen sample/composite, resize/minimize/device/allocation failure; E01/E02/E08 |
-| 03 | Малий asset kit + metadata/windows/casters/receivers | GameArt, world.json, art exporters | House/store/workshop/unit/tree/ground/water masks; без масового export |
-| 04 | Узгоджені receiver triangles, occluders, viewport, reveal masks | terrain_surface, GameView, Core spec | Surface/picking/masks/debug fixtures збігаються; 02–03 |
+| 03 | Small asset kit + metadata/windows/casters/receivers | GameArt, world.json, art exporters | House/store/workshop/unit/tree/ground/water masks; no mass export |
+| 04 | Consistent receiver triangles, occluders, viewport, and reveal masks | terrain_surface, GameView, Core spec | Surface/picking/masks/debug fixtures agree; 02–03 |
 | 05 | Window ground lighting, emission, contact/directional shadows, wet ground | Core materials/passes | LIGHT/SHADOW/WET native videos; 04 |
-| 06 | Flow water, shore foam, bounded reflection | World FX + water material | WATER video з берегом/мостом/hidden caster; 04 |
-| 07 | Haze, smoke/wind, rain/snow prototype | World FX | HAZE/precipitation clips, pause/quality; diagnostic погодний ввід |
-| 08 | Local footsteps і compressed snow appearance | World FX + movement observation | SNOW edge cases й bounded cache; 04/07 |
-| 09 | Усі ефекти в одній малій справжній сцені | Повний production rendering path | **G1: вигляд + correctness + perf. Без проходу масові ассети заблоковані** |
-| 10 | Compact concept HUD і input skeleton | RmlUi assets/GameUi/GameView | 720p/1080p/1440p, scale/locales; weather fields ще hidden |
-| 11 | Terrain edge/path/build rules, видалення Road і bonus | Sim/world_grid/path/server/UI | Canonical preview/server + compatibility tests; збережений Bridge |
-| 12 | Детермінована valley generation | world/biomes/generation profile | Один кандидат demo seed + 10 regression seeds, reachability; 11 |
+| 06 | Flow water, shore foam, bounded reflection | World FX + water material | WATER video with shore/bridge/hidden caster; 04 |
+| 07 | Haze, smoke/wind, rain/snow prototype | World FX | HAZE/precipitation clips, pause/quality; diagnostic weather input |
+| 08 | Local footsteps and compressed snow appearance | World FX + movement observation | SNOW edge cases and bounded cache; 04/07 |
+| 09 | All effects in one small real scene | Full production rendering path | **G1: appearance + correctness + perf. Mass assets remain blocked until this passes** |
+| 10 | Compact concept HUD and input skeleton | RmlUi assets/GameUi/GameView | 720p/1080p/1440p, scale/locales; weather fields still hidden |
+| 11 | Terrain edge/path/build rules, removal of Road and bonus | Sim/world_grid/path/server/UI | Canonical preview/server + compatibility tests; Bridge preserved |
+| 12 | Deterministic valley generation | world/biomes/generation profile | One candidate demo seed + 10 regression seeds, reachability; 11 |
 | 13 | WT-01 authoritative weather/temp/cover/work, calendar offset | Weather spec sim/rules | Golden schedule, affected/unaffected work matrix, FirstStorm food buffer |
-| 14 | WT-02 save/net/reconnect/forecast/current °C | schemas/protocol/ClientSession/UI | Full/delta/split/latejoin/persistence, жодних client-random цифр; 13 |
-| 15 | Фінальні береги/скелі/рослинність/земля і receivers | terrain assets/generation/render | Новий world surface зберігає LIGHT/WATER/SHADOW correctness; 09/12 |
-| 16 | Повний доступний building kit + states/II | Asset spec/export/loader | Camp + 11 типів, construction/ready/winter/selection, runtime contact sheet; 09/15 |
-| 17 | Повний resident/cargo/job art + coherent motion | UnitAnimation/resident_art/GameView | 8 facing × 4 walk frames, cargo truth, footstep cadence, depth; 09/15 |
-| 18 | Повна інтеграція atmosphere/materials зі справжньою погодою | Core + FX + WeatherView | Day/night/rain/storm/cover/melt, без diagnostic weather у звичайній грі; 14–17 |
-| 19 | Правдивий компактний/повний inspector, per-storage projection | GameUi/snapshot/save/net | Два склади з різним запасом, reservation/cargo, чинні upgrade/production |
-| 20 | Мінімапа й остаточний input/DPI | RmlUi/Minimap/GameView | Revealed map/viewport/click/drag/keyboard, без legacy HUD |
-| 21 | Culling/quality/performance і ресурсні межі | Renderer/assets/FX | 20–30 residents + storm + lights, profiles кожного tier; 18–20 |
-| 22 | Наскрізний ігровий регресійний прогін | Sim/net/UI/render/tests | 10 seeds, normal start, FirstStorm, food/logistics/noRoad, full configured CTest |
-| 23 | RC package | Packaging/assets/shaders/launcher | Clean extract/launch/save/load, hashes/manifest, усі shader/material assets включені |
-| 24 | Приймання 0.26.1 на Windows і двох ПК | Той самий RC | Погода/стан світу синхронні, два фізичні ПК, звіт; якщо недоступні — лише локальний кандидат |
+| 14 | WT-02 save/net/reconnect/forecast/current °C | schemas/protocol/ClientSession/UI | Full/delta/split/latejoin/persistence, no client-random numbers; 13 |
+| 15 | Final shores/cliffs/vegetation/ground and receivers | terrain assets/generation/render | The new world surface preserves LIGHT/WATER/SHADOW correctness; 09/12 |
+| 16 | Full available building kit + states/II | Asset spec/export/loader | Camp + 11 types, construction/ready/winter/selection, runtime contact sheet; 09/15 |
+| 17 | Full resident/cargo/job art + coherent motion | UnitAnimation/resident_art/GameView | 8 facing × 4 walk frames, cargo truth, footstep cadence, depth; 09/15 |
+| 18 | Full atmosphere/material integration with real weather | Core + FX + WeatherView | Day/night/rain/storm/cover/melt, with no diagnostic weather in normal gameplay; 14–17 |
+| 19 | Accurate compact/full inspector, per-storage projection | GameUi/snapshot/save/net | Two warehouses with different stocks, reservation/cargo, current upgrade/production |
+| 20 | Minimap and final input/DPI | RmlUi/Minimap/GameView | Revealed map/viewport/click/drag/keyboard, without legacy HUD |
+| 21 | Culling/quality/performance and resource limits | Renderer/assets/FX | 20–30 residents + storm + lights, profiles of each tier; 18–20 |
+| 22 | End-to-end gameplay regression run | Sim/net/UI/render/tests | 10 seeds, normal start, FirstStorm, food/logistics/noRoad, full configured CTest |
+| 23 | RC package | Packaging/assets/shaders/launcher | Clean extract/launch/save/load, hashes/manifest, all shader/material assets included |
+| 24 | Acceptance of 0.26.1 on Windows and two PCs | The same RC | Weather/world state synchronized, two physical PCs, report; if unavailable, only a local candidate |
 
-У dev.01–09 допускається static diagnostic weather fixture для графічного експерименту. Це не обходить WT-01/02 і не вмикає фальшивий forecast. Зміна нижчих контрактів після dev.09 повторює відповідний proof; наприклад нова геометрія берега у dev.15 повторює water/receiver tests.
+A static diagnostic weather fixture is allowed in dev.01–09 for graphics experiments. It does not bypass WT-01/02 or enable a fake forecast. Any change to lower-level contracts after dev.09 repeats the corresponding proof; for example, new shore geometry in dev.15 repeats water/receiver tests.
 
-Для відкладеного повного графічного напряму первісний dependency шлях: 01→02→03→04→05/06/07/08→09→10/11→12→13→14→15/16/17→18→19/20→21→22→23→24. Паралельність дозволена лише після фіксації спільного contract; один renderer owner інтегрує passes.
+For the deferred full graphics direction, the original dependency path is 01→02→03→04→05/06/07/08→09→10/11→12→13→14→15/16/17→18→19/20→21→22→23→24. Parallel work is allowed only after the shared contract is fixed; one renderer owner integrates the passes.
 
 ## 8. Production asset pipeline
-Докладний паспорт у [ART_PRODUCTION_SPEC_UA.md](ART_PRODUCTION_SPEC_UA.md). Рушій не створить потрібний стиль із неузгоджених текстур. Кожен asset має source/master, camera/export settings, neutral base, alpha, emission/snow/shadow або ground normal/material maps, anchors, bounds і native contact sheet. Legacy/BakedCompat зберігається; майбутній Dynamic2_5D потребує normal/depth карт фасадів і мешканців за окремою специфікацією.
+The detailed passport is defined in [ART_PRODUCTION_SPEC_UA.md](ART_PRODUCTION_SPEC_UA.md). The engine cannot produce the required style from inconsistent textures. Each asset has a source/master, camera/export settings, neutral base, alpha, emission/snow/shadow or ground normal/material maps, anchors, bounds, and a native contact sheet. Legacy/BakedCompat is preserved; future Dynamic2_5D requires facade and resident normal/depth maps under a separate specification.
 
-До dev.09 виготовляється лише малий kit. Після приймання — весь доступний каталог. Наявні PNG можуть лишитися, тільки якщо проходять той самий паспорт/масштаб/матеріали; «вже є файл» не є acceptance.
+Only a small kit is produced before dev.09. After acceptance, produce the full available catalog. Existing PNG files may remain only if they pass the same passport/scale/material requirements; “the file already exists” is not acceptance.
 
-## 9. Продуктивність, сумісність і бюджет
-Початкові цілі, **не результати вимірювання**:
-- 1920×1080 Medium на зафіксованій RTX 3050 Laptop конфігурації: p95 frame ≤16.7 ms, p99 ≤25 ms у 120-секундному сценічному прогоні після warmup; жоден regular gameplay frame >50 ms через FX.
-- GPU world rendering як робочий бюджет ≤10 ms; CPU preparation FX ≤2 ms/frame; фактична sim/UI частка вимірюється окремо. Якщо GPU timestamps недоступні, не підміняти GPU час CPU submit — позначити відсутність виміру.
-- 1280×720 Low на окремо зафіксованій інтегрованій GPU: початковий budget 33.3 ms p95, p99 ≤50 ms. Це тестова ціль, не вже опубліковані min specs.
-- Additional render targets/caches та atlas residency мають числовий ledger у Core/Asset specs. Загальний пік важливіший за розмір одного PNG. Потік allocation не повторюється кожен frame.
-- Для кожного tier: screen resolution, internal scale, lights/occluders/water/reflection/particles/decals caps, активний GPU/driver, sample count, p50/p95/p99, memorypeak, overflow counts.
-- Обов'язковий ефект не може зникнути у Low. Якщо обсяг не вкладається, потрібне явне переглянуте рішення, а не тихе спрощення acceptance.
+## 9. Performance, compatibility, and budget
+Initial objectives, **not measurement results**:
+- 1920×1080 Medium on the recorded RTX 3050 Laptop configuration: p95 frame ≤16.7 ms, p99 ≤25 ms during a 120-second scene run after warmup; no regular gameplay frame >50 ms because of FX.
+- GPU world rendering working budget ≤10 ms; CPU FX preparation ≤2 ms/frame; measure the actual sim/UI share separately. If GPU timestamps are unavailable, do not substitute CPU submit for GPU time—mark the measurement unavailable.
+- 1280×720 Low on the separately fixed integrated GPU: initial budget 33.3 ms p95, p99 ≤50 ms. This is a test target, not yet published min specs.
+- Additional render targets/caches and atlas residency have a numerical ledger in the Core/Asset specs. Total peak use matters more than the size of one PNG. Allocation must not repeat every frame.
+- For each tier: screen resolution, internal scale, lights/occluders/water/reflection/particles/decals caps, active GPU/driver, sample count, p50/p95/p99, memorypeak, overflow counts.
+- A mandatory effect cannot disappear on Low. If the scope does not fit, record an explicit revised decision instead of silently weakening acceptance.
 
-Наявна flat-quad тінь чи disabled reflection є допустимим safe failure під час розробки, але не фінальним виконанням обіцяного ефекту.
+An existing flat-quad shadow or disabled reflection is an acceptable safe failure during development, but not final delivery of the promised effect.
 
-## 10. Ризики і ранні перевірки
-| Ризик | Як виявити рано | Що робити |
+## 10. Risks and early checks
+| Risk | How to detect it early | Response |
 |---|---|---|
-| Sprite silhouette не дає переконливої тіні/відбиття | Один unit + house біля води, різні heights/zoom, dev.05/06 | Додати authored caster/height slices; повторити proof; не маскувати за blur |
-| Світло проходить крізь фасад/гора ріже пляму | Receiver debug + moving occluder/slope/cliff fixture | Виправити receiver/visibility model до масових карт |
-| Подвійне baked/runtime освітлення | Neutral-lit asset vs світло off/on | Розділити authored AO, emission і ground illumination, вилучити legacy duplicates |
-| Glow/particles видають приховану будівлю | Дві однакові видимі сцени з різним hidden world | Видимі pixels мають лишитися однаковими поза AA boundary |
-| Вартість PNG/масок виростає непомітно | Byte ledger та runtime peak на малому kit | Atlas reuse/lifetime/mips/format; не множити всі карти на кожен variant |
-| Cosmetic time впливає на sim або pause | Hash sim при FX off/on, pause/2×/resume | Єдиний clock adapter; жодних callbacks із GPU в sim |
-| Сліди створюють нові дороги | Перевірити speed/path/hash однаково зі слідами й без | Лише локальні decals; finite lifetime; жодного traffic accumulator |
-| План знову підміняє результат | До кожного «готово» build+native video+tests+провалені критерії | Незалежний reviewer, не автор макета |
+| Sprite silhouette does not produce a convincing shadow/reflection | One unit + house near water, different heights/zoom, dev.05/06 | Add authored caster/height slices; repeat the proof; do not conceal the issue with blur |
+| Light passes through a facade or a hill cuts the patch | Receiver debug + moving occluder/slope/cliff fixture | Fix the receiver/visibility model before mass asset production |
+| Double baked/runtime lighting | Neutral-lit asset with lighting off/on | Separate authored AO, emission, and ground illumination; remove legacy duplicates |
+| Glow/particles reveal a hidden building | Two identical visible scenes with different hidden worlds | Visible pixels must remain identical outside the AA boundary |
+| PNG/mask cost grows unnoticed | Byte ledger and runtime peak for the small kit | Reuse atlases, control lifetime/mips/format; do not multiply every map for every variant |
+| Cosmetic time affects simulation or pause | Compare simulation hashes with FX off/on and pause/2×/resume | Use one clock adapter; no GPU-to-simulation callbacks |
+| Footprints create new roads | Verify identical speed/path/hash with and without footprints | Local decals only; finite lifetime; no traffic accumulator |
+| The plan again substitutes for results | Every “done” claim includes build+native video+tests+failed criteria | Independent reviewer, not the concept author |
 
-## 11. Докази і завершення
-Артефакти майбутньої реалізації: `artifacts/graphics-v2/dev-XX/` з capture manifest, raw screenshot, безперервним video, machine/perf JSON і журналом тестів. Manifest: commit/build, shader+asset hashes, renderer/backend, GPU/driver, native/internal/logical resolution, UI scale, seed/save hash, world/camera/zoom, tick/calendar/epoch/weather, quality, test ID, expected/actual, unresolved issues.
+## 11. Evidence and completion
+Future implementation artifacts go under `artifacts/graphics-v2/dev-XX/` with a capture manifest, raw screenshot, continuous video, machine/perf JSON, and test log. The manifest records commit/build, shader+asset hashes, renderer/backend, GPU/driver, native/internal/logical resolution, UI scale, seed/save hash, world/camera/zoom, tick/calendar/epoch/weather, quality, test ID, expected/actual, and unresolved issues.
 
-Software probe, generated image, JPEG collage або «тести зелені» не замінює D3D12 відео. Screenshot не доводить рух води, тіней, появу слідів, снігопад або відновлення стану. Full CTest не доводить двох фізичних ПК. Недоступний зовнішній доказ позначається невиконаним.
+A software probe, generated image, JPEG collage, or “green tests” does not replace D3D12 video. A screenshot does not prove movement of water, shadows, trails, snowfall, or recovery. Full CTest does not prove two physical PCs. Unavailable external evidence is marked as not run.
 
-**Поточний виконуваний порядок — V01–V05**. Повний material/light graph починається тільки в майбутній DL-гілці. Ця редакція виправляє план; не створює новий executable і не дозволяє називати 0.26.1 готовою.
+**The current sequence to execute is V01–V05.** The full material/light graph begins only in the future DL branch. This revision corrects the plan; it does not create a new executable or permit 0.26.1 to be called ready.
 
-## 12. Первинні технічні джерела
-SDL дозволяє окремі render targets/passes і визначає їхній lifecycle; capability конкретного формату перевіряється з потрібними usage flags. Це обґрунтовує запропонований шлях API, але не доводить швидкість чи художню якість Ribterra:
+## 12. Primary technical sources
+SDL supports separate render targets/passes and defines their lifecycle; support for a specific format is checked with the required usage flags. This supports the proposed API path but does not prove Ribterra's speed or artistic quality:
 - [SDL GPU overview](https://wiki.libsdl.org/SDL3/CategoryGPU)
-- [Render pass: load/store і межі](https://wiki.libsdl.org/SDL3/SDL_BeginGPURenderPass)
+- [Render pass: load/store and boundaries](https://wiki.libsdl.org/SDL3/SDL_BeginGPURenderPass)
 - [Texture format capability](https://wiki.libsdl.org/SDL3/SDL_GPUTextureSupportsFormat)
 - [Shader bindings contract](https://wiki.libsdl.org/SDL3/SDL_CreateGPUShader)
 
-## 13. Зміни від V1
-Додано відсутній renderer/material/resource план; проєктоване світло й тіні; wetness; bounded reflections; окремий haze; footprints; asset production; ранні performance/correctness gates. 15 dev-етапів замінено 24. Погода/генератор/дороги/UI/демо scope збережені. Графічні ілюзії прямо відділено від фізичних симуляцій. Жоден новий ефект не позначено реалізованим.
+## 13. Changes from V1
+Added the missing renderer/material/resource plan; projected lighting and shadows; wetness; bounded reflections; separate haze; footprints; asset production; and early performance/correctness gates. Replaced 15 development stages with 24. Preserved weather/generator/roads/UI/demo scope. Explicitly separated graphics illusions from physical simulations. No new effect is marked implemented.
 

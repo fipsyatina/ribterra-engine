@@ -1,109 +1,111 @@
 # Water / Reflection V1 — bounded native checkpoint 08.10.2026
 
-Статус: **BOUNDED GPU CHECKPOINT PASS / ПОВНИЙ ДВИГУН НЕ ПРИЙНЯТО**.
-Всі E01–E17 відкриті. Це ізольована технічна сцена того самого renderer,
-а не нормальний запуск гри, новий реліз чи готовий концепт-арт.
-Контракт: [Water / Reflection V1](WATER_REFLECTION_V1_CONTRACT_UA.md).
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Актуальніший bounded follow-up: [raw binary WaterCoverage та odd-size resize](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md), fresh build02/native05–06. Нижче незмінні за змістом докази попередньої build01/native01–02; їхні SHA/числа не підмінено новими. Intermediate AA, повний двигун і FPS відкриті.
+Status: **BOUNDED GPU CHECKPOINT PASS / Full release date has not been released**.
+All E01–E17 are open. This is an isolated technical scene from the same renderer,
+Not a normal launch, a new release, or a ready-made concept art.
+The contract is [Water / Reflection V1](WATER_REFLECTION_V1_CONTRACT_UA.md).
 
-## Що реалізовано й перевірено
+The most current bounded follow-up: [raw binary WaterCoverage and odd-size resize](WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md), fresh build02/native05–06. Below is the unchanging in content of the evidence of the preceding build01/native01–02; Their SHA/numbers are not replaced by new ones. Intermediate AA, full engine and FPS open.
 
-- Окремий кумулятивний `WaterReflectionSlice` у спільному SDL_GPU renderer;
-  старі графи не переключені. Збережені sun/moon shadow paths,
-  Contact V1 ABI, матеріальне та локальне освітлення.
-- П'ятий MRT RGBA8 містить воду/клас/берег/дозвіл Reflection.
-  `SurfaceWorld.W` лишається точним Contact-тегом 0/1/2.
-- Два world-anchored normal потоки, показаний час і вітер, bounded distortion;
-  берегова піна освітлюється як diffuse, а не світиться сама вночі.
-- Half-resolution HDR Reflection має source lighting, premultiplied alpha
-  і одну strength; фінальний receiver gate виключає сушу, настил та невідоме.
-- Opt-in `GameView::compose_engine_control` використовує actual ClientSession
-  Water, завершені Bridge і reveal. Новий нормальний startup не підключений.
-- Technical art kit: нейтральний будинок/мешканець і періодична normal-карта.
-  Це мінімальний контрольний матеріал, не копії фінальних концепт-ассетів.
+## What Has Been Done and Checked
 
-## Свіжа збірка
+- A separate cumulative `WaterReflectionSlice` in a common SDL_GPU renderer;
+  The old graphs are not switched. Saved sun/moon shadow paths,
+  Contact V1 ABI, material and local lighting.
+- The fifth MRT RGBA8 contains water/class/coast/dwell Reflection.
+  `SurfaceWorld.W` remains the exact Contact tag 0/1/2.
+- Two world-anchored normal flows, shown time and wind, bounded distortion;
+  The coastal pine is lit up as a diffuse, not lit up at night.
+- Half-resolution HDR Reflection has source lighting, premultiplied alpha
+  and one strength; The final receiver gate excludes dry, unknown and unknown.
+- The opt-in `GameView::compose_engine_control` uses actual ClientSession
+  Water, complete the bridge and reveal. The new normal startup is not connected.
+- Technical art kit: neutral house/resident and periodic normal card.
+  It's a minimal control material, not a copy of the final concept assets.
 
-`build/gameview-water-2026-10-08-attempt01` — фактичний exit 0.
+## Fresh collection
+
+`build/gameview-water-2026-10-08-attempt01` — actual exit 0.
 22 translation units, 142 frozen source bindings; 108/108 command exit-sidecars
-мають 0. Свіжі 20 shader programs / 40 stages, 44 source dependencies,
-81 shader artifacts; 52/52 kit files та 50 manifest assets перевірені.
-5 protected startup/launcher anchors не змінені.
+So they have 0. Fresh 20 shader programs / 40 stages, 44 source dependencies,
+81 shader artifacts; 52/52 kit files and 50 manifest assets verified.
+5 protected startup/launcher anchors are unchanged.
 
-Розмір: 476 файлів, 114 888 094 B (109,566 MiB); executable 42 599 424 B.
+Size: 476 files, 114 888 094 B (109,566 MiB); executable 42 599 424 B.
 
-| Доказ | SHA-256 |
+| The Evidence | SHA-256 |
 | --- | --- |
 | `GameViewWaterProbe.exe` | `A3E59C9491B30E3E06B83281BE0FDB3DCC3A250B6DC653DE76007F96F2CD6B96` |
 | `build-report.json` | `2E70EB153C9E388F6E287FBF4F75584C26B9FE29925FF86C92A34BCB5B22939A` |
 | Shader `manifest.json` | `F00F4F4C4F542C086761F717BEA8B07B5FA86CC4A987A52188D3BF170D543B78` |
-| Native report (обидва) | `F77E657752CD6485F2513625AA9F1A2CFB21A695ECEC1B538817B048A27B1CE5` |
+| Native report (both) | `F77E657752CD6485F2513625AA9F1A2CFB21A695ECEC1B538817B048A27B1CE5` |
 | Root evidence ledger | `BBFA3E9B262FDCE4AD7E49C4499A9E6F422BF106629977C5B38DBF4F43FF8FE0` |
 
-Незалежний аудит підтвердив frozen build cohort. Не запускали загальну
-збірку/CTest/install/package, не міняли release version або dist pointer.
+An independent audit confirmed the frozen build cohort. Didn't run the general
+collection/CTest/install/package, did not change release version or dist pointer.
 
-## Два реальні native прогони
+## Two real native persecutions
 
-`build/gameview-water-native-2026-10-08-attempt01` і `...attempt02`:
-фактичний exit 0 кожного. Видимі SDL вікна, native Direct3D 12,
-NVIDIA GeForce RTX 3050 Laptop GPU, driver `32.0.15.9282`, не software renderer.
-Кожен output: 14 GPU PNG 1920×1080, JSON report і current-schema save.
-Розміри відповідно 6 426 405 та 6 426 410 B.
+`build/gameview-water-native-2026-10-08-attempt01` and `...attempt02`:
+the actual exit 0 of each. Viewable SDL window, native Direct3D 12,
+NVIDIA GeForce RTX 3050 Laptop GPU, driver `32.0.15.9282`, not a software renderer.
+Each output is 14 GPU PNG 1920×1080, JSON report and current-schema save.
+The dimensions are respectively 6 426 405 and 6 426 410 B.
 
-- 51 water cells, 3 завершені вузькі E–W bridge decks, 2 reflected controls.
-  `water_draws=49` — prepared GPU batches після merge, не кількість клітин.
+- 51 water cells, 3 completed narrow E–W bridge decks, 2 reflected controls.
+  `water_draws=49` — prepared GPU batches after merging, not the number of cells.
 - 8 submitted GPU passes: SunShadow → MoonShadow → Reflection → GroundGBuffer
   → GroundLighting → WorldForward → Composite → UI.
-  Contact pass не викликано через порожній input у цій сцені; це не повна
-  спільна дев'ятипрохідна сцена з усіма ефектами.
-- Reflection toggle: 9 885 змінених пікселів; показаний час: 54 318;
-  shore toggle: 5 098. Зміни обмежені водою за diagnostic CPU classifier
-  з допуском 1 physical pixel на межі. **Це не raw carrier/AA proof.**
-- 6 actual GPU camera captures: zoom 0,62 / 1,3 / 2 та два pan для кожного.
-  Zoom 3 і native keyboard/mouse input цим не перевірені.
-- Same clock і after-reject кадри точно дорівнюють baseline.
-  Hidden receiver з Reflection on/off також byte-exact.
-  Final PNG alpha перевірена як 255 в усіх пікселях.
-- 6 invalid inputs фактично відхилені: non-unit flow, excess distortion,
+  The contact pass is not triggered by an empty input in this scene; It's not full.
+  It's a nine-pass scene with all the effects.
+- Reflection toggle: 9 885 of the pixels changed; the time shown: 54 318;
+  shore toggle: 5 098. Changes restricted by water for diagnostic CPU classifier
+  with the physical pixel 1 on the edge. **This is not raw carrier/AA proof.**
+- 6 actual GPU camera captures: zoom 0,62 / 1,3 / 2, and two pan for each.
+  Zoom 3 and native keyboard/mouse inputs are not verified by this.
+- Same clock and after-reject frames exactly match the baseline.
+  The hidden receiver from Reflection on/off is also byte-exact.
+  Final PNG alpha is verified as 255 in all pixels.
+- 6 invalid inputs are actually rejected: non-unit flow, excess distortion,
   fractional ground/caster reveal, unsupported authored AA coverage,
   invalid reflection material index.
-- Повторний запуск у вже наявний output фактично повернув exit 1
-  `Native output already exists`; failure JSON не створено.
+- Rebooting the already existing output actually returned the exit 1
+  `Native output already exists`; failure JSON is not created.
 
-14/14 PNG і оригінальний JSON byte-exact між прогонами.
-Save-файли різні через fresh secure random `world_id`; не заявляємо
-детермінізм цілого 16-файлового дерева.
+14/14 PNG and the original JSON byte-exact between the probes.
+Save files are different through fresh secure random `world_id`; We're not saying
+the determinism of the entire 16 file tree.
 
-## Межа доказів і пам'яті
+## The Limits of Evidence and Memory
 
 [`water-native-root-evidence-oct8.json`](../../.omx/plans/water-native-root-evidence-oct8.json)
-зв'язує build report, executable, shader/kit manifest, probe source і всі
-native outputs шляхом path/bytes/SHA. Незалежно перевірені 37/37 bindings,
-без зайвих файлів у двох native roots. Exits записані основним агентом за
-реальними результатами запуску; це **не binary-generated exit sidecars,
-не підписаний незалежний execution transcript**. Оригінальні звіти не переписані.
+It connects build report, executable, shader/kit manifest, probe source and all.
+native outputs by path/bytes/SHA. Independently verified 37/37 bindings,
+No extra files in two native roots. Exits recorded by the main agent for
+the actual results of the launch; These are **non-binary-generated exit sidecars,
+not signed independent execution transcript**. The original reports are not reproduced.
 
-На 1080p ground graph: 174 182 400 B; sky maps: 16 777 216 B;
+For 1080p ground graph: 174 182 400 B; sky maps: 16 777 216 B;
 tracked steady nominal texture payload: 190 959 616 B (~182,11 MiB).
-Це **не total VRAM**: без swapchain, buffers, art, driver overhead,
-одночасного old+candidate при resize. Odd-size allocation/rollback ще не доказані.
+This is **not total VRAM**: no swapchain, buffers, art, driver overhead,
+the same old+candidate at the resizing. Odd-size allocation/rollback is not proven yet.
 
-Raw baseline та zoom-2 capture візуально оглянуті й зіставлені з літнім
-target-0262: сіра технічна сцена явно не відповідає готовій художній сцені.
-GPU readback не є desktop scanout, відео або перевіркою ручного вводу.
-Native computer automation на цьому інструменті недоступна.
+Raw baseline and zoom-2 capture visually reviewed and compared to summer
+target-0262: the gray technical scene clearly does not match the finished art scene.
+GPU readback is not a desktop scanout, video or manual input verification.
+Native computer automation is not available on this tool.
 
-## Що ще відкрите
+## What else can you open?
 
-Raw coverage/класи/AA-край; odd resize і allocation failure rollback;
-native pan/zoom/pause/video; весь погодний і атмосферний стек разом;
-концепт-арт, normal startup, графічні presets; GPU timing, displayed FPS,
-мінімум 120 FPS у 1080p і плавність; актуальна повна suite.
-Лише після E01–E17 — подальша гра, генератор і фінальний HUD.
+Raw coverage/classes/AA-exit; odd resize and allocation failure rollback;
+native pan/zoom/pause/video; the whole weather and atmosphere stack together;
+Concept art, normal startup, graphical presets; GPU timing, displayed FPS,
+minimum 120 FPS in 1080p and smoothness; It's a full suite.
+Only after E01–E17 — the next game, the generator and the final HUD.
 
-Сховище: жодного видалення цього checkpoint. Нові roots не замінюють
-launcher; надалі latest + verified rollback + компактні докази за
-[політикою зберігання](../ARTIFACT_RETENTION_UA.md). Перед будь-яким
-видаленням старих файлів потрібні конкретні шляхи й причина.
+Storage: no removal of this checkpoint. New roots are not replacement
+launcher; Furthermore, the latest + verified rollback + compact evidence for
+[the conservation policy](../ARTIFACT_RETENTION_UA.md). Before anyone else
+There are specific ways and reasons to delete old files.

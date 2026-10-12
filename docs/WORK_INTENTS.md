@@ -1,46 +1,48 @@
-# Продовження роботи та призначення будівельників 0.8
+# Work continuation and builder assignment in 0.8
 
-Статус: локальні 40/40 CTest, GPU, benchmark та package smoke 0.8 пройдено; CI source commit `f62cea0` пройдено: Windows 40/40, Linux 26/26, UBSan 8/8. Повний обсяг рушія зберігається в [ENGINE_REQUIREMENTS.md](ENGINE_REQUIREMENTS.md), фактичні докази — у [VALIDATION.md](VALIDATION.md). Цей документ не є заявою про готовність повного Utility AI.
+> English translation of a historical project document. Results apply to the named versions and snapshots. The original wording is retained in import commit `7388a2f`; translation does not validate the current build.
 
-Це історичний модульний контракт **0.8**; версії й наведене приймання нижче належать саме йому. Поточна **0.9: protocol 6/rules 6/generator 2/save 7** додає професії, автоматичний вибір сумісної роботи, часткові Assign/Stop і незалежні навички поверх Work Intents. Прийняті зміни під захищеною доставкою чекають її завершення. Деталі: [професії](PROFESSIONS_PLAN_UA.md), [SKILLS.md](SKILLS.md), [SAVE_FORMAT.md](SAVE_FORMAT.md); актуальні локальні/GPU/package докази — [VALIDATION.md](VALIDATION.md), CI 0.9 для `d3bc785` успішний; повторний CI `42036ff` пройдено без C++ warnings та UBSan errors; джерело й пакет розділено у VALIDATION. Повний AI та ручна черга/каталог команд залишаються відкритими.
+Status: local 40/40 CTest, GPU, benchmark, and package smoke for 0.8 passed. CI source commit `f62cea0` passed Windows 40/40, Linux 26/26, and UBSan 8/8. The complete engine scope remains in [ENGINE_REQUIREMENTS.md](ENGINE_REQUIREMENTS.md); actual evidence is in [VALIDATION.md](VALIDATION.md). This document does not claim complete Utility AI readiness.
 
-## Поведінка
+This is the historical **0.8** module contract; the versions and acceptance below apply to that slice. **0.9: protocol 6/rules 6/generator 2/save 7** adds professions, automatic selection of compatible work, partial Assign/Stop, and independent skills on top of Work Intents. Changes accepted during protected delivery wait for its completion. See [professions](PROFESSIONS_PLAN_UA.md), [SKILLS.md](SKILLS.md), and [SAVE_FORMAT.md](SAVE_FORMAT.md). Local/GPU/package evidence is in [VALIDATION.md](VALIDATION.md). CI 0.9 for `d3bc785` succeeded; repeated CI for `42036ff` passed without C++ warnings or UBSan errors. VALIDATION distinguishes source and package. Complete AI and the manual queue/command catalog remain open.
 
-Після фізичного dropoff доставка лишається Complete. Окремий WorkIntent зберігає намір повернутися до збору. Якщо admission у чергу маршрутів тимчасово неможливий, мешканець чекає та повторює спробу. Вичерпання очікуваного ресурсу до постановки або до застосування маршруту завершує збір як Exhausted; несумісна ціль лишається типізованою помилкою. Нова спроба не створює додаткових предметів і не додає XP.
+## Behavior
 
-Оплачена споруда у Work зберігає прогрес, коли останній працівник помирає або отримує інший наказ. Планувальник вибирає вільного мешканця тієї самої нації, резервує його через BuildAssignment і прокладає звичайний маршрут. Робота продовжується лише після завершення маршруту та прибуття на сусідню клітину; матеріали не списуються повторно. Наявні працівники інших Work-споруд не відбираються.
+After physical dropoff, the delivery remains Complete. A separate WorkIntent retains the intent to return to gathering. If admission to the path queue is temporarily unavailable, the resident waits and retries. Exhaustion of the expected resource before route admission or application completes gathering as Exhausted; an incompatible target remains a typed failure. Retrying creates no extra items or XP.
 
-Відхилена постановка нового ручного наказу не змінює старий намір. Прийнятий ручний наказ припиняє відповідний автоматичний намір і його внутрішній pending path. Якщо новий маршрут пізніше не знайдено, старий намір автоматично не відновлюється. Зарезервований фізичний вантаж має окремі правила логістики та не скасовується цим механізмом.
+A paid building in Work retains progress when its last worker dies or receives another order. The scheduler selects an idle resident of the same nation, reserves that resident through BuildAssignment, and requests an ordinary route. Work resumes only after route completion and arrival at an adjacent cell; materials are not charged again. Existing workers at other Work buildings are not taken away.
 
-## Збережуваний контракт
+Rejected admission of a new manual order leaves the old intent unchanged. An accepted manual order ends its corresponding automatic intent and internal pending path. If the new route later fails, the old intent is not restored automatically. Reserved physical cargo follows its own logistics rules and is not cancelled by this mechanism.
 
-WorkIntentState містить intent ID, вид GatherContinuation/BuildAssignment, власника, resident/building ID, target/job/expected terrain, phase, failure/completion, час створення/наступної спроби/deadline, кількість спроб, path correlation і останню topology revision спроби. Фази: Waiting, PathPending, Complete, Failed. Причини нормального завершення: Started, Exhausted, Superseded, Cancelled. **Started означає передачу маршруту мешканцю, а не фізичне прибуття.**
+## Persistent contract
 
-WorldState зберігає наступний intent ID, усі записи та окремі курсори справедливого обходу intents і Work-споруд. Один мешканець має не більше одного активного наміру; одна споруда без працівника — не більше одного активного BuildAssignment. Споруда без вільного кандидата показує Waiting без запису з resident ID 0.
+WorkIntentState contains intent ID, GatherContinuation/BuildAssignment kind, owner, resident/building ID, target/job/expected terrain, phase, failure/completion, creation/next-attempt/deadline times, attempt count, path correlation, and the attempt's last topology revision. Phases are Waiting, PathPending, Complete, and Failed. Normal completion reasons are Started, Exhausted, Superseded, and Cancelled. **Started means that the route was handed to the resident, not that the resident physically arrived.**
 
-| Обмеження | Значення |
+WorldState stores the next intent ID, all records, and separate fair-traversal cursors for intents and Work buildings. A resident has at most one active intent; a building without a worker has at most one active BuildAssignment. A building with no idle candidate displays Waiting without creating a resident ID 0 record.
+
+| Limit | Value |
 |---|---|
-| Записів WorkIntent | 8192 |
-| Відвіданих записів/споруд за tick | разом до 128 |
-| Спроб admission за tick | до 32 |
-| Інтервали retry | 2, 4, 8, 16, потім 32 ticks |
-| Максимум спроб / admission deadline | 64 / 1200 ticks |
-| Звичайна завершена історія | до 256 записів |
+| WorkIntent records | 8192 |
+| Records/buildings visited per tick | up to 128 combined |
+| Admission attempts per tick | up to 32 |
+| Retry intervals | 2, 4, 8, 16, then 32 ticks |
+| Maximum attempts / admission deadline | 64 / 1200 ticks |
+| Ordinary completed history | up to 256 records |
 
-Обмеження відвідувань не є доказом CPU-бюджету: індексування мешканців, збір workforce, обрізання історії та callback маршруту мають власну вартість. Її потрібно вимірювати разом із повним tick.
+Visit limits do not establish a CPU budget: resident indexing, workforce collection, history trimming, and path callbacks have their own costs. Measure them together with the complete tick.
 
-Failed BuildAssignment зберігає причину блокування, щоб не починати нові 64 спроби кожного tick. Недоступний працівник може бути замінений. Unreachable/TopologyChanged переглядається після зміни topology revision; нова спроба підпорядкована тим самим обмеженням. Інші вичерпані deadline/attempt limits залишають явну відмову до нового прийнятого ручного наказу. У 0.8 вибір нової професії чи ресурсу не реалізований; 0.9 окремо вибирає нову сумісну роботу за призначеною професією, але не підміняє професію самостійно.
+Failed BuildAssignment retains its blocking reason rather than starting another 64 attempts every tick. An unavailable worker can be replaced. Unreachable/TopologyChanged is reconsidered after a topology revision change; the new attempt obeys the same limits. Other exhausted deadlines/attempt limits retain an explicit failure until another accepted manual order. Version 0.8 does not select a new profession or resource. Version 0.9 separately selects compatible work for the assigned profession but does not change the profession itself.
 
-Save 6 / rules 5 / generator 2 мають явну міграцію справжніх сейвів 0.7 формату 5 з `.v5.bak`. Pending continuation з Complete LogisticsTask переноситься у WorkIntent із тим самим path batch і станом пошуку. Завершені старі failures без втраченого наміру не відновлюються. Фізичні предмети, резерви й оплачений Work зберігаються. Деталі byte-level перевірок — у [SAVE_FORMAT.md](SAVE_FORMAT.md).
+Save 6 / rules 5 / generator 2 explicitly migrate genuine 0.7 format-5 saves with `.v5.bak`. A pending continuation from a Complete LogisticsTask becomes a WorkIntent with the same path batch and search state. Completed old failures without a lost intent are not revived. Physical items, reservations, and paid Work are preserved. See [SAVE_FORMAT.md](SAVE_FORMAT.md) for byte-level checks.
 
-Protocol 5 передає лише дозволені resident work statuses та workforce видимих власних майданчиків. Внутрішні Work результати не є відповідями на команди гравця. Старий Exhausted/Failed прибирається після нового наказу чи наступного перевезення. UI відрізняє автоматичне очікування від термінальної помилки, а запаси не дублюються в новому DTO.
+Protocol 5 sends only permitted resident work statuses and the workforce of visible owned sites. Internal Work results are not replies to player commands. Old Exhausted/Failed display history is retired after a new order or the next delivery. The UI distinguishes automatic waiting from terminal failure; inventory is not duplicated in the new DTO.
 
-Workforce розрізняє Waiting, Planning, Travelling і Working. Pending path означає Planning; Travelling вимагає встановленого маршруту, а Working — фактичного прибуття. Якщо попередній наказ зупинив мешканця між центрами клітинок, навіть маршрут із нульовою кількістю ребер містить фізичний останній крок до центра цільової клітинки. Округлення позиції не видає доставку або будівельний прогрес наперед.
+Workforce distinguishes Waiting, Planning, Travelling, and Working. A pending path means Planning; Travelling requires an installed route, and Working requires actual arrival. If an earlier order stopped a resident between cell centers, even a zero-edge route contains a final physical step to the target cell center. Position rounding does not grant delivery or construction progress early.
 
-Діагностичні лічильники створення й перших terminal transitions накопичуються в межах поточного екземпляра World незалежно від обрізання історії. Вони не є станом симуляції, не входять у save/checksum і починаються з нуля після завантаження. SimRunner підсумовує ці переходи та admission attempts, а не намагається відновити втрачені фази з останніх 256 записів.
+Diagnostic counters for creation and first terminal transitions accumulate within the current World instance independently of history trimming. They are not simulation state, do not enter saves/checksums, and restart from zero after loading. SimRunner sums these transitions and admission attempts instead of trying to reconstruct lost phases from the last 256 records.
 
-## Приймання
+## Acceptance
 
-Локальні виконані сценарії (докази у VALIDATION): заповнена черга з реальним dropoff та save/load посеред backoff; нормальне вичерпання і справді недопустима ціль; ручний наказ до й під час пошуку; смерть/перепризначення будівельника; відкриття раніше заблокованого проходу; відхилення malformed cross-references без мутації; genuine v5 migration; owner-only full/delta/removal і reconnect; локалізовані GPU кадри; 10/100/500/1500/4×1500 з завершенням усіх intents і окремими retry/failure метриками.
+Locally executed scenarios, with evidence in VALIDATION: a full queue with actual dropoff and save/load during backoff; normal exhaustion and a truly invalid target; manual orders before and during search; builder death/reassignment; opening a previously blocked passage; malformed cross-reference rejection without mutation; genuine v5 migration; owner-only full/delta/removal and reconnect; localized GPU frames; 10/100/500/1500/4×1500 with completion of all intents and separate retry/failure metrics.
 
-Професії та пріоритети отримали реалізацію 0.9 за окремим контрактом вище. Повний AI, решта виконавчих сценаріїв професій, hierarchical pathfinding, crowd avoidance, виробництво, дороги/небезпека, суспільство, бій та інші рядки вихідного плану залишаються у scope.
+Professions and priorities were implemented in 0.9 under the separate contract above. Complete AI, remaining profession execution scenarios, hierarchical pathfinding, crowd avoidance, production, roads/danger, society, combat, and other original-plan requirements remain in scope.

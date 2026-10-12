@@ -1,0 +1,2191 @@
+{
+  "schema": 1,
+  "date": "2026-10-12",
+  "language": "en",
+  "baseline_import_commit": "7388a2f682fb159fbf0d5dbd4f9ffe812a5b627b",
+  "scope": "English README, documentation, explanatory HTML/JSON and art-authoring notes, plus two supplied development screenshots.",
+  "method": {
+    "primary_documents": "Manually written or translated and compared with source records.",
+    "manually_reviewed_markdown": [
+      "README.md",
+      "art-source/production-materials-v1/house-neutral-draft/PROVENANCE_UA.md",
+      "art-source/production-materials-v1/house-textured-detail-2026-10-09-a/AUTHORING_UA.md",
+      "art-source/production-materials-v1/house-textured-detail-2026-10-09-b/AUTHORING_UA.md",
+      "art-source/production-materials-v1/house/GEOMETRY_ASSUMPTIONS_UA.md",
+      "art-source/production-v1/README_UA.md",
+      "docs/ENGINE_GAME_STATUS_2026_10_08_UA.md",
+      "docs/ENGINE_REQUIREMENTS.md",
+      "docs/LOGISTICS_PLAN.md",
+      "docs/MANUAL_ORDERS.md",
+      "docs/PROFESSIONS_PLAN_UA.md",
+      "docs/README.md",
+      "docs/RIBTERRA_PROJECT_README.md",
+      "docs/SKILLS.md",
+      "docs/VALIDATION.md",
+      "docs/WORK_INTENTS.md",
+      "docs/screenshots/README.md",
+      "docs/visual-targets/ART_PRODUCTION_SPEC_UA.md",
+      "docs/visual-targets/ASSET_ENGINE_AUDIT_2026_09_28_UA.md",
+      "docs/visual-targets/AUTHORED_SKY_NATIVE_CHECK_2026_10_08_UA.md",
+      "docs/visual-targets/CONTACT_GPU_CHECK_2026_10_07_UA.md",
+      "docs/visual-targets/DYNAMIC_LIGHTING_SPEC_UA.md",
+      "docs/visual-targets/ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md",
+      "docs/visual-targets/GRAPHICS_ENGINE_PLAN_V2_UA.md",
+      "docs/visual-targets/GRAPHICS_PROGRESS_UA.md",
+      "docs/visual-targets/LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md",
+      "docs/visual-targets/MATERIAL_BRIDGE_CHECK_2026_10_06_UA.md",
+      "docs/visual-targets/NEXT_UPDATES_DETAILED_UA.md",
+      "docs/visual-targets/README.md",
+      "docs/visual-targets/RENDER_CORE_SPEC_UA.md",
+      "docs/visual-targets/WORLD_FX_SPEC_UA.md",
+      "packaging/README.md"
+    ],
+    "historical_archive": "Offline NLLB-200 contextual translation with exact restoration and validation of protected code, paths, identifiers and numeric literals; followed by focused editorial checks.",
+    "offline_archive_documents": 150,
+    "protected_spans_verified": 15667,
+    "original_wording": "Retained in the baseline import commit. The original source-snapshot manifest is unchanged and remains historical.",
+    "translated_documentation_placeholders": "Directory, sample save filename, host-address placeholders and one rendering-diagram label were translated. Actual localized runtime and Unicode-test literals were preserved."
+  },
+  "preserved": {
+    "imported_files_byte_identical": 887,
+    "runtime_code_assets_locales_tests_schemas_shaders": "Unchanged",
+    "localized_fallback_strings_and_unicode_fixtures": "Preserved as requested",
+    "legacy_document_filenames": "Preserved to keep existing paths stable",
+    "files_deleted_or_renamed": 0
+  },
+  "validation": {
+    "source_inventory_hash_errors": [],
+    "new_navigation_links_checked": 44,
+    "new_navigation_links_missing": 0,
+    "remaining_markdown_cyrillic_prose": [],
+    "changed_json": "Parsed successfully",
+    "archive_numeric_comparisons": [
+      {
+        "path": "art-source/production-materials-v1/house-neutral-draft/PROVENANCE_UA.md",
+        "numeric_tokens": 138,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "art-source/production-materials-v1/house-textured-detail-2026-10-09-a/AUTHORING_UA.md",
+        "numeric_tokens": 34,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "art-source/production-materials-v1/house-textured-detail-2026-10-09-b/AUTHORING_UA.md",
+        "numeric_tokens": 34,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "art-source/production-materials-v1/house/GEOMETRY_ASSUMPTIONS_UA.md",
+        "numeric_tokens": 81,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "art-source/production-v1/README_UA.md",
+        "numeric_tokens": 28,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ALPHA_DEMO_PLAN_UA.md",
+        "numeric_tokens": 241,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ALPHA_DEMO_SMALL_RELEASES_UA.md",
+        "numeric_tokens": 312,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ARTIFACT_CLEANUP_2026_10_08_UA.md",
+        "numeric_tokens": 110,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ARTIFACT_RETENTION_UA.md",
+        "numeric_tokens": 93,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ART_0_11_1_UA.md",
+        "numeric_tokens": 51,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ATMOSPHERE_0_16_UA.md",
+        "numeric_tokens": 36,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ATMOSPHERE_BUILD_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 89,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_02_UA.md",
+        "numeric_tokens": 186,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_UA.md",
+        "numeric_tokens": 186,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/AUTHORED_BUILD_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 131,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/BACKLOG_UA.md",
+        "numeric_tokens": 120,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/BIOMES_0_12_UA.md",
+        "numeric_tokens": 42,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/BRIDGES_UI_0_17_UA.md",
+        "numeric_tokens": 37,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/BUILDING-PANELS-UK.md",
+        "numeric_tokens": 5,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/BUILDINGS_0_14_UA.md",
+        "numeric_tokens": 57,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/COAST_CURSOR_0_16_1_UA.md",
+        "numeric_tokens": 8,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/CONTROL_PLAN_UA.md",
+        "numeric_tokens": 71,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/CUMULATIVE_BUILD_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 87,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/DEMO_SCOPE_UA.md",
+        "numeric_tokens": 11,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/DEVELOPMENT_UA.md",
+        "numeric_tokens": 124,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/DIRECTIONAL-RESIDENTS-UK.md",
+        "numeric_tokens": 14,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/ENVIRONMENT_BUILD_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 126,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/FARMING_0_15_UA.md",
+        "numeric_tokens": 24,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/FARM_PRODUCTION_PLAN_UA.md",
+        "numeric_tokens": 130,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/FEATURE_AUDIT_UA.md",
+        "numeric_tokens": 225,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/GAMEVIEW_BUILD_CLEANUP_NOTICE_2026_10_08_UA.md",
+        "numeric_tokens": 289,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/GAMEVIEW_BUILD_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 130,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/GRAPHICS-REFERENCE-REFRESH-UK.md",
+        "numeric_tokens": 18,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/LAUNCH_FIX_0_10_2.md",
+        "numeric_tokens": 30,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/LEGACY_PACKAGE_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 153,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/LIVING_WORLD_0_18_UA.md",
+        "numeric_tokens": 13,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/MANUAL_QUEUE_MIGRATION_UA.md",
+        "numeric_tokens": 81,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/PATH_BUDGET_PLAN.md",
+        "numeric_tokens": 59,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/RELEASE_0_10_UA.md",
+        "numeric_tokens": 42,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/SESSION_TIME_BUILD_COMPACTION_2026_10_08_UA.md",
+        "numeric_tokens": 65,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/TERRAIN_0_13_UA.md",
+        "numeric_tokens": 59,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/UI_0_17_1_UA.md",
+        "numeric_tokens": 5,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/coop-0.22-scope-uk.md",
+        "numeric_tokens": 26,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/coop-0.25-scope-uk.md",
+        "numeric_tokens": 33,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/coop-two-pc-0.25.10-uk.md",
+        "numeric_tokens": 26,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.18.1-uk.md",
+        "numeric_tokens": 1,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.18.2-uk.md",
+        "numeric_tokens": 11,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.19.0-uk.md",
+        "numeric_tokens": 3,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.19.1-uk.md",
+        "numeric_tokens": 1,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.19.2-uk.md",
+        "numeric_tokens": 12,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.20.0-uk.md",
+        "numeric_tokens": 13,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.20.1-uk.md",
+        "numeric_tokens": 1,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.21.0-uk.md",
+        "numeric_tokens": 13,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.21.2-uk.md",
+        "numeric_tokens": 30,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.23.0-uk.md",
+        "numeric_tokens": 62,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.24.0-uk.md",
+        "numeric_tokens": 22,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.24.1-uk.md",
+        "numeric_tokens": 4,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.0-uk.md",
+        "numeric_tokens": 16,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.1-uk.md",
+        "numeric_tokens": 5,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.10-uk.md",
+        "numeric_tokens": 11,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.11-uk.md",
+        "numeric_tokens": 9,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.12-uk.md",
+        "numeric_tokens": 19,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.13-uk.md",
+        "numeric_tokens": 6,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.2-uk.md",
+        "numeric_tokens": 3,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.3-uk.md",
+        "numeric_tokens": 8,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.4-uk.md",
+        "numeric_tokens": 6,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.5-uk.md",
+        "numeric_tokens": 5,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.6-uk.md",
+        "numeric_tokens": 4,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.7-uk.md",
+        "numeric_tokens": 12,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.8-uk.md",
+        "numeric_tokens": 6,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.25.9-uk.md",
+        "numeric_tokens": 9,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.26.0-uk.md",
+        "numeric_tokens": 17,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.26.1-uk.md",
+        "numeric_tokens": 19,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.26.2-uk.md",
+        "numeric_tokens": 19,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/update-0.26.3-uk.md",
+        "numeric_tokens": 25,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.10-uk.md",
+        "numeric_tokens": 76,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.11-uk.md",
+        "numeric_tokens": 82,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.12-uk.md",
+        "numeric_tokens": 93,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.13-uk.md",
+        "numeric_tokens": 36,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.5-uk.md",
+        "numeric_tokens": 42,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.6-uk.md",
+        "numeric_tokens": 23,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.7-uk.md",
+        "numeric_tokens": 19,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.8-uk.md",
+        "numeric_tokens": 55,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.25.9-uk.md",
+        "numeric_tokens": 63,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.26.0-uk.md",
+        "numeric_tokens": 80,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.26.1-uk.md",
+        "numeric_tokens": 94,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.26.2-uk.md",
+        "numeric_tokens": 62,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-0.26.3-uk.md",
+        "numeric_tokens": 105,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/verification-rework-0.26.3-uk.md",
+        "numeric_tokens": 83,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/AGENT_VISUAL_CONTRACT_UA.md",
+        "numeric_tokens": 211,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ANALYTIC_ATMOSPHERE_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 265,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ANALYTIC_ATMOSPHERE_V1_CONTRACT_UA.md",
+        "numeric_tokens": 69,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ART_PRODUCTION_SPEC_UA.md",
+        "numeric_tokens": 92,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ASSET_ENGINE_AUDIT_2026_09_28_UA.md",
+        "numeric_tokens": 101,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/AUTHORED_SKY_BRIDGE_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 211,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/AUTHORED_SKY_NATIVE_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 163,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/BACKGROUND_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 149,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/CONCEPT_PREVIEW_LIMITATIONS_UA.md",
+        "numeric_tokens": 84,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/CONCEPT_REBUILD_2026_09_30_UA.md",
+        "numeric_tokens": 276,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/CONTACT_CPU_CONTRACT_CHECK_2026_10_07_UA.md",
+        "numeric_tokens": 106,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/CONTACT_GPU_CHECK_2026_10_07_UA.md",
+        "numeric_tokens": 106,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/CUMULATIVE_CONTACT_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 120,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md",
+        "numeric_tokens": 331,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ENVIRONMENT_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 264,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ENVIRONMENT_V1_CONTRACT_UA.md",
+        "numeric_tokens": 76,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md",
+        "numeric_tokens": 26,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_ENGINE_CONTROL_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 134,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_MAIN_STARTUP_CHECK_2026_10_09_UA.md",
+        "numeric_tokens": 154,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_MATERIAL_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 362,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_NEUTRAL_EXPORT_CHECK_2026_10_09_UA.md",
+        "numeric_tokens": 86,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_NEUTRAL_MAIN_CHECK_2026_10_10_UA.md",
+        "numeric_tokens": 114,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_NEUTRAL_MATERIAL_CHECK_2026_10_09_UA.md",
+        "numeric_tokens": 290,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_TEXTURED_CPU_CHECK_2026_10_09_UA.md",
+        "numeric_tokens": 146,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_UI_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 106,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_WEATHER_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 213,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GAMEVIEW_WINDOW_LIGHT_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 228,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GRAPHICS_ENGINE_PLAN_V2_UA.md",
+        "numeric_tokens": 253,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GRAPHICS_PROGRESS_UA.md",
+        "numeric_tokens": 167,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/GROUND_FORWARD_CHECK_2026_10_07_UA.md",
+        "numeric_tokens": 325,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/HDR_COLOR_CHECK_2026_10_06_UA.md",
+        "numeric_tokens": 257,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/HOUSE_GEOMETRY_DRAFT_2026_10_08_UA.md",
+        "numeric_tokens": 92,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/HOUSE_TEXTURE_SOURCE_CHECK_2026_10_09_UA.md",
+        "numeric_tokens": 101,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md",
+        "numeric_tokens": 296,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/MAP_GROUND_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 380,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/MATERIAL_BRIDGE_CHECK_2026_10_06_UA.md",
+        "numeric_tokens": 264,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/MATERIAL_COLLECTION_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 40,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/MATERIAL_GEOMETRY_CALIBRATION_CHECK_2026_10_06_UA.md",
+        "numeric_tokens": 277,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/MATERIAL_TEXTURE_DETAIL_PLAN_2026_10_09_UA.md",
+        "numeric_tokens": 14,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/NATURE_VARIETY_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 171,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/NEXT_UPDATES_DETAILED_UA.md",
+        "numeric_tokens": 197,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/ORIGINAL_ASSET_REGISTRY_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 54,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/OUTCROP_HUD_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 222,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/PRESENTATION_OPTIMIZATION_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 322,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/RELIEF_FACE_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 195,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/SESSION_SHOWN_TIME_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 123,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/SKY_DIRECT_CHECK_2026_10_07_UA.md",
+        "numeric_tokens": 84,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/SKY_SHADOW_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 158,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/SURFACE_LIGHTING_CHECK_2026_10_05_UA.md",
+        "numeric_tokens": 211,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/TYPED_OPACITY_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 121,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/TYPED_QUERY_UI_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 114,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md",
+        "numeric_tokens": 240,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 291,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WATER_REFLECTION_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 184,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WATER_REFLECTION_V1_CONTRACT_UA.md",
+        "numeric_tokens": 91,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WEATHER_AUTHORITY_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 125,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WEATHER_DOMAIN_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 197,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WEATHER_TRANSPORT_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 84,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WEATHER_WINTER_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 120,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/WEATHER_WORK_CHECK_2026_10_08_UA.md",
+        "numeric_tokens": 103,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      },
+      {
+        "path": "docs/visual-targets/verification/detailed-plan-review-2026-09-28.md",
+        "numeric_tokens": 14,
+        "missing_numeric_tokens": [],
+        "extra_numeric_tokens": [],
+        "inline_code_literals_match": true,
+        "link_destinations_match": true
+      }
+    ],
+    "full_build_or_full_ctest": "Not run for this documentation-only update",
+    "screenshots": "User-supplied visual examples; no fresh runtime capture or performance evidence"
+  },
+  "screenshots": [
+    {
+      "path": "docs/screenshots/lighting-scene-dark.jpg",
+      "sha256": "78f39ac209f460462024568cc323a9978dae21cf982eb628d6978503d8fb504e",
+      "source": "Unmodified user attachment",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "docs/screenshots/lighting-scene-bright.jpg",
+      "sha256": "bcbf9160d01adf5130ea642b4398d538ab8bf069abb3e94873196e8cbf4bd26f",
+      "source": "Unmodified user attachment",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 26058,
+      "sha256": "49320ea74436089afb5eedf017336101a3b13187e0f6bbef2d36d5b5d8a9342b"
+    },
+    {
+      "path": "art-source/production-materials-v1/house-neutral-draft/PROVENANCE_UA.md",
+      "bytes": 6497,
+      "sha256": "50d042488ffea6c1d8e2d04d8d1ab828de3a2b37749a41edc019c9bf4b55b726"
+    },
+    {
+      "path": "art-source/production-materials-v1/house-textured-detail-2026-10-09-a/AUTHORING_UA.md",
+      "bytes": 3823,
+      "sha256": "f3402926c4866915a0fc7d2645f1e435c434eff38bfa1b17b23e341a7b3c5e05"
+    },
+    {
+      "path": "art-source/production-materials-v1/house-textured-detail-2026-10-09-b/AUTHORING_UA.md",
+      "bytes": 3823,
+      "sha256": "f3402926c4866915a0fc7d2645f1e435c434eff38bfa1b17b23e341a7b3c5e05"
+    },
+    {
+      "path": "art-source/production-materials-v1/house/GEOMETRY_ASSUMPTIONS_UA.md",
+      "bytes": 7155,
+      "sha256": "4d5ce2f05837caa00af7539695dfa32f14330fa9a462a277933bf2531d0e6099"
+    },
+    {
+      "path": "art-source/production-v1/README_UA.md",
+      "bytes": 4838,
+      "sha256": "fb940afc55cf1a4c1a5645929fb92e12a54d71e75c5c94b7ac1846489781c612"
+    },
+    {
+      "path": "docs/ALPHA_DEMO_PLAN_UA.md",
+      "bytes": 33153,
+      "sha256": "0023791fe337816ef6116f03748844d6d4a066ba1ea20353acc1d3a8c833e1b2"
+    },
+    {
+      "path": "docs/ALPHA_DEMO_SMALL_RELEASES_UA.md",
+      "bytes": 53416,
+      "sha256": "0d041ba34dc1542074760351154500e9472ab825baea7cd0e015f9dc11964820"
+    },
+    {
+      "path": "docs/ARTIFACT_CLEANUP_2026_10_08_UA.md",
+      "bytes": 4207,
+      "sha256": "4dcb5d00ac8a9c69d1471ae8cdf66d0178cc380768200c06850c055cf90521cf"
+    },
+    {
+      "path": "docs/ARTIFACT_RETENTION_UA.md",
+      "bytes": 7036,
+      "sha256": "e989e420c2fecc14c272262d93b1dfc97866d9754b4469dca7ec97a03481965b"
+    },
+    {
+      "path": "docs/ART_0_11_1_UA.md",
+      "bytes": 4642,
+      "sha256": "b016c2e936d318bf356c3c96d2f6e42cd99be16421aee23737dd79a02cdabf88"
+    },
+    {
+      "path": "docs/ATMOSPHERE_0_16_UA.md",
+      "bytes": 4499,
+      "sha256": "3a820ce4f212210bc8c4617bcad2bd16d4d11fc336114d2c9aab75abad12a313"
+    },
+    {
+      "path": "docs/ATMOSPHERE_BUILD_COMPACTION_2026_10_08_UA.md",
+      "bytes": 2476,
+      "sha256": "0009c93fe914c17e598470c1fd2b8d20fd998e46c1584fa8b32b22d27d10a031"
+    },
+    {
+      "path": "docs/AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_02_UA.md",
+      "bytes": 7434,
+      "sha256": "52ce0f855ae95d3e8fa3eed307190953b047261462a135c0dc554b2e1e56787d"
+    },
+    {
+      "path": "docs/AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_UA.md",
+      "bytes": 7365,
+      "sha256": "597c383308665d7012f3e2a0a694d645b55fa19fd76616a22d13185eba4499e3"
+    },
+    {
+      "path": "docs/AUTHORED_BUILD_COMPACTION_2026_10_08_UA.md",
+      "bytes": 4886,
+      "sha256": "08ca2f5d51a84b2c8ef4d64c5fb6de9f90ef641beb6acd652cea146176e13fd3"
+    },
+    {
+      "path": "docs/BACKLOG_UA.md",
+      "bytes": 8574,
+      "sha256": "97f3ed8a16b54dfdfea26e89d8206b7fd9d2d2efd89fc4b524e5bca1f4d8b111"
+    },
+    {
+      "path": "docs/BIOMES_0_12_UA.md",
+      "bytes": 4791,
+      "sha256": "4092a38b06bf6069f3f825327018ede9603702a949a43c516639547dffadced9"
+    },
+    {
+      "path": "docs/BRIDGES_UI_0_17_UA.md",
+      "bytes": 5387,
+      "sha256": "4b0b28b645fbb31327900a0061a49d7e722d1468dbd41dcb8275ced343ea8a4b"
+    },
+    {
+      "path": "docs/BUILDING-PANELS-UK.md",
+      "bytes": 3823,
+      "sha256": "c6e22d3ac96080ea53b42f1a6d5db0efd83a9b140a7beb95e7228f4d83690a6d"
+    },
+    {
+      "path": "docs/BUILDINGS_0_14_UA.md",
+      "bytes": 5037,
+      "sha256": "96f8e348a355c6fccf2131b094457738f5cc3d758c09fe17af18192d2afe80ce"
+    },
+    {
+      "path": "docs/COAST_CURSOR_0_16_1_UA.md",
+      "bytes": 2492,
+      "sha256": "8a79fbdff8e37a6d144ba887b62fd8eefe383d27c429638218708207f5418664"
+    },
+    {
+      "path": "docs/CONTROL_PLAN_UA.md",
+      "bytes": 16766,
+      "sha256": "374cd122fc47335e8390644cb690aea5aa18022958bffc1359c898c100bb5bf7"
+    },
+    {
+      "path": "docs/CUMULATIVE_BUILD_COMPACTION_2026_10_08_UA.md",
+      "bytes": 2422,
+      "sha256": "73f98f7f2b75e8b4920de442218e7f7836d1d6950472f2b94ad04f35fea74357"
+    },
+    {
+      "path": "docs/DEMO_SCOPE_UA.md",
+      "bytes": 1445,
+      "sha256": "ed7eaa8a352c042673d7bd63cb439e2e1ac59fa42fcf44eb3bbf4eb116d11d17"
+    },
+    {
+      "path": "docs/DEVELOPMENT_UA.md",
+      "bytes": 15057,
+      "sha256": "9fa59f4d73f47747cb8548c51041c3501789c88bf3ce3eba4fdbf18363343c35"
+    },
+    {
+      "path": "docs/DIRECTIONAL-RESIDENTS-UK.md",
+      "bytes": 2609,
+      "sha256": "18f8bd6f4bf142c169ce88959c40bea26d535877902f04799604ea047d3c41da"
+    },
+    {
+      "path": "docs/ENGINE_GAME_STATUS_2026_10_08_UA.md",
+      "bytes": 53224,
+      "sha256": "4a5659e57cc9870ccefdc3c96979f102f35b96ab1cce003cf0214b9802799dbe"
+    },
+    {
+      "path": "docs/ENGINE_REQUIREMENTS.md",
+      "bytes": 22543,
+      "sha256": "d27cec248f3813c5b07053bee7a30a15221a6329956a3be3cb8ef96d4210e5d1"
+    },
+    {
+      "path": "docs/ENVIRONMENT_BUILD_COMPACTION_2026_10_08_UA.md",
+      "bytes": 3651,
+      "sha256": "44860d2618b172c9ce956b3f5810604ccd5130751a5c3619d1ea4a4452e32a67"
+    },
+    {
+      "path": "docs/FARMING_0_15_UA.md",
+      "bytes": 3794,
+      "sha256": "1cf048672e96e946228a4c1807894ff9b7a4dbd28c3838a772ff35ec720cd479"
+    },
+    {
+      "path": "docs/FARM_PRODUCTION_PLAN_UA.md",
+      "bytes": 17860,
+      "sha256": "f4f40e26243ec79c4d3af9ef17558c9d00568fb35499c5d6c6455e266be6239e"
+    },
+    {
+      "path": "docs/FEATURE_AUDIT_UA.md",
+      "bytes": 25515,
+      "sha256": "ca350698c319d19ba0f7200585cc1270683926b3d7259438b4ea457bfe558179"
+    },
+    {
+      "path": "docs/GAMEVIEW_BUILD_CLEANUP_NOTICE_2026_10_08_UA.md",
+      "bytes": 12263,
+      "sha256": "725cafc2a8cdab7a710c3b17578ed6b98292aa78f175a61e94798d22bd3ecfbf"
+    },
+    {
+      "path": "docs/GAMEVIEW_BUILD_COMPACTION_2026_10_08_UA.md",
+      "bytes": 3869,
+      "sha256": "7addbf10033b69f66140e6b233fa5f226a5577da3f7e81165b6953461a0ee4b6"
+    },
+    {
+      "path": "docs/GRAPHICS-REFERENCE-REFRESH-UK.md",
+      "bytes": 2360,
+      "sha256": "4485210f450b0717a2f9ab732471427018ca50a9cccb429680359bfe5b6a71c3"
+    },
+    {
+      "path": "docs/LAUNCH_FIX_0_10_2.md",
+      "bytes": 2752,
+      "sha256": "5e63b0309bd27d2b5313450aad1b45ad25ba3e40b49e40834a73befc23134f1f"
+    },
+    {
+      "path": "docs/LEGACY_PACKAGE_COMPACTION_2026_10_08_UA.md",
+      "bytes": 3911,
+      "sha256": "7729205146fa7d894897b55f44c8328e0383d51c9fb72a982d94a00d30a3f0a1"
+    },
+    {
+      "path": "docs/LIVING_WORLD_0_18_UA.md",
+      "bytes": 1648,
+      "sha256": "dea0ec00f7cf376c207a6da52549e87614502391872a3b4e4e04d74a6e0f7a83"
+    },
+    {
+      "path": "docs/LOGISTICS_PLAN.md",
+      "bytes": 12526,
+      "sha256": "5b28e31742c4ef3729b0f66db726b79ddc7fddc9f16b4cbfbea5e3ca113ff4b4"
+    },
+    {
+      "path": "docs/MANUAL_ORDERS.md",
+      "bytes": 14659,
+      "sha256": "1e8f70e9ae01970ff5672ccad209f084b7b343543863d6fde63083ffe1258d0f"
+    },
+    {
+      "path": "docs/MANUAL_QUEUE_MIGRATION_UA.md",
+      "bytes": 12944,
+      "sha256": "9c524962e5146a92be4a6ce02b5d34d6d82a79d5ba0407958b574e14829045e5"
+    },
+    {
+      "path": "docs/PATH_BUDGET_PLAN.md",
+      "bytes": 9327,
+      "sha256": "bcf4c1189a6692ea27d034774c85037ef6f52a662a29c747c8bf1b63e697b616"
+    },
+    {
+      "path": "docs/PROFESSIONS_PLAN_UA.md",
+      "bytes": 5359,
+      "sha256": "5d2920234c7098cb64c8dd4fc9f8a77fccfcadde3b41ece3fe52b67f7481c0d0"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 2789,
+      "sha256": "bc4e7a9d0c91430004a3d616b64333dc0c19f412046313381083b3959405a04d"
+    },
+    {
+      "path": "docs/RELEASE_0_10_UA.md",
+      "bytes": 3159,
+      "sha256": "5cf9ca14e9045402e83b725a28dfc3f4fdbeb968449dcae843be9998c5036b80"
+    },
+    {
+      "path": "docs/RIBTERRA_PROJECT_README.md",
+      "bytes": 22528,
+      "sha256": "ac084e8bcf31cabf789153dc3d4cd3c8e28abf4392f6ef65d752fff65439312a"
+    },
+    {
+      "path": "docs/SESSION_TIME_BUILD_COMPACTION_2026_10_08_UA.md",
+      "bytes": 2352,
+      "sha256": "e37d6e40166e17506a60d32ffc87aa77e834bd5e19d7b6501f2785d463e1938b"
+    },
+    {
+      "path": "docs/SKILLS.md",
+      "bytes": 4591,
+      "sha256": "0f1d68e24a91661154c88cff3e1cf135085319b726df94d2be9a5ab2d70b9745"
+    },
+    {
+      "path": "docs/TERRAIN_0_13_UA.md",
+      "bytes": 4598,
+      "sha256": "1087d2cd34874042e91a74ef221fce727b3049c8f4af4695ef3122828c1e74f5"
+    },
+    {
+      "path": "docs/UI_0_17_1_UA.md",
+      "bytes": 1032,
+      "sha256": "3f9a97c209c975f4023143aca5493d6c55705fe4b113b70b652d6290b284ec2a"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "bytes": 67063,
+      "sha256": "af68a63068801fb85ff80053af040a8b542574c847f045b243098f6a5aa5b439"
+    },
+    {
+      "path": "docs/WORK_INTENTS.md",
+      "bytes": 6732,
+      "sha256": "e67d40a93517d1f6674151e40fabc9e79785ca4e00ec30fcbaa1a09eab1bb424"
+    },
+    {
+      "path": "docs/coop-0.22-scope-uk.md",
+      "bytes": 7926,
+      "sha256": "f7eb88159410d15aef1f6f6067b4733fb73aaf76590800f68fc8042f99cd7b49"
+    },
+    {
+      "path": "docs/coop-0.25-scope-uk.md",
+      "bytes": 11034,
+      "sha256": "8e74d599891b4c2a225d7d03687f882bb76d0bbdb4aac0227ee4acb4377980ae"
+    },
+    {
+      "path": "docs/coop-two-pc-0.25.10-uk.md",
+      "bytes": 3652,
+      "sha256": "6c85655da0619790878ab442ee58555c7f1b7288e840e0528ebbc6a8ff2623c4"
+    },
+    {
+      "path": "docs/screenshots/README.md",
+      "bytes": 1349,
+      "sha256": "3dc90492ce943ab1f4c86bc78741095f31662ab9500cdc25765a990b45b4aa9e"
+    },
+    {
+      "path": "docs/screenshots/lighting-scene-bright.jpg",
+      "bytes": 35579,
+      "sha256": "bcbf9160d01adf5130ea642b4398d538ab8bf069abb3e94873196e8cbf4bd26f"
+    },
+    {
+      "path": "docs/screenshots/lighting-scene-dark.jpg",
+      "bytes": 29871,
+      "sha256": "78f39ac209f460462024568cc323a9978dae21cf982eb628d6978503d8fb504e"
+    },
+    {
+      "path": "docs/update-0.18.1-uk.md",
+      "bytes": 977,
+      "sha256": "058ec915ccdd933aa866a9fb925b1eaeba2be5d8db1c82a171c8950c9bf3b9c5"
+    },
+    {
+      "path": "docs/update-0.18.2-uk.md",
+      "bytes": 761,
+      "sha256": "1d2b09627fc5c0b68635f08d6e3a1c93e2f9fd6299fe01610213b637185e5826"
+    },
+    {
+      "path": "docs/update-0.19.0-uk.md",
+      "bytes": 1116,
+      "sha256": "8194b737ea99af4fe66f5263e577c6223ed8170981d41e5c363eb156c7aa9bf2"
+    },
+    {
+      "path": "docs/update-0.19.1-uk.md",
+      "bytes": 788,
+      "sha256": "d05d549b9126b3da80631953d86eae020452c7059d982765aed875a36daf0127"
+    },
+    {
+      "path": "docs/update-0.19.2-uk.md",
+      "bytes": 705,
+      "sha256": "bbc23b91e6c551b1cd965495e8b20ce586e7100d6bbbaaa9bfe243d190c2375b"
+    },
+    {
+      "path": "docs/update-0.20.0-uk.md",
+      "bytes": 1017,
+      "sha256": "5cb2832cf1b8864e99e83a37246b452e1e7139bc7b9573e81e6a0306ecc95a51"
+    },
+    {
+      "path": "docs/update-0.20.1-uk.md",
+      "bytes": 625,
+      "sha256": "dbcee2305d34814e9f3ccc5009cdf521773d947d2b0959187b780543a4eaa3a4"
+    },
+    {
+      "path": "docs/update-0.21.0-uk.md",
+      "bytes": 2896,
+      "sha256": "7355edf0fbf4055a67b0fa2da06fe6e6a0d1e8f806b498e88a12b4a05f6dbbcf"
+    },
+    {
+      "path": "docs/update-0.21.2-uk.md",
+      "bytes": 2901,
+      "sha256": "e59dc002111f8067776690de934f22b508e9d24fe47612ac2afe8bc6900377ae"
+    },
+    {
+      "path": "docs/update-0.23.0-uk.md",
+      "bytes": 4690,
+      "sha256": "66c3c19a4a4aa614d678e4f614d81e05969ac260f34d2b8d184aebff86aec9d0"
+    },
+    {
+      "path": "docs/update-0.24.0-uk.md",
+      "bytes": 3909,
+      "sha256": "758a7a4dc9609964d8cb3d8ad540280411ff177bab327a6e75c185f68242c72a"
+    },
+    {
+      "path": "docs/update-0.24.1-uk.md",
+      "bytes": 1345,
+      "sha256": "5c5cc4bca3d494b0a39e694d508c47adaf6691ca820d9e228246563bd68c8365"
+    },
+    {
+      "path": "docs/update-0.25.0-uk.md",
+      "bytes": 3153,
+      "sha256": "49e5c37c3875d0fc5d0d9963283dc2930ab08b207dab2dfffea9fb6e37d66a56"
+    },
+    {
+      "path": "docs/update-0.25.1-uk.md",
+      "bytes": 2125,
+      "sha256": "8a16d7985b1feb4a5e3d17dc5da969cbfd420f7a29047a5e2ea86dded007ee67"
+    },
+    {
+      "path": "docs/update-0.25.10-uk.md",
+      "bytes": 2410,
+      "sha256": "0c698a27f2cdd0ca15f1730a10c85e403b7ee9b7084b293cb4fd4b79f59e9066"
+    },
+    {
+      "path": "docs/update-0.25.11-uk.md",
+      "bytes": 2740,
+      "sha256": "de07967ded46b84e457f2aee0ca033f0fef9cfc7c465f568a8f4f52dbc497aa7"
+    },
+    {
+      "path": "docs/update-0.25.12-uk.md",
+      "bytes": 2659,
+      "sha256": "5262270e34da51c6498173860696022a115cebfe60a47636862818f27c10c79c"
+    },
+    {
+      "path": "docs/update-0.25.13-uk.md",
+      "bytes": 1506,
+      "sha256": "35a286dac5610d963d26ea477e60e3ac0f9c3836406d4464f662835d8180eb69"
+    },
+    {
+      "path": "docs/update-0.25.2-uk.md",
+      "bytes": 1147,
+      "sha256": "999a16f464b1858456560a0ba885f0353006c918e45f3be63a5aee90038767be"
+    },
+    {
+      "path": "docs/update-0.25.3-uk.md",
+      "bytes": 1863,
+      "sha256": "4bd2b91f59ea663c5138fe8eaaa8cfd2bad20a5c8666192b45efc02f3286b80a"
+    },
+    {
+      "path": "docs/update-0.25.4-uk.md",
+      "bytes": 1908,
+      "sha256": "243486efda7940413a10ba2d2e4d738c0e821b7a7d9277c5953e9d08cf50ac91"
+    },
+    {
+      "path": "docs/update-0.25.5-uk.md",
+      "bytes": 1772,
+      "sha256": "d633736a64130b8fd8d1a5f3632aeb1db15746ff46537ca1cb1c889d3cebed87"
+    },
+    {
+      "path": "docs/update-0.25.6-uk.md",
+      "bytes": 1929,
+      "sha256": "00dc6be008a5697e39762db0e6f2209043982b4f4846ce63014550936a67bfee"
+    },
+    {
+      "path": "docs/update-0.25.7-uk.md",
+      "bytes": 3387,
+      "sha256": "ad791a3957a3fccb3805a35f3ffc722d018e5aef74c17e131c1a023e396f6698"
+    },
+    {
+      "path": "docs/update-0.25.8-uk.md",
+      "bytes": 2597,
+      "sha256": "6d3af2c5ffaefdd2acb573d853b482b8f3e1caf24ff715d041f676af0a5a80b1"
+    },
+    {
+      "path": "docs/update-0.25.9-uk.md",
+      "bytes": 2698,
+      "sha256": "0e251263f133041c77fc06cac02b02da2cafe4732c42c3f8d00b79f247449806"
+    },
+    {
+      "path": "docs/update-0.26.0-uk.md",
+      "bytes": 2297,
+      "sha256": "70c8b841b9bab01c5d500bdbc85ec40035453cf8b4113f711b4adc8c6ac8b916"
+    },
+    {
+      "path": "docs/update-0.26.1-uk.md",
+      "bytes": 2502,
+      "sha256": "ca4f08a4d7ab7c0b2048fb53fb239a70b54e4fb2d89b49ca9918234a1c6f2508"
+    },
+    {
+      "path": "docs/update-0.26.2-uk.md",
+      "bytes": 2977,
+      "sha256": "3d1de6ab6b68930815098222f41efb1a5296df30adb401f54facb493a39f8069"
+    },
+    {
+      "path": "docs/update-0.26.3-uk.md",
+      "bytes": 3011,
+      "sha256": "0a96fd77ca5907b0a724f74b46b25500e2c5b843dfe5506d0d843d05de4cdabb"
+    },
+    {
+      "path": "docs/verification-0.25.10-uk.md",
+      "bytes": 6264,
+      "sha256": "8fe0fcacdba2b099f164ef8a6e41227d9f3e01611b01b094b00b5b1ab2e661f4"
+    },
+    {
+      "path": "docs/verification-0.25.11-uk.md",
+      "bytes": 6574,
+      "sha256": "842232204d8579a5c15a0064d11dc5705cc8ccd310026757cb14e617f7e21d8d"
+    },
+    {
+      "path": "docs/verification-0.25.12-uk.md",
+      "bytes": 7001,
+      "sha256": "58f4a8c8f094f1bf0f8fb86969efa737ef368ad3823f869187d6688a195231f3"
+    },
+    {
+      "path": "docs/verification-0.25.13-uk.md",
+      "bytes": 3777,
+      "sha256": "9d5f0a0df77d4ffe0d06670f93e26ff9aeb62d6aebb03219705eb8b770b2fb6f"
+    },
+    {
+      "path": "docs/verification-0.25.5-uk.md",
+      "bytes": 3454,
+      "sha256": "187e1a31996a9b37c5c6154251242a122bfbf4d6e321dec26914d98ffb11df1a"
+    },
+    {
+      "path": "docs/verification-0.25.6-uk.md",
+      "bytes": 3615,
+      "sha256": "6d45ed097770eea66abc4afd58040826476bb7937a51badae866822db3ba7502"
+    },
+    {
+      "path": "docs/verification-0.25.7-uk.md",
+      "bytes": 2990,
+      "sha256": "332220ef9190ac9d70e997868f3d529573bf91a31568076b3cfbeba8aba5fa5e"
+    },
+    {
+      "path": "docs/verification-0.25.8-uk.md",
+      "bytes": 4742,
+      "sha256": "b92456e8325a83b2b98bbd91c20e680694a3504cb9436aaf3d7908f5af1bac2f"
+    },
+    {
+      "path": "docs/verification-0.25.9-uk.md",
+      "bytes": 5974,
+      "sha256": "35fe310c20da2a35261425868ebdabe31f7411cb8bab7faf2f0a9b3262de7467"
+    },
+    {
+      "path": "docs/verification-0.26.0-uk.md",
+      "bytes": 5609,
+      "sha256": "d096548525d5c0ab50a0296fc3ef369e3a1e87e4c16b150f4ab999f3b54e5ea3"
+    },
+    {
+      "path": "docs/verification-0.26.1-uk.md",
+      "bytes": 4110,
+      "sha256": "1c6ed2fbc6214e752d32de2d02640bf2c659c36c0ed84d365c3f6fc5e01f7365"
+    },
+    {
+      "path": "docs/verification-0.26.2-uk.md",
+      "bytes": 3159,
+      "sha256": "d48cd6a9376e8115adf91911e40cd0e61aefeeefe9612762df7adcba8991c2b6"
+    },
+    {
+      "path": "docs/verification-0.26.3-uk.md",
+      "bytes": 5494,
+      "sha256": "c7b7607c3735920a8fbd0f0891fa17ad0caba9a44f4b97b7b41b7da9f0426e25"
+    },
+    {
+      "path": "docs/verification-rework-0.26.3-uk.md",
+      "bytes": 7359,
+      "sha256": "51d551e4ee617c7c89a0852d36daaeb084f6c4b33eec4e7f4a83de5557282f3a"
+    },
+    {
+      "path": "docs/visual-targets/AGENT_VISUAL_CONTRACT_UA.md",
+      "bytes": 23762,
+      "sha256": "ecf138f23a52ececcb9de9a52db4597047709ce3ea2603dc07388a4cf8552c93"
+    },
+    {
+      "path": "docs/visual-targets/ANALYTIC_ATMOSPHERE_CHECK_2026_10_08_UA.md",
+      "bytes": 7661,
+      "sha256": "b3cb20f78c385f157a5d72bd76bf9c9f90ac86b80ac0b2d19074f241315793e0"
+    },
+    {
+      "path": "docs/visual-targets/ANALYTIC_ATMOSPHERE_V1_CONTRACT_UA.md",
+      "bytes": 6584,
+      "sha256": "22d02c1c626081aca3299d1bf5f7d817c371fddffabbef90103fffccb3eae767"
+    },
+    {
+      "path": "docs/visual-targets/ART_PRODUCTION_SPEC_UA.md",
+      "bytes": 16592,
+      "sha256": "4a5654fce3c7be24fde16b75472e8082686ae16fea851aa49e08566e90d4a8c0"
+    },
+    {
+      "path": "docs/visual-targets/ASSET_ENGINE_AUDIT_2026_09_28_UA.md",
+      "bytes": 8433,
+      "sha256": "89b51197bc9a96c6a4ec72666f0e1d7ce5895fea389022b3030415c2d41558ba"
+    },
+    {
+      "path": "docs/visual-targets/AUTHORED_SKY_BRIDGE_CHECK_2026_10_08_UA.md",
+      "bytes": 8771,
+      "sha256": "4b307a1ea3923cca52497cbd57dce97379517cae1b6e62cea2787e4e41fe05c5"
+    },
+    {
+      "path": "docs/visual-targets/AUTHORED_SKY_NATIVE_CHECK_2026_10_08_UA.md",
+      "bytes": 5531,
+      "sha256": "660f2dd555e0e2f9cc534e97c4803f95106526a068e308a9d709687143064d88"
+    },
+    {
+      "path": "docs/visual-targets/BACKGROUND_CHECK_2026_10_05_UA.md",
+      "bytes": 9864,
+      "sha256": "99b71bf345a7fbc1f842d4497c58df649e8c427e8e60c4e359324467cc4097ab"
+    },
+    {
+      "path": "docs/visual-targets/BACKGROUND_COMPARE_2026_10_05.html",
+      "bytes": 5935,
+      "sha256": "4f5955af90c54eef124fe4d517608419820054da4b29da5e9099a4376842b877"
+    },
+    {
+      "path": "docs/visual-targets/CONCEPT_PREVIEW_LIMITATIONS_UA.md",
+      "bytes": 5587,
+      "sha256": "4756374746dc74f81d658f392f3f852d90b8a3d6b4222eeb655cc716b7f47fcd"
+    },
+    {
+      "path": "docs/visual-targets/CONCEPT_REBUILD_2026_09_30_UA.md",
+      "bytes": 21809,
+      "sha256": "67c46f3e19b2e708f2c21b3b411bd860847ee9d5628468d2aaaf4aed175ec151"
+    },
+    {
+      "path": "docs/visual-targets/CONTACT_CPU_CONTRACT_CHECK_2026_10_07_UA.md",
+      "bytes": 7102,
+      "sha256": "04ae22c4d762981dccf71cdc0232cbab8152a386c6b4be546835213b750d36b9"
+    },
+    {
+      "path": "docs/visual-targets/CONTACT_GPU_CHECK_2026_10_07_UA.md",
+      "bytes": 6883,
+      "sha256": "70efb0bf3fa6b6653516c4c125bc4162ba06a60c2ad93922a27ed4f972b6e647"
+    },
+    {
+      "path": "docs/visual-targets/CUMULATIVE_CONTACT_CHECK_2026_10_08_UA.md",
+      "bytes": 7248,
+      "sha256": "f191db15300795adda910f9b8601615124a88d1450ce73a8930672cc1682a5f3"
+    },
+    {
+      "path": "docs/visual-targets/DYNAMIC_LIGHTING_SPEC_UA.md",
+      "bytes": 14651,
+      "sha256": "84231b3c62d2459503d4f790338ae90149ac18eda5a3f7feaa1f7a9fe29726aa"
+    },
+    {
+      "path": "docs/visual-targets/ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md",
+      "bytes": 24653,
+      "sha256": "ae447e28541fe98fc0d0fd2482fda6c539877743e56e3150e95d85959176824f"
+    },
+    {
+      "path": "docs/visual-targets/ENVIRONMENT_CHECK_2026_10_08_UA.md",
+      "bytes": 6877,
+      "sha256": "f1c700e01f880b0655f96867cdff61d1c0d95b0c2775a7e322852dea70ddb40b"
+    },
+    {
+      "path": "docs/visual-targets/ENVIRONMENT_V1_CONTRACT_UA.md",
+      "bytes": 4147,
+      "sha256": "5fcfb093b0c415e38ed6ba26a567fc1fce9ab2b90baf515954d82f3dc0d26a43"
+    },
+    {
+      "path": "docs/visual-targets/FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md",
+      "bytes": 6169,
+      "sha256": "fe87a89b31453cbde7bd4f7f1b495f82b7d011e6cc129ec569c6453ef6f8c7d3"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_ENGINE_CONTROL_CHECK_2026_10_08_UA.md",
+      "bytes": 5588,
+      "sha256": "52907871a6199dad2f075135b803704bb0da1a84c570f360c8675cd04d9c62e9"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_MAIN_STARTUP_CHECK_2026_10_09_UA.md",
+      "bytes": 5073,
+      "sha256": "1bec4c88e35c0e8c67e31d911f4dfc43e4818f14c0e2e6378179d6e4ee2adb18"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_MATERIAL_CHECK_2026_10_08_UA.md",
+      "bytes": 10970,
+      "sha256": "c323e088f87245d2d97af9e022afd5da3e79724c499d6d0f16d1680695e682eb"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_NEUTRAL_EXPORT_CHECK_2026_10_09_UA.md",
+      "bytes": 5320,
+      "sha256": "a55abad486b2e0c3780d4102c10a2bada9c08943fd9031da992ffc26b6a5b79f"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_NEUTRAL_MAIN_CHECK_2026_10_10_UA.md",
+      "bytes": 3919,
+      "sha256": "a133ba77c07df4ebf8ac3a796f4dcfba67c66cb21613c84a5ad7adb2831019a1"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_NEUTRAL_MATERIAL_CHECK_2026_10_09_UA.md",
+      "bytes": 7495,
+      "sha256": "03a9ab7b6d4b9d1fa03e06cf42ff8655df612b9bb310464aece8cbb450fd9d49"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_TEXTURED_CPU_CHECK_2026_10_09_UA.md",
+      "bytes": 4232,
+      "sha256": "13e427be3419d9a2578709771252558b530ec95e0b3228c1143d8d70f574c1b8"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_UI_CHECK_2026_10_08_UA.md",
+      "bytes": 6628,
+      "sha256": "b0ee13b2f63a3779a5eaeabf00c75b0b6a8fef169bc33621ffd7efa5795fbbd7"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_WEATHER_CHECK_2026_10_08_UA.md",
+      "bytes": 8872,
+      "sha256": "ae7ecbcd38a132c77587ba855d220013d4b187674de608811e8ad365f451f369"
+    },
+    {
+      "path": "docs/visual-targets/GAMEVIEW_WINDOW_LIGHT_CHECK_2026_10_08_UA.md",
+      "bytes": 9094,
+      "sha256": "8f1f67a25d65bb9dd639b39428def74c9b0365e6b14d397f15aa3b1ed8d633a7"
+    },
+    {
+      "path": "docs/visual-targets/GRAPHICS_ENGINE_PLAN_V2_UA.md",
+      "bytes": 25257,
+      "sha256": "5d8f1ff99f482e5f4dc162322be3fa8c09e0fed9614f039840605955da5251c7"
+    },
+    {
+      "path": "docs/visual-targets/GRAPHICS_PROGRESS_UA.md",
+      "bytes": 12087,
+      "sha256": "f6ed02326e20ba262e6537fe4c15929cd54b102a4e38e878704a822824da6441"
+    },
+    {
+      "path": "docs/visual-targets/GROUND_FORWARD_CHECK_2026_10_07_UA.md",
+      "bytes": 16721,
+      "sha256": "58a818f367edbc23c91c6fcdf2a59e3657c2e37426030ddc8a5c45b4ca5d0146"
+    },
+    {
+      "path": "docs/visual-targets/HDR_COLOR_CHECK_2026_10_06_UA.md",
+      "bytes": 12865,
+      "sha256": "9bab8b97554ccf28a8157496dc7509243bb7c335c2d0047029bae7d7e9b2bbbc"
+    },
+    {
+      "path": "docs/visual-targets/HOUSE_GEOMETRY_DRAFT_2026_10_08_UA.md",
+      "bytes": 2892,
+      "sha256": "657755c537bad158072b0e019396413a5a6c6c60055404609fe7fc8e1b5e3e2d"
+    },
+    {
+      "path": "docs/visual-targets/HOUSE_TEXTURE_SOURCE_CHECK_2026_10_09_UA.md",
+      "bytes": 3561,
+      "sha256": "a30c4ca327b51f1aa4b42515431f8d2a160d16e846fe81b0f141a1bf09631cea"
+    },
+    {
+      "path": "docs/visual-targets/LOCAL_OCCLUSION_CHECK_2026_10_07_UA.md",
+      "bytes": 14121,
+      "sha256": "c5de6eecc5d0ff3bf9a2a7ed42b8b2dd1e4c263cf8414e858d666d4fbc44514f"
+    },
+    {
+      "path": "docs/visual-targets/MAP_GROUND_CHECK_2026_10_05_UA.md",
+      "bytes": 15461,
+      "sha256": "a20b392da332db018b8b81befe20898e73d9f3cf733ad6dbd9b4c8a06fdf17ca"
+    },
+    {
+      "path": "docs/visual-targets/MAP_GROUND_COMPARE_2026_10_05.html",
+      "bytes": 5986,
+      "sha256": "dc37d47bd593b73e189bcf24e5d671caf46dbc00a781bec3f88fe51d5c153596"
+    },
+    {
+      "path": "docs/visual-targets/MATERIAL_BRIDGE_CHECK_2026_10_06_UA.md",
+      "bytes": 12886,
+      "sha256": "61518b39309e4146cdb57382ff4027ec20bf3af3528fcd5562073141f44df105"
+    },
+    {
+      "path": "docs/visual-targets/MATERIAL_COLLECTION_CHECK_2026_10_08_UA.md",
+      "bytes": 2702,
+      "sha256": "ba91623b5a0f6fd866cbe4eea3c37e94d7604e79ac5c30f6a2cc0a5cc4c9ab11"
+    },
+    {
+      "path": "docs/visual-targets/MATERIAL_GEOMETRY_CALIBRATION_CHECK_2026_10_06_UA.md",
+      "bytes": 11758,
+      "sha256": "e34264458f854d7613be84d3e7f9f8e225d88507bb93d11340f0435f55a67cf0"
+    },
+    {
+      "path": "docs/visual-targets/MATERIAL_TEXTURE_DETAIL_PLAN_2026_10_09_UA.md",
+      "bytes": 4283,
+      "sha256": "166e49d49cbfd94513f9207198e6439659b55376dddc0f51a70634fe33e92ed2"
+    },
+    {
+      "path": "docs/visual-targets/NATURE_VARIETY_CHECK_2026_10_05_UA.md",
+      "bytes": 7407,
+      "sha256": "57c405351d1ecc9ffe5b2374748029375eb2872aadb1f763c1c0aa1daeb7470c"
+    },
+    {
+      "path": "docs/visual-targets/NEXT_UPDATES_DETAILED_UA.md",
+      "bytes": 40631,
+      "sha256": "ab6067a36232ff3e5e7d6aaa69a3e509cd4ab947ff56e0dd701ff68d9f301e0e"
+    },
+    {
+      "path": "docs/visual-targets/ORIGINAL_ASSET_REGISTRY_CHECK_2026_10_08_UA.md",
+      "bytes": 2366,
+      "sha256": "215c448a1b676f7115b36281a1bab63c2b834fb1016b3b0d5ce8c4eba8adc7b2"
+    },
+    {
+      "path": "docs/visual-targets/OUTCROP_HUD_CHECK_2026_10_05_UA.md",
+      "bytes": 7616,
+      "sha256": "eca9b0b197e2e92037fd3b425c6d7499373b636dbe57eacf1cf00610d8b5dc0b"
+    },
+    {
+      "path": "docs/visual-targets/OUTCROP_HUD_COMPARE_2026_10_05.html",
+      "bytes": 4941,
+      "sha256": "e6b5fc9e42332b7ba5809db69d64a2e1ed6955e91885a83fcb4420d8614e8206"
+    },
+    {
+      "path": "docs/visual-targets/PRESENTATION_OPTIMIZATION_CHECK_2026_10_05_UA.md",
+      "bytes": 15918,
+      "sha256": "dbb2e743ae97a9c5273e8fb187699d88b97b194ff66b30a200f8c2c7e40be2de"
+    },
+    {
+      "path": "docs/visual-targets/README.md",
+      "bytes": 3698,
+      "sha256": "5214d6b1f25328bf2e16745c23b16f4635d935952be14c1fe9fa8ec2ce4e0afd"
+    },
+    {
+      "path": "docs/visual-targets/RELIEF_FACE_CHECK_2026_10_05_UA.md",
+      "bytes": 7561,
+      "sha256": "0286daa60a2b1b977db36187927da8571040a3265a8e9391a8bd5486446d797c"
+    },
+    {
+      "path": "docs/visual-targets/RELIEF_FACE_COMPARE_2026_10_05.html",
+      "bytes": 4609,
+      "sha256": "95c0f33a844ec69d7c4e1c88c0bb62f6ecc17f0d75173bc6a0d54f9535a2ec95"
+    },
+    {
+      "path": "docs/visual-targets/RENDER_CORE_SPEC_UA.md",
+      "bytes": 39460,
+      "sha256": "7e6e3b19f2596971df6cf85beb18b210965b8ba8550439d98acc8b24bf33de81"
+    },
+    {
+      "path": "docs/visual-targets/SESSION_SHOWN_TIME_CHECK_2026_10_08_UA.md",
+      "bytes": 6586,
+      "sha256": "56e6566fa43ccb472f6248f026b3d676ea12f9dfd8337c3503d36104b39bb5c5"
+    },
+    {
+      "path": "docs/visual-targets/SKY_DIRECT_CHECK_2026_10_07_UA.md",
+      "bytes": 5703,
+      "sha256": "7c3247c0df4c61008cd8c97e4dea5b9150caf756b6176957dbb318822035ec12"
+    },
+    {
+      "path": "docs/visual-targets/SKY_SHADOW_CHECK_2026_10_08_UA.md",
+      "bytes": 7932,
+      "sha256": "6b4761c3ad9b8c7c5a18ec299587d13156568af39c7a027e88131f9ac9db9436"
+    },
+    {
+      "path": "docs/visual-targets/SURFACE_LIGHTING_CHECK_2026_10_05_UA.md",
+      "bytes": 9317,
+      "sha256": "6c558a569fe2d8abc8a810634bd06f007a0fbf13d04aa0ef95633e8114622a00"
+    },
+    {
+      "path": "docs/visual-targets/TYPED_OPACITY_CHECK_2026_10_08_UA.md",
+      "bytes": 6192,
+      "sha256": "4fc825a0fbc9f4f859ba2369fd047568bc1ac9a7f1e8071df15527e8d6eac5eb"
+    },
+    {
+      "path": "docs/visual-targets/TYPED_QUERY_UI_CHECK_2026_10_08_UA.md",
+      "bytes": 4146,
+      "sha256": "cd2e35a0200ecdb6bb4f393f8ab406ba8870dcd1de45358520d8e8fde621702d"
+    },
+    {
+      "path": "docs/visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md",
+      "bytes": 21399,
+      "sha256": "ddc8d6db6214e91dc73f59d1df7fac8dd99b191ae358f26c28b137f836aee9c0"
+    },
+    {
+      "path": "docs/visual-targets/WATER_COVERAGE_RESIZE_CHECK_2026_10_08_UA.md",
+      "bytes": 6821,
+      "sha256": "11ae41533d0fb2391edd5c0d8d230d45d7ae0aa5e10449d54bb145581747764b"
+    },
+    {
+      "path": "docs/visual-targets/WATER_REFLECTION_CHECK_2026_10_08_UA.md",
+      "bytes": 6779,
+      "sha256": "39367d21800bb2e19d899325d519c1d898b486136943d413b229fcf38c74c7c3"
+    },
+    {
+      "path": "docs/visual-targets/WATER_REFLECTION_V1_CONTRACT_UA.md",
+      "bytes": 7245,
+      "sha256": "b703d1fe8c9c0c9fcc70f7051a65e428e2ca2ff7aaa1ad02373406a11bd0ece2"
+    },
+    {
+      "path": "docs/visual-targets/WEATHER_AUTHORITY_CHECK_2026_10_08_UA.md",
+      "bytes": 7239,
+      "sha256": "cb270281d9e6e718385a9c5818623e5b5b9ee7022e9210f07d65e3b2cb143e78"
+    },
+    {
+      "path": "docs/visual-targets/WEATHER_DOMAIN_CHECK_2026_10_08_UA.md",
+      "bytes": 6917,
+      "sha256": "11e3602087f2aa1573bdf78152f1e0bb0468d64c4d6beb8d1e3858b3f7c83faf"
+    },
+    {
+      "path": "docs/visual-targets/WEATHER_TRANSPORT_CHECK_2026_10_08_UA.md",
+      "bytes": 4722,
+      "sha256": "5692e79a7029422e8c18c0403315d178400c6de0ffb123f0344d880158bf08c8"
+    },
+    {
+      "path": "docs/visual-targets/WEATHER_WINTER_CHECK_2026_10_08_UA.md",
+      "bytes": 4465,
+      "sha256": "15723201a3ab7b2a5d7296a211a079f32238913a88d88071886685690b31da8e"
+    },
+    {
+      "path": "docs/visual-targets/WEATHER_WORK_CHECK_2026_10_08_UA.md",
+      "bytes": 5417,
+      "sha256": "228e40c89a5c0f407c057b7922a9be5cda657dc9acae7441737a6fd96db2f3f9"
+    },
+    {
+      "path": "docs/visual-targets/WORLD_FX_SPEC_UA.md",
+      "bytes": 37872,
+      "sha256": "40e58192d38c1c7614f8b5bac3cd1fbee5d55c91d281e1c86ab889ea72eca4e3"
+    },
+    {
+      "path": "docs/visual-targets/generation-prompts.json",
+      "bytes": 47545,
+      "sha256": "85f552bcb71c47cd3916f0a5d3601e0f56e287d122abc30051bf3bcce6f50966"
+    },
+    {
+      "path": "docs/visual-targets/index.html",
+      "bytes": 10702,
+      "sha256": "17fd42ab0830d6130b27ded9e3f50e3961500acd76ba9b27b0e8d70b5f0dea5e"
+    },
+    {
+      "path": "docs/visual-targets/manifest.json",
+      "bytes": 5456,
+      "sha256": "caf0fc0e1689ac05705661e7d713bfd0e3ee645c9166dc85c1a08fdc3e8f6def"
+    },
+    {
+      "path": "docs/visual-targets/progress/manifest.json",
+      "bytes": 1966,
+      "sha256": "2693dce85a3a8d9e547dabce4d53ef4ff5545dc5f50e80ee0045a53abea02a1a"
+    },
+    {
+      "path": "docs/visual-targets/progress/prompts.json",
+      "bytes": 11531,
+      "sha256": "723ad271cf9f160bc3941ceb1c78046d31670477889e2f714caebf4ee5d93c52"
+    },
+    {
+      "path": "docs/visual-targets/progress/scenes.json",
+      "bytes": 5786,
+      "sha256": "7a03765b8b201106c6b83b256b31118cb60d6bbb03365d5f7eae0f828a7a19c1"
+    },
+    {
+      "path": "docs/visual-targets/public-versions.html",
+      "bytes": 29286,
+      "sha256": "60a5fc0c2316af2040b557f05bb5b6050055a704027baf2102f7c8fe4c42e662"
+    },
+    {
+      "path": "docs/visual-targets/verification/detailed-plan-review-2026-09-28.md",
+      "bytes": 2159,
+      "sha256": "f394a65b9d43506eae1d04f8bf077ff2e3636d61f127418277ac948bf908b004"
+    },
+    {
+      "path": "packaging/README.md",
+      "bytes": 4272,
+      "sha256": "f4e6ea2b9df791b84d6b1a3e0c7fa0830f4ba2fd21fd59ec1652f284e90f8ed2"
+    }
+  ],
+  "limitations": [
+    "Historical build and acceptance records apply only to their named snapshots.",
+    "Some historical links reference local evidence excluded from the public source import.",
+    "Exact localized UI/error examples remain multilingual where they document runtime behavior.",
+    "Public visibility does not add code or asset reuse rights; existing notices remain applicable."
+  ]
+}

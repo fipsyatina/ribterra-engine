@@ -1,19 +1,21 @@
-# House texture detail: авторська SOURCE-чернетка
+# House texture detail: authored SOURCE draft
 
-DRAFT / SOURCE ONLY / NOT_ACCEPTED. Генерація не є export/native/reference/FPS acceptance.
-Parent запускає генератор лише після прийнятого authored-UV CPU checkpoint1.43.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Оригінальний ready House: дерев'яні trim/door/frames/fence/props, slate roof і кам'яна
-основа/chimney/steps. Переглянуто original sheet і три надані user references. Reference
-images мають baked освітлення, сніг і warm emissive вигляд; їхній RGB не sampled.
-Синій навіс відсутній на цьому ready House й не доданий. 19649 old-paint unsupported
-samples та приховані/відсутні деталі не закриваються новою геометрією.
+DRAFT / SOURCE ONLY / NOT_ACCEPTED. Generation is not export/native/reference/FPS acceptance.
+The parent starts the generator only after authored-UV CPU checkpoint1.43 has been accepted.
+
+Original ready House: wooden trim/door/frames/fence/props, slate roof and stone
+base/chimney/steps. The original sheet and three user references are reviewed. Reference
+images have baked lighting, snow and warm emissive appearance; Their RGB is not sampled.
+The blue canopy is absent from this ready House and has not been added. 19649 old-paint unsupported
+samples and hidden/absent details are not covered by the new geometry.
 
 master.json — exact byte copy frozen flat master;114XYZ triangles,14material meanings,
-winding/AO/10coarse sky triangles/empty local occluders/20probes/eppp4/pivot незмінні.
-Три constant semantics plaster/glass/metal зберігають exact RGB. Решта11materials
-мають texture XOR constant; їхній master RGB лишається inactive bound constant.
-Roughness/wet/caster scalars та emission0 не змінюються, не є фізичними вимірами.
+winding/AO/10coarse sky triangles/empty local occluders/20probes/eppp4/pivot is unchanged.
+Three constant semantics plaster/glass/metal retain exact RGB. The remaining11materials
+have texture XOR constant; their master RGB remains inactive bound constant.
+Roughness/wet/caster scalars and emission0 are not changing, they are not physical measurements.
 
 RGB8 sources: timber192x256, slate192x192, fieldstone192x256;405504tight bytes total.
 Timber base[123,88,55], slate[112,118,129], stone[142,138,124] — provisional authored

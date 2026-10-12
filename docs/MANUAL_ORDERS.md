@@ -1,95 +1,97 @@
-# Ручна черга наказів 0.10
+# Manual Order Queue 0.10
 
-**Статус: лінійку 0.10 завершено збіркою 0.10.1.** Локально — 52/52 CTest, фінальні мережеві профілі 150 мс RTT з втратами 1%/3%, GPU у п’яти мовах і 4/4 package smoke. CI `13ed5c2` пройшов Windows 52/52, Linux 35/35, UBSan 13/13 без C++ warnings/errors. П’ять benchmark-сценаріїв 0.10.0 збережено як історичний вимір незміненої симуляції. Джерело, runtime пакета, точні результати й межі наведено у [VALIDATION.md](VALIDATION.md). Повний рушій має окремі критерії приймання.
+> English translation of the historical document; snapshot-specific evidence and scope are preserved from the original wording imported in commit `7388a2f`.
 
-Цей етап реалізує чергу наявних Move/Gather та їх часткове групове виконання. Він не закриває всю S07: take/drop/interact/talk/defend, повні збережені групи й контекстне меню та інші вимоги лишаються у [реєстрі рушія](ENGINE_REQUIREMENTS.md). Напрям і вимоги сумісності наведені в [CONTROL_PLAN_UA.md](CONTROL_PLAN_UA.md) та [MANUAL_QUEUE_MIGRATION_UA.md](MANUAL_QUEUE_MIGRATION_UA.md).
+**Status: the 0.10 line was completed with build 0.10.1.** Local results: 52/52 CTest, final network profiles at 150 ms RTT with 1%/3% loss, GPU checks in five languages, and 4/4 package smoke. CI `13ed5c2` passed Windows 52/52, Linux 35/35, and UBSan 13/13 without C++ warnings or errors. Five 0.10.0 benchmark scenarios are retained as a historical measurement of the unchanged simulation. Source, packaged runtime, exact results, and limits are recorded in [VALIDATION.md](VALIDATION.md). The full engine has separate acceptance criteria.
 
-## Публічний контракт
+This stage implements queues for the existing Move/Gather commands and their partial group execution. It does not close all of S07: take/drop/interact/talk/defend, complete persisted groups and a context menu, and other requirements remain in the [engine register](ENGINE_REQUIREMENTS.md). Direction and compatibility requirements are documented in [CONTROL_PLAN_UA.md](CONTROL_PLAN_UA.md) and [MANUAL_QUEUE_MIGRATION_UA.md](MANUAL_QUEUE_MIGRATION_UA.md).
 
-Типи й API визначені в [world.hpp](../include/ribterra/world.hpp), збережувані доповнення — у [world_state.hpp](../include/ribterra/world_state.hpp).
+## Public contract
 
-- `World::issue_manual_order(ids, request, mode, issuer)` повертає окремий `ResidentCommandOutcome` для кожного унікального ID у впорядкованій вибірці. `Applied` означає прийнятий елемент черги; фізичне виконання відбувається пізніше. `Deferred` означає прийняття з очікуванням захищеного виконавця. `Rejected` має конкретний `PathFailure` і нульовий `order_id`.
-- `ManualOrderRequest` містить `Move` або `Gather`, ціль та `GatherCompletion::{UntilExhausted, OneDelivery}`. `Legacy` зарезервовано для сумісного зв'язку з наявним старим виконавцем; такий тип не приймається як нова команда.
-- Кожен прийнятий елемент має монотонний `uint64` ID. ID не перевикористовується після завершення чи скасування. Переповнення лічильника відхиляє новий наказ до зміни чинної черги.
-- Необов'язкові `ManualOrderIssuer{player_id, request_id}` описують походження. Вони не дають права керування: перевірка клієнта, власності й lease належить серверу. Невідомі старі автор і час залишаються відсутніми.
-- `manual_orders()` дає авторитетні записи, `manual_diagnostics()` — діагностику поточного екземпляра. Внутрішні path/Work/logistics IDs не є новими клієнтськими request IDs.
+Types and APIs are defined in [world.hpp](../include/ribterra/world.hpp); persisted additions are in [world_state.hpp](../include/ribterra/world_state.hpp).
 
-На одного жителя допускається до 8 незавершених елементів, загалом — до 8192 записів. Завершена історія має хвіст до 256 записів і може очищуватися раніше для прийняття нової роботи. Тому підрахунок усіх завершень лише за видимим хвостом історії некоректний.
+- `World::issue_manual_order(ids, request, mode, issuer)` returns a separate `ResidentCommandOutcome` for every unique ID in the ordered selection. `Applied` means the queue item was accepted; physical execution occurs later. `Deferred` means the item was accepted while waiting for a protected executor. `Rejected` has a specific `PathFailure` and a zero `order_id`.
+- `ManualOrderRequest` contains `Move` or `Gather`, a target, and `GatherCompletion::{UntilExhausted, OneDelivery}`. `Legacy` is reserved for a compatibility link to an existing old executor; it is not accepted as a new command type.
+- Every accepted item receives a monotonic `uint64` ID. IDs are not reused after completion or cancellation. Counter overflow rejects a new order before the current queue changes.
+- Optional `ManualOrderIssuer{player_id, request_id}` values describe provenance. They do not grant control rights: client, ownership, and lease validation belong to the server. Unknown historical author and time values remain absent.
+- `manual_orders()` returns authoritative records; `manual_diagnostics()` returns diagnostics for the current instance. Internal path/Work/logistics IDs are not new client request IDs.
 
-## Фази та фізичне завершення
+Each resident may have up to 8 unfinished items, with no more than 8192 records in total. Completed history retains a tail of up to 256 records and may be pruned earlier to admit new work. Counting all completions from only the visible history tail is therefore incorrect.
 
-Логіка розміщена у [world_manual.inc](../src/sim/world_manual.inc), взаємні зв'язки перевіряє [world_manual_validation.inc](../src/sim/world_manual_validation.inc).
+## Phases and physical completion
 
-| Фаза | Значення |
+The logic is in [world_manual.inc](../src/sim/world_manual.inc); [world_manual_validation.inc](../src/sim/world_manual_validation.inc) validates cross-references.
+
+| Phase | Meaning |
 |---|---|
-| `Queued` | Елемент чекає своєї черги або допуску до planner. Лише голова може отримати виконавця. |
-| `WaitingBoundary` | Новий наказ прийнято, але попередня фізична задача або старий атомарний path ще захищені. |
-| `PathPending` | Голова володіє конкретним незавершеним path batch. |
-| `Active` | Виконується маршрут, Work continuation або логістична задача. Це не обов'язково означає, що житель уже рухається чи збирає ресурс. |
-| `Complete` | Досягнуто семантичного завершення: `Arrived`, `Delivered`, `Exhausted` або сумісне `LegacyFinished`. |
-| `Failed` | Є термінальний `PathFailure`; результат не маскується як успішний. |
-| `Cancelled` | Елемент окремо скасовано, замінено, зупинено або звільнено: `Cancelled`, `Replaced`, `Stopped`, `Released`. |
+| `Queued` | The item is waiting for its turn or planner admission. Only the head can receive an executor. |
+| `WaitingBoundary` | A new order was accepted, but the previous physical task or old atomic path remains protected. |
+| `PathPending` | The head owns a specific unfinished path batch. |
+| `Active` | A route, Work continuation, or logistics task is executing. This does not necessarily mean that the resident is already moving or gathering. |
+| `Complete` | Semantic completion was reached: `Arrived`, `Delivered`, `Exhausted`, or compatible `LegacyFinished`. |
+| `Failed` | A terminal `PathFailure` exists; the result is not masked as success. |
+| `Cancelled` | The item was individually cancelled, replaced, stopped, or released: `Cancelled`, `Replaced`, `Stopped`, or `Released`. |
 
-Move завершується після фактичного проходження маршруту й прибуття, а не після встановлення path. `OneDelivery` завершується після одного корисного видобутку та фактичного розміщення його вантажу у сховищі. `UntilExhausted` продовжує цикли збору й доставки до нормального вичерпання ресурсу. Вичерпана ціль має `Complete/Exhausted`, а змінена несумісна ціль — невдачу.
+Move completes after the route is physically traversed and the destination is reached, not after a path is assigned. `OneDelivery` completes after one productive gather and physical placement of its cargo in storage. `UntilExhausted` continues gather-and-delivery cycles until normal resource exhaustion. A depleted target produces `Complete/Exhausted`, while a changed, incompatible target produces failure.
 
-Для `OneDelivery` відсутність сховища після створення output не видається за доставку: output залишається фізичним Ground-стеком, а ручний наказ завершується невдачею. Цей етап користується наявним `PathFailure::TargetInvalid`; окремого публічного коду `StorageFull` у ручному результаті немає.
+For `OneDelivery`, the absence of storage after output is created is not reported as a delivery: output remains a physical Ground stack and the manual order fails. This stage uses the existing `PathFailure::TargetInvalid`; there is no separate public `StorageFull` code in the manual result.
 
-## Заміна, додавання та межа доставки
+## Replace, append, and the delivery boundary
 
-`Replace` спочатку перевіряє запит і місткість. Заблокований Move, порожня/несумісна ціль Gather або вичерпана місткість не видаляють чинну чергу. Для прийнятого Replace старі елементи скасовуються; незахищений маршрут або Work можна перервати одразу. `Append` додає елемент після чинної голови. Автоматична професія не отримує жителя між послідовними елементами.
+`Replace` first validates the request and capacity. A blocked Move, empty/incompatible Gather target, or exhausted capacity does not remove the current queue. For an accepted Replace, old items are cancelled; an unprotected route or Work can be interrupted immediately. `Append` adds an item after the current head. Automatic profession work does not acquire the resident between consecutive items.
 
-Зарезервована фізична задача завершує безпечну межу. Нова голова чекає в `WaitingBoundary`, потім починає свій маршрут. Черга не копіює предмети, reservations або delivery credit: ними продовжує володіти [логістика](../src/sim/world_logistics.inc).
+A reserved physical task completes its safe boundary. The new head waits in `WaitingBoundary` and then begins its route. The queue does not copy items, reservations, or delivery credit: [logistics](../src/sim/world_logistics.inc) continues to own them.
 
-`cancel_manual_order(order_id)` скасовує саме вказаний елемент із причиною `ManualOrderCompletion::Cancelled = 8`. Це нове значення після незмінених 0–7; воно не означає звільнення права керування. Сервер зберігає чинний lease. Якщо скасовано активну голову, наступний елемент зберігається й за потреби чекає фізичної межі. Скасування хвоста не перериває голову.
+`cancel_manual_order(order_id)` cancels exactly the specified item with reason `ManualOrderCompletion::Cancelled = 8`. This is a new value after unchanged values 0–7; it does not release control rights. The server preserves the current lease. If the active head is cancelled, the next item remains and waits for a physical boundary when necessary. Cancelling a tail item does not interrupt the head.
 
-Після доставки незавершений Work continuation можна скасувати разом із його внутрішнім pending path. Така задача не є захищеним вантажем: скасований Gather не відновлюється, а наступний елемент залишається `Queued`. Захист старого зовнішнього атомарного batch і фізичної логістики зберігається.
+After delivery, an unfinished Work continuation can be cancelled together with its internal pending path. Such a task is not protected cargo: the cancelled Gather is not restored and the next item remains `Queued`. Protection for an old external atomic batch and physical logistics remains.
 
-`stop(ids)` очищує ручну чергу з причиною `Stopped` та вимикає автоматизацію до явного нового призначення. `assign_profession` замінює чергу й записує нову професійну політику з попередньою Deferred-семантикою. `release_manual_control(ids)` очищує чергу з причиною `Released`, але зберігає вибір професії та значення `automation_enabled`; він придатний для втрати тимчасового права керування. Release не вмикає автоматизацію, яку раніше вимкнув Stop. Обробка цих меж міститься також у [world_professions.inc](../src/sim/world_professions.inc) та [world_work.inc](../src/sim/world_work.inc).
+`stop(ids)` clears the manual queue with reason `Stopped` and disables automation until a new explicit assignment. `assign_profession` replaces the queue and records a new profession policy with the previous Deferred semantics. `release_manual_control(ids)` clears the queue with reason `Released` but preserves the profession selection and `automation_enabled` value; it is suitable when temporary control rights are lost. Release does not enable automation that Stop previously disabled. These boundaries are also handled in [world_professions.inc](../src/sim/world_professions.inc) and [world_work.inc](../src/sim/world_work.inc).
 
-## Спільний planner і межі витрат
+## Shared planner and cost bounds
 
-Нові маршрути мають `PathCommandKind::Manual` і `legacy_atomic=false`. Група сумісних готових голів використовує спільний зворотний BFS; вона не перетворюється на незалежний BFS для кожного жителя. Draft зберігає `manual_order_id`, ознаку поіменного завершення та невдачу. Недоступний або скасований учасник не скасовує маршрути інших. Застосування маршрутів у Stage може відбутися для різних учасників у різні тики.
+New routes use `PathCommandKind::Manual` and `legacy_atomic=false`. A group of compatible, ready heads uses one shared reverse BFS; it does not become one independent BFS per resident. A draft stores `manual_order_id`, the named-completion flag, and failure. An unavailable or cancelled participant does not cancel the routes of others. Route application in Stage can occur for different participants on different ticks.
 
-Спільний planner зберігає ліміт 4096 одиниць path work за тик. Ручний scheduler відвідує до 1500 голів для admission і робить до 32 спроб допуску спільних batches за тик. Це дозволяє відвідати максимальну групу з 1500 жителів за один обхід. За тиску на чергу використовується backoff 2/4/8/16/32 тики, до 64 спроб і до 1200 тиків admission від першого розгляду голови. Очікування за іншими елементами черги не починає цей відлік.
+The shared planner retains a limit of 4096 path-work units per tick. The manual scheduler visits up to 1500 heads for admission and makes up to 32 shared-batch admission attempts per tick. This permits one pass over the maximum group of 1500 residents. Under queue pressure, it uses backoff of 2/4/8/16/32 ticks, up to 64 attempts, and up to 1200 admission ticks from the head's first consideration. Waiting behind other queue items does not start this counter.
 
-**1500 visits не є межею всіх операцій tick.** Окремо виконується узгодження голів із фактичними виконавцями перед професійним scheduler і після фізичної роботи, щоб кожен експорт мав чинні кореляції. Є також витрати на індекси, групування, фізику, професії й логістику. Фактичні command time, tick time та пам'ять потрібно оцінювати вимірюванням усього сценарію.
+**1500 visits is not a limit on all tick operations.** Heads are reconciled separately with their actual executors before the profession scheduler and after physical work so every exported view has valid correlations. Indexing, grouping, physics, professions, and logistics also have costs. Actual command time, tick time, and memory must be evaluated by measuring the complete scenario.
 
-Прийняття групи резервує пам'ять під записи один раз, із запитом не більшим за 8192, до зміни будь-якого жителя. Місткість вектора не входить у checksum. Відхилені учасники повної черги не повторюють сканування історії, якщо немає завершених записів для очищення; скасування учасника шукає його впорядкований draft двійковим пошуком. Водночас масовий Replace у повній черзі ще може повторювати фактичне ущільнення записів, а зупинка активного Work переглядає його історію. Цей код не заявляє лінійної вартості будь-якої групової команди.
+Group acceptance reserves record memory once, for a request of no more than 8192 items, before changing any resident. Vector capacity is not part of the checksum. Rejected participants in a full queue do not rescan history when there are no completed records to prune; participant cancellation finds its ordered draft by binary search. However, a mass Replace in a full queue can still repeat actual record compaction, and stopping active Work scans its history. This code does not claim linear cost for every group command.
 
-Внутрішні Manual outcomes не потрапляють у `take_path_results()` і не завершують старі зовнішні request correlations. Старі API `World::move/gather` зберігають атомарні path outcomes; для їх ручного виконавця додається сумісний запис черги.
+Internal Manual outcomes do not enter `take_path_results()` and do not complete old external request correlations. The old `World::move/gather` APIs preserve atomic path outcomes; a compatible queue record is added for their manual executor.
 
-## Завершальне мережеве виправлення 0.10.1
+## Final 0.10.1 networking fix
 
-Пропущене через затриманий ACK періодичне оновлення залишається запитаним до фактичної відправки. Тому пауза після нього не залишає клієнта зі старою проєкцією. На швидкому з'єднанні зберігається звичайна частота 5 Hz; pending snapshots не замінюються до ACK.
+A periodic update missed because of a delayed ACK remains requested until it is actually sent. A subsequent pause therefore does not leave the client with a stale projection. The ordinary 5 Hz cadence remains on a fast connection; pending snapshots are not replaced before ACK.
 
-Графічний клієнт автоматично відновлює раніше встановлену сесію після транспортного обриву: повтори щосекунди, до 30 секунд від виявлення. Явний disconnect зупиняє автоматичні спроби. Невдале початкове підключення не запускає такий цикл.
+The graphical client automatically reconnects a previously established session after a transport interruption: one retry per second for up to 30 seconds after detection. An explicit disconnect stops automatic attempts. A failed initial connection does not start this loop.
 
-До 2048 непідтверджених команд зберігаються лише в пам'яті клієнта. Повтор можливий після повного знімка, лише з незмінними endpoint, world ID, player ID, session token і control epoch та не пізніше 30 секунд від видачі. Повторюються той самий request ID і весь payload; сервер повертає попередній результат або приймає раніше неотриману команду. Повтори подаються за зростанням ID, не частіше одного на 50 мс; нові команди чекають завершення цієї відправки. Після terminal reply запис видаляється. Це не durable replay після перезапуску клієнта чи сервера.
+Up to 2048 unacknowledged commands are retained in client memory only. Replay is allowed after a full snapshot only when endpoint, world ID, player ID, session token, and control epoch are unchanged, and no later than 30 seconds after issue. The same request ID and full payload are replayed; the server returns the previous result or accepts a command that it did not receive earlier. Replays are submitted in increasing ID order, no more frequently than one per 50 ms; new commands wait for this submission to complete. A record is removed after a terminal reply. This is not durable replay after a client or server restart.
 
-Застарілі або несумісні наміри не виконуються автоматично. HUD п'ятьма мовами повідомляє про відновлення, успіх, невдачу й потребу перевірити непідтверджені накази. Відновлення з'єднання саме по собі не означає фізичного завершення наказів. Повторно отримана історія чату відсіюється за sequence, тому старі повідомлення не з'являються вдруге.
+Stale or incompatible intents do not execute automatically. The HUD reports reconnection, success, failure, and the need to review unacknowledged orders in five languages. Reconnection alone does not mean that orders completed physically. Re-received chat history is deduplicated by sequence, so old messages do not appear twice.
 
-Покриття: детерміновані переривання до прийняття команди та після прийняття до terminal receipt, прострочений намір, змінений epoch, явний disconnect; окремо — справжній зашифрований UDP через relay з базовим RTT 150 мс, втратами 1%/3% у кожен бік, дублюванням, додатковою затримкою й обривом до транспортного timeout. Статус фактичних прогонів — у [VALIDATION.md](VALIDATION.md). Ці сценарії не підміняють випробування на фізичних ПК.
+Coverage includes deterministic interruptions before command acceptance and after acceptance but before the terminal receipt, an expired intent, a changed epoch, and explicit disconnect. Separately, it includes real encrypted UDP through a relay with a 150 ms base RTT, 1%/3% loss in each direction, duplication, added delay, and interruption through transport timeout. Actual run status is in [VALIDATION.md](VALIDATION.md). These scenarios do not substitute for tests on physical PCs.
 
-## Save 8 і сумісність
+## Save 8 and compatibility
 
-Цільовий набір завершального виправлення: engine 0.10.1, save 8, rules 7, protocol 7, generator 2. Нові черги, лічильники, admission cursor/attempts, зв'язки виконавців та поіменні draft-поля входять у збереження і checksum. Діагностичні показники часу й visits не є збережуваною ігровою істиною.
+The target set for the final fix is engine 0.10.1, save 8, rules 7, protocol 7, generator 2. New queues, counters, admission cursor/attempts, executor links, and named draft fields are stored and included in the checksum. Diagnostic time and visit metrics are not persisted gameplay truth.
 
-`migrate_legacy_manual_orders` спочатку виконує повну попередню семантичну перевірку, потім додає записи за зростанням ID жителя. Після конверсії потрібна нова transactional валідація. Зіпсований імпорт не замінює чинний World.
+`migrate_legacy_manual_orders` first performs complete prior semantic validation and then adds records in increasing resident-ID order. A new transactional validation is required after conversion. A corrupt import does not replace the current World.
 
-- Підтверджені `manual_override` та path/route/Work/logistics зв'язки дозволяють відновити відомий Move/Gather head. Самого `Job` недостатньо.
-- Нетиповий, але старий валідний ручний виконавець отримує `Legacy` зі зв'язком до фактичного executor, без вигаданого типу наказу чи цілі.
-- Нейтральна робота у v7 після завантаження v6 не стає ручною. Deferred Assign/Stop не відроджує скасований Gather.
-- Прийняті batches v7 продовжують попереднє атомарне завершення, frontier, cursors і облік бюджету. Їх логічні витрати на draft/batch/outcome лишаються 72/256/48 байтів; доповнення нового C++ DTO не змінює старий поріг прийняття planner state.
-- Оpaque Legacy не допускається до планування як `Queued` або `WaitingBoundary` з невідомою ціллю. Чинний Legacy-зв'язок має `Active` або `PathPending`; наступні нові команди містять конкретний запит.
+- Confirmed `manual_override` and path/route/Work/logistics links allow restoration of a known Move/Gather head. `Job` alone is insufficient.
+- An unusual but historically valid manual executor receives `Legacy` linked to the actual executor, without inventing an order type or target.
+- Neutral work in v7 does not become manual after loading v6. Deferred Assign/Stop does not revive a cancelled Gather.
+- Accepted v7 batches retain the previous atomic completion, frontier, cursors, and budget accounting. Their logical draft/batch/outcome costs remain 72/256/48 bytes; extending a new C++ DTO does not change the old planner-state acceptance threshold.
+- Opaque Legacy cannot be admitted to planning as `Queued` or `WaitingBoundary` with an unknown target. A current Legacy link must be `Active` or `PathPending`; later new commands contain a concrete request.
 
-Справжній початковий матеріал — [25 fixtures незміненого v7 writer](../tests/fixtures/WORLD_SAVE_V7.md). Фінальний persistence-набір порівняв усі 65 старих контрольних станів кожного fixture; повний локальний CTest 0.10.1 пройшов 52/52. Докази та межі — у [VALIDATION.md](VALIDATION.md).
+The genuine starting material is [25 fixtures from the unchanged v7 writer](../tests/fixtures/WORLD_SAVE_V7.md). The final persistence suite compared all 65 old control states in every fixture; the complete local 0.10.1 CTest passed 52/52. Evidence and limits are in [VALIDATION.md](VALIDATION.md).
 
-## Перевірки та benchmark
+## Tests and benchmark
 
-[manual_order_tests.cpp](../tests/manual_order_tests.cpp) перевіряє Move → OneDelivery → Move без автоматичної роботи між кроками, частково недоступну групу зі спільним пошуком, скасування одного з 1500 учасників, Replace/Stop/Release/Cancel під вантажем, точний output/XP, вичерпання та покроковий import/resume. Групові випадки заповнюють 8192 записи, перевіряють відмову без зміни checksum, наступний Replace та часткове прийняття біля межі `uint64`. Скасування реального Gather continuation у Work `PathPending` перевіряється після доставки з хвостом і без нього. Окремі негативні випадки відхиляють порожню legacy-ціль, відірвану pending-голову, несумісні executor/job і terminal phase/completion, зокрема `Complete + Cancelled`.
+[manual_order_tests.cpp](../tests/manual_order_tests.cpp) checks Move → OneDelivery → Move without automatic work between steps, a partially unavailable group using shared search, cancellation of one of 1500 participants, Replace/Stop/Release/Cancel while carrying cargo, exact output/XP, exhaustion, and stepwise import/resume. Group cases fill all 8192 records, verify rejection without a checksum change, then test the next Replace and partial acceptance near the `uint64` boundary. Cancellation of a real Gather continuation in Work `PathPending` is tested after delivery both with and without a tail. Separate negative cases reject an empty legacy target, a detached pending head, incompatible executor/job, and terminal phase/completion combinations including `Complete + Cancelled`.
 
-[manual_order_persistence_tests.cpp](../tests/manual_order_persistence_tests.cpp) відповідає за старі fixtures, збереження нового стану, відхилення пошкоджених payloads та порівняння старої семантики. Вони доповнюють, а не замінюють мережеві й візуальні перевірки.
+[manual_order_persistence_tests.cpp](../tests/manual_order_persistence_tests.cpp) covers old fixtures, persistence of new state, rejection of corrupt payloads, and comparison with old semantics. These tests complement rather than replace network and visual checks.
 
-[ManualOrderBench](../tools/manual_order_bench.cpp) — окремий керований benchmark для 10/100/500/1500/6000 жителів; фінальні п’ять рядків і незалежний огляд наведено у [VALIDATION.md](VALIDATION.md). Сценарій використовує рівну ділянку, співрозташованих жителів, збільшені Food/storage та одну спільну жилу Wood. Він вимірює команди окремо від `world.tick`; спостереження результатів виконується поза таймером tick. Час початкових Move та Append не оцінює масовий Replace під активним Work, мережеву передачу чи GPU.
+[ManualOrderBench](../tools/manual_order_bench.cpp) is a separate controlled benchmark for 10/100/500/1500/6000 residents; the final five rows and independent review are in [VALIDATION.md](VALIDATION.md). The scenario uses flat terrain, co-located residents, increased Food/storage, and one shared Wood deposit. It measures commands separately from `world.tick`; result observation occurs outside the tick timer. Initial Move and Append timing does not evaluate mass Replace during active Work, network transfer, or the GPU.
 
-На масштабі 6000 навмисно заповнюється межа 8192: 6000 Move та 2192 прийняті OneDelivery, решта 3808 Append мають бути відхилені за місткістю. Oracle вимагає фізичного прибуття всіх 6000, рівно одного XP/output для кожного прийнятого Gather, рівно 3 доставлених Wood на output та нуля cargo, активних наказів і pending paths наприкінці. Він не підраховує завершення за обрізаною історією. Це сценарій черги й логістики під заданими умовами, не доказ продуктивності всього рушія або всіх 6000 одночасних Gather.
+At scale 6000, the 8192 limit is deliberately filled: 6000 Move and 2192 accepted OneDelivery items, while the remaining 3808 Append operations must be rejected for capacity. The oracle requires all 6000 residents to arrive physically, exactly one XP/output for every accepted Gather, exactly 3 delivered Wood per output, and zero cargo, active orders, and pending paths at the end. It does not count completions from the truncated history. This is a queue-and-logistics scenario under specified conditions, not evidence of whole-engine performance or of all 6000 Gather operations running concurrently.

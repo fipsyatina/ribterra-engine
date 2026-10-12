@@ -1,17 +1,19 @@
-# Ribterra 0.25.11 — Зрозумілий склад альфи
+# Ribterra 0.25.11 — Clear composition of the alpha
 
-Одиночна гра, господар кооперативної кімнати та окремий сервер використовують однакові правила альфи. Обмеження перевіряються в симуляції: прямий наказ не відкриває приховану можливість.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-У новій грі є початковий **Табір і 12 будованих типів**: Будинок, Ферма, Склад, Шахта, Майстерня, Рибальський дім, Лісопилка, Млин, Кухня, Глиняний кар’єр, Дорога й Міст. Майстерня перетворює глину та дрова на цеглу. Матеріальні та харчові рецепти збережено.
+A single game, a co-op room owner, and a separate server all use the same alpha rules. The limitations are tested in the simulation: a direct command does not reveal a hidden possibility.
 
-Нове будівництво Дому релігії, Пабу, Дому картографа, Дому досліджень, Плавильні, Бібліотеки й Військового дому приховано та заборонено симуляцією. Код, каталожні записи, графіку й дані цих споруд збережено. Завершені історичні споруди лишаються у безпечних старих збереженнях; інспектор пояснює їхню недоступність в альфі.
+The new game features the original **Table and 12 building types**: House, Farm, Warehouse, Mine, Workshop, Fish House, Woodmill, Mill, Kitchen, Clay Carrier, Road and Bridge. The workshop turns clay and wood into bricks. The material and food recipes are preserved.
 
-Прибрано Research-preview, сім неіснуючих ресурсів верхньої панелі, постійні +18 °C, нечинні бойові/лікувальні бонуси та кнопки відкладених дій. Нові замовлення інструментів і списів недоступні. Невдоволення та примусова нічна/юнацька праця приховані й не приймають нових наказів; звичайний нічний відпочинок і прийом мешканців збережено.
+The new construction of the House of Religion, the Pub, the House of the Cartographer, the House for Research, the Baths, the Library and the Military House is hidden and forbidden by simulation. The code, catalogue records, graphs and data of these structures are preserved. The completed historical buildings are preserved in safe old preservation; The inspector explains their lack of access to the alpha.
 
-Нові експедиції, полювання й бойові накази відхиляються. Тварини не починають атакувати мешканців або інших тварин; відкладені атаки не завдають шкоди. Пасивні тварини можуть залишатися на карті.
+Research-preview, seven non-existent top panel resources, constant +18 °C, ineffective combat/treatment bonuses and deferred action buttons have been removed. New orders for tools and records are unavailable. Discontent and forced night/youth work are hidden and do not accept new orders; The usual night rest and reception of the residents is preserved.
 
-Запаси розділено на матеріали, сировину для кухні та готову їжу. Для кожного предмета окремо видно сховище, резерв, вантаж у дорозі та предмети на землі. Резерв — частина наявних предметів; вантаж не вважається вже доставленим. Старі інструменти, списи та шкури показуються окремо лише за наявності.
+New expeditions, hunting and war orders are being rejected. Animals do not start attacking humans or other animals; The delayed attacks do no harm. Passive animals can stay on the map.
 
-Правила — **17**, протокол — **19**, формат збереження — **8**, генератор — **5**. Безпечні сейви попередніх правил підтримуються. Збереження з активною експедицією, атакою, зменшеними пайками/примусовою працею, замовленням інструментів/списів або незавершеним прихованим будівництвом тимчасово не завантажуються: показується причина, поточний світ і вихідний файл залишаються незмінними. Автоматичне перенесення таких станів належить до 0.25.12.
+The reserves are divided into materials, raw materials for the kitchen and ready-to-eat foods. Each item has a separate storage area, spare parts, road cargo, and items on the ground. Reserve — part of the items available; the cargo is not considered to have been delivered. Old instruments, inscriptions, and leather are displayed separately only by availability.
 
-Обидва мережеві клієнти мають використовувати однаковий повний пакет. Перевірка на двох фізичних Windows-ПК залишається невиконаною: другий ПК недоступний. [Локальні результати](verification-0.25.11-uk.md).
+Rules **17**, protocol **19**, storage format **8**, generator **5**. Safe seats of the previous rules are maintained. Savings with active expedition, attack, reduced payloads/forced labor, ordering tools/lists or unfinished hidden construction are not temporarily loaded: the reason is shown, the current world and the output file remain unchanged. The automatic transfer of such states belongs to 0.25.12.
+
+Both network clients should use the same full package. Two physical Windows PCs remain unchecked: the second PC is unavailable. [Local results](verification-0.25.11-uk.md).

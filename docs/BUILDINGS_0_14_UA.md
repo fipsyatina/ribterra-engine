@@ -1,52 +1,54 @@
-# Ribterra 0.14.0 — будівництво та шахти
+# Ribterra 0.14.0 — construction and mining
 
-Додано десять споруд: шахта, майстерня, дім релігії, паб, дім картографа, дім досліджень, плавильня, рибальська станція, бібліотека та військовий дім. Разом з будинком, фермою та складом каталог містить 13 доступних для зведення типів.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Як будувати
+Ten buildings were added: a mine, workshop, a house of religion, a pub, a cartograph house, a research house, a smelting house, a fishing station, a library, and a military house. Along with the house, farm, and composition, the catalog contains 13 available for compilation.
 
-Кнопка **«Усі будівлі»** відкриває каталог з іконками, назвами та цінами. Виберіть споруду й розмістіть її на розвіданій ділянці. Попередній вигляд показує допустимість розміщення. Матеріали резервуються у фізичних запасах, мешканці доставляють їх, після чого починається зведення. Дві смуги відображають доставку та будівельні роботи. Незавершене замовлення можна скасувати через наявний інтерфейс доставок.
+## How to Build
 
-| Будівля | Дерево | Камінь | Їжа |
+The **«All buildings[** button opens a directory with icons, names and prices. Select the building and place it on a cleared plot. The previous view shows the admissibility of the accommodation. The materials are stored in physical reserves, delivered by the residents, and then the construction begins. The two lanes represent the delivery and construction work. Unfinished orders can be cancelled due to the available delivery interface.
+
+| Building | The tree | The Stone | Food |
 |---|---:|---:|---:|
-| Шахта | 40 | 30 | 0 |
-| Майстерня | 45 | 25 | 0 |
-| Дім релігії | 50 | 60 | 0 |
-| Паб | 60 | 35 | 10 |
-| Дім картографа | 40 | 25 | 0 |
-| Дім досліджень | 65 | 65 | 0 |
-| Плавильня | 45 | 80 | 0 |
-| Рибальська станція | 30 | 15 | 0 |
-| Бібліотека | 70 | 55 | 0 |
-| Військовий дім | 75 | 65 | 0 |
+| Mining | 40 | 30 | 0 |
+| Workshop | 45 | 25 | 0 |
+| Houses of Religion | 50 | 60 | 0 |
+| The pub | 60 | 35 | 10 |
+| The house of the cartographer | 40 | 25 | 0 |
+| Research Houses | 65 | 65 | 0 |
+| The shipping works | 45 | 80 | 0 |
+| Fishery station | 30 | 15 | 0 |
+| The library | 70 | 55 | 0 |
+| The Military House | 75 | 65 | 0 |
 
-## Шахта та рибальство
+## Mining and fishing
 
-Нові світи починаються без готової шахти та підземного проходу. Шахту можна поставити на вільній трав'яній або кам'янистій клітинці. Лише її завершення відкриває перехід між шарами, розчищає підземний майданчик 3×3 та відкриває найближчу територію. Мешканці можуть спускатися та повертатися через збудовану шахту. Кнопка підземного шару й Page Down до цього пояснюють необхідність будівництва.
+New worlds begin without a mine and underground passageway. The mine can be placed on a free-rooted or rocky cell. Only completion opens the transition between the spheres, clears the underground terrain 3×3 and opens up the nearest territory. Residents can come down and back through the mine. The button for the underground layer and the Page Down also explain the need for construction.
 
-Рибальська станція потребує трав'яного берега з розвіданою водою на одній із чотирьох сусідніх клітинок. Готова станція створює 6 одиниць їжі кожні 400 тактів у фізичному стосі біля будівлі.
+The fishing station needs a grassy beach with clear water on one of the four adjacent cells. The feed station creates 6 units of food for every 400 touch in a physical stool near the building.
 
-Майстерня, дім релігії, паб, картографічний і дослідницький доми, плавильня, бібліотека та військовий дім у цій версії мають повний цикл будівництва, збереження, мережеву підтримку та власний вигляд. Виробничі рецепти, дерево досліджень, релігійні ефекти, відкриття карти й підготовка війська для них ще не реалізовані.
+Workshops, a house of religion, a pub, a cartographic and research house, a smelter, a library and a military house in this version have a full construction cycle, preservation, network support and their own look. Manufacturing recipes, research trees, religious effects, map discoveries and training troops for them have not yet been implemented.
 
-## Малюнки та інтеграція
+## Drawings and integration
 
-Створено 10 оригінальних аркушів через **built-in imagegen**: по три етапи зведення, завершена літня і зимова будівля та окрема іконка. Це 50 ігрових кадрів і 10 нових іконок; три наявні споруди також отримали іконки каталогу зі своїх чинних текстур.
+The original sheets were created by 10 through **built-in imagegen**: three stages of construction, a completed summer and winter building, and a separate icon. These are 50 game footage and 10 new icons; The three existing structures also received catalog icons from their existing textures.
 
-- Оригінали: `art-source/production-v2/*.png`.
-- Повні запити та походження: `art-source/production-v2/prompts.json`.
-- Відтворювана підготовка: `tools/prepare_building_art.py` — механічне розділення прозорих кадрів, спільний масштаб і нижня точка прив'язки, видалення дрібних фрагментів сусідніх клітинок, пакування через `AtlasTool` у новий каталог експорту.
-- Активні атласи: `assets/art/buildings-014-0.png`, `buildings-014-1.png`, записи в `world.json`.
-- Іконки: `assets/ui/art/building-*.png`.
+- Originals: `art-source/production-v2/*.png`.
+- Full queries and origin: `art-source/production-v2/prompts.json`.
+- Reproduced preparation: `tools/prepare_building_art.py` — mechanical separation of transparent frames, common scale and bottom binding point, removal of small fragments of adjacent cells, packing through `AtlasTool` into a new export catalog.
+- Active atlases: `assets/art/buildings-014-0.png`, `buildings-014-1.png`, records in `world.json`.
+- Icon: `assets/ui/art/building-*.png`.
 
-Зимовий вигляд застосовується як узимку, так і в постійно сніжних біомах. Будівлі враховують поверхню рельєфу з версії 0.13.
+The winter look is used in both winter and in the ever-snowing biomes. Buildings take into account the surface of the relief from the 0.13 version.
 
-## Сумісність і перевірка
+## Compatibility and verification
 
-Формат збереження залишається 8; правила — 8, генератор — 5, протокол — 10. Старі збереження мігрують із власними наявними проходами, щоб мешканці не залишалися замкненими під землею. Для нового початку без готової шахти створіть нове поселення. Обидва учасники мережевої гри мають використовувати 0.14.0.
+The storage format remains 8; the rules — 8, generator 5, protocol 10. Old preserves migrate with their own new passages to keep the inhabitants from being trapped underground. For a new beginning, without a mine ready, create a new settlement. Both participants in the network game must use 0.14.0.
 
-Повний прогін: **55/55 тестів**, `artifacts/buildings-tests.log`. Після фінальних змін додано окрему перевірку сцени: загалом **56 різних тестів** покрито повним прогоном і цільовими повторними перевірками. Свіжі результати — `artifacts/buildings-ship-tests.log` та `artifacts/buildings-final-ui-tests.log`.
+The full scope: **55/55 tests**, `artifacts/buildings-tests.log`. After the final changes, a separate scene check was added: overall **56 of the various tests** covered with a full run and purposeful repeat checks. The latest results are — `artifacts/buildings-ship-tests.log` and `artifacts/buildings-final-ui-tests.log`.
 
-Нові перевірки охоплюють доставку і зведення всіх 13 типів, збереження в різних фазах, команди й будівлі в мережевому протоколі, скасування шахти без створення проходу, рух в обидва боки, розміщення на камені, берегову умову та виробництво їжі. Перевірено завантаження історичних збережень і незмінність їхніх контрольних сум.
+The new inspections cover the delivery and installation of all 13 types, storage in different phases, command and building in a network protocol, mine clearance without creating passage, movement to both sides, placement on the rock, coastal condition and food production. Verified loading of historical records and the immutability of their controls.
 
-Знімки справжнього рендера Direct3D 12 на NVIDIA GeForce RTX 3050 Laptop GPU: `artifacts/buildings-release/new-buildings-summer.png`, `new-buildings-winter.png`, `new-buildings-catalog.png`, `new-buildings-compact.png`. Містечко на знімках — спеціально розставлена тестова сцена для огляду всіх споруд; нова гра починається зі звичайного табору. Звіт пристрою: `building-render-report.json`.
+The images of the actual render Direct3D 12 on the NVIDIA GeForce RTX 3050 Laptop GPU: `artifacts/buildings-release/new-buildings-summer.png`, `new-buildings-winter.png`, `new-buildings-catalog.png`, `new-buildings-compact.png`. The spot in the pictures  is a specially laid test scene for inspection of all buildings; The new game starts with a regular camp. The device report: `building-render-report.json`.
 
-Готовий пакет: `dist/Ribterra-Windows-x64-0.14.0.zip`. Виконуваний файл: `dist/releases/0.14.0/Ribterra/Ribterra.exe`. Пакет 0.13.0 збережено окремо.
+The packaging is ready: `dist/Ribterra-Windows-x64-0.14.0.zip`. The completed file: `dist/releases/0.14.0/Ribterra/Ribterra.exe`. The package 0.13.0 is kept separate.

@@ -1,73 +1,75 @@
-# V01–V03: фоновий checkpoint 05.10.2026
+# V01–V03: background checkpoint 05.10.2026
 
-Цей звіт зафіксований для preview **r2**. Подальші зміни мінікарти, землі та генератора мають [окремий звіт](MAP_GROUND_CHECK_2026_10_05_UA.md); наведені тут 92/92 не поширюються на них автоматично.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Статус художнього результату: **REBUILD / не прийнято**. Це перевірка незавершеної переробки 0.26.3, не реліз і не твердження про точне відтворення концептів.
+This report is pre-recorded for preview **r2**. Further changes to the miniature map, land and generator have a separate report [](MAP_GROUND_CHECK_2026_10_05_UA.md); listed here 92/92 They don't spread to them automatically.
 
-За проханням користувача жодне його вікно не відкривалося, не закривалося й не керувалося клавіатурою/мишею. Кадри нижче створені прихованими нативними D3D12-вікнами. F1 у них перевіряється через той самий програмний обробник, але це **не нова ручна перевірка**.
+Status of the artwork: **REBUILD / not accepted**. This is a proof of an unfinished process 0.26.3, not a release, not a claim on the exact reproduction of concepts.
 
-## Виправлено в цьому checkpoint
+At the user's request, no window was opened, closed or controlled by the keyboard/mouse. The frames below are created by hidden native D3D12- windows. F1 is checked by the same software processor, but this ** is not a new manual verification **.
 
-- Межі п’яти авторських Cart-поз: обрізка більше не захоплює сусідній ряд атласу; десять runtime-записів враховують повтори фаз. Положення ніг та `reference_width=222` збережені. PNG не змінювалися. Дві авторські пози залишаються двома, а не чотирма унікальними кадрами.
-- Камінь на схилах домішується лише за реальною висотою спільних вершин та відомою водою. Не додаються фальшиві уступи або окрема геометрія. Після першого слабкого результату берегові пороги відкалібровано на згенерованій землі; для seed 70421 середня додаткова вага каменю на 146 берегових кутах зросла з 0.0161 до 0.0563, 33 кути мають приріст ≥0.10. Це діагностично розкрита ділянка, не зміна розвідки гравця і не оцінка схожості з концептом.
-- Автоматичні `--smoke`/capture запуски більше не рухають системний курсор і використовують окремий профіль біля свого результату. Звичайний інтерактивний профіль не змінений.
-- Після незалежного аудиту профілі зроблено унікальними для кожного автоматичного запуску: bare `--smoke` використовує нову папку в TEMP, capture — нову сусідню папку. Два послідовні smoke завершилися з exit 0, створили два різні збережені профілі й не створили `smoke-test-profile` у робочій папці.
-- Перекриття «Призначити»/«Скасувати» при uk130 усунено розширенням action strip із 34% до 42% для великого масштабу. Шрифт та іконки не зменшені. Тест реальної ширини тексту спочатку впав: напис 133 px, кнопка 126.9 px; після виправлення пройшла повна матриця. Незалежний pixel review підтвердив відсутність нових зіткнень із inspector/мінікартою. Попередня перевірка лише span-bounds давала хибний PASS і більше не є достатньою.
-- AtlasTool підтримує Windows extended-length шляхи. Довший ізольований TEMP виявив справжню відмову запису Unicode notice. Декодування діагностик виправлено, assertions збережені, доданий окремий тест вихідного шляху >260 символів: до правки 2/7 відмов, після — 7/7.
-- Genuine v6 carry fixture копіюється й хешується поряд з ізольованим probe. Не використовується прихований пошук через compile-time `__FILE__`.
-- Режим `RIBTERRA_PRESERVE_BUILD_ARTIFACTS=1` зберігає попередні assets і відхилені кандидати. Додані тести успішного й неуспішного staging у цьому режимі. Art probe зберігає дев’ять окремих biome-save замість видалення одного спільного файла.
+## Fixed at this checkpoint
 
-## Докази
+- The boundaries of the five author Cart poses: the cut no longer captures the adjacent row of atlases; Ten runtime records count repeats. The leg position and `reference_width=222` are preserved. PNG has not changed. Two author poses are two, not four unique frames.
+- The rock on the slopes is only found at the actual height of the common peaks and known water. No false entries or separate geometry are added. After the first weak result, the coastal threshold is recalibrated on the generated land; For seed 70421 the average extra weight of the stone at the 146 coastal corners increased from 0.0161 to 0.0563, 33 corners have an increase ≥0.10. It's a diagnostically detected area, not a change in the player's intelligence or a similarity assessment to the concept.
+- Automatic `--smoke`/capture launches no longer move the system cursor and use a separate profile near its output. The usual interactive profile is unchanged.
+- After independent auditing, the profiles are made unique for each automatic launch: bare `--smoke` uses a new folder in TEMP, capture — a new neighboring folder. Two consecutive smoke ended with exit 0, created two different saved profiles, and did not create `smoke-test-profile` in the workbook.
+- The switch «Notice»/«Cast» in uk130 is removed by extending the action strip from 34% to 42% for the large scale. The font and icons are not down. The actual text width test originally fell: write 133 px, button 126.9 px; After the correction, the full matrix is passed. An independent pixel review confirmed no new encounters with the inspector/minicard. Previously, only span-bounds gave a false PASS and are no longer sufficient.
+- AtlasTool supports Windows extended-length paths. The long isolated TEMP has revealed a true decline in the Unicode notice. The diagnostic decoding is corrected, assertions are saved, a separate test of the output path of the >260 characters is added: to the correction 2/7 rejection, after — 7/7.
+- The genuine v6 carry fixture is copied and hashed alongside the isolated probe. Hidden search is not used due to compile-time `__FILE__`.
+- The `RIBTERRA_PRESERVE_BUILD_ARTIFACTS=1` mode retains previous assets and rejected candidates. Added tests of successful and unsuccessful staging in this mode. The Art probe stores nine separate biome-saves instead of deleting one shared file.
 
-Корінь нових результатів: `artifacts/concept-rebuild-2026-10-05/`.
+## Evidence
 
-| Перевірка | Результат |
+The roots of the new results: `artifacts/concept-rebuild-2026-10-05/`.
+
+| The verification | The result |
 |---|---|
 | `focused-rock-atlas.xml` | 3/3: passport, terrain_v02, game_art_outline |
-| `terrain-bank-tuned.xml` | 1/1 після калібрування; включає 20 000 seed, 5 відомих seed-регресій і generated-bank контракт |
-| `matrix-before-rock`, `matrix-after-rock`, `matrix-bank-tuned` | По 5/5 quick D3D12-конфігурацій, однакові fixture/камера для порівняння |
-| `art-rock-d3d12/art-report.json` | Exit 0: 20 catalog entries × 5 states, 2 level-II types, 1089 terrain picks, 3 zoom picks, рух угору схилом; до останнього калібрування матеріалу |
-| `residents-safe-atlas/report.json` | Exit 0: 256 адресованих frames, Wood/Food/Stone доставлені у Camp і Stockpile, save/resume; до останнього калібрування матеріалу |
-| `full-suite.xml` | Історичний прохід 05.10: 91/92, єдина відмова — пошук v6 fixture в ізольованій копії |
-| `matrix-full/report.json` | Історичні 60/60, але старий тест пропускав накладання glyphs; не доказ виправлення |
-| `hud-glyph-regression-before` | Очікувана відмова на uk130, text=133 / button=126.9; red-етап регресії |
-| `matrix-hud-fixed/report.json` | 60/60: 5 мов × 4 масштаби × 3 роздільності, 123 native D3D12 captures; справжня ширина тексту та F1 hide/restore перевірені |
-| `ordinary-seeds-hud-fixed/ordinary-seeds-report.json` | 8/8 звичайних стартів на актуальному content: по 1 Camp, 10 мешканців, 861 explored tile; без редагування землі/ресурсів/розвідки |
-| `full-suite-hud-fixed.xml` | 91/92 за 480.63 s; єдина відмова — довгий Unicode output AtlasTool, тепер виправлена й окремо перевірена |
-| `full-suite-final.xml` | **92/92**, 0 відмов, 427.30 s, після AtlasTool/profile/fixture правок; локальний software/dummy CTest, не фізичний two-PC/WAN |
-| `installed-preview-r2-renderer.json` | Встановлений локальний preview: exit 0, Direct3D12 / NVIDIA RTX 3050 Laptop GPU, software=false, версія 0.26.3 |
-| `launcher-r2-renderer.json` | Сам `Play Ribterra Rework.cmd` перевірений прихованим smoke-запуском: exit 0, D3D12, seed 1337; видиме вікно користувача не чіпалось |
+| `terrain-bank-tuned.xml` | 1/1 after calibration; includes 20 000 seed, 5 known seed regressions and generated-bank contract |
+| `matrix-before-rock`, `matrix-after-rock`, `matrix-bank-tuned` | By 5/5 quick D3D12- configurations, the same fixture/camera for comparison |
+| `art-rock-d3d12/art-report.json` | Exit 0: 20 catalog entries × 5 states, 2 level-II types, 1089 terrain picks, 3 zoom picks, movement of the slope; until the final calibration of the material |
+| `residents-safe-atlas/report.json` | Exit 0: 256 addressed frames, Wood/Food/Stone delivered to Camp and Stockpile, save/resume; until the final calibration of the material |
+| `full-suite.xml` | Historical passage 05.10: 91/92, the only refusal — search v6 fixture in isolated copy |
+| `matrix-full/report.json` | Historical 60/60, but the old test missed the glyphs; Not proof of a justification |
+| `hud-glyph-regression-before` | Expected rejection at uk130, text=133 / button=126.9; Red-stage regression |
+| `matrix-hud-fixed/report.json` | 60/60: 5 languages × 4 scale × 3 resolution, 123 native D3D12 captures; the actual text width and F1 hide/restore verified |
+| `ordinary-seeds-hud-fixed/ordinary-seeds-report.json` | 8/8 regular starts on the current content: by 1 Camp, 10 residents, 861 explored tile; without editing land/resources/exploration |
+| `full-suite-hud-fixed.xml` | 91/92 for 480.63 s; the only rejection — long Unicode output AtlasTool, now corrected and independently verified |
+| `full-suite-final.xml` | **92/92**, 0 rejection, 427.30, s, after the AtlasTool/profile/fixture correction; local software/dummy CTest, not physical two-PC/WAN |
+| `installed-preview-r2-renderer.json` | Locally preview: exit 0, Direct3D12 / NVIDIA RTX 3050 Laptop GPU, software=false, version 0.26.3 |
+| `launcher-r2-renderer.json` | The `Play Ribterra Rework.cmd` itself is verified by a hidden smoke-start: exit 0, D3D12, seed 1337; We can see the user window didn't hit. |
 
-Актуальний content SHA-256: `e904fc36677b228732158c379634033933c4034f90db986ad8c3208c9a027b2e` (183 assets). Build та встановлений r2 executable мають однаковий SHA-256: `DCF9514876AD73ED0B4EDA8E6DFBE1C452835A4E478B6AF007DB657E58706B35`. Матриця використовує ті самі GameUI/Renderer/content; подальша правка main стосувалася лише ізоляції автоматичного профілю.
+Current content SHA-256: `e904fc36677b228732158c379634033933c4034f90db986ad8c3208c9a027b2e` (183 assets). Build and installed r2 executable have the same SHA-256: `DCF9514876AD73ED0B4EDA8E6DFBE1C452835A4E478B6AF007DB657E58706B35`. The matrix uses the same GameUI/Renderer/content; The next main correction was just to isolate the automatic profile.
 
-[Порівняння концепту, native кадру та HUD до/після](BACKGROUND_COMPARE_2026_10_05.html). Ця локальна HTML-сторінка не відкривалася у вікні користувача.
+[Comparison of concept, native frame and HUD to/after](BACKGROUND_COMPARE_2026_10_05.html). This local HTML- page did not open in the user window.
 
-Історичний `artifacts/concept-rebuild-2026-09-30/full-suite-twelfth.xml` завершився **91/92**, не pending. Єдина відмова була `v03_asset_passport`; її причина виправлена. Поточні 92/92 підтверджені саме новим `full-suite-final.xml`, не сумою окремих прогонів.
+The historical `artifacts/concept-rebuild-2026-09-30/full-suite-twelfth.xml` was completed **91/92**, not pending. The only refusal was `v03_asset_passport`; Her cause is justified. The current 92/92 is confirmed by the new `full-suite-final.xml`, not by the sum of individual lines.
 
-Навичка `ai-regression-testing` застосована до фактично знайдених дефектів: HUD glyph overflow і довгі Unicode-шляхи спершу відтворені failing-тестами, потім перевірені після виправлення. Незалежний reviewer прийняв вузьку гарантію background-safety/output-isolation, **не** загальну художню відповідність або готовність релізу.
+The `ai-regression-testing` habit is applied to actually found defects: HUD glyph overflow and long Unicode lines are first deformed by failing tests, then checked after correction. The independent reviewer accepted a narrow guarantee background-safety/output-isolation, **not** of overall artistic relevance or readiness for release.
 
-## Швидка звірка вимог
+## The Fastest Demand
 
-| Вимога | Поточна оцінка |
+| The Need | Accurate estimate |
 |---|---|
-| V01: декоративні панелі, антиква, мальовані іконки, 4 основні дії, inspector | Інтегровано й видно в нативному кадрі; композиція не є точною копією target |
-| F1 приховує/повертає HUD та маркери | Повна native matrix проходить; повторної ручної перевірки немає за побажанням користувача |
-| V02: нові seed, різні річки та змішані ресурси, відтворюваність, старі save | Повний suite і 8/8 fixed-seed стартових кадрів проходять; це не новий інтерактивний тест вибору випадкового seed та не художнє приймання |
-| Видимі пагорби, берегові перепади, природна земля | Частково: реальна висота є, але кам’янисті береги й дрібна композиція все ще слабші за target |
-| Юніти протоптують стежки | Стежки від справжнього руху, save/load перевіряється; не намальовані маршрути й не прихована зміна карти |
-| V03: нові споруди, будівництво, сезонні стани, люди/вантаж | Атлас і runtime покриття є; масштаб, повтори та художня цілісність ще потребують звірки |
-| Ідеальна відповідність концептам | **Не виконано**: великі відкриті ділянки, сіра межа розвідки, мінікарта в чорному полі, недостатня берегова деталізація та атмосфера |
+| V01: decorative panels, antiques, painted icons, 4 main action, inspector | Integrated and visible in the native frame; The composition is not an exact copy of the target. |
+| F1 hides/returns HUD and markers | The full native matrix passes; Repeat manual verification is not as requested by the user |
+| V02: new seed, different rivers and mixed resources, reproduction, old save | Full suite and 8/8 fixed-seed launch frames pass; This is not a new interactive random seed selection test and not an artificial intake |
+| The hills, the coastal cliffs, the natural landscape | Partially: real altitude is there, but the rocky shores and the tiny composition are still weaker than the target |
+| The units are tracking the tracks | Traces from the actual movement, save/load is checked; No routes or hidden map changes |
+| V03: new buildings, construction, seasonal conditions, people/vantage | Atlas and runtime coverage are; The scale, the repetition and the artistic integrity still require monsters. |
+| Ideal compatibility with concepts | **Not done**: large open areas, gray exploration boundaries, a mini map in a black field, insufficient coastal detail and atmosphere |
 
-Повний чекліст кінцевого результату за версіями збережений у [основному документі переробки](CONCEPT_REBUILD_2026_09_30_UA.md). Звичайний старт — Camp + 10 людей; розвинуте селище на кадрах явно постановочне, на не зміненій згенерованій землі. Прогноз/°C/дощ/буря — відкладені V04-системи, числа із картинки не підставляються.
+The full version checklist of the final result is stored in the [ main processing document ](CONCEPT_REBUILD_2026_09_30_UA.md). The usual start  Camp + 10 people; The settlement developed on the frames is clearly situated on unaltered generated land. Forecast/°C/rain/storm — delayed V04- systems, numbers in the picture are not falsified.
 
-## Локальний запуск
+## Local launch
 
-`C:\Users\fipst\Desktop\ribterra\Play Ribterra Rework.cmd` тепер веде на `dist/concept-rebuild-0.26.3-preview-2026-10-05-r2/Ribterra/Ribterra.exe`. Старий пакет 30.09 та перший пакет 05.10 збережені. Звичайний публічний launcher/current-build pointer не змінені. Усі 184 файли встановленого assets-каталогу (183 assets + manifest) звірені зі збіркою за SHA-256. Пакет — локальний **неприйнятий preview**, не опублікований реліз.
+`C:\Users\fipst\Desktop\ribterra\Play Ribterra Rework.cmd` now leads to `dist/concept-rebuild-0.26.3-preview-2026-10-05-r2/Ribterra/Ribterra.exe`. The old package 30.09 and the first package 05.10 are preserved. The usual public launcher/current-build pointer is unchanged. All 184 files of the installed assets-catalog (183 assets + manifest) are assigned to the set over SHA-256. Pack — local ** unacceptable preview**, unreleased release.
 
-## Збереження файлів
+## File preservation
 
-Старі screenshots, packages і assets залишені на місці. Три повні прогони використовують окремі `full-suite-work`, `full-suite-work-hud-fixed`, `full-suite-final`. Перед кожним користувача попереджено про видалення лише власних тимчасових test-save, backups, settings і scratch-каталогів усередині відповідних `runtime`/`temp`. Це тимчасові тестові копії, не файли користувача; видалені scratch-файли окремо не відновлюються, звіти/кадри та вихідні fixtures збережені.
+Old screenshots, packages and assets are left in place. Three full lengths use the separate `full-suite-work`, `full-suite-work-hud-fixed`, `full-suite-final`. Each user is warned to remove only their own temporary test-save, backups, settings, and scratch directories within the respective `runtime`/`temp`. These are temporary test copies, not user files; The deleted scratch files are not recovered separately, reports/frames and output fixtures are saved.
 
-Останній `full-suite-final/snapshot.json` перевіряє 277 скопійованих файлів — EXE/DLL, assets, shaders і genuine v6 fixture — хешами source-before/copy/source-after. Окремо записані хеш перетвореного CTest та 24 зовнішніх command-файлів. Це **ізоляція результатів**, не герметична або переносна копія всього checkout: Python-тести та їхні транзитивні source inputs лишаються зовнішніми, що явно зазначено в manifest. Під час прогону вони не редагуються.
+The last `full-suite-final/snapshot.json` checks the 277 copied files — EXE/DLL, assets, shaders, and genuine v6 fixture — hashes source-before/copy/source-after. Apart from the written hash of the converted CTest and 24 external command files. It is a **results isolation**, not a sealed or portable copy of the entire checkout: Python tests and their transitive source inputs remain external, as clearly indicated in the manifest. They don't change during the drive.
 
-Після завершення CTest повторна звірка за manifest виявила **0 змін** серед 277 runtime inputs і **0 змін** серед 24 зовнішніх command-файлів.
+After completing CTest, a repeat check for the manifest detected **0 changes** among 277 runtime inputs and **0 changes** among 24 external command files.

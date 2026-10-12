@@ -1,62 +1,68 @@
 [
   {
     "id": "V00",
-    "title": "Поточна гра",
+    "title": "Current game",
     "image": "progress/v00-baseline.png",
-    "kind": "Справжній кадр 0.26.0",
-    "change": "Вихідний стан: стара широка панель ресурсів, правий інспектор, нинішні земля та спрайти.",
-    "keep": "Це збережений runtime-кадр. Його не генерували і не ретушували.",
-    "work": "Використати як чесну базу. Для нового виконання зняти той самий seed/save/camera на поточному executable.",
-    "evidence": "artifacts/upgrades-0.26.0/13-stockpile-no-upgrade.png; оригінальні байти збережені."
+    "kind": "Actual runtime frame 0.26.0",
+    "change": "Baseline: the old wide resource panel, right-hand inspector, current terrain and sprites.",
+    "keep": "This is a retained runtime frame. It was neither generated nor retouched.",
+    "work": "Use this as the reference baseline. Capture the same seed/save/camera with the current executable for a new run.",
+    "evidence": "artifacts/upgrades-0.26.0/13-stockpile-no-upgrade.png; original bytes preserved.",
+    "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
   },
   {
     "id": "V01",
-    "title": "Новий інтерфейс",
+    "title": "New interface",
     "image": "progress/v01-ui.png",
-    "kind": "Цільовий макет · не реалізація",
-    "change": "Компактні ресурси, нижній інспектор і чотири основні дії. Великий правий блок прибрано.",
-    "keep": "Залишаються старі земля, будівлі, мешканці й денний вигляд. Погоди та мінімапи ще немає.",
-    "work": "RmlUi / RCSS / GameUi: layout, справжні дані й команди, focus, pointer capture, всі локалі.",
-    "evidence": "Native UI на старому світі; 720p–1440p, довгі назви, build/select/inspect без втрати команд."
+    "kind": "Target mockup · not an implementation",
+    "change": "Compact resources, a bottom inspector, and four primary actions. The large right-hand panel is removed.",
+    "keep": "Existing terrain, buildings, residents and daytime appearance remain. Weather and the minimap are not present yet.",
+    "work": "RmlUi / RCSS / GameUi: layout, real data and commands, focus, pointer capture, all locales.",
+    "evidence": "Native UI on the existing world; 720p–1440p, long names, build/select/inspect without losing commands.",
+    "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
   },
   {
     "id": "V02",
-    "title": "Земля, генерація і береги",
+    "title": "Terrain, generation and shorelines",
     "image": "progress/v02-terrain.png",
-    "kind": "Цільовий макет · не реалізація",
-    "change": "Нова земля, природні групи, річка і кам’янисті береги. Видно різницю саме в оточенні.",
-    "keep": "UI V01 і старі об’єкти залишаються. Це ще не заміна будівель або персонажів.",
-    "work": "Спільні terrain/path/build rules → generator/save compatibility → матеріали і береги. Ручних доріг немає.",
-    "evidence": "10 seed checks, маршрути до ресурсів, міст/схил/picking, native кадри швів і руху."
+    "kind": "Target mockup · not an implementation",
+    "change": "New terrain, natural groupings, a river and rocky shorelines. The environmental changes are visible independently.",
+    "keep": "The V01 UI and existing objects remain. Buildings and characters have not been replaced at this stage.",
+    "work": "Shared terrain/path/build rules → generator/save compatibility → materials and shorelines. There are no manual roads.",
+    "evidence": "10 seed checks, routes to resources, bridge/slope/picking, native frames of seams and movement.",
+    "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
   },
   {
     "id": "V03",
-    "title": "Будівлі й мешканці",
+    "title": "Buildings and residents",
     "image": "progress/v03-objects.png",
-    "kind": "Цільовий макет · не реалізація",
-    "change": "Оновлені силуети й матеріали будівель, основи, дах, читабельні люди та вантажі.",
-    "keep": "Та сама річка, місця споруд, камера та UI. Немає дощу й нового динамічного освітлення.",
-    "work": "Малий asset kit → приймання в renderer → доступні building states, House II/Workshop II, facing/cargo frames.",
-    "evidence": "Runtime contact sheets, немонтований рух/доставка, pivots/масштаб/перекриття на трьох zoom."
+    "kind": "Target mockup · not an implementation",
+    "change": "Updated building silhouettes and materials, foundations and roofs, readable people and cargo.",
+    "keep": "The same river, building positions, camera and UI. No rain or new dynamic lighting.",
+    "work": "Small asset kit → renderer acceptance → available building states, House II/Workshop II, facing/cargo frames.",
+    "evidence": "Runtime contact sheets, unedited movement/delivery, pivots/scale/overlap at three zoom levels.",
+    "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
   },
   {
     "id": "V04",
-    "title": "Дощ і погодний HUD",
+    "title": "Rain and weather HUD",
     "image": "progress/v04-rain.png",
-    "kind": "Цільовий макет · не реалізація",
-    "change": "Дощ, волога земля, похмурий вигляд, блок прогнозу й температури.",
-    "keep": "Об’єкти, карта й нижні панелі V03. Зміна погоди не додає нову архітектуру або дороги.",
-    "work": "Спершу authoritative weather, save/net/forecast; потім частинки й wetness. Показані числа — ілюстрація.",
-    "evidence": "Native відео clear→rain→clear, pause/2×, save/load, host/guest. Не приймати погоду статичним PNG."
+    "kind": "Target mockup · not an implementation",
+    "change": "Rain, wet terrain, overcast appearance, a forecast panel and temperature.",
+    "keep": "V03 objects, map and bottom panels. A weather change does not add new architecture or roads.",
+    "work": "Authoritative weather, save/net/forecast first; particles and wetness follow. The displayed values are illustrative.",
+    "evidence": "Native clear→rain→clear video, pause/2×, save/load, host/guest. A static PNG cannot establish weather acceptance.",
+    "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
   },
   {
     "id": "V05",
-    "title": "Зима і сніговий покрив",
+    "title": "Winter and snow cover",
     "image": "progress/v05-winter.png",
-    "kind": "Цільовий макет · не реалізація",
-    "change": "Сніг на тих самих дахах, землі й деревах, снігопад і зимова палітра.",
-    "keep": "Геометрія й сцена ті самі; вода не замерзає. Динамічне світло, опалення й фізика снігу не додаються.",
-    "work": "Snow masks, authority cover/melt, клієнтський FX adapter. Сліди кроків потребують окремого implementation gate.",
-    "evidence": "Native cover/melt transitions і погодні edge cases. Цифри макета не є golden output симуляції."
+    "kind": "Target mockup · not an implementation",
+    "change": "Snow on the same roofs, terrain and trees, snowfall and a winter palette.",
+    "keep": "Geometry and scene composition remain the same; water does not freeze. Dynamic lighting, heating and snow physics are not added.",
+    "work": "Snow masks, authority cover/melt, client FX adapter. Footprints require a separate implementation gate.",
+    "evidence": "Native cover/melt transitions and weather edge cases. Mockup values are not golden simulation output.",
+    "documentation_translation_notice": "English documentation rendering. Narrative text and quoted localized UI labels have been translated; original generation instructions and metadata are preserved in import commit 7388a2f. Source artwork and runtime localization remain unchanged. These records retain their historical evidence scope."
   }
 ]

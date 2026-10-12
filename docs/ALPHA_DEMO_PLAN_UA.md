@@ -1,212 +1,214 @@
-# Ribterra: від поточної гри до першої альфи та демо
+# Ribterra: from the current game to the first alpha and demo
 
-**Графічний цикл — актуалізація 28.09:** [детальні картки V01–V05 і відкладеного DL](../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md), [перевірений asset/engine audit](visual-targets/ASSET_ENGINE_AUDIT_2026_09_28_UA.md). Це план, не вже випущені версії.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-**Рішення 27.09.2026:** повне Dynamic lighting і перемикач графіки відкладені. Зараз додана лише engine API заготовка, effective mode залишається Legacy. [Майбутні DL-етапи](visual-targets/FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) не блокують базове оновлення світу/UI та мають пріоритет над ранніми вимогами включити Dynamic у 0.26.1.
+**Graphic cycle — update 28.09:** [ details of the cards V01–V05 and deferred DL](../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md), [ verified asset/engine audit](visual-targets/ASSET_ENGINE_AUDIT_2026_09_28_UA.md). It's a plan, not a version that's been released.
 
-Редакція 22 вересня 2026 після повторного аналізу і заперечення автора. Це чинна стратегія найближчої розробки. Вона замінює попередню пропозицію відкласти Майстерню, Глиняний кар'єр і покращення. Оновлення виконання на 28 вересня 2026: версії 0.25.8–0.26.0 реалізовані локально, а UI-етап V01 реалізовано як 0.26.1. Нова генерація, погода, температура та решта графічного циклу розділені на майбутні V02–V05; вони не є частиною готової 0.26.1. Актуальні докази й невиконані перевірки наведені в детальному плані малих версій.
+**Solution 27.09.2026:** Full Dynamic lighting and graphics switch are deferred. Now only the engine API configuration is added, effective mode remains Legacy. [Future DL-etaps](visual-targets/FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) do not block the basic world/UI update and have priority over early requirements to include Dynamic in 0.26.1.
 
-Деталізація на прохання автора: [17 малих версій — що додається, усувається, покращується і як перевіряється](ALPHA_DEMO_SMALL_RELEASES_UA.md). Цей документ визначає конкретну нумерацію й порядок: новий напрям світу — **0.26.1**, перша внутрішня альфа — **0.26.7**, а зовнішнє демо — цільовий маркер **0.27.0**, не обіцянка дати. Попередні заплановані 0.26.1–0.26.9 зсунуті на 0.26.2–0.26.10; реалізовані 0.25.x, 0.26.0 та їхні verification-файли не перенумеровуються. Нижче збережено чотири узагальнені етапи як діапазони версій.
+Edit 22 September 2026 after re-analysis and rejection by the author. This is a strategy for the next development. It replaces the previous offer to postpone the workshop, the clay career and the improvement. Update of the execution on 28 September 2026: versions 0.25.8–0.26.0 are implemented locally, and UI-stage V01 is implemented as 0.26.1. New generation, weather, temperature and the rest of the chart cycle are divided into future V02–V05; They're not part of the finished 0.26.1. Current evidence and unverified checks are given in the detailed plan of small versions.
 
-Перевірена база документа: Desktop/ribterra, гілка AInora/first-playable; V01 оформлено як версію 0.26.1. Розширені таблиці поточного стану — [FEATURE_AUDIT_UA.md](FEATURE_AUDIT_UA.md). Вихідний задум — кооперативна стратегія про поселення, виживання та людей, а не обов'язкове виконання всього старого списку до демо: [джерело](source/development-plan-ua.txt), рядки 35–38.
+Detailed at the request of the author: [17 small versions — added, removed, improved and checked](ALPHA_DEMO_SMALL_RELEASES_UA.md). This document defines a specific numbering and order: the new direction of the world **0.26.1**, the first inner alpha **0.26.7**And the external demo is the target marker. **0.27.0**, not a promise to give. The previously scheduled 0.26.1–0.26.9 has been moved to 0.26.2–0.26.10; They are implemented in 0.25.x, 0.26.0 and their verification files are not renumbered. The four generalized stages as version ranges are preserved below.
 
-## 1. Що було неправильно в попередньому плані
+Verified document database: Desktop/ribterra, branch AInora/first-playable; V01 is formatted as 0.26.1. Extended current state tables — [FEATURE_AUDIT_UA.md](FEATURE_AUDIT_UA.md). The resulting idea is a cooperative strategy for settlement, survival and people, rather than a mandatory execution of the entire old list to the demo: [source](source/development-plan-ua.txt), rows 35–38.
 
-Майстерня й кар'єр були помилково прирівняні до порожніх будівель. Вони вже виробляють цеглу, а дошки та цегла вже витрачаються на три покращення. Розрив — у недоступному UI й слабкій практичній ролі частини результатів. Прибрати весь цей ланцюг означало б забрати розвиток поселення, залишивши переважно забезпечення їжею.
+## 1. What Was Wrong With the First Plan
 
-Тепер розділяємо чотири випадки:
+Workshops and careers were mistakenly equated with empty buildings. They're already making bricks, and the boards and bricks are already being spent on three improvements. The gap — in the inaccessible UI and weak practical role of some of the results. To remove this entire chain would mean to take away the development of the settlement, leaving primarily food supply.
 
-| Стан | Приклад | Рішення |
+Now let's divide the four cases:
+
+| The State | Example | The Decision |
 |---|---|---|
-| Працює і має користь | Доставка, кухня, лісопилка, міст | Залишити; перевірити зі звичайного старту |
-| Працює в коді, але не з'єднано з грою | Level II, житло, частина інтерфейсу виробництва | Доробити зв'язок до альфи |
-| Має лише оболонку або не має споживача | Research, плавильня, інструменти | Тимчасово сховати доступ до незавершеної функції; зберегти реалізацію/дані/арт |
-| Велика майбутня система | Монстри, мінерали, дерево націй | Окремі оновлення після демо |
+| It Works and Is Beneficial | Delivery, kitchen, woodland, bridge | Leave it alone; Check from a normal start |
+| Works in code, but not in game | Level II, housing, part of the production interface | Connect with Alpha |
+| Has only a shell or no consumer | Research, foundry, tools | temporarily hide access to an unfinished function; to preserve the realization/data/art |
+| The Great System to Come | Monsters, minerals, the tree of nations | Separate updates after demo |
 
-«Сховати до наступного оновлення» означає прибрати з каталогу нової гри, кнопок і підказок, що обіцяють доступну дію. Не видаляти enum, ассети, будівлі старих сейвів або реалізовані виробничі механізми. Повернення потребуватиме завершення функції та її ввімкнення, а не повторного створення будівлі. Для небезпечної симуляції одного приховування недостатньо: її треба вимкнути правилами альфи.
+Holding until next update» means removing from the catalog new games, buttons, and hints that promise available action. Do not remove enum, assets, buildings of old coffers or implemented production mechanisms. The return will require the completion of the function and its activation, not the re-creation of the building. It's not enough to simulate a dangerous one-stop shop: it needs to be turned off by alpha rules.
 
-## 2. Нова перевірка звичайного старту
+## 2. New test of normal start
 
-Окремий діагностичний сценарій створив звичайний World(70421, 10), увімкнув наявну дику природу та користувався публічними симуляційними командами. Жодних імпортованих запасів, завершених будівель або редагування світу.
+A separate diagnostic scenario created the usual World(70421, 10), enabled the wildlife available and used public simulation commands. No imported inventory, completed buildings or world editing.
 
-| Перевірений результат | Симуляційний час |
+| Verified result | Simulation time |
 |---|---:|
-| Побудована лісопилка | 9,70 с |
-| Доставлені дошки, потім дрова | 44,10 / 69,30 с |
-| Побудований кар'єр, доставлена глина | 78,50 / 125,30 с |
-| Побудована майстерня, доставлена цегла | 143,45 / 185,85 с |
-| Побудований Будинок, виконане його Level II | 199,25 / 242,45 с |
-| Побудовані Ферма, Млин, Кухня; доставлені чотири партії хліба | До 477,60 с |
-| Save/load і 40 однакових наступних ticks | 479,60 с |
+| The forest is built | 9,70 c |
+| Boards delivered, then wood | 44,10 / 69,30 c |
+| Carrier built, clay delivered | 78,50 / 125,30 c |
+| Built workshop, delivered brick | 143,45 / 185,85 c |
+| Built Building, completed its Level II | 199,25 / 242,45 c |
+| Built Farm, Mill, Kitchen; Four batches of bread were delivered. | Up to 477,60 s |
+| Save/load and 40 are the same following ticks | 479,60 c |
 
-У кінці живі всі 10 мешканців, мінімальне здоров'я 100. Це спростовує буквальне твердження, що симуляційно працює тільки ферма. Але сценарій автоматично видав 66 наказів збору та викликав недоступне через UI покращення через API. Він не доводить зручність, самостійне проходження новачком, сталу економіку вночі, зовнішній кооператив чи наявність години цікавого контенту. Не використовувати ці 8 хвилин як оцінку тривалості демо або трудовитрат розробки.
+At the end of the day, all 10 residents are alive, with minimal health 100. This literally contradicts the claim that only a farm simulated. But the scenario automatically issued 66 collection orders and caused unavailability due to UI improvements through API. It doesn't prove convenience, self-driving, stable nightlife, an external co-op or an hour of interesting content. Don't use these 8 minutes as an estimate of the length of the demo or the labor costs of the development.
 
-Докази: .deps/alpha_fresh_start_probe.cpp, .deps/alpha-fresh-start-build.cmd, build/alpha-fresh-start-build.log, build/alpha-fresh-start-run.log, artifacts/alpha-audit/fresh-start.json та fresh-start.save. Старі перевірки 20 панелей і 15 рецептів наведені в аудиті; це інший, раніше виконаний набір. Повний CTest цього разу не запускався.
+The evidence is .deps/alpha_fresh_start_probe.cpp, .deps/alpha-fresh-start-build.cmd, build/alpha-fresh-start-build.log, build/alpha-fresh-start-run.log, artifacts/alpha-audit/fresh-start.json and fresh-start.save. The old 20 panels and 15 recipes are audited; This is another set that's been done before. Full CTest didn't start this time.
 
-## 3. Заради чого грати в першу альфу
+## 3. Why play the first alpha?
 
-Гравець перетворює табір із 10 мешканців на невелике поселення, яке годує себе, приймає нових людей, виготовляє будівельні матеріали та покращує споруди. Він розподіляє обмежену кількість працівників між сьогоднішньою їжею і майбутнім розвитком. Відстані впливають на доставку; більше населення дає робочі руки, але збільшує витрати їжі та потребу в житлі.
+The player transforms a camp of 10 residents into a small settlement that feeds itself, takes in new people, makes building materials, and improves structures. It distributes a limited number of workers between today's food and future development. Distance affects delivery; More people are giving up their hands to work, but it's increasing the cost of food and housing.
 
-Три пов'язані гілки:
+Three connected branches:
 
-1. Збір / базова ферма → запас їжі → нові мешканці → більше працівників і споживання.
-2. Дерево → лісопилка → дошки й дрова; глина → майстерня + дрова → цегла; дошки + цегла → покращення → більше житла або швидше виробництво.
-3. Фермерська сировина / риба → кухня; зерно → млин → кухня → ефективніше харчування більшого поселення.
+1. Harvest/base farm → food supply → new residents → more workers and consumption.
+2. Wood → logging → board and wood; clay → workshop + wood → brick; The tablets + bricks → improvements → more housing or faster production.
+3. Farmer's raw materials / fish → kitchen; grain → mill → kitchen → more efficient feeding of more population.
 
-Склад ближче до підприємств, прохідний рельєф, міст і шахта дозволяють організувати постачання й дістатися наступних ресурсів. Жодна сесія не зобов'язана використати всі споруди.
+The warehouse is closer to the enterprises, the passing railway, the bridge and the mine allow to organize supplies and to get the following resources. No session is required to use all facilities.
 
-Реальні рішення: залишити працівника на їжі чи перевести в будівництво; запросити людину зараз чи накопичити запас; побудувати новий дім чи покращити старий; поставити ще просту ферму чи інвестувати у приготування їжі; витратити матеріали на ближчий склад чи на розширення. Для цих рішень не потрібні сюжет, монстри або дерево націй.
+Real solutions: leave the worker at the table or move to the construction site; Invite someone now or stock up on something. Build a new home or improve an old one; Start a simple farm or invest in cooking. Spending materials on nearby warehouses or expansion. These decisions don't need a story, monsters, or a tree of nations.
 
-Контрольний результат першої альфи: від нового табору до стабільного харчування, хоча б одного нового дорослого, House II або Workshop II і продовження після збереження. Це сценарій перевірки та орієнтир для коротких підказок, не обов'язкова місія з фінальним екраном.
+The first alpha control result: from a new camp to stable feeding, at least one new adult, House II or Workshop II and continuation after conservation. It's a test scenario and a short-sighted orientation, not a mandatory mission with a final screen.
 
-## 4. Які будівлі залишаються і що їм бракує
+## 4. What Buildings Are Left and What Are Lacking
 
-У чинному майбутньому scope залишаються стартовий Табір і **11 будованих типів**. Їхній код не потрібно писати заново. Міст лишається будованою спорудою; ручна Дорога вилучається у 0.26.1.
+In the current future scope remain the starting Tab and **11 building types**. Their code doesn't need to be rewritten. The bridge remains a building structure; The manual road is designated in 0.26.1.
 
-| Будівля | Роль у першій альфі / що доробити |
+| Building | Role in the first alpha |
 |---|---|
-| Табір | Стартові запаси, склад, 10 місць для початкових 10 мешканців |
-| Будинок | +6 місць стають реальною умовою поповнення. House II дає ще +4, тож табір + один дім II дозволяють 20 живих мешканців |
-| Ферма | Надійне базове харчування; окремо зрозумілий вибір сировини для кухні. Пояснити та узгодити ці режими |
-| Склад | Ближча точка прийому матеріалів, коротший шлях доставки. Не продавати величезну місткість як корисне покращення без перевірки потреби |
-| Шахта | Наявний доступ під землю і камінь. Нові руди не потрібні; прибрати обіцянки металів та експедицій |
-| Майстерня | Цегла для покращень; Workshop II прискорює виробничу працю. Інструменти й списи тимчасово недоступні для нових замовлень |
-| Рибальська станція | Альтернативна сировина для харчування біля води |
-| Міст | Фізичний доступ через воду до ресурсів і місця для розширення |
-| Лісопилка | Дошки для покращень, дрова для цегли та кухні |
-| Млин | Зерно → борошно; залишити як готовий варіант харчової гілки, не обов'язкову споруду перших хвилин |
-| Кухня | Приготування їжі повинно мати вимірювану перевагу при розширенні |
-| Глиняний кар'єр | Глина → цегла → покращення; зберігаємо в альфі |
+| Camp | Starting stocks, warehouse, 10 seats for initial 10 residents |
+| The house | +6 places become a real condition of filling. House II gives more +4, so camp + one house II allows 20 living residents |
+| Farm | Reliable basic food; It's a very clear choice of ingredients for the kitchen. Explain and agree on these regimes |
+| The collection | The nearest point of receipt of materials, the shortest route of delivery. Don't sell huge capacity as a useful improvement without checking the need |
+| Mining | Access to the ground and rocks. No need for new mines; Clean up the promises of metals and expeditions |
+| Workshop | The brick for the improvement; Workshop II speeds up the production work. Tools and records temporarily unavailable for new orders |
+| Fishery station | Alternative feedstock for water |
+| Bridge | Physical access to resources and places to expand through water |
+| The Forest | Improvement boards, wood for bricks and kitchens |
+| Mill | Wheat → flour; Leave as a ready-made option of the food branch, not a mandatory first minute build |
+| The kitchen | Food preparation should have a measured advantage when expanding |
+| Clay Carrier | Clay → brick → improvement; We keep it in the alpha. |
 
-У поточній реалізованій 0.26.0 Дорога ще має бонус руху ×1,35. План 0.26.1 прибирає її з каталогу й навчання, забороняє нову серверну команду та вимикає бонус. Старий serialized ID резервується й не перевикористовується, щоб не змістити значення інших споруд і не спотворити підтримані старі дані.
+In the current 0.26.0 Road, there is still a traffic bonus ×1,35. Plan 0.26.1 removes it from the catalog and training, bans the new server command and disables the bonus. The old serialized ID is reserved and not reused to avoid confusing the values of other devices and distorting the supported old data.
 
-Основа: include/ribterra/economy.hpp:16–23; src/sim/world_economy_api.inc:26; src/sim/world_economy.inc:40–41,85–95; src/sim/world.cpp:1403,1545,1589; tests/economy_tests.cpp:51–64.
+The base is: include/ribterra/economy.hpp:16–23; src/sim/world_economy_api.inc:26; src/sim/world_economy.inc:40–41,85–95; src/sim/world.cpp:1403,1545,1589; tests/economy_tests.cpp:51–64.
 
-Сім будівель тимчасово недоступні для нового будівництва: Дім релігії, Паб, Дім картографа, Дім досліджень, Плавильня, Бібліотека, Військовий дім. Їхні основні системи не реалізовані, а конкретний цикл вище не залежить від них. Вони залишаються в коді, арті й завантаженні старих світів. Фактичні заглушки — src/ui/game_ui_buildings.inc:125–131.
+Seven buildings are temporarily unavailable for the new building: the House of Religion, the Pub, the House of Cartography, the Research House, the Shipping House, the Library, the Military House. Their basic systems are not implemented, and the specific cycle above is not dependent on them. They remain in the code, the art, and the load of the old worlds. The actual silences are  src/ui/game_ui_buildings.inc:125–131.
 
-## 5. Рішення щодо незавершених систем
+## 5. Resolutions for Unfinished Systems
 
-| Область | Потрібно до першої альфи | Відкладено |
+| Area | We need the first alpha. | Deferred |
 |---|---|---|
-| Прогресія | Прямі Upgrade-кнопки для підтриманих типів, ціна 6 дощок + 4 цегли, результат і стан роботи; House II та Workshop II обов'язково корисні | Research, технологічне дерево, третій рівень, нові сімейства споруд |
-| Склад II | Зберегти реалізований апгрейд. Кнопка лишається недоступною, поки контрольна сесія на 20–30 мешканців не покаже StorageFull через місткість базового складу. Вигоду близького складу від коротших маршрутів перевіряти окремо | Не додавати штучного бонусу або нової механіки заради кнопки |
-| Житло / населення | Вільне місце перед оплатою recruitment; живі своєї нації + молодь + очікуваний прибулець. Ніякого подвійного списання в кооперативі | Сім'ї, народження, старіння, опалення й утеплення будинків; вони не входять у температурний цикл 0.26.1 |
-| Їжа | Базова ферма підтримує старт; приготування виправдовує витрати на розвиток. Нормальні запаси на ніч і зрозуміле споживання | Якість харчування, вітаміни, десятки продуктів, сезонна агрономія |
-| Робочі місця | Видимий працівник і причина простою; працюють призначення фермера, будівельника, носія. Виробництво не стирає постійну професію мовчки | Новий повний AI професій, автолісоруби/шахтарі, медицина й військові професії |
-| Навички | Зберегти чотири чинні ефекти та XP; не показувати незастосовні бонуси як активні | Перевезення/ковальство/медицина/бій, генеровані здібності, прив'язка кожного рецепта до XP |
-| Ресурси | Єдиний зрозумілий список запасів реальних матеріалів; дошки, глина й цегла мають доступне завершення | Сім HUD-only мінералів; рецепти інструментів/списів; шкури без споживача |
-| Суспільство | Нормальний розклад і дорослішання; фактичні стани здоров'я/голоду | Косметичне невдоволення і пов'язані примусові рішення; релігія, політика, протести, лікування |
-| Світ | У 0.26.1 — новий versioned-профіль генерації поверхні, узгоджені висоти/рух/будівництво, природні береги й рельєф, серверні погода та температура із save/load і мережевою синхронізацією | Стратегічна карта, державні межі, глобальна гідрологія, катаклізми поза погодним циклом 0.26.1 |
-| Рендер і world FX | Перед масовим артом — native 2.5D proof: projected window light/emission, contact/directional shadows, wetness, flat-river material і bounded reflections, scenic haze окремо від FoW, rain/snow particles, косметичні footprints і compressed-snow shading | Автоматичне переписування рушія, rigid-body/cloth/fluid physics, фізична snow deformation/collision, waterfalls |
-| Тварини | Для альфи немає атак на людей; пасивні тварини можуть лишитися | Полювання, експедиції, вовки/кабани як загроза, монстри, боси, оборона |
-| Кооператив | Двоє людей за замовчуванням керують одним поселенням; ресурси й результати однакові | Кілька конкуруючих націй, боти як стратегічні суперники, дипломатія, дерево націй |
-| Подання | Коротке реальне навчання, зрозумілий інспектор і локалізація; у 0.26.1 — compact concept HUD, мінікарта, погодні стани й арт, масштабований лише після технічного renderer-gate | Сюжетна кампанія, повний звуковий/відеопакет, необмежене перероблення всіх спрайтів до native proof |
+| Progress | Direct Upgrade buttons for supported types, price of 6 dashboard + 4 bricks, result and working condition; House II and Workshop II are definitely useful | Research, technology tree, third level, new family of buildings |
+| II | Save the implemented upgrade. The button remains unavailable until the control session on 20–30 residents shows StorageFull due to the capacity of the base composition. The benefits of close-up from short routes to check separately | Don't add an artificial bonus or new mechanics for the button |
+| Crops/population | A vacancy before the recruitment fee; The young man is the expected stranger. No double subscription in the cooperative | Families, births, aging, heating and heating of houses; They're not in the temperature cycle 0.26.1 |
+| Food | The base farm supports the start; The preparation justifies the development costs. Normal nighttime stocks and reasonable consumption | Food quality, vitamins, dozens of products, seasonal agronomy |
+| Employment | A prominent worker and reason simple; They're working for farmers, builders, carriers. Manufacturing does not wipe out the permanent profession of silence | New full AI professions, carpentry/mining, medicine and military professions |
+| Habits | Save the four acting effects and XP; do not show inappropriate bonuses as active | Transmission/capture/medicine/beans, generated capabilities, binding of each prescription to XP |
+| The following resources are available: | The only clear inventory of real materials; tablets, clay and bricks have an accessible finish | Seven HUD-only minerals; the recipes of the instruments/lists; Skin without a consumer |
+| The Community | Normal breakdown and maturation; actual health/hunger conditions | Cosmetic dissatisfaction and related forced decisions; religion, politics, protests, treatment |
+| The World | In 0.26.1  new versioned-profile surface generation, coordinated height/movement/building, natural shores and relief, server weather and temperature with save/load and network synchronization | Strategic map, state boundaries, global hydrology, disasters outside the weather cycle 0.26.1 |
+| Render and the world FX | In front of the mass art — native 2.5D proof: projected window light/emission, contact/directional shadows, wetness, flat-river material and bounded reflections, scenic haze apart from FoW, rain/snow particles, cosmetic footprints and compressed-snow shading | Automatic transcription of movements, rigid-body/cloth/fluid physics, physical snow deformation/collision, waterfalls |
+| Animals | For alphas, there is no attack on humans; passive animals can remain | Hunting, expeditions, wolves/cabinets as a threat, monsters, bosses, defense |
+| Cooperative | Two people rule the same settlement by default; Resources and results are the same. | A few competing nations, boots as strategic rivals, diplomacy, a tree of nations |
+| What is the presentation? | Short real-world training, a clear inspector and localization; in 0.26.1 — compact concept HUD, miniature map, weather and art, only scaled after the technical renderer-gate | A campaign plot, a full audio/video package, unlimited processing of all sprites to native proof |
 
-Чинні межі й canonical dev-table визначені у [V2-плані 0.26.1 «Живий світ»](visual-targets/GRAPHICS_ENGINE_PLAN_V2_UA.md), [специфікації ядра рендера](visual-targets/RENDER_CORE_SPEC_UA.md) і [специфікації world FX](visual-targets/WORLD_FX_SPEC_UA.md). Кількість внутрішніх збірок тут не дублюється. Кожен advanced effect має asset/data contract, вимірювану runtime-вартість, fallback і native verification; сама назва або generated target не доводять реалізацію. Концепт визначає композицію. Температура і прогноз показують серверний стан; «дні палива» й «утеплення» в 0.26.1 не показуються, бо паливо для опалення, опалення/утеплення, температурна смертність і лід не входять у scope.
+The action limits and canonical dev-table are defined in the [V2- plan 0.26.1 «Live world»](visual-targets/GRAPHICS_ENGINE_PLAN_V2_UA.md), [ render core specification](visual-targets/RENDER_CORE_SPEC_UA.md) and [ world specification FX](visual-targets/WORLD_FX_SPEC_UA.md). The amount of internal collection is not duplicated here. Each advanced effect has asset/data contract, measured runtime value, fallback, and native verification; The name itself or the generated target is not enough to implement. The concept defines the composition. The temperature and forecast indicate the server's condition; Fuel and heating dates in 0.26.1 are not shown, as heating, heating/heating, temperature mortality and ice are not included in the scope.
 
-Приховані ресурси зі старих сейвів не видаляти. Якщо вони вже є, залишити коректний облік і доступний опис «у цій альфі не використовується». У новому світі вони не займають HUD. Не перейменовувати старий запис професії в іншу професію без реального перепризначення.
+Hidden resources from old safe houses are not deleted. If they already exist, leave a correct account and the available description in this alpha is not used. In the new world, they don't have HUD. Do not change the old record of a profession to another profession without a real name.
 
-## 6. Послідовність найближчих версій
+## 6. The following is a list of the most recent versions
 
-### 0.25.8–0.25.12 — Зрозумілий старт і керування тим, що вже працює
+### 0.25.8–0.25.12 — Clear start and control of what is already running
 
-Результат: людина може знайти й запустити наявне виробництво; підготовлена основа для розвитку. Це внутрішні контрольні збірки для перевірки керування, не альфа для розповсюдження: матеріальний ланцюг отримає доступне завершення у 0.26.0. Вилучення порожніх елементів є супутньою роботою. Інспектор — 0.25.8, команди/працівник — 0.25.9, власність — 0.25.10, набір альфи — 0.25.11, сумісність — 0.25.12.
+The result: a person can find and run the production that is available; It's a good foundation for development. These are internal controls for control checking, not alpha for distribution: the material chain will get an available finish in 0.26.0. The removal of empty elements is a collaborative effort. Inspector 0.25.8, team/employee — 0.25.9, property 0.25.10, alpha set — 0.25.11, compatibility 0.25.12.
 
-1. У цих уже реалізованих версіях збережено тодішні 12 будованих типів. Дати кожній доступній споруді короткий опис ролі, входів і виходів. Майстерню, кар'єр, дошки та цеглу зберегти. Підказку з метою покращення показувати тільки після підключення Upgrade у 0.26.0. Чинний майбутній scope стає 11 типів після вилучення ручної Дороги у 0.26.1.
-2. Основний шлях керування — натиснути будівлю, побачити працівника, рецепт, кількість партій і стан. Панель «Підприємства» залишається оглядом, а не таємним обов'язковим входом. Очікування відрізняється від роботи й готового доставленого результату.
-3. Повідомлення GameView про вибір/помилку передавати у справжній RmlUi. Додати видимі перші кроки: виділення → збір → будівництво → працівник → перша доставка. Наявний tutorial живе лише у старому HUD: view.cpp:1196, а main.cpp:575 вимикає його. Новий навчальний рушій не потрібен.
-4. Виправити перевірки nation == 1 у панелях/групових замовленнях; сервер і далі перевіряє власність. Новий кооперативний старт за замовчуванням об'єднує двох гравців у спільну команду. Старі нації в сейві не зливати.
-5. Тимчасово сховати сім порожніх будівель, Research-preview, сім неіснуючих ресурсів, постійні +18 °C, вимкнені зайві кнопки та рецепти предметів без застосування. Відповідні системи й арт не видаляти.
-6. Для правил альфи авторитетно заборонити атаки тварин і початок експедицій, включно із завантаженим Attacking. Звичайні тварини можуть залишитися. Відсутність кнопки не вимикає process_animals.
-7. Обмежити сумісність скінченним набором станів 0.25.7 нижче. Підтримані світи мігрувати в нову копію; початковий файл зберегти. Активні старі експедиції на цьому етапі не мігрувати: пояснити несумісність без перезапису й запропонувати новий світ. Це не блокує альфу з нового старту; універсальне перенесення експедицій не входить у найближчі версії.
+1. These already implemented versions retain the then 12 building types. Give each available facility a brief description of the role, inputs and outputs. Save the workshop, the career, the boards and the bricks. The indicator for improvement is shown only after the upgrade is connected to 0.26.0. The actual future scope becomes 11 types after the manual route is removed in 0.26.1.
+2. The main way to control is to click on the building, see the worker, the recipe, the number of parties and the state. The Enterprise panel remains a review, not a secret mandatory entry. Expectations are different from work and a finished result.
+3. The GameView choice/error message is transmitted to the real RmlUi. Add the first visible steps: allocation → collection → construction → worker → first delivery. The existing tutorial lives only in the old HUD: view.cpp:1196, and main.cpp:575 turns it off. There is no need for a new learning movement.
+4. Fix the nation == 1 checks in the panels/group commands; The server checks the property and then continues. The new default co-op start brings together two players in a team. The old nation is not to be confused.
+5. Temporarily hide seven empty buildings, Research-preview, seven nonexistent resources, constant +18 °C, excess buttons turned off and prescriptions of items unused. The corresponding systems and art cannot be removed.
+6. For the rules of the alpha, authoritative prohibitions on animal attacks and expeditionary launches, including unloaded Attacking. The usual animals can stay. The absence of the button does not turn off process_animals.
+7. Limit compatibility with the finite set of states 0.25.7 below. Supported worlds migrate to a new copy; The original file is saved. Active old expeditions at this stage do not migrate: explain the incompatibility without re-recording and propose a new world. It doesn't stop the alpha from starting again; The universal transfer of expeditions is not included in the next version.
 
-Матриця сейвів для створення перевірочних fixtures під час реалізації:
+A safe matrix for creating test fixtures during implementation:
 
-| Вхідний стан 0.25.7 | Обов'язковий результат |
+| The input state 0.25.7 | The result is a must |
 |---|---|
-| Звичайний світ без активної експедиції; у тому числі старі споруди, Level II і тимчасово приховані товари | Збережені люди, власники, споруди, рівні й кількість кожного предмета |
-| Те саме плюс reduced_rations | Записаний нормальний режим харчування, пояснення переходу; запаси не змінено |
-| Те саме плюс тварина у стані Attacking | Атака знята правилами альфи, старий стан не поновлює шкоду |
-| Те саме плюс звичайна виробнича доставка з вантажем | Доставка продовжується без втрати чи дублювання товарів після повторного save/load |
-| Будь-яка активна експедиція: шлях до цілі, полювання, повернення з вантажем або самооборона | Завантаження у правила альфи відхилене з поясненням; старий файл не змінено |
+| A world without active expedition; including old buildings, Level II and temporarily hidden goods | The people, owners, buildings, levels and quantities of each item preserved |
+| The same plus reduced_rations | A normal feeding schedule is recorded, explanations of the transition; stocks not changed |
+| The same plus animal in the attacking state | Attack is lifted by the rules of the alpha, the old state does not renew the damage |
+| The same plus the usual production delivery with cargo | Delivery continues without loss or duplication of goods after repeat save/load |
+| Any active expedition: road to destination, hunting, cargo return or self-defense | Alpha rule loading is off with an explanation. The old file is unchanged |
 
-Ці назви описують потрібні тестові стани, а не вже створені файли. Для підтриманих комбінацій перших чотирьох рядків обов'язкові повторне завантаження й однакова кількість майна. Непідтриманий формат також відхиляється без перезапису. Завершені експедиції без активного доручення не є підставою видаляти вже доставлені товари.
+These names describe the required test states, not the files already created. For supported combinations of the first four rows, recharging is required and the same amount of property. The unsupported format is also rejected without a rewrite. Completed expeditions without an active order shall not be grounds for removing the goods already delivered.
 
-Де: src/ui/game_ui_buildings.inc, game_ui_economy.inc, game_ui_professions.inc; src/client/client_production_group.inc, view.cpp, main.cpp; src/server/game_server.cpp; src/sim/world_wilderness.inc, world_wilderness_api.inc; assets/ui, assets/locales; save/load і правила версій.
+Where: src/ui/game_ui_buildings.inc, game_ui_economy.inc, game_ui_professions.inc; src/client/client_production_group.inc, view.cpp, main.cpp; src/server/game_server.cpp; src/sim/world_wilderness.inc, world_wilderness_api.inc; assets/ui, assets/locales; save/load and the rules of the versions.
 
-Готово: у внутрішній перевірці встановленої збірки новий гравець знаходить збір/будівництво протягом перших 5 хвилин і запускає один рецепт через будівлю без консолі; обидві спільні команди №1/№2 працюють у перевірці; у підтриманих світах немає прихованих атак. Матриця сейвів проходить, несумісні світи не перезаписані. Окрема перевірка підтверджує відмову в керуванні чужими об'єктами. Перший пробний зв'язок двох фізичних ПК провести вже тут.
+Ready: In the internal check of the installed set, the new player finds the set/builder within the first 5 minutes and launches one recipe through the console-less building; both Joint Teams No1/No2 are in check; There are no hidden attacks in the supported worlds. The Matrix of the Saves is passing, the incompatible worlds are not rewritten. A special inspection confirms the refusal to control the foreign objects. The first test connection between two physical PCs is done right here.
 
-### 0.26.0–0.26.3 — Живий світ і реальна прогресія поселення
+### 0.26.0–0.26.3 — The living world and real progress of settlement
 
-Результат: виготовлені матеріали відкривають відчутний наступний крок; після 0.26.1 це відбувається у світі із затвердженим візуальним напрямом і правдивою погодою. Покращення — 0.26.0, «Живий світ» — 0.26.1, житло/поповнення — 0.26.2, режими ферми — 0.26.3. Безпечне призначення працівника з пункту 3 починається раніше, у 0.25.9, і тут повторно використовується.
+The result: the finished materials open up the next tangible step; after 0.26.1 it happens in a world with a valid visual direction and true weather. Improvements 0.26.0♪ The living world ♪ 0.26.1, housing/refurbishment 0.26.2, farm regimes — 0.26.3. The safe appointment of an employee under 3 begins earlier, in 0.25.9, and is here reused.
 
-0.26.1 є окремим stop/go-напрямом між готовим матеріальним покращенням і подальшим балансом: versioned-генерація долини та річки, узгоджені висоти для рендера/руху/будівництва, серверні погода, температура й сніг, обмежений модифікатор збирання/будівництва на Surface, compact concept HUD і мінікарта. Перед масовим артом нативний технічний зріз має довести projected window-ground light/emission, contact/directional shadows, wetness, real flat-river rendering із bounded reflections, haze окремо від FoW, rain/snow particles та косметичні footprints/compressed snow. Для кожного потрібні ассети/дані, budget/caps, fallback і native capture. 2.5D обрано як цільову архітектуру до конкретного доказу її недостатності; автоматичного переписування рушія немає. Ручна Дорога та її бонус вилучаються, Міст залишається. Повна послідовність і приймання — у трьох V2-документах вище. Сценарій `FirstStorm` вимагає продовольчого буфера щонайменше на 20 хвилин як окрему підготовку до першої бурі; доказ сталої харчової економіки лишається результатом 0.26.4. Це **planned scope; runtime ще не доведено**.
+0.26.1 is a separate stop/go-direct between ready-made material improvement and further balance: versioned-generation of valley and river, aligned heights for render/movement/building, server weather, temperature and snow, limited collection/building modifier on Surface, compact concept HUD and mini map. Before mass art, the native technical cut must prove projected window-ground light/emission, contact/directional shadows, wetness, real flat-river rendering with bounded reflections, haze separately from FoW, rain/snow particles and cosmetic footprints/compressed snow. Everyone needs assets/data, budget/caps, fallback and native capture. 2.5D was chosen as the target architecture for concrete evidence of its deficiency; There's no automatic transcription of the engine. The Handway and its bonus are excluded, the Bridge remains. The full sequence and the receipt of — in the three V2- documents above. The `FirstStorm` scenario requires a food buffer for at least 20 minutes as a separate preparation for the first storm; The proof of the consistent food economy is the result 0.26.4. This is **planned scope; runtime has not yet been proven**.
 
-1. Підключити пряме покращення House / Workshop до існуючої команди Upgrade. Показати вартість, потрібного працівника, прогрес і різницю результату. Скасування/нестача матеріалів використовують наявну виробничу логіку. Не вимагати Дому досліджень. API Stockpile II зберегти; кнопку підключати лише після виконання критерію StorageFull з розділу 5.
-2. Зв'язати housing із recruitment: без місця немає оплати; новий Будинок дозволяє перше розширення; House II додає місткість того самого поселення. Рахувати живих своєї нації, молодь та вже очікуване прибуття. Два клієнти не створюють два прибуття за одну оплату.
-3. Узгодити постійні призначення й разові замовлення. Мінімальне правило: автоматичний вибір бере вільного дорослого без постійного призначення. Для вибраного зайнятого спеціаліста — явна причина й наявна дія звільнення, яка дочікується безпечної межі доставки. Ніякого мовчазного стирання професії.
-4. На фермі чітко показати базову їжу та виробництво сировини як різні цілі. Не дозволяти двом виконавчим шляхам непомітно займати одну й ту саму роботу/працівника. Перемикання має явну межу завершення доставки; не вводити ще один виробничий рушій або нову професію кухаря.
-5. Перевірити обидві гілки з нового світу: дерево/глина → дошки/цегла → House II; ферма/лісопилка → кухня → доставлена їжа. Окремо перевірити реальне прискорення Workshop II та вигоду ближнього складу без ручної Дороги.
+1. Connect the House/Workshop upgrade directly to the existing Upgrade team. Show the cost, the workforce, the progress and the difference in output. The cancellation/missing of materials uses the existing production logic. Don't demand the House of Research. API Stockpile II to save; the button is to be connected only after the StorageFull criterion from 5 is executed.
+2. Link housing with recruitment: no place no payment; The new building allows for the first expansion; House II adds the capacity of the same settlement. Count the survivors of his nation, the young and already awaited arrival. Two customers don't make two arrivals for one payment.
+3. Arranging permanent appointments and one-off orders. The minimum rule: automatic selection takes a free adult without a permanent appointment. The employee must be able to obtain a reasonable amount of work and a reasonable amount to be paid. No silent wiping of the trade.
+4. The farm clearly shows basic food and raw material production as different goals. Do not allow two executive routes to take the same job/worker unnoticed. The switch shall have a clear end of delivery; Not to introduce another manufacturing movement or a new cooking profession.
+5. Check both branches from the New World: wood/clay → board/brick → House II; farm/forest → kitchen → food delivered. Apart from checking the actual acceleration of the Workshop II and the benefits of nearby equipment without manual roads.
 
-Де: src/sim/world.cpp:1139–1164,1500–1517,1589; src/sim/world_economy_api.inc:16–35; world_economy.inc:40–95; src/ui/game_ui_buildings.inc:33–63; game_ui_economy.inc:20–55; client_production_group.inc:24–38; tests/economy_tests.cpp і settlement_tests.cpp.
+Where: src/sim/world.cpp:1139–1164,1500–1517,1589; src/sim/world_economy_api.inc:16–35; world_economy.inc:40–95; src/ui/game_ui_buildings.inc:33–63; game_ui_economy.inc:20–55; client_production_group.inc:24–38; tests/economy_tests.cpp and settlement_tests.cpp.
 
-Готово: через звичайний UI зроблено House II з матеріалів, зібраних/вироблених у цьому світі; житло реально дозволило прийом нової людини; Workshop II удвічі скорочує саме робочий час без повторної оплати; save/load у середині матеріалів, праці й доставки не губить результат. Рахунок housing сам по собі не є прийманням.
+Ready: through the usual UI made House II from materials collected/made in this world; the housing actually allowed for a new person to come in; Workshop II will double the same working time without reimbursement; save/load in the middle of the materials, labor and delivery don't waste the result. The housing bill itself is not a receipt.
 
-### 0.26.4–0.26.7 — Баланс і перша внутрішня альфа
+### 0.26.4–0.26.7 — Balance and the first inner alpha
 
-Результат: невелика група може грати у поселення, а не лише викликати окремі команди. Базовий баланс — 0.26.4, користь кухні — 0.26.5, пояснення/перевірка логістики — 0.26.6, навчання й приймання першої внутрішньої альфи — 0.26.7. Включає локальну гру та перевірку кооперативного шляху; це ще не заява про готове зовнішнє демо.
+The result: a small group can play in a settlement rather than just call up individual teams. Base balance 0.26.4, the utility of the kitchen 0.26.5, explanation/logistics check 0.26.6, learning and receiving the first inner alpha. 0.26.7. Includes local gameplay and cooperative trail checking; This isn't a statement about a finished external demo yet.
 
-1. Балансувати тільки наявні числа: витрати їжі, виходи рецептів, стартовий запас, тривалість дня/ночі, recruitment. Поточні 100 Food дають близько 100 секунд без поповнення; поточні день і ніч тривають по 12 симуляційних хвилин. Це не готовий баланс для першої сесії.
-2. Ціль для старту: буфер їжі не менше 5 хвилин без нового надходження; базова ферма з двома призначеними дорослими підтримує початкових 10 людей протягом двох повних циклів день/ніч без ручного дозбирання їжі. Після запуску ферми на другому повному циклі доставлено не менше їжі, ніж спожито; кінцевий запас не нижчий за запас на початку цього циклу, голод і здоров'я не погіршились. Доставки та споживання записати окремо: проїдання стартового запасу не зараховується. Відпочинок, маршрути й навички входять у вимір. Це ціль нового балансу, не опис нинішньої ферми.
-3. Складна їжа має виправдовувати вкладення. Порівнювати парні сценарії з однаковими seed, початковими людьми/навичками, запасами, доступною ділянкою та положенням початкового складу. За однакового бюджету працівників готовий маршрут повинен доставляти щонайменше на 20% більше Food за повний сталий цикл; враховувати працю на всю сировину, дрова й доставки, а деревину показати окремо. Окремо від сталого темпу порахувати вкладення: з моменту початку будівництва накопичена доставлена Food має наздогнати й перевищити базовий варіант у межах контрольної 30–60-хвилинної сесії. У цей вимір включити працю на збирання будматеріалів, будівництво та запуск; не видавати безкоштовні готові входи. 20% і 30–60 хв — початкові критерії для балансування, не доведений результат чи обіцянка тривалості контенту. Гравець може обрати додаткову просту ферму або інвестувати у приготування.
-4. Скоротити обов'язкове порожнє очікування: налаштувати наявну ніч так, щоб вона не вимагала понад 2 хвилини бездіяльності на 1×. Нічні рейди/нові події не розробляти. Повторити харчові розрахунки після зміни календаря, оновити версію правил і сумісність.
-5. Доповнити короткі RmlUi-підказки першою їжею, житлом, новим мешканцем і покращенням; їх можна сховати. Прибрати неправильні описи зими, чужі англійські рядки та інструкції до видаленої панелі. Загальний запас їжі має бути видимим поряд із темпом витрати або запасом часу.
-6. Дві перевірені карти/seed: реальне проходження від табору до нового дорослого й корисного Level II. Перший прохід без усних підказок хоча б двома людьми, які не писали код. Записати де вони зупинилися, що не зрозуміли й чи мали причину розширюватися. Якщо їм нудно, не збільшувати час таймерів заради тривалості; переглянути рішення й вигоду розвитку.
-7. Чіткий ручний save і відновлення на цьому етапі обов'язкові. Для внутрішньої альфи допускається позначене обмеження без локального autosave; відсутність має бути видима до виходу. Виправити виявлені crashes, втрату прогресу та зупинку головного циклу.
+1. Balance only the numbers available: food costs, prescription costs, starting stock, day/night length, recruitment. Current 100 Food gives about 100 seconds without filling; The current day and night are going on 12 The simulation minutes. It's not a ready balance for the first session.
+2. Starting goal: food buffer for at least 5 minutes without new arrivals; The base farm with two designated adults supports the initial 10 people for two full cycles of day/night without manual food collection. After the start of the farm, at least the amount of food delivered is consumed during the second full cycle; The final supply is not lower than the supply at the beginning of this cycle, hunger and health have not deteriorated. Supplies and consumption shall be recorded separately: consumption of the starting stock shall not be counted. Rest, routes, and skills are all part of the measure. That's the goal of the new balance sheet, not a description of the current farm.
+3. Complex foods should justify investing. Compare pair scenarios with the same seed, initial people/skills, stock, available area, and location of the original composition. For a single employee budget, a ready route shall deliver at least 20% more food in the full steady cycle; to take into account all the raw materials, wood and supplies, and to show the wood separately. Apart from the constant rate, the investment is calculated: from the start of construction, the accumulated delivered Food must match and exceed the base option within the control 30–60-minute session. This dimension includes work on building materials collection, construction and commissioning; Don't give out free ready-made entries. 20% and 30–60 min — are the initial balancing criteria, not a result or promise of content duration. The player can choose an additional simple farm or invest in cooking.
+4. Shorten the mandatory empty wait: adjust the available night to not require more than 2 minutes of inactivity on 1×. Night raids/new events not to be developed. Repeat the food calculations after changing the calendar, update the version of the rules and compatibility.
+5. Supplementing short RmlUi instructions with first food, housing, new housing, and improvement; They can be hidden. Select the wrong winter descriptions, foreign English lines and instructions for the deleted panel. The total food supply should be visible alongside the rate of consumption or the time supply.
+6. Two verified maps/seeds: a real progression from the Camp to a new adult and a useful level II upgrade. The first playthrough is completed without spoken hints by at least two people who did not write the code. Record where they stopped, what they did not understand, and whether they had a reason to expand. If they are bored, do not extend timers merely to increase duration; review the decisions and the benefit of development.
+7. A clear manual save and recovery at this stage is mandatory. For the internal alpha, marked restrictions are allowed without a local auto-save; The absence should be visible before the exit. Fixed crashes, loss of progress and major cycle stoppage.
 
-Де: include/ribterra/seasons.hpp:10–14, economy.hpp, settlement.hpp; src/sim/world.cpp:1572–1604; src/ui/game_ui.cpp, game_ui_buildings.inc; assets/locales; tools та тести інтегрованого сценарію. Числа і gameplay hash повинні відповідати зафіксованому пакету.
+Where: include/ribterra/seasons.hpp:10–14, economy.hpp, settlement.hpp; src/sim/world.cpp:1572–1604; src/ui/game_ui.cpp, game_ui_buildings.inc; assets/locales; tools and testing of integrated scenarios. The numbers and gameplay hash must match the fixed packet.
 
-Готово: можна забезпечити 10 людей, виростити поселення в напрямку 16–20, виготовити будматеріали й отримати корисне покращення, зберегтись і продовжити; новий тестер проходить це через UI. 16–20 — розмір контрольної сесії, не новий глобальний ліміт населення. Не обіцяти тривалість контенту до цих проходжень.
+Ready: can provide 10 people, grow settlements in the direction 16–20, produce building materials and get useful improvements, preserve and continue; The new tester goes through this UI. 16–20 — The size of the control session, not the new global population limit. Don't promise the length of content before these sessions.
 
-### 0.26.8–0.27.0 — Надійність і перше зовнішнє демо
+### 0.26.8–0.27.0 — Reliability and first external demo
 
-Результат: самостійно встановлюваний Windows-пакет із тим самим завершеним циклом і підтвердженим кооперативом. Автозбереження — 0.26.8, стійкий кооператив — 0.26.9, Windows-кандидат — 0.26.10, прийняте зовнішнє демо — 0.27.0. Контент на цьому етапі заморожений.
+The result: a self-installed Windows package with the same completed cycle and confirmed co-op. Car safety 0.26.8, a sustainable cooperative 0.26.9, Windows candidate 0.26.10, adopted the external demo 0.27.0. The content is frozen at this point.
 
-1. Двоє людей за замовчуванням у спільному поселенні. Вибір конкурентних націй і ботів не відволікає в демо-лобі. Власність, передача людей, конкурентні накази й витрата ресурсів залишаються авторитетними на сервері.
-2. На двох фізичних Windows-ПК — повний цикл, 60 хвилин сесії, короткий обрив і повернення гостя, перезапуск хоста зі збереженим світом. Після цього один 2-годинний прогін на тій самій фінальній ревізії. Loopback не замінює два ПК.
-3. Хоча б одна успішна сесія з різних мереж через перевірений для тестерів спосіб: прямий доступ або VPN із короткою інструкцією. Steam-запрошення, власне реле та автоматичне перенесення хоста відкладені.
-4. Додати локальне періодичне збереження до наявного writer/backup. Онлайн-host autosave уже викликається раз на 60 с; показувати успіх/помилку, бо зараз результат save() у цьому циклі ігнорується. Перевірити відновлення з backup і повідомлення при неможливості запису. Не створювати нове хмарне сховище або складний менеджер сейвів.
-5. Один ZIP з однозначною версією/build ID, SHA-256, короткою інструкцією, відомими обмеженнями й способом надати багрепорт. Інструкцію пакета очистити від експедицій і змішаних номерів. Запуск на Windows без dev-середовища, український шлях, повторний запуск і продовження.
-6. Перевірити читабельність UI на 1280×720 і 1920×1080, масштаб/фокус, клавіатуру й мишу; усі залишені тексти підтриманих мов. Продуктивність виміряти на контрольному поселенні приблизно 20–30 людей, зазначити ПК/seed/роздільність, не рекламувати 1500 мешканців як доведену підтримку. Мінімальні вимоги визначити з вимірів, не вигадати.
-7. Повний налаштований CTest, пакетний запуск і дві незалежні пари нових тестерів плюс один локальний тестер. Вони самі підключаються, отримують нову їжу, розширюють населення, покращують будівлю та продовжують сейв за письмовою інструкцією. Повторити провалені кроки після виправлення. Це приймання кандидата, не статистична гарантія якості.
+1. Two people by default in a joint settlement. The selection of competing nations and bots does not distract the demo lobby. Ownership, people transfer, competing orders, and resource expenditure remain authoritative on the server.
+2. On two physical Windows PCs, complete the full loop, a 60 minute session, a brief disconnect and guest reconnect, and a host restart with the saved world. Then perform one 2 hour run on the same final revision. Loopback does not replace two PCs.
+3. At least one successful session from different networks through a tested for testers method: direct access or VPN with short instructions. Steam invitation, own relay and automatic host transfer are delayed.
+4. Add local periodic saving to the existing writer/backup system. Online host autosave is already called once every 60 s; show success or failure because this cycle currently ignores the save() result. Verify recovery from backup and the message shown when writing is impossible. Do not create new cloud storage or a complex save manager.
+5. One ZIP with the unambiguous version/build ID, SHA-256, short instruction, known limitations and a way to provide a bagreport. Package instructions to clear expeditions and mixed numbers. Launch on Windows without dev environment, Ukrainian path, reboot and extension.
+6. Check the readability of UI to 1280×720 and 1920×1080, scale/focus, keyboard and mouse; all the remaining texts of the supported languages. Productivity is measured at a controlled settlement of approximately 20–30 people, indicate PC/seed/unit, not advertise 1500 residents as proven support. The minimum requirements are to be determined from dimensions, not to be guessed.
+7. Full customized CTest, packet launch and two independent pairs of new testers plus one local tester. They connect themselves, get new food, expand their population, improve their building, and continue to save on written instructions. Repeat the failed steps after correcting. It's the acceptance of the candidate, not a statistical guarantee of quality.
 
-Де: src/server/game_server.cpp:94–104,245–415,836–874; src/net/network_session.cpp:40–52,297–301; include/ribterra/network_session.hpp:7–13; src/client/main.cpp:246–262,299–329,377–398; scripts/package.ps1; packaging/README.md; наявні network/lobby/UI тести.
+Where: src/server/game_server.cpp:94–104,245–415,836–874; src/net/network_session.cpp:40–52,297–301; include/ribterra/network_session.hpp:7–13; src/client/main.cpp:246–262,299–329,377–398; scripts/package.ps1; packaging/README.md; the available network/lobby/UI tests.
 
-Готово: відсутні відомі блокери основного циклу, втрати сейва й підключення у заявленому сценарії; дві пари завершили його без керування розробником; докази відповідають саме виданому пакету. Без доступних фізичних ПК/тестерів це залишається невиконаним критерієм, а не приводом назвати локальну збірку готовим кооперативним демо.
+Ready: no known blockers of the main cycle, loss of safe and connection in the stated scenario; Two pairs completed it without the developer's guidance. The evidence matches the package. Without available physical PCs/testers, this remains an unmet criteria, and no reason to call a local collection a ready-to-play cooperative demo.
 
-## 7. Перші конкретні задачі та залежності
+## 7. First specific tasks and dependencies
 
-Після вже завершених інспектора/повідомлень → безпечних виробничих команд → власності/раннього кооперативу → набору альфи та підтриманих сейвів → прямих Upgrade наступним іде 0.26.1: baseline → renderer/material contracts → малий native technical slice світла/тіней/wetness/water/haze/precipitation/footprints → performance/fallback stop-go → лише потім масовий арт → узгоджені висоти/рух/будівництво → versioned-генерація → серверні погода, температура, сніг і Surface-модифікатор → truthful-data HUD і мінікарта → save/network/performance/package regression. Після його приймання: житло й recruitment → режими ферми → баланс старту та вигода розвитку → пояснення/перевірка логістики → незалежне проходження → надійність і зовнішній пакет. Приховування порожнього UI, вимкнення небезпечної фауни, тексти й перевірочні сценарії можна готувати паралельно, вони не замінюють цю послідовність.
+After the completed inspector/communications → secure production teams → ownership/early co-operative → set of alpha and supported safes → direct upgrades next 0.26.1: baseline → renderer/material contracts → small native technical slice of light/shadow/wetness/water/haze/precipitation/footprints → performance/fallback stop-go → only then mass art → coordinated altitude/movement/building → versioned-generation → server weather, temperature, snow and Surface-modifier → truthful-data HUD and a miniature map → save/network/performance/package regression. After receiving it: housing and recruitment → farm regimes → start-up balance and development benefits → explanation/logistics check → independent passage → reliability and external package. Hiding the empty UI, turning off the dangerous fauna, the texts and the verification scenarios can be prepared in parallel, they do not replace this sequence.
 
-Номер версії — контрольний результат, не оцінка кількості днів. Першу календарну оцінку робити після інтеграції 0.25.9 та уточнювати після першого фізичного підключення 0.25.10. Чотири узагальнені етапи розділено на 17 малих версій; жодна з цих кількостей не означає стільки ж коротких сесій розробки.
+Version number  is a control result, not an estimate of the number of days. The first calendar estimate is made after integration 0.25.9 and specified after the first physical connection 0.25.10. The four generalized stages are divided into 17 smaller versions; None of these numbers mean as many short development sessions.
 
-## 8. Що розвивати після демо
+## 8. What to Develop After the Demo
 
-- **Монстри й оборона:** керування боєм/відступом, спорядження, наслідки поранень, потім противники; тут отримує роль Військовий дім. Не вмикати загрозу до доступних засобів реакції.
-- **Мінерали й металургія:** корисні родовища → видобуток → плавильня → матеріал → інструмент/спорядження. Нову назву ресурсу показувати разом із завершеним застосуванням.
-- **Дослідження й дерева націй:** відчутні розблокування та відмінності; тут отримують роль Дім досліджень і Бібліотека. Порожніх дерев до демо не робити.
-- **Картографія й світ:** стратегічна карта, позначки, ширша розвідка; тоді повертати Дім картографа.
-- **Суспільство:** послуги Пабу, віра, невдоволення з реальними наслідками, медицина. Це самостійні завершені системи, не декоративні лічильники.
+- **Monsters and defense:** combat/retreat management, equipment, consequences of wounds, then opponents; The role of the military house is here. Do not turn off the threat to the available means of reaction.
+- **Minerals and metallurgy:** useful fields → extraction → smelting → material → tool/equipment. The new resource name shall be displayed together with the completed application.
+- **Research and tree of nations:** tangible unlocking and differentiation; This is where the Research House and the Library are. No empty trees to demo.
+- **Mapping and world:** strategic map, signs, broader intelligence; Then we'll go back to the House of Cartographers.
+- **Society:** services of the Pope, faith, discontent with real consequences, medicine. These are self-contained systems, not decorative calculators.
 
-Це відкладені напрями, не оголошений календар або обов'язок реалізувати всі одразу після демо. Першим після демо йде підтверджений запит гравців; код/арт відкладених споруд уже збережений.
+These are postponed directions, no announced calendar or obligation to implement all immediately after the demo. The first one after the demo is a confirmed player request; The code/art of the deferred building is already saved.
 
-## 9. Ризики та правила зупинки розростання
+## 9. Risks and rules of stopping growth
 
-- **Знову залишити тільки їжу:** матеріальна гілка й корисний Level II є обов'язковими для альфи, не факультативною післядемо-обіцянкою.
-- **Зробити кухню зайвою або примусовим бар'єром старту:** базове харчування доступне; вигода складного шляху вимірюється на повному виробництві, включно з дровами й доставками.
-- **Нові системи поза затвердженим scope:** 0.26.1 свідомо додає генерацію, погоду, температуру й нове подання за окремим master-планом. Поза ним не робити до демо обладнання/міцність інструментів, Research, бойовий AI або повну переробку професій; доробляти зв'язки, що закривають наведений цикл.
-- **Прихований небезпечний стан після приховування UI:** перевіряти авторитетну симуляцію, старий save і reconnect; зберігати фізичні предмети та резервний оригінал.
-- **Підмінити гру автоматичним тестом:** новий script-прогін — доказ виконання коду. Приймання — фактичний UI і незалежний гравець. Якщо людина не знаходить кнопку, можливість для демо не готова.
-- **Нескінченно полірувати:** після проходження критеріїв видати внутрішню альфу, потім обмежений зовнішній кандидат. Нові ідеї не пересувають ці критерії заднім числом.
+- **Again, only food left:** the material branch and the useful Level II are required for the alpha, not an optional post-demo promise.
+- **Make the kitchen an over or forced start barrier:** basic food available; The benefits of a complex road are measured by the full production, including timber and supplies.
+- **New systems outside the approved scope:** 0.26.1 deliberately adds generation, weather, temperature and new input to a separate master plan. Beyond that, do not demo equipment/strength tools, Research, combat AI or complete reworking of the professions; to make connections that close the cycle.
+- **Hidden hazardous state after concealment UI:** check the authoritative simulation, save and reconnect old; Keep the physical items and the original spare.
+- **Step the game by automatic test:** new script-box — proof of code execution. The receiver is a real UI and independent player. If a person can't find the button, the opportunity for a demo isn't ready.
+- **Endlessly polishing:** after passing the criteria, release the internal alpha, then the limited external candidate. New ideas don't move these criteria backwards.
 
-У початковій редакції 22 вересня було змінено тільки документи й додано окремий діагностичний сценарій. Оновлення плану 26 вересня також не реалізує 0.26.1 саме по собі: каталог, генерація, погода, температура, графіка, UI та правила Дороги змінюються лише майбутньою реалізацією й окремою перевіркою.
+In the original 22 edition of September, only the documents were changed and a separate diagnostic scenario was added. The September plan update 26 also does not implement 0.26.1 itself: the catalog, generation, weather, temperature, schedule, UI and road rules change only with future implementation and individual verification.

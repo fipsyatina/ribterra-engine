@@ -1,6 +1,8 @@
-# Повідомлення перед очищенням GameView compiled-копій — 08.10.2026
+# The message before cleaning GameView compiled-copy — 08.10.2026
 
-На пряму вимогу користувача не накопичувати старі версії підготовлено лише 102 конкретні згенеровані compiled-файли у чотирьох старих test roots. Це повідомлення створене ДО Apply; стан на момент створення — нічого з цього списку ще не видалено.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
+
+At the user's direct request not to accumulate older versions only 102 specific generated compiled files in four old test roots are prepared. This message was created by DO Apply; The state at the time of creation — nothing on this list has been removed yet.
 
 Plan: `.omx/plans/gameview-build-prune-2026-10-08-01.json`.
 
@@ -8,19 +10,19 @@ Plan SHA-256: `2F0E381B68026EAF596D8F58C8AE4BEE6A2DD45CA2DCCF0E7C1B8C0980EDE56A`
 
 Helper SHA-256: `B376B91302865938664C8A78540AE0D4E0E470E6F8D9A9BC914E96B3F8680307`.
 
-Сумарно **102 файли / 400 058 964 логічних байтів (400,06 MB)**. Це не обіцянка рівного приросту вільного місця: фактичний обсяг вимірюється після операції.
+Summary **102 files / 400 058 964 logical bytes (400,06 MB) **. It's not a promise of equal growth of free space: the actual volume is measured after the operation.
 
-Причина: спроби06–09 замінені свіжою strict build10 і двома повторними bounded native06/07. Застарілі OBJ/EXE/DLL/LIB/EXP не потрібні для поточного прогону.
+Reason: try06–09 replaced with a fresh strict build10 and two repeated bounded native06/07. The OBJ/EXE/DLL/LIB/EXP is not needed for the current drive.
 
-Захищено 3859 файлів: усі нецільові файли цих чотирьох roots, GameView05 rollback і10 latest, усі GameView native01–07, sky-authored05/10 та authored-native01–06, увесь kit check05 (A/B і negative evidence), 96 live source bindings, launcher/pointer та фактичні запускні EXE. Каталоги, вихідний код, звіти, screenshots/PNG, assets, shaders, generated headers і compiler-temp НЕ видаляються.
+Protected 3859 files: all non-target files of these four roots, GameView05 rollback and 10 latest, all GameView native01–07, sky-authored05/10 and authored-native01–06, all kit check05 (A/B and negative evidence), 96 live source bindings, launcher/pointer, and actual launches EXE. Catalogs, source code, reports, screenshots/PNG, assets, shaders, generated headers and compiler-temp are NOT deleted.
 
-Видалення — остаточне локальне `Remove-Item`, не кошик і не GitHub-архів. Збережені snapshots/logs/залежності дозволяють відновити функціонально відповідну збірку; побайтове відновлення саме історичних EXE/OBJ не гарантується. Запускні latest/rollback копії залишаються.
+Removing — final local `Remove-Item`, not a basket and not GitHub archives. The stored snapshots/logs/dependencies allow the functionally relevant set to be restored; The exact restoration of the historical EXE/OBJ is not guaranteed. The initial latest/rollback copies remain.
 
-## Повний точний список цілей
+## A Complete and Accurate List of Goals
 
 ### gameview-engine-2026-10-08-attempt06
 
-21 файлів; 59793017 логічних байтів.
+21 files; 59793017 logical bytes.
 
 ```text
 C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt06\obj\asset_catalog.obj
@@ -48,7 +50,7 @@ C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt06\obj\w
 
 ### gameview-engine-2026-10-08-attempt07
 
-27 файлів; 113414047 логічних байтів.
+27 files; 113414047 logical bytes.
 
 ```text
 C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt07\GameViewEngineProbe.exe
@@ -82,7 +84,7 @@ C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt07\SDL3.
 
 ### gameview-engine-2026-10-08-attempt08
 
-27 файлів; 113424631 логічних байтів.
+27 files; 113424631 logical bytes.
 
 ```text
 C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt08\GameViewEngineProbe.exe
@@ -116,7 +118,7 @@ C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt08\SDL3.
 
 ### gameview-engine-2026-10-08-attempt09
 
-27 файлів; 113427269 логічних байтів.
+27 files; 113427269 logical bytes.
 
 ```text
 C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt09\GameViewEngineProbe.exe
@@ -148,7 +150,7 @@ C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt09\SDL3_
 C:\Users\fipst\Desktop\ribterra\build\gameview-engine-2026-10-08-attempt09\SDL3.dll
 ```
 
-## Перевірка перед і після
+## Before and after checks
 
-Apply дозволено лише для повідомленого незмінного Plan SHA. Helper повторно звіряє шляхи, bytes, mtime та SHA; після видалення перевіряє весь protected inventory і нуль решти цілей. Фактичний результат буде окремим `.json.result.json`, без переписування цього Plan. До результату не заявляти очищення виконаним.
+Apply is only allowed for the reported unchanged Plan SHA. Helper re-creates paths, bytes, mtime and SHA; After deleting, it checks the entire protected inventory and zeroes the rest of the targets. The actual result will be a separate `.json.result.json`, without rewriting this Plan. Until the result, no cleansing is declared.
 

@@ -1,45 +1,47 @@
-# Перевірка Ribterra 0.25.12
+# Ribterra verification 0.25.12
 
-23 вересня 2026. Windows Release, MSVC, `C:\Users\fipst\Desktop\ribterra`, гілка `AInora/first-playable`, база `0fe2454` з локальними змінами 0.25.8–0.25.12.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Результат і межі
+23 September 2026. Windows Release, MSVC, `C:\Users\fipst\Desktop\ribterra`, branch `AInora/first-playable`, database `0fe2454` with local changes 0.25.8–0.25.12.
 
-Підтримані світи 0.25.7–0.25.10 (формат 8, правила 14–16, генератор 5) відкриваються через перевірену нову копію поруч з оригіналом. Одиночна гра та хост надалі зберігають копію. Оригінал збережений побайтно. Нормалізуються скорочені порції всіх націй, скидаються старі атаки й таймери тварин без зміни здоров’я та товарів. Усі активні фази експедицій відхиляються з поясненням.
+## Outcome and Limitations
 
-Завершені старі споруди, покращення, власники, мешканці та неактивні предмети збережені. Примусова праця, активне виробництво інструментів/списів і незавершена прихована споруда залишаються несумісними. Старі конвертери форматів до 0.25.7 з резервними копіями не замінені універсальною міграцією. Нова гарантія обмежена описаними станами; докладно — [опис оновлення](update-0.25.12-uk.md).
+Supported worlds 0.25.7–0.25.10 (formatting 8, rules 14–16, generator 5) are opened through a verified new copy next to the original. The single game and host continue to keep a copy. The original is preserved intact. Reduced portions of all nations are normalized, old attacks and timers of animals are dropped without changing health and goods. All active phases of expeditions deviate with an explanation.
 
-## Походження контрольних файлів
+Completed old buildings, improvements, owners, occupants, and inactive objects are preserved. Forced labor, active tool/list production, and unfinished hidden construction remain incompatible. Old format converters up to 0.25.7 with backup copies have not been replaced by universal migration. The new warranty is limited by the conditions described; Details  [ description of the update](update-0.25.12-uk.md).
 
-У `tests/fixtures/alpha-0257/` збережено **9 файлів `.ribsave`**, очікувані дані й `provenance.json` із SHA256. Їх записав код **0.25.7** із коміту `0fe2454f45aeb4087f5832fe0c42d7b8303bac99`, окремо зібраний з незмінних старих джерел. Генератор контрольних станів — `tests/fixtures/capture_alpha_0257.cpp`. Це синтетичні стани, перевірені старою симуляцією; звичайний вантаж отриманий виконанням старого виробництва. Номер версії у готовому файлі не підмінявся. Маніфест містить також Git-хеші ключових старих джерел і SHA256 бібліотек та генератора.
+## Origin of control files
 
-П’ять підтриманих станів: історичні споруди/предмети, скорочені порції, активна атака, звичайний вантаж та їхня підтримана комбінація. Чотири відхилені: вихід експедиції, полювання, повернення, самооборона.
+In `tests/fixtures/alpha-0257/` the **9 files `.ribsave`** are stored, the expected data and `provenance.json` from SHA256. They were recorded by the code **0.25.7** from the committee `0fe2454f45aeb4087f5832fe0c42d7b8303bac99`, separately collected from unchanged old sources. Control state generator — `tests/fixtures/capture_alpha_0257.cpp`. These are synthetic states tested by an old simulation; The normal cargo is the product of the old production. The version number in the finished file has not been changed. The manifesto also contains Git-hashes of old key sources and SHA256 libraries and generators.
 
-## Перевірки
+Five supported states: historic structures/objects, shortened portions, active attack, ordinary cargo and their supported combination. Four are rejected: expedition departure, hunting, return, self-defense.
 
-**16 різних CTest пройшли:** save_compatibility, save_compatibility_ui, persistence, server, lobby, network_session, network_join, network_lobby_join, production_control, production_control_ui, coop_start, alpha_rules, ui, ui_lifecycle, localization, protocol.
+## Checks
 
-Основний прогін: `build/02512-tests.log`, **16/16**, 73,97 с. Після уточнень відновлення сервера повторено save_compatibility/server/lobby: **3/3**, 19,53 с (`build/02512-final-tests.log`). Після остаточних повідомлень і компонування повторено save_compatibility_ui/ui/localization: **3/3**, 6,39 с (`build/02512-ui-final.log`). Останній результат кожного тесту записаний у `artifacts/compatibility-0.25.12/test-results.json`. Повний набір CTest не запускався.
+**16 different CTests were performed:** save_compatibility, save_compatibility_ui, persistence, server, lobby, network_session, network_join, network_lobby_join, production_control, production_control_ui, coop_start, alpha_rules, ui, ui_lifecycle, localization, protocol.
 
-- Кожен із п’яти підтриманих файлів двічі збережено й завантажено з точним збігом контрольної суми стану. Нова міграція при повторному відкритті копії не запускається. Порівняно ідентифікатори, типи, кількості, власників і розміщення всіх предметів, будівлі, рівні та мешканців із даними старого генератора.
-- В обох станах із вантажем **6 дощок доставляються один раз**. Після завершення виконано ще 220 тактів: додатковий товар не з’являється, нехарчові предмети не губляться. Їжа після початку симуляції закономірно споживається; на обох циклах збереження весь стан, включно з їжею, збігається точно.
-- Старі порції вимкнені в усіх націях. Старі атаки очищені; у сценаріях без виробничого вантажу 300 наступних тактів не завдають мешканцям шкоди.
-- Відмова в усіх чотирьох фазах експедиції не змінює живий світ, файл і вміст його каталогу. Пошкоджена контрольна сума, обрізаний файл, невідомі формат/правила відхиляються без зміни джерела. Перевірено шлях з українськими символами.
-- Збереження через старий шлях після успішного перенесення, збереження хоста й завершення сервера не перезаписують оригінал. Повторне відкриття копії зберігає поступ гри. Публікація копії не замінює вже наявний файл.
-- Відновлено господаря з команди №2. Невалідні дані мережевої кімнати не замінюють активний світ і гравця. Відхилене завантаження в локальному клієнті не знищує поточну сесію.
-- Попередні перевірки виробництва, скасування, лобі, спільних команд і захисту власності пройшли локально. Для поточних правил 17 заборонені стани й надалі відхиляються; нормалізація застосовується лише до підтриманих старих правил.
+The main family is: `build/02512-tests.log`, **16/16**, 73,97 p. After the server recovery clarification, repeat save_compatibility/server/lobby: **3/3**, 19,53 with (`build/02512-final-tests.log`). After final messages and compiling, repeat save_compatibility_ui/ui/localization: **3/3**, 6,39 c (`build/02512-ui-final.log`). The final result of each test is recorded in `artifacts/compatibility-0.25.12/test-results.json`. The full set of CTest didn't start.
 
-## Справжній інтерфейс і сервер
+- Each of the five supported files is saved and uploaded twice with an exact match to the status check. A new migration does not start when the copy is reopened. Identifiers, types, quantities, owners and locations of all items, buildings, levels and occupants were compared with the old generator data.
+- In both loaded states **6 the tablets are delivered once **. After completion, another 220 tactic is performed: no additional goods appear, no non-food items are lost. Food is consumed normally after the simulation begins. In both of these cycles, the whole thing, including the food, is exactly the same.
+- Old portions are off in all nations. The old attacks are cleared; In the case of non-production loads 300, the following tactics do not harm the inhabitants.
+- Refusal in all four phases of the expedition does not alter the world, file or catalogue. The corrupted check amount, the deleted file, the unknown format/rules are deleted without changing the source. The road is verified with Ukrainian symbols.
+- Old-fashioned storage after a successful transfer, host storage, and server completion do not rescript the original. Re-opening the copy keeps the game going. Publishing a copy does not replace an existing file.
+- Retired master from team No2. The invalid data of the network room does not replace the active world and player. A rejected load in a local client does not destroy the current session.
+- Preliminary inspections of production, cancellation, lobbying, joint commands and property protection were carried out locally. For current rules 17, states prohibited and continue to be derogated; The normalisation only applies to the old rules that are maintained.
 
-`artifacts/compatibility-0.25.12/` містить **8 кадрів 1440×900**, `compact/` — ще **8 кадрів 1100×700** зі справжнього SDL/RmlUi. Перевірено повідомлення про нову копію, нормальні порції й очищену атаку, чотири відмови експедицій, пошкодження, невідомий формат і відмову хоста. Після відмови доступна дія «Нова гра». Переглянуто звичайні та компактні кадри; статус не перекриває назву панелі підприємств чи кнопку довідки. Компактний прогін: `build/02512-compact-final.log`, `compact/report.txt`.
+## Real interface and server
 
-Окремий `RibterraServer.exe` завантажив копію комбінованого старого стану, виконав 20 тактів і завершився з кодом 0. Повторний запуск із повідомленим `save_path` продовжив копію, код 0. Файл з експедицією в поверненні відхилений з кодом 1 і причиною `alpha.save_expedition`. SHA256 обох джерел незмінні. Докази: `cli-verification.json` та `build/02512-cli-first.log`, `02512-cli-resume.log`, `02512-cli-rejected.log`. Для наступного запуску окремого сервера потрібно передавати шлях копії в `--world`.
+`artifacts/compatibility-0.25.12/` contains **8 frames 1440×900**, `compact/` — further **8 frames1100×700** from the real SDL/RmlUi. Reports of a new copy, normal portions and a clean attack, four shipment rejections, damage, unknown format and host rejection. After the refusal, the action of the new game is available. The usual and compact frames are reviewed; The status does not cover the enterprise panel name or the verification button. The compact case is `build/02512-compact-final.log`, `compact/report.txt`.
 
-## Пакет і запуск
+A separate `RibterraServer.exe` loaded a copy of the combined old state, ran 20 ticks, and exited with code 0. Relaunching with the reported `save_path` continued from the copy and exited with code 0. The returning-expedition file is rejected with code 1 and reason `alpha.save_expedition`. Both source SHA256 values are unchanged. Evidence: `cli-verification.json` and `build/02512-cli-first.log`, `02512-cli-resume.log`, `02512-cli-rejected.log`. To run the separate server again, pass the copy path to `--world`.
 
-Установлено `dist/releases/0.25.12/Ribterra`; `dist/current-build.txt` вказує на **0.25.12**. Установлена гра і штатний `Play Ribterra.cmd` пройшли запуск `--smoke`, обидва з кодом **0**. Звіти підтверджують **0.25.12, Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, software=false**.
+## Package and launch
 
-ZIP: `dist/Ribterra-Windows-x64-0.25.12.zip`, **158818064 байти**. SHA256: `ef5eeb3f6da4c2aa960bb5ae4c5953a33481c68727e07089a10c033078961f3a`. Перевірено CRC всього ZIP; чотири EXE однакові між збіркою, встановленням і архівом. Панелі, стилі, п’ять мов, launcher, README й опис версії збігаються з джерелами. Зображення всіх семи прихованих будівель збережені. Докази: `artifacts/compatibility-0.25.12/package-verification.json`, `installed-renderer.json`, `launcher-renderer.json` і сусідній `.zip.sha256`.
+Set to `dist/releases/0.25.12/Ribterra`; `dist/current-build.txt` refers to **0.25.12**. The set game and the default `Play Ribterra.cmd` have been launched `--smoke`, both with the code **0**. The reports confirm **0.25.12, Direct3D 12, NVIDIA, GeForce RTX 3050 Laptop GPU, software=false**.
 
-Правила **17**, протокол **19**, формат сейва **8**, генератор **5**. `git diff --check` пройшов. Git-коміт, push та GitHub Release не виконувалися.
+ZIP: `dist/Ribterra-Windows-x64-0.25.12.zip`, **158818064 bytes **. SHA256: `ef5eeb3f6da4c2aa960bb5ae4c5953a33481c68727e07089a10c033078961f3a`. Verified CRC of all ZIP; four EXE is the same between the collection, the installation and the archive. The panels, styles, five languages, launcher, README and version description match the sources. Images of all seven hidden buildings are preserved. The evidence is `artifacts/compatibility-0.25.12/package-verification.json`, `installed-renderer.json`, `launcher-renderer.json` and neighboring `.zip.sha256`.
 
-**Перевірку на двох фізичних Windows-ПК НЕ ВИКОНАНО:** другий ПК недоступний, як підтвердив користувач. Це залишається відкритим критерієм 0.25.10. Локальні мережеві тести не підтверджують зовнішню мережу або NAT.
+The rules are **17**, the protocol **19**, the format of the file **8**, the generator **5**. `git diff --check` passed. Git-comit, push, and GitHub Release were not executed.
+
+**Checking on two physical Windows PCs NOT WORKED:** second PC is unavailable, as confirmed by the user. This remains an open criterion 0.25.10. Local network tests do not confirm the external network or NAT.

@@ -1,34 +1,36 @@
-# Професії, призначення та досвід: зріз 0.9
+# Professions, assignments, and experience: the 0.9 slice
 
-Статус: зріз 0.9 реалізовано; локальні, GPU, package та CI перевірки `d3bc785` пройдено; повторний CI `42036ff` після уточнення ініціалізаторів пройдено без C++ warnings та UBSan errors. Поточні правила описані в [SKILLS.md](SKILLS.md), стан джерела й незмінного пакета — у [VALIDATION.md](VALIDATION.md). Джерело — розділи «Навички», керування та AI у [вихідному плані](source/development-plan-ua.txt), рядки 311–349; повні вимоги S04–S07 і T01 у [реєстрі](ENGINE_REQUIREMENTS.md) залишаються відкритими.
+> English translation of a historical project document. Results apply to the named versions and snapshots. The original wording is retained in import commit `7388a2f`; translation does not validate the current build.
 
-## Ігровий результат
+Status: the 0.9 slice is implemented. Local, GPU, package, and CI checks for `d3bc785` passed. After initializer corrections, repeated CI for `42036ff` passed without C++ warnings or UBSan errors. Current rules are described in [SKILLS.md](SKILLS.md); the source and unchanged package are distinguished in [VALIDATION.md](VALIDATION.md). The source is the Skills, Control, and AI sections of the [original plan](source/development-plan-ua.txt), lines 311–349. The complete S04–S07 and T01 requirements in the [registry](ENGINE_REQUIREMENTS.md) remain open.
 
-Гравець призначає професію й робоче місце мешканця, змінює пріоритети та бачить причину очікування і фактичну швидкість роботи. Професія відокремлена від поточної дії Job. Ручний Move тимчасово перериває розклад, після прибуття мешканець повертається до призначення. Stop вимикає автоматичну роботу до нового явного призначення. Досвід попередніх професій зберігається.
+## Player-facing behavior
 
-## Реалізація
+The player assigns a resident's profession and workplace, changes priorities, and sees the reason for waiting and the actual work speed. Profession is separate from the current Job. A manual Move temporarily interrupts the schedule; after arrival, the resident returns to the assignment. Stop disables automatic work until another explicit assignment. Experience from previous professions is retained.
 
-- Окремі збережувані професія, робоче місце, дозволені роботи, пріоритети та стан тимчасового ручного перевизначення. Перші виконувані роботи спираються на наявні Woodcut/Mine/Forage/Build/Haul; повний каталог професій залишається обов'язковим наступним розширенням.
-- Авторитетні команди призначення й Stop з правами, request dedupe, результатами по мешканцях у групі та визначеним порядком конфліктів двох клієнтів. Перепризначення фізичного носія не видаляє cargo/reservation; зміна переходить у дію на безпечній межі доставки.
-- Вибір серед доступних робіт: пріоритет гравця, професія, доступність і відстань; стабільний ID розв'язує рівність. Індекс ресурсів і відсікання далеких bucket-ів скорочують звичайний пошук, але повний перегляд кандидатів у щільному bucket ще можливий. Межі visits/admissions не є межею загальної кількості перевірених кандидатів; найгірший випадок і повний AI/performance gate залишаються відкритими. Пошук роботи розподіляється між ticks із цільовою частотою 1–2 Hz. Виконання використовує Work Intents і логістичні стани.
-- Серверний ModifierSystem: незалежні XP, окрема familiarity, повільне забування familiarity максимум на 2 процентні пункти, спільна межа −15…+15%, пояснюваний ModifierBreakdown. Криві, часові параметри й обмеження мають бути явно визначені та включені в gameplay hash перед зміною формату. Постійний XP не стирається.
-- Картка мешканця показує професію, призначення, причину вибору/очікування, практику і швидкість. «+15% швидкості» не означає «−15% часу». Проєкція передає готовий серверний розрахунок без чужих професій, прихованих цілей чи внутрішніх task/path IDs.
+## Implementation
 
-## Критерії приймання
+- Profession, workplace, permitted work, priorities, and temporary manual override state are stored separately. The first executable jobs use the existing Woodcut/Mine/Forage/Build/Haul paths; the complete profession catalog remains a required extension.
+- Authoritative assignment and Stop commands check rights, deduplicate requests, return per-resident group outcomes, and define the ordering of conflicts between two clients. Reassigning a physical carrier does not remove cargo/reservations; the change takes effect at a safe delivery boundary.
+- Work selection considers player priority, profession, availability, and distance; stable ID breaks ties. Resource indexing and pruning distant buckets reduce ordinary search, but a complete scan of candidates in a dense bucket remains possible. Visit/admission limits do not bound the total number of candidates examined. Worst-case behavior and the complete AI/performance gate remain open. Work search is spread across ticks with a target frequency of 1–2 Hz. Execution uses Work Intents and logistics states.
+- The server ModifierSystem uses independent XP, separate familiarity, slow familiarity decay of at most 2 percentage points, one combined −15…+15% cap, and an explainable ModifierBreakdown. Curves, time parameters, and limits must be explicit and included in the gameplay hash before a format change. Permanent XP is never erased.
+- The resident card shows profession, assignment, selection/waiting reason, practice, and speed. “+15% speed” does not mean “−15% time.” The projection carries the ready server calculation without foreign professions, hidden targets, or internal task/path IDs.
 
-1. Лісоруб → шахтар → лісоруб: незалежні XP зберігаються, дозволені роботи й фактична швидкість змінюються; саме призначення XP не дає.
-2. XP та предмети з'являються один раз за корисну роботу. Queue pressure, повний склад, retry, скасування, повтор команди й save/load не дають додаткового результату.
-3. Ручний Move і Stop мають різну тривалість впливу; після завантаження зберігається правильний стан. Поточний вантаж доходить до безпечної межі без втрати матеріалів.
-4. Вибір роботи детермінований, враховує заборони професії та пріоритети. Немає кандидата — є конкретна причина очікування.
-5. Граничні комбінації modifier вкладаються в −15…+15%; відображений breakdown відповідає прогресу симуляції. Тривала перерва не стирає XP.
-6. Порівняння кожного tick після save/resume у ручному перевизначенні, Waiting/PathPending, cargo і зміні професії.
-7. Власність, повтори, одночасні зміни, late join/reconnect, keyed full/delta/removal та відсутність витоку прихованих даних. Внутрішнє призначення не створює CommandReply гравця.
-8. Реальні кадри й взаємодії у п'яти мовах; виміри вибору, маршрутів і повного tick на 10/100/500/1500 та 4×1500 мешканців. Попередні результати 0.8 не замінюють цих вимірів.
+## Acceptance criteria
 
-## Перехід формату
+1. Woodcutter → miner → woodcutter: independent XP persists; permitted work and actual speed change. Assignment itself grants no XP.
+2. XP and items are granted once for useful work. Queue pressure, full storage, retry, cancellation, repeated commands, and save/load produce no extra result.
+3. Manual Move and Stop have different durations of effect; loading preserves the correct state. Current cargo reaches a safe boundary without material loss.
+4. Work selection is deterministic and respects profession restrictions and priorities. No candidate produces a specific waiting reason.
+5. Extreme modifier combinations remain within −15…+15%; the displayed breakdown matches simulation progress. A long break does not erase XP.
+6. Compare every tick after save/resume during a manual override, Waiting/PathPending, carrying, and a profession change.
+7. Check ownership, retries, simultaneous changes, late join/reconnect, keyed full/delta/removal, and absence of hidden-data leakage. Internal assignment creates no player CommandReply.
+8. Check real frames and interactions in five languages; measure selection, routing, and complete ticks for 10/100/500/1500 and 4×1500 residents. Earlier 0.8 results do not replace these measurements.
 
-До зміни schema знято [вісім genuine format-6 fixtures](../tests/fixtures/WORLD_SAVE_V6.md) незмінною перевіреною 0.8: вантаж, Waiting, queued і частково searched Work path, дорога/робота біля оплаченої споруди, Failed та Exhausted. Кожен має byte-identical повторне збереження й 64 наступні ticks з однаковим checksum у старому loader. Реалізація 0.9 додає format 7 та перевіряє міграцію кожного з цих файлів і продовження протягом 128 ticks.
+## Format migration
 
-Міграція додає нейтральне призначення без вигаданого робочого місця, переносить XP точно та не відновлює завершені наміри. Зберігаються planner frontier, ID, deadlines, cursors і фізичний облік предметів. Потрібні строгий старий hash, `.v6.bak`, append-only schema/conform та всі попередні міграції.
+Before the schema changed, the unchanged, verified 0.8 runtime captured [eight genuine format-6 fixtures](../tests/fixtures/WORLD_SAVE_V6.md): cargo, Waiting, queued and partially searched Work paths, travel/work beside a paid building, Failed, and Exhausted. Each has a byte-identical resave and 64 subsequent ticks with identical checksums in the old loader. Implementation 0.9 adds format 7 and checks migration of each file followed by 128 ticks of continuation.
 
-Повний Utility AI, потреби, соціальні зв'язки, ширший каталог професій, фізична робота на фермі та інші вимоги рушія залишаються у scope. Після повного рушія виконуються додані користувачем ассети й великий рельєф за концептами, потім координатний індикатор; цей зріз не є виконанням художньої частини.
+Migration adds a neutral assignment without inventing a workplace, transfers XP exactly, and does not revive completed intents. Planner frontier, IDs, deadlines, cursors, and physical item accounting are preserved. A strict old hash, `.v6.bak`, append-only schema/conformance, and all previous migrations are required.
+
+Complete Utility AI, needs, social relationships, the broader profession catalog, physical farm work, and other engine requirements remain in scope. The full engine is followed by the user-supplied assets and large terrain based on concepts, then the coordinate indicator. This slice does not complete the art work.

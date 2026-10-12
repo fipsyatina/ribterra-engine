@@ -1,18 +1,20 @@
-# Мешканці у восьми напрямках і видимі вантажі
+# Eight-way residents and visible cargo
 
-У гру підключено 256 нових кадрів: чоловічий і жіночий образи, вісім напрямків, чотири фази ходьби, звичайна ходьба та перенесення колод, мішків і візків. Напрямок визначається рухом мешканця на екрані. На паузі анімація завмирає, після зупинки мешканець зберігає напрямок погляду. Попереднє уповільнення анімацій збережене.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Видимий вантаж відповідає справжньому предмету в руках мешканця, отриманому зі стану сервера. Деревина й дрова показуються колодами. Харчі та невеликі вантажі — мішками. Партії від шести одиниць каменю, глини, цегли, дощок, інструментів або списів — завантаженим візком. Після розвантаження повертається звичайна поза ходьби. Значок ресурсу біля плеча замінено цією графікою.
+The game includes 256 new frames: male and female figures, eight directions, four walking phases, ordinary walking, and carrying logs, bags, and carts. Direction is determined by the resident's movement on screen. The animation freezes while paused, and a resident keeps facing the same direction after stopping. The previous animation slowdown is preserved.
 
-Візок поки є виглядом чинного перевезення: він не збільшує місткість понад десять одиниць, не прискорює мешканця й не має окремої фізики транспорту. Зміни не запускають самовільний видобуток. Перевезення до табору, складу та будівництва використовує наявні завдання логістики.
+The visible load corresponds to a real object in the hands of the resident, obtained from the server state. The wood and wood are shown by the logs. Food and small bags. Parts of six pieces of stone, clay, brick, stone, tools or writing — loaded with a trolley. After loading, the normal walk is returned. The resource badge at the shoulder is replaced by this chart.
 
-## Перевірки
+The viaduct is still a form of transportation in effect: it does not increase capacity by more than ten units, does not accelerate residents, and has no separate transport physics. Change does not start a voluntary extraction. Transportation to the camp, storage and construction uses existing logistics tasks.
 
-- `UnitMotionTests`: усі вісім напрямків, збереження напрямку після зупинки, вантажі, плавність офлайн/онлайн на ×1/×2/×4, затримки пакетів, пауза, перехід між шарами.
-- `LogisticsTests`: резервування, місткість, доставлення, збереження, скасування та відновлення.
-- `ResidentVisualProbe`: справжній Direct3D 12, усі 256 кадрів; доставка дерева, їжі та каменю в табір і склад через звичайну симуляцію; перевірка фактичного місця розвантаження і збереження під час перенесення. Тестові початкові запаси розставлені спеціально для перевірки.
-- `CoopPerformanceProbe`: два клієнти з рендером, 180 кадрів, RTX 3050 Laptop GPU: 59.97 FPS; середній час CPU для обох клієнтів разом 9.50 мс, p95 12.31 мс. Це короткий контрольний сценарій із 20 мешканцями, а не гарантія швидкодії будь-якого поселення.
+## Checks
 
-Знімки й звіти: `artifacts/directional-residents/`. Джерела, промпти вбудованого image_gen, контрольні суми й відтворювана реєстрація: `art-source/directional-residents/` та `tools/register_resident_art.py`.
+- `UnitMotionTests`: all eight directions, directional retention after stopping, loading, offline/online smoothness on ×1/×2/×4, packet delays, pauses, transition between orbits.
+- `LogisticsTests`: reservation, capacity, delivery, storage, cancellation and recovery.
+- `ResidentVisualProbe`: real Direct3D 12, all 256 footage; the delivery of wood, food and stone to the camp and storage facility through a normal simulation; verification of the actual place of discharge and storage during transport. The test starting stock is specially designed for verification.
+- `CoopPerformanceProbe`: two clients with a render, 180 frames, RTX, 3050 Laptop GPU: 59.97 FPS; mean time CPU for both clients together 9.50 ms, p95 12.31 ms. This is a short-term control scenario with 20 residents, not a guarantee of the speed of any settlement.
 
-Підготовлена збірка: `dist/directional-residents/Ribterra/Ribterra.exe`. Для її запуску використовується ярлик на робочому столі `Ribterra - New Graphics`.
+Pictures and reports: `artifacts/directional-residents/`. Source, built-in inputs image_gen, checksums and reproduced registration: `art-source/directional-residents/` and `tools/register_resident_art.py`.
+
+The finished set: `dist/directional-residents/Ribterra/Ribterra.exe`. The launch is done using a label on the desktop `Ribterra - New Graphics`.

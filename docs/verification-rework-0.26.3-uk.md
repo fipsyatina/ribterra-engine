@@ -1,68 +1,70 @@
-# Переробка Ribterra V01–V03 — перевірка 30.09.2026
+# Ribterra recycling V01–V03 — checking 30.09.2026
 
-## Рішення
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-**PARTIAL — суттєва локальна переробка реалізована, але повна художня відповідність референсам не прийнята.** Це не опублікований реліз і не твердження, що всі V01–V03 готові. Построковий результат: [acceptance checklist](visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md).
+## Decision
 
-Виконаний спільний графічний обсяг: **V01 HUD → V02 земля/річка/стежки → V03 будівлі/мешканці**. Старі `target-0261/0262/0263` містять також іншу gameplay-послідовність: погоду, житло, режими ферми. Вона не видана за реалізовану; питання про об'єднання цих двох обсягів залишається відкритим. Прогноз, температура, дощ, snow-cover simulation, мінімепа з public targets і Dynamic Lighting не додані цією переробкою.
+**PARTIAL — Substantial local processing has been implemented, but full artistic match to the references is not accepted.** This is not a published release and is not a statement that all V01–V03 are ready. The sequence of results: [acceptance checklist](visual-targets/V01_V03_REWORK_ACCEPTANCE_UA.md).
 
-## Що реально змінено
+The total graph volume is **V01 HUD → V02 land/city/street → V03 buildings/houses**. The old `target-0261/0262/0263` also contains a different gameplay sequence: weather, housing, farm mode. It is not issued as being realized; The question of how to combine these two volumes remains open. Forecast, temperature, rain, snow cover simulation, minimum with public targets and Dynamic Lighting are not included in this rework.
+
+## What Really Changed
 
 ### V01
 
-- Компактні ресурсні лічильники, navy/ivory/brass палітра, нижній inspector, чотири основні дії з іконками. Дані та команди лишаються з реальної симуляції.
-- Прибрано постійне внутрішнє повідомлення початкової генерації wilderness; звичайний feedback зникає через п'ять секунд.
-- F1 приховує і повертає не тільки RmlUi-панелі, а й selection markers, progress annotations та social bubbles над світом. Утримання клавіші не перемикає HUD повторно.
-- Escape закриває відкриту панель до передавання події у GameView. Чат має пріоритет. Видимість перераховується одразу, не лише на наступному кадрі.
-- Виправлені обрізане «Продовжити» на паузі й довга польська назва Surface.
+- Compact resource counters, navy/ivory/brass palette, lower inspector, four basic actions with icons. The data and the teams are left out of the real simulation.
+- Permanent internal message of the original generation of wilderness has been removed; The usual feedback disappears in five seconds.
+- F1 hides and returns not only RmlUi panels but also selection markers, progress annotations and social bubbles around the world. Holding the key does not switch HUD again.
+- Escape closes the open panel to transmit the event to GameView. Chat is a priority. The visibility is counted right away, not just in the next shot.
+- The correct cut Prolong» on pause and long Polish name Surface.
 
 ### V02
 
-- Спокійніший meadow material, широкі матеріальні зони, менш контрастний дрібний шум, природніше розміщення декору й берегові деталі.
-- Виправлена спільна межа mirrored UV, зокрема для від'ємних координат. Береговий колір визначається спільними вершинами, а не типом окремої клітинки.
-- Для world textures увімкнені максимум чотири mip-рівні; це зменшує мерехтіння й зерно при віддаленні. UI і текст лишаються на базовому рівні.
-- Збережено authoritative протоптування від реальних переміщень, save/load і legacy Road без бонусу швидкості. Нової ручної дороги немає.
+- Quieter meadow material, wide material areas, less contrasting small noise, more natural decoration and coastal detail.
+- Fixed common mirrored boundary UV, particularly for negative coordinates. The color of the coastline is determined by the common peaks, not by the type of the individual cell.
+- For world textures, a maximum of four MP-levels are enabled; It reduces grinding and grain removal. UI and text are left at the base level.
+- Saved authoritative prototyping from real moves, save/load and legacy Road without a speed bonus. There is no new manual.
 
 ### V03
 
-- Масштаб споруд — 1.35 від каталожного (крім мосту й legacy Road); більші мешканці та contact shadows. Simulation footprint не збільшено.
-- House II і Workshop II отримали окремі зимові sprites: зима більше не підміняє їх силуетом I рівня.
-- Нові джерела, точні prompts, pivots, hashes та notices записані в `art-source/rework-v03-winter/`, `assets/art/world.json` і паспорті.
-- Renderer, picking і thumbnail використовують той самий resolver. Візуальні вантажі лишаються прив'язаними до фактичного item/quantity.
+- Building scale — 1.35 from catalogue (except for bridge and legacy Road); Larger residents and contact shadows. Simulation footprint is not increased.
+- House II and Workshop II received separate winter sprites: winter no longer replaces them with Level I silhouettes.
+- New sources, accurate prompts, pivots, hashes and notices are recorded in `art-source/rework-v03-winter/`, `assets/art/world.json` and passports.
+- The renderer, the picking, and the thumbnail use the same resolver. Visual cargo remains attached to the actual item/quantity.
 
-## Відтворювані докази
+## False Evidence
 
-Усі шляхи нижче — від кореня репозиторію. Остаточна директорія доказів: `artifacts/rework-v01-v03-2026-09-30/`.
+All the way down — from the root of the repository. The final directory of evidence: `artifacts/rework-v01-v03-2026-09-30/`.
 
-| ID | Доказ | Межа твердження |
+| ID | The Evidence | Limitations of the statement |
 |---|---|---|
-| T | `ctest-certified.xml` | PASS: 91/91, 0 failures, 674.79 s, остаточні executables/assets; local/software/network checks не підміняють окремі native докази |
-| M | `matrix-certified/report.json` | PASS запуску: 60 комбінацій, 123 PNG; uk/en/ru/pl/es × scale 0.85/1.00/1.15/1.30 × 1280×720/1920×1080/2560×1440; це captures, не повна longest-text/input acceptance |
+| T | `ctest-certified.xml` | PASS: 91/91, 0 failures, 674.79 s, final executables/assets; local/software/network checks do not replace individual native evidence |
+| M | `matrix-certified/report.json` | PASS start: 60 combinations, 123 PNG; uk/en/ru/pl/es × scale 0.85/1.00/1.15/1.30 × 1280×720/1920×1080/2560×1440; This captures, not complete longest-text/input acceptance |
 | A | `art-certified/art-report.json` | Native D3D12, 20 catalog families × 5 states, 2 level-II families, 256 resident sprites, 1089 terrain picks, 3 zoom picks, uphill movement |
-| R | `residents-certified/report.json` | Native D3D12: 256 кадрів; фактичні delivery до camp на tick 212 і stockpile на tick 252, обидва з save/resume |
-| P | `build-evidence.json`, `package-certified-*.png` | PASS локального запуску: точні hashes, свіжий пакет, stocks→Escape без unpause, F1 hide/restore зі сталими 06:42/80 wood/40 stone/60 food/10 people |
+| R | `residents-certified/report.json` | Native D3D12: 256 footage; actual delivery to camp on tick 212 and stockpile on tick252, both from save/resume |
+| P | `build-evidence.json`, `package-certified-*.png` | PASS local launch: accurate hashes, fresh package, stocks→Escape without unpause, F1 hide/restore with steel 06:42/80 wood/40 stone/60 food/10 people |
 
-GPU: **NVIDIA GeForce RTX 3050 Laptop GPU**, backend `direct3d12`, без software fallback. Окремо `RenderFrameTests.exe --gpu` пройшов після остаточних змін: minification, blending, clipping, painter order, Unicode, resize/input mapping. Програмний renderer перевіряється незалежно і не називається GPU-доказом.
+GPU: **NVIDIA GeForce RTX 3050 Laptop GPU**, backend `direct3d12`, with no software fallback. The `RenderFrameTests.exe --gpu` exception has been followed by the final changes: minification, blending, clipping, painter order, Unicode, resize/input mapping. The software renderer is independently verified and is not called a GPU-proof.
 
-У M ordinary-start — реальний новий світ; staged-v03 — явно підготовлена контрольна сцена з будівлями. Обидві проходять через `World` save/load, `ClientSession`, `GameView`, RmlUi й D3D12. Staged-сцена не видається за природно виросле поселення. Seed 70421, camera (24,24), zoom 1.30; tick/state/resolution збережені в manifest кожного кадру.
+In M ordinary-start — the real new world; staged-v03 — clearly prepared control stage with buildings. Both pass through `World` save/load, `ClientSession`, `GameView`, RmlUi and D3D12. The staged scene does not appear to be a natural growth settlement. Seed 70421, camera (24,24), zoom 1.30; tick/state/resolution are stored in the manifest of each frame.
 
-Ручне керування вікном гри виявило обрізану кнопку паузи та Escape, який раніше доходив до pause. Перевірені запуск нового поселення, ресурсна панель, закриття Escape, F1 hide/restore та груповий наказ 10 мешканцям. F12-кадри не є записом відео; тестова гра не перезаписувала старі користувацькі saves.
+Manual control of the game window revealed a cut pause button and Escape, which had previously reached pause. Verified launch of the new settlement, resource panel, Escape closure, F1 hide/restore and group order 10 to residents. F12-the footage is not a video recording; The test game didn't rewrite the old user saves.
 
-Попередні `pass-01`, `pass-02`, `final`, `matrix-final`, `matrix-final-v2`, `art-final`, `residents-final`, `ctest-final.xml`, `ctest-postfix.xml` збережені як історія ітерацій. Вони **не замінюють** остаточні `*-certified` докази. `ctest-postfix.xml` містить дві знайдені й виправлені помилки, а не green run.
+The previous `pass-01`, `pass-02`, `final`, `matrix-final`, `matrix-final-v2`, `art-final`, `residents-final`, `ctest-final.xml`, `ctest-postfix.xml` are preserved as a history of iterations. They **do not replace ** the final `*-certified` evidence. `ctest-postfix.xml` contains two found and corrected errors, not a green run.
 
-## Що ще не прийнято
+## That Has Not Been Accepted
 
-1. **Художній результат:** світ усе ще значно менш насичений деталями й відрізняється від композиції та стилізації надісланих концептів. Взимку помітні великі межі матеріальних зон. Перевірка UV доводить безперервність координат, але не художню якість усієї поверхні.
-2. **Повна UI-матриця:** кадри не доводять автоматично найдовші warning/details, всі hit rectangles, ≥36 dp, OS DPI 100/125/150%, union HUD ≤30% або відсутність витоку текстур після 50 циклів inspector.
-3. **Рух:** немає обов'язкових немонтованих відео всіх facing/cargo, переходу мостом і накопичення стежки. Послідовності доставки підтверджені окремими native кадрами та simulation assertions.
-4. **Пам'ять:** розрахунковий RGBA8 payload 45 world pages становить 310.01 MiB на базовому рівні та 411.68 MiB з чотирма рівнями. Попередні 292.01 MiB не збережені. Це арифметика texels, **не виміряне виділення VRAM**; немає контрольного p95/p99/peak memory порівняння. Потрібні repack/lazy loading і профілювання, а не приховане зменшення якості.
-5. **Мережа:** локальні тести на одному ПК не є двома фізичними Windows-ПК або cross-network acceptance.
-6. **Production art:** додані PNG — підготовлені растрові sprites, не 3D masters і не набір normal/depth/material maps для майбутнього Dynamic Lighting.
+1. **Artistic output:** The world is still much less saturated with details and differs from the composition and styling of the sent concepts. In winter, the large boundaries of material zones are visible. The UV test proves the continuity of the coordinates, but not the artistic quality of the entire surface.
+2. **Full UI-matrix:** frames do not automatically prove the longest warning/details, all hit rectangles, ≥36 dp, OS DPI 100/125/150%, union HUD ≤30% or absence of texture outflow after 50 inspector cycles.
+3. **Movement:** there is no mandatory unassembled video of all facing/cargo, bridge crossing and track accumulation. The delivery sequences are confirmed by individual native frames and simulation assertions.
+4. **Remember:** computational RGBA8 payload 45 world pages is 310.01 MiB at the base level and 411.68 MiB with four levels. The previous 292.01 MiB is not preserved. This is the arithmetic of texels, **non-measured allocation VRAM**; There is no control. p95/p99/peak memory comparison. It needs repack/lazy loading and profiling, not hidden quality reduction.
+5. **Network:** local tests on one PC are not two physical Windows PCs or cross-network acceptance.
+6. **Production art:** added PNG — prepared raster sprites, not 3D masters and not sets of normal/depth/material maps for future Dynamic Lighting.
 
-Через ці відкриті пункти ані V01, ані V02, ані V03 тут не отримують фінальну позначку PASS.
+Because of these open points neither V01, nor V02 nor V03 here get the final mark PASS.
 
-## Запуск
+## Launch
 
-Із кореня репозиторію відкрити **`Play Ribterra Rework.cmd`**. Він запускає тільки `dist/rework-0.26.3-2026-09-30/Ribterra/Ribterra.exe`, нічого не завантажує і не підміняє результат старим публічним пакетом. F1 — приховати/повернути HUD; F12 — зберегти кадр.
+From the root of the repository open **`Play Ribterra Rework.cmd`**. It only launches `dist/rework-0.26.3-2026-09-30/Ribterra/Ribterra.exe`, doesn't download anything, and doesn't replace the result with an old public package. F1 — hide/turn HUD; F12 — save the frame.
 
-Старий `Play Ribterra.cmd` залишений без зміни release-маршруту. Commit, push, GitHub release і зовнішня публікація не виконувалися.
+The old `Play Ribterra.cmd` is left unchanged release-route. Commit, push, GitHub release and external publishing failed.

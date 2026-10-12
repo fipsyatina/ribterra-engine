@@ -1,32 +1,34 @@
-# Компактне зберігання authored engine-перевірок — 08.10.2026
+# Compact storage authored engine-verification — 08.10.2026
 
-Операція виконана після прямого прохання користувача прибирати старі версії, окремого повідомлення всіх 56 точних шляхів і повторної незалежної звірки manifest. Це очищення застарілих програмних копій, не приймання двигуна або графіки.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Фактичний результат
+The operation is performed after a direct request from the user to remove the old versions, separate notification of all 56 accurate paths, and repeated independent manifest. It's cleaning out out old copies of software, not receiving engine or graphics.
 
-- Фактичний Apply завершився з exit 0; `complete=true`, `error=null`, `protected_error=null`.
-- Видалено **56** `.exe/.dll/.obj` з чотирьох явних roots `build/sky-authored-2026-10-08-attempt06`, `attempt07`, `attempt08`, `attempt09`. Каталогів не видаляли.
-- Логічний обсяг видалених файлів: **228 214 270 байтів (228,21 MB)**.
-- Вільне місце C: **97 032 024 064 → 97 259 892 736 байтів**; спостережуваний приріст **227 868 672 байти (227,87 MB)**. Це вимір диска під час операції; фізичний приріст не прирівнюється до логічного обсягу.
-- Повідомлених цілей, що лишилися: **0**. Усі **4303** захищені файли зіставлені за точним шляхом, scope, розміром, UTC timestamp і SHA-256 та не змінилися.
+## Actual result
 
-Збережені всі файли latest authored attempt10 і rollback attempt05, усі GameView engine build/native roots, 12 свіжих native GameView proof-файлів, вихідники, shader assets, textures, source snapshots, reports, logs, fonts, PNG та чинні launcher targets. Видалені старі executable-копії вже не можна повторно запускати; збережені їхні звіти є історичними доказами, а не доступними runtime.
+- The actual Apply ended with exit 0; `complete=true`, `error=null`, `protected_error=null`.
+- Remove **56** `.exe/.dll/.obj` from the four obvious roots `build/sky-authored-2026-10-08-attempt06`, `attempt07`, `attempt08`, `attempt09`. The catalogs were not deleted.
+- The logical volume of deleted files: **228 214 270 bytes (228,21 MB) **.
+- Free space C: **97 032 024 064 → 97 259 892 736 bytes**; The observed increase in **227 868 672 bytes (227,87 MB) **. This is the size of the disk during the operation; The physical increase is not the logical increase.
+- The remaining reported targets are: **0**. All **4303** protected files are compiled in the exact path, scope, size, UTC timestamp and SHA-256 and have not changed.
 
-## Точні докази й межі
+All latest authored attempt10 and rollback attempt05 files are stored, all GameView engine build/native roots, 12 fresh native GameView proof files, source files, shader assets, textures, source snapshots, reports, logs, fonts, PNG, and current launcher targets. Removed old executable copies can no longer be restarted; Their records are historical evidence, not runtime available.
 
-- [Повідомлення перед видаленням з усіма 56 шляхами](AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_02_UA.md).
-- [Застосований plan04](../.omx/plans/authored-build-prune-2026-10-08-04.json), SHA-256 `67EFFB72CDE0A8FE14815D6E007B0AB6CDE5F319B2E83F8A290C36B81EEC7B32`.
-- [Фактичний результат](../.omx/plans/authored-build-prune-2026-10-08-04.json.result.json), SHA-256 `866AE1506C5D16DE9B280E4ED2687351EA165F00586D9CEAC348A24737C62517`.
-- [Обмежений helper](../tools/prune_authored_build_copies.ps1), SHA-256 версії, застосованої в plan04: `134854B8B3DE219D396284539D5DE93040E64EE5D2E9A5E693D54331F68F32FF`.
+## Accurate Evidence and Limits
 
-Helper має явний allowlist рівно цих 56 файлів, захист від reparse-переходів, звірку manifest і власного SHA, повну звірку захищених файлів до й після, перевірку кожної цілі та активних процесів безпосередньо перед нерекурсивним `Remove-Item -LiteralPath`. Змінений SHA manifest відхилений фактичним негативним запуском до видалення. Переставлення захищених записів не змінює результат keyed-порівняння; підміна SHA відхиляється.
+- [Message before deleting with all 56 paths ](AUTHORED_BUILD_CLEANUP_NOTICE_2026_10_08_02_UA.md).
+- [Used plan04](../.omx/plans/authored-build-prune-2026-10-08-04.json), SHA-256 `67EFFB72CDE0A8FE14815D6E007B0AB6CDE5F319B2E83F8A290C36B81EEC7B32`.
+- [The actual result is ](../.omx/plans/authored-build-prune-2026-10-08-04.json.result.json), SHA-256 `866AE1506C5D16DE9B280E4ED2687351EA165F00586D9CEAC348A24737C62517`.
+- [Limited helper](../tools/prune_authored_build_copies.ps1), SHA-256 version used in plan04: `134854B8B3DE219D396284539D5DE93040E64EE5D2E9A5E693D54331F68F32FF`.
 
-Незалежний аудит після Apply повторно перевірив усі 4303 захищені файли на диску й підтвердив відсутність усіх 56 цілей. Захищені cohorts: rollback05 — 828 файлів, latest10 — 840, GameView — 1146, включно з 12 native proof-файлами.
+Helper has an explicit allowlist of exactly these 56 files, protection from reparse-transitions, a manifest and its own SHA scan, a complete scan of protected files before and after, checking each goal and active process directly before the non-recursive `Remove-Item -LiteralPath`. The modified SHA manifest is rejected by an actual negative start to deletion. Transferring protected records does not change the result of the keyed-matching; the subset SHA is deviated.
 
-Відома лише похибка серіалізації історичного result: `remaining_files` записано як `[null]`, хоча `remaining_file_count=0` і незалежна фактична перевірка підтвердила нуль залишків. Незмінний result не перезаписували. Для майбутніх звітів виправлено тільки порожню проєкцію масиву в helper; чинний source SHA-256 `68B39180AA59DDF5613392E74C8AA3F57D846A853DD67A6EAAB203C0F9097527`. In-memory перевірки дали `[]` для нуля та масив одного шляху для одного запису; parser — 0 помилок. Нового Apply після цієї source-only зміни не виконували; старий plan04 прив'язаний до історичного SHA helper і не придатний для нового застосування зміненим helper.
+An independent audit after Apply re-checked all 4303 protected files on the disk and confirmed the absence of all 56 targets. Protected cohorts: rollback05 828 files, latest10 — 840, GameView — 1146, including from 12 native proof files.
 
-Plan01–03 не застосовані: plan01 мав хибну агреговану суму, plan02 не включав 12 native proof-файлів до захисту, а Apply plan03 зупинився до першого видалення через позиційне зіставлення різного порядку записів. Виправлено зіставлення за шляхом, без послаблення metadata/hash checks; створено новий plan04 і нове повідомлення користувачу. Усі попередні manifests та повідомлення збережені як історія, а не успішні cleanup-докази.
+Only a serialization error of the historical result is known: `remaining_files` is written as `[null]`, although `remaining_file_count=0` and independent factual verification confirmed zero residues. The result is not overwritten. For future reports only the empty array projection in the helper is corrected; the current source SHA-256 `68B39180AA59DDF5613392E74C8AA3F57D846A853DD67A6EAAB203C0F9097527`. In-memory checks gave `[]` for zero and one track array for one record; parser — 0 error. The new Apply after this source-only change was not executed; The old plan04 is attached to the historical SHA helper and is not suitable for new use with the modified helper.
 
-Видалення остаточне локально, не через кошик. Код для повторної збірки збережений, але відновлення історичного byte-exact executable не гарантоване. GitHub uploads, commits, releases, install і зміни launcher не виконувалися. Це додаткова операція після [очищення старих artifacts runtime](ARTIFACT_CLEANUP_2026_10_08_UA.md); не стверджується, що видалені всі історичні пакети у `artifacts/build/dist`.
+Plan01–03 not applied: plan01 had a wrong aggregate amount, plan02 did not include 12 native proof files for protection, and Apply plan03 stopped until the first deletion due to positional matching of different record order. Fixed match on the road, without loosening metadata/hash checks; I've created a new plan04 and a new user message. All previous manifests and messages are stored as history, not successful cleanup-proof.
 
-Надалі діє [правило зберігання](ARTIFACT_RETENTION_UA.md): актуальна запускна збірка та одна перевірена резервна; компактні докази замість повних копій після підтвердження заміни; конкретне повідомлення перед кожним наступним видаленням.
+Removal is done locally, not through the basket. The code for the replay is saved, but recovery of the historical byte-exact executable is not guaranteed. GitHub uploads, commits, releases, installs and launcher changes were not executed. This is an additional operation after [cleaning old runtime artifacts](ARTIFACT_CLEANUP_2026_10_08_UA.md); It doesn't claim that all the historical packets in `artifacts/build/dist` have been deleted.
+
+The [storage rule](ARTIFACT_RETENTION_UA.md) continues: current startup set and one verified backup; compact evidence instead of complete copies after confirmation of replacement; a specific message before each subsequent removal.

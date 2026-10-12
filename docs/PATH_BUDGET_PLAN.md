@@ -1,53 +1,55 @@
-# Бюджетована черга маршрутів: контракт і перевірка
+# Budgeted routes: contract and verification
 
-> Версія 0.6 реалізує спільний пошук, повний стан черги у сейві та двофазні мережеві відповіді. Локальні 33/33 CTest, 1500/4×1500 planner fixtures, D3D12 UI та розпакований пакет пройшли перевірку; докази й обмеження наведено в `VALIDATION.md`. Версія 0.5 лишається історичною базою порівняння.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Чому зміна потрібна
+> The 0.6 version implements a shared search, a full queue state in the safe and a two-phase network response. Locals 33/33 CTest, 1500/4×1500 planner fixtures, D3D12 UI and the unpacked package has been inspected; The evidence and limitations are given in `VALIDATION.md`. Version 0.5 remains the historical basis for comparison.
 
-План вимагає 20 ticks/s, p95 tick до 10 ms, p99 до 20 ms, ієрархічного пошуку `region → chunk → cell`, черги з бюджетом на tick та спільних маршрутів для групового руху ([source, рядки 221–245](source/development-plan-ua.txt)). Окремо вимагаються обмежені черги, детерміноване застосування результатів на межі tick та зрозумілий стан очікування масового наказу ([source, рядки 897–906](source/development-plan-ua.txt), [984–999](source/development-plan-ua.txt)).
+## Why Change Is Needed
 
-У 0.5 BFS синхронний. Точні production callsites:
+The plan requires 20 ticks/s, p95 tick to 10 ms, p99 to 20 ms, hierarchical search `region → chunk → cell`, budget lines per tick and shared routes for group traffic ([source, rows 221–245](source/development-plan-ua.txt)). Separately, limited queues, a determined application of results at the tick boundary and an understandable state of expectation for a mass order are required ([source, rows 897–906](source/development-plan-ua.txt), [984–999](source/development-plan-ua.txt)).
 
-- `src/sim/world.cpp`, `World::Impl::set_route` — створює й повністю обходить масив із 131072 клітин двох шарів.
-- `World::move` — викликає `set_route` для кожного ID, перед цим копіює весь `WorldState` для rollback.
-- `World::gather` — повторює ту саму схему для маршруту до сусідньої клітини ресурсу.
-- `World::build` — синхронно шукає маршрути для трьох будівельників.
-- `World::tick` — синхронно перебудовує маршрут, якщо наступна клітина стала непрохідною.
-- `src/server/game_server.cpp`, `GameServer::tick` → `apply` — спочатку вичерпує всю чергу команд; кожна Move/Gather може виконати всі зазначені BFS до початку `World::tick`.
+In 0.5 BFS is synchronous. The exact production callsites:
 
-`ClientSession::Impl::queue` і transport лише ставлять серверну команду в чергу; шляхів вони не будують. Виміряний `SimRunner --benchmark-chunks` підтверджує проблему саме у початковій побудові маршрутів.
+- `src/sim/world.cpp`, `World::Impl::set_route`  creates and completely surrounds an array of 131072 two-layer cells.
+- `World::move` — calls `set_route` for each ID, before copying the entire `WorldState` for rollback.
+- `World::gather` repeats the same pattern for the route to the neighboring resource cell.
+- `World::build` — synchronously searches for routes for the three builders.
+- `World::tick` — synchronously rebuilds the route if the next cell becomes impassable.
+- `src/server/game_server.cpp`, `GameServer::tick` → `apply` — first exhausts the entire command line; Each Move/Gather can perform all of the above BFS before the beginning of `World::tick`.
 
-## Контракт черги
+`ClientSession::Impl::queue` and transport only put the server command in line; They don't build roads. The measured `SimRunner --benchmark-chunks` confirms the problem in the original route construction.
 
-1. Додати до `World::Impl` глобальну FIFO `PathBatchQueue`, один `ActivePathSearch`, монотонний `next_path_batch_id` і `topology_revision`. Максимум — 512 batch-ів та 1500 унікальних resident ID у batch, відповідно до чинних server limits.
-2. `World::move` і `World::gather` після дешевої перевірки резервують мешканців і повертають розширений `CommandResult { accepted, message, path_batch_id, pending }`. Резервування на межі tick зупиняє лише locomotion старого Route, фіксує поточні float Position і стартову клітину, але не зупиняє hunger/health та інші simulation systems. До commit Position не змінюється; commit встановлює новий Route без запису координат, тому немає teleport. Другий наказ для вже зарезервованого мешканця на цьому етапі відхиляється; скасування/заміна є окремою функцією.
-3. Один batch із спільною ціллю використовує один reverse BFS: для Move — від цілі, для Gather/Build — від усіх прохідних сусідів цілі. Стартові resident ID канонічно сортуються. Порядок сусідів лишається фіксованим `N, W, E, S`, після них портал. Це прибирає 1500 однакових обходів і зберігає відтворюваність.
-4. На початку `World::tick` planner витрачає не більше `path_work_units_per_tick = 4096`. Одна одиниця — BFS expansion, один parent-step реконструкції або один `CellCoord`, доданий/скопійований у staged Route; отже завершальний tick не копіює 1500 маршрутів без бюджету. Початкові межі: `max_path_cells = 2048`, `max_staged_route_cells = 3'072'000` (1500×2048) і `max_planner_bytes = 64 MiB`; перевищення термінально відхиляє весь batch. Це детерміновані лічильники роботи й пам'яті, а не wall-clock deadline. FIFO batch повністю готується або повністю відхиляється; вже staged маршрути всіх його мешканців застосовуються одночасно на межі tick лише через swap/move, у порядку resident ID. Рух виконується після цієї фази.
-5. Будівництво й автоматичний replan також створюють внутрішні batch-и. Жодного прямого виклику повного BFS поза planner phase не залишається.
-6. `topology_revision` змінюється при появі/зникненні блокера, зміні порталу та переході `MineOre → MineFloor`. Якщо revision активного пошуку застарів, його прогрес детерміновано скидається до початку до витрати бюджету поточного tick. Batch зберігає `enqueued_tick`, має `deadline_tick = enqueued_tick + 1200` (60 s при 20 Hz) і максимум три topology restarts. Deadline або четверта invalidation дає термінальний failure, звільняє всі reservations і дозволяє наступному FIFO batch працювати; частковий або застарілий шлях ніколи не потрапляє в `Route`.
+## The contract of the line
 
-Окремий ECS-компонент `OrderStatus` зберігає фазу, типізовану причину відмови та ID очікуваного batch. Видимий DTO мешканця містить `OrderPhase { Idle, PathPending, Active, PathFailed }`, `PathFailure` і `pending_path_batch`. Пошуковий frontier, parent map і повні маршрути у `ViewSnapshot` не передаються. HUD показує кількість вибраних мешканців у черзі та причину відмови мовою інтерфейсу.
+1. Add to `World::Impl` the global FIFO `PathBatchQueue`, one `ActivePathSearch`, the monotonic `next_path_batch_id` and `topology_revision`. Maximum — 512 batches and 1500 unique resident ID in batch, according to current server limits.
+2. `World::move` and `World::gather` after checking in cheap reserve residents and return extended `CommandResult { accepted, message, path_batch_id, pending }`. The tick boundary reservation stops only the locomotion of the old Route, fixes the current float Position and start cell, but does not stop hunger/health and other simulation systems. Until commit Position is unchanged; commit sets a new route without recording the coordinates, so there's no teleport. The second order for the reserved resident at this stage is rejected; Cancellation/replacement is a separate function.
+3. One batch with a common target uses one reverse BFS: for Move — from the target, for Gather/Build — from all passing neighbours of the target. The initial resident ID is canonically sorted. The order of neighbors remains fixed `N, W, E, S`, followed by the portal. It removes 1500 the same circuits and keeps the reproduction.
+4. At the beginning `World::tick` the planner spends no more than `path_work_units_per_tick = 4096`. One unit — BFS expansion, one parent-step reconstruction or one `CellCoord`, added/copied to the staged Route; So the final tick doesn't copy 1500 routes without a budget. The starting limits are `max_path_cells = 2048`, `max_staged_route_cells = 3'072'000` (1500×2048) and `max_planner_bytes = 64 MiB`; Excess terminally rejects the entire batch. These are the determinants of work and memory, not the wall-clock deadline. FIFO batch is fully cooked or completely rejected; already staged routes of all its inhabitants are applied simultaneously at the tick boundary only through swap/move, in order resident ID. The movement is carried out after this phase.
+5. Construction and automatic replanes also create internal batches. No direct call of the full BFS is left outside the planner phase.
+6. `topology_revision` changes with the appearance/disappearance of the blocker, portal change and transition `MineOre → MineFloor`. If the revision of the active search for outlays, its progress is determined to be reduced to the beginning to the budget cost of the current tick. The batch stores `enqueued_tick`, has `deadline_tick = enqueued_tick + 1200` (60 s at 20 Hz) and a maximum of three topology restarts. Deadline or fourth invalidation gives terminal failure, releases all reservations and allows the next FIFO batch to run; The partial or outdated path never gets to `Route`.
 
-## Відповіді команд, save і network
+The separate ECS- component `OrderStatus` retains the phase, typical cause of rejection, and ID expected batch. The prominent DTO inhabitant contains `OrderPhase { Idle, PathPending, Active, PathFailed }`, `PathFailure` and `pending_path_batch`. The search frontier, parent map and full routes in `ViewSnapshot` are not transmitted. HUD shows the number of selected inhabitants in the queue and the reason for the rejection in the language of the interface.
 
-Move/Gather потребують двофазної відповіді: `Queued` після прийняття batch і одна термінальна `Applied` або `Rejected` після атомарного commit. У `schemas/network.fbs` поле `Reply` слід розширити enum-станом; dedup і ACK мають ідентифікувати `(request_id, phase)`, бо поточний `NetworkClient` відкидає другу відповідь з тим самим request ID. `GameServer` тримає `path_batch_id → (PlayerId, GameCommand)` і переносить команду з pending до completed лише після термінальної відповіді. Повтор ідентичного request ID повертає поточну фазу; змінене повторення лишається конфліктом.
+## Answer commands save and network
 
-`WorldState` і `schemas/world_save.fbs` зберігають FIFO batch-и, `next_path_batch_id`, `topology_revision`, planner phase, `work_units_done`, frontier/cursor, parent nodes і частково підготовлені маршрути; ці поля входять до checksum. Формат 4 зберігає повний прогрес без повторного виконання пошуку при load. Тимчасові індекси відновлюються з перевірених вузлів. Міграція зафіксованого v3 створює порожню чергу та зберігає оригінал як `.v3.bak`; старі v2 і текстові v1 лишаються підтриманими.
+Move/Gather requires a two-phase response: `Queued` after batch acceptance and one terminal `Applied` or `Rejected` after atomic commit. In `schemas/network.fbs` the field `Reply` should be enum-state; dedup and ACK must identify `(request_id, phase)` because the current `NetworkClient` rejects the second response with the same request ID. `GameServer` holds `path_batch_id → (PlayerId, GameCommand)` and moves the command from pending to completed only after the terminal response. Repeating the identical request ID returns the current phase; The change in repetition is still a conflict.
 
-Server/session queues не входять до world save. Успішний `GameServer::load` інвалідовує стару transport-сесію та очищує її кореляції; завантажені simulation batch-и продовжують роботу без старих мережевих відповідей. Невдалий load зберігає чинний світ і сесію. Звичайний disconnect не скасовує вже прийнятий наказ: його термінальний результат лишається доступним при reconnect у той самий серверний процес. Durable replies після повного restart залишаються окремим незакритим контрактом.
+`WorldState` and `schemas/world_save.fbs` store FIFO batch-i, `next_path_batch_id`, `topology_revision`, planner phase, `work_units_done`, frontier/cursor, parent nodes and partially prepared routes; These fields are in the checksum. The 4 format keeps the full progress without repeating the load search. Temporary indexes are recovered from the nodes tested. The fixed v3 migration creates a blank queue and keeps the original as `.v3.bak`; The old v2 and text v1 are still supported.
+
+Server/session queues are not part of world save. The successful `GameServer::load` disables the old transport session and clears its correlations; They loaded the simulation batch and continued to work without the old network responses. A failed load keeps the world and the session up. A normal disconnect does not cancel an already-received command: its terminal result remains available when reconnect to the same server process. Durable replies after full restart remain a separate unclosed contract.
 
 ## Acceptance tests
 
-1. **Жорсткий бюджет:** довгий маршрут займає кілька ticks; сума expansion/reconstruction/copy work за tick не перевищує 4096, staged routes і planner memory не перевищують установлених меж, а виклик Move не будує маршрут синхронно.
-2. **Групова атомарність:** 1500 мешканців з однією ціллю мають один shared search; під час очікування їхні Position не змінюються, hunger/health продовжують оновлюватися, а commit не телепортує fractional position. Після завершення всі 1500 переходять `PathPending → Active` на одному tick.
-3. **Детермінізм і save/resume:** два однакові світи дають ті самі batch IDs, completion ticks, routes і checksum; save/load посеред пошуку збігається з безперервним прогоном на кожному наступному tick.
-4. **Topology invalidation:** блокування клітини під час пошуку збільшує revision і перезапускає пошук; четверта invalidation або tick 1200 термінально завершує batch і пропускає наступний. Жоден застосований шлях не проходить через новий блокер. Відкриття MineFloor після виснаження руди дає маршрут лише через звичайну чергу.
-5. **Reply/idempotency:** мережевий клієнт отримує рівно `Queued`, потім одну terminal phase; повтор пакета не створює batch, altered reuse відхиляється, ACK кожної фази не губить наступну.
-6. **Межі та privacy:** 513-й batch і overlapping resident order відхиляються; тривалий headless run не збільшує чергу без меж; snapshot не містить frontier, прихованих клітин або чужих target/route даних.
+1. **Hard budget:** a long route takes several ticks; The amount of work per tick expansion/reconstruction/copy does not exceed 4096, staged routes and planner memory do not exceed the set limits, and the Move call does not build the route synchronously.
+2. **Group atomicity:** 1500 residents with the same goal have one shared search; While waiting, their position does not change, hunger/health continues to update, and commit does not teleport the fractional position. After completion, all 1500 move to `PathPending → Active` for one tick.
+3. **Determinism and save/resume:** two identical worlds give the same batch IDs, completion ticks, routes and checksum; save/load in the middle of the search matches a continuous run on each subsequent tick.
+4. **Topology invalidation:** blocking the cell during search increases revision and restarts search; fourth invalidation or tick 1200 terminally completes the batch and misses the next one. No path used passes through the new blocker. The opening MineFloor after the ore has been exhausted gives the route only through the usual line.
+5. **Reply/idempotency:** the network client receives a level `Queued`, followed by one terminal phase; The repeat packet does not create a batch, the altered reuse deviates, ACK of each phase does not waste the next.
+6. **Behind limits and privacy:** Batch 513 and overlapping resident orders are rejected; a long headless run does not increase the line without limits; The snapshot does not contain frontier, hidden cells, or foreign target/route data.
 
-## Неперевірені рішення
+## Unverified Decisions
 
-- Значення 4096 є стартовим детермінованим бюджетом, а не підтвердженим performance optimum; його слід затвердити benchmark-ами 10/100/500/1500 і 4×1500.
-- `planner_bytes` — детермінована оцінка стану за розмірами елементів і фіксованими накладними витратами індексів. Межа 64 MiB не є вимірюванням фізичної пікової пам'яті процесу: capacity контейнерів, allocator і тимчасові буфери save/load перевіряються окремо.
-- Ієрархічний region/chunk cache та локальне уникнення заторів виходять за мінімальний queue milestone. Shared reverse BFS можна впровадити зараз, а hierarchy — після профілю.
-- Потрібно виміряти розмір pending-search save, час load і пікову пам'ять save/load. Frontier і parent state зберігаються напряму; повного replay алгоритму немає.
+- The value 4096 is a starting fixed budget, not a confirmed performance optimum; It should be approved by the benchmarks 10/100/500/1500 and 4×1500.
+- `planner_bytes` — Determined estimate of the state by element size and fixed overhead costs of indices. The 64 MiB limit is not a measurement of the physical peak memory of the process: the container capacity, allocator, and time buffers save/load are checked separately.
+- Hierarchical region/chunk cache and local congestion avoidance are out of the minimum queue milestone. Shared reverse BFS can be implemented now, and hierarchy — after the profile.
+- You need to measure the size of the pending-search save, load time and peak memory save/load. The frontier and parent state are kept in the direction; There's no full replay algorithm.

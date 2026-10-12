@@ -1,61 +1,63 @@
-# Ribterra — інвентар графіки й можливості рушія
+# Ribterra — graphics inventory and engine capabilities
 
-Аудит 28.09.2026: `bdc53e8`, версія 0.26.0, робоче дерево містить незакомічену заготовку LightingMode та документи. Це перевірка коду, JSON і PNG-заголовків; новий графічний executable у цьому аудиті не створювався.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-[Повний машинний реєстр із SHA256, розмірами й кожним sprite ID](verification/assets-audit-2026-09-28.json). Відтворення: виконати Node-скрипт [.omx/plans/audit-graphics-assets-2026-09-28.cjs](../../.omx/plans/audit-graphics-assets-2026-09-28.cjs) із checkout. Скрипт читає ассети, перевіряє прямокутники та записує тільки цей звіт. Він не перевіряє якість декодування всіх пікселів або вигляд у грі.
+Audit 28.09.2026: `bdc53e8`, version 0.26.0, the work tree contains the uncommitted preparation LightingMode and documents. This is a code check, JSON and PNG headers; The new graphics executable in this audit was not being created.
 
-## Наявність не дорівнює використанню
+[Full machine register with SHA256, each sprite size and ID](verification/assets-audit-2026-09-28.json). Reproduction: execute Node script [.omx/plans/audit-graphics-assets-2026-09-28.cjs](../../.omx/plans/audit-graphics-assets-2026-09-28.cjs) from the checkout. The script reads the assets, checks the rectangles, and records only that report. It doesn't check the decoding quality of all the pixels or the look of the game.
 
-[GameArt::load](../../src/client/game_art.cpp:72) читає всі сторінки `assets/art/world.json`, декодує в RGBA, застосовує magenta/luminance alpha та реєструє спрайти. Кандидат замінює старий комплект після успішного завантаження; дубль ID — помилка. Це не готовий інтерфейс гарячого перезавантаження всього контенту гри.
+## Being present is not the same as using
 
-| Група | Фактичний обсяг | Як використовується / що врахувати |
+[GameArt::load](../../src/client/game_art.cpp:72) reads all pages `assets/art/world.json`, decodes to RGBA, applies magenta/luminance alpha, and registers the sprites. The candidate replaces the old set after successful loading; a duplicate ID is an error. It's not a ready-made interface for hot reloading all the game content.
+
+| The group | The actual volume | How to use / what to take into account |
 |---|---|---|
-| Світовий runtime комплект | 42 PNG-сторінки; 622 записи, 622 унікальні ID | Усі завантажуються; не всі вибираються під час гри. Source world.json і build/engine-windows/assets/art/world.json зараз мають однаковий SHA256 |
-| Старі atlas-0…3 | 4 × 2048²; 110 записів | Серед них 10 станів townhall/blacksmith, яких немає в чинному каталозі; інші групи не можна видаляти разом із ними |
-| refresh будівель | 20 × 1536×1024; 120 записів | По stage1/2/3, ready, winter, level2. `.level2` не вибирає чинний [selector](../../src/client/view.cpp:661). Це 20 завантажених, але не підключених станів |
-| refresh-materials | 1254²; 16 матеріалів | Земля/камінь/вода; не normal/roughness maps |
-| refresh-grass / trees / rocks / detail | 6 / 12 / 16 / 14 записів | Варіанти декору; поточний view використовує лише частину detail. Наявність текстури скелі не створює непрохідний схил |
-| refresh-effects | 8 luminance-записів | М'які накладки, дим, вогонь, відблиски; не фізичні світло й вода |
-| Старі refresh-walk | 2 × 16 записів | Резервна анімація; основний мешканець використовує directional family |
-| Тварини | 32 записи | Літо/зима, чотири види × чотири фази; потрібні тільки наявні тварини |
-| Directional residents | 8 PNG × 1774×887; 256 записів | man/woman × walk/logs/sack/cart × 8 напрямків × 4 фази. Вантаж бере [resident_art](../../include/ribterra/resident_art.hpp:16) зі справжніх carried items |
-| UI PNG | 83 файли | 19 building icons, 14 glyphs, 30 icons/cursors, 16 ui-kit, 4 menu/lobby images; це окрема група від світових атласів |
-| UI шрифти | NotoSans-Regular.ttf, CormorantGaramond.ttf | [Завантаження](../../src/ui/game_ui.cpp:687); цифри й довгі пояснення Noto, заголовки Cormorant |
+| World runtime set | 42 PNG- pages; 622 records, 622 unique ID | All are loaded; not all are selected during gameplay. Source world.json and build/engine-windows/assets/art/world.json now have the same SHA256 |
+| The old atlas-0...3 | 4 × 2048²; 110 records | Among them 10 states townhall/blacksmith, which are not in the current catalogue; Other groups cannot be deleted with them. |
+| refresh buildings | 20 × 1536×1024; 120 records | By stage1/2/3, ready, winter, level2. `.level2` does not select the current [selector](../../src/client/view.cpp:661). These are 20 loaded but not connected states. |
+| refresh-materials | 1254²; 16 materials | Land/stone/water; Not normal/roughness maps |
+| refresh-grass / trees / rocks / detail | 6 / 12 / 16 / 14 records | Variations of decoration; The current view uses only a small portion of the detail. The presence of rock texture does not create an impassable slope |
+| refresh-effects | 8 luminance records | Soft overlays, smoke, fire, flashes; Not physical light and water |
+| The old refresh-walk | 2 × 16 records | Fallback animation; the main resident uses the directional family |
+| Animals | 32 records | Summer/winter, four types × four phases; Only existing animals are needed. |
+| Directional residents | 8 PNG × 1774×887; 256 records | man/woman × walk/logs/sack/cart × 8 directions × 4 phase. Cargo takes [resident_art](../../include/ribterra/resident_art.hpp:16) from real carried items |
+| UI PNG | 83 files | 19 building icons, 14 glyphs, 30 icons/cursors, 16 ui-kit, 4 menu/lobby images; It's a separate group from the world's atlases. |
+| UI fonts | NotoSans-Regular.ttf, CormorantGaramond.ttf | [Load](../../src/ui/game_ui.cpp:687); Noto for numbers and long explanations; Cormorant for headings |
 
-20 family будівель: camp, house, farm, stockpile, mine, workshop, temple, tavern, cartographer, research, smelter, fishing, library, barracks, bridge, lumbermill, mill, kitchen, claypit, road. Чинні [alpha rules](../../include/ribterra/alpha_rules.hpp:12) дозволяють збудувати 12 типів; після вилучення Road — 11. Camp — окремий стартовий об'єкт. Наявність temple/barracks art не дозволяє повертати заблоковану механіку в демо.
+20 building families: camp, house, farm, stockpile, mine, workshop, temple, tavern, cartographer, research, smelter, fishing, library, barracks, bridge, lumbermill, mill, kitchen, claypit, road. The [alpha rules](../../include/ribterra/alpha_rules.hpp:12) allow the construction of 12 types; after removing Road — 11. Camp is a separate starting object. The presence of temple/barracks art does not allow the locked mechanics to be returned to the demo.
 
-### Пам'ять
+### Memory
 
-Сума `width × height × 4` світових сторінок: **306 197 408 bytes = 292,01 MiB**. UI PNG: **31,52 MiB**, якщо всі декодовані одночасно. Це арифметичний розмір повних RGBA8-зображень, **не виміряний VRAM процесу**: реальна пам'ять також залежить від UI crop-копій, upload buffers, render targets, driver alignment та одночасного старого/нового покоління. GameArt декодує сторінки послідовно; не стверджуємо, що всі CPU-копії одночасно живуть у RAM.
+The sum of the `width × height × 4` world pages: **306 197 408 bytes = 292,01 MiB**. UI PNG: **31,52 MiB**, if all of them are decoded at the same time. It is an arithmetic dimension of the full RGBA8- images, **not measured process VRAM**: real memory also depends on UI crop-copy, upload buffers, render targets, driver alignment, and a simultaneous old/new generation. GameArt decodes the pages in sequence; We don't claim that all CPU- copies live in RAM at the same time.
 
-Плановий бюджет 256 MiB із попереднього production spec уже менший за базовий світовий комплект. Отже, це ціль оптимізації, а не доведена властивість. Перед normal/depth/wet/snow layers потрібні ledger і вимірювання піку. Не множити весь комплект на 3–4 карти матеріалів автоматично.
+The planned budget 256 MiB from the previous production spec is already smaller than the basic world set. So this is the goal of optimization, not a proven property. Before normal/depth/wet/snow layers, you need a ledger and a peak measurement. Do not multiply the entire set to the 3–4 material maps automatically.
 
-### Уже є потрібні рамки
+### The required frames already exist
 
-`ui-kit.0.png` і `ui-kit.4.png` візуально перевірені: темна синя середина, металева золота рамка й декоративні кути. [theme.rcss](../../assets/ui/art/theme.rcss:1) визначає six nine-patch decorators. Але підключений пізніше [concept.rcss](../../assets/ui/concept.rcss:2) задає `decorator: none` для карток і кнопок. Спочатку відновити рамки **для нового HUD через scoped selectors**, потім оцінювати потребу в нових зображеннях. Глобально змінювати весь menu/lobby каскад небезпечно.
+`ui-kit.0.png` and `ui-kit.4.png` are visually verified: dark blue in the middle, metallic gold frame and decorative corners. [theme.rcss](../../assets/ui/art/theme.rcss:1) defines six nine-patch decorators. But later connected [concept.rcss](../../assets/ui/concept.rcss:2) sets `decorator: none` for the cards and buttons. First restore the frames **for the new HUD through scoped selectors**, then evaluate the need for new images. Changing the entire menu/lobby cascade globally is dangerous.
 
 ### Production sources
 
-Папки `art-source/production-v1…v4`, `reference-refresh`, `runtime-0.11.1/export-*` — вихідні листи, промпти й експорти. Вони не є доказом наявності редагованих 3D-моделей, анімаційного рига чи синхронного експорту матеріальних карт. Кожний master потребує паспорта походження й перевірки камери. Копія файлу в `art-source` не означає, що гра його читає: джерело runtime — asset registry та world.json.
+Folders `art-source/production-v1…v4`, `reference-refresh`, `runtime-0.11.1/export-*` — source sheets, prompts and exports. They are not evidence of editable 3D models, animation rigs, or synchronous export of material maps. Every master needs a passport of origin and a camera check. A copy of the file in `art-source` does not mean that the game reads it: runtime source — asset registry and world.json.
 
-## Рушій: підтверджена межа
+## Engine: confirmed boundary
 
-| Область | Наявне | Потреба наступних оновлень |
+| Area | The present | The need for further updates |
 |---|---|---|
-| Renderer | C++ / SDL_GPU, [Frame2D](../../include/ribterra/render_frame.hpp:15), painter order, текстури, scissor, чотири blend modes | V01–V03 можна будувати на поточному шляху. `Pass` — логічна категорія, не автоматичний GPU render graph |
-| Шейдер | [texture × vertex color](../../shaders/sprite.frag.hlsl:13), [один color target без depth](../../src/render/renderer2d.cpp:473) | Немає багатоканального матеріалу, normal lighting чи depth-aware mist |
-| UI | [RmlUi 6.3](../../CMakeLists.txt:238), справжні controls, font glyphs, nine-patch | Новий HUD потребує компонування, подій і контролю каскаду; нового рушія не потребує |
-| Геометрія | [1440×900 logical](../../src/client/view.cpp:1611), shared terrain corners, height sampling | Для V01 зберегти current projection/letterbox. Новий адаптивний world viewport не вважати готовим |
-| Освітлення | [нічний color grade](../../src/client/view.cpp:1625), теплі sprite overlays | Світло із намальованого вікна не освітлює підлогу/мешканця; full Dynamic відкладений |
-| Тіні | Контактна будівельна накладка; [fallback тінь мешканця](../../src/client/view.cpp:829) | Art-ready branch повертається раніше. V03 додає окрему contact shadow, не обіцяє рухомої тіні від джерела |
-| Вода | [анімація fx.4 і серпанок](../../src/client/view.cpp:1032) | V02 — читабельне русло/береги/накладки. Flow/reflections/physics не виникають від нового atlas |
-| Погода | [календар сезонів](../../include/ribterra/seasons.hpp:10); winter sprite; температура зараз [порожня](../../src/ui/game_ui.cpp:1240) | V04 — weather state, forecast, save/net; V05 — покрив/танення. Готових температури й прогнозу немає |
-| Снігові сліди | У world.json немає footprint family | Окремі stamps + bounded cache + walking events; не деформація геометрії |
-| Фізика | Ігрові рух/прохідність/робота | Повний rigid-body/cloth/fluid solver не входить у ці оновлення |
-| Dynamic scaffold | [API/status](../../include/ribterra/renderer2d.hpp:18), [відхилення Dynamic](../../src/render/renderer2d.cpp:260) | `effective=Legacy`, `dynamic_available=false`; нового світла й перемикача немає |
+| Renderer | C++ / SDL_GPU, [Frame2D](../../include/ribterra/render_frame.hpp:15), painter order, textures, scissor, four blend modes | V01–V03 can be built on the current track. `Pass` — logical category, not automatic GPU render graph |
+| Shader | [texture × vertex color](../../shaders/sprite.frag.hlsl:13), [one color target without depth](../../src/render/renderer2d.cpp:473) | There's no multichannel material, normal lighting or depth-aware mist |
+| UI | [RmlUi 6.3](../../CMakeLists.txt:238), real controls, font glyphs, nine-patch | The new HUD requires layout, events, and cascade control; it does not require a new engine |
+| Geometry | [1440×900 logical](../../src/client/view.cpp:1611), shared terrain corners, height sampling | To V01 save current projection/letterbox. New adaptive world viewport not considered ready |
+| Lighting | [night color grade](../../src/client/view.cpp:1625), warm sprite overlays | The light from the drawn window does not illuminate the floor/resident; Full Dynamic deferred |
+| Shadows | Building contact overlay; [fallback shadow of the inhabitant](../../src/client/view.cpp:829) | The art-ready branch returns earlier. V03 adds a separate contact shadow, not promising a moving shadow from the source |
+| Water | [fx.4 animation and haze](../../src/client/view.cpp:1032) | V02: readable channel/banks/overlays. Flow/reflections/physics do not arise from the new atlas |
+| Weather | [calendar of seasons](../../include/ribterra/seasons.hpp:10); winter sprite; The temperature is now [empty](../../src/ui/game_ui.cpp:1240) | V04 — weather state, forecast, save/net; V05 — cover/melting. No temperature and forecast |
+| Snow tracks | world.json has no footprint family | Separate stamps + bounded cache + walking events; Not a deformation of geometry |
+| Physics | Gameplay movement/traversability/work | Full rigid-body/cloth/fluid solver does not include these updates |
+| Dynamic scaffold | [API/status](../../include/ribterra/renderer2d.hpp:18), [Dynamic rejection](../../src/render/renderer2d.cpp:260) | `effective=Legacy`, `dynamic_available=false`; There's no new light and no switch. |
 
-У manifest немає окремих normal/depth/roughness/emission/material/snow-mask/flow/footprint map contracts. Пікселі теплого вікна в кольоровому PNG не замінюють emission mask. Це вимоги до майбутнього контенту й loader, не «вже наявні текстури».
+The manifest does not have separate normal/depth/roughness/emission/material/snow-mask/flow/footprint map contracts. The pixels of the warm window in the color PNG do not replace the emission mask. These are the requirements for future content and loader, not just existing textures.
 
-## Що робити з результатом
+## What to Do With the Result
 
-Детальні картки V01–V05 і відкладеного DL: [поточний план](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md). Кожний етап використовує тільки потрібну частину інвентарю. Старі atlas/orphan IDs видаляти лише після повного аналізу посилань і package-тестів, окремим diff; не чистити їх наосліп під час зміни UI.
+Detailed maps V01–V05 and deferred DL: [ flow plan](../../.omx/plans/2026-09-28-graphics-updates-implementation-ua.md). Each stage uses only the necessary part of the inventory. Old atlas/orphan IDs should be deleted only after full analysis of links and package tests, separately diff; Do not clean them out of sight during the change UI.

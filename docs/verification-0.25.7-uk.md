@@ -1,28 +1,30 @@
-# Перевірка Ribterra 0.25.7
+# Ribterra verification 0.25.7
 
-Дата: 20 вересня 2026. Windows Release, MSVC, поточна робоча копія Desktop/ribterra.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Зміни
+The date is 20 September 2026. Windows Release, MSVC, current working copy Desktop/ribterra.
 
-Адреси Windows отримуються через GetAdaptersAddresses. Активні IPv4-адаптери зі шлюзом мають пріоритет; loopback і APIPA відкидаються. Лобі містить вибір адаптера, копіює вибраний endpoint і скидає підтвердження копіювання після зміни вибору. Хост без доступних адрес більше не пропонує свою loopback-адресу.
+## Changes
 
-Очікування відповіді хоста відокремлене від завантаження світу. GNS передає структуровану причину timeout; первинна невдала спроба підключення показує локалізоване пояснення. Інші помилки зберігають свій зміст. Виправлення очікування повного знімка з 0.25.6 залишаються.
+Windows addresses are obtained through GetAdaptersAddresses. Active IPv4 gateway adapters are prioritized; loopback and APIPA are rejected. The lobby contains the choice of adapter, copies the selected endpoint, and discharges the confirmation of copying after the choice changes. A host without an accessible address no longer offers its loopback address.
 
-## Результати
+Expecting a host response is separate from loading the world. GNS conveys a structured cause of timeout; The initial failed attempt to connect shows a localized explanation. Other mistakes retain their meaning. Corrections to expect a full picture from 0.25.6 remain.
 
-Після фінальної збірки пройшли 12 цільових CTest-перевірок за 33,73 с: platform, localization, ui, ui_lifecycle, lobby_client_rendered, host_lobby_flow, online_entry_flow, network_join, network_session, network_lobby_join, client_input, transport.
+## Results
 
-NetworkJoinTests підключається до динамічно вибраного, попередньо зарезервованого й звільненого loopback UDP-порту. Справжній транспортний timeout завершив тест за 10,90 с; клієнт не готовий до гри та повертає network.connect_timeout.
+After the final round, the 12 target CTest checks were performed for 33,73 c: platform, localization, ui, ui_lifecycle, lobby_client_rendered, host_lobby_flow, online_entry_flow, network_join, network_session, network_lobby_join, client_input, transport.
 
-LobbyVisualProbe перевіряє шість локальних UDP-клієнтів, лобі та старт світу. Нові перевірки вибирають другу мережеву адресу клавіатурою, натискають кнопку копіювання, порівнюють вміст clipboard і перевіряють скидання підтвердження після зміни вибору. Окремий прогін у 960×620 пройшов; переглянуті кадри лобі, онлайн-форми та повідомлення timeout. На компактному екрані панель налаштувань прокручується.
+NetworkJoinTests is connected to a dynamically selected, pre-reserved and released loopback UDP- port. The actual transport timeout completed the test in 10,90 s; The client is not ready to play and returns the network.connect_timeout.
 
-На цьому ПК PlatformTests підтвердив пріоритет Wi-Fi зі шлюзом перед VirtualBox Host-Only без шлюзу. Фінальна збірка успішна; залишилось попередження C5054 у game_ui.cpp, не пов’язане з цими змінами. Повний набір усіх CTest-тестів не запускався.
+LobbyVisualProbe checks six local UDP- clients, lobbies and world startups. New checks select a second network address with a keyboard, press the copy button, compare the content of the clipboard, and check the download confirmation after the selection change. A separate break in 960×620 has been made; lobby footage reviewed, online forms and timeout messages. On the compact screen, the settings panel is scrolling.
 
-## Докази та межі
+In this PC PlatformTests confirmed the priority of Wi-Fi with gateway over VirtualBox Host-Only without gateway. Final round is successful; the warning C5054 in game_ui.cpp remained unrelated to these changes. The full set of CTest tests didn't start.
 
-- Збірка: build/0257-build.log, build/0257-final-build.log.
-- Перевірки: build/0257-tests.log, build/0257-compact.log.
-- Встановлення і пакет: build/0257-install.log, build/0257-package.log.
-- Кадри: artifacts/online-0.25.7/ та artifacts/online-0.25.7/compact/.
+## Evidence and limitations
 
-Доступ через зовнішній інтернет не підтверджений. Роутер Zyxel USG FLEX 700 показує сторінку входу; правило перенаправлення порту в цій сесії не створене, WAN-адреса не перевірена. Системні правила брандмауера не змінювалися. Наявність зовнішньої IP-адреси з’єднання сама по собі не підтверджує відсутність додаткового NAT. Оновлення гри не замінює налаштування UDP-порту роутера.
+- The set is build/0257-build.log, build/0257-final-build.log.
+- The test is build/0257-tests.log, build/0257-compact.log.
+- Installation and package: build/0257-install.log, build/0257-package.log.
+- The frames: artifacts/online-0.25.7/ and artifacts/online-0.25.7/compact/.
+
+Access via the external Internet is unconfirmed. The Zyxel router USG FLEX 700 displays the input page; The port forwarding rule in this session is not created, the WAN- address is not verified. The system firewall rules haven't changed. The presence of an external IP- connection address does not in itself confirm the absence of an additional NAT. The game update does not replace the router's UDP- port setting.

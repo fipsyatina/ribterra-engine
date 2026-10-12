@@ -1,38 +1,40 @@
-# Ribterra 0.11.1 — намальовані текстури
+# Ribterra 0.11.1 — painted textures
 
-Локальне оновлення презентації від 9 вересня 2026 року. Оригінальні зображення генератора збережені в `art-source/production-v1`. Після прямого дозволу користувача технічно підготовлені окремі копії: прозорість, межі, опорні точки, краї поверхонь і пакування. Оригінали не перемальовувалися й не змінювалися.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Що підключено
+Local update of the presentation from 9 September 2026. The original images of the generator are stored in `art-source/production-v1`. With the user's direct permission, separate copies are technically prepared: transparency, boundaries, support points, edges of surfaces and packaging. The originals were not repainted or changed.
 
-- Чотири наявні ігрові споруди: табір, будинок, ферма, склад. Стан вибирається за фактичним прогресом: 0–1/3, 1/3–2/3, 2/3–1, готова, готова взимку. Залишилися показники доставки матеріалів і роботи.
-- Мешканці: професійні спрайти, передній/задній ракурси, маркер вибору та намальований індикатор вантажу.
-- Чотири види дерев із зимовими варіантами, ягоди, камені, руди й гори; трава, вода, крига, сніг, гравій і підземна поверхня.
-- Туман на межі відкритої території; нерозвідані клітинки не розкриваються.
-- Панелі й кнопки з масштабуванням дев'яти областей; іконки ресурсів; курсор і варіанти для будівництва та вибору місця роботи. Прозорий попередній вигляд майданчика будівництва.
+## What's connected
 
-## Вміст і межі
+- There are four game facilities available: camp, house, farm, warehouse. The state is chosen according to the actual progress: 0–1/3, 1/3–2/3, 2/3–1, ready, ready for winter. The figures for the delivery of materials and work remain.
+- Residents: professional straights, front/rear angles, selection markers and a drawn load indicator.
+- Four types of trees with winter variations, berries, stones, roots and mountains; grass, water, snow, gravel and the underground surface.
+- Fog at the edge of the open area; And the unidentified cells don't reveal themselves.
+- Panels and buttons with a scale of nine areas; the resource icons; The course and the options for construction and job selection. A window to the front of the construction site.
 
-`assets/art/world.json` описує **189 спрайтів у чотирьох PNG-атласах 2048×2048**. Метадані перевіряють межі прямокутників та pivots; AssetCatalog перевіряє файли за маніфестом. Окремі копії UI розташовані в `assets/ui/art`.
+## Content and boundaries
 
-55 станів споруд охоплюють 11 типів: будинок, табір, ферма, склад, таверна, казарма, храм, ратуша, лісопильня, кузня, шахта. Сім додаткових типів завантажуються з атласів і показуються перевіркою арту; їхні економічні функції й команди будівництва ще не реалізовані в симуляції. Заміна текстур не додає таких функцій.
+`assets/art/world.json` describes **189 sprays in four PNG- atlases 2048×2048**. Metadata checks the boundaries of rectangles and pivots; AssetCatalog checks the manifest files. Separate copies UI are located in `assets/ui/art`.
 
-Юніти мають статичні пози у двох ракурсах; повні анімаційні цикли й вісім напрямків не входять до набору. Вода використовує статичну поверхню. Геометрія карти та розкладка HUD залишаються поточними ігровими системами: цей випуск не є повною реалізацією всього концепту.
+55 building states cover 11 types: house, camp, farm, warehouse, tavern, barracks, temple, town hall, sawmill, smithy, and mine. Seven additional types are loaded from the atlases and shown by the art test; their economic functions and construction commands are not yet implemented in the simulation. Replacing a texture does not add those functions.
 
-## Відтворення
+Units have static positions at two angles; Full animation cycles and eight directions are not included. Water uses a static surface. The map geometry and layout HUD remain the current game systems: this release is not a complete implementation of the whole concept.
 
-1. Запустити `tools/prepare_game_art.py` Python із Pillow і numpy; потрібен зібраний `AtlasTool.exe`.
-2. `scripts/build.ps1 -SkipBootstrap` виконує складання, перевірку активів, CTest і встановлення.
-3. `ArtVisualProbe.exe <каталог>` рендерить усі 55 станів та справжні клієнтські літню/зимову сцени. `--software` обирає програмний рендерер. Зимовий стан задається лише в перевірочному сейві; ігровий клієнт отримує сезон зі знімка сервера.
-4. `MineVisualProbe.exe <каталог>` перевіряє підземний клієнт із тими самими атласами.
-5. `scripts/package.ps1 -SkipBuild` створює переносний Windows ZIP із перевіреної папки встановлення.
+## Reproduction
 
-## Перевірено локально
+1. Run `tools/prepare_game_art.py` Python from Pillow and numpy; I need to get `AtlasTool.exe` together.
+2. `scripts/build.ps1 -SkipBootstrap` performs compiling, asset verification, CTest and installation.
+3. `ArtVisualProbe.exe <directory>` renders all 55 states and actual client summer/winter scenes. `--software` selects the software renderer. The winter condition is set only in the check box. The game client gets the season from the server image.
+4. `MineVisualProbe.exe <directory>` checks an underground client with the same atlases.
+5. `scripts/package.ps1 -SkipBuild` creates a portable Windows ZIP from a verified installation folder.
 
-- MSVC Release зібрано без C++ warnings/errors. Активи, п'ять локалізацій і RML/RCSS пройшли staging-перевірку.
-- Основний прогін: 51/52. Єдиний збій — Windows UDP relay `WinError 10054` при завершенні успішного мережевого сценарію. Повторний цільовий прогін: 15/15, включно з цим сценарієм та новим `art_client_rendered`. Після остаточного вирівнювання краю туману: 4/4 перевірки арту, вводу, рендерера й клієнта. У сукупності підтверджені всі 53 тестові сценарії; це не один прогін 53/53.
-- Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU: усі 55 станів споруд, літня й зимова сцени, шахта після проходу, видобутку та збереження/відновлення.
-- Через видиме вікно встановленої 0.11.1: нове поселення, вибір мешканця, режим будівництва й курсор, розміщення майданчика, завершення будинку, масштабування, пауза та F12. Вікно залишене на паузі.
-- SHA-256 усіх 10 вихідних PNG збігаються з початковим `files.json`. До перезапуску 0.10.2 збережено поточний світ і окрему копію попередніх сейвів у `.deps/pre-art-save-20260909-162344`.
-- Переносний `dist/Ribterra-Windows-x64-0.11.1.zip`: 48 701 096 байтів. У свіжій розпакованій копії перевірено хеші всіх 71 активу, запуск компактного меню й демонстраційного поселення на Direct3D 12; обидва EXE-запуски підтвердили версію 0.11.1. SHA-256 архіву записаний у сусідній `.sha256` і `artifacts/art-0.11.1/package.json`.
+## Locally verified
 
-Знімки та машинні звіти: `artifacts/art-0.11.1`; фінальні журнали — `.deps/art-0111-*.log`. Це локальна перевірка Windows. CI та публікація GitHub-релізу в цій роботі не виконувалися.
+- MSVC Release compiled without C++ warnings/errors. Assets, five locations and RML/RCSS have been staged.
+- The main line: 51/52. The only failure is  Windows Windows UDP relay `WinError 10054` when a successful network scenario is completed. Repeat targeted scan: 15/15, including this scenario and the new `art_client_rendered`. After the final alignment of the edge of the fog: 4/4 art checks, input, renderer and client. All 53 test scenarios are confirmed; It's not just one 53/53.
+- Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU: all 55 building condition, summer and winter scene, mine after passage, mining and conservation/restoration.
+- Through the visible window of the installed 0.11.1: a new settlement, resident selection, construction mode and cursor, site placement, house completion, zoom, pause, and F12. The window was left paused.
+- SHA-256 of all 10 endings PNG coincide with the original `files.json`. Prior to the restart 0.10.2, the current world and a separate copy of the previous saves in `.deps/pre-art-save-20260909-162344` are preserved.
+- Portable `dist/Ribterra-Windows-x64-0.11.1.zip`: 48 701 096 bytes. The freshly unpacked copy verifies the hashes of all 71 assets, launching a compact menu, and a demo settlement on Direct3D 12; Both EXE- launches confirmed the 0.11.1 version. SHA-256 the archive is recorded in the neighboring `.sha256` and `artifacts/art-0.11.1/package.json`.
+
+Pictures and machine reports: `artifacts/art-0.11.1`; The final logs are — `.deps/art-0111-*.log`. This is a local Windows check. CI and GitHub releases in this work were not executed.

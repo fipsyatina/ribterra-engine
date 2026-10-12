@@ -1,13 +1,15 @@
-# Ribterra 0.25.10 — Кооперативний старт і власність
+# Ribterra 0.25.10 — Co-op startup and ownership
 
-Нова мережева кімната типово об’єднує людей в одну команду й одне поселення. Гість успадковує поточну команду господаря, зокрема №2–6. Наявні гравці відновлюють свою збережену команду; старі поселення не зливаються. Окрему команду, як і раніше, можна вибрати в лобі. Доданий бот зберігає окрему команду, якщо господар явно не змінить її.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Лобі прямо показує номер вашої команди й пояснює, чи всі учасники ділять одне поселення, чи в кімнаті є незалежні поселення. До старту сервер надсилає дані лобі; ігровий світ відкривається після готовності та натискання «Почати».
+The new network room typically brings people together in one team and one settlement. The host inherits the current command of the owner, in particular No2–6. The players resurrect their surviving team; The old settlements don't merge. A separate team can still be selected in the front. The added bot keeps a separate command unless the owner clearly changes it.
 
-Інспектор будівлі, перелік підприємств, вибір працівника й групові виробничі накази використовують націю авторизованого гравця. Нації №2–6 отримують доступ до власних споруд за тими самими правилами, що №1. Сервер перевіряє власність незалежно від інтерфейсу; підставлений ID чужої споруди не дозволяє почати виробництво.
+The lobby directly shows your team's number and explains whether all participants share one settlement or whether there are independent settlements in the room. The server sends data to the lobby before it starts; The game world opens up after you're ready and pressing Start.
 
-Прийняте виробниче замовлення закріплює керування працівником за гравцем, який його видав. Інший учасник бачить, хто керує мешканцем, і підказку про передачу чи звільнення в наявній панелі «Накази та керування». Закінчення партій звільняє мешканця від виробництва, але зберігає право керування до явної передачі або звільнення. Професія не стирається. Після передачі той самий працівник може виконати виробничий наказ іншого учасника.
+The building inspector, the list of enterprises, the choice of the worker, and the group production orders use the nation of the authorized player. Nations No2–6 have access to their own facilities under the same rules as No1. The server verifies the property regardless of the interface; The ID constructed by another does not allow production to begin.
 
-Відхилений наказ показує зрозумілу причину. Несумісні мережеві версії, правила або ігрові дані мають окремі пояснення та наступний крок: встановити однаковий повний пакет на обох ПК. Правила — 16, протокол — 19; сейви 0.25.9 підтримуються.
+The manufacturing order accepted strengthens the control of the employee over the player who issued it. The other participant sees who is running the resident and the transfer or discharge clue in the available Instructions and control panel». The closure of the parties exempts the inhabitant from production, but retains the right to control until a manifest transfer or dismissal. The profession does not fade. After the transfer, the same worker may execute the production order of another participant.
 
-**Перевірка на двох фізичних Windows-ПК не виконана:** другий ПК зараз недоступний. Локальні мережеві клієнти не замінюють цей критерій. Для нього підготовлено [сценарій](coop-two-pc-0.25.10-uk.md); фактичні результати — у [звіті](verification-0.25.10-uk.md).
+The rejection of the order shows a clear reason. Incompatible network versions, rules, or game data have separate explanations and the next step: install the same complete package on both PCs. Rules 16, protocol 19; Save 0.25.9 is supported.
+
+**Checking on two physical Windows PCs is not done:** the second PC is now unavailable. Local network customers are not a substitute for that. For it, a [ scenario ](coop-two-pc-0.25.10-uk.md) has been prepared; The actual results of — in [world](verification-0.25.10-uk.md).

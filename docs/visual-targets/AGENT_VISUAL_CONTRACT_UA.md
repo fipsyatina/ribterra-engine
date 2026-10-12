@@ -1,211 +1,213 @@
-# Ribterra — контракт використання візуальних цілей для агентів
+# Ribterra — Contract for the use of visual purposes for agents
 
-**Поточний порядок базової графіки:** [V00–V05 — старий вигляд → UI → земля → об’єкти → дощ → зима](GRAPHICS_PROGRESS_UA.md). Це головна послідовність видимих змін після відкладення Dynamic. Старі dev/GW/DL — технічні пакети, не готові знімки кожної версії. [Галерея прогресу](index.html); [старі 13 публічних targets](public-versions.html).
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-**Останнє рішення 27.09:** повне динамічне освітлення та перемикач відкладені. Зараз у коді лише безпечна заготовка. [Майбутній план DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) має пріоритет: Dynamic не є блокером базового оновлення світу/UI; його light/occlusion gates застосовуються лише до майбутнього ввімкненого режиму.
+**The order of the basic chart:** [V00–V05 — old view → UI → earth → objects → rain → winter](GRAPHICS_PROGRESS_UA.md). This is the main sequence of visible changes after the Dynamic delay. Old dev/GW/DL — technical packages, not ready images of each version. [Gallery of progress](index.html); [old 13 public targets](public-versions.html).
 
-**V2 / 27.09:** [план рушія](GRAPHICS_ENGINE_PLAN_V2_UA.md), [Core](RENDER_CORE_SPEC_UA.md), [FX](WORLD_FX_SPEC_UA.md) та [Asset spec](ART_PRODUCTION_SPEC_UA.md) мають пріоритет у технічних деталях і порядку 24 dev-етапів.
+**Final solution 27.09:** Full dynamic lighting and switch is deferred. Now the code is just a safe preparation. [Future plan DL-01–08](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md) has priority: Dynamic is not a world-based update blocker/UI; its light/occlusion gates are only applicable to future enabled mode.
 
-Дата: 26 вересня 2026. Статус: **нормативний контракт для майбутньої реалізації та перевірки**.
+**V2 / 27.09:** [plan of action](GRAPHICS_ENGINE_PLAN_V2_UA.md), [Core](RENDER_CORE_SPEC_UA.md), [FX](WORLD_FX_SPEC_UA.md) and [Asset spec](ART_PRODUCTION_SPEC_UA.md) have priority in technical details and order. 24 The dev-etap.
 
-Цей документ застосовується до згенерованих цільових ілюстрацій публічних версій `0.26.1`…`0.26.10`, `0.27.0` і внутрішніх збірок `0.26.1-dev.01`…`0.26.1-dev.24`. Він доповнює головний план «Живий світ», технічну специфікацію світу/UI та погодну специфікацію. Якщо ілюстрація суперечить авторитетній симуляції, доступним діям або цим документам, правильним є стан гри й письмовий контракт, а ілюстрація потребує окремого перегляду.
+The date is 26 September 2026. Status: **Normal contract for future implementation and verification**.
 
-## 1. Терміни та рівні доказу
+This document applies to the generated targeted illustrations of public versions `0.26.1`...`0.26.10`, `0.27.0` and internal collections `0.26.1-dev.01`...`0.26.1-dev.24`. It complements the main plan Live Light», the world/UI technical specification and the weather specification. If the illustration is contrary to the authoritative simulation, the actions available, or these documents, the status of the game and the written contract are correct, and the illustration needs to be reviewed separately.
 
-| Термін | Значення | Чим не є |
+## 1. Time limits and levels of evidence
+
+| Term | The Meaning | What is not |
 |---|---|---|
-| **AI target** | Згенерована цільова ілюстрація композиції, атмосфери, масштабу, матеріалів і приблизної ієрархії UI. | Не кадр гри, не макет даних протоколу, не доказ реалізації, не дозвіл показувати вигадані системи. |
-| **UI overlay target** | Чітко намальований поверх ілюстрації еталон розташування панелей, їхніх пропорцій, типографічної ієрархії та станів. | Не джерело чисел для HUD і не растр, який можна показати замість RmlUi. |
-| **Native capture** | Немонтований PNG із запущеного Windows executable та фактичного D3D12 renderer для точно ідентифікованої збірки. | Не software probe, не Photoshop-композиція, не знімок цільової ілюстрації. |
-| **Native video** | Немонтований запис фактичного runtime, який показує ввід, рух, перекриття, зміну стану й часові переходи. | Не слайдшоу з target-зображень і не прискорена анімація, не пов'язана із симуляцією. |
-| **Machine manifest** | JSON або текстовий запис build/commit, версій rules/protocol/generator/save, seed/profile/scenario, save/fixture, камери, zoom, календаря, погоди, locale, UI scale, resolution, renderer, GPU й часу capture. | Не вільний опис «та сама сцена». |
-| **Visual acceptance** | Висновок за native capture/video, manifest, overlay-порівнянням, функціональними та render/UI тестами. | Не суб'єктивне «стало красивіше» і не один target side-by-side із іншою сценою. |
+| **AI target** | A generated objective illustration of the composition, atmosphere, scale, materials, and approximate hierarchy UI. | Not a game frame, not a protocol data model, not proof of implementation, not a license to show fictitious systems. |
+| **UI overlay target** | A clearly painted surface illustrates the reference of the panel's location, their proportions, typographic hierarchy and states. | Not a source of numbers for HUD and not a raster that can be displayed instead of RmlUi. |
+| **Native capture** | Uninstalled PNG from a running Windows executable and actual D3D12 renderer for a precisely identified set. | Not a software probe, not a Photoshop composition, not a shot of a targeted illustration. |
+| **Native video** | Unassembled record of actual runtime showing input, motion, shutdown, change of state and time transitions. | Not a slide show of target images, not an accelerated animation, not a simulation. |
+| **Machine manifest** | JSON or text recording build/commit, versions rules/protocol/generator/save, seed/profile/scenario, save/fixture, cameras, zoom, calendar, weather, locale, UI, scale, resolution, renderer, GPU, and time capture. | Not a free description of the scene itself. |
+| **Visual acceptance** | The result is native capture/video, manifest, overlay-equation, functional and render/UI tests. | Not subjective has become more beautiful and not one target side-by-side with another scene. |
 
-Пріоритет доказів:
+Priority of evidence:
 
-1. Авторитетний стан симуляції, save/network snapshot і машинні тести.
-2. Native capture/video саме перевірюваної збірки з manifest.
-3. Інструментальні render/UI probes, якщо вони використовують той самий runtime path.
-4. AI target як напрям.
+1. Authentic state of the simulation, save/network snapshot and machine testing.
+2. Native capture/video is the verified manifest collection.
+3. Instrumental render/UI probes if they use the same runtime path.
+4. AI target as the direction.
 
-Нижчий рівень не може спростувати вищий. Красивий AI target не робить фальшивий прогноз правдивим; зелений UI test не доводить, що світ візуально відповідає target.
+A lower level cannot resist a higher one. A good AI target doesn't make a false prediction true; The green UI test doesn't prove that the world is visually responding to the target.
 
-## 2. Непорушні правила для агентів
+## 2. The Rules of the Agency
 
-### 2.1. Як використовувати target
+### 2.1. How to use a target
 
-- Читайте target разом із scene ID, версією, письмовим описом і межами етапу.
-- Витягуйте з нього відносини: де залишено відкритий центр, які маси світлі/темні, як групуються будівлі, де теплі акценти, який візуальний пріоритет має попередження.
-- Відтворюйте ціль засобами фактичного renderer, RmlUi, runtime assets, симуляції та дозволених presentation FX.
-- Якщо target випадково показує непередбачену систему, не реалізуйте її мовчки. Зафіксуйте розходження й залиште елемент прихованим або замініть правдивим аналогом у native capture.
-- Псевдотекст або помилки літер на AI-ілюстрації не копіюються. У грі весь текст створює RmlUi зі штатними шрифтами та локалізацією.
+- Read the target along with the scene ID, the version, the written description, and the stage outline.
+- Draw on the relationship: where the center is left open, what masses of light/dark, how the buildings are grouped, where the warm accents, which visual priority has a warning.
+- Reproduce the target using the actual renderer, RmlUi, runtime assets, simulations, and permissible presentation FX.
+- If the target accidentally displays an unforeseen system, do not implement its silent. Record the difference and leave the element hidden or replace it with a true analog in native capture.
+- The pseudocate or error letters in AI- illustrations are not copied. In the game, the entire text is created by RmlUi with state fonts and localization.
 
-### 2.2. Що суворо заборонено
+### 2.2. What is Strictly Prohibited
 
-- Не використовувати target або його великий фрагмент як статичне тло ігрового світу.
-- Не вирізати з цілого target будівлі, людей, річку або рельєф як готові runtime sprites без окремого виробничого паспорта, закритих поверхонь, pivot, footprint, сезонних станів і перевірки перекриттів.
-- Не малювати HUD у background-текстурі. Панелі, текст, іконки, focus, hover, disabled і помилки мають лишатися справжніми інтерактивними компонентами.
-- Не змінювати target, baseline або порівняльний manifest, щоб реалізація «пройшла». Зміна референса потребує окремого versioned файла, причини, автора рішення та повторного приймання; старий файл не перезаписується.
-- Не підганяти камеру, seed, сезон або resolution лише в after-кадрі. Якщо параметр змінено, baseline перезнімається з тим самим параметром і причина записується.
-- Не видавати ручну постановочну сцену за звичайний старт, а diagnostic fixture — за завершений ігровий цикл.
-- Не домальовувати прогрес, запаси, погоду, населення, місткість, маршрут, вантаж або роботу незалежно від авторитетного стану.
-- Не називати generated illustration, software probe або тестовий JSON «ігровим скриншотом».
-- Не закривати візуальний критерій тільки unit-тестами. Так само не закривати функціональний критерій тільки кадром.
+- Don't use the target or its large fragment as the static ground of the game world.
+- Do not cut from the entire target building, people, river or reef as ready runtime sprites without a separate manufacturing passport, closed surfaces, pivot, footprint, seasonal conditions and overhang checks.
+- Do not paint HUD in the background texture. Panels, text, icons, focus, hover, disabled and errors should remain true interactive components.
+- Do not change the target, baseline or comparison manifest to make the implementation pass. Changing the reference requires a separate versioned file, cause, author decision, and re-reception; The old file is not being rewritten.
+- Don't pick up the camera, seed, season or resolution just in the after-scene. If the parameter is changed, the baseline is retrieved with the same parameter and the reason is recorded.
+- Do not release a manual setting scene for a normal start, but a diagnostic fixture — for a completed game cycle.
+- Do not tamper with progress, stock, weather, population, capacity, route, cargo or work regardless of status.
+- Not to be confused with generated illustration, software probe or test JSON game screenshots.
+- Don't just close the visual criteria with unit tests. And don't just close the functional criteria with a frame.
 
-## 3. Зафіксована художня й екранна мова
+## 3. Fixed art and screen language
 
-### 3.1. Камера, проєкція та масштаб
+### 3.1. Camera, projection and scale
 
-- Зберігається чинна ізометрична проєкція 58×29, доки окремий нативний доказ не покаже, що вона є причиною неприйнятного результату.
-- Камера не обертається. Усі production assets мають один напрям ізометрії та світло зверху-ліворуч.
-- Для кожної сцени manifest фіксує world center, zoom і logical resolution. Порівняння before/after має відхилення центра не більше приблизно чверті видимого тайла на контрольному zoom.
-- Для V01: 1280×720, 1920×1080, 2560×1440; чинні UI scale 85/100/115/130%. OS DPI 100/125/150% перевіряється окремо. 150% UI — майбутня accessibility/viewport робота, не наявна опція.
-- V01 зберігає чинні logical 1440×900, letterbox і input mapping; layout адаптується до UI scale. Drawable-native UI/ширший world viewport із Core — майбутня пропозиція, не умова V01. Деталі у плані 28.09.
-- Відео руху перевіряє сортування з обох боків будинку, дерева, схилу, моста й вантажу. Вдалий статичний ракурс не є достатнім.
+- The actual isometric projection 58×29 is retained until a single native proof shows that it is the cause of the unacceptable result.
+- The camera doesn't rotate. All production assets have the same direction of isometry and light at the top left.
+- For each scene, the manifest fixes the world center, zoom, and logical resolution. The equation before/after has a center deviation of no more than about a quarter of the visible tail on the control zoom.
+- For V01: 1280×720, 1920×1080, 2560×1440; The current UI scale 85/100/115/130%. OS DPI 100/125/150% is checked separately. 150% UI — future accessibility/viewport work, not an option.
+- V01 stores the current logical 1440×900, letterbox and input mapping; The layout is adjusted to the UI scale. Drawable-native UI/broader world viewport with Core — future offer, not condition V01. Details in the plan 28.09.
+- Traffic video checks the sorting on both sides of the house, the trees, the slope, the bridge and the cargo. A long static perspective is not enough.
 
-### 3.2. Нормалізована геометрія HUD
+### 3.2. Normalized geometry HUD
 
-Нижче наведені спостережувані діапазони, отримані з початкової 1280×720 схеми головного плану. Це **не твердження про попіксельно виміряний концепт**. Діапазони потрібні, щоб агент не перетворив компактний HUD на великі dashboard-панелі.
+The observed ranges derived from the initial 1280×720 master plan diagram are given below. This is **not a statement of a pixel-measured concept**. The ranges are needed so that the agent does not turn the compact HUD into large dashboard panels.
 
-| Зона | Стартова частка екрана | Допустимий початковий діапазон | Якір |
+| Area | Starting part of the screen | Allowable starting range | The Yucca |
 |---|---:|---:|---|
-| Зовнішній відступ | близько 1% ширини | 0,7–1,5% ширини | Від найближчого краю |
-| Ресурси | близько 32% W × 8% H | 30–34% W × 7–10% H | Зверху ліворуч |
-| Прогноз | близько 27% W × 12,5% H | 24–29% W × 10–14% H | Зверху по центру |
-| Поточна температура | близько 10,5% W × 8% H | 9–12% W × 7–10% H | Поруч із прогнозом |
-| Попередження | до 24% W × 16% H | 22–26% W × 13–17% H | Зверху праворуч |
-| Compact inspector | близько 32% W × 24% H | 30–34% W × 21–26% H | Знизу ліворуч |
-| Чотири дії | близько 32% W × 11% H | 30–34% W × 10–13% H | Знизу по центру |
-| Мінімапа з керуванням | близько 20% W × 27% H | 18–22% W × 24–29% H | Знизу праворуч |
+| External withdrawal | about 1% of the width | 0,7–1,5% width | From the nearest end |
+| The following resources are available: | about 32% W × 8% H | 30–34% W × 7–10% H | Up to left |
+| Forecast | about 27% W × 12,5% H | 24–29% W × 10–14% H | Top to center |
+| Current temperature | about 10,5% W × 8% H | 9–12% W × 7–10% H | Next to the Forecast |
+| Warning | to 24% W × 16% H | 22–26% W × 13–17% H | Up to the right |
+| Compact inspector | about 32% W × 24% H | 30–34% W × 21–26% H | From the bottom left |
+| Four Steps | about 32% W × 11% H | 30–34% W × 10–13% H | Down to center |
+| Minimum with control | about 20% W × 27% H | 18–22% W × 24–29% H | Down to the right |
 
-Постійні панелі не входять у центральну робочу зону приблизно `x=34…76%`, `y=16…82%`, окрім тимчасового tooltip або modal, який користувач сам відкрив. Відхилення позиції від узгодженого якоря до приблизно 1,5% розміру екрана допустиме, якщо воно усуває обрізання локалізації. Саме по собі «схоже за кольором» не компенсує неправильну композицію.
+The permanent panels do not fit into the central workspace approximately `x=34…76%`, `y=16…82%`, except for the temporary tooltip or modal that the user has opened himself. A deviation of the position from the coordinated anchor to approximately 1,5% of the screen size is permissible if it eliminates localization circumference. It's the same color that doesn't make up for the wrong composition.
 
-На 1280×720 стартові орієнтири лишаються: 12 dp margin; ресурси приблизно 412×58; прогноз 340×90; температура 134×58; попередження до 308×116; картка 410×172; дії 410×82; мінімапа з керуванням близько 260×192. Це layout constraints, а не наказ копіювати кожен піксель.
+The 1280×720 start orientations are left with 12 dp margin; the resources are approximately 412×58; the forecast 340×90; the temperature 134×58; the warning to 308×116; the card 410×172; the action 410×82; The minimum with the control around 260×192. It's layout constraints, not a command to copy each pixel.
 
-### 3.3. Матеріали, світло та ассети
+### 3.3. Materials, lighting and ashes
 
-- Великі форми мають читатися раніше за дрібний декор: долина, річка, лісовий масив, кам'яний схил, галявина поселення.
-- Дерево має виразний напрям волокон і теплий коричневий діапазон; камінь — холодніший, без однакової шумової заливки; сланець — темний і матовий; тканина — приглушено синя; вікна й вогонь — локальні бурштинові акценти.
-- Контакт об'єкта із землею є окремим шаром: фундамент, контактна тінь, вхід, невеликий двір/слід роботи. Квадратна земля, постійний дим і нічне glow не запікаються в будівлю.
-- Pivot стопи, фундаменту або входу на контрольному zoom не відхиляється візуально більш ніж приблизно на одну восьму висоти видимого тайла. Це стартовий спостережуваний допуск; логічний footprint завжди визначає симуляція.
-- Дах і крона можуть візуально нависати; collision, picking і маршрут не розширюються через намальований навіс.
-- Немає видимого chroma halo, прямокутної підкладки, стрибка масштабу між кадрами або суперечливого напрямку тіні.
-- Кожен asset має паспорт: source/provenance і права, master, export, runtime ID, розмір, pivot, footprint, state, season, atlas, контрольний native capture.
-- Масовий export інших будівель не починається, доки малий набір house/stockpile/workshop/resident/conifer/rock/ground/shore/UI frame не пройшов DEV03.
+- Large shapes should be read before the small decor: valley, river, forest, stone slope, settlement grove.
+- The tree has a distinct fiber direction and a warm brown range. the stone is cooler, without the same noise level; The sun is dark and matt; tissue  is blurred blue; windows and fire are local brass accents.
+- The contact of the object with the ground is a separate layer: foundation, contact shadow, entrance, small yard/trace of work. The square floor, constant smoke, and night glow do not burn into the building.
+- The pivot of the foot, foundation, or entrance on the control zoom does not deviate visually more than about one-eighth of the height of the visible tail. This is the observed start-up. The logical footprint always determines the simulation.
+- The roof and crown can be visually hung; collision, picking and route not expanding through the drawn curve.
+- There is no visible chroma halo, rectangular substrate, scale jump between frames or conflicting shadow direction.
+- Each asset has a passport: source/provenance and rights, master, export, runtime ID, size, pivot, footprint, state, season, atlas, control native capture.
+- Mass export of other buildings does not begin until a small set of house/stockpile/workshop/resident/conifer/rock/ground/shore/UI frames has passed DEV03.
 
-### 3.4. UI palette, типографіка та іконки
+### 3.4. UI palette, typography and icons
 
-Початкові tokens: panel `#101D27`, depth `#0B151E`, inner `#172734`, brass `#B79256`, highlight rim `#DEC27F`, primary text `#F2E6C9`, active blue `#285D92`. Це узгоджені tokens, не колірний семпл із випадкового JPEG.
+The initial tokens are panel `#101D27`, depth `#0B151E`, inner `#172734`, brass `#B79256`, highlight rim `#DEC27F`, primary text `#F2E6C9`, active blue `#285D92`. These are coordinated tokens, not a color sample from random JPEG.
 
-- Один nine-patch family для card/button: normal, hover, focus, active, disabled, danger.
-- Cormorant використовується для великих назв і коротких команд від 18 dp. Noto використовується для чисел, пояснень і щільних українських рядків приблизно 15–16 dp.
-- Інтерактивна зона — щонайменше 44 dp. Focus видно на світлому снігу й у темряві.
-- Небезпека має іконку, заголовок і текст; сам червоний колір не є повідомленням.
-- Предметні іконки мають спільне світло й матеріал; перевіряються у фінальному розмірі 28–36 dp.
-- Якщо AI target містить нечіткі літери, runtime capture все одно оцінюється за різким нативним текстом. Розмитий RmlUi не дозволяється виправдовувати «живописним стилем» target.
+- One nine-patch family for card/button: normal, hover, focus, active, disabled, danger.
+- Cormorant is used for large names and short commands from 18 dp. The note is used for numbers, explanations, and dense Ukrainian rows approximately 15–16 dp.
+- Interactive zone — at least 44 dp. Focus is visible in the light snow and in the dark.
+- The hazard has an icon, a title and text; The color red itself is not a message.
+- The object icons have a common light and material. are checked in the final size 28–36 dp.
+- If the AI target contains unread letters, runtime capture is still evaluated by sharp native text. The RmlUi is not allowed to justify the visual style of the target.
 
-## 4. Авторитетні дані UI та погоди
+## 4. Authoritative data UI and weather
 
-### 4.1. Запаси, населення та склад
+### 4.1. Stocks, population and stock
 
-- Верхній HUD показує `inventory.available` для дерева, каменю й готової їжі та реальну кількість мешканців.
-- Деталі розділяють `stored`, `reserved`, `carried`, `ground`. Виготовлений предмет не стає доступним, доки фактичний життєвий цикл цього не підтвердив.
-- До 0.26.2 населення не показується як вигадане `48/70`. У 0.26.2 місткість виводиться тільки з реалізованого housing contract.
-- Заповнення вибраного складу показується лише з per-storage server projection: storage ID, місткість, фізично збережені предмети, зайняті одиниці. Загальний запас поселення, carried і ground не підміняють цей показник.
-- `reserved` є позначкою над уже фізично збереженим запасом, якщо так визначає модель; його не додають вдруге до місткості.
-- Невідомі або ще не отримані дані показуються як «Дані недоступні», а не `0`, `200` або placeholder із target.
-- До появи реальної команди пріоритету складу compact card має дію «Відкрити запаси», а не «Змінити пріоритет».
+- The upper HUD shows `inventory.available` for wood, stone and ready food and the actual number of inhabitants.
+- The details are divided into `stored`, `reserved`, `carried`, `ground`. The manufactured item does not become available until the actual life cycle confirms it.
+- Up to 0.26.2 population is not shown as fictitious `48/70`. In 0.26.2 capacity is derived only from the housing contract executed.
+- The filling of the selected storage is shown only from the per-storage server projection: storage ID, capacity, physically stored items, occupied units. The total population, carried and ground do not replace this indicator.
+- `reserved` is a marker over a physical reserve if defined by the model; It's not added to the volume twice.
+- Unknown or unreceived data is displayed as «Data unavailable», rather than `0`, `200` or the placeholder with the target.
+- Prior to the actual priority command, the compact card has the action of opening the inventory rather than changing the priority.
 
-### 4.2. Погода, прогноз і сніг
+### 4.2. Weather, Forecast and Snow
 
-- До DEV07 production HUD не показує температуру, чотириденний прогноз або countdown. DEV06 може мати окремий diagnostic overlay, явно підписаний як diagnostic, але не production UI.
-- Після DEV07 усі погодні значення надходять тільки з host-authoritative `WeatherView`/snapshot. ClientSession не генерує власну погоду.
-- Прогноз складається з current day і трьох наступних календарних днів. Min/max, dominant kind, precipitation summary, storm interval і countdown походять із того самого canonical schedule, що й фактична погода.
-- До повного snapshot стан є unknown. UI не показує fake `0°C`, нульовий forecast або від'ємний countdown.
-- Rain/Snow визначається авторитетною температурою; presentation renderer не «виправляє» позитивну температуру снігом заради target.
-- Snow cover накопичується й тане за simulation ticks, переживає save/load і reconnect. FX/quality змінюють кількість частинок, але не стан покриву й не наслідок для роботи.
-- Погода впливає тільки на погоджені Surface gather/build роботи. Mine, Farm, Haul, Move, recipes, health і чинний hunger не отримують прихованого нового модифікатора.
-- Попередження про бурю з'являється тільки для справжнього interval, показує точний countdown і фактичний work-rate effect.
-- Паливо, опалення, утеплення, температурна смерть, лід і замерзлі маршрути відсутні. Не показувати «паливо на 3 дні» або «утеплення 62%».
+- Until DEV07 production HUD does not show temperature, four-day forecast or countdown. DEV06 may have a separate diagnostic overlay, clearly signed as diagnostic, but not production UI.
+- After DEV07 all weather values come only from the host-authoritative `WeatherView`/snapshot. ClientSession does not generate its own weather.
+- The forecast consists of the current day and the next three calendar days. Min/max, dominant kind, precipitation summary, storm interval and countdown come from the same canonical schedule as actual weather.
+- Until the full snapshot state is unknown. UI does not show fake `0°C`, zero forecast or negative countdown.
+- Rain/Snow is determined by the authoritative temperature; The presentation renderer doesn't adjust the positive temperature of the snow for the sake of the target.
+- The snow cover accumulates and melts through the simulation ticks, survives save/load and reconnects. FX/quality changes the number of particles, but not the condition of the roof or the effect on the work.
+- Weather only affects the agreed upon Surface gather/build work. Mine, Farm, Haul, Move, recipes, health and the hunger effect do not get a hidden new modifier.
+- A storm warning appears only for the actual interval, showing an accurate countdown and actual work-rate effect.
+- Fuel, heating, warming, temperature death, ice and freezing routes are missing. Do not show fuel on 3 days» or warming 62%».
 
-### 4.3. Світ без ручних доріг і без вигаданого масштабу
+### 4.3. A world without man-made roads and imaginary scale
 
-- Road відсутня у доступному каталозі, tutorial, hotkey і нових командах. Сервер відхиляє новий запит; історичний enum/ID не перенумеровується.
-- Декоративні двори й плями ґрунту не дають speed bonus, не накопичують трафік і не утворюють приховану автоматичну дорожню систему.
-- Bridge лишається. Його підходи, прохідність, preview і pathfinding використовують той самий height/edge contract.
-- Фортеця, стіни, облога, армія, вороги, велетні, багаторівнева шахта, водоспади та нові руди не входять у target цього циклу.
-- Target може наслідувати щільність і драматичну композицію концепту, але не має обіцяти ці системи у видимій playable області.
+- Road is missing in the available directory, tutorial, hotkey and new commands. The server rejects the new request; The historical enum/ID is not renumbered.
+- Decorative courtyards and floor tiles do not give speed bonus, accumulate traffic, or create a hidden automatic road system.
+- Bridge is left. Its approaches, passing, preview and pathfinding use the same height/edge contract.
+- Fortresses, walls, sieges, armies, enemies, giant, multi-level mines, waterfalls and new mines are not the target of this cycle.
+- Target may imitate the density and dramatic composition of the concept, but it should not promise these systems in the playable region.
 
-## 5. Протокол однакового порівняння
+## 5. Protocol of the same comparison
 
-### 5.1. Обов'язковий manifest
+### 5.1. The following is the list of the official languages of the European Union:
 
-Кожна пара baseline/current і кожен release capture записують:
+Each pair baseline/current and each release capture record:
 
-- scene ID і призначення: ordinary start, played settlement, staged art fixture, diagnostic або network scenario;
-- build version, commit, package hash за наявності;
+- scene ID and destination: ordinary start, played settlement, staged art fixture, diagnostic or network scenario;
+- build version, commit, package hash if available;
 - rules/protocol/generator/save versions;
 - world seed, profile, scenario, save/fixture hash;
 - camera center, zoom, active layer;
 - simulation tick, calendar day/time, season, weather, temperature, cover;
 - resolution, UI scale, system DPI, locale;
 - renderer/backend, quality, GPU/driver;
-- capture tool і UTC/local timestamp.
+- the capture tool and the UTC/local timestamp.
 
-Якщо хоча б один параметр, що змінює зображення або стан, невідомий, кадри не називаються точним before/after. Вони можуть бути ілюстративним порівнянням із явною приміткою.
+If at least one parameter that changes the image or state is unknown, frames are not called accurate before/after. They can be illustrative comparisons to a clear note.
 
-### 5.2. Порівняння з target
+### 5.2. Comparison with target
 
-1. Відкрити target і native capture в однаковому aspect ratio.
-2. Спочатку оцінити великі маси й відкриту центральну зону.
-3. Потім оцінити anchors і частки HUD із розділу 3.2.
-4. Далі — масштаб мешканців/будівель, контакт із землею, напрям світла, сніг, fog і матеріали.
-5. Окремо перевірити правдивість тексту й чисел за snapshot/manifest, а не за target.
-6. Використати side-by-side, 50/50 wipe та напівпрозорий overlay. Pixel diff є діагностикою, а не автоматичним verdict: частинки, вода, foliage sway і анімація можуть законно відрізнятися.
-7. Для анімованих або часових систем додати native video; один кадр не приймає погоду, логістику, picking або мінімепу.
+1. Open target and native capture in the same aspect ratio.
+2. First, we evaluate the large masses and the open central zone.
+3. Then evaluate the anchors and the HUD fractions from the 3.2 section.
+4. Next — the scale of the occupants/buildings, contact with the ground, direction of light, snow, fog and materials.
+5. Separately, check the authenticity of text and numbers for snapshot/manifest, not for target.
+6. Use side-by-side, 50/50 wipe and semipermeable overlay. Pixel diff is a diagnostic, not an automatic verdict: particles, water, foliage sway, and animation can legally differ.
+7. For animated or time systems, add native video; One frame doesn't take weather, logistics, picking or minimums.
 
-### 5.3. Що вважається проходом
+### 5.3. What Is Considered a Passage
 
-| Категорія | Прохід | Провал |
+| Category of the product | The Passage | Failure |
 |---|---|---|
-| Композиція | Постійні модулі тримаються біля своїх країв; центральна робоча зона відкрита. | Великий інспектор або каталог постійно перекриває світ; HUD знову стає повноширинною таблицею. |
-| Геометрія | Рельєф, вода, споруда, pivot і picking описують ту саму поверхню. | Людина проходить крізь намальовану скелю, будинок висить або клік обирає об'єкт позаду видимої поверхні. |
-| Матеріали | Дерево/камінь/сніг/земля читаються різними масами й одним світлом. | Єдина шумова заливка, суперечливі тіні, квадратні основи чи chroma halo. |
-| Сніг/погода | Cover і precipitation відповідають snapshot та змінюються в часі. | Сніг намальований при Rain/+°C, буря не має авторитетного interval або UI показує інший стан. |
-| UI data | Кожне число можна простежити до snapshot/model; unknown лишається unknown. | Константа з target, локальний random, вигадана місткість або manufactured=available. |
-| Типографіка | Нативний локалізований текст різкий, не обрізаний, має focus/contrast. | Растровий або AI-текст, зменшення до нечитабельності, небезпека лише кольором. |
-| Динаміка | Немонтоване відео підтверджує рух, depth, state transition і ввід. | Скриншот приховує стрибки pivot, неправильний drag, stale data або fake progress bar. |
-| Доказ | Capture походить із заявленого build/package і має manifest. | Референс змінено, доказ із іншої збірки або постановочну сцену видано за gameplay. |
+| Composition | The permanent modules are held close to their edges; The central work area is open. | A great inspector or catalog is constantly covering the world. HUD becomes a full-width table again. |
+| Geometry | The relief, water, building, pivot and picking describe the same surface. | A person walks through a painted rock, a house is hanging, or a click selects an object behind a visible surface. |
+| Materials | Wood/stone/snow/land is read by different masses and the same light. | The only noisy bay, conflicting shades, square bases or chroma halo. |
+| Snow/weather | Cover and precipitation correspond to snapshot and change over time. | Snow is painted at Rain/+°C, the storm has no authoritative interval or UI shows a different state. |
+| UI data | Any number can be traced to snapshot/model; Unknown remains unknown. | A constant from target, local random, invented capacity, or manufactured=available. |
+| Typography | The native localized text is sharp, uncut, has focus/contrast. | Rust or AI- text, reduced to unreadability, danger only by color. |
+| The dynamics | The unedited video confirms the movement, depth, state transition and inward. | The screenshot hides pivot leaps, incorrect drag, stale data, or fake progress bar. |
+| The Evidence | Capture comes from the declared build/package and has a manifest. | Reference changed, evidence from another set or scene was released for gameplay. |
 
-## 6. Каталог публічних target-сцен
+## 6. Catalogue of public target scenes
 
-Посилання на згенеровані файли додаються окремо. Scene IDs стабільні; ім'я або формат файла не є частиною gameplay contract.
+References to the generated files are added separately. Scene IDs are stable; The name or file format is not part of the gameplay contract.
 
-| Scene ID | Версія | Видима ціль | Що лишається незмінним | Необхідний реальний доказ |
+| Scene ID | Version | A Target Seen | What remains unchanged | Required for Real Evidence |
 |---|---|---|---|---|
-| **S01** | 0.26.1 | Жива долина, правдивий forecast/°C, сніг, compact HUD, compact inspector, чотири дії, справжня мінімапа, поселення без ручних доріг. | Немає палива/утеплення, фортеці, армії, ворогів, нових руд; міст і підтриманий demo loop лишаються. | 720p/1080p/1440p native captures; літо/зима день/ніч; storm transition video; same-seed before/after; save/net/reconnect, UI/render/weather tests; packaged-like D3D12 launch. |
-| **S02** | 0.26.2 | Housing `зайнято / місткість`, reservation очікуваного прибуття, House/House II як видима причина росту. | Художній світ S01; без сімей, народжень, меблів, опалення. | Кадри 10/10, після House, після House II, pending arrival; відео/лог двох одночасних запитів; settlement/save/network/UI tests. |
-| **S03** | 0.26.3 | У farm inspector видно режим готової їжі або сировини, працівників, вихід і безпечне перемикання. | Немає нової професії кухаря чи нового farming engine; art direction S01. | Native кадри обох режимів, коротке відео перемикання під час роботи/перенесення, save/load і host/guest, economy/UI tests. |
-| **S04** | 0.26.4 | Зрозумілий запас готової їжі та чесна оцінка часу без майбутніх надходжень; збалансований день/ніч. | Carried не стає available; без рейдів або нових нічних подій. | Стартовий і кінцевий кадр двох cycle runs, немонтований time-lapse/відео ключових моментів, delivered/consumed/hunger metrics, balance tests на двох контрольних картах. |
-| **S05** | 0.26.5 | У UI читається маршрут зерно → борошно → кухня → їжа; дрова й повна праця враховані; кухня/млин мають видимий сенс. | Немає якості їжі, вітамінів, псування або нових продуктів. | Кадр повного production chain, відео вантажів і відновлення після нестачі дров, paired benchmark +20% target або чесний failed result, economy/save tests. |
-| **S06** | 0.26.6 | Видно загальний запас, конкретний склад, carried/ground/reserved, пункт доставки, міст і підтриманий перехід шахти. | Без ручних маршрутів, караванів, пріоритетів складів, нових металів і доріг. | Кадри двох складів із різним вмістом, міст/шахта, video delivery near/far, save/load, path/logistics/storage UI tests. |
-| **S07** | 0.26.7 | Короткі RmlUi tutorial prompts ведуть через збір, будівництво, роботу, їжу, житло, прийом і Level II; світ лишається видимим. | Без сюжетних modal-вікон, експедицій та енциклопедії. | Повний немонтований first-session recording двох нових гравців, capture кожного типу prompt, event-completion logs, локалізація/UI tests; окремо запис інтересу й блокерів. |
-| **S08** | 0.26.8 | Ненав'язливий `останнє успішне збереження`, чітка persistent помилка запису й відновлення backup. | Manual Save/Load лишаються; без cloud saves і великого slot manager. | Capture success/error/recovery, відео без видимого stall, measured save time, corruption/write-denied tests, packaged save/load. |
-| **S09** | 0.26.9 | Зрозумілі connection/waiting/recovering/lost/version mismatch стани поверх того самого світу; повернений контроль. | Без host migration, relay, matchmaking і Steam invites. | Синхронні кадри двох фізичних Windows ПК, 60-хвилинне відео/лог, disconnect під час delivery, reconnect, host restart, cross-network evidence, network regressions. |
-| **S10** | 0.26.10 | Той самий прийнятий світ без нового контенту; фінальна читабельність 720p/1080p, чисте меню й package identity. | Механіки заморожені; немає «останнього маленького» feature. | Capture тільки з розпакованого ZIP/launcher, build/commit/hash, український шлях, Save/Continue/Host/Join, full configured CTest і package checks. |
-| **S11** | 0.27.0 | Той самий accepted demo loop і візуальна мова S10; лише виправлені release blockers. | Жодної нової будівлі, ворога, ресурсу або редизайну перед релізом. | Фінальний package hash; дві незалежні coop-пари й один solo tester; двогодинна сесія без нового blocker; повтор усіх зачеплених сценаріїв. Generated target не доводить зовнішнє демо. |
+| **S01** | 0.26.1 | A living valley, true forecast/°C, snow, compact HUD, compact inspector, four actions, real minimum, settlement without manual roads. | No fuel/heating, fortresses, armies, enemies, new mines; The bridge and the supported demo loop are left. | 720p/1080p/1440p native captures; summer/winter day/night; storm transition video; same-seed before/after; save/net/reconnect, UI/render/weather tests; packaged-like D3D12 launch. |
+| **S02** | 0.26.2 | Housing occupancy/capacity (`зайнято / місткість`), reservation of expected arrival, House/House II as the visible cause of growth. | The art world S01; No families, no births, no furniture, no heating. | The frames 10/10, after House, after House II, pending arrival; the video/log of two simultaneous requests; settlement/save/network/UI tests. |
+| **S03** | 0.26.3 | The farm inspector sees the mode of preparing food or raw materials, workers, exit and safe movement. | There's no new cook profession or new farming engine; art direction S01. | Native footage of both modes, short video of switching during the work/transfer, save/load and host/guest, economy/UI tests. |
+| **S04** | 0.26.4 | A clear supply of ready-to-eat food and an honest estimate of time without future revenue; It's a balanced day/night. | Carried does not become available; No raids or new night events. | The start and end frames of two cycle runs, unassembled time-lapse/video key moments, delivered/consumed/hunger metrics, balance tests on two control cards. |
+| **S05** | 0.26.5 | In UI the route reads grain → flour → kitchen → food; the wood and the full work are counted; The kitchen/mill makes sense. | There is no quality food, no vitamins, no spoilage, no new products. | Full production chain frame, video shipments and recovery after wood loss, paired benchmark +20% target or honest failed result, economy/save tests. |
+| **S06** | 0.26.6 | You can see the general stock, the specific warehouse, carried/ground/reserved, the delivery point, the bridges and the maintained mine passage. | No manual routes, caravans, priorities for inventory, new metals and roads. | The two components have different content, bridge/shaft, video delivery near/far, save/load, path/logistics/storage UI tests. |
+| **S07** | 0.26.7 | The short RmlUi tutorial prompts run through collection, construction, work, food, housing, reception and Level II; The world remains visible. | No modal windows, expeditions or encyclopedias. | Full unassembled first-session recording of two new players, capture each type of prompt, event-completion logs, localization/UI tests; A separate record of interest and blockers. |
+| **S08** | 0.26.8 | Unobtrusive last successful save indicator (`останнє успішне збереження`), clear persistent recording error and backup recovery. | Manual Save/Load are left; without cloud saves and a great slot manager. | Capture success/error/recovery, video without a visible stall, measured save time, corruption/write-denied tests, packaged save/load. |
+| **S09** | 0.26.9 | The clear connection/waiting/recovering/lost/version mismatch of the surface of the same world; I've got control back. | No host migration, relay, matchmaking and Steam invites. | Synchronized frames of two physical Windows PCs, 60-minute video/log, disconnect during delivery, reconnect, host restart, cross-network evidence, network regressions. |
+| **S10** | 0.26.10 | The same accepted world without new content; The final readability is 720p/1080p, a clean menu and package identity. | The mechanics are frozen; There's no last little feature. | Capture only from unpacked ZIP/launcher, build/commit/hash, Ukrainian path, Save/Continue/Host/Join, full configured CTest and package checks. |
+| **S11** | 0.27.0 | The same accepted demo loop and visual language S10; Just fixed release blockers. | No new building, enemy, resource or redesign before release. | The final package hash; two independent coop-pairs and one solo tester; Two hours without a new blocker; repeat all the stitched scenarios. Generated target does not support external demo. |
 
-Якщо S10 і S11 візуально однакові, це правильний результат: 0.27.0 є підтвердженням кандидата, а не обов'язковим редизайном.
+If S10 and S11 are visually identical, this is the correct result: 0.27.0 is a confirmation of the candidate, not a mandatory redesign.
 
-## 7. Поточні видимі етапи V00–V05
-Порядок і докази задає [GRAPHICS_PROGRESS_UA.md](GRAPHICS_PROGRESS_UA.md). V00 — фактичний baseline; V01 змінює UI; V02 terrain/генерацію; V03 building/resident art; V04 додає дощ і погодні дані; V05 — snow/зиму. Попередня таблиця DEV01–24 перенесена до технічної карти V2 і не є наказом зробити Dynamic до UI.
+## 7. Currently visible stages V00–V05
+The order and evidence is given by [GRAPHICS_PROGRESS_UA.md](GRAPHICS_PROGRESS_UA.md). V00 — actual baseline; V01 changes to UI; V02 terrain/generation; V03 building/resident art; V04 adds rain and weather data; V05 — snow/winter. The previous table DEV01–24 is moved to the technical map V2 and is not an order to make Dynamic to UI.
 
-## 8. Stop/go поточної гілки
-- V01 не проходить, якщо новий HUD втратив чинну команду, перекриває світ прозорою панеллю або показує вигадані дані.
-- V02 потребує узгоджених path/build/picking, генерації та сумісності; новий берег не може зробити доступний ресурс недосяжним.
-- V03: до масового експорту перевірити малий kit у чинному renderer. Full Dynamic proof зараз не є передумовою базового арту; lit variants — окреме майбутнє виробництво.
-- V04/V05: числа й FX походять із authoritative weather. Screenshot не доводить час, накопичення, танення, pause або reconnect.
-- Вимкнений Dynamic не блокує базові V-кроки. Його ввімкнений режим у майбутньому приймається за [DL-планом](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md), з рухомими джерелами й вимірюваннями.
-- Демо додатково потребує economy/tutorial/save/Windows/co-op gates; нові PNG не означають завершення0.27.0.
+## 8. Stop/go current branch
+- V01 does not pass if the new HUD has lost the command in force, covers the world with a transparent panel or displays fabricated data.
+- V02 needs a coordinated path/build/picking, generated and compatible; The new coastline cannot make the available resources unavailable.
+- V03: before mass export, check the small kit in the current renderer. Full Dynamic proof is no longer a prerequisite for basic art; lit variants — separate future production.
+- V04/V05: the numbers and FX come from authoritative weather. Screenshot does not prove time, accumulation, meltdown, pause or reconnect.
+- Dynamic disabled does not block the basic V- steps. Its enabled mode in the future is accepted under the [DL- plan](FUTURE_DYNAMIC_LIGHTING_PLAN_UA.md), with moving sources and measurements.
+- The demo also needs economy/tutorial/save/Windows/co-op gates; The new PNG does not mean completion0.27.0.
 
-Для кожного кроку: build/seed/camera/zoom/resolution manifest, нативні before/after, відео часових взаємодій, релевантні тести й список відхилень. Непідтверджене лишається непідтвердженим.
+For each step: build/seed/camera/zoom/resolution manifest, native before/after, video of timing interactions, relevant tests and a list of rejections. Unconfirmed remains unconfirmed.

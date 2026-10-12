@@ -1,7 +1,9 @@
-# Ribterra 0.25.2 — Початковий онлайн-екран і створення кімнати
+# Ribterra 0.25.2 — Initial online screen and room creation
 
-Новий зал, картки місць та долина тепер з’являються одразу після натискання «Онлайн-гра». Тут задаються ім’я, адреса, пароль і кількість місць; початково вибрано чотири. Кнопка «Створити кімнату» відкриває діюче лобі, де можна додавати ботів, звільняти місця, обирати команди й запускати світ.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Виправлено помилку «Token size outside bounds», яка блокувала створення нового світу через меню: ідентифікатор файла тепер використовує підтримуваний розмір випадкового значення. Підключення й продовження збереження збережено.
+The new hall, location maps and valley are now appearing immediately after clicking Online play». It's names, addresses, passwords and the number of places. So four were chosen initially. The Create Room button opens the current lobby where you can add bots, clear seats, select commands, and launch a world.
 
-Доповнено переклади початкового онлайн-екрана та лобі. Додано перевірку всього переходу через справжній виконуваний файл гри, з окремим тестовим профілем. Протокол залишається 19; збереження 0.25.1 сумісні.
+Fixed the “Token size outside bounds” error that blocked creation of a new world through the menu: the file identifier now uses a supported random-value size. Joining and continuing a save remain available.
+
+The original online screen and lobby translations are added. A verification of all the transitions through the actual game file, with a separate test profile, is added. The protocol remains 19; The conservation of 0.25.1 is compatible.

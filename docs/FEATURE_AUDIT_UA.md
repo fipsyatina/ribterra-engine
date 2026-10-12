@@ -1,214 +1,216 @@
-# Ribterra: аудит реальної функціональності перед демо
+# Ribterra: real-world functionality audit before the demo
 
-Дата: 22 вересня 2026. Перевірено checkout `C:/Users/fipst/Desktop/ribterra`, гілку `AInora/first-playable`, HEAD `0fe2454` та поточні незакомічені зміни після видалення панелі «Експедиції». Версія залишається 0.25.7. Це аудит і рішення для плану; перелічені нижче виправлення ще не виконані.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Уточнено після заперечення автора: попередня рекомендація відкласти Майстерню, кар'єр, дошки, цеглу та всі покращення була помилковою. Цю майже готову гілку потрібно з'єднати до першої альфи. Чинний план — [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md); він розділяє внутрішню альфу та зовнішнє демо. Факти про поточний код нижче збережені, рекомендації переглянуті.
+The date is 22 September 2026. Checkout `C:/Users/fipst/Desktop/ribterra`, branch `AInora/first-playable`, HEAD `0fe2454` and current unannounced changes after removing the «Expedition» panel have been verified. The version remains 0.25.7. It's an audit and a plan solution; The corrections listed below have not yet been executed.
 
-Конкретна деталізація й нумерація — [ALPHA_DEMO_SMALL_RELEASES_UA.md](ALPHA_DEMO_SMALL_RELEASES_UA.md): 16 малих версій, внутрішня альфа 0.26.6, зовнішнє демо 0.27.0. Ця деталізація не є новим runtime-аудитом і не змінює статус доказів нижче.
+Clarified after the author's denial: The previous recommendation to postpone the Workshop, the career, the board, the brick and all improvements was wrong. This almost ready branch needs to be connected to the first alpha. The action plan is  [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md); It's dividing the inner alpha and the outer demos. The facts about the current code are kept below, the recommendations reviewed.
 
-## Висновок
+The specific details and numbering — [ALPHA_DEMO_SMALL_RELEASES_UA.md](ALPHA_DEMO_SMALL_RELEASES_UA.md): 16 small versions, internal alpha 0.26.6, external demo 0.27.0. This detail is not a new runtime audit and does not change the status of the evidence below.
 
-Головний дефіцит — не кількість контенту. Частина наявного контенту не має результату, а частина реалізованих систем не з'єднана між собою. Додавання сюжету, нових будівель або професій збільшить цю проблему.
+## The Conclusion
 
-- 20 типів будівель: стартовий Табір і 19 доступних для будівництва.
-- 7 спеціальних споруд не дають практичної користі після завершення. Будинок — восьма проблемна споруда: він змінює лічильник житла, який не впливає на населення чи поведінку.
-- За технічним ефектом: 12 типів щось роблять, 3 часткові (Будинок, Дім релігії, Паб), 5 без спеціальної функції. «Щось робить» не означає «має корисне місце в економіці»: Майстерня та Глиняний кар'єр виробляють товари для недоступних або відсутніх споживачів.
-- 15 справжніх ресурсів і 15 рецептів. Цегла, інструменти та списи виготовляються, але в поточному звичайному UI не мають корисного застосування. Шкури не мають споживача і після видалення полювання не мають нового доступного джерела.
-- Ще 7 ресурсів у верхній панелі взагалі відсутні в економічній моделі.
-- 10 enum-професій; UI показує 7. Вибір лісоруба, шахтаря чи збирача не запускає відповідну автоматичну роботу. 4 з 8 показаних навичок не мають виконавця або ефекту.
-- Усі 15 рецептів обходять професії/навички. Замовлення скидає призначену професію працівника.
-- Дослідження — лише екран. Три справжні симуляційні покращення будівель недоступні через UI.
-- Виробничі панелі помилково вважають своєю лише націю №1. Це дефект, а не відкладена можливість.
+The main shortcoming is not the amount of content. Part of the content that is available is not working, and part of the systems that are implemented are not connected. Adding a story, new buildings or professions will increase this problem.
 
-## Метод і межі доказів
+- 20 types of buildings: Starting Tent and 19 available for construction.
+- 7 special facilities do not provide practical use after completion. The building — Eight problem buildings: it changes the housing meter that does not affect population or behavior.
+- By technical effect: 12 types do something, 3 are partial (House, House of Religion, Pub), and 5 have no special function. “Does something” does not mean “has a useful place in the economy”: Workshops and Clay Quarries produce goods for unavailable or absent consumers.
+- 15 real resources and 15 recipes. Brick, tools and writing are made, but in the current standard UI they have no useful application. The skins have no consumer and after the hunt is removed they have no new source available.
+- Another 7 resource in the top panel is completely absent in the economic model.
+- 10 enum-profession; UI is showing 7. The choice of logger, miner or collector does not start the appropriate automatic work. 4 of the 8 shown skills have no performer or effect.
+- All 15 recipes are about professions/crafts. The order discards the employee's assigned occupation.
+- The study is just a screen. Three real simulation building enhancements are not available through UI.
+- The manufacturing boards mistakenly consider only the No1 nation as their own. It's a flaw, not a delayed opportunity.
 
-Для кожного типу перевірялися оголошення, видимість у каталозі/панелі, шлях команди, виконавець у симуляції, вихідний результат і його споживач. Окремо зіставлено тести з тим, що вони справді доводять.
+## Method and extent of evidence
 
-У цьому аудиті перебудовано `BuildingPanelVisualProbe`, `EconomyVisualProbe`, `EconomyTests`. Проба всіх 20 панелей успішна: вона також перевіряє вибір будівлі на карті, два групові замовлення, save/load та два мережеві клієнти на одному ПК зі спільною нацією. `economy` і `economy_ui` пройшли 2/2 за 49,75 с; recipe-тест виконує всі 15 рецептів з фізичною доставкою на підготовлених fixtures. Переглянуто отримані кадри Дому релігії та Research.
+For each type, the ads, visibility in the catalog/panel, team path, simulator performer, end result and its consumer were checked. Separately, the tests were compared to what they actually prove.
 
-Це не проходження нового світу без підготовлених запасів, не перевірка всіх 20 післябудівельних ефектів і не зовнішній кооператив. Помилки нації, професій, житла та невдоволення встановлені аналізом виконавчих шляхів; окремих нових runtime-тестів для їх відтворення в цьому аудиті не додавали. Повний CTest не запускався.
+This audit rebuilt `BuildingPanelVisualProbe`, `EconomyVisualProbe`, and `EconomyTests`. The probe of all 20 panels passed; it also checked selecting a building on the map, two group orders, save/load, and two network clients on one PC with a shared nation. `economy` and `economy_ui` passed 2/2 in 49,75 s; the recipe test executes all 15 recipes with physical delivery on prepared fixtures. Captures of the House of Religion and Research were reviewed.
 
-Докази: `build/audit-content-build.log`, `build/audit-building-panels.log`, `build/audit-economy-tests.log`, `artifacts/feature-audit/buildings/building-render-report.json`; усі 20 зображень панелей та `choose-research.png` лежать у тому самому каталозі артефактів.
+It's not a new world without prepared supplies, not a verification of all the 20 post-construction effects, and not an external co-op. The nation's mistakes, occupations, housing and discontent are established by the analysis of executive paths; Some new runtime tests for their reproduction in this audit were not added. The full CTest didn't start.
 
-Додаткова перевірка після цього аудиту: новий World(70421,10), без імпорту готових будівель чи запасів, через публічні команди пройшов Лісопилку → дошки/дрова, Кар'єр → глину, Майстерню → цеглу, Будинок → II, Ферму → зерно, Млин → борошно, Кухню → хліб. Save/load і наступні 40 ticks дали однаковий checksum; усі 10 людей живі зі 100 HP. Це близько 8 хвилин симуляції з автоматичними 66 наказами збору. Покращення викликано через API, тому цей результат не доводить доступність через UI або зручність новачкові. Докази: `.deps/alpha_fresh_start_probe.cpp`, `build/alpha-fresh-start-run.log`, `artifacts/alpha-audit/fresh-start.json`. Він доводить, що корисну основу цих будівель не потрібно створювати заново.
+The evidence is: `build/audit-content-build.log`, `build/audit-building-panels.log`, `build/audit-economy-tests.log`, `artifacts/feature-audit/buildings/building-render-report.json`; All the images of the 20 panels and `choose-research.png` are in the same artifact directory.
 
-## Усі 20 будівель
+Further verification after this audit: new World(70421,10), without importing finished buildings or supplies, through public teams passed Forestry → board/wood, Career → clay, Workshop → brick, Building → II, Farm → grain, Mill → flour, Kitchen → bread. Save/load and the following 40 ticks gave the same checksum; All 10 people are alive from 100 HP. It's about 8 minutes of simulation with automatic 66 collection commands. The enhancement is caused by API, so this result does not prove accessibility because of UI or convenience to the novice. The evidence is: `.deps/alpha_fresh_start_probe.cpp`, `build/alpha-fresh-start-run.log`, `artifacts/alpha-audit/fresh-start.json`. He proves that the useful foundation of these buildings does not need to be rebuilt.
 
-Каталог і ціни: `include/ribterra/building_catalog.hpp:11`. Дозвіл будувати 19 типів: `src/sim/world.cpp:1190`. Цикл UI не відсіює незавершені типи: `src/ui/game_ui.cpp:950–990`. Повідомлення «не реалізовано» гравець бачить уже в інспекторі після витрати ресурсів.
+## All 20 buildings
 
-| Будівля | Фактична функція | Прогалина / висновок для демо |
+Catalogue and prices: `include/ribterra/building_catalog.hpp:11`. Permission to build 19 types: `src/sim/world.cpp:1190`. The UI cycle does not replace the unfinished types: `src/ui/game_ui.cpp:950–990`. The message is not implemented. The player already sees it in the inspector after the resource is spent.
+
+| Building | The actual function | Gap / conclusion for the demo |
 |---|---|---|
-| Табір | Автоматичний старт, склад 10 000, запаси, точка прибуття людей; також лічильник 10 місць | Залишити. Реальна користь є незалежно від житла |
-| Будинок | Додає 6 до показника житла | Немає впливу на прийом людей, здоров'я, роботу чи безпритульність. Потрібен один реальний наслідок: житло обмежує поповнення |
-| Ферма | Призначений фермер прямо створює готову їжу; окремі замовлення створюють зерно, овочі й м'ясо | Два паралельні способи роботи без чіткої ролі. Зберегти базове харчування; складніший шлях має давати вимірювану перевагу при розширенні |
-| Склад | Фізичне сховище 5 000; точка доставки | Залишити. Панель показує загальні запаси поселення, не інвентар конкретного складу |
-| Шахта | Прохід між шарами, розчищення 3×3 під землею, відкриття території | Залишити існуючу функцію. Видобувається звичайний камінь, не метали |
-| Майстерня | Рецепти цегли, інструментів і списів | Залишити; підключити наявні покращення як споживач цегли. Відкласти тільки рецепти інструментів і списів без доступного застосування |
-| Дім релігії | Технічний виняток для нічної роботи на його клітинці | Немає служби, відвідувачів, віри або впливу на людей; виняток не має корисного завдання. Прибрати з демо-каталогу |
-| Паб | Такий самий нічний виняток; показ загального запасу їжі | Немає відвідування, бюджету їжі або соціального ефекту. Прибрати з демо-каталогу |
-| Дім картографа | Оформлена будівля й інспектор | Немає карти, мінікарти, маркерів або бонусу огляду. Прибрати з демо-каталогу |
-| Дім досліджень | Відкриває картки Research II | Немає запуску, прогресу, результату чи розблокування. Прибрати з демо-каталогу |
-| Плавильня | Зображення, дим, освітлення | Немає руди, металів і рецептів. Прибрати з демо-каталогу |
-| Рибальська станція | Біля води, за замовленням і з працівником дає 6 риби | Працює; риба потребує кухні. Не пасивний генератор готової їжі |
-| Бібліотека | Оформлена будівля й інспектор | Немає навчання, курсів або бонусу навичок. Прибрати з демо-каталогу |
-| Військовий дім | Оформлена будівля й інспектор | Немає тренування, формування загонів чи видачі зброї. Прибрати з демо-каталогу |
-| Міст | Завершені секції роблять воду прохідною | Залишити; є окремі перевірки переходу та збереження |
-| Лісопилка | Дерево → дошки або дрова | Залишити обидва рецепти: дрова для кухні/цегли, дошки для покращень |
-| Млин | Зерно → борошно | Залишити, якщо основний цикл використовує приготування їжі |
-| Кухня | Чотири види сировини + дрова → готова їжа | Працює. Її необхідність підриває пряме виробництво Food фермером |
-| Глиняний кар'єр | Працівник за замовленням виробляє глину | Залишити: глина → цегла → наявні покращення. Розрив закривається їх доступним UI |
-| Дорога | На готовій дорожній клітинці рух ×1,35 | Працює за кодом; окремого тесту бонусу швидкості не знайдено |
+| Camp | Automatic start, 10 000-capacity stockpile, starting supplies, and resident arrival point; also the 10-seat counter | Retain. It provides real value independently of housing |
+| The house | Adds 6 to the housing index | It has no effect on people's reception, health, employment, or homelessness. One real consequence is that housing limits the replenishment |
+| Farm | The assigned farmer directly creates the food. Individual orders create grain, vegetables and meat | Two parallel ways of working without a clear role. Save the basic food; The more complicated path should give a measured advantage in the expansion |
+| Stockpile | Physical storage with 5 000 capacity; delivery point | Retain. The panel shows the settlement's total inventory, not the inventory of one specific stockpile |
+| Mine | Passage between layers, clearing a 3×3 underground area, and revealing territory | Retain the existing function. It produces ordinary stone, not metal |
+| Workshop | Recipes for bricks, tools, and spears | Retain; connect the existing upgrades as a consumer of bricks. Defer only tool and spear recipes that have no available use |
+| Houses of Religion | Technical exception for night work in his cell | No services, visitors, faith or influence on people; The exception is not a useful function. Delete from the demo |
+| The pub | Such a nightly exception; the total food supply | There's no attendance, no food budget, no social impact. Delete from the demo |
+| The house of the cartographer | Decorated building and inspector | There are no maps, minicards, markers or bonus reviews. Delete from the demo |
+| Research Houses | Opening the Research card II | There is no launch, progress, result or unlock. Delete from the demo |
+| The shipping works | The following is a list of the activities that are planned: | There are no minerals, metals, and recipes. Delete from the demo |
+| Fishery station | By the water, on order and with the worker gives 6 fish | It works; Fish needs a kitchen. Non-passive food generator |
+| The library | Decorated building and inspector | There's no training, no training or a skill bonus. Delete from the demo |
+| The Military House | Decorated building and inspector | There's no training, no formation of convoys, no delivery of weapons. Delete from the demo |
+| Bridge | The finished sections make the water flowing | Leave it alone; There are separate transition and retention checks. |
+| The Forest | Wood → board or wood | Leave both recipes: wood for the kitchen/ bricks, improvement tablets |
+| Mill | Grain → flour | Leave if the main cycle uses cooking |
+| The kitchen | Four types of raw materials + wood → ready food | It works. Its necessity undermines direct food production by the farmer |
+| Clay Quarry | A worker produces clay on request | Retain: clay → brick → existing upgrades. Their available UI closes the gap |
+| The road | On the ready-made road cell motion ×1,35 | It works by code; The individual test bonus speed was not found |
 
-Основні ефекти: `src/sim/world.cpp:907,1403,1500,1545,1589`; `src/sim/world_settlement.inc:18`; `src/sim/world_economy.inc:17–95`. Відсутні функції прямо описані в `src/ui/game_ui_buildings.inc:125–131`.
+The main effects: `src/sim/world.cpp:907,1403,1500,1545,1589`; `src/sim/world_settlement.inc:18`; `src/sim/world_economy.inc:17–95`. The missing functions are directly described in `src/ui/game_ui_buildings.inc:125–131`.
 
-Будинок особливо важливий: `World::housing()` рахує місця, але runtime-споживачі — snapshot і UI (`src/server/game_server.cpp:771`, `src/ui/game_ui_buildings.inc:121–122`, `src/client/view.cpp:1167`). Recruitment у `src/sim/world.cpp:1139–1153` це число не читає. Перевірка `+6 housing` не доводить користі житла.
+The building is particularly important: `World::housing()` counts places, but runtime-consumers — snapshot and UI (`src/server/game_server.cpp:771`, `src/ui/game_ui_buildings.inc:121–122`, `src/client/view.cpp:1167`. Recruitment in `src/sim/world.cpp:1139–1153` doesn't read this number. The `+6 housing` test does not prove the benefits of housing.
 
-## Ресурси: джерела і споживачі
+## Resources: sources and consumers
 
-Повний перелік: `include/ribterra/world.hpp:209`, `include/ribterra/economy.hpp:9–23`. Тут описаний поточний стан, а не запропонований скорочений каталог.
+The full list: `include/ribterra/world.hpp:209`, `include/ribterra/economy.hpp:9–23`. This is a current state of affairs, not a proposed shortened catalog.
 
-| Ресурс | Звідки надходить | Куди витрачається зараз |
+| The following is the list of resources: | Where It Comes From | Where is it being spent now? |
 |---|---|---|
-| Дерево | Старт; рубка лісу | Будівництво, дошки, дрова |
-| Камінь | Старт; каміння на поверхні та підземний видобуток | Будівництво, інструменти, списи |
-| Готова їжа / Food | Старт; збір на траві; автоматичний фермер; кухня | Голод, поповнення населення, будівництво ферми/пабу |
-| Дошки | Лісопилка | Інструменти/списи. Покращення — лише недоступний через UI додатковий споживач |
-| Глина | Глиняний кар'єр | Цегла; вся гілка закінчується недоступним покращенням |
-| Цегла | Майстерня: глина + дрова | Лише симуляційні покращення, які гравець зараз не може запустити |
-| Зерно | Замовлення на фермі | Борошно; м'ясо через тваринництво |
-| Овочі | Замовлення на фермі | Страва на кухні |
-| Риба | Рибальська станція | Страва на кухні |
-| М'ясо | Тваринництво на фермі; старе полювання | Страва на кухні. Після видалення панелі джерело через ферму залишається |
-| Борошно | Млин | Хліб на кухні |
-| Інструменти | Майстерня: дошки + камінь | Немає екіпірування, споживання, бонусу чи іншого застосування |
-| Дрова | Лісопилка | Всі страви кухні та цегла. Опалення будинків не реалізоване |
-| Шкури | Старі активні полювання; нове полювання з UI не запускається | Немає споживача |
-| Списи | Майстерня | У симуляції споряджають експедиції й впливають на бій із тваринами; доступного нового наказу спорядити/почати експедицію після видалення панелі немає |
+| The tree | Starting cutting the forest | Building, board, wood |
+| The Stone | Starting surface rock and underground mining | Building, tools, records |
+| Ready food | Starting harvesting on the grass; automatic farmer; The kitchen | Hunger, population growth, farm building/pub |
+| Boards | The Forest | The tools/the lists. Improvement — only not available through UI additional consumer |
+| Clay | Clay Quarry | Brick; the entire branch currently ends at an unavailable upgrade |
+| The brick | Workshop: clay + wood | Only the simulation enhancements that the player can't run now |
+| Grain | Order at the farm | It's a little bit of a mess. meat through animal husbandry |
+| Fruits | Order at the farm | Food in the Kitchen |
+| Fish | Fishery station | Food in the Kitchen |
+| Meat | Farming on a farm; old hunting | Food in the kitchen. After removing the panel, the source through the farm remains. |
+| The Boxer | Mill | Bread in the Kitchen |
+| Instruments | Workshop: boards + stones | No crew, consumption, bonus or other use |
+| Wood | The Forest | All dishes are kitchen and brick. Building burnings not realized |
+| Leather | Old active hunting; new hunting with UI not launched | No consumer |
+| Listings | Workshop | The simulations are to organize expeditions and influence animal combat. No new order available to order/start the expedition after the panel is removed |
 
-Вугілля, залізо, мідь, золото, срібло, сталь, кристали — ще сім назв на HUD із постійним нулем; їх немає в `ItemKind`. Підказка визнає, що виробництво недоступне (`assets/ui/hud.rml:2`, `src/ui/game_ui.cpp:1093–1102`). Це не приховані родовища, які треба знайти.
+Coal, iron, copper, gold, silver, steel, crystal are seven more names on HUD with a constant zero; They're not in `ItemKind`. The evidence acknowledges that production is unavailable (`assets/ui/hud.rml:2`, `src/ui/game_ui.cpp:1093–1102`). These are not hidden deposits to be found.
 
-Панель запасів показує три старі матеріали, а всі 15 доступні в окремій панелі виробництва (`src/ui/game_ui.cpp:1128–1152`, `src/ui/game_ui_economy.inc:14–17`). Тому гравець може виготовити предмет і не знайти його у звичному списку запасів.
+The inventory panel shows three old materials, and all 15 are available in a separate production panel (`src/ui/game_ui.cpp:1128–1152`, `src/ui/game_ui_economy.inc:14–17`). So the player can make an item and not find it in the usual inventory list.
 
-## Усі 15 рецептів
+## All the 15 recipes
 
-Усі доступні в інспекторі відповідної завершеної будівлі для нації №1. Час — лише праця при Level I, 20 ticks/s; без дороги, очікування, ночі та доставки. «Без сировини» все одно вимагає працівника.
+All are available at the inspector of the respective completed building for the nation No1. Time — only work at Level I, 20 ticks/s; No roads, no waiting, no nights, no shipping. Without raw materials, it still requires a worker.
 
-| Будівля / рецепт | Вхід | Вихід | Час |
+| Building / recipe | The entrance | The Exit | Time is now |
 |---|---|---|---:|
-| Ферма: зерно | Без сировини | 8 зерна | 20 с |
-| Ферма: овочі | Без сировини | 8 овочів | 20 с |
-| Рибальська станція | Без сировини | 6 риби | 20 с |
-| Лісопилка: дошки | 3 дерева | 6 дощок | 15 с |
-| Млин | 4 зерна | 4 борошна | 15 с |
-| Кухня: хліб | 3 борошна + 1 дров | 8 їжі | 15 с |
-| Кухня: рибна страва | 3 риби + 1 дров | 8 їжі | 15 с |
-| Кухня: м'ясна страва | 3 м'яса + 1 дров | 8 їжі | 15 с |
-| Майстерня: цегла | 4 глини + 1 дров | 4 цегли | 20 с |
-| Майстерня: інструменти | 2 дощок + 2 каменю | 2 інструменти | 20 с |
-| Лісопилка: дрова | 2 дерева | 6 дров | 10 с |
-| Глиняний кар'єр | Без сировини | 6 глини | 20 с |
-| Ферма: тваринництво | 6 зерна | 4 м'яса | 30 с |
-| Кухня: овочева страва | 4 овочів + 1 дров | 8 їжі | 15 с |
-| Майстерня: спис | 2 дощок + 1 каменю | 1 спис | 15 с |
+| Farm: grain | No raw materials | 8 grain | 20 c |
+| Farm: vegetables | No raw materials | 8 vegetables | 20 c |
+| Fishery station | No raw materials | 6 fish | 20 c |
+| Sawmill: boards | 3 wood | 6 boards | 15 s |
+| Mill | 4 grain | 4 flour | 15 c |
+| The kitchen: bread | 3 flour + 1 wood | 8 food | 15 c |
+| Kitchen: fish dishes | 3 fish + 1 wood | 8 food | 15 c |
+| The kitchen: meat dishes | 3 meat + 1 wood | 8 food | 15 c |
+| Workshop: brick | 4 clay + 1 wood | 4 bricks | 20 c |
+| Workshop: tools | 2 boards + 2 stone | 2 tools | 20 s |
+| Wood: wood | 2 the tree | 6 Wood | 10 c |
+| Clay Quarry | No raw materials | 6 clay | 20 s |
+| Farm: livestock | 6 grain | 4 meat | 30 c |
+| The kitchen: vegetable dishes | 4 vegetables + 1 wood | 8 food | 15 c |
+| Workshop: spear | 2 boards + 1 stone | 1 spear | 15 s |
 
-Рецепти справді витрачають матеріали й створюють фізичний вантаж (`src/sim/world_economy.inc:43–95`); `tests/economy_tests.cpp:28–41` перевіряє кожний. Цей тест не перевіряє, чи потрібен результат у грі.
+Recipes really consume materials and create a physical burden (`src/sim/world_economy.inc:43–95`); `tests/economy_tests.cpp:28–41` checks every one. This test doesn't test whether a result is needed in the game.
 
-Дерево, камінь і збирана на місцевості їжа скінченні; відновлення не знайдено. Зерно, овочі, риба, глина й готова їжа старого фермерського шляху відновлювані. Це не вимога додати регенерацію до демо: для першої сесії достатньо перевірити наявні запаси та темп.
+Wood, stone and gathered in the place of the food of the slaughter; No recovery was found. Grain, vegetables, fish, clay, and ready-to-eat food from the old farming routes are being restored. It's not a requirement to add regeneration to the demo: for the first session, you just need to check the available inventory and the pace.
 
-## Харчовий цикл: основна суперечність
+## The Food Cycle: The Main Contradiction
 
-Автоматичний Farmer створює 8 готової Food без млина, кухні та дров. Замовлення на тій самій фермі створюють сировину для довшого ланцюга. Тому є технічно робочий виробничий ланцюг, який гравець може обійти іншим способом роботи тієї самої споруди.
+Automatic Farmer creates 8 ready-made Food without mill, kitchen, and wood. Orders on the same farm create raw material for the long chain. So there's a technically working production chain that the player can go through in a different way of working the same structure.
 
-У стандартній новій грі 10 мешканців і 100 Food. За повних порцій вони споживають 10 Food кожні 200 ticks, тобто кожні 10 секунд. Без нового надходження це приблизно 100 секунд до вичерпання запасу, не до смерті. Одна ферма має максимум двох автоматичних фермерів: номінально 16 Food за 20 секунд проти споживання 20. Це ще до поправки на навички, дорогу, доставку й ніч. Отже припущення «поставив одну ферму — забезпечив стартове село» хибне.
+In the standard new game 10 Residents and 100 Food. For full portions they consume 10 Food every 200 ticks, that is, every 10 second. Without new arrival, it's about 100 seconds before the stock runs out, not death. One farm has a maximum of two automatic farmers: nominal 16 Food per 20 seconds versus consumption 20. It's about adjusting to skills, road, delivery and night. So the assumption that he set up a farm provided the start-up village was wrong.
 
-Докази: `include/ribterra/world.hpp:16,31–33,348`, `src/sim/world_professions.inc:326–341`, `src/sim/world.cpp:1500–1517,1572–1583`. Для демо спочатку обрати одну харчову модель, потім балансувати. Додавати нові продукти до узгодження цих правил не потрібно.
+The evidence is: `include/ribterra/world.hpp:16,31–33,348`, `src/sim/world_professions.inc:326–341`, `src/sim/world.cpp:1500–1517,1572–1583`. For the demo, first select one food model, then balance. It is not necessary to add new products to these rules.
 
-## Професії й навички
+## Professions and skills
 
-Професії: `include/ribterra/world.hpp:47`, видимість UI — `src/ui/game_ui_professions.inc:110`, виконавці — `src/sim/world_professions.inc`.
+Professions: `include/ribterra/world.hpp:47`, visibility UI — `src/ui/game_ui_professions.inc:110`, performers `src/sim/world_professions.inc`.
 
-| Професія | Доступна у виборі | Що реально робить призначення |
+| The profession | Available in select | What Really Makes a Purpose |
 |---|---|---|
-| Без призначення | Так | Підхоплює автоматичні будівництво й перевезення; дозволяє ручні накази |
-| Лісоруб | Так | Автоматичну рубку не запускає; ручна рубка працює й без цієї професії |
-| Шахтар | Так | Автоматичний видобуток не запускає; ручний видобуток працює й без цієї професії |
-| Збирач | Так | Автоматичний збір не запускає; ручний збір працює й без цієї професії |
-| Будівельник | Так | Автоматична робота на точно вибраному будмайданчику; без місця роботи може простоювати |
-| Носій | Так | Логістичні завдання; обмеження робочого місця стосується клітинки джерела вантажу |
-| Фермер | Так | Автоматична робота на фермі, до двох осіб; нині виробляє готову їжу |
-| Коваль | Ні | Значення зберігається, виконавця немає |
-| Медик | Ні | Значення зберігається, лікування немає |
-| Охоронець | Ні | Значення зберігається, виконавця немає; не керує самообороною від тварин |
+| No assignment | Yes | Supports automatic construction and hauling; allows manual orders |
+| Woodcutter | Yes | Does not start automatic cutting; manual cutting works without this profession |
+| Miner | Yes | Does not start automatic mining; manual mining works without this profession |
+| Forager | Yes | Does not start automatic gathering; manual gathering works without this profession |
+| Builder | Yes | Automatically works at a specifically selected construction site; may remain idle without a workplace |
+| Carrier | Yes | Performs logistics tasks; the workplace restriction applies to the cargo source cell |
+| Farmer | Yes | Automatically works at a farm, up to two residents; currently produces finished food |
+| Smith | No | The value is preserved, but no worker behavior exists |
+| Medic | No | The value is preserved, but treatment does not exist |
+| Guard | No | The value is preserved, but no worker behavior exists; it does not control self-defense against animals |
 
-Ручні рух і збір не потребують відповідної професії. Заборона автовидобутку явна у `world_professions.inc:67`, дозвілля для трьох видимих професій — `:383`, відсутні виконавці решти — `:390`. Це не твердження, що мешканець взагалі не здатний рубати дерево.
+Hand movements and assemblies do not require a suitable profession. The ban on the manufacture of cars is clear in `world_professions.inc:67`, leisure for three visible professions — `:383`, absent performers of the rest `:390`. This is not to say that a resident is incapable of cutting down a tree.
 
-| Навичка, всі 8 показані UI | Ефект і досвід у звичайній грі |
+| The pattern, all 8 shown UI | Effect and experience in a regular game |
 |---|---|
-| Рубка | Працюють у ручній рубці |
-| Видобуток | Працюють у ручному видобутку |
-| Землеробство | Працюють у зборі їжі та старій автоматичній роботі Farmer |
-| Будівництво | Працюють у фізичному будівництві |
-| Перевезення | Немає нарахування XP чи впливу на перевезення |
-| Ковальство | Немає, зокрема й для рецептів Майстерні |
-| Медицина | Немає |
-| Бій | Немає; шкода від бойових дій задається іншими правилами |
+| The cut | They work in hand-held machines |
+| Mining | Working in a hand-held mining operation |
+| Agriculture | Working in food harvesting and old automated Farmer |
+| Construction | They work in physical construction |
+| Transportation | No accounting XP or impact on transportation |
+| Coal mining | There is no recipe mastery, in particular. |
+| Medicine | There is no |
+| Fight | There is no; The damage caused by the war is determined by other rules. |
 
-Докази: `include/ribterra/skills.hpp:8–19`, `src/ui/game_ui_professions.inc:60`, `src/sim/world.cpp:1403,1432,1460,1509,1518`. Здібності в breakdown зберігаються, але звичайне створення людей задає нулі; генератора ігрових здібностей не знайдено.
+The evidence is: `include/ribterra/skills.hpp:8–19`, `src/ui/game_ui_professions.inc:60`, `src/sim/world.cpp:1403,1432,1460,1509,1518`. The ability to break down is retained, but normal human creation is zero. The game's power generator is missing.
 
-Рецептурна економіка — окремий шлях: `world_economy_api.inc:29–31` стирає призначення професії; `world_economy.inc:84–87` додає рівно один tick роботи й не викликає ані modifier, ані useful_work. UI обирає першого вільного працівника (`client_production_group.inc:24–38`). Тому прокачаний фермер не отримує бонусу на замовленні зерна. У демо не слід обіцяти повну професійну економіку або розробляти її всю заради заповнення порожніх рядків.
+Receptive economics — separate path: `world_economy_api.inc:29–31` erases the purpose of the profession; `world_economy.inc:84–87` adds exactly one tick of work and does not cause either a modifier or useful_work. UI selects the first free worker (`client_production_group.inc:24–38`). So a farmer who is a farmer is not given a bonus for ordering grain. A demo should not promise a full professional economy or develop it all to fill in the blanks.
 
-## Решта показаних систем
+## Other systems shown
 
-| Система | Поточний стан | Дія перед демо |
+| The system | Current state | Action in front of the demo |
 |---|---|---|
-| Дослідження | 20 карток II, запуск вимкнений; немає симуляції | Сховати весь preview, не будувати дерево технологій |
-| Покращення | API має House II, Stockpile II, Workshop II; UI не створює data-upgrade кнопок | Підключити до альфи без Research. House II зв'язати з населенням; Workshop II дає швидкість. Stockpile II показувати після доведення користі місткості |
-| Невдоволення | Лічильник 0–100, немає впливу на продуктивність, прийом людей чи події | Прибрати показник і відповідні примусові рішення з демо; не додавати бунти/нову соціальну систему |
-| Поповнення населення | 50 Food → через 2 хв молодий мешканець → ще через 3 хв дорослий | Працює, але потребує обмеження житлом і коректного підрахунку живих |
-| Молодь | Віковий таймер і заборона праці працюють; примусова праця додає лише косметичне невдоволення | Залишити дорослішання, відкласти примусову працю |
-| Ніч | Звичайна робота зупиняється; є дозвіл примусової зміни | Залишити природний розклад; не рекламувати удавану ціну примусових рішень |
-| Здоров'я й голод | Споживання Food, накопичення голоду, втрата HP/смерть працюють; лікування немає | Перевірити темп. Не обіцяти медика/лікарню; рахувати живих окремо від записів померлих |
-| Сезони | Календар і частина правил працюють; узимку голод без їжі зростає швидше | Не називати всю систему заглушкою; перевіряти конкретні обіцянки |
-| Зима на фермі | UI обіцяє зупинку росту; обидва фермерські шляхи працюють без цієї сезонної перевірки | Прибрати неправдивий текст; складну агрономію відкласти |
-| Температура | Постійні +18 °C, без впливу на гру | Прибрати декоративний показник |
-| Resize Field / Storage Rules / Recall | Вимкнені елементи в панелях | Прибрати недоступні дії, не реалізовувати їх для заповнення UI |
-| Інспектори будівель | Жорстко записані англійські назви/описи незалежно від вибраної локалі | Перекласти тільки залишений у демо інтерфейс через наявний механізм |
-| Довідка / навчання | Довідка пояснює рух/виділення/шари. Три кроки tutorial існують лише в legacy HUD, який реальний клієнт вимикає | Короткі кроки перенести у RmlUi, продовжити до доставки, житла й покращення; не створювати сюжетний рушій |
-| Лобі, чат, пауза, швидкість, збереження | Мають обробники й виконавчі шляхи | Це не порожні кнопки; потрібне приймання нового світу й двох фізичних ПК |
-| Боти | Є обмежена логіка: один будинок/ферма, збір ресурсів, фермер; у спільній команді обмеження керування | Не називати повноцінним стратегічним AI; не включати ботів у критерій першого демо |
-| Налаштування | Мова і масштаб UI працюють | Повного меню графіки/аудіо/перепризначення клавіш немає; це відсутні можливості, а не зламані наявні кнопки |
+| Research | 20 card II, start off; There's no simulation. | Hiding the whole preview, not building a tech tree |
+| Improvements | API has House II, Stockpile II, Workshop II; UI does not create data upgrade buttons | Connect to Alpha without Research. House II to connect with the population; The workshop II gives speed. Stockpile II to show after the yield yield is proven |
+| Dissatisfaction | Calculator 0–100, has no effect on productivity, reception of people or events | Select the indicator and the corresponding forced decisions from the demo; Not adding a riot/new social system |
+| Population growth | 50 Food → through 2 minute young resident → still through 3 minute adult | It works, but it requires housing restrictions and a proper count of the living |
+| Youth | The age timer and the ban work. Forced labor adds only cosmetic dissatisfaction | Forced labor and adulthood |
+| The night | Normal work is stopped; There is a permit for forced change. | To maintain natural decomposition; Do not advertise the high price of forced decisions |
+| Health and Hunger | Food consumption, accumulation of hunger, loss HP/death work; There is no cure. | Check the pace. Do not promise to the doctor/physician; Count the living apart from the records of the dead |
+| Seasons | The calendar and some of the rules work; In winter, hunger without food grows faster. | Not to call the whole system a silent one; to check specific promises |
+| Winter on the Farm | UI promises to stop growth; Both farming routes work without this seasonal check. | Select the wrong text; The complex agronomy of postponing |
+| The temperature | Constant +18 °C, without affecting the game | Select a decorative indicator |
+| Resize Field / Storage Rules / Recall | The elements in the panels are turned off | Select inaccessible actions, not implement them to complete UI |
+| Building inspectors | Strictly written English names/descriptions regardless of the chosen locality | Translate only left in the demo interface due to the existing mechanism |
+| Evidence/Teaching | The evidence explains the movement/separation/ball. The three-step tutorial exists only in legacy HUD, which the real client turns off | Short steps to move into RmlUi, continue to delivery, housing and improvement; Don't create a plot line. |
+| Lobby, chat, pause, speed, storage | They have processors and execution paths | These are not empty buttons; We need a new world and two physical PCs. |
+| Boots | There's a limited logic: one house/farm, a collection of resources, a farmer; in the joint command control limit | Not to be confused with full strategic AI; Not including boots in the first demo criteria |
+| The setting | Language and scale UI work | There is no full menu of the graphics/audio/key re-designation; It's the lack of capabilities, not the broken buttons that are available. |
 
-Невдоволення читається в runtime тільки UI: `include/ribterra/settlement.hpp:23`, `src/ui/game_ui_settlement.inc:21–22`. Прийом людей: `src/sim/world.cpp:1139–1164`; вік: `src/sim/world_settlement.inc:23–48`. Мертві записи лишаються в масиві мешканців; його розмір використовується як населення/ліміт. Боти: `src/server/game_server_lobby.inc:64–103`.
+The dissatisfaction is read in runtime only UI: `include/ribterra/settlement.hpp:23`, `src/ui/game_ui_settlement.inc:21–22`. The number of people: `src/sim/world.cpp:1139–1164`; age: `src/sim/world_settlement.inc:23–48`. The dead record remains in the mass of the inhabitants; Its size is used as population/limit. Boots: `src/server/game_server_lobby.inc:64–103`.
 
-Кнопка Шахти «Enter Underground» перемикає видимий шар; це не наказ мешканцям перейти. Її текст про «mining expedition» треба узгодити з фактичним керуванням (`game_ui_buildings.inc:51–63,124`). Видалена панель експедицій не повинна повертатися для виправлення цього тексту.
+The "Enter Underground" button switches the visible layer. It does not order residents to change layers. Its “mining expedition” text should match the actual controls (`game_ui_buildings.inc:51–63,124`). The remote expedition panel should not be returned to correct this text.
 
-Реальний tutorial: `src/client/view.cpp:1196–1211` малює його тільки при legacy HUD, а `src/client/main.cpp:575` викликає compose з false. RmlUi tutorial_step не використовує. Частина GameView::set_status так само малюється лише старим HUD (`view.cpp:1256–1259`), тому результат окремої UI-дії може не отримати зрозумілого повідомлення. Це інтеграційні прогалини, яких не видно з перевірки enum чи стану tutorial у тесті.
+Real tutorial: `src/client/view.cpp:1196–1211` draws it only with legacy HUD, and `src/client/main.cpp:575` causes compose with false. RmlUi tutorial_step does not use. Part GameView::set_status is also only drawn by the old HUD (`view.cpp:1256–1259`), so the result of a single UI- action may not receive a clear message. These are integration gaps that you can't see from enum checking or tutorial status testing.
 
-Збереження: локальна гра має ручний Save/Load; автоматичний host save є кожні 60 с (`include/ribterra/network_session.hpp:7–13`), але результат виклику в `src/net/network_session.cpp:297–301` ігнорується. До зовнішнього демо потрібне локальне періодичне збереження та видима помилка збереження хоста. `packaging/README.md` ще містить інструкції до вже видаленої панелі; це треба виправити у пакеті, не тільки в документах розробника.
+Note: the local game has a hand Save/Load; The automatic host save is every 60 s (`include/ribterra/network_session.hpp:7–13`), but the result of the call in `src/net/network_session.cpp:297–301` is ignored. An external demo requires local periodic storage and a visible error in the host's storage. `packaging/README.md` still contains instructions for the already deleted panel; It's a problem that needs to be fixed in a package, not just in the developer's documents.
 
-## Дефект кооперативного інтерфейсу
+## Co-operative interface defect
 
-`game_ui_buildings.inc:29,51,135` перевіряє `nation == 1`, а не власність поточного гравця. `game_ui_economy.inc:21` відкидає всі інші нації. `client_production_group.inc:22,26` також відкидає їхні будівлі й людей.
+`game_ui_buildings.inc:29,51,135` checks `nation == 1`, not the property of the current player. `game_ui_economy.inc:21` rejects all other nations. `client_production_group.inc:22,26` also rejects their buildings and people.
 
-Це не нормалізований ID у snapshot: сервер кладе справжні об'єкти поточної нації без перейменування (`src/server/game_server.cpp:584–598,643–645`; `include/ribterra/game_server.hpp:260`). Отже власну споруду команди №2 інспектор називає чужою, перелік її підприємств порожній, групове замовлення не стартує.
+It is not normalized ID in snapshot: the server stores actual objects of the current nation without renaming (`src/server/game_server.cpp:584–598,643–645`; `include/ribterra/game_server.hpp:260`). So the inspector calls the own construction of the team No2 a foreign one, the list of its enterprises is empty, the group order does not start.
 
-Це стосується будь-якого гравця нації №2–6, не обов'язково «другого підключеного». Двоє в команді №1 оминають саме цю помилку. Після виправлення перевірити спільну команду №1, спільну команду №2 та дві різні команди як регресію авторизації. Перший демо-сценарій все одно може залишатися кооперативом однієї нації.
+This applies to any player in the No2–6 nation, not necessarily the second connected». Two in Team No1 miss this mistake. After correction, check the joint command No1, the joint command 2 and two different commands as authorization regression. The first demo scenario could still remain a one-nation cooperative.
 
-## Наслідки вже видаленої панелі
+## The results of the already deleted panel
 
-Тварини й симуляційні дані збережені. Нові полювання/експедиції через клієнтський UI недоступні; це навмисне скорочення. М'ясо через тваринництво залишається доступним. Старі активні експедиції можуть завершуватися і приносити предмети.
+Animal and simulation data are preserved. New hunting/expeditions through the client UI are not available; It's a deliberate reduction. Meat is still available because of livestock. Old active expeditions may end and bring items.
 
-Додатковий суттєвий розрив: локальний клієнт автоматично вмикає тварин (`main.cpp:581`), онлайн-хост також їх вмикає. Вовки й кабани можуть атакувати, а стара експедиція — перейти в самооборону (`world_wilderness.inc:63–119`). Тому для відкладення бойового контенту потрібно авторитетно вимкнути атаки у правилах альфи, включно зі старим станом Attacking. Самого видалення панелі недостатньо. Мешканці мають обмежену автоматичну самооборону; це не заміна керованого завершеного бойового режиму.
+An additional significant gap: the local client automatically turns off the animals (`main.cpp:581`), the online host also turns them off. Wolves and coyotes can attack, and the old expedition can go into self-defense (`world_wilderness.inc:63–119`). So to postpone the combat content, you need to authoritatively disable the attacks in alpha rules, including the old Attacking mode. Removing the panel alone is not enough. Residents have limited automatic self-defense. It's not a replacement for a regulated, complete combat regime.
 
-Старі скорочені порції досі подвоюють інтервал споживання з 200 до 400 ticks, але вимкнути їх у UI вже не можна (`world.cpp:1572`). Для підтриманих станів потрібен контрольований перехід сейва в нову копію, без втрати вантажу. Активні старі експедиції в першій альфі пропонується відхиляти з поясненням, зберігаючи вихідний файл; універсальну міграцію не включати в найближчу версію. Скінченна матриця сумісності наведена в [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md), етап 0.25.8. Приховування нових будівель/рецептів не дає права видаляти старі споруди, товари чи покращення із сейвів.
+The old reduced portions still double the consumption interval from 200 to 400 ticks, but they can no longer be disabled in the UI (`world.cpp:1572`). Supported states require a controlled migration of the save into a new copy without losing cargo. For the first alpha, active old expeditions should be rejected with an explanation while preserving the source file; universal migration is not included in the next version. The final compatibility matrix is in [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md), stage 0.25.8. Hiding new buildings or recipes does not permit removing old buildings, goods, or upgrades from saves.
 
-## Рішення для найближчих версій
+## Solutions for upcoming releases
 
-1. **0.25.8–0.25.12: внутрішні збірки для перевірки керування.** Інспектор, працівник/рецепт/доставка, повідомлення RmlUi, власність, безпечні правила альфи та підтримані сейви. До підключення покращень це не альфа для розповсюдження. Приховування порожнього UI — супутня дія.
-2. **0.26.0–0.26.2: прогресія поселення.** Доступні покращення без Research; дошки й цегла стають потрібними; житло обмежує поповнення; узгоджені режими ферми. Майстерня та кар'єр залишаються.
-3. **0.26.3–0.26.6: баланс і перша внутрішня альфа.** Старт і день/ніч; базове та вигідніше розвинене харчування; зрозуміла логістика й навчання; незалежне проходження до нового дорослого й корисного Level II; save/load. Альфа приймається у 0.26.6.
-4. **0.26.7–0.27.0: надійність і зовнішнє демо.** Автоматичне збереження з видимими помилками, двоє на фізичних ПК, reconnect/відновлення хоста, пакет і незалежні тестери. Нових систем у стабілізації не додавати.
+1. **0.25.8–0.25.12: internal assemblies for control checks.** Inspector, worker/prescription/delivery, message RmlUi, ownership, alpha safety rules and supported safes. Until the upgrade is connected, it's not an alpha to distribute. Hidden empty UI — is a side effect.
+2. **0.26.0–0.26.2: the progression of the settlement.** Improvements available without Research; And the tablets and the bricks shall be needed; the housing is restricted to replenishment; The farm's harmonized regimes. The craft and the career remain.
+3. **0.26.3–0.26.6: balance and first inner alpha.** Start and day/night; basic and more profitable food; understanding logistics and learning; independent transition to the new adult and useful Level II; save/load. Alpha is accepted in 0.26.6.
+4. **0.26.7–0.27.0: reliability and external demo.** Automatic storage with visible errors, two on physical PCs, reconnect/host recovery, package and independent testers. No new systems to be added to the stabilization.
 
-Пропонований каталог: Табір автоматично; **12 будованих типів** — Будинок, Ферма, Склад, Шахта, Майстерня, Рибальська станція, Міст, Лісопилка, Млин, Кухня, Глиняний кар'єр, Дорога. Житло й покращення повинні мати практичний наслідок до зовнішньої видачі. Сім майбутніх споруд лише приховані для нового будівництва; їхні код, арт і старі об'єкти не видаляються.
+The proposed directory: Automatically set; The building types are: **12 Building types**  Housing, Farm, Warehouse, Mine, Workshop, Fishery Station, Bridge, Mill, Kitchen, Clay quarry, Road. The grain and the improvement must have a practical effect before the external appearance. The seven future buildings are only hidden for new construction; Their code, their art, and their old objects are not deleted.
 
-Монстри, нові мінерали, дерево націй, дослідження, медицина й суспільні системи — пізніші окремі оновлення. Повний переглянутий план, вибір між базовим/складним харчуванням, критерії й межі доказів — [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md).
+Monsters, new minerals, the tree of nations, research, medicine and social systems — later individual updates. A full review plan, choice between basic/complex feeding, criteria and limits of evidence  [ALPHA_DEMO_PLAN_UA.md](ALPHA_DEMO_PLAN_UA.md).

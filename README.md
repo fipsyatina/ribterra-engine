@@ -1,322 +1,311 @@
 # Ribterra Engine
 
-**Ribterra Engine** — експериментальний рушій на C++20 для кооперативної ізометричної стратегії про поселення. Він поєднує детерміновану симуляцію, авторитетний сервер, фізичну логістику, збереження світу, direct-IP мережу, локалізований інтерфейс і власний 2D/2.5D рендерний шлях поверх SDL3.
+**Ribterra Engine** is an experimental C++20 engine for a cooperative isometric settlement strategy game. It combines deterministic simulation, an authoritative server, physical logistics, persistent worlds, direct-IP networking, localized UI, and a custom 2D/2.5D rendering path built on SDL3.
 
-Репозиторій містить актуальний зріз вихідного коду рушія та пов'язаних із ним систем гри. Він має незалежну історію Git і включає зміни та нові вихідні файли з робочої папки оригінального проєкту. Це проєкт у розробці: компоненти мають чіткі межі й окремі перевірки; стабільний сторонній SDK і повна інтеграція нового рендерного шляху в усі сцени ще потребують роботи.
+This repository is a public source snapshot of the engine and its connected game systems. It has an independent Git history and includes modified and newly created source files imported from the original working tree. The project remains under active development: its major components have defined boundaries and focused checks, while a stable third-party SDK and complete integration of the newest rendering path into every game scene remain future work.
 
-## Ідея
+## Development screenshots
 
-Ribterra будується навколо простої вимоги: одна й та сама симуляція повинна чесно працювати у локальній грі, на виділеному сервері, після збереження й завантаження та в мережевому сеансі.
-
-Гравець керує не абстрактними числами, а поселенням із конкретними мешканцями, предметами й маршрутами. Ресурс існує як фізичний стек, працівник має дійти до нього, підняти вантаж і доставити його до складу або будівельного майданчика. Сервер приймає команди на межі тактів, перевіряє право керування й видимість, а клієнт отримує лише дозволену проєкцію стану.
-
-Ця модель визначила головні технічні рішення:
-
-- фіксований детермінований крок симуляції;
-- один авторитетний `GameServer` для локальної та мережевої гри;
-- типізовані команди й відповіді `Queued`, `Applied` та `Rejected`;
-- обмежені черги, розміри повідомлень і бюджети роботи на такт;
-- транзакційне складання мережевих знімків до зміни стану клієнта;
-- версійовані FlatBuffers-схеми для мережі та збережень;
-- відокремлення симуляції від SDL, GPU, UI і транспортної бібліотеки;
-- єдиний впорядкований кадр `Frame2D` для світу, тексту та інтерфейсу.
-
-## Для кого цей репозиторій
-
-Вихідний код буде корисним:
-
-- C++-розробникам, які вивчають поділ рушія на симуляцію, сервер, протокол, транспорт, presentation і renderer;
-- авторам стратегій, colony sim та settlement sim, яким потрібні детермінований світ, фізична логістика й серверна авторитетність;
-- розробникам мережевих ігор, які досліджують direct-IP сесії, reconnect, deduplication команд, full/delta snapshots і фільтрацію видимого стану;
-- розробникам графіки, яким цікаві SDL_GPU, HLSL, ізометрична композиція, матеріали, тіні, атмосфера, вода й програмні діагностичні сцени;
-- студентам і викладачам для розбору C++20, CMake, vcpkg, FlatBuffers, ECS, тестування та інструментів відтворюваності;
-- майбутнім учасникам Ribterra, які хочуть зрозуміти чинні контракти перед зміною коду.
-
-Публічний доступ до репозиторію сам по собі не надає права повторно використовувати або поширювати код та ігрові матеріали. Поточний стан ліцензування описано в розділі [Ліцензування](#ліцензування).
-
-## Поточний стан
-
-Рушій перебуває на етапі складання перевірених компонентів у єдиний production-шлях гри.
-
-Реалізована основа охоплює:
-
-- C++20-модулі `Foundation`, `SimCore`, `GameServer`, `Protocol`, `NetTransport` і `NetworkSession`;
-- графічний клієнт, виділений сервер, мережеву пробу та headless simulation runner;
-- двошаровий світ Surface/Mine, chunks, мешканців, будівлі, ресурси, логістику, професії, навички й ручні накази;
-- версійовані збереження, атомарний запис файлів, міграційні й schema-conformance перевірки;
-- full/delta snapshots, multipart assembly, reconnect і direct-IP сесію;
-- SDL_GPU renderer, HLSL pipeline, текст, атласи, RmlUi та п'ять каталогів локалізації;
-- окремі графічні компоненти для матеріалів, HDR-композиції, локального й небесного освітлення, контактних і sky-тіней, атмосфери та води;
-- CTest-набори, headless benchmarks, software-rendered UI checks і спеціалізовані native probes.
-
-Водночас цей репозиторій не заявляє, що:
-
-- поточний зріз пройшов нову повну збірку й увесь CTest без помилок;
-- усі критерії приймання рушія E01–E17 закриті;
-- Dynamic/FullFX став стандартним шляхом кожної ігрової сцени;
-- підтверджено цільову продуктивність повної сцени або заявлені бюджети GPU/VRAM;
-- виконано актуальну перевірку кооперативу на двох фізичних ПК;
-- код уже є незалежним від Ribterra універсальним рушієм.
-
-Для цього публічного snapshot не виконували нову повну збірку. Походження, перелік файлів, SHA-256 і точні виключення зафіксовано в [`docs/SOURCE_SNAPSHOT_2026_10_12.json`](docs/SOURCE_SNAPSHOT_2026_10_12.json).
-
-Детальний актуальний аудит міститься в [`docs/ENGINE_GAME_STATUS_2026_10_08_UA.md`](docs/ENGINE_GAME_STATUS_2026_10_08_UA.md), а вимоги й незакриті критерії — у [`docs/ENGINE_REQUIREMENTS.md`](docs/ENGINE_REQUIREMENTS.md).
-
-## Технології
-
-| Технологія | Де й навіщо використовується |
+| Darker scene lighting | Brighter scene lighting |
 |---|---|
-| **C++20** | Основна мова симуляції, сервера, мережі, presentation, renderer та інструментів. CMake забороняє compiler extensions і вмикає суворі попередження (`/W4 /permissive-` для MSVC, `-Wall -Wextra -Wpedantic` для GCC/Clang). |
-| **CMake 3.25+ і Ninja** | Описує межі бібліотек та executable targets, генерує FlatBuffers-заголовки, компілює шейдери, реєструє CTest і встановлює runtime-пакет. |
-| **vcpkg manifest mode** | Відтворювано підтягує залежності з baseline `04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4`; renderer-пакети підключаються окремою feature `renderer`. |
-| **Python 3** | Генерує таблицю балансу навичок, готує та перевіряє ассети, тестує контракти шейдерів і запускає частину evidence/network scenarios. |
-| **SDL3 3.4.16 / SDL_GPU** | Створює Windows-вікно, обробляє ввід і керує GPU-ресурсами та проходами рендерера. Production-запуск Windows запитує Direct3D 12; software adapter використовується явно для автоматичних перевірок. |
-| **SDL_ttf 3.2.2 і FreeType** | Растеризують текст і перевіряють покриття потрібних гліфів у staged fonts. |
-| **RmlUi 6.3** | Відповідає за меню та HUD. `GameUI` перетворює геометрію RmlUi на впорядковані команди `Frame2D`, не отримуючи влади над симуляцією. |
-| **ICU 78.3** | Форматує локалізовані повідомлення, named arguments і plural forms для English, української, русский, polski та español. |
-| **HLSL, SDL_shadercross, DXC і SPIRV-Cross** | Build-time pipeline компілює шейдери, створює DXIL, reflection JSON і manifest. Компілятори шейдерів не входять до runtime-пакета. |
-| **FlatBuffers 25.12.19** | Описує wire frames, network snapshots і payload збереження. Baseline schemas використовуються для перевірки сумісності. |
-| **zstd 1.5.7** | Стискає збереження й мережеві payloads із перевіркою меж до виділення пам'яті та застосування стану. |
-| **GameNetworkingSockets 1.6.0** | Реалізує direct-IP transport, connection lifetime і надійну доставку для окремих логічних потоків команд, чату та snapshots. |
-| **OpenSSL 3.6.4** | SHA-256/криптографічні операції та HMAC-підтвердження пароля під час challenge/join без передавання пароля у власному пакеті Ribterra. |
-| **EnTT 3.16.0** | Зберігає authoritative ECS-компоненти мешканців та пов'язаного стану в `SimCore`. Стабільні ID й відсортовані DTO підтримують детермінований порядок. |
-| **nlohmann/json 3.12.0** | Читає конфігураційні, asset, diagnostic і localization-related JSON дані поза бінарними FlatBuffers-контрактами. |
-| **libpng** | Завантажує й експортує PNG для texture/atlas pipeline та графічних проб. |
-| **CTest** | Об'єднує unit, integration, schema, network, asset, UI, software-rendered і спеціалізовані contract tests. |
+| ![An isometric house beside a water channel, with warm local illumination across dark terrain](docs/screenshots/lighting-scene-dark.jpg) | ![An isometric house beside a water channel, with warm local illumination across brighter terrain](docs/screenshots/lighting-scene-bright.jpg) |
+| A house, water channel, terrain, and warm local light under darker scene lighting. | The same development scene under brighter scene lighting, showing the water and terrain more clearly. |
 
-`Catch2` закріплений у `vcpkg.json`, але поточні test targets не використовують його як основний тестовий framework.
+These are user-supplied development screenshots of rendering work. They illustrate scene composition and lighting only; they are not a performance benchmark, proof of normal gameplay integration, or full production acceptance.
 
-Повний перелік прямих і транзитивних компонентів, точних версій та notice-файлів наведено в [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+## Project idea
 
-## Архітектура
+Ribterra starts from one design requirement: the same simulation should behave consistently in a local game, on a dedicated server, after save/load, and during a network session.
 
-Основний напрямок залежностей:
+The player manages a settlement made of specific residents, items, buildings, and routes rather than abstract resource counters. A resource can exist as a physical stack. A worker must reach it, carry it, and deliver it to storage or a construction site. The server accepts commands at tick boundaries, checks ownership and visibility, and sends each client only the state that client is allowed to see.
+
+That model drives the engine design:
+
+- a deterministic fixed-step simulation;
+- one authoritative `GameServer` for local and network play;
+- typed commands with `Queued`, `Applied`, and `Rejected` replies;
+- bounded queues, message sizes, and per-tick work budgets;
+- transactional assembly of network snapshots before client state changes;
+- versioned FlatBuffers schemas for network messages and saves;
+- simulation code that does not depend on SDL, the GPU, RmlUi, or the transport library;
+- one ordered `Frame2D` description for the world, text, and UI.
+
+## Who this repository is for
+
+The source is useful to:
+
+- C++ developers studying how to separate simulation, server authority, protocol, transport, presentation, and rendering;
+- strategy, colony-sim, and settlement-sim developers interested in deterministic worlds and physical logistics;
+- networked-game developers exploring direct-IP sessions, reconnects, command deduplication, full/delta snapshots, and per-player state filtering;
+- graphics developers interested in SDL_GPU, HLSL, isometric composition, materials, shadows, atmosphere, water, and diagnostic scenes;
+- students and teachers studying C++20, CMake, vcpkg, FlatBuffers, ECS design, testing, and reproducible tooling;
+- prospective Ribterra contributors who need to understand the current contracts before changing the code.
+
+Public access does not by itself grant permission to reuse or redistribute the code or game assets. See [Licensing](#licensing).
+
+## Current status
+
+The engine is at the stage where individually checked components are being joined into one production game path.
+
+The implemented foundation includes:
+
+- C++20 library targets for `Foundation`, `SimCore`, `GameServer`, `Protocol`, `NetTransport`, and `NetworkSession`;
+- a graphical client, dedicated server, network probe, and headless simulation runner;
+- a two-layer Surface/Mine world with chunks, residents, buildings, resources, logistics, professions, skills, and manual orders;
+- versioned saves, atomic file replacement, migration checks, and schema-conformance checks;
+- full and delta snapshots, multipart assembly, reconnect, and direct-IP sessions;
+- an SDL_GPU renderer, HLSL pipeline, text, atlases, RmlUi, and five localization catalogs;
+- focused graphics components for materials, HDR composition, local and sky lighting, contact and sky shadows, atmosphere, and water;
+- CTest suites, headless benchmarks, software-rendered UI checks, and specialized native probes.
+
+This repository does **not** claim that:
+
+- this snapshot has passed a new clean build and the complete CTest suite;
+- every E01-E17 engine acceptance criterion is closed;
+- Dynamic/FullFX is the default path for every game scene;
+- full-scene performance or the stated GPU/VRAM budgets have been confirmed;
+- cooperative play has been revalidated on two physical PCs for this snapshot;
+- the code is already an independent, general-purpose engine for unrelated games.
+
+No new full build was run for this public snapshot. Import provenance, the original file inventory, SHA-256 hashes, and exact exclusions are recorded in [`docs/SOURCE_SNAPSHOT_2026_10_12.json`](docs/SOURCE_SNAPSHOT_2026_10_12.json). That manifest records the original import. Later documentation translations and screenshot additions are follow-up repository changes, so the manifest is historical rather than a current-tree inventory and does not provide new build or test evidence.
+
+The detailed integration audit is in [`docs/ENGINE_GAME_STATUS_2026_10_08_UA.md`](docs/ENGINE_GAME_STATUS_2026_10_08_UA.md). Requirements and open acceptance criteria are in [`docs/ENGINE_REQUIREMENTS.md`](docs/ENGINE_REQUIREMENTS.md).
+
+## Technology
+
+| Technology | How the project uses it |
+|---|---|
+| **C++20** | Implements the simulation, server, networking, presentation, renderer, and native tools. CMake disables compiler extensions and enables strict warnings (`/W4 /permissive-` on MSVC; `-Wall -Wextra -Wpedantic` on GCC/Clang). |
+| **CMake 3.25+ and Ninja** | Define library and executable boundaries, generate FlatBuffers headers, compile shaders, register CTest tests, and install the runtime package. |
+| **vcpkg manifest mode** | Resolves pinned dependencies from baseline `04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4`; renderer dependencies are enabled through the separate `renderer` feature. |
+| **Python 3** | Generates skill-balance data, stages and validates assets, checks shader contracts, and drives selected evidence and networking scenarios. |
+| **SDL3 3.4.16 / SDL_GPU** | Creates the Windows client window, handles input, and manages GPU resources and render passes. The production Windows launch requests Direct3D 12; automated checks can explicitly request the software adapter. |
+| **SDL_ttf 3.2.2 and FreeType** | Rasterize text and verify that staged fonts cover required glyphs. |
+| **RmlUi 6.3** | Implements menus and the HUD. `GameUI` converts RmlUi geometry into ordered `Frame2D` commands without gaining authority over simulation state. |
+| **ICU 78.3** | Formats localized messages, named arguments, and plural forms for English, Ukrainian, Russian, Polish, and Spanish catalogs. |
+| **HLSL, SDL_shadercross, DXC, and SPIRV-Cross** | Compile shaders at build time and produce DXIL, reflection JSON, and a manifest. Shader compilers are not part of the runtime package. |
+| **FlatBuffers 25.12.19** | Defines wire frames, network snapshots, and save payloads. Baseline schemas support compatibility checks. |
+| **zstd 1.5.7** | Compresses saves and network payloads after size bounds are checked and before state is applied. |
+| **GameNetworkingSockets 1.6.0** | Provides direct-IP transport, connection lifetime management, and reliable delivery for command, chat, and snapshot lanes. |
+| **OpenSSL 3.6.4** | Provides SHA-256 and cryptographic operations, including the HMAC response used by the password challenge/join flow. |
+| **EnTT 3.16.0** | Stores authoritative ECS components for residents and related state in `SimCore`. Stable IDs and sorted DTOs preserve deterministic ordering. |
+| **nlohmann/json 3.12.0** | Reads configuration, asset, diagnostic, and localization-related JSON outside the binary FlatBuffers contracts. |
+| **libpng** | Loads and exports PNG data for textures, atlases, and graphics probes. |
+| **CTest** | Registers unit, integration, schema, network, asset, UI, software-rendered, and specialized contract tests. |
+
+`Catch2` is pinned in `vcpkg.json`, but the current test targets do not use it as their main test framework. See [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for direct and transitive components, exact versions, and notices.
+
+## Architecture
 
 ```mermaid
-flowchart TD
-    Client[Ribterra client] --> UI[GameUI]
-    Client --> View[Presentation]
-    Client --> Renderer[Renderer2D]
-    UI --> Assets[AssetPipeline]
-    UI --> Locale[Localization]
-    View --> Session[NetworkSession]
-    Dedicated[RibterraServer] --> Session
-    Probe[RibterraNetProbe] --> Session
-    Session --> Protocol
-    Session --> Transport[NetTransport]
-    Protocol --> Server[GameServer]
-    Server --> Sim[SimCore]
-    Runner[SimRunner] --> Sim
-    Sim --> Foundation
+flowchart LR
+    Input[SDL input / UI intent] --> View[GameView / Presentation]
+    View --> Client[ClientSession]
+    Client -->|local| Embedded[Embedded session]
+    Embedded --> Server[Authoritative GameServer]
+    Client -->|remote| NetClient[NetworkClient]
+    NetClient --> Protocol[Protocol + FlatBuffers]
+    Protocol --> Transport[GameNetworkingSockets transport]
+    Transport --> Dedicated[Dedicated-server session]
+    Dedicated --> Server
+    Server --> Sim[SimCore / World]
+    Sim --> Server
+    Server --> Snapshot[Filtered ViewSnapshot]
+    Snapshot --> Embedded
+    Snapshot --> Dedicated
+    Dedicated --> Transport
+    Transport --> Protocol
+    Protocol --> NetClient
+    Embedded --> Client
+    NetClient --> Client
+    Client --> View
+    View --> Frame[Ordered Frame2D]
+    UI[GameUI / RmlUi] --> Frame
+    Assets[AssetCatalog + atlases] --> View
+    Assets --> UI
+    Frame --> Renderer[Renderer2D / SDL_GPU]
+    Renderer --> Output[Window or capture]
 ```
 
-### Модулі
+The dedicated server uses the same authoritative `GameServer` and protocol/session logic without creating a window or renderer. `SimRunner` drives `SimCore` directly for deterministic headless scenarios and benchmarks.
 
-| Модуль | Відповідальність |
+### Module responsibilities
+
+| Module | Responsibility |
 |---|---|
-| `Foundation` | Хеші, secure random, UTF-8 validation, atomic file replacement, базова економіка, lobby primitives і вузькі platform adapters. |
-| `SimCore` | Детермінований fixed-step світ, ECS, chunks, path planning, фізичні предмети, логістика, будівництво, професії, навички, погода та серіалізація authoritative state. Не експонує типи SDL, GPU, RmlUi або GameNetworkingSockets. |
-| `GameServer` | Єдиний writer ігрового стану: автентифікує гравця, впорядковує команди на межі тактів, перевіряє їх, дедуплікує request IDs і фільтрує snapshots. |
-| `NetTransport` | Pimpl-адаптер над GameNetworkingSockets для listening, connections, bounded messages і транспортних lanes. |
-| `Protocol` | FlatBuffers frames, compression bounds, full/delta snapshots, multipart split/assembly та перетворення лише видимого стану. |
-| `NetworkSession` | Challenge/join, перевірка версій і content hash, acknowledgements, resync, reconnect, chat, autosave та цикл dedicated server. |
-| `Presentation` | Читає `ClientSession`, перетворює ввід на типізовані команди та складає backend-neutral `Frame2D`. Не змінює `World` напряму. |
-| `Renderer2D` | Володіє SDL_GPU resources, text rasterization, render passes і software test adapter. Отримує `Frame2D`, а не симуляцію або мережеву сесію. |
-| `GameUI` | Володіє RmlUi context, формує UI-команди `Frame2D` та повертає application intents. |
-| `AssetPipeline` | Дозволяє лише зареєстровані confined relative paths, перевіряє manifest і bytes, працює з texture atlases. |
-| `Localization` | Завантажує п'ять locale catalogs і форматує ICU-повідомлення. |
+| `Foundation` | Hashing, secure random data, UTF-8 validation, atomic file replacement, basic economy types, lobby primitives, and narrow platform adapters. |
+| `SimCore` | Deterministic fixed-step world, ECS, chunks, path planning, physical items, logistics, construction, professions, skills, weather, and authoritative-state serialization. It exposes no SDL, GPU, RmlUi, or GameNetworkingSockets types. |
+| `GameServer` | Sole writer of game state. It authenticates players, orders commands at tick boundaries, validates them, deduplicates request IDs, and filters snapshots. |
+| `NetTransport` | Pimpl adapter over GameNetworkingSockets for listeners, connections, bounded messages, and transport lanes. |
+| `Protocol` | FlatBuffers frames, compression limits, full/delta snapshots, multipart split/assembly, and conversion of visible state only. |
+| `NetworkSession` | Challenge/join, version and content-hash checks, acknowledgements, resync, reconnect, chat, autosave, and the dedicated-server loop. |
+| `Presentation` | Reads `ClientSession`, converts input into typed commands, and composes a backend-neutral `Frame2D`. It never writes to `World` directly. |
+| `Renderer2D` | Owns SDL_GPU resources, text rasterization, render passes, and the software test adapter. It consumes `Frame2D`, not the simulation or network session. |
+| `GameUI` | Owns the RmlUi context, emits UI draw commands into `Frame2D`, and returns application intents. |
+| `AssetPipeline` | Resolves registered, confined relative paths; validates manifests and file bytes; and loads texture atlases. |
+| `Localization` | Loads five locale catalogs and formats ICU messages. |
 
-### Шлях команди й кадру
+## How the engine works
+
+### 1. Input becomes an authoritative command
+
+`GameView` interprets SDL events and UI intents, then calls typed methods on `ClientSession`, such as move, gather, build, production, or settlement decisions. Presentation code never edits the world directly. The session attaches player and request context and sends the command through the local embedded path or the network protocol.
+
+`GameServer::enqueue` authenticates the player-facing request and queues it. At a simulation tick boundary, the server checks command ownership, visibility, expected revisions, and command-specific rules. Request IDs allow repeated submissions to be recognized. The reply advances from `Queued` to either `Applied` or `Rejected`, while the world remains under one writer.
+
+### 2. The simulation advances in bounded work
+
+`SimCore` owns the authoritative `World`. Stable entity IDs and deterministic ordering keep equivalent runs comparable. The world advances resident work, physical item stacks, storage and reservations, logistics tasks, construction, path-search batches, professions, skills, weather, and other game systems through fixed steps. Expensive work is represented by queues and budgets so one request does not take unlimited work inside a tick.
+
+The Surface and Mine are separate world layers connected by explicit portals. Chunks, visibility, and domain state remain simulation data; the renderer receives only a presentation projection.
+
+### 3. Clients receive filtered snapshots
+
+After ticks, the server builds a `ViewSnapshot` for each authenticated player. The snapshot includes that player's permitted view rather than exposing the complete authoritative world. `Protocol` converts it to a versioned FlatBuffers payload and can encode either a full snapshot or a delta from an acknowledged baseline.
+
+Large snapshots are split into bounded parts. The client assembles all parts and validates revisions and limits before replacing its visible state. A missing baseline, timeout, or invalid part requests resynchronization instead of partially mutating the current view.
+
+### 4. Presentation composes a backend-neutral frame
+
+`GameView::compose` reads the current `ClientSession` view, camera state, selection, animation time, and loaded art. It emits an ordered `Frame2D` containing world primitives, textured geometry, text, material and lighting data, and UI geometry. `GameUI` adds RmlUi output to the same frame description.
+
+This boundary keeps renderer ownership clear: presentation decides what should appear, while `Renderer2D` decides how to realize the frame on a backend.
+
+### 5. SDL_GPU executes the frame
+
+`Renderer2D` validates and prepares the frame, manages per-frame upload resources, records SDL_GPU command buffers, and presents to a swapchain or writes a requested capture. The source contains paths for material geometry, G-buffer data, reflection, contact and sky-shadow inputs, lighting, atmosphere/water composition, final composition, and UI.
+
+Those capabilities exist at different integration and acceptance levels. The screenshots above demonstrate a development lighting scene; they do not establish that every pass is enabled in the normal game path or that the full renderer has met its performance target.
+
+### 6. Save/load preserves authoritative state
+
+The save path serializes authoritative world state through versioned FlatBuffers, applies size and schema checks, compresses the payload with zstd, records integrity metadata, and uses the atomic-file helper for replacement. Loading validates the container, checksum, schema requirements, bounds, and reconstructed state before importing it. Migration and baseline-schema checks cover supported historical formats.
+
+### Local, dedicated, and headless execution
+
+- **Local client:** `Ribterra` creates an embedded `GameServer`, so local play follows the same command validation path instead of writing directly to the world.
+- **Dedicated server:** `RibterraServer` runs authoritative simulation, networking, snapshots, and autosave without GPU or UI ownership.
+- **Network probe:** `RibterraNetProbe` exercises the external session path and protocol behavior.
+- **Headless runner:** `SimRunner` drives deterministic simulation fixtures and benchmarks without the graphical client.
+
+## Engine and game boundaries
+
+Ribterra Engine has library boundaries, but it is still the integrated technology base of the Ribterra game:
+
+- `SimCore` and server modules are the most independent from client technology, but their domain types describe the Ribterra world;
+- `Presentation` and `GameView` understand snapshots, residents, buildings, terrain, fog, selection, and Ribterra composition rules;
+- `Renderer2D` consumes the generic `Frame2D`, while production materials, the asset catalog, and shader contracts evolved alongside Ribterra's visual requirements;
+- the standard game composition and newer engine-control/material adapters are still being joined into one complete path;
+- there is no stable external SDK, package-manager distribution, plugin API, or compatibility promise for third-party games yet.
+
+The repository is suitable for studying a complete engine in the context of a real game. Reusing a module elsewhere requires adapting its domain types, assets, and contracts.
+
+## Repository layout
 
 ```text
-input
-  -> Presentation створює типізовану команду
-  -> NetworkSession / Protocol передає її
-  -> GameServer перевіряє право, видимість і request ID
-  -> SimCore застосовує команду на межі такту
-  -> GameServer формує відфільтрований ViewSnapshot
-  -> ClientSession атомарно приймає snapshot
-  -> Presentation складає Frame2D
-  -> Renderer2D і GameUI відображають кадр
+assets/              runtime art, UI, locale catalogs, and asset manifest
+cmake/               shader compilation and CMake helpers
+content/             structured source content
+data/                data-driven balance, including skills.json
+docs/                architecture, requirements, contracts, and historical reports
+include/ribterra/     public headers for internal modules
+licenses/             notices for fonts, SDL, and Ribterra assets
+schemas/              FlatBuffers network/save schemas and baselines
+scripts/              bootstrap, build, package, and release helpers
+shaders/              HLSL programs and shared include files
+src/assets/           asset catalog and texture-atlas support
+src/client/           client session, GameView, and presentation adapter
+src/foundation/       platform-neutral base services
+src/net/              protocol, transport, and network session
+src/render/           SDL_GPU renderer, contact shadows, and sky shadows
+src/server/           authoritative game server and dedicated entry point
+src/sim/              world simulation, saves, skills, and weather
+src/ui/               RmlUi and localization integration
+tests/                C++, Python, schema, rendering, and evidence tests
+tools/                runners, probes, exporters, and diagnostic scripts
+triplets/             project vcpkg triplets
+vcpkg-overlays/       patched or pinned dependency ports
 ```
 
-Локальна гра проходить той самий шлях: executable `Ribterra` створює embedded `GameServer`, тому локальний клієнт не обходить серверну перевірку. `RibterraServer` запускає ту саму серверну частину без вікна й GPU.
+The game-focused README, mechanics, and release history are preserved in [`docs/RIBTERRA_PROJECT_README.md`](docs/RIBTERRA_PROJECT_README.md). Historical test counts and release evidence in that document apply to their named older snapshots, not automatically to the current code. Some historical links point to local evidence, concepts, or screenshots that were intentionally excluded from the public source import.
 
-## Зв'язок рушія з грою
+## Building on Windows
 
-Ribterra Engine уже має бібліотечні межі, але залишається інтегрованою технологічною основою конкретної гри:
-
-- `SimCore` і серверні модулі найкраще відокремлені від клієнтських технологій, проте їхні доменні типи описують світ Ribterra;
-- `Presentation` і `GameView` знають про snapshots, мешканців, будівлі, рельєф, fog, selection і правила ігрової композиції;
-- `Renderer2D` приймає загальний `Frame2D`, але production materials, asset catalog і shader contracts розвивалися разом із візуальними потребами Ribterra;
-- звичайна композиція гри та нові engine-control/material adapters ще зводяться в один завершений шлях;
-- окремого стабільного SDK, package manager distribution, plugin API або гарантії сумісності для сторонніх ігор поки немає.
-
-Репозиторій дає змогу вивчати цілісний рушій у контексті реальної гри. Перенесення окремого модуля в інший проєкт потребуватиме адаптації його доменних типів, ресурсів і контрактів.
-
-## Структура репозиторію
-
-```text
-assets/             runtime art, UI, locale catalogs і asset manifest
-cmake/              shader compilation та CMake helpers
-content/            структуровані вихідні дані контенту
-data/               data-driven balance, зокрема skills.json
-docs/               архітектура, вимоги, контракти й історичні звіти
-include/ribterra/    публічні заголовки внутрішніх модулів
-licenses/            notices для fonts, SDL та Ribterra assets
-schemas/             FlatBuffers network/save schemas і baselines
-scripts/             bootstrap, build, package та release helpers
-shaders/             HLSL programs і спільні include-файли
-src/assets/          asset catalog і texture atlas
-src/client/          client session, GameView і presentation adapter
-src/foundation/      platform-neutral base services
-src/net/             protocol, transport і network session
-src/render/          SDL_GPU renderer, contact і sky shadows
-src/server/          authoritative game server і dedicated entry point
-src/sim/             world simulation, saves, skills і weather
-src/ui/              RmlUi та localization integration
-tests/               C++, Python, schema, rendering і evidence tests
-tools/               runners, probes, exporters і diagnostic scripts
-triplets/            project vcpkg triplets
-vcpkg-overlays/      patched/pinned dependency ports
-```
-
-Ігровий README з описом механік та історією версій збережено окремо як [`docs/RIBTERRA_PROJECT_README.md`](docs/RIBTERRA_PROJECT_README.md). Історичні числа тестів і релізні докази в ньому стосуються конкретних старих зрізів, а не автоматично поточного коду цього репозиторію. Частина його посилань веде на локальні докази, концепти або screenshots, які свідомо не ввійшли до публічного snapshot.
-
-## Збірка на Windows
-
-### Потрібно
+### Requirements
 
 - Windows x64;
 - Git;
 - Python 3;
-- Visual Studio 2022 або Visual Studio Build Tools;
-- workload **Desktop development with C++**;
-- MSVC x64 compiler, Windows SDK і компонент **C++ CMake tools for Windows**;
-- доступ до інтернету під час першого bootstrap.
-
-Клонування репозиторію:
+- Visual Studio 2022 or Visual Studio Build Tools;
+- the **Desktop development with C++** workload;
+- the MSVC x64 compiler, Windows SDK, and **C++ CMake tools for Windows** component;
+- internet access during the first dependency bootstrap.
 
 ```powershell
 git clone https://github.com/fipsyatina/ribterra-engine.git
 cd ribterra-engine
-```
-
-Основний шлях збірки з кореня репозиторію:
-
-```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1
 ```
 
-Скрипт послідовно:
+The script resolves the repository root, bootstraps the pinned vcpkg tree, validates generated content and assets, configures the `windows-release` preset, builds, runs CTest, and installs the runtime only after successful checks. After a completed bootstrap, use `-SkipBootstrap` to avoid downloading dependencies again.
 
-1. завантажує офіційні SDL3 3.4.16 і SDL_ttf 3.2.2 archives та перевіряє їхні SHA-256;
-2. клонує vcpkg у `.deps/vcpkg`, переходить на зафіксований baseline і вимикає telemetry під час bootstrap;
-3. готує metadata для pinned shader toolchain;
-4. знаходить MSVC і CMake через Visual Studio;
-5. виконує `cmake --preset windows-release`;
-6. збирає preset паралельно;
-7. запускає `ctest --preset windows-release`;
-8. лише після успіху встановлює runtime у `dist/releases/<version>/Ribterra` і оновлює `dist/current-build.txt`.
+### Headless configuration
 
-Після вже виконаного bootstrap можна пропустити повторне завантаження залежностей:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1 -SkipBootstrap
-```
-
-Ця команда все одно конфігурує, збирає, запускає CTest, встановлює версійну збірку й оновлює вказівник поточного build. Вона не є вузькою compile-only перевіркою.
-
-### Окремий bootstrap
-
-За потреби кроки можна виконати окремо:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap-engine.ps1
-```
-
-Перший скрипт готує pinned SDL SDK. Другий готує pinned vcpkg і shader compiler port metadata. Інші manifest-залежності встановлюються vcpkg під час CMake configure.
-
-### Headless-збірка
-
-Headless preset вимикає `RIBTERRA_BUILD_CLIENT`, тому не створює SDL-вікно, RmlUi та клієнтський renderer. У shell, де доступні CMake, Ninja й налаштований C++ toolchain:
+The headless preset disables `RIBTERRA_BUILD_CLIENT`; it does not create the SDL window, RmlUi integration, or client renderer. In a shell with CMake, Ninja, and a configured C++ toolchain:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\bootstrap-engine.ps1
 cmake --preset headless
-cmake --build --preset headless --parallel
+cmake --build --preset headless
 ctest --preset headless
 ```
 
-Preset `headless-ubsan` вмикає `RIBTERRA_ENABLE_UBSAN` і призначений для GCC або Clang із GNU command-line interface. CMake навмисно відхиляє цей режим для MSVC.
+The `headless-ubsan` preset enables `RIBTERRA_ENABLE_UBSAN` for GCC or Clang using a GNU-style command line. CMake intentionally rejects that mode under MSVC.
 
-```powershell
-cmake --preset headless-ubsan
-cmake --build --preset headless-ubsan --parallel
-ctest --preset headless-ubsan
-```
+These entry points and preset names were checked against the repository scripts and `CMakePresets.json`. They were not rerun as a clean full build during this documentation update, so this README does not present them as fresh build evidence.
 
-## Перевірки та інструменти
+## Validation and tools
 
-Приклад GitHub Actions у [`docs/ci/build.yml`](docs/ci/build.yml) описує Windows build/test/package та Linux headless/UBSan jobs. У цьому репозиторії він збережений як документація; автоматичний CI потребує окремого налаштування workflow.
+[`docs/ci/build.yml`](docs/ci/build.yml) is a GitHub Actions example for Windows build/test/package and Linux headless/UBSan jobs. It is retained as documentation; enabling automated CI requires a separately configured workflow.
 
-Після успішної Windows-збірки базові команди мають такий вигляд:
+After a successful Windows build, the checked-in `SimRunner` interface supports deterministic seeded runs and benchmark modes for the general simulation, chunks, logistics, and professions. The repository also contains process tests for `RibterraServer` and `RibterraNetProbe`, schema compatibility checks, shader reflection and asset checks, UI and renderer contracts, `ManualOrderBench`, `AtlasTool`, and staging/localization/font validation.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1 -SkipBootstrap
-.\build\engine-windows\SimRunner.exe --ticks 1200 --population 10 --seed 70421
-.\build\engine-windows\SimRunner.exe --benchmark
-.\build\engine-windows\SimRunner.exe --benchmark-chunks
-.\build\engine-windows\SimRunner.exe --benchmark-logistics
-.\build\engine-windows\SimRunner.exe --benchmark-professions --ticks 10000
-```
+`--renderer-info <file.json>` records the selected backend, device, driver, and software flag for one run. That file confirms backend selection for that run; by itself it does not prove physical-GPU execution, frame rate, or compliance with a performance gate. Generated executables were not rebuilt for this documentation-only change.
 
-Репозиторій використовує кілька рівнів перевірки:
+## Evidence and reproducibility limits
 
-- звичайні C++ unit та integration executables через CTest;
-- schema conformance для послідовних версій save і network frames;
-- Python-перевірки balance data, assets, shader contracts і evidence records;
-- process tests для окремого `RibterraServer` та `RibterraNetProbe`;
-- network scenarios із контрольованими 1% і 3% packet loss;
-- software-rendered UI/visual checks із dummy SDL video driver;
-- native D3D12 probes, які записують renderer/device facts і PNG/JSON результати;
-- `SimRunner` і `ManualOrderBench` для детермінованих headless та performance fixtures;
-- `AtlasTool`, localization/font checks і staging validation для runtime assets.
+The public repository contains source code, not every generated build or evidence bundle from the development machine. The original snapshot excluded the previous Git history, `build/`, `dist/`, `.deps/`, `vcpkg_installed/`, `artifacts/`, service audit directories, local saves and binaries, `docs/source/`, concepts, evidence, screenshots, unrelated original art images, and archives. The two development screenshots now shown in this README were added later as explicit follow-up files. Historical audit links to other excluded material may therefore be unavailable.
 
-`--renderer-info <file.json>` записує фактично вибрані backend, device, driver і software flag. Цей JSON підтверджує вибір backend у конкретному запуску, але сам по собі не доводить фізичне GPU, частоту кадрів або відповідність performance gate.
+The exact original inclusion and exclusion inventory is in [`docs/SOURCE_SNAPSHOT_2026_10_12.json`](docs/SOURCE_SNAPSHOT_2026_10_12.json). Its hashes describe the import recorded at snapshot time; documentation translations and later image additions should be reviewed through subsequent Git commits.
 
-## Межі відтворення доказів
+Some specialized probe scripts check the original absolute path `C:\Users\fipst\Desktop\ribterra` or read locally retained evidence inputs. Standard CMake presets and `scripts/build.ps1` resolve the repository root from their own location, but those narrow probes must first be parameterized or run in their expected local environment.
 
-Публічний репозиторій містить вихідний код, а не всі локальні generated builds і збережені evidence-набори робочої машини. Зі snapshot виключено Git history оригінального проєкту, `build/`, `dist/`, `.deps/`, `vcpkg_installed/`, `artifacts/`, службові audit-каталоги, локальні saves і binaries, `docs/source/`, concepts, evidence, screenshots, непов'язані original art images та archives. Через це посилання в історичних аудитах на такі матеріали можуть не відкриватися у цьому репозиторії. Точний машинний перелік включень і виключень містить [`docs/SOURCE_SNAPSHOT_2026_10_12.json`](docs/SOURCE_SNAPSHOT_2026_10_12.json).
+## Platforms and renderer backends
 
-Частина спеціалізованих ізольованих probe-скриптів також перевіряє початковий абсолютний шлях `C:\Users\fipst\Desktop\ribterra` або читає локально збережені evidence inputs. Звичайні CMake presets і основний `scripts/build.ps1` визначають корінь від свого розташування, але такі вузькі probes потрібно спочатку параметризувати або запускати в очікуваному локальному середовищі.
+The first production target is Windows x64. The regular Windows client explicitly requests the SDL_GPU `direct3d12` backend. SDL_GPU supports other backends as a library, but their availability does not mean Ribterra has passed complete build, renderer, input, and visual acceptance on those backends.
 
-Не використовуйте prune-скрипти як частину звичайної збірки. Вони створювалися для конкретних історичних allowlists і можуть змінювати або прибирати generated artifacts.
+Headless simulation is structured separately and has Linux-oriented CMake presets. That supports simulation and server validation; it does not establish a supported Linux graphical client.
 
-## Платформи й renderer backends
+## Documentation
 
-Перший production target — Windows x64. Звичайний Windows-клієнт явно запитує SDL_GPU backend `direct3d12`. SDL_GPU як бібліотека має інші backends, але їхня наявність не означає, що Ribterra вже пройшла на них повний build, renderer, input і visual acceptance.
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — module, state, networking, save, and bounded-system contracts;
+- [`docs/ENGINE_REQUIREMENTS.md`](docs/ENGINE_REQUIREMENTS.md) — requirements and acceptance criteria;
+- [`docs/ENGINE_GAME_STATUS_2026_10_08_UA.md`](docs/ENGINE_GAME_STATUS_2026_10_08_UA.md) — detailed game/engine integration audit;
+- [`docs/ASSETS.md`](docs/ASSETS.md) — manifests, staging, hashes, font coverage, and the atlas pipeline;
+- [`docs/VALIDATION.md`](docs/VALIDATION.md) — version-specific results and limits of historical validation;
+- [`docs/RIBTERRA_PROJECT_README.md`](docs/RIBTERRA_PROJECT_README.md) — game mechanics and version history;
+- [`docs/SOURCE_SNAPSHOT_2026_10_12.json`](docs/SOURCE_SNAPSHOT_2026_10_12.json) — original import provenance, hashes, secret-scan scope, and exclusions;
+- [`docs/DOCUMENTATION_UPDATE_2026_10_12.json`](docs/DOCUMENTATION_UPDATE_2026_10_12.json) — English translation scope, verification, and supplied screenshot hashes;
+- [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) — third-party components, versions, and license notices.
 
-Headless core і серверна архітектура відокремлені від renderer. Linux headless та UBSan використовувалися у попередніх checkpoints, однак актуальний результат потрібно отримувати заново для поточного commit. macOS/Metal, Apple Silicon packaging, Steam transport, Steam lobby та cross-platform session залишаються окремою майбутньою роботою.
+Some paths retain legacy `_UA` or `-uk` filename suffixes so existing references remain stable; their documentation content is now English. Runtime locale names and exact multilingual test or historical prompt literals remain unchanged where they are part of product behavior or evidence.
 
-## Документація
+Original game development continues in [`fipsyatina/ribterra`](https://github.com/fipsyatina/ribterra). Its availability depends on that repository's current access settings; this link does not claim that it is public.
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — повні контракти модулів, стану, мережі, збережень і bounded systems;
-- [`docs/ENGINE_REQUIREMENTS.md`](docs/ENGINE_REQUIREMENTS.md) — реєстр вимог та критеріїв приймання;
-- [`docs/ENGINE_GAME_STATUS_2026_10_08_UA.md`](docs/ENGINE_GAME_STATUS_2026_10_08_UA.md) — найдетальніший аудит інтеграції гри й рушія;
-- [`docs/ASSETS.md`](docs/ASSETS.md) — manifest, staging, hashes, font coverage та atlas pipeline;
-- [`docs/VALIDATION.md`](docs/VALIDATION.md) — версійні результати й межі історичних перевірок;
-- [`docs/RIBTERRA_PROJECT_README.md`](docs/RIBTERRA_PROJECT_README.md) — оригінальний README гри, механіки та історія версій;
-- [`docs/SOURCE_SNAPSHOT_2026_10_12.json`](docs/SOURCE_SNAPSHOT_2026_10_12.json) — provenance, file hashes, secret-scan scope та виключення публічного snapshot;
-- [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) — зовнішні компоненти, версії та ліцензійні notices.
+## Licensing
 
-Оригінальна розробка гри ведеться в репозиторії [`fipsyatina/ribterra`](https://github.com/fipsyatina/ribterra). Його доступність визначається поточними налаштуваннями доступу того репозиторію; це посилання не є твердженням, що він публічний.
+This snapshot has no separate root `LICENSE` for Ribterra code. The current [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) reserves the author's rights; publication did not add a new license granting reuse of the code. The notice's reference to private application code comes from the repository's earlier access model. Contact the copyright holder before incorporating the code into another product or distributing modified versions.
 
-## Ліцензування
+Game assets have a separate notice in [`licenses/Ribterra-Assets.txt`](licenses/Ribterra-Assets.txt), which does not grant redistribution rights. Third-party libraries, fonts, and other external material retain their own terms; their notices are stored under [`licenses/`](licenses/) and summarized in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
-У корені цього snapshot немає окремого `LICENSE` для коду Ribterra. Чинний `THIRD_PARTY_NOTICES.md` зберігає всі права автора; нова ліцензія на повторне використання коду під час публікації не додавалася. Формулювання про private application code у цьому notice походить із попереднього режиму доступу. Для включення коду у власний продукт або поширення змінених версій потрібно узгодити дозвіл із правовласником.
-
-Ігрові assets також мають власний notice у [`licenses/Ribterra-Assets.txt`](licenses/Ribterra-Assets.txt), який не надає дозволу на їх повторне поширення. Сторонні бібліотеки, шрифти й інші зовнішні матеріали зберігають свої окремі умови; відповідні notices лежать у [`licenses/`](licenses/) та описані в [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
-
-До вибору ліцензії цей репозиторій придатний для перегляду, технічного ознайомлення й обговорення внесків із автором. Для іншого використання коду або assets потрібно отримати окремий дозвіл правовласника.
+Until a license is selected, this repository is available for source review, technical study, and contribution discussions with the author. Any other use of the code or assets requires separate permission from the rights holder.

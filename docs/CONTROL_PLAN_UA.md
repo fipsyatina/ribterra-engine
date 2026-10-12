@@ -1,113 +1,115 @@
-# Архівний план керування мешканцями: S07
+# The archival plan for the management of the inhabitants: S07
 
-План нижче збережено як історію рішень до реалізації 0.10. Поточний виконаний контракт, фактичні ліміти й зміни мережевого відновлення наведено у [MANUAL_ORDERS.md](MANUAL_ORDERS.md), а перевірки — у [VALIDATION.md](VALIDATION.md). Майбутні формулювання нижче не є поточним статусом цих механік.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-**Статус: план наступної реалізації, не можливості випущеної гри.** Документ складено на основі зафіксованої 0.9.0 / `d3bc785`; фактичне приймання й подальше виправлення попереджень GCC описані в [VALIDATION.md](VALIDATION.md). План не змінює код, правила, формат збережень або результати приймання 0.9. Нові типи й числові межі нижче є пропозиціями дизайну; перед реалізацією потрібен спільний контракт DTO і вимірювання. Уточнені після огляду коду рішення щодо сумісності наведені окремо.
+The plan below is preserved as a history of decisions until implementation 0.10. Currently executed contracts, actual limits and changes to network recovery are given in [MANUAL_ORDERS.md](MANUAL_ORDERS.md), and checks — in [VALIDATION.md](VALIDATION.md). The future formulations below are not the current status of these mechanics.
 
-Мета наступного малого рубежу — черга наявних ручних Move/Gather, часткове виконання групового наказу та тимчасове серверне право керування мешканцем. Усі 38 вимог вихідного плану та доповнення V01–V03 залишаються у [реєстрі ENGINE_REQUIREMENTS.md](ENGINE_REQUIREMENTS.md). Цей етап також не закриває S07 повністю.
+**Status: plan for the next release, not the possibility of the game being released.** The document is based on the fixed 0.9.0 / `d3bc785`; actual receipt and further correction of warnings GCC described in [VALIDATION.md](VALIDATION.md). The plan does not change the code, rules, format of the save or the results of the acceptance 0.9. The new types and numerical limits below are design propositions; The implementation requires a joint contract DTO and measurement. The corrections made after the review of the code for compatibility decisions are given separately.
 
-## Що вимагає джерело
+The next small limit's goal is — a line of available manuals Move/Gather, partial execution of the group order, and temporary server rights for inhabitant management. All 38 requirements of the output plan and the addition V01–V03 remain in the [ registry ENGINE_REQUIREMENTS.md](ENGINE_REQUIREMENTS.md). This stage also does not completely close S07.
 
-Авторитетне джерело — [development-plan-ua.txt](source/development-plan-ua.txt), рядки незміненої текстової копії оригінального DOCX:
+## What a Source Requires
 
-| Рядки | Вимога та наслідок для цього етапу |
+Authoritative source  [development-plan-ua.txt](source/development-plan-ua.txt), rows of an unaltered text copy of the original DOCX:
+
+| Rare | The need and impact for this stage |
 |---|---|
-| L311, L315–318 | Професія, навичка й поточна дія відокремлені; ручний наказ або перепризначення не стирають досвід. |
-| L341–342 | Накази одному мешканцю або групі: move/take/drop/interact/talk/profession/work/defend/stop. Усі типи залишаються обов'язковими; цей етап розширює виконання наявних Move/Gather/Assign/Stop. |
-| L343 | Черга з модифікатором клавіші та зрозумілі результати для кожного учасника; частковий успіх не приховується загальною відмовою. Рамка виділення, Shift-додавання, збережені групи й контекстне меню також залишаються у scope. |
-| L344 | Сервер перевіряє контроль, видимість, прохідність і зайнятість; резервування не дублює предметів. Ручний наказ тимчасово переважає автоматичну роботу; після завершення повертається розклад. |
-| L345 | Сам вибір мишею нікого не блокує. Тимчасове право має видимого керівника, передачу, поіменну перевірку групи й звільнення після timeout відключення. Світ застосовує одну узгоджену послідовність наказів. |
-| L346 | Розмова з NPC є окремою ігровою дією, не мережевим чатом гравців; її реалізація залишається наступною роботою. |
-| L347–349 | Виконання через зрозумілий автомат станів, резервування, timeout/replan і пояснення невдачі; алгоритмічна вартість контрольована, LAN не залежить від хмарної моделі. |
+| L311, L315–318 | The profession, skill and current activity are separated; Handwriting or re-designation doesn't erase experience. |
+| L341–342 | Orders to a resident or group: move/take/drop/interact/talk/profession/work/defend/stop. All types remain mandatory; This stage extends the implementation of the existing Move/Gather/Assign/Stop. |
+| L343 | Key modifier sequence and clear results for each participant; Partial success is not hidden by general rejection. The allocation frame, Shift-add, saved groups, and context menu also remain in scope. |
+| L344 | The server checks control, visibility, passworthiness and occupancy; The reservation doesn't duplicate the items. The manual command temporarily overrides the automatic operation; And then, after the end, the decay is back. |
+| L345 | The choice of mouse itself doesn't block anyone. Temporary rights have a visible leader, a transfer, a group name check, and a dismissal after the timeout is disabled. The world is following a single, coordinated order. |
+| L346 | Interacting with NPC is a separate game action, not a network chat of players; And it's the next thing to do. |
+| L347–349 | Performance through a clear state automaton, reservation, timeout/replan and failure explanation; The algorithmic value is controlled, LAN is not dependent on the cloud model. |
 
-Вихідний план не задає місткість черги 8/8192, бюджети 1024/32, тривалість control lease або окремий режим одного збору. Це запропоновані нижче технічні рішення, а не нові вимоги автора.
+The exit plan does not specify the capacity of the line 8/8192, the budget 1024/32, the length of the control lease or a separate single collection mode. These are the technical solutions proposed below, not the author's new requirements.
 
-## Початкова межа 0.9
+## The starting limit 0.9
 
-[World](../include/ribterra/world.hpp) має атомарні групові Move/Gather, поіменні результати Assign/Stop та збережуваний `ProfessionState`. Move під захищеним вантажем ще відхиляється. Deferred Assign/Stop зберігає нову політику й застосовує її після доставки або межі зовнішнього pending path; докладніше — [SKILLS.md](SKILLS.md).
+[World](../include/ribterra/world.hpp) has atomic group Move/Gather, named results Assign/Stop, and conserved `ProfessionState`. Move under protected load still deflects. Deferred Assign/Stop maintains the new policy and applies it after delivery or the boundary of the external pending path; Further  [SKILLS.md](SKILLS.md).
 
-[PathBatchState](../include/ribterra/world_state.hpp) уже зберігає спільний пошук, frontier, drafts та стадії реконструкції. Але `PathBatchOutcome` має один результат на весь batch, а `finish_failed` у [world.cpp](../src/sim/world.cpp) відхиляє його цілком. Це головна залежність часткових Move/Gather.
+[PathBatchState](../include/ribterra/world_state.hpp) already retains a common search, frontier, drafts and reconstruction stage. But `PathBatchOutcome` has one result for the whole batch, and `finish_failed` in [world.cpp](../src/sim/world.cpp) rejects it completely. This is the main dependence of the particle Move/Gather.
 
-[GameServer](../src/server/game_server.cpp) уже має авторизацію сесії, observer-перевірку, nation1 ownership, dedupe, FIFO застосування й кореляцію зовнішнього path batch з request ID. Передаваного права окремого мешканця ще немає. `GameServer::load` очищує сесії та request/path кореляції після успішного завантаження світу.
+[GameServer](../src/server/game_server.cpp) already has session authorization, observer verification, nation1 ownership, dedupe, FIFO application and correlation of the external path batch with the request ID. There is no transfer of individual rights. `GameServer::load` clears the session and request/path correlation after the world has been successfully loaded.
 
-Поточні версії: save format 7 у [world_save.cpp](../src/sim/world_save.cpp), protocol 6/rules 6/generator 2 у [foundation.hpp](../include/ribterra/foundation.hpp). Їх не змінюють підготовкою цього плану.
+Current versions are save format 7 in [world_save.cpp](../src/sim/world_save.cpp), protocol 6/rules 6/generator 2 in [foundation.hpp](../include/ribterra/foundation.hpp). They don't change by making this plan.
 
-## Запропонований контракт черги
+## The proposed contract of the line
 
-Зберігати в SimCore `ManualOrderState`: стабільний `order_id`, `resident_id`, тип наявної дії, ціль, режим виконання Gather, фаза, причина завершення та кореляції з наявними path/Work/logistics виконавцями. Ці кореляції не створюють другого власника предметів. Черга, наступний ID і fairness cursor входять у export/import/checksum; завершена історія має окрему обмежену місткість.
+Keep in SimCore `ManualOrderState`: stable `order_id`, `resident_id`, type of action occurring, goal, Gather execution mode, phase, cause of completion, and correlation with occurring path/Work/logistics performers. These correlations do not create a second owner of objects. The next row ID and fairness cursor are in export/import/checksum; The finished story has a separate limited capacity.
 
-Запропоновані фази: Queued, WaitingBoundary, PathPending, Running, Delivering, Complete, Failed, Cancelled. Остаточні назви й поля слід заморозити разом для core/save/network/UI перед паралельними змінами. `ProfessionState.manual_override` стає сумісною проєкцією ручної роботи, а не незалежним другим автоматом, який може суперечити черзі.
+The proposed phases are: Queued, WaitingBoundary, PathPending, Running, Delivering, Complete, Failed, Cancelled. The remaining names and fields should be frozen together for core/save/network/UI before the parallel changes. `ProfessionState.manual_override` becomes a collaborative hand-crafted projection, not an independent second machine that can contradict rows.
 
-Звичайна команда використовує Replace, команда з модифікатором — Append. Replace спочатку перевіряє право, ціль і можливість прийняття нового наказу; лише після цього скасовує попередній. Відхилення не змінює чинного наказу. Append приймає або відхиляє кожного учасника окремо; переповнення не видаляє вже прийнятих наказів.
+The usual command uses Replace, a command with the modifier — Append. Replace first checks the right, purpose and possibility of a new order; Only then does the previous one go away. A refusal does not alter the order in force. The Append accepts or rejects each participant separately; The overload doesn't eliminate the orders already passed.
 
-Move закінчується після фізичного прибуття, не після встановлення маршруту. Для Gather пропонується явний режим: нинішнє «працювати до вичерпання» зберігається; «один збір із доставкою» дає скінченний крок для черги. UI має називати цей вибір, а не непомітно змінювати стару команду. Черга за Gather до вичерпання закономірно чекає завершення цієї роботи; обмеження місткості не є обіцянкою короткого виконання.
+Move ends upon physical arrival, not after the route is set. For Gather, a clear mode is proposed: the current work to exhaustion» is maintained; One collection with delivery gives the final step to the line. UI should call this choice, not inadvertently change the old command. The line for Gather to exhaustion is normally waiting for the completion of this work; The limitation of the capacity is not a promise of short-term performance.
 
-Під час захищеної фізичної доставки Replace/Append приймається як очікування безпечної межі. Поточний вантаж залишається у тому самому стеку й task; стара gather continuation не запускається поверх нової черги. Stop очищує ручну чергу, вимикає автоматичну роботу і завершує захищену доставку перед зупинкою. Вичерпання ресурсу завершує Gather нормально; невалідна ціль або невдалий маршрут дає типізовану невдачу. Після порожньої черги повертається дозволене професією автоматичне виконання, якщо його не вимкнено Stop.
+During a secure physical delivery Replace/Append is accepted as a safe limit expectation. The current load remains in the same stack as the task; The old gather continuation doesn't start over a new line. The stop clears the manual line, turns off the automatic operation and completes the secure delivery before the stop. The resource drain completes Gather normally; An invalid target or a failed route gives a typical failure. After a blank line, the professionally permitted automatic execution returns unless it is turned off Stop.
 
-## Часткові маршрути та відповіді
+## Private routes and answers
 
-Потрібні результати й скасування для окремих учасників shared path batch. Мешканці зі спільною ціллю використовують наявне дерево пошуку; непридатний старт або недоступність одного учасника не відхиляє решту. Не замінювати це 1500 окремими повними пошуками. Глобально невалідна ціль може відхилити всіх, але відповідь усе одно пояснює результат кожного ID.
+Results and cancellations are required for individual participants of the shared path batch. Residents with a common goal use an existing search tree; An improper start or unavailability of one participant does not discourage the rest. Don't replace this 1500 with individual full searches. A globally invalid goal may dismiss everyone, but the answer still explains the result of everyone ID.
 
-Кореляція має переживати часткове завершення, скасування одного актора, Search/Reconstruct/Stage і save/load. Звільнення draft/route reservation одного мешканця не пошкоджує інших. Порядок учасників, допуску й термінальних результатів детермінований.
+The correlation must undergo partial completion, cancellation of one actor, Search/Reconstruct/Stage and save/load. The release of draft/route reservation of one resident does not harm others. The order of participants, admission and final results are determined.
 
-Відокремити підтвердження прийняття наказу від його виконання: відповідь містить поіменний результат та стабільний order ID; проєкція показує очікування, рух, доставку, завершення або невдачу. Не видавати штучний path batch ID для Deferred і не називати прийнятий у чергу Move вже виконаним. Остаточну еволюцію `CommandReply`/receipt слід узгодити до зміни wire schema. Dedupe повторює ті самі поіменні результати; внутрішні Work/Logistics не завершують request іншого гравця.
+Confirm confirmation of acceptance of an order from its execution: the response contains a nominal result and a stable order ID; projection shows expectation, movement, delivery, completion or failure. Do not issue the artificial path batch ID for Deferred and do not call the accepted Move in-line already executed. The final evolution `CommandReply`/receipt should be agreed to by changing the wire schema. Dedupe repeats the same namesake results; The internal Work/Logistics does not complete the request of another player.
 
-## Тимчасове право та session epoch
+## Temporary law and session epoch
 
-Пропонується окремий серверний control lease на мешканця: holder, session epoch, revision і визначений строк звільнення після відключення. Виділення мишею його не створює. Перша прийнята ручна команда може атомарно отримувати вільне право; конфліктна команда іншого гравця повертає причину й дозволене ім'я керівника. Assign/Stop проходять ту саму перевірку. Передача можлива лише за чинним правом, до допустимого підключеного гравця, через загальну серверну чергу.
+A separate server control lease is offered per resident: holder, session epoch, revision and a set release date after disconnection. The separation of the mouse does not create it. The first hand command accepted can be freely assigned; The other player's conflict team returns the cause and the authorized name of the leader. Assign/Stop are going through the same check. The transfer is only possible under the applicable law, to an eligible connected player, via a general server line.
 
-Передача сама не змінює XP, професію, вантаж чи прийняті накази; новий керівник може їх замінити. Після disconnect grace право звільняється, неприйняті до виконання кроки старого керівника скасовуються, активна дія завершує захищену доставку й повертає AI. Це окрема операція Release/Cancel, а не Stop, який вимикає AI. Короткий reconnect у тому самому epoch зберігає право та dedupe; прострочений reconnect його не відновлює.
+The transmission itself does not change XP, the profession, the cargo or the orders received; A new manager can replace them. After disconnect grace the right is released, unauthorized steps of the old manager are cancelled, the active action completes the protected delivery and returns AI. It's a separate operation Release/Cancel, not a Stop that turns off AI. A short reconnect in the same epoch keeps the right and dedupe; An obsolete reconnect won't restore it.
 
-Час lease потребує рішення до реалізації: sim ticks прості для replay, але пауза зупиняє timeout; монотонний серверний час працює на паузі, проте expiry слід перетворювати на явну впорядковану подію, а не читати wall clock у SimCore. Пропонується серверний clock з подією Release на визначеній межі застосування команд. Точна тривалість grace не заморожена й не дорівнює автоматично поточному reconnect timeout.
+Time lease requires a solution to be implemented: sim ticks are easy to replay, but the pause stops timeout; The monotonous server time is running on pause, but the expiry should be converted to a clear ordered event, not read the wall clock at SimCore. A server clock with Release event at the specified command application limit is suggested. The exact length of grace is not frozen and does not automatically equal the current reconnect timeout.
 
-Секретні токени та старі права доступу не зберігаються у світ. Черга є ігровим станом, lease — повноваженням живої сесії. Для нового epoch після `GameServer::load` рекомендовано зберегти вже прийняті ігрові накази, але не відроджувати їхнього старого керівника: показувати незакріплене керування, дозволяти новому авторизованому гравцю отримати право й змінити чергу. Це зберігає продовження World save/load. Альтернатива — явний Release усіх ручних наказів на завантаженні — простіша щодо повернення AI, але змінює збережене продовження. Політику треба остаточно вибрати й перевірити окремо від звичайного disconnect; не робити прихованого скасування всередині import. Durable session/request replay після crash залишається вимогою G02.
+The secret tokens and old access rights are not kept in the world. The line is the game state, the lease — the live session authority. For a new epoch after `GameServer::load`, it is recommended to keep the game commands already accepted but not to revive their old commander: show unencrypted controls, allow a new authorized player to get the right and change the order. This keeps the extension of World save/load. The alternative — is the open release of all manual commands on the download — is simpler with respect to return AI, but changes the stored extension. The policy should be selected and verified separately from the usual disconnect; Do not make hidden cancellations inside the import. Durable session/request replay after crash remains a requirement G02.
 
-## Межі та інваріанти
+## Boundaries and variants
 
-Для першої реалізації пропонуються 8 наказів на мешканця, 8192 активних/очікуваних наказів світу, 1024 visits і 32 admissions на tick. Глобальний ліміт може спрацювати раніше локального: група отримує чесні часткові відповіді. Це початкові design choices, які слід виміряти на 10/100/500/1500/4×1500; вони не є результатами benchmark або числами вихідного плану. Наявні ліміти path planner зберігаються, доки окреме вимірювання не обґрунтує їх зміну.
+For the first implementation, 8 orders per resident, 8192 active/expected world orders, 1024 visits and 32 admissions per tick are offered. The global limit can work earlier than the local one: the group gets fair partial answers. These are the initial design choices that should be measured on 10/100/500/1500/4×1500; They're not benchmarks or numbers on the outcome plan. The path planner's existing limits are kept until a separate measurement justifies their change.
 
-- Один активний ручний виконавець на мешканця; автоматична професія не вклинюється між кроками черги.
-- Один авторитетний стек предмета; queue/control зміни не створюють другого cargo, reserve чи delivery credit.
-- Усі IDs, enum, часові межі, розміри, перехресні посилання й ownership перевіряються до transactional import; арифметика tick/ID не переповнюється.
-- Прийняття, виконання, expiry, transfer і cancellation мають явні результати без повторного ефекту після retry/reconnect.
-- Проєкція дозволяє зрозуміти стан, не передає приховані цілі/об'єкти, токени, внутрішні planner frontier або чужі приватні дані.
-- Бюджет visits не оголошується бюджетом усієї роботи: окремо вимірюються індексація, path work, пам'ять, групові команди й tick time.
+- One active hand performer per resident; The automatic profession doesn't get stuck between the steps of the line.
+- One authoritative stack of the subject; queue/control changes do not create second cargo, reserve or delivery credit.
+- All IDs, enum, time limits, sizes, cross-references and ownership are verified before transactional import; The arithmetic tick/ID is not overlapping.
+- Acceptance, execution, expiry, transfer and cancellation have clear results without re-effects after retry/reconnect.
+- The projection allows you to understand the state, without transmitting hidden targets/objects, tokens, internal frontier planner or other private data.
+- Budget visits are not declared as a budget of the entire work: individually measured indexing, path work, memory, group commands and tick time.
 
-## Підготовка genuine v7 fixtures і міграція
+## Preparing genuine v7 fixtures and migration
 
-Початкову підготовку виконано: [25 справжніх v7 fixtures](../tests/fixtures/WORLD_SAVE_V7.md) і frozen schema створені незмінним writer `d3bc785`; кожен файл пройшов точне повторне збереження та 64 ticks порівняння. Нижче лишаються правила для подальших capture і самої ще не реалізованої міграції.
+Initial preparation is done: [25 real v7 fixtures](../tests/fixtures/WORLD_SAVE_V7.md) and frozen schema created by immutable writer `d3bc785`; Each file has been accurately retrieved and 64 ticks compared. Below are the rules for further capture and the very migration that has not yet been implemented.
 
-До будь-якої зміни DTO/schema скопіювати фактичний writer 0.9, headers/libs, згенерований schema header, `world_save.fbs`, версії та gameplay hash. Зафіксувати source commit і SHA256. Створювати fixtures старим writer через реальні команди; новий serializer, записаний із номером v7, не є доказом міграції.
+Before any change DTO/schema copy the actual writer 0.9, headers/libs, generated schema header, `world_save.fbs`, version and gameplay hash. Set source commit and SHA256. Create fixtures by the old writer through real commands; The new serial, registered with the number v7, is not evidence of migration.
 
-Потрібні genuine стани:
+Required genuine conditions:
 
-1. Neutral Unassigned і призначена професія з незалежними XP/remainder/practice та ненульовим scheduler cursor.
-2. Ручний Move у фізичному русі; груповий зовнішній Move/Gather у Search, Reconstruct і Stage зі справжніми pending ID.
-3. Ручний Gather із cargo/доставкою; його Waiting або PathPending Work continuation; термінальна невдача без автоматичного відродження.
-4. Deferred Assign та Deferred Stop під вантажем; часткова зміна політики одного учасника зовнішнього pending group path.
-5. Автоматична професійна робота без manual override та оплачений Work-будмайданчик із працівником у дорозі. Ці дії не повинні стати ручними після міграції.
+1. Neutral Unassigned and designated profession with independent XP/remainder/practice and non-zero scheduler cursor.
+2. Hand Move in physical motion; group external Move/Gather in Search, Reconstruct and Stage with actual pending ID.
+3. Manual Gather with cargo/delivery; its Waiting or PathPending Work continuation; A terminal failure without automatic regeneration.
+4. Deferred Assign and Deferred Stop under load; partial change in the policy of one external participant pending group path.
+5. Automatic professional work without manual override and a paid Work-Buddy with an employee on the road. These actions should not be manual after migration.
 
-Для кожного зберегти старим рушієм покрокові контрольні стани або checksum-послідовність, XP, фізичні кількості й кореляції. Після зміни правил порівнювати збережену семантику, а не вимагати числової рівності старого й нового checksum, що включає різні поля.
+For each to maintain the old move stepwise control states or checksum sequence, XP, physical quantities and correlations. After changing the rules compare the retained semantics, rather than requiring the numerical equivalence of the old and new checksum, which includes different fields.
 
-Міграція створює ручні головні накази лише за підтвердженими `manual_override` і route/path/Work/logistics зв'язками; вона не запускає пошук заново, не змінює frontier та не оплачує ресурси повторно. **Не визначати ручне керування лише за `Job`**: та сама дія може належати професії або внутрішньому виконавцю. Валідація legacy-кореляцій передує конверсії; пошкоджений стан відхиляється до заміни світу. Відсутність записаного походження у валідному старому save не прирівнюється до пошкодження. Старі сесійні права не синтезуються.
+Migration creates manual commands only by confirming `manual_override` and route/path/Work/logistics links; It doesn't start the search again, it doesn't change the frontier, and it doesn's not re-paying for resources. **Do not define manual control only by `Job`**: and the action itself may belong to the profession or to the internal performer. Legacy correlation validation precedes conversion; The damaged state is turned away until the world is replaced. The absence of a recorded origin in a valid old save does not equate to damage. The old session rights are not synthesized.
 
-Після [окремого огляду кореляцій 0.9](MANUAL_QUEUE_MIGRATION_UA.md) для реалізації прийнято такі вимоги сумісності:
+After [separate correlation review 0.9](MANUAL_QUEUE_MIGRATION_UA.md) the following compatibility requirements have been adopted for implementation:
 
-- Нейтральні виконавці у v7 після завантаження v6 продовжують роботу з попередньою семантикою, без вигаданого ручного походження або нового control lease.
-- Deferred Assign/Stop зберігає вже записану політику та стару фізичну межу. Старий Gather не стає новим активним наказом черги.
-- Уже прийняті групові batches v7 завершуються за попереднім атомарним правилом і з попереднім обліком path budget. Часткові результати застосовуються до нових команд.
-- Для валідного нетипового ручного виконавця зберігається сумісний зв'язок із його наявним Work/logistics/route, без другого власника предметів і без вигаданого типу користувацької команди. Його завершення та заміна потребують окремої перевірки.
-- Нові ID при міграції призначаються детерміновано за ID мешканця. Незаписані автор, request ID і час видачі лишаються невідомими; вони не відновлюються з поточного часу чи terminal history.
+- Neutral performers in v7 continue to work with the previous semantics after the v6 is loaded, without a fabricated manual origin or a new control lease.
+- Deferred Assign/Stop retains a previously recorded policy and an old physical limit. Old Gather is not becoming the new active order of the line.
+- Already accepted group batches v7 are completed by the previous atomic rule and with the previous path budget. Partial results are applied to new commands.
+- For a valid non-typical manual performer, a compatible connection with its existing Work/logistics/route is maintained, without a second owner of the items and without a fictional user command type. It needs to be completed and replaced separately.
+- New ID migrants are assigned by ID resident. The unsigned author, request ID and time of publication remain unknown; They don't recover from current time or terminal history.
 
-Це рішення для наступного коду; міграцію v7→v8 ще не реалізовано й не перевірено.
+This is the solution for the next code; v7→v8 migration has not yet been implemented and tested.
 
-Очікуваний наступний набір версій — save 8, protocol 7, rules 7; generator 2 залишається, якщо генерація не змінюється. Це резервування напряму, не вже виконане підвищення. Потрібні frozen v7 schema, `flatc --conform`, строгий старий hash, `.v7.bak`, підтримка всіх попередніх міграцій і перевірка atomic save/load.
+The next set of versions is expected — save 8, protocol 7, rules 7; the generator 2 remains if the generation is not changed. It's a reservation of direction, not a promotion already done. It requires frozen v7 schema, `flatc --conform`, strict old hash, `.v7.bak`, support for all previous migrations, and atomic verification save/load.
 
-## Чотири основні сценарії приймання
+## Four main reception scenarios
 
-1. **Змішана група:** доступний, недоступний, foreign, incapacitated і carrying учасники. Доступні виконують маршрут зі спільним пошуком; решта мають правильні поіменні причини/WaitingBoundary. Відмова одного не скасовує іншого.
-2. **Черга та фізична межа:** Move → один Gather із доставкою → Move; Replace/Append/Stop посеред шляху й cargo. Save/resume на кожній фазі з однаковим новим checksum на кожному tick; незмінні XP та предмети при скасуванні, правильне повернення до професії.
-3. **Два клієнти:** одночасні conflicting commands, передача, observer/foreign rejection, короткий і прострочений reconnect, повтор uncertain request і новий session epoch. Один ефект, видимий керівник, відсутність старих прав або прихованих даних.
-4. **Межі й масштаб:** 10/100/500/1500/4×1500, насичена черга, недоступна частина маршрутів, збільшення/звільнення місткості й fairness. Звіти p50/p95/p99, command time, actual visits/admissions, path work, пам'ять і всі термінальні результати; окреме GPU/UI приймання клавіатури, Shift-черги, partial reasons і п'яти мов.
+1. **Mixed group:** available, unavailable, foreign, incapacitated and carrying participants. The available routes are shared searched; The rest have the correct names for reasons/WaitingBoundary. The refusal of one does not annul the other.
+2. **Round and physical boundary:** Move → one Gather with delivery → Move; Replace/Append/Stop between the road and cargo. Save/resume at each stage with the same new checksum at each tick; The unchanged XP and the objects in the cancellation, the correct return to the profession.
+3. **Two clients:** simultaneous conflicting commands, transmission, observer/foreign rejection, short and delayed reconnect, repeat uncertain request, and new session epoch. One effect, visible control, the absence of old rights or hidden data.
+4. **Limit and scale:** 10/100/500/1500/4×1500, saturated line, unavailable section of routes, increase/release of capacity and fairness. The p50/p95/p99, the command time, the actual visits/admissions, the path work, the memory and all the terminal results; The GPU/UI keystrokes, Shift rows, partial reasons and five languages.
 
-Позитивний результат цих сценаріїв підтвердить саме описаний рубіж. Take/drop/interact/talk/defend, повні збережені групи й контекстне меню, інструменти/небезпека/паніка, повний Utility AI, durable sessions та всі інші рядки реєстру залишаються в повній цілі рушія з власними доказами приймання.
+Successful results in these scenarios will confirm the exact milestone described. Take/drop/interact/talk/defend, fully persisted groups and a context menu, tools/danger/panic, full Utility AI, durable sessions, and every other registry row remain part of the full engine target and require their own acceptance evidence.

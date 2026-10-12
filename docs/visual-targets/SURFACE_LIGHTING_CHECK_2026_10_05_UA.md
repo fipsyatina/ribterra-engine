@@ -1,60 +1,62 @@
-# Перше попіксельне світлове ядро — локальна перевірка 05.10.2026
+# First pixel light core — local verification 05.10.2026
 
-Статус: **обмежене surface-lighting ядро перевірено; двигун НЕ завершений**. Загальний [поріг E01–E17](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md) залишається відкритим, включно з доданими graphics settings/плавністю/оптимізацією. Ціль користувача — **мінімум 120 FPS у 1920×1080 на RTX 3050**; цей прогін її не вимірює і не підтверджує.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Реалізовано саме зараз
+Status: **restricted surface-lighting core tested; engine is NOT complete**. The general [barrier E01–E17](ENGINE_FIRST_ACCEPTANCE_2026_10_05_UA.md) remains open, including with added graphics settings/flow/optimization. User goal — **minimum 120 FPS in 1920×1080 to RTX 3050**; This is not a measurement or confirmation of the truth.
 
-- Окремий 24-byte vertex stream із camera-relative XYZ і normal, без зміни старого 20-byte Vertex для спрайтів/UI.
-- У Renderer2D/D3D12 є opt-in opaque world draw із попіксельним diffuse: ambient, напрямлене сонце та до чотирьох point/spot джерел. Відстань/радіус, напрям, cone, falloff і reveal беруть участь у розрахунку.
-- Фіксований CPU/HLSL ABI: LightGpu 80 bytes, SurfaceLightingFrame 384 bytes; перевіряються скомпільовані bindings, offsets, interfaces та hashes.
-- sRGB albedo декодується для лінійного світлового розрахунку; результат явно кодується назад у поточний opaque RGBA8 UNORM. **Це ще не повний HDR render graph.**
-- Перевіряються finite/bounded позиції/радіанси, одиничні нормалі, cone/radius/count, index-aligned stream, opaque світові проходи. Непідтримувані occluder ranges/masks відхиляються, а не ігноруються. Software явно відхиляє surface-lit draw.
-- Порожній draw не зв'язує відсутній surface buffer. Frame clear скидає нові дані. Surface buffer зростає транзакційно; очікування texture-upload fence більше не ігнорує помилку. Подвійну повну валідацію кадру усунуто.
-- Package required-file guard тепер включає обидві shader-пари та всі чотири reflection files. Це статично перевірений guard; упаковку/інсталяцію/реліз не запускали.
+## Fulfilled Right Now
 
-`surface_lighting_available=true` означає лише це ядро. `LightingMode::Dynamic` усе ще чесно повертає **NotImplemented**, `dynamic_available=false`.
+- A separate 24-byte vertex stream from the camera-relative XYZ and normal, without changing the old 20-byte Vertex for sprites/UI.
+- The Renderer2D/D3D12 has an opt-in opaque world draw with a pixel diffuse: ambient, directed sun and up to four point/spot sources. Distance/radius, direction, cone, falloff and reveal are involved in the calculation.
+- Fixed CPU/HLSL ABI: LightGpu 80 bytes, SurfaceLightingFrame 384 bytes; Completed bindings, offsets, interfaces and hashes are checked.
+- sRGB albedo is decoded for linear light computation; The result is clearly encoded back into the current opaque RGBA8 UNORM. **This is not yet a complete HDR render graph.**
+- Verify the finite/bounded positions/radians, the single normals, cone/radius/count, the index-aligned stream, the opaque world passages. Unsupported occluder ranges/masks is deflected rather than ignored. The software clearly rejects surface-lit draw.
+- A blank draw does not bind to a missing surface buffer. Frame clear is dropping new data. The surface buffer grows transactionally; Expecting a texture-upload fence no longer ignores the error. Double full frame validation is removed.
+- Package required-file guard now includes both shader pairs and all four reflection files. It's a statically checked guard; packaging/installation/release not started.
 
-## Актуальні докази
+`surface_lighting_available=true` means just this core. `LightingMode::Dynamic` all still fairly returns **NotImplemented**, `dynamic_available=false`.
 
-Machine: Windows, **NVIDIA GeForce RTX 3050 Laptop GPU**, D3D12, driver **32.0.15.9282**, 12 logical CPU cores, 15713 MiB system RAM. Calibration — 640×480; це не performance scene 1080p.
+## Current evidence
 
-| Перевірка | Результат | Межа доказу |
+Machine: Windows, **NVIDIA GeForce RTX 3050 Laptop GPU**, D3D12, driver **32.0.15.9282**, 12 logical CPU cores, 15713 MiB system RAM. Calibration — 640×480; It's not a 1080p performance scene.
+
+| The verification | The result | The Limit of Evidence |
 |---|---|---|
-| Targeted build | Ribterra, ReworkVisualProbe, SurfaceLightingProbe, RenderFrameTests — exit 0 | Наявні попередні warnings у Presentation/GameUI не виправляли в цьому кроці |
-| [Свіжий isolated CTest](../../artifacts/surface-lighting-2026-10-05/check-final/focused.xml) | **4/4**: shader_contract, shader_negative, render_frame, surface_lighting_contract | Не повний suite |
-| Shader negative | **8** register/space/output/ABI mutations відхилено | Не injection усіх GPU allocation/fence failures |
-| Native surface proof | exit 0; **18 PNG**, [raw report](../../artifacts/surface-lighting-2026-10-05/native-final/surface-lighting-report.json) | Production Renderer2D kernel, але diagnostic geometry, не GameView integration |
-| RenderFrameTests `--gpu` | exit 0, D3D12 RTX 3050 Laptop | Legacy geometry/text/alpha/clip/mipmap/resize/input/texture lifetime та наявний text-upload rollback |
-| [Legacy GameView regression](../../artifacts/surface-lighting-2026-10-05/legacy-game-check/report.json) | **6/6 конфігурацій, 15 PNG, F1 hide/restore** | Нове світло ще не підключене до ігрової сцени |
-| Порівняння legacy PNG | **15/15 SHA256 ідентичні** `artifacts/outcrop-hud-2026-10-05/matrix-outcrops` | Доказ незмінності цих fixed fixtures, не художнього приймання |
-| Package guard | PowerShell AST parse + усі **9** shader/manifest requirements присутні у runtime snapshot | Сам package script не виконувався, новий release не створено |
+| Targeted build | Ribterra, ReworkVisualProbe, SurfaceLightingProbe, RenderFrameTests — exit 0 | The previous warnings in Presentation/GameUI did not correct in this step |
+| [Fresh isolated CTest](../../artifacts/surface-lighting-2026-10-05/check-final/focused.xml) | **4/4**: shader_contract, shader_negative, render_frame, surface_lighting_contract | Not a full suite |
+| Shader negative | **8** register/space/output/ABI mutations are rejected | Not injection of all GPU allocation/fence failures |
+| Native surface proof | exit 0; **18 PNG**, [raw report](../../artifacts/surface-lighting-2026-10-05/native-final/surface-lighting-report.json) | Production Renderer2D kernel, but diagnostic geometry, not GameView integration |
+| RenderFrameTests `--gpu` | exit 0, D3D12 RTX 3050 Laptop | Legacy geometry/text/alpha/clip/mipmap/resize/input/texture lifetime and available text-upload rollback |
+| [Legacy GameView regression](../../artifacts/surface-lighting-2026-10-05/legacy-game-check/report.json) | **6/6 configurations, 15 PNG, F1 hide/restore** | New light is not yet connected to the playground |
+| The legacy comparison PNG | **15/15 SHA256 identical** `artifacts/outcrop-hud-2026-10-05/matrix-outcrops` | Evidence of the immutability of these fixed fixtures, not of the artistic reception |
+| Package guard | PowerShell AST parse + all **9** shader/manifest requirements are present in the runtime snapshot | The package script itself didn't work, no new release was created. |
 
-Runtime snapshots мають по 288 перевірених файлів. [Final snapshot manifest](../../artifacts/surface-lighting-2026-10-05/check-final/snapshot.json) фіксує hashes; Python/repository inputs залишалися live, не є hermetic snapshot.
+Runtime snapshots have 288 verified files. [Final snapshot manifest](../../artifacts/surface-lighting-2026-10-05/check-final/snapshot.json) fixes the hashes; Python/repository inputs remained live, there is no hermetic snapshot.
 
-## Що видно в кадрах і що перевірено числами
+## What you see in the frames and what you see in numbers
 
-- [Локальне попіксельне світло](../../artifacts/surface-lighting-2026-10-05/native-final/per-fragment-local-light.png): усі чотири вершини поза радіусом джерела, центр яскравий **255/255/255**, край **25/25/25**. Суцільний draw tint або лише освітлення вершин цього результату не дає.
-- [Джерело ліворуч](../../artifacts/surface-lighting-2026-10-05/native-final/same-light-source-left.png) / [праворуч](../../artifacts/surface-lighting-2026-10-05/native-final/same-light-source-right.png): той самий point light переміщений між протилежними нормалями; яскравий **255/246/201** і ambient **39/39/39** міняються місцями.
-- [Протилежні нормалі під сонцем](../../artifacts/surface-lighting-2026-10-05/native-final/sun-opposing-normals.png): **255/236/194** проти **56/56/56**.
-- Gamma probe: albedo **128** при linear ambient **0.25** дає **66**, а не помилкове encoded multiplication **32**.
+- [Local pixel light](../../artifacts/surface-lighting-2026-10-05/native-final/per-fragment-local-light.png): all four peaks outside the radius of the source, the center bright **255/255/255**, edge **25/25/25**. A significant draw tint or just the lighting of the tops does not yield this result.
+- [Gerelo left](../../artifacts/surface-lighting-2026-10-05/native-final/same-light-source-left.png) / [ right](../../artifacts/surface-lighting-2026-10-05/native-final/same-light-source-right.png): the same point light moved between opposite norms; The bright **255/246/201** and ambient **39/39/39** are alternating places.
+- [Anti-normal under the sun](../../artifacts/surface-lighting-2026-10-05/native-final/sun-opposing-normals.png): **255/236/194** against **56/56/56**.
+- Gamma probe: albedo **128** with a linear ambient **0.25** gives **66**, rather than an erroneously encoded multiplication **32**.
 - Point radius: inside **209**, outside **39**; spot inside **247/211/124**, outside **39/39/39**.
-- Еквівалентні camera pan/zoom: та сама sample **163/219/255**. Зміщення receiver від джерела змінює освітлення. Lit → legacy → lit дає ту саму перевірену sample.
-- UI on/off: точні незмінні **31/157/219/255**. Це парна pixel assertion; візуальний огляд одного кадру сам по собі її не доводить.
-- [Виправлена геометрична калібрація](../../artifacts/surface-lighting-2026-10-05/native-final/geometry-calibration-not-game-art.png): земля, дві видимі стіни і похилий дах сходяться у світових координатах. Незалежний огляд шести native кадрів не знайшов аномалій у межах kernel proof. **Це навмисно прості контрольні площини, не ігровий арт і не наближення до концепту.**
+- The equivalent camera pan/zoom: and the sample itself **163/219/255**. Moving the receiver from the source changes the lighting. Lit → legacy → lit gives the same verified sample.
+- UI on/off: the exact unchanged **31/157/219/255**. It's a pair of pixel assertions; The visual examination of a single image does not prove it.
+- [Rectified geometrical calibration](../../artifacts/surface-lighting-2026-10-05/native-final/geometry-calibration-not-game-art.png): the ground, two visible walls, and sloping roof converge in the world coordinates. An independent review of the six native frames found no anomaly within kernel proof. **It's purposely simple control areas, not game art and not approaching concept.**
 
-Першу `native-first` серію з невдало орієнтованими площинами даху збережено; для геометричної візуальної перевірки чинною є лише `native-final`. Перша збірка також зупинилася на parser names у DXIL reflection; parser виправлено під фактичні shadercross prefixes зі збереженням жорстких ABI offsets і повторним negative proof.
+The first `native-first` series with failing-oriented roof planes is preserved; For geometric visual verification only `native-final` is valid. The first set also stopped at parser names in DXIL reflection; Parser is corrected under actual shadercross prefixes with the preservation of hard ABI offsets and repeated negative proof.
 
-## Чого тут немає
+## What's not here
 
-Немає full Dynamic, light-responsive матеріалів ігрових будівель/дерев/мешканців, emission masks, реального світла вікон у світі, тіней/occlusion, moon/time/weather lighting, HDR/MRT graph, мокрих матеріалів, водних reflections, ранкового/водного туману чи нового particle pipeline. Повний shader/material asset kit ще не реалізований. Немає приймання графіки V01–V03, нового full-suite результату, temporal video або FPS/VRAM proof.
+There is no full Dynamic, light-responsive materials for play buildings/trees/houses, emission masks, real light for windows in the world, shadows/occlusion, moon/time/weather lighting, HDR/MRT graph, wet materials, water reflections, morning/water fog or new particle pipeline. The full shader/material asset kit has not yet been implemented. There is no receipt of the V01–V03 chart, new full-suite result, temporal video or FPS/VRAM proof.
 
-Поля `elapsed_ms` у probe містять capture/readback та startup; **не ділити кількість PNG на цей час для оголошення ігрового FPS**.
+The fields `elapsed_ms` in the probe contain capture/readback and startup; **do not divide the number PNG at this time to announce the game FPS**.
 
-Дозвіл керувати ноутбуком є, але поточний computer-use інструмент повторно завершився `failed to write kernel assets ... os error 3`. Desktop control не відбувся. Реальний візуальний доказ у цьому кроці — GPU captures із запущених native executable та їх перегляд, не screenshot чужого вікна й не згенерований макет.
+The permission to run the laptop is but the current computer-use tool has been completed again `failed to write kernel assets ... os error 3`. Desktop control failed. The real visual proof in this step is  GPU captures from the running native executable and their viewing, not a screenshot of someone else's window or a generated layout.
 
-## Ідентичність перевіреного результату
+## Identification of the verified result
 
-| Артефакт | SHA256 |
+| The artifact | SHA256 |
 |---|---|
 | Ribterra.exe | `C36C5315D96FDEA3644E5C774C6F7A8E35D97FA4B69BA6008183706683938B7B` |
 | SurfaceLightingProbe.exe | `C0DD21467C07C86A0A3B56CCF416D1C549A0CB75F8FCD8A67C30DF398BFC55D8` |
@@ -64,12 +66,12 @@ Runtime snapshots мають по 288 перевірених файлів. [Fina
 | surface_lit.frag.dxil | `7135D27CA7B896BC89753A19773573776285B34D96146DCE1BDB18C67ABC4A56` |
 | shader manifest | `3A4F827AC1789F3254B8002306C74D36882C71C572DD60A19EE1909A4220F81A` |
 
-Staged content: **189 assets**, `f9c6abf944c0867dfd6f6329c6c96f2b8f8b2e03b544c21b1a845c0cedbe97ae`. Legacy regression використовував `check/runtime`, де Ribterra/Rework binaries ідентичні `check-final/runtime`; змінювалася тільки геометрична калібрація SurfaceLightingProbe.
+Staged content: **189 assets**, `f9c6abf944c0867dfd6f6329c6c96f2b8f8b2e03b544c21b1a845c0cedbe97ae`. Legacy regression used `check/runtime`, where Ribterra/Rework binaries are identical to `check-final/runtime`; The only thing that changed was the geometrical calibration SurfaceLightingProbe.
 
-Launcher і встановлений r2 не змінені. Його exe лишається `DCF9514876AD73ED0B4EDA8E6DFBE1C452835A4E478B6AF007DB657E58706B35`. Старі ассети при staging збережені в `.ribterra-assets-retained-*`; повідомлене перед запуском очищення shader-negative видалило лише його нові тимчасові copies у `check/temp/ribterra-shader-contract-*`.
+Launcher and installed r2 are unchanged. Its exe is left with `DCF9514876AD73ED0B4EDA8E6DFBE1C452835A4E478B6AF007DB657E58706B35`. Old assets in staging are retained in `.ribterra-assets-retained-*`; The shader-negative clearance reported before launch only deleted its new temporary copies in `check/temp/ribterra-shader-contract-*`.
 
-## Наступна робота — лише двигун
+## Next job is just the engine.
 
-Завершувати E01/E02: спільний metric/projection adapter, capability/lifetime contracts, production HDR/MRT graph і material channels. Після цього підключати receiver surfaces/мінімальні ассети, причинне затінення/час/місяць і World FX, з окремим доказом кожного кроку. Успішний поточний probe **не відкриває** повернення до гри.
+Finish E01/E02: shared metric/projection adapter, capability/lifetime contracts, production HDR/MRT graph and material channels. Then connect the receiver surfaces/minimum assets, causal shading/time/moon and World FX, with separate proof of each step. A successful current probe **does not open** a return to the game.
 
-Використані підходи: ponytail спрямовував повторне використання чинного SDL_GPU; Karpathy — перевірюваний вузький контракт; C++ standards — явний ABI/типи/ресурсні межі; ultrawork — незалежні shader/probe/ABI/pixel/consumer перевірки. Жоден із них не замінює engine-first вимогу або native acceptance.
+Approaches used: ponytail directed reuse of the current SDL_GPU; Karpathy — verified narrow contract; C++ standards — clear ABI/type/resource boundaries; ultrawork — independent shader/probe/ABI/pixel/consumer checks. None of them replace engine-first demand or native acceptance.

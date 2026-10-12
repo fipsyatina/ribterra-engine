@@ -1,71 +1,73 @@
-# AnalyticAtmosphere V1 — просторовий туман у спільному рендері
+# AnalyticAtmosphere V1 — Space fog in the common array
 
-08.10.2026. Це контракт нового `WaterAtmosphereSlice`, не приймання E10,
-всього двигуна, нормального старту гри, концепт-арту чи 120 FPS.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Заміна алгоритму, а не скорочення візуальної вимоги
+08.10.2026. This is a new `WaterAtmosphereSlice` contract, not a E10 contract,
+the whole engine, the normal game start, the concept art or 120 FPS.
 
-Для цього графа аналітична густина **замінює** запропоновані у World FX §6
-soft-quad bands / `HazeBandCache`. Залишаються обов'язковими далека імла,
-ранковий низький туман, туман біля відкритої води, окремі кольори, реакція на
-час/погоду, рух і масштаб камери, коректні reveal/alpha та незмінний HUD.
-Старі cache/quad/asset-missing критерії не можна позначати виконаними за цим
-аналітичним доказом. Нових текстур, fullscreen overlay або temporal cache немає.
+## Algorithm replacement, not visual requirement reduction
 
-Складові застосовуються до лінійного HDR RGB кожного видимого внеску один раз:
+For this graph, the analytic density ** replaces the ** proposed in World FX §6
+soft-quad bands / `HazeBandCache`. They remain obliged to name far,
+The morning low fog, the fog at the open water, the individual colors, the reaction to the
+time/weather, motion and scale of the camera, correct reveal/alpha and unchanged HUD.
+The old cache/quad/asset-missing criteria cannot be defined by this
+I'm not going to use analytical evidence. There's no new texture, fullscreen overlay or temporal cache.
 
-- GroundLighting: після освітлення, **до** домішування Reflection.
-- Reflection: за P/N оригінального джерела, після lighting/emission,
-  **до** alpha, fade та premultiply. Саме джерело, не глибина води.
-- WorldForward: після lighting/emission, до alpha blend. У новому варіанті
-  binary `reveal=0` відсікається до освітлення, не публікує scene/meta.
-- Composite і UI не змінені. Уже затуманений Reflection не туманується знову.
+The composition is applied to the linear HDR RGB of each visible contribution once:
 
-## Простір і час
+- GroundLighting: after illumination, ** to ** mixing Reflection.
+- Reflection: after P/N the original source, after lighting/emission,
+  ** to ** alpha, fade and premultiply. It's the source, not the depth of the water.
+- WorldForward: after lighting/emission, to alpha blend. In a new way
+  binary `reveal=0` is cut off from the lighting, not publishing scene/meta.
+- Composite and UI remain unchanged. The already fogged Reflection is not fogging up again.
 
-`view_far = -(P_camera.x + P_camera.y)`; near/far — у camera-relative tiles.
-Панорамування закономірно змінює depth term. Абсолютні XY відновлюються через
-camera origin **лише** для noise та відстані до води; ці складові не прив'язані
-до екрана. Висота — canonical render Z, не screen Y.
+## Space and Time
+
+`view_far = -(P_camera.x + P_camera.y)`; near/far — in camera-relative tiles.
+Panorama changes the depth term accordingly. The absolute XY is recovered through
+camera origin **except** for noise and distance to water; These components are not bound
+to the screen. Height — canonical render Z, not screen Y.
 
 `far = smoothstep(near, far, view_far)`.
 `height = exp(-max(P.z-baseZ,0)*heightFalloff)`.
 `morning = morningDensity*morning01*height`.
 `coastal = coastalDensity*waterProximity*height`.
-Відстань до води — точна зовнішня відстань до AABB; proximity плавно спадає
-до нуля на shoreRadius. Шум низькоконтрастний, world-anchored, дрейфує лише за
-явним shown clock і напрямом вітру. Зупинка цього clock не додає random/wall time.
+The distance to water — is the exact external distance to AABB; The proximity is falling smoothly.
+to zero on shoreRadius. The noise is low contrast, world-anchored, drifting only for
+Clearly shown clock and wind direction. Stopping this clock doesn't add random/wall time.
 
-Колір — зважена суміш **трьох окремих linear RGB**: far/morning/coastal.
-Opacity = `min(maxOpacity,1-exp(-opticalStrength*sumWeights*noise))`, максимум
-0.20; opacity множиться на reveal, змінює тільки RGB, не alpha. Туман не є
-самостійною емісійною картою; нічний колір і густина потребують спільного
-візуального приймання з нічним освітленням.
+Color — is a weighted combination ** of three distinct linear RGB**: far/morning/coastal.
+Opacity is equal to `min(maxOpacity,1-exp(-opticalStrength*sumWeights*noise))`, maximum
+0.20; opacity multiplies by reveal, only changes RGB, not alpha. There's no fog
+a self-contained issuing card; The night's color and density need to be shared.
+visual imaging with night lighting.
 
-`EngineAtmosphereSettings` має один `time_hour` [0,24) і `weather_haze01` [0,1].
-Adapter сам обчислює morning01 через smoothstep 4→6 і 6→9, daylight через
-5→9 та 16→21, optical/densities/colors через weather/daylight. Не можна
-незалежно подати суперечливі hour і morning. Це **діагностичні presentation
-inputs**, не готові host-authoritative погода, доба, forecast чи save/network.
+`EngineAtmosphereSettings` has one `time_hour` [0,24) and `weather_haze01` [0,1].
+The adapter itself calculates morning01 through smoothstep 4→6 and 6→9, daylight through
+5→9 and 16→21, optical/densities/colors through weather/daylight. You can't.
+independently file the conflicting hour and morning. This is **the diagnostic presentation
+inputs**, not ready host-authoritative weather, weather, forecast or save/network.
 
-## Revealed-water carrier і транзакційність
+## Revealed-water carrier and transactional
 
-GameView пропускає unknown cells і джерела. AABB формуються тільки з фактичних
-revealed `Terrain::Water` у контрольному вікні, межі tile center ±0.5. Рядки
-об'єднуються тільки за однаковими X-межами та безпосередньо сусіднім Y:
-жоден прямокутник не перекриває land/unknown/hole. Максимум 32; потрібна 33-тя
-область відхиляє candidate до публікації frame/camera/picks. Disabled atmosphere
-не будує області, count=0 і tail=0, не накладає active-capacity на старий світ.
+GameView is passing through unknown cells and sources. AABB are formed only from actual
+revealed `Terrain::Water` in the control window, the boundary of the tile center ±0.5. Rare
+are joined only by the same X- boundary and the immediately adjacent Y:
+So no right angle is covering land/unknown/hole. Maximum 32; I need 33
+The field rejects the candidate to the publication frame/camera/picks. Disabled atmosphere
+does not build areas, count=0 and tail=0, does not impose active-capacity on the old world.
 
-Renderer перевіряє finite/ranges, ABI version, enabled, unit/zero wind,
-ordered world bounds і zero inactive tail **до GPU acquisition**. Публічний
-`Frame2D` сам по собі не доводить походження областей із revealed water;
-для GameView це окремо звіряється з ClientSession. Loop динамічний до actual
-count; 32 — provisional carrier capacity, не виміряний performance budget.
+The renderer checks the finite/ranges, ABI version, enabled, unit/zero wind,
+ordered world bounds and zero inactive tail **until GPU acquisition**. Public
+`Frame2D` does not prove the origin of the revealed water areas by itself;
+For GameView this is separately correlated with ClientSession. Loop dynamic to actual
+count; 32 — provisional carrier capacity, not measured performance budget.
 
-## ABI і пам'ять
+## ABI and memory
 
-| Поле AtmosphereGpu | Offset | Зміст |
+| Field AtmosphereGpu | Offset | Content |
 |---|---:|---|
 | origin_time | 0 | absolute camera XY, shown seconds, morning01 |
 | depth | 16 | camera-relative near/far, optical, maxOpacity |
@@ -77,30 +79,30 @@ count; 32 — provisional carrier capacity, не виміряний performance 
 | counts_version | 112 | patchCount, ABI1, enabled0/1, zero |
 | water_aabbs[32] | 128 | absolute minXY/maxXY, stride16 |
 
-AtmosphereGpu = **640 bytes**, alignment16. Новий b0 wrapper = **1024 bytes**:
-старий SurfaceLighting384 prefix + Atmosphere640; patches offset512.
-Старі графи мають незмінний b0=384. b1–b3, sampler/storage/MRT slots незмінні;
-не додається п'ятий UBO. Три нові програми: `atmosphere_ground_lighting`,
+AtmosphereGpu = **640 bytes**, alignment16. New b0 wrapper = **1024 bytes**:
+the old SurfaceLighting384 prefix + Atmosphere640, patches offset512.
+The old graphs have an unchanging b0=384. b1–b3, sampler/storage/MRT slots are unchanged;
+So the fifth UBO is not added. Three new programs: `atmosphere_ground_lighting`,
 `atmosphere_material_forward`, `atmosphere_water_reflection`.
 
-Залишаються дев'ять world attachments/two frame sets, **84WH bytes**, тобто
-174 182 400 nominal bytes для 1080p, плюс окремі наявні sky targets. Uniform
-upload: 1024 bytes на GroundLighting й кожен lit forward/reflection draw;
-це не нова attachment VRAM і не вимір загальної/пікової driver allocation.
+There are nine world attachments/two frame sets, **84WH bytes**, i.e.
+174 182 400 nominal bytes for 1080p, plus individual available sky targets. Uniform
+upload: 1024 bytes on GroundLighting and each lit forward/reflection draw;
+This is not a new VRAM attachment, nor is it a measure of the overall/top driver allocation.
 
-## Що має довести нативний прогін
+## What a Native Witch Should Prove
 
-Реальний D3D12/RTX 3050, GameView/ClientSession, old graph vs disabled PNG/raw
+Real D3D12/RTX 3050, GameView/ClientSession, old graph vs disabled PNG/raw
 carrier, morning/noon/night, clear/haze, paused/drift, UI exact, unknown source
-non-submission, hidden surface emission, збережені Reflection/deck/shore, pan і
-zoom0.62/1.30/3.00. Окремі справді спроєктовані terrain panels із однаковими
-матеріалами доводять причинні near/far, low/high і coastal-distance gates.
-32-патчова сцена має виконатися; 33-патчова — зберегти попередній rendered frame.
-Некоректні inputs мають відхилятися до GPU, наступний valid frame — бути точним.
+non-submission, hidden surface emission, stored Reflection/deck/shore, pan and
+zoom0.62/1.30/3.00. Separate really designed terrain panels with the same
+The materials are the causal near/far, low/high and coastal-distance gates.
+The 32-patch scene must be performed; 33-patch — save the previous rendered frame.
+The incorrect inputs should deviate to GPU, the next valid frame — being accurate.
 
-PNG — final GPU output, **не raw HDR**. Raw називаються тільки завантажені
-WaterCoverage bytes. Окремий hidden-surface test не тестує зникнення вже
-складеного local light/caster; actual GameView unknown-source check тестує
-non-submission цілого прихованого джерела. Без окремого доказу не приймати
-відео/temporal smoothness, reprojection tolerances, DPI/input, combined weather,
-повну нічну/погодну authority, E10/E15–E17 або концепт-faithful графіку.
+PNG — final GPU output, **not raw HDR**. Raws are called only loaded
+WaterCoverage bytes. A separate hidden-surface test does not test disappearance anymore
+the complex local light/caster; actual GameView unknown-source check is testing
+The non-submission of an entire hidden source. Without specific evidence, not accepting
+the video/temporal smoothness, reprojection tolerances, DPI/input, combined weather,
+full night/weather authority, E10/E15–E17 or concept-faithful chart.

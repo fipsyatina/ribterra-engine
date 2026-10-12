@@ -1,39 +1,41 @@
-# Ribterra 0.12.0 — біоми та туман
+# Ribterra 0.12.0 — Biomass and fog
 
-Оновлення від 10 вересня 2026 року, виконане без субагентів.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Світ
+Update from 10 September 2026, performed without sub-agents.
 
-- 832×832 клітинки на кожному з двох шарів замість 256×256: площа збільшена у 10,5625 раза. Межі координат: −96…735. Загалом 1352 чанки 32×32.
-- Дев’ять постійних біомів: поляна, ліс, озеро, гори, сніжна поляна, сніжний ліс, замерзле озеро, засніжені гори, пустеля.
-- Seed визначає плавні поля висоти, вологості й температури. Біоми утворюють області, а ресурси залежать від біому. Озера — справжні водні клітинки; ліси містять дерево, гори — камінь.
-- Збережені початкові ресурси навчальної долини та поляна 20…28 навколо табору. За її межами починається нова генерація.
-- Сезонна зима додає сніжний вигляд до звичайних біомів; постійні сніжні області залишаються білими влітку. Крига в цьому оновленні зберігає непрохідність води. Гори використовують гірські спрайти та кам’яний ґрунт; окрема фізика висоти не додавалася.
+## The World
 
-## Туман і зображення
+- 832×832 cells on each of the two layers instead of 256×256: the area is increased by 10,5625 times. The boundaries of the coordinates are −96...735. In general, the 1352 is the 32×32 chain.
+- Nine permanent biomes: the plains, the forests, the lakes, the mountains, the snow fields, the snow forests, frozen lakes, snow mountains, deserts.
+- The seed determines the smooth fields of altitude, humidity, and temperature. Biomes form regions, and resources depend on biomes. Lakes  real water cells; Forests contain trees, mountains contain rocks.
+- The original resources of the training valley and field 20...28 around the camp are preserved. A new generation is beginning outside of it.
+- Seasonal winters add snow to the usual biomes. The permanent snow areas remain white in summer. The circuit in this update keeps the water impervious. The mountains use mountain slopes and rocky soil; The individual physics of altitude was not added.
 
-Невідомі, відсутні в клієнта чанки й простір за картою вкриті непрозорим синьо-сірим туманом. Маски `fog-masks.13` з наявного атласу створюють хмари й м’який край відкритої території. RGB маски забарвлюється під час завантаження; оригінальні PNG не змінені. Приховані біоми не передаються клієнтові.
+## Fog and images
 
-Використані наявні поверхні, літні й зимові дерева, скелі, вершини та хребти. Виправлено UV для від’ємних координат. Мінікарта має фіксовані екранні межі незалежно від розміру світу.
+Unknown, missing the client's bag and the space behind the card is covered in a blurred blue-grey fog. The `fog-masks.13` masks from the available atlas create clouds and a soft edge of open territory. RGB The mask is coloured during loading; the original PNG is unchanged. Hidden biomes are not passed on to the client.
 
-## Збереження, мережа й межі ресурсів
+The available surfaces, summer and winter trees, rocks, tops and ridges are used. Corrected UV for the negative coordinates. The mini-map has fixed screen boundaries regardless of the size of the world.
 
-Нові сейви: формат 8, rules 7, generator 3. Мережевий protocol 8 — клієнт і сервер треба оновлювати разом. Біом є окремим полем клітинки та входить до перевірки цілісності стану.
+## Reservation, network and boundaries of resources
 
-Старі повні світи з 128 чанків розширюються новими чанками; старі клітинки не перегенеровуються. Щоб побачити нові біоми ближче до поселення, створіть новий світ. Збережено наявні резервні копії й процедури міграції. Незавершені пошуки маршрутів зі старих сейвів завершуються в початкових межах; наступні накази використовують розширену карту.
+The new saves are: format 8, rules 7, generator 3. Network protocol 8 — client and server should be updated together. Biomining is a separate cell field and is part of the state integrity check.
 
-Перевірка цілісності кешує хеші незмінених чанків і скидає кеш під час імпорту; рендер відсікає чанки поза екраном.
+Old worlds full of 128 bags are being expanded with new bags; The old cells don't regenerate. To see the new biomes closer to the settlement, create a new world. Available backups and migration procedures are preserved. Unfinished routing searches from old caves are completed within the initial limits; The following commands use an extended map.
 
-Пошук одного маршруту обмежений 131 072 пошуковими клітинками та загальним бюджетом 64 MiB. Велика карта не резервує повну свою площу для кожного наказу; перевищення ліміту має явну причину відмови. Знімок мережі може містити до 256 частин, до 24 MiB облікованого стану; тайм-аут — 10 секунд без прогресу або 30 секунд загалом.
+The integrity check casts the hashes of the unchanged tangents and discards the cache during importation; The render cuts the bags off the screen.
 
-## Перевірки
+Searching for one route is limited to 131 072 search engines and the overall budget 64 MiB. A large card does not reserve its full area for each order; exceeding the limit has a clear reason for refusal. The network image may contain up to 256 the particles, to 24 MiB the accounting balance; timeout 10 seconds without progress or 30 seconds overall.
 
-- Успішний останній результат усіх 54 тестів: повний прогін CTest та повтор 5/5 суміжних перевірок після виправлення часткового групового руху. Окремо повторено ручні накази, їх збереження, біоми, планувальник шляхів і валідацію світу. Логи: `artifacts/biomes-final-tests.log`, `artifacts/biomes-release-tests.log`.
-- Три seed: усі дев’ять біомів, зв’язність областей, збільшена площа, стартова поляна, save/load, розширення старих чанків, скидання кешу хешів, мережеве збереження біомів і відмова передавати прихований біом.
-- Міграції старих сейвів, зокрема 65 історичних контрольних станів для кожного v7 fixture, пройдені; збережено продовження старих пошуків шляхів.
-- Мережа: повна передача розширеної карти, пізній вхід, перепідключення, тайм-аут/resync, ранній ACK, профілі втрат 1% і 3%.
-- GPU: Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, `software=false`. Переглянуто туман, гори, озеро, пустелю, сніжні сцени та компактний інтерфейс.
-- Архів `dist/Ribterra-Windows-x64-0.12.0.zip` розпаковано в окрему нову папку. SHA256 виконуваного файла збігається з тестованою збіркою; native smoke 1100×700 успішний. Докази: `artifacts/biomes-0.12.0/package-verification.json`, `packaged-device.json`, `packaged-compact.png`.
-- `git diff --check` пройдено. Попередні робочі зміни й пакет 0.11.1 збережено; коміт і публікація GitHub у цьому оновленні не виконувалися.
+## Checks
 
-Сцени `artifacts/biomes-0.12.0/biome-*.png` відрендерені справжнім GameView на Direct3D 12 з процедурно створених клітинок. Для огляду біомів тест відкриває невелику область і переміщує камеру; це не звичайний прогрес гравця. `summer.png` і `winter.png` показують поселення після авторитетного будівництва в симуляції.
+- Successful final result of all 54 tests: complete CTest scan and repeat 5/5 joint checks after partial group movement correction. In addition, manual instructions, preservation, biology, road planning and world validation are repeated. The logos are `artifacts/biomes-final-tests.log`, `artifacts/biomes-release-tests.log`.
+- Three seeds: all nine biomes, area connectivity, increased area, starting field, save/load, expansion of old chanks, dropping hash cages, networked biome preservation, and refusal to transmit hidden biome.
+- Migrations of old safes, including 65 historical control states for each v7 fixture, have been made; The old ways of finding the way are still alive.
+- Network: full extended card transfer, late input, override, timeout/resync, early ACK, loss profiles 1% and 3%.
+- GPU: Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU, `software=false`. The fog, mountains, lake, desert, snow scenes, and compact interface were all reviewed.
+- The `dist/Ribterra-Windows-x64-0.12.0.zip` file is packaged into a separate new folder. SHA256 the executed file matches the test set; native smoke 1100×700 is successful. The evidence is: `artifacts/biomes-0.12.0/package-verification.json`, `packaged-device.json`, `packaged-compact.png`.
+- `git diff --check` is over. Previous work changes and package 0.11.1 are retained; The committee and publication GitHub in this update were not performed.
+
+Scenes `artifacts/biomes-0.12.0/biome-*.png` rendered by a real GameView to Direct3D 12 from procedurally generated cells. To examine the biomes, the test opens a small area and moves the camera. It's not a normal player's progress. `summer.png` and `winter.png` show settlements after authoritative construction in the simulation.

@@ -1,28 +1,30 @@
 # Ribterra 0.21.0
 
-Видобуток дерева, каменю та дикої їжі тепер починається лише за ручним дорученням. Вільні мешканці більше не збирають ресурси самі; призначення професії лісоруба, шахтаря або збирача також не запускає видобуток.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-## Доручення одному мешканцю та групі
+The extraction of wood, stone, and wild food now begins only by hand-delivery. Free people no longer collect resources themselves; The appointment of a woodcutter, miner or collector also does not start a mining operation.
 
-1. Виберіть мешканця лівою кнопкою. Shift додає інших; A вибирає всіх.
-2. Правою кнопкою натисніть ресурс. Типовий обсяг — одна доставка на кожного вибраного: 3 деревини або 2 каменю / їжі.
-3. Shift + права кнопка додає ще одну доставку до черги. Максимум — 8 незавершених доручень на людину. Наприклад, три мешканці з двома доставками кожен принесуть 18 деревини, якщо ресурсу вистачає.
-4. У панелі «Накази» можна переглянути чергу обраної людини, скасувати наказ або явно вибрати обмеження однією ділянкою до її вичерпання.
+## Delivery to a Resident and a Group
 
-Доручення завершується після фізичної доставки на склад. Після останнього доручення мешканець повертається до прогулянок і спілкування; професія та накопичені навички зберігаються. Накази групи виконуються окремо для кожного учасника, а не як спільна квота. Якщо ресурсу не вистачає або шлях недоступний, панель показує відповідний результат.
+1. Select the resident with the left button. Shift adds others; And he chooses everyone.
+2. Right-click the resource. Typical volume — one delivery per selected: 3 wood or 2 stone/food.
+3. Shift + right button adds another delivery to the line. Maximum — 8 unfinished tasks per person. For example, three residents with two deliveries will each bring 18 timber if the resource is sufficient.
+4. In the «Commands» panel, you can view the order of the selected person, cancel the order, or explicitly select a limitation by one section until it is exhausted.
 
-Зупинка й скасування зберігають захист уже піднятого вантажу. Завершений або скасований наказ не запускає новий видобуток через професію.
+Delivery is completed after physical delivery to the warehouse. After the last assignment, the resident returns to walk and talk; The profession and the skills they have accumulated are preserved. The group instructions are executed separately for each participant, not as a shared quota. If the resource is lacking or the path is unavailable, the panel will display the corresponding result.
 
-## Сумісність
+Stopping and cancelling maintain the protection of the load already lifted. A completed or cancelled order does not launch a new mine because of the profession.
 
-Збереження формату v8 з попереднім хешем правил відкриваються. Уже активна робота може завершити поточну доставку; нові автоматичні цикли видобутку не запускаються. Старі явно видані накази «до вичерпання» зберігають свій обсяг. Формат черги, мережевих команд та збережень не змінений; новий хеш правил розрізняє версії в мережевій грі.
+## Compatibility
 
-Фермерство, будівництво та перенесення матеріалів зберігають свою попередню поведінку.
+The v8 format save with the previous rule hash is opened. Already active work can complete the current delivery; The new automatic mining cycles are not started. Old clearly issued orders to the end keep their volume. The format of rows, network commands and savings is unchanged; The new rules hash differentiates the versions of the network game.
 
-## Перевірки
+Farming, construction, and material transportation all retain their previous behavior.
 
-Усі 64 тести пройшли: `build/021-verified-tests.log`. Перевірені один мешканець, група з трьох, по два послідовних доручення на кожного, точний обсяг, збереження з вантажем і повернення до побуту без додаткового видобутку. Окремо перевірено старого автоматичного працівника з переповненим складом та будівництво після побутових прогулянок.
+## Checks
 
-Панель доручень перевірена у п’яти мовах і компактному вікні. Переглянуті українські знімки; інтерфейс відрендерений через програмний рендерер. Нативне керування відкритим вікном і GPU у цій задачі не перевірялися. Пакет пройшов запуск `--software --smoke`.
+All 64 tests were: `build/021-verified-tests.log`. One resident checked, a group of three, two consecutive orders per person, exact volume, cargo storage and return to housing without extra mining. Separately, an old automatic worker with overcrowded equipment and construction after house walks was tested.
 
-Докази: `artifacts/orders-0.21.0/verification.json`, `uk-queue.png`, `uk-compact-control.png`, `package-smoke.png`.
+The taskbar is tested in five languages and a compact window. Reviewed Ukrainian images; The interface is rendered by a software renderer. The native control of the open window and GPU in this task were not tested. The package has been launched `--software --smoke`.
+
+The evidence is: `artifacts/orders-0.21.0/verification.json`, `uk-queue.png`, `uk-compact-control.png`, `package-smoke.png`.

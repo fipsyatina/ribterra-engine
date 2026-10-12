@@ -1,9 +1,11 @@
-# Ribterra 0.25.3 — Плавність онлайн-гри та природні старти
+# Ribterra 0.25.3 — Flexible online games and natural launches
 
-Рельєф, переходи матеріалів, берегові відстані та рослинність більше не обчислюються заново на кожному кадрі, якщо видимі клітини не змінилися. Кеш оновлюється при дослідженні місцевості, зміні сезону, шару або світу. Незмінні підписи інтерфейсу також не перебудовують текстові вузли щокадру.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Частота звичайних мережевих оновлень світу залишається 5 разів на секунду на швидкостях ×1, ×2 та ×4. Виправлено залежність від номера такту: раніше ×4 міг повністю припинити оновлення клієнтів, якщо початковий такт не ділився на чотири, або надсилати їх надто часто в іншій фазі. Це також усуває завислу картинку після продовження такого збереження. Команди, чат та рішення в лобі продовжують оброблятися без очікування цієї частоти.
+The relief, material transitions, shoreline distances, and vegetation are no longer recalculated on each frame unless the visible cells have changed. Cash is updated when exploring a location, changing seasons, a ball or the world. The constant signature of the interface also does not rebuild the text nodes of each frame.
 
-Нові поселення шукають придатне місце поблизу своєї зарезервованої позиції. Прибрано однакові прямокутні смуги лісу ліворуч, каменю праворуч, ягід зверху та води знизу. Навколо невеликої галявини залишаються природний рельєф і біоми; потрібні стартові ресурси розташовані невеликими групами в різних напрямках із доступом від табору. Розташування залежить від світу та нації.
+The frequency of the world's usual network updates remains 5 times per second at ×1, ×2 and ×4. Fixed tact number dependence: previously ×4 could completely stop customer updates if the initial tact was not divided by four, or send them too often in another phase. It also removes the image's addiction after continuing this retention. The commands, chats and decisions in the front continue to be processed without waiting for this frequency.
 
-Наявні збереження зберігають свою місцевість. Щоб побачити нове розміщення стартових ресурсів, потрібно створити новий світ. Оптимізація кадру та мережі працює й у продовжених світах. Протокол 19 та формат збережень сумісні з 0.25.2.
+New settlements are looking for a suitable location near their reserved location. The same rectangular stripes of forest on the left, stone on the right, berries on top and water on the bottom are removed. Around the small grove, natural relief and biome remain. The initial resources needed are located in small groups in different directions with access from the camp. The location depends on the world and the nation.
+
+The existing reserves retain their geographical location. To see a new deployment of startup resources, you need to create a new world. And the optimization of the network and the camera works in the advanced worlds. Protocol 19 and storage format are compatible with 0.25.2.

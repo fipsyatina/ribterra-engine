@@ -1,17 +1,19 @@
-# Ribterra 0.16.1 — курсор і плавні береги
+# Ribterra 0.16.1 — Coursor and smooth shores
 
-Курсор раніше малювався у кадрі гри. Під час повільного кадру, генерації чи збереження його зображення також зупинялося. Тепер SDL створює системні кольорові курсори з наявних ігрових іконок: звичайної стрілки, будівництва та вибору робочого місця. ОС переміщує курсор незалежно від кадрів. Якщо платформа не підтримує кольоровий курсор, системний покажчик залишається видимим.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Додатково прибрано перебудову знімка рельєфу на кожну подію руху миші: знімок оновлюється для кадру й натискання, де потрібне визначення клітинки. Відпускання середньої кнопки обробляється навіть над панелями інтерфейсу, щоб камера не залишалася в режимі перетягування.
+The cursor was previously drawn in game footage. During slow motion, the generation or preservation of its image also stopped. Now SDL creates systemic color cursors from existing game icons: regular shooting, construction, and job selection. The OS moves the cursor regardless of the staff. If the platform does not support a color cursor, the system indicator remains visible.
 
-Береги плавно змішують воду, вологий пісок і матеріал суші. Однакові ваги спільних вершин прибирають різкий стик із двох боків берегової лінії. Схил згладжується на кількох клітинках до рівної поверхні води. Ця сама поверхня використовується для позицій мешканців і вибору клітинки. Приховані ділянки не впливають на берег.
+Additionally, a reworked image of the relief for each mouse movement event is removed: the image is updated for the frame and clicks where the cell definition is required. The release of the middle button is processed even over the interface panels so that the camera does not remain in overdraft mode.
 
-Зміни стосуються відображення й вводу. Версії правил, генератора, протоколу та формат збереження не змінюються; старі карти отримують новий вигляд без перегенерації. Клітинки води залишаються непрохідними, правила розміщення будівель збережено.
+The coastline is a smooth mixture of water, wet sand, and dry matter. The equal weights of the common peaks remove a sharp stick from both sides of the coastline. The slope is smoothed on several cells to the level surface of the water. This same surface is used for the positions of the inhabitants and the selection of the cell. Hidden areas do not affect the shore.
 
-Перевірено нативне створення та перемикання системних курсорів на Windows/Direct3D 12, відсутність малювання курсора у кадрі, плавність берегових ваг, спільні вершини, висоту води, ухил берега та вибір піднятих клітинок. Системний курсор не входить у знімки, які робить ігровий рендерер.
+The changes relate to the display and the input. The versions of the rules, the generator, the protocol and the storage format are not changed; old cards are re-created without re-generation. The water bottles remain impassable, and the rules of the building are maintained.
 
-- [Узбережжя в грі](../artifacts/coast-release/shore-transition.png)
-- [Нативна перевірка курсора й GPU](../artifacts/coast-release/render-report.json)
-- [Перевірки](../artifacts/coast-tests.log)
+The native creation and switching of system cursors on Windows/Direct3D 12, lack of frame-based cursor drawing, smoothness of shoreline weights, common peaks, water height, shoreline angles and selection of raised cells have been verified. The system cursor does not fit into the images that the game renderer makes.
 
-Пройшли всі 11 цільових тестів. ZIP розпаковано в нову папку: EXE збігається з перевіреною збіркою, усі 86 асетів відповідають маніфесту, запуск на Direct3D 12 успішний. Launcher переключено на 0.16.1. [Перевірка пакета](../artifacts/coast-release/package-verification.json).
+- [Coast in the game](../artifacts/coast-release/shore-transition.png)
+- [Native check of the cursor and GPU](../artifacts/coast-release/render-report.json)
+- [Checks](../artifacts/coast-tests.log)
+
+We passed all 11 target tests. ZIP is packaged in a new folder: EXE matches the verified set, all 86 assets match the manifest, launch on Direct3D 12 is successful. Launcher switched to 0.16.1. [Checking the packet](../artifacts/coast-release/package-verification.json).

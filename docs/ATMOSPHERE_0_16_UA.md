@@ -1,44 +1,46 @@
-# Ribterra 0.16.0 — переходи біомів, туман і огляд
+# Ribterra 0.16.0 — Biomachines, fog and review
 
-Текстури снігу, гірської породи, трави й піску змішуються на смузі завширшки кілька клітинок. Сусідні ділянки використовують однакові значення на спільних вершинах, тому межі клітинок і чанків не розривають перехід. Вода залишається в межах озер і річок.
+> English rendering of a historical project document, translated offline and checked for preservation of code, paths, identifiers, numeric literals, and recorded status markers. Historical records apply to their named snapshots and do not validate the current build. For exact original wording, see import commit `7388a2f`.
 
-Вертикальні прямокутні завіси туману прибрано. Межа видимості тепер плавно згасає на самому рельєфі; будівлі, дерева й мешканці біля неї також зникають поступово. Наявна маска туману використовується як слабкий шар серпанку на поверхні. Приховані біоми та висоти не впливають на зображення.
+The textures of snow, rock, grass, and sand are blended across a band several cells wide. Neighboring areas use the same values at shared vertices, so cell and chunk boundaries do not break the transition. Water remains within lakes and rivers.
 
-## Дальність огляду
+The vertical rectangular fog curtains are removed. The limit of visibility is now gradually fading on the relief itself; The buildings, the trees, and the people around it are also gradually disappearing. The presence of a mist mask is used as a weak layer of serpentine on the surface. Hidden biomes and heights do not affect the image.
 
-| Джерело розвідки | Було | Стало |
+## Distance of view
+
+| The source of the intelligence | It was. | It's become |
 |---|---:|---:|
-| Новий табір | 7 | 10,5 клітинки |
-| Мешканець під час руху | 3 | 4,5 клітинки |
-| Завершений вхід у шахту | 4 | 6 клітинок |
+| New Camp | 7 | 10,5 cells |
+| Resident while on the move | 3 | 4,5 cells |
+| The mine entrance is completed | 4 | 6 cells |
 
-Кожен радіус збільшено рівно в 1,5 раза. Форма розвідки — коло, з урахуванням дробового радіуса. Нові значення для мешканців застосовуються під час руху також у старих збереженнях.
+Each radius is multiplied by the same amount of times 1,5. The form of the probe is a circle, taking into account the radius of the pulse. New values for residents apply during movement also in old preserves.
 
-## Чому мешканці втрачали здоров’я
+## Why the Inhabitants Lost Their Health
 
-На надісланому скріншоті запас їжі дорівнює нулю. Наявна механіка харчування перевіряє доступну, незарезервовану їжу на складах кожні 200 тактів — 10 секунд при швидкості 1×. Без порції голод зростає на 1, взимку — на 1,5. Від рівня 5/10 кожен пропущений прийом їжі забирає 1 здоров’я.
+On the screenshot sent, the food supply is zero. The current feeding mechanism checks available, unreserved food on the stocks every 200 tact — 10 seconds at the rate of 1×. Without a portion of hunger increases by 1, in winter — by 1,5. From the level 5/10 every missed meal takes away 1 health.
 
-Правила голоду збережено. Додано попередження, коли їжі на складах немає або мешканці голодні, та пояснення причини в картці мешканця. Їжа на землі або у вантажі ще потребує доставки на склад. Харчування припиняє шкоду й поступово зменшує голод; автоматичного відновлення втраченого здоров’я немає.
+The hunger rules are preserved. A warning is added when food is not in stock or the inhabitants are hungry, and an explanation of the reason is added on the inhabitant card. Food on the ground or in the cargo still needs to be delivered to the warehouse. Nutrition stops the damage and gradually reduces hunger. There is no automatic recovery of lost health.
 
-## Сумісність і перевірки
+## Compatibility and verification
 
-Версія гри — 0.16.0, правила — 10, мережевий протокол — 12. Генератор залишається 5, формат збереження — 8. Підтримка збережень 0.14/0.15 та попередніх міграцій збережена. Змішування текстур працює також на раніше згенерованих картах. Для спільної гри потрібні клієнт і сервер однієї версії.
+Game version — 0.16.0, rules 10, network protocol 12. The generator remains 5, the storage format — 8. Support for 0.14/0.15 and previous migrations is preserved. Texture blending also works on previously generated maps. A shared game requires a client and a server of the same version.
 
-Окремий тест перевірив плавність і нормалізацію змішування, відсутність впливу прихованих клітинок, межу туману, обидва радіуси розвідки, відсутність шкоди в ситих мешканців, поріг голоду та припинення шкоди після харчування.
+A separate test tested the smoothness and normalization of the mixture, the absence of hidden cell exposure, the fog limit, both detection radii, the absences of damage to the inhabitants, the hunger thresholds and the cessation of damage after feeding.
 
-Нативні сцени відрендерено на Direct3D 12, NVIDIA GeForce RTX 3050 Laptop GPU. Для огляду переходів використовуються справжні згенеровані біоми з тестовим розкриттям ділянки. Попередження про голод перевірено при 1440×900 і 1100×700.
+Native scenes were rendered on Direct3D 12 with an NVIDIA GeForce RTX 3050 Laptop GPU. Real generated biomes with a revealed test area were used to review the transitions. The hunger warning was verified at 1440×900 and 1100×700.
 
-- [Перехід від каменю до снігу](../artifacts/atmosphere-release/snow-transition.png)
-- [Межа пустелі](../artifacts/atmosphere-release/desert-transition.png)
-- [Збільшений огляд і м’який туман](../artifacts/atmosphere-release/expanded-view.png)
-- [Пояснення голоду](../artifacts/atmosphere-release/starvation-compact.png)
-- [Звіт GPU](../artifacts/atmosphere-release/render-report.json)
-- [Тести](../artifacts/atmosphere-tests.log)
+- [Transition from rock to snow](../artifacts/atmosphere-release/snow-transition.png)
+- [The boundary of the desert](../artifacts/atmosphere-release/desert-transition.png)
+- [Expanded view and mild fog](../artifacts/atmosphere-release/expanded-view.png)
+- [Explanation of the famine](../artifacts/atmosphere-release/starvation-compact.png)
+- [Report GPU](../artifacts/atmosphere-release/render-report.json)
+- [Tests](../artifacts/atmosphere-tests.log)
 
-Усі 60 унікальних тестів мають успішний результат після оновлення перевірки історичного огляду. У 25 справжніх збереженнях v7 усі поля під час міграції залишаються незмінними. Для порівняння 64 наступних тактів із замороженим старим рушієм тест відтворює стару маску розвідки й віднімає лише додаткові відкриті клітинки з лічильників ревізій. При цьому перевіряється, що нова маска містить усю стару; решта історичних полів порівнюється повністю. Повторне завантаження нового формату порівнює повний стан із новим оглядом без нормалізації.
+All 60 unique tests have a successful result after updating the historical review check. In 25 real v7 storage, all fields remain unchanged during migration. To compare 64 the following moves with the frozen old move, the test reproduces the old reconnaissance mask and removes only the additional open cells from the revisions calculators. The new mask is checked to ensure that the old one is all there. The rest of the historical fields are completely compared. Re-loading a new format compares a full state to a new review without normalization.
 
-- [Підсумок 60 тестів](../artifacts/atmosphere-release/test-verification.json)
-- [Повторна перевірка збережень](../artifacts/atmosphere-final-tests.log)
-- [Деталі історичних продовжень](../artifacts/atmosphere-release/legacy-continuation-details.log)
+- [Summary of 60 tests](../artifacts/atmosphere-release/test-verification.json)
+- [Repeatedly checking the records](../artifacts/atmosphere-final-tests.log)
+- [Details of historical continuations](../artifacts/atmosphere-release/legacy-continuation-details.log)
 
-ZIP 0.16.0 розпаковано в нову папку. EXE відповідає перевіреній збірці, усі 86 асетів відповідають контрольним сумам маніфесту. Запуск пакета на Direct3D 12 успішний; звичайний launcher переключено на 0.16.0. [Перевірка пакета](../artifacts/atmosphere-release/package-verification.json).
+ZIP 0.16.0 is packed into a new folder. EXE corresponds to a verified set, all 86 assets correspond to the control amounts of the manifest. Launch of the package on Direct3D 12 is successful; The regular launcher is switched to 0.16.0. [Checking the packet](../artifacts/atmosphere-release/package-verification.json).
