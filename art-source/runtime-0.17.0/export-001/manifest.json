@@ -1,0 +1,151 @@
+{
+  "content_sha256": "b43e42129de6f714ba79df04f951c17e49d01d7495273a494ff6a0b21a0c0e51",
+  "entries": [
+    {
+      "author": "Ribterra project",
+      "id": "building.bridge.ready",
+      "input": "sprites/building.bridge.ready.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.4300000071525574
+      ],
+      "rect": [
+        3,
+        3,
+        320,
+        299
+      ],
+      "source": "project",
+      "uv": [
+        0.00146484375,
+        0.00146484375,
+        0.15771484375,
+        0.1474609375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "building.bridge.stage1",
+      "input": "sprites/building.bridge.stage1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.4300000071525574
+      ],
+      "rect": [
+        329,
+        3,
+        320,
+        299
+      ],
+      "source": "project",
+      "uv": [
+        0.16064453125,
+        0.00146484375,
+        0.31689453125,
+        0.1474609375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "building.bridge.stage2",
+      "input": "sprites/building.bridge.stage2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.4300000071525574
+      ],
+      "rect": [
+        655,
+        3,
+        320,
+        299
+      ],
+      "source": "project",
+      "uv": [
+        0.31982421875,
+        0.00146484375,
+        0.47607421875,
+        0.1474609375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "building.bridge.stage3",
+      "input": "sprites/building.bridge.stage3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.4300000071525574
+      ],
+      "rect": [
+        981,
+        3,
+        320,
+        299
+      ],
+      "source": "project",
+      "uv": [
+        0.47900390625,
+        0.00146484375,
+        0.63525390625,
+        0.1474609375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "building.bridge.winter",
+      "input": "sprites/building.bridge.winter.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.4300000071525574
+      ],
+      "rect": [
+        1307,
+        3,
+        320,
+        299
+      ],
+      "source": "project",
+      "uv": [
+        0.63818359375,
+        0.00146484375,
+        0.79443359375,
+        0.1474609375
+      ]
+    }
+  ],
+  "padding": 3,
+  "page_size": 2048,
+  "pages": [
+    {
+      "height": 2048,
+      "path": "atlas-0.png",
+      "sha256": "d83cdf3375e48da5655abaa3944d8c279c0aab2ddcbff385bb2c169bf85735f9",
+      "width": 2048
+    }
+  ],
+  "schema": 1
+}

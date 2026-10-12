@@ -1,0 +1,153 @@
+{
+  "target": "file:///C:/Users/fipst/Desktop/Ribterra-Graphics-Updates-Detailed-UA.html",
+  "results": [
+    {
+      "width": 390,
+      "overflow": false,
+      "images": [
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v00-baseline.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v01-ui.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v01-ui.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v02-terrain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v02-terrain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v03-objects.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v03-objects.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v04-rain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v04-rain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v05-winter.png"
+        }
+      ],
+      "brokenAnchors": [],
+      "cards": 6,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "images": [
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v00-baseline.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v01-ui.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v01-ui.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v02-terrain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v02-terrain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v03-objects.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v03-objects.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v04-rain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v04-rain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v05-winter.png"
+        }
+      ],
+      "brokenAnchors": [],
+      "cards": 6,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "overflow": false,
+      "images": [
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v00-baseline.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v01-ui.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v01-ui.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v02-terrain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v02-terrain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v03-objects.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v03-objects.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v04-rain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v04-rain.png"
+        },
+        {
+          "ok": true,
+          "src": "file:///C:/Users/fipst/Desktop/ribterra/docs/visual-targets/progress/v05-winter.png"
+        }
+      ],
+      "brokenAnchors": [],
+      "cards": 6,
+      "overflowing": []
+    }
+  ],
+  "errors": []
+}

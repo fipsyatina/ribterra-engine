@@ -1,0 +1,9 @@
+Ribterra project assets
+Copyright 2026. All rights reserved.
+
+Original interface documents, styles, translations and shaders in this private
+development repository are proprietary project materials. No permission to
+redistribute these assets is granted by this notice.
+
+Third-party fonts and other external assets retain their separate licenses and
+notices recorded in the asset manifest and THIRD_PARTY_NOTICES.md.

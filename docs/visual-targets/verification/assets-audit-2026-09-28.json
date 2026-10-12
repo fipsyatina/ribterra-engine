@@ -1,0 +1,1788 @@
+{
+  "audit_date": "2026-09-28",
+  "generated_utc": "2026-09-28T07:25:59.753Z",
+  "head": "bdc53e82c3d65eee4a5d8b13497aea67dff4a33b",
+  "status": "Source/PNG header audit, not GPU residency or runtime performance measurement. GameArt rejects duplicate sprite IDs.",
+  "source_manifest_sha256": "d1403d6f65af7ae01b3789ed62fe2453eb07a44638ef369ee255861c5ad9dd86",
+  "build_manifest_sha256": "d1403d6f65af7ae01b3789ed62fe2453eb07a44638ef369ee255861c5ad9dd86",
+  "world": {
+    "page_count": 42,
+    "record_count": 622,
+    "unique_ids": 622,
+    "rgba8_bytes_sum": 306197408,
+    "duplicate_ids": [],
+    "pages": [
+      {
+        "path": "assets/art/atlas-0.png",
+        "width": 2048,
+        "height": 2048,
+        "encoded_bytes": 3745278,
+        "sha256": "a39e6d67b47ef3065f788990fdd15e9a6d829eb180199582e6e94e2b2098df20",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 16777216,
+        "sprite_count": 36,
+        "sprite_ids": [
+          "building.townhall.ready",
+          "building.townhall.stage1",
+          "building.townhall.stage2",
+          "building.townhall.stage3",
+          "building.townhall.winter",
+          "fog-masks.0",
+          "fog-masks.1",
+          "fog-masks.10",
+          "fog-masks.11",
+          "fog-masks.12",
+          "fog-masks.13",
+          "fog-masks.14",
+          "fog-masks.15",
+          "fog-masks.2",
+          "fog-masks.3",
+          "fog-masks.4",
+          "fog-masks.5",
+          "fog-masks.6",
+          "fog-masks.7",
+          "fog-masks.8",
+          "fog-masks.9",
+          "nature.0",
+          "nature.1",
+          "nature.13",
+          "nature.2",
+          "nature.3",
+          "nature.4",
+          "nature.5",
+          "nature.6",
+          "nature.7",
+          "ui-kit.10",
+          "ui-kit.11",
+          "ui-kit.15",
+          "ui-kit.6",
+          "ui-kit.8",
+          "ui-kit.9"
+        ]
+      },
+      {
+        "path": "assets/art/atlas-1.png",
+        "width": 2048,
+        "height": 2048,
+        "encoded_bytes": 6182911,
+        "sha256": "97b3375cf9edc149b5d300aee632a33fc99f0dfcabf7d6d7356ba26a16315fdb",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 16777216,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "building.blacksmith.ready",
+          "building.blacksmith.stage1",
+          "building.blacksmith.stage2",
+          "building.blacksmith.stage3",
+          "building.blacksmith.winter",
+          "nature.12",
+          "nature.15",
+          "ui-kit.0",
+          "ui-kit.1",
+          "ui-kit.14",
+          "ui-kit.2",
+          "ui-kit.3",
+          "ui-kit.4",
+          "ui-kit.5",
+          "ui-kit.7",
+          "units.15"
+        ]
+      },
+      {
+        "path": "assets/art/atlas-2.png",
+        "width": 2048,
+        "height": 2048,
+        "encoded_bytes": 5567612,
+        "sha256": "6e0d2c3aed5dfc0cbcbed04fa420ed491a30d43bdcfafa178c88f034ceb6759b",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 16777216,
+        "sprite_count": 29,
+        "sprite_ids": [
+          "icons-cursors.16",
+          "icons-cursors.17",
+          "icons-cursors.19",
+          "icons-cursors.20",
+          "nature.10",
+          "nature.11",
+          "nature.14",
+          "units.0",
+          "units.1",
+          "units.10",
+          "units.11",
+          "units.12",
+          "units.13",
+          "units.14",
+          "units.16",
+          "units.18",
+          "units.19",
+          "units.2",
+          "units.20",
+          "units.21",
+          "units.22",
+          "units.23",
+          "units.3",
+          "units.4",
+          "units.5",
+          "units.6",
+          "units.7",
+          "units.8",
+          "units.9"
+        ]
+      },
+      {
+        "path": "assets/art/atlas-3.png",
+        "width": 2048,
+        "height": 2048,
+        "encoded_bytes": 1033045,
+        "sha256": "a7831b291f90870442e088e5d55d0a7985ee0692acbb58e4e5566053ba6cbc52",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 16777216,
+        "sprite_count": 29,
+        "sprite_ids": [
+          "icons-cursors.0",
+          "icons-cursors.1",
+          "icons-cursors.10",
+          "icons-cursors.11",
+          "icons-cursors.12",
+          "icons-cursors.13",
+          "icons-cursors.14",
+          "icons-cursors.15",
+          "icons-cursors.18",
+          "icons-cursors.2",
+          "icons-cursors.21",
+          "icons-cursors.22",
+          "icons-cursors.23",
+          "icons-cursors.24",
+          "icons-cursors.25",
+          "icons-cursors.26",
+          "icons-cursors.27",
+          "icons-cursors.28",
+          "icons-cursors.29",
+          "icons-cursors.3",
+          "icons-cursors.4",
+          "icons-cursors.5",
+          "icons-cursors.6",
+          "icons-cursors.7",
+          "icons-cursors.8",
+          "icons-cursors.9",
+          "ui-kit.12",
+          "ui-kit.13",
+          "units.17"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-house.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2775667,
+        "sha256": "38f37051c69b997119a509cbbf49c98b056bd86a5121b098beacd0a81e62169b",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.house.stage1",
+          "building.house.stage2",
+          "building.house.stage3",
+          "building.house.ready",
+          "building.house.winter",
+          "building.house.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-camp.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2408631,
+        "sha256": "78a11dbd9e3c5ae0eaa7081ef1ab00a8cbb5d282f1fc99b969ba63a2faa2a29f",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.camp.stage1",
+          "building.camp.stage2",
+          "building.camp.stage3",
+          "building.camp.ready",
+          "building.camp.winter",
+          "building.camp.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-farm.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2671941,
+        "sha256": "9afb0d916cd40343562872cd002e8e78728bb88be4bc34cdffc2be6451280dc7",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.farm.stage1",
+          "building.farm.stage2",
+          "building.farm.stage3",
+          "building.farm.ready",
+          "building.farm.winter",
+          "building.farm.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-stockpile.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2447314,
+        "sha256": "53f410f1b58bc0a7eb06df2b26256d0cdf9950e18396365959f8a6e689c4c006",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.stockpile.stage1",
+          "building.stockpile.stage2",
+          "building.stockpile.stage3",
+          "building.stockpile.ready",
+          "building.stockpile.winter",
+          "building.stockpile.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-mine.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2820953,
+        "sha256": "821f2147c96bb4ab88e3e183527792c7a63ad0be442ea39d6dcde865093fcc6b",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.mine.stage1",
+          "building.mine.stage2",
+          "building.mine.stage3",
+          "building.mine.ready",
+          "building.mine.winter",
+          "building.mine.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-workshop.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2755723,
+        "sha256": "9ff9262ad52a4c62dcf406b7d9e7187456c56856b70fe299b27e6a326e9a7d05",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.workshop.stage1",
+          "building.workshop.stage2",
+          "building.workshop.stage3",
+          "building.workshop.ready",
+          "building.workshop.winter",
+          "building.workshop.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-temple.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2504654,
+        "sha256": "cbd06cb5581c3cd8b08ab2e2a4e92d13a6e85261495ded0fdf707de380fdd1af",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.temple.stage1",
+          "building.temple.stage2",
+          "building.temple.stage3",
+          "building.temple.ready",
+          "building.temple.winter",
+          "building.temple.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-tavern.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2658155,
+        "sha256": "87bc740a5363e935b4b979756d41d4b7c5cd27d7db9796b354e02122787d085e",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.tavern.stage1",
+          "building.tavern.stage2",
+          "building.tavern.stage3",
+          "building.tavern.ready",
+          "building.tavern.winter",
+          "building.tavern.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-cartographer.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2674594,
+        "sha256": "6963080915214fc0e4e9f3aa01abe388dad5e7a0199f3e58fabb43593e2016d2",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.cartographer.stage1",
+          "building.cartographer.stage2",
+          "building.cartographer.stage3",
+          "building.cartographer.ready",
+          "building.cartographer.winter",
+          "building.cartographer.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-research.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2645696,
+        "sha256": "0676e833e2d6f99757d5a6d3bcbc6f773e8208dc28f07e039b9c2aaa9c26a8c2",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.research.stage1",
+          "building.research.stage2",
+          "building.research.stage3",
+          "building.research.ready",
+          "building.research.winter",
+          "building.research.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-smelter.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2533564,
+        "sha256": "fa96c2a61602b422c0b6708629474e04931931b2714e5bbc4231ffc02341e0a3",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.smelter.stage1",
+          "building.smelter.stage2",
+          "building.smelter.stage3",
+          "building.smelter.ready",
+          "building.smelter.winter",
+          "building.smelter.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-fishing.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2599147,
+        "sha256": "2b8d28568cd9bac8735bcb042a8678c3a36ae4617a3e70d83cfcfc14696e0d79",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.fishing.stage1",
+          "building.fishing.stage2",
+          "building.fishing.stage3",
+          "building.fishing.ready",
+          "building.fishing.winter",
+          "building.fishing.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-library.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2783624,
+        "sha256": "abad1e3892a9694056e8095de65ceee1d2166560a62f33654603f99b872b4565",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.library.stage1",
+          "building.library.stage2",
+          "building.library.stage3",
+          "building.library.ready",
+          "building.library.winter",
+          "building.library.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-barracks.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2743907,
+        "sha256": "fbd30989b984a3b82fafd355c495e9ff1c28ddfef40ce02e276e34bbb1b54445",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.barracks.stage1",
+          "building.barracks.stage2",
+          "building.barracks.stage3",
+          "building.barracks.ready",
+          "building.barracks.winter",
+          "building.barracks.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-bridge.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2414727,
+        "sha256": "e2d0d9cedab81904f3c8ade1aaf62d1dca89278e70eb802766f205a54d32f40a",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.bridge.stage1",
+          "building.bridge.stage2",
+          "building.bridge.stage3",
+          "building.bridge.ready",
+          "building.bridge.winter",
+          "building.bridge.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-lumbermill.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2779362,
+        "sha256": "3412ca00e44c0f42c40d831bb9d0321e83b0a78c5393dbd4c39e93fb88c07185",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.lumbermill.stage1",
+          "building.lumbermill.stage2",
+          "building.lumbermill.stage3",
+          "building.lumbermill.ready",
+          "building.lumbermill.winter",
+          "building.lumbermill.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-mill.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2714253,
+        "sha256": "24573070cb760bddc0def26cff30160dbe6c236d957e2a1e91d6612ef6088be5",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.mill.stage1",
+          "building.mill.stage2",
+          "building.mill.stage3",
+          "building.mill.ready",
+          "building.mill.winter",
+          "building.mill.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-kitchen.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2612717,
+        "sha256": "4715cb74dbc7a337c5fc2b89223a2f80fc848bde12b5cafd388d1a8f58fa7293",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.kitchen.stage1",
+          "building.kitchen.stage2",
+          "building.kitchen.stage3",
+          "building.kitchen.ready",
+          "building.kitchen.winter",
+          "building.kitchen.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-claypit.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2879923,
+        "sha256": "f369e580ab93e056f15e91ba0bacbb0358443c26e6de3386df3483cf96b36476",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.claypit.stage1",
+          "building.claypit.stage2",
+          "building.claypit.stage3",
+          "building.claypit.ready",
+          "building.claypit.winter",
+          "building.claypit.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-road.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2505967,
+        "sha256": "d4f9bbfbfb6be3e81f53fa264864a0aa55963d555253efec398149154c8f470a",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "building.road.stage1",
+          "building.road.stage2",
+          "building.road.stage3",
+          "building.road.ready",
+          "building.road.winter",
+          "building.road.level2"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-materials.png",
+        "width": 1254,
+        "height": 1254,
+        "encoded_bytes": 3607199,
+        "sha256": "57ecb3d4760df3faf244d9fedb683f587e7d72f015cb9b11839804e03750b9c3",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6290064,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "terrain-materials.0",
+          "terrain-materials.1",
+          "terrain-materials.2",
+          "terrain-materials.3",
+          "terrain-materials.4",
+          "terrain-materials.5",
+          "terrain-materials.6",
+          "terrain-materials.7",
+          "terrain-materials.8",
+          "terrain-materials.9",
+          "terrain-materials.10",
+          "terrain-materials.11",
+          "terrain-materials.12",
+          "terrain-materials.13",
+          "terrain-materials.14",
+          "terrain-materials.15"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-grass.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 4490554,
+        "sha256": "1b39b106088491dfdf0b77fcbb74f88cc880e17b5e906c8fa3ef3f10f4c26980",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 6,
+        "sprite_ids": [
+          "grass.018.0",
+          "grass.018.1",
+          "grass.018.2",
+          "grass.018.3",
+          "grass.018.4",
+          "grass.018.5"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-trees.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2656855,
+        "sha256": "f9338f62afdad63367c0850c9b51a5a542e68e5338300d20b8badd9caf4f51e1",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 12,
+        "sprite_ids": [
+          "trees.018.0",
+          "trees.018.1",
+          "trees.018.2",
+          "trees.018.3",
+          "trees.018.4",
+          "trees.018.5",
+          "trees.018.6",
+          "trees.018.7",
+          "trees.018.8",
+          "trees.018.9",
+          "trees.018.10",
+          "trees.018.11"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-rocks.png",
+        "width": 1254,
+        "height": 1254,
+        "encoded_bytes": 2497342,
+        "sha256": "121d554a3989b0d0e6eb319b05a37327d1361a9af05315259fce78f053cb1e79",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6290064,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "rocks-mountains.0",
+          "rocks-mountains.1",
+          "rocks-mountains.2",
+          "rocks-mountains.3",
+          "rocks-mountains.4",
+          "rocks-mountains.5",
+          "rocks-mountains.6",
+          "rocks-mountains.7",
+          "rocks-mountains.8",
+          "rocks-mountains.9",
+          "rocks-mountains.10",
+          "rocks-mountains.11",
+          "rocks-mountains.12",
+          "rocks-mountains.13",
+          "rocks-mountains.14",
+          "rocks-mountains.15"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-detail.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 2479484,
+        "sha256": "72d6046ab22b966c521b8ff8515172fbb134aaa8a773841fa4c5f1b8c960a91c",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 14,
+        "sprite_ids": [
+          "detail.0",
+          "detail.1",
+          "detail.2",
+          "detail.3",
+          "detail.4",
+          "nature.8",
+          "detail.5",
+          "nature.9",
+          "detail.6",
+          "detail.7",
+          "detail.8",
+          "detail.9",
+          "detail.10",
+          "detail.11"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-effects.png",
+        "width": 1536,
+        "height": 1024,
+        "encoded_bytes": 1348293,
+        "sha256": "ae0fb6c2a3f39ad844dbb5b558efc2bf43b537a4fb2ed084767a5e0ee4e4888a",
+        "alpha_mode": "luminance",
+        "rgba8_bytes": 6291456,
+        "sprite_count": 8,
+        "sprite_ids": [
+          "fx.0",
+          "fx.1",
+          "fx.2",
+          "fx.3",
+          "fx.4",
+          "fx.5",
+          "fx.6",
+          "fx.7"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-walk-blue.png",
+        "width": 1254,
+        "height": 1254,
+        "encoded_bytes": 1508228,
+        "sha256": "1ca067bdca22e2c130d9012b8de379c208986a8df6eb56dccc5bd1e19cd21403",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6290064,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "walk.0.0.0",
+          "walk.0.0.1",
+          "walk.0.0.2",
+          "walk.0.0.3",
+          "walk.0.1.0",
+          "walk.0.1.1",
+          "walk.0.1.2",
+          "walk.0.1.3",
+          "walk.1.0.0",
+          "walk.1.0.1",
+          "walk.1.0.2",
+          "walk.1.0.3",
+          "walk.1.1.0",
+          "walk.1.1.1",
+          "walk.1.1.2",
+          "walk.1.1.3"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-walk-earth.png",
+        "width": 1254,
+        "height": 1254,
+        "encoded_bytes": 1582978,
+        "sha256": "c0c2b57986483afaa65fb06751941e291cb3a17fab0873b8f6e7291a2757f44d",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6290064,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "walk.2.0.0",
+          "walk.2.0.1",
+          "walk.2.0.2",
+          "walk.2.0.3",
+          "walk.2.1.0",
+          "walk.2.1.1",
+          "walk.2.1.2",
+          "walk.2.1.3",
+          "walk.3.0.0",
+          "walk.3.0.1",
+          "walk.3.0.2",
+          "walk.3.0.3",
+          "walk.3.1.0",
+          "walk.3.1.1",
+          "walk.3.1.2",
+          "walk.3.1.3"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-animals-summer.png",
+        "width": 1254,
+        "height": 1254,
+        "encoded_bytes": 1795570,
+        "sha256": "d838f9b0dd64af213bd52873fa05209200988309986a7e024c3216219f038d8e",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6290064,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "animal.deer.summer0",
+          "animal.deer.summer1",
+          "animal.deer.summer2",
+          "animal.deer.summer3",
+          "animal.hare.summer0",
+          "animal.hare.summer1",
+          "animal.hare.summer2",
+          "animal.hare.summer3",
+          "animal.boar.summer0",
+          "animal.boar.summer1",
+          "animal.boar.summer2",
+          "animal.boar.summer3",
+          "animal.wolf.summer0",
+          "animal.wolf.summer1",
+          "animal.wolf.summer2",
+          "animal.wolf.summer3"
+        ]
+      },
+      {
+        "path": "assets/art/refresh-animals-winter.png",
+        "width": 1254,
+        "height": 1254,
+        "encoded_bytes": 1801854,
+        "sha256": "d61923137ae74c64de00af481713660eaa215dc86ab5199449166ce43b9f9d75",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6290064,
+        "sprite_count": 16,
+        "sprite_ids": [
+          "animal.deer.winter0",
+          "animal.deer.winter1",
+          "animal.deer.winter2",
+          "animal.deer.winter3",
+          "animal.hare.winter0",
+          "animal.hare.winter1",
+          "animal.hare.winter2",
+          "animal.hare.winter3",
+          "animal.boar.winter0",
+          "animal.boar.winter1",
+          "animal.boar.winter2",
+          "animal.boar.winter3",
+          "animal.wolf.winter0",
+          "animal.wolf.winter1",
+          "animal.wolf.winter2",
+          "animal.wolf.winter3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-man-walk.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1096054,
+        "sha256": "14b087cb57d30efe7b60e58c46333a223c214b01e2360f0a322de5be917442ca",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.man.walk.0.0",
+          "resident.man.walk.1.0",
+          "resident.man.walk.2.0",
+          "resident.man.walk.3.0",
+          "resident.man.walk.4.0",
+          "resident.man.walk.5.0",
+          "resident.man.walk.6.0",
+          "resident.man.walk.7.0",
+          "resident.man.walk.0.1",
+          "resident.man.walk.1.1",
+          "resident.man.walk.2.1",
+          "resident.man.walk.3.1",
+          "resident.man.walk.4.1",
+          "resident.man.walk.5.1",
+          "resident.man.walk.6.1",
+          "resident.man.walk.7.1",
+          "resident.man.walk.0.2",
+          "resident.man.walk.1.2",
+          "resident.man.walk.2.2",
+          "resident.man.walk.3.2",
+          "resident.man.walk.4.2",
+          "resident.man.walk.5.2",
+          "resident.man.walk.6.2",
+          "resident.man.walk.7.2",
+          "resident.man.walk.0.3",
+          "resident.man.walk.1.3",
+          "resident.man.walk.2.3",
+          "resident.man.walk.3.3",
+          "resident.man.walk.4.3",
+          "resident.man.walk.5.3",
+          "resident.man.walk.6.3",
+          "resident.man.walk.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-man-logs.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1146330,
+        "sha256": "4d937693ec4232ca348978dc500d09ebe340f521922b60a5e87b0647e81f2750",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.man.logs.0.0",
+          "resident.man.logs.1.0",
+          "resident.man.logs.2.0",
+          "resident.man.logs.3.0",
+          "resident.man.logs.4.0",
+          "resident.man.logs.5.0",
+          "resident.man.logs.6.0",
+          "resident.man.logs.7.0",
+          "resident.man.logs.0.1",
+          "resident.man.logs.1.1",
+          "resident.man.logs.2.1",
+          "resident.man.logs.3.1",
+          "resident.man.logs.4.1",
+          "resident.man.logs.5.1",
+          "resident.man.logs.6.1",
+          "resident.man.logs.7.1",
+          "resident.man.logs.0.2",
+          "resident.man.logs.1.2",
+          "resident.man.logs.2.2",
+          "resident.man.logs.3.2",
+          "resident.man.logs.4.2",
+          "resident.man.logs.5.2",
+          "resident.man.logs.6.2",
+          "resident.man.logs.7.2",
+          "resident.man.logs.0.3",
+          "resident.man.logs.1.3",
+          "resident.man.logs.2.3",
+          "resident.man.logs.3.3",
+          "resident.man.logs.4.3",
+          "resident.man.logs.5.3",
+          "resident.man.logs.6.3",
+          "resident.man.logs.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-man-sack.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1266483,
+        "sha256": "b0346a4d91f2aa932dd5acefdc8355810f00c22f4a7029f1cc051037e9814060",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.man.sack.0.0",
+          "resident.man.sack.1.0",
+          "resident.man.sack.2.0",
+          "resident.man.sack.3.0",
+          "resident.man.sack.4.0",
+          "resident.man.sack.5.0",
+          "resident.man.sack.6.0",
+          "resident.man.sack.7.0",
+          "resident.man.sack.0.1",
+          "resident.man.sack.1.1",
+          "resident.man.sack.2.1",
+          "resident.man.sack.3.1",
+          "resident.man.sack.4.1",
+          "resident.man.sack.5.1",
+          "resident.man.sack.6.1",
+          "resident.man.sack.7.1",
+          "resident.man.sack.0.2",
+          "resident.man.sack.1.2",
+          "resident.man.sack.2.2",
+          "resident.man.sack.3.2",
+          "resident.man.sack.4.2",
+          "resident.man.sack.5.2",
+          "resident.man.sack.6.2",
+          "resident.man.sack.7.2",
+          "resident.man.sack.0.3",
+          "resident.man.sack.1.3",
+          "resident.man.sack.2.3",
+          "resident.man.sack.3.3",
+          "resident.man.sack.4.3",
+          "resident.man.sack.5.3",
+          "resident.man.sack.6.3",
+          "resident.man.sack.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-man-cart.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1344374,
+        "sha256": "a01a8bd01281f24a011ce1d9b10340352c932aa883380195eb045789bc13f208",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.man.cart.0.0",
+          "resident.man.cart.1.0",
+          "resident.man.cart.2.0",
+          "resident.man.cart.3.0",
+          "resident.man.cart.4.0",
+          "resident.man.cart.5.0",
+          "resident.man.cart.6.0",
+          "resident.man.cart.7.0",
+          "resident.man.cart.0.1",
+          "resident.man.cart.1.1",
+          "resident.man.cart.2.1",
+          "resident.man.cart.3.1",
+          "resident.man.cart.4.1",
+          "resident.man.cart.5.1",
+          "resident.man.cart.6.1",
+          "resident.man.cart.7.1",
+          "resident.man.cart.0.2",
+          "resident.man.cart.1.2",
+          "resident.man.cart.2.2",
+          "resident.man.cart.3.2",
+          "resident.man.cart.4.2",
+          "resident.man.cart.5.2",
+          "resident.man.cart.6.2",
+          "resident.man.cart.7.2",
+          "resident.man.cart.0.3",
+          "resident.man.cart.1.3",
+          "resident.man.cart.2.3",
+          "resident.man.cart.3.3",
+          "resident.man.cart.4.3",
+          "resident.man.cart.5.3",
+          "resident.man.cart.6.3",
+          "resident.man.cart.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-woman-walk.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1039585,
+        "sha256": "3464af03af0d00d99256e07dc12baa88b7dc4400a5dfb96c468f0f4921b38780",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.woman.walk.0.0",
+          "resident.woman.walk.1.0",
+          "resident.woman.walk.2.0",
+          "resident.woman.walk.3.0",
+          "resident.woman.walk.4.0",
+          "resident.woman.walk.5.0",
+          "resident.woman.walk.6.0",
+          "resident.woman.walk.7.0",
+          "resident.woman.walk.0.1",
+          "resident.woman.walk.1.1",
+          "resident.woman.walk.2.1",
+          "resident.woman.walk.3.1",
+          "resident.woman.walk.4.1",
+          "resident.woman.walk.5.1",
+          "resident.woman.walk.6.1",
+          "resident.woman.walk.7.1",
+          "resident.woman.walk.0.2",
+          "resident.woman.walk.1.2",
+          "resident.woman.walk.2.2",
+          "resident.woman.walk.3.2",
+          "resident.woman.walk.4.2",
+          "resident.woman.walk.5.2",
+          "resident.woman.walk.6.2",
+          "resident.woman.walk.7.2",
+          "resident.woman.walk.0.3",
+          "resident.woman.walk.1.3",
+          "resident.woman.walk.2.3",
+          "resident.woman.walk.3.3",
+          "resident.woman.walk.4.3",
+          "resident.woman.walk.5.3",
+          "resident.woman.walk.6.3",
+          "resident.woman.walk.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-woman-logs.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1190264,
+        "sha256": "e001fabbc76e8176b84028b8cbdda5c2562df936ea35340748a8daaddadd11aa",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.woman.logs.0.0",
+          "resident.woman.logs.1.0",
+          "resident.woman.logs.2.0",
+          "resident.woman.logs.3.0",
+          "resident.woman.logs.4.0",
+          "resident.woman.logs.5.0",
+          "resident.woman.logs.6.0",
+          "resident.woman.logs.7.0",
+          "resident.woman.logs.0.1",
+          "resident.woman.logs.1.1",
+          "resident.woman.logs.2.1",
+          "resident.woman.logs.3.1",
+          "resident.woman.logs.4.1",
+          "resident.woman.logs.5.1",
+          "resident.woman.logs.6.1",
+          "resident.woman.logs.7.1",
+          "resident.woman.logs.0.2",
+          "resident.woman.logs.1.2",
+          "resident.woman.logs.2.2",
+          "resident.woman.logs.3.2",
+          "resident.woman.logs.4.2",
+          "resident.woman.logs.5.2",
+          "resident.woman.logs.6.2",
+          "resident.woman.logs.7.2",
+          "resident.woman.logs.0.3",
+          "resident.woman.logs.1.3",
+          "resident.woman.logs.2.3",
+          "resident.woman.logs.3.3",
+          "resident.woman.logs.4.3",
+          "resident.woman.logs.5.3",
+          "resident.woman.logs.6.3",
+          "resident.woman.logs.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-woman-sack.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1321663,
+        "sha256": "e2be6cfd70c1764a95f44140a6677b1990273263d2d49a054d589192e1aa31db",
+        "alpha_mode": "rgba",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.woman.sack.0.0",
+          "resident.woman.sack.1.0",
+          "resident.woman.sack.2.0",
+          "resident.woman.sack.3.0",
+          "resident.woman.sack.4.0",
+          "resident.woman.sack.5.0",
+          "resident.woman.sack.6.0",
+          "resident.woman.sack.7.0",
+          "resident.woman.sack.0.1",
+          "resident.woman.sack.1.1",
+          "resident.woman.sack.2.1",
+          "resident.woman.sack.3.1",
+          "resident.woman.sack.4.1",
+          "resident.woman.sack.5.1",
+          "resident.woman.sack.6.1",
+          "resident.woman.sack.7.1",
+          "resident.woman.sack.0.2",
+          "resident.woman.sack.1.2",
+          "resident.woman.sack.2.2",
+          "resident.woman.sack.3.2",
+          "resident.woman.sack.4.2",
+          "resident.woman.sack.5.2",
+          "resident.woman.sack.6.2",
+          "resident.woman.sack.7.2",
+          "resident.woman.sack.0.3",
+          "resident.woman.sack.1.3",
+          "resident.woman.sack.2.3",
+          "resident.woman.sack.3.3",
+          "resident.woman.sack.4.3",
+          "resident.woman.sack.5.3",
+          "resident.woman.sack.6.3",
+          "resident.woman.sack.7.3"
+        ]
+      },
+      {
+        "path": "assets/art/resident8-woman-cart.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 1800125,
+        "sha256": "af50ad24198919a3e2cd8c54fb2b580f9fdb248dfa37fac6d1e016bbf00ea314",
+        "alpha_mode": "magenta",
+        "rgba8_bytes": 6294152,
+        "sprite_count": 32,
+        "sprite_ids": [
+          "resident.woman.cart.0.0",
+          "resident.woman.cart.1.0",
+          "resident.woman.cart.2.0",
+          "resident.woman.cart.3.0",
+          "resident.woman.cart.4.0",
+          "resident.woman.cart.5.0",
+          "resident.woman.cart.6.0",
+          "resident.woman.cart.7.0",
+          "resident.woman.cart.0.1",
+          "resident.woman.cart.1.1",
+          "resident.woman.cart.2.1",
+          "resident.woman.cart.3.1",
+          "resident.woman.cart.4.1",
+          "resident.woman.cart.5.1",
+          "resident.woman.cart.6.1",
+          "resident.woman.cart.7.1",
+          "resident.woman.cart.0.2",
+          "resident.woman.cart.1.2",
+          "resident.woman.cart.2.2",
+          "resident.woman.cart.3.2",
+          "resident.woman.cart.4.2",
+          "resident.woman.cart.5.2",
+          "resident.woman.cart.6.2",
+          "resident.woman.cart.7.2",
+          "resident.woman.cart.0.3",
+          "resident.woman.cart.1.3",
+          "resident.woman.cart.2.3",
+          "resident.woman.cart.3.3",
+          "resident.woman.cart.4.3",
+          "resident.woman.cart.5.3",
+          "resident.woman.cart.6.3",
+          "resident.woman.cart.7.3"
+        ]
+      }
+    ]
+  },
+  "ui": {
+    "png_count": 83,
+    "rgba8_bytes_sum": 33046328,
+    "images": [
+      {
+        "path": "assets/ui/art/building-barracks.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35042,
+        "sha256": "801920f1dc6393251ddb0a1205fc2273341e097bc4dac60b48da4a7a5a8afdbf"
+      },
+      {
+        "path": "assets/ui/art/building-bridge.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 21935,
+        "sha256": "4693b3a266cd0faf727b7df3f02802ae6ae6796aa167051b088af78cc751ac5f"
+      },
+      {
+        "path": "assets/ui/art/building-cartographer.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35219,
+        "sha256": "320ddceb32ee7b4ccd948abc124682f088237cd7c1a8607bd1e76840f32956e8"
+      },
+      {
+        "path": "assets/ui/art/building-claypit.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35270,
+        "sha256": "213c51e0edbd66d0ae5e660317e7cfb11be055afccb0e13434bb5ab846c75295"
+      },
+      {
+        "path": "assets/ui/art/building-farm.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 31333,
+        "sha256": "9b1bbb593c99259617d12db48c369c794e38124531a74d1ce68a93076d69527b"
+      },
+      {
+        "path": "assets/ui/art/building-fishing.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 33906,
+        "sha256": "8c9ee87cbf5b65e4107c84999ca3a0482caed006cfdbd24aabf8017afd00a4c0"
+      },
+      {
+        "path": "assets/ui/art/building-house.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 32070,
+        "sha256": "6feb6db8a11bc8b1c6fdb5f91593a3dc80ea50759a7e9cceee9cf10b00f5c1e9"
+      },
+      {
+        "path": "assets/ui/art/building-kitchen.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 33104,
+        "sha256": "967c25d3bd09cf6fa5b41e60a7a9f6054266402579e91d56ba19e974260c8ee3"
+      },
+      {
+        "path": "assets/ui/art/building-library.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 34371,
+        "sha256": "e0ad77c266bee24539a9f607e4cd01618a88a08d7d9ab6c2559e7605e2fe7453"
+      },
+      {
+        "path": "assets/ui/art/building-lumbermill.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35704,
+        "sha256": "36a5230987c13ddc11e60672c2b6d28fce061da78fe19f602813521241f1101a"
+      },
+      {
+        "path": "assets/ui/art/building-mill.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35704,
+        "sha256": "36a5230987c13ddc11e60672c2b6d28fce061da78fe19f602813521241f1101a"
+      },
+      {
+        "path": "assets/ui/art/building-mine.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35270,
+        "sha256": "213c51e0edbd66d0ae5e660317e7cfb11be055afccb0e13434bb5ab846c75295"
+      },
+      {
+        "path": "assets/ui/art/building-research.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 34365,
+        "sha256": "5e675322a6b1671961b85c9716fa27b1856c9bc7f163bee8e17467cc2fabffe6"
+      },
+      {
+        "path": "assets/ui/art/building-road.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 31886,
+        "sha256": "714c8da8a8a63ce9f2e89248230a264debebb647d37d98b177160cdc43d4478b"
+      },
+      {
+        "path": "assets/ui/art/building-smelter.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 34195,
+        "sha256": "49483622dc71e868bb4f949673878e14d6f899397cd87c8ce6032bfa962dacff"
+      },
+      {
+        "path": "assets/ui/art/building-stockpile.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 31886,
+        "sha256": "714c8da8a8a63ce9f2e89248230a264debebb647d37d98b177160cdc43d4478b"
+      },
+      {
+        "path": "assets/ui/art/building-tavern.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 33104,
+        "sha256": "967c25d3bd09cf6fa5b41e60a7a9f6054266402579e91d56ba19e974260c8ee3"
+      },
+      {
+        "path": "assets/ui/art/building-temple.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 34910,
+        "sha256": "b5828f656eee91626750d36e48a9d62b87f1eb218928e8a8588e9b6ea32135b1"
+      },
+      {
+        "path": "assets/ui/art/building-workshop.png",
+        "width": 136,
+        "height": 136,
+        "encoded_bytes": 35704,
+        "sha256": "36a5230987c13ddc11e60672c2b6d28fce061da78fe19f602813521241f1101a"
+      },
+      {
+        "path": "assets/ui/art/glyph-0.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 8433,
+        "sha256": "038df00466c4099ee6929bd5b00f4bb3d96c09679019a60fa11078f27468567b"
+      },
+      {
+        "path": "assets/ui/art/glyph-1.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 12281,
+        "sha256": "555fe69e7fb62e46f54d0b8433726487249ac62ffb6692958ff83b2ee532c708"
+      },
+      {
+        "path": "assets/ui/art/glyph-10.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 14383,
+        "sha256": "c414c45a25a7125fe2da10a6fca9b76100f29395029371ea1e15c5d0a6aea593"
+      },
+      {
+        "path": "assets/ui/art/glyph-11.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 12678,
+        "sha256": "1e3fd3e7eca5403960210df0c72c26c5195ea1e4e9fbd1ca64756423dcd8f56e"
+      },
+      {
+        "path": "assets/ui/art/glyph-12.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 8726,
+        "sha256": "e2347c5ac09917a9ee7c4ac18fbaa2ad0abfce4ae32f5c8f9d3df67538fc55dc"
+      },
+      {
+        "path": "assets/ui/art/glyph-13.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 10337,
+        "sha256": "451f0f1f928dcd6fd042715d450644d5bcd85bfa02f950d905d3d30d363c32bd"
+      },
+      {
+        "path": "assets/ui/art/glyph-2.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 12282,
+        "sha256": "1b90ca53c58edf83fdc298e1a61da464b0dec25a7936539eb2d5706d1b00fd67"
+      },
+      {
+        "path": "assets/ui/art/glyph-3.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 10434,
+        "sha256": "6971e18a222fd2e4a1e851e1703daeb7cee40557bbad263ccfe588467318d4be"
+      },
+      {
+        "path": "assets/ui/art/glyph-4.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 12318,
+        "sha256": "be6e67be9027075f426b1120b1755fe73aad761722f408946630787781cd99ea"
+      },
+      {
+        "path": "assets/ui/art/glyph-5.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 10854,
+        "sha256": "7a989b4f347a492778606004c29c3071006fd70eb0b6e17bfe959c836f4337cf"
+      },
+      {
+        "path": "assets/ui/art/glyph-6.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 9402,
+        "sha256": "569091a23cb7b8e7d658a0d6c26329fb300d8db726ee82e4da71e6e6f5f09cd9"
+      },
+      {
+        "path": "assets/ui/art/glyph-7.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 8410,
+        "sha256": "5c2217aab017c44df287f2b984247e2e2b20be85176538e9ec3abc0229111faa"
+      },
+      {
+        "path": "assets/ui/art/glyph-8.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 7227,
+        "sha256": "6d9a886653467c4d33c86b374752be6eaedc02b1f2bda1fc10728d131b6f7e45"
+      },
+      {
+        "path": "assets/ui/art/glyph-9.png",
+        "width": 88,
+        "height": 88,
+        "encoded_bytes": 10387,
+        "sha256": "fbfe4e317861c79fd58b75e16476924f4e24afd4e5278d60d57e76575e0c7a5b"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.0.png",
+        "width": 197,
+        "height": 171,
+        "encoded_bytes": 49470,
+        "sha256": "7aef4ed22e702dbac0c2666c23171fb52fdb3ad89b143808d1724107830b0def"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.1.png",
+        "width": 179,
+        "height": 174,
+        "encoded_bytes": 45136,
+        "sha256": "a70e23a3b7af4942026e552559789c5a08ae7b0617350c0cc9a0ac7338aed4b3"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.10.png",
+        "width": 162,
+        "height": 180,
+        "encoded_bytes": 35847,
+        "sha256": "cf97ccf43f73434106c42d366e4122a45894ff1bd16da31d040dc54654f0eda4"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.11.png",
+        "width": 174,
+        "height": 153,
+        "encoded_bytes": 36695,
+        "sha256": "698caea904c3ee32b79acb471a96b24fdc4f40ef32fc0eec9617785f43eef11e"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.12.png",
+        "width": 187,
+        "height": 187,
+        "encoded_bytes": 33446,
+        "sha256": "abbf3a1d7099792866d901a49eecd4046402f721bfc3318d54bd52e201388888"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.13.png",
+        "width": 172,
+        "height": 179,
+        "encoded_bytes": 38134,
+        "sha256": "7d771ea3a0d17ee13ccbafd61651114ae9b7900f90a88ba40e1a7b12ca8f1135"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.14.png",
+        "width": 177,
+        "height": 171,
+        "encoded_bytes": 42203,
+        "sha256": "7b3f680133f2d220b03a6212509017efa75919536730f483280193971002f98f"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.15.png",
+        "width": 177,
+        "height": 177,
+        "encoded_bytes": 39758,
+        "sha256": "49da80807b524b53feab186190c8b527dd9023c7cca63bb658a4e1b3849305e2"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.16.png",
+        "width": 199,
+        "height": 198,
+        "encoded_bytes": 43313,
+        "sha256": "d41be8040b8e59c794fb85b66d2dbac962ad966623f5d6b5064b4309c7caf0be"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.17.png",
+        "width": 174,
+        "height": 195,
+        "encoded_bytes": 50012,
+        "sha256": "8aad893356221e69081c861f800c8e7437e1cc5f937fe8fd316805e7bbfaa78d"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.18.png",
+        "width": 176,
+        "height": 178,
+        "encoded_bytes": 39211,
+        "sha256": "f20d443391b6dbe1b8bdabede8d44e9da390a7682b9a7c4aaf87783273682667"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.19.png",
+        "width": 166,
+        "height": 211,
+        "encoded_bytes": 43215,
+        "sha256": "10f02475dc350cb79195dd99b488f06c0b2a6642a106e1028a7d2caddb623e1c"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.2.png",
+        "width": 215,
+        "height": 185,
+        "encoded_bytes": 56027,
+        "sha256": "be32798d56d19489c99eb9f9b9649b6dbe6daaefe924f8c5ee45c9cbc148d493"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.20.png",
+        "width": 206,
+        "height": 213,
+        "encoded_bytes": 69683,
+        "sha256": "e27bb81a1eedf68a92de6392e557afb4aef7e87e0be2e82f8b5aaa8b591dc4c8"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.21.png",
+        "width": 190,
+        "height": 189,
+        "encoded_bytes": 47179,
+        "sha256": "8a74d0650e05c5f1d293802c20bb0901827c20504a387cda1ee895892e98f144"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.22.png",
+        "width": 145,
+        "height": 153,
+        "encoded_bytes": 26300,
+        "sha256": "4129d44285a17396b61a73eff00d6d2db908e39bd1c431043e8199801a0ee46e"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.23.png",
+        "width": 134,
+        "height": 163,
+        "encoded_bytes": 26491,
+        "sha256": "aaaa4cb5e92a438393624de3055ab9bb8ae730b4195ce1e5af4e6aa7bd63eacf"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.24.png",
+        "width": 118,
+        "height": 152,
+        "encoded_bytes": 18371,
+        "sha256": "5dc165123545b3181b389e9c4c6f23cf6ea714bb5279d6b276cace27c7fd58fa"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.25.png",
+        "width": 126,
+        "height": 155,
+        "encoded_bytes": 19565,
+        "sha256": "36063f1f502f57bc80df67ae4971e3dcf617b57af59034c0e87be4dd9db3e350"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.26.png",
+        "width": 152,
+        "height": 163,
+        "encoded_bytes": 24754,
+        "sha256": "ca135b10ad34cb38b8ca5b1091d441e341e995467bd8381c6d8f9f3729d612a0"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.27.png",
+        "width": 156,
+        "height": 168,
+        "encoded_bytes": 25597,
+        "sha256": "9843a71e581186f320128b77a08ad54a3268bd6629d5366fbe45e8f92875cef7"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.28.png",
+        "width": 143,
+        "height": 165,
+        "encoded_bytes": 25252,
+        "sha256": "191dbb65607b739b300fe9fe5ea75567ffa486d1747b38401051292e39855cb1"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.29.png",
+        "width": 141,
+        "height": 167,
+        "encoded_bytes": 23285,
+        "sha256": "123602e76f90c582bc05c12f0021b64c57ebfc2065e11cb3bf23a40c74022089"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.3.png",
+        "width": 191,
+        "height": 159,
+        "encoded_bytes": 41042,
+        "sha256": "5737a5a882459df17c6cbab7539dd990ef3771dc535a607968b7c4343c42fb49"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.4.png",
+        "width": 190,
+        "height": 146,
+        "encoded_bytes": 34589,
+        "sha256": "7e88b2067a03cef0e6c07ec0a1f327c60ba080cfd3e104923f03d894171c0318"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.5.png",
+        "width": 191,
+        "height": 150,
+        "encoded_bytes": 34532,
+        "sha256": "e2d1351bf50e6b686f7e661aa37d0b6f97cb547ebe548cd40c1ba8a5c42423ad"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.6.png",
+        "width": 177,
+        "height": 156,
+        "encoded_bytes": 38827,
+        "sha256": "872d52e76151abfbecad1ddff8ae12e0fe9c1b87955929432d92cb39c9596e19"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.7.png",
+        "width": 187,
+        "height": 152,
+        "encoded_bytes": 35568,
+        "sha256": "78a6e2f29e3e25db8eb47720ab767e23e2b89512c96d38f7c1cf71a6f58d64c2"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.8.png",
+        "width": 195,
+        "height": 155,
+        "encoded_bytes": 35546,
+        "sha256": "bdaab7810ccd3afdb379de13ab36cd3c432627e5f0b04345f34f9e3cbaf1ce06"
+      },
+      {
+        "path": "assets/ui/art/icons-cursors.9.png",
+        "width": 200,
+        "height": 155,
+        "encoded_bytes": 36369,
+        "sha256": "357fe3449f7a5cdba4c4035f8094dabf04e9e3905ef3a532985c70e6a2c7b129"
+      },
+      {
+        "path": "assets/ui/art/lobby-hall.png",
+        "width": 1672,
+        "height": 941,
+        "encoded_bytes": 2034670,
+        "sha256": "d72a49c866018cfc0dad5928b66bb17196773b32e413a81d542d5dd9e894cadd"
+      },
+      {
+        "path": "assets/ui/art/lobby-portraits.png",
+        "width": 2149,
+        "height": 732,
+        "encoded_bytes": 2780888,
+        "sha256": "0672042eddddbdd25f5b028b75909ee47e15d5df0de2299b1e391a61a92e5b43"
+      },
+      {
+        "path": "assets/ui/art/lobby-valley.png",
+        "width": 1774,
+        "height": 887,
+        "encoded_bytes": 3583318,
+        "sha256": "47c488b0b936792de5bc075085b2f0aa171b567df1c46b474dc93c0f4df39e81"
+      },
+      {
+        "path": "assets/ui/art/menu-landscape.png",
+        "width": 1672,
+        "height": 941,
+        "encoded_bytes": 2992895,
+        "sha256": "8de82bdd59f39e10c18ff8a24c73559075f8609f93f3784b1525ab51166bcb55"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.0.png",
+        "width": 285,
+        "height": 104,
+        "encoded_bytes": 38314,
+        "sha256": "4f4f156a443c85dd41b44a8f00683eeed1188621cea829ab96c50b8beda00eaf"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.1.png",
+        "width": 286,
+        "height": 104,
+        "encoded_bytes": 39146,
+        "sha256": "24658b100d6c93617e6d8227048b7c2784a1ced887b64a3862ea0b6f62e02ea0"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.10.png",
+        "width": 279,
+        "height": 58,
+        "encoded_bytes": 23114,
+        "sha256": "f85dad29b34e1dbf6dd85723ffe9a369cb10906786c9e4857df478b8f6e6acf6"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.11.png",
+        "width": 61,
+        "height": 257,
+        "encoded_bytes": 21173,
+        "sha256": "a2ba2d42afb026eff804e84d298c6e5ca0b80177c5d3bc7f38266e097e0c14a8"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.12.png",
+        "width": 143,
+        "height": 144,
+        "encoded_bytes": 30343,
+        "sha256": "64b2a90e7af2985e0c3a6c7e778e5052c49f7312f7e4f30e7ac38a9ec72e2b16"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.13.png",
+        "width": 145,
+        "height": 146,
+        "encoded_bytes": 34276,
+        "sha256": "9375413b3a932c0f6e221ddf314a5be4a822d984da9dd201331254169a772995"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.14.png",
+        "width": 204,
+        "height": 284,
+        "encoded_bytes": 64867,
+        "sha256": "b01b49a1a1018fd0b0d7886849ef9ac60957a7f447e7032d384cd5d00a6c0de1"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.15.png",
+        "width": 276,
+        "height": 69,
+        "encoded_bytes": 9209,
+        "sha256": "9bc0ea5642c12bc1ab83662b5a4615c47ba194e96953ae1c85864e04445cf597"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.2.png",
+        "width": 289,
+        "height": 107,
+        "encoded_bytes": 37228,
+        "sha256": "3c058a9f986ff04814f54e2f24195f472f90f1710568d415989c6b103c218dd9"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.3.png",
+        "width": 285,
+        "height": 103,
+        "encoded_bytes": 34976,
+        "sha256": "6eef6762d8506795e3f59435c3c4e1d44796d207d9803c15fa292c1e96c4a9e7"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.4.png",
+        "width": 287,
+        "height": 268,
+        "encoded_bytes": 91334,
+        "sha256": "6ea97ccefff2123a957b65c73edd9f1144a3900b66a20f730949e8bf3af2c3a0"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.5.png",
+        "width": 290,
+        "height": 269,
+        "encoded_bytes": 93004,
+        "sha256": "9c0a3188947aff770955448579c3ff126f939efaee331d5a650f53c515cfaeaa"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.6.png",
+        "width": 304,
+        "height": 292,
+        "encoded_bytes": 46166,
+        "sha256": "e2482a69b540d5de2889b02c8a5e373a9836a641f9a2f08ad579554f7023e766"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.7.png",
+        "width": 277,
+        "height": 266,
+        "encoded_bytes": 25520,
+        "sha256": "24c490825cc16129f8d200872748b68753fe16be45ef40102068d9dbac5b9511"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.8.png",
+        "width": 269,
+        "height": 53,
+        "encoded_bytes": 13504,
+        "sha256": "38ecf9b2a651470420ff228f4742a2a23d8b7671698b0e17d27bf5b312494ac1"
+      },
+      {
+        "path": "assets/ui/art/ui-kit.9.png",
+        "width": 280,
+        "height": 56,
+        "encoded_bytes": 20415,
+        "sha256": "8914aa35b80837373e15bb7e4714a443f12b420971180ad1509391d67272d4e6"
+      }
+    ]
+  },
+  "fonts": [
+    {
+      "path": "assets/fonts/CormorantGaramond.ttf",
+      "bytes": 773164,
+      "sha256": "c8986e8444e3ad0f071eaca83561bc893324f3215d1719dc7e7a665cc550bf8f"
+    },
+    {
+      "path": "assets/fonts/NotoSans-Regular.ttf",
+      "bytes": 569208,
+      "sha256": "b85c38ecea8a7cfb39c24e395a4007474fa5a4fc864f6ee33309eb4948d232d5"
+    }
+  ],
+  "source_directories": [
+    {
+      "directory": "art-source/buildings",
+      "png_count": 1
+    },
+    {
+      "directory": "art-source/directional-residents",
+      "png_count": 8
+    },
+    {
+      "directory": "art-source/production-v1",
+      "png_count": 15
+    },
+    {
+      "directory": "art-source/production-v2",
+      "png_count": 10
+    },
+    {
+      "directory": "art-source/production-v3",
+      "png_count": 2
+    },
+    {
+      "directory": "art-source/production-v4",
+      "png_count": 4
+    },
+    {
+      "directory": "art-source/reference-refresh",
+      "png_count": 30
+    },
+    {
+      "directory": "art-source/runtime-0.11.1",
+      "png_count": 206
+    },
+    {
+      "directory": "art-source/runtime-0.14.0",
+      "png_count": 54
+    },
+    {
+      "directory": "art-source/runtime-0.17.0",
+      "png_count": 6
+    },
+    {
+      "directory": "art-source/runtime-0.18.0",
+      "png_count": 51
+    }
+  ]
+}

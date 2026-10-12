@@ -1,0 +1,12 @@
+{
+  "name": "ribterra",
+  "version-string": "0.26.3",
+  "builtin-baseline": "04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4",
+  "dependencies": ["flatbuffers", "zstd", "gamenetworkingsockets", "nlohmann-json", "entt", "catch2"],
+  "features": {
+    "renderer": {
+      "description": "Desktop renderer tools, native UI, fonts, PNG and localization",
+      "dependencies": [{"name": "sdl3-shadercross", "host": true}, "rmlui", "icu", "freetype", "libpng"]
+    }
+  }
+}

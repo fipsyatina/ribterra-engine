@@ -1,0 +1,50 @@
+[
+  {
+    "id": "materials",
+    "cols": 4,
+    "rows": 4,
+    "mode": "",
+    "prompt": "Production texture atlas, 1024x1024 square, exact 4x4 grid of 256x256 seamless full-bleed material swatches. No lines, margins, labels, UI or perspective. Realistic natural medieval settlement materials from reference. Row1: muted olive meadow grass; dark damp earth; terracotta clay; pale beige fine sand. Row2: deep slate blue river water with small natural ripples NO fantasy caustics; shallow gray green river water; dark winter river with subtle ice flecks; fine uneven white snow. Row3: weathered limestone ground; golden wheat field viewed vertically down; red brick masonry; worn oak planks. Row4: gray slate shale; packed pale earth road with tiny gravel NO grass; dark cave stone floor; rough dark ore-bearing stone. Each square is independent texture, evenly lit, no large objects, strong natural microdetail but subdued contrast.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-7c96dd2a-c340-4c49-baf8-d8d04c6d6c05.png"
+  },
+  {
+    "id": "grass",
+    "cols": 3,
+    "rows": 2,
+    "mode": "",
+    "prompt": "Production terrain texture atlas for natural medieval settlement, 1536x1024, exact 3 columns 2 rows of 512 square opaque seamless fullbleed swatches without borders. Photorealistic TOP DOWN, NO isometric objects, NO text. Row1: olive meadow grass mixed with bare earth; dry straw grass with sparse stones; dark mossy forest floor with fallen leaves. Row2: sparse short grass on dry dusty ground; meadow grass with tiny daisies and weeds; ploughed moist dark brown soil with subtle parallel furrows. Subdued earthy greens, realistic fine blades, not bright saturated lawn. Uniform diffuse light. No artificial repeating motifs.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-7fa5ccbc-6c13-4699-b75c-457de8c12fd0.png"
+  },
+  {
+    "id": "trees",
+    "cols": 4,
+    "rows": 3,
+    "mode": "magenta",
+    "prompt": "Production game atlas 1536x1024, exact 4 columns 3 rows with isolated trees, each whole tree centered in cell and bottom at 92% cell height with empty gutters. Fixed 35 degree isometric orthographic camera, realistic miniature forest like reference, individual fine leaves and bark, neutral warm sunlight upper left. Row1 left to right: leafy oak, silver birch, tall spruce, pine. Row2: autumn golden oak, autumn birch, riverside willow, young green oak. Row3: bare winter oak with snow, bare birch with snow, snow-covered spruce, snow-covered pine. Entire crown and roots fit inside each cell. NO landscape, NO text, NO UI, NO people, NO baked smoke/shadows. ALL empty pixels pure flat magenta RGB255,0,255 for runtime masking, no checkerboard.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-91958e49-5af6-4a65-8aa5-7a60fc652602.png"
+  },
+  {
+    "id": "rocks",
+    "cols": 4,
+    "rows": 4,
+    "mode": "magenta",
+    "prompt": "Production game sprite atlas 1024x1024 exact 4 columns by 4 rows, sixteen isolated detailed natural rock outcrops on pure flat magenta RGB255,0,255 background. Matching reference medieval isometric terrain, orthographic 35deg front-right view. Each object contained in own256squarecell 24pxpadding. Row1: limestone boulder, mossy boulder, jagged granite rock, scattered small stones. Row2: cave iron vein, coal outcrop, copper ore, silver ore. Row3: gold vein, blue crystal cluster, dark cave stalagmites, white mineral vein. Row4: low mountain crag, snowcapped low crag, tall gray cliff outcrop, tall snowy cliff. Realistic mineral textures, muted natural stone, translucent blue crystal. No text, gridlines, background terrain, shadows outside silhouettes or UI.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-ed4a21c3-57ac-4caa-8b41-96c0017a328d.png"
+  },
+  {
+    "id": "detail",
+    "cols": 4,
+    "rows": 3,
+    "mode": "magenta",
+    "prompt": "Production game environment detail atlas 1536x1024, precise 4columns by3rows, twelve small isolated sprites. Realistic medieval isometric miniature reference, orthographic35deg, natural subdued greens warm beige oak and gray stone. Each fully contained with 40px flat magenta empty margin. Row1: wild grass tuft with tiny daisies; short grass with pebbles; thin river reeds cattails; low leafy bramble bush. Row2: berry bush with tiny red berries; same berry bush with snow; two wooden barrels and crate; low stack of chopped firewood. Row3: short rustic fence segment; stone well with timber shingle shelter; lantern on wooden post; upright ripe wheat clump. All backgrounds pure solid flat magenta RGB255,0,255, NO gridlines/text/people/landscape. No luminous halos, smoke or large ground bases.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-7bfb2132-1762-4e73-8058-5071ceb7b18e.png"
+  },
+  {
+    "id": "effects",
+    "cols": 4,
+    "rows": 2,
+    "mode": "luminance",
+    "prompt": "Technical grayscale VFX sprite atlas 1536x1024, exact 4columns by2rows,8 independent luminous masks on PURE BLACK background. NO colors, checkerboard, text, grid or UI. Soft photoreal wisps with all edges fading smoothly to exact black, generous blackpadding eachcell. Row1: soft chimney smoke puff small; curled diffusing smoke puff; broad translucent low ground mist cloud; soft circular radial glow white center smoothly to black. Row2: thin elongated river surface ripple speculars; irregular whitewater foam patch; narrow rising flame shape grayscale mask; sparse small ember sparks. Each centered well within own384x512cell no overlap. These will be tinted and alpha-blended in an isometric medieval game, no baked world.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-886dbd2f-59c4-4318-84ad-a0a64a3ac427.png"
+  }
+]

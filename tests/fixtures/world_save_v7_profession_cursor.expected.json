@@ -1,0 +1,6568 @@
+{
+  "metadata": {
+    "world_id": [
+      128,
+      139,
+      245,
+      83,
+      142,
+      62,
+      77,
+      149,
+      164,
+      152,
+      33,
+      26,
+      112,
+      112,
+      232,
+      96
+    ],
+    "seed": 70421,
+    "ticks": 1,
+    "next_building_id": 2,
+    "has_moved": false,
+    "has_gathered": false,
+    "has_built": false
+  },
+  "resources": {
+    "wood": 80,
+    "stone": 40,
+    "food": 100
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 21.0,
+      "y": 21.0,
+      "target_x": 21,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 1,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 2,
+      "name": "Taras",
+      "x": 22.0,
+      "y": 21.0,
+      "target_x": 22,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 2,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 3,
+      "name": "Oles",
+      "x": 23.0,
+      "y": 21.0,
+      "target_x": 23,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 3,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 4,
+      "name": "Iryna",
+      "x": 24.0,
+      "y": 21.0,
+      "target_x": 24,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 4,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 5,
+      "name": "Bohdan",
+      "x": 25.0,
+      "y": 21.0,
+      "target_x": 25,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 5,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 6,
+      "name": "Nadia",
+      "x": 26.0,
+      "y": 21.0,
+      "target_x": 26,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 6,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 7,
+      "name": "Lev",
+      "x": 27.0,
+      "y": 21.0,
+      "target_x": 27,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 7,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 8,
+      "name": "Sofiia",
+      "x": 21.0,
+      "y": 22.0,
+      "target_x": 21,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 8,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 9,
+      "name": "Marko",
+      "x": 22.0,
+      "y": 22.0,
+      "target_x": 22,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 9,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 10,
+      "name": "Vira",
+      "x": 23.0,
+      "y": 22.0,
+      "target_x": 23,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 10,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 11,
+      "name": "Settler 11",
+      "x": 24.0,
+      "y": 22.0,
+      "target_x": 24,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 11,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 12,
+      "name": "Settler 12",
+      "x": 25.0,
+      "y": 22.0,
+      "target_x": 25,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 12,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 13,
+      "name": "Settler 13",
+      "x": 26.0,
+      "y": 22.0,
+      "target_x": 26,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 13,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 14,
+      "name": "Settler 14",
+      "x": 27.0,
+      "y": 22.0,
+      "target_x": 27,
+      "target_y": 22,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 14,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 15,
+      "name": "Settler 15",
+      "x": 21.0,
+      "y": 23.0,
+      "target_x": 21,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 15,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 16,
+      "name": "Settler 16",
+      "x": 22.0,
+      "y": 23.0,
+      "target_x": 22,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 16,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 17,
+      "name": "Settler 17",
+      "x": 23.0,
+      "y": 23.0,
+      "target_x": 23,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 17,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 18,
+      "name": "Settler 18",
+      "x": 24.0,
+      "y": 23.0,
+      "target_x": 24,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 18,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 19,
+      "name": "Settler 19",
+      "x": 25.0,
+      "y": 23.0,
+      "target_x": 25,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 19,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 20,
+      "name": "Settler 20",
+      "x": 26.0,
+      "y": 23.0,
+      "target_x": 26,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 20,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 21,
+      "name": "Settler 21",
+      "x": 27.0,
+      "y": 23.0,
+      "target_x": 27,
+      "target_y": 23,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 21,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 22,
+      "name": "Settler 22",
+      "x": 21.0,
+      "y": 24.0,
+      "target_x": 21,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 22,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 23,
+      "name": "Settler 23",
+      "x": 22.0,
+      "y": 24.0,
+      "target_x": 22,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 23,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 24,
+      "name": "Settler 24",
+      "x": 23.0,
+      "y": 24.0,
+      "target_x": 23,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 24,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 25,
+      "name": "Settler 25",
+      "x": 24.0,
+      "y": 24.0,
+      "target_x": 24,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 25,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 26,
+      "name": "Settler 26",
+      "x": 25.0,
+      "y": 24.0,
+      "target_x": 25,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 26,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 27,
+      "name": "Settler 27",
+      "x": 26.0,
+      "y": 24.0,
+      "target_x": 26,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 27,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 28,
+      "name": "Settler 28",
+      "x": 27.0,
+      "y": 24.0,
+      "target_x": 27,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 28,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 29,
+      "name": "Settler 29",
+      "x": 21.0,
+      "y": 25.0,
+      "target_x": 21,
+      "target_y": 25,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 29,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 30,
+      "name": "Settler 30",
+      "x": 22.0,
+      "y": 25.0,
+      "target_x": 22,
+      "target_y": 25,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 30,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 31,
+      "name": "Settler 31",
+      "x": 23.0,
+      "y": 25.0,
+      "target_x": 23,
+      "target_y": 25,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 31,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 32,
+      "name": "Settler 32",
+      "x": 24.0,
+      "y": 25.0,
+      "target_x": 24,
+      "target_y": 25,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 32,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 11
+      }
+    },
+    {
+      "id": 33,
+      "name": "Settler 33",
+      "x": 25.0,
+      "y": 25.0,
+      "target_x": 25,
+      "target_y": 25,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Idle",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Woodcutter",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "None",
+        "next_evaluation_tick": 0
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 2,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 3,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 4,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 5,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 6,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 7,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 8,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 9,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 10,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 11,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 12,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 13,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 14,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 15,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 16,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 17,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 18,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 19,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 20,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 21,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 22,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 23,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 24,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 25,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 26,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 27,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 28,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 29,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 30,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 31,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 32,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 33,
+      "cells": []
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 33,
+  "topology_revision": 0,
+  "path_batches": [
+    {
+      "path_batch_id": 1,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        1
+      ],
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 22,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 1,
+          "start": {
+            "x": 21,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 21.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 21,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 2,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        2
+      ],
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 22,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 2,
+          "start": {
+            "x": 22,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 22.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 22,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 3,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        3
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 3,
+          "start": {
+            "x": 23,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 23.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 23,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 4,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        4
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 4,
+          "start": {
+            "x": 24,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 24.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 24,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 5,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        5
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 5,
+          "start": {
+            "x": 25,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 25.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 25,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 6,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        6
+      ],
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 27,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 6,
+          "start": {
+            "x": 26,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 26.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 26,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 7,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        7
+      ],
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 27,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 7,
+          "start": {
+            "x": 27,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "start_x": 27.0,
+          "start_y": 21.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 27,
+            "y": 21,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 8,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        8
+      ],
+      "target": {
+        "x": 19,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 19,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 20,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 23,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 8,
+          "start": {
+            "x": 21,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 21.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 21,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 9,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        9
+      ],
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 22,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 9,
+          "start": {
+            "x": 22,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 22.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 22,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 10,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        10
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 10,
+          "start": {
+            "x": 23,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 23.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 23,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 11,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        11
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 11,
+          "start": {
+            "x": 24,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 24.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 24,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 12,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        12
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 12,
+          "start": {
+            "x": 25,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 25.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 25,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 13,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        13
+      ],
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 27,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 13,
+          "start": {
+            "x": 26,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 26.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 26,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 14,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        14
+      ],
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 27,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 14,
+          "start": {
+            "x": 27,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "start_x": 27.0,
+          "start_y": 22.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 27,
+            "y": 22,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 15,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        15
+      ],
+      "target": {
+        "x": 19,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 19,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 20,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 23,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 15,
+          "start": {
+            "x": 21,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 21.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 21,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 16,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        16
+      ],
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 22,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 16,
+          "start": {
+            "x": 22,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 22.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 22,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 17,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        17
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 17,
+          "start": {
+            "x": 23,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 23.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 23,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 18,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        18
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 18,
+          "start": {
+            "x": 24,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 24.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 24,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 19,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        19
+      ],
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 24,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 19,
+          "start": {
+            "x": 25,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 25.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 25,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 20,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        20
+      ],
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 24,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 20,
+          "start": {
+            "x": 26,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 26.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 26,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 21,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        21
+      ],
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 24,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 21,
+          "start": {
+            "x": 27,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 27.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 27,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 22,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        22
+      ],
+      "target": {
+        "x": 18,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 18,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 17,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 25,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 22,
+          "start": {
+            "x": 21,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 21.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 21,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 23,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        23
+      ],
+      "target": {
+        "x": 18,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 18,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 17,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 25,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 23,
+          "start": {
+            "x": 22,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 22.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 22,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 24,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        24
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 24,
+          "start": {
+            "x": 23,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 23.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 23,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 25,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        25
+      ],
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 23,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 25,
+          "start": {
+            "x": 24,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 24.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 24,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 26,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        26
+      ],
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 24,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 26,
+          "start": {
+            "x": 25,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 25.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 25,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 27,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        27
+      ],
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 24,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 27,
+          "start": {
+            "x": 26,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 26.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 26,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 28,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        28
+      ],
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 24,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 28,
+          "start": {
+            "x": 27,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "start_x": 27.0,
+          "start_y": 24.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 27,
+            "y": 24,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 29,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        29
+      ],
+      "target": {
+        "x": 18,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 18,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 17,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 26,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 29,
+          "start": {
+            "x": 21,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "start_x": 21.0,
+          "start_y": 25.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 21,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 30,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        30
+      ],
+      "target": {
+        "x": 18,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 18,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 17,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 26,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 30,
+          "start": {
+            "x": 22,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "start_x": 22.0,
+          "start_y": 25.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 22,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 31,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        31
+      ],
+      "target": {
+        "x": 18,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 18,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 17,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 18,
+          "y": 26,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 31,
+          "start": {
+            "x": 23,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "start_x": 23.0,
+          "start_y": 25.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 23,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    },
+    {
+      "path_batch_id": 32,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        32
+      ],
+      "target": {
+        "x": 24,
+        "y": 30,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 1,
+      "deadline_tick": 1201,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 24,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 31,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 32,
+          "start": {
+            "x": 24,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "start_x": 24.0,
+          "start_y": 25.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 24,
+            "y": 25,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    }
+  ],
+  "path_results": [],
+  "next_item_stack_id": 4,
+  "next_item_reservation_id": 1,
+  "next_logistics_task_id": 1,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 80,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 40,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 100,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [],
+  "construction_orders": [],
+  "next_work_intent_id": 33,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 1,
+  "work_intents": [
+    {
+      "intent_id": 1,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 1,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 2,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 2,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 2,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 3,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 3,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 3,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 4,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 4,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 4,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 5,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 5,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 5,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 6,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 6,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 6,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 7,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 7,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 7,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 8,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 8,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 19,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 8,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 9,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 9,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 9,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 10,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 10,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 10,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 11,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 11,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 11,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 12,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 12,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 12,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 13,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 13,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 13,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 14,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 14,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 27,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 14,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 15,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 15,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 19,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 15,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 16,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 16,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 16,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 17,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 17,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 17,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 18,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 18,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 18,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 19,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 19,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 19,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 20,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 20,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 20,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 21,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 21,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 21,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 22,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 22,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 18,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 22,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 23,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 23,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 18,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 23,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 24,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 24,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 24,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 25,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 25,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 23,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 25,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 26,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 26,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 26,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 27,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 27,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 27,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 28,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 28,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 29,
+        "y": 23,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 28,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 29,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 29,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 18,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 29,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 30,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 30,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 18,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 30,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 31,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 31,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 18,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 31,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 32,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 32,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 24,
+        "y": 30,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1201,
+      "path_batch_id": 32,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    }
+  ],
+  "profession_cursor_id": 33
+}

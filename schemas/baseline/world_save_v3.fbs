@@ -1,0 +1,105 @@
+namespace ribterra.save;
+
+enum Terrain : byte { Grass, Water, Forest, Rock, MineFloor, MineOre }
+enum BuildingKind : byte { Camp, House, Farm, Stockpile }
+enum Job : byte { Idle, Move, Woodcut, Mine, Forage, Build }
+enum Layer : byte { Surface, Mine }
+
+struct Point {
+  x:short;
+  y:short;
+}
+
+struct Cell {
+  x:short;
+  y:short;
+  layer:Layer;
+}
+
+table Metadata {
+  world_id:[ubyte] (required);
+  seed:uint;
+  ticks:ulong;
+  next_building_id:int;
+  has_moved:bool;
+  has_gathered:bool;
+  has_built:bool;
+}
+
+table Resources {
+  wood:int;
+  stone:int;
+  food:int;
+}
+
+table Tile {
+  terrain:Terrain;
+  amount:int;
+  explored:bool;
+}
+
+table Resident {
+  id:int;
+  name:string (required);
+  x:float;
+  y:float;
+  target_x:int;
+  target_y:int;
+  job:Job;
+  progress:float;
+  health:int;
+  hunger:float;
+  wood_xp:int;
+  mining_xp:int;
+  farming_xp:int;
+  layer:Layer = Surface;
+  nation:uint = 1;
+}
+
+table Building {
+  id:int;
+  kind:BuildingKind;
+  x:int;
+  y:int;
+  progress:float;
+  layer:Layer = Surface;
+  nation:uint = 1;
+}
+
+table Route {
+  points:[Point];
+  cursor:uint;
+  work_x:int = -1;
+  work_y:int = -1;
+  resident_id:int;
+  cells:[Cell];
+  work:Cell;
+}
+
+table Chunk {
+  layer:Layer;
+  cx:short;
+  cy:short;
+  revision:ulong;
+  tiles:[Tile] (required);
+}
+
+table Portal {
+  first:Cell;
+  second:Cell;
+}
+
+table WorldSave {
+  metadata:Metadata (required);
+  resources:Resources (required);
+  tiles:[Tile] (required);
+  residents:[Resident] (required);
+  buildings:[Building] (required);
+  routes:[Route] (required);
+  events:[string] (required);
+  chunks:[Chunk];
+  portals:[Portal];
+}
+
+root_type WorldSave;
+file_identifier "RBTW";

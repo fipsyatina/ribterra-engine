@@ -1,0 +1,805 @@
+{
+  "schema": 1,
+  "kind": "ribterra-neutral-palette-v1",
+  "status": "DRAFT / SOURCE ONLY / NOT_ACCEPTED",
+  "materials": [
+    {
+      "id": "roof.slate",
+      "albedo_srgb": [
+        112,
+        116,
+        108
+      ],
+      "roughness": 0.9,
+      "emission_mask": 0.0,
+      "wet_mask": 0.85,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "walls.plaster",
+      "albedo_srgb": [
+        190,
+        179,
+        149
+      ],
+      "roughness": 0.82,
+      "emission_mask": 0.0,
+      "wet_mask": 0.55,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "timber.trim",
+      "albedo_srgb": [
+        111,
+        76,
+        48
+      ],
+      "roughness": 0.8,
+      "emission_mask": 0.0,
+      "wet_mask": 0.6,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "base.fieldstone",
+      "albedo_srgb": [
+        137,
+        135,
+        121
+      ],
+      "roughness": 0.94,
+      "emission_mask": 0.0,
+      "wet_mask": 0.8,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "steps.fieldstone",
+      "albedo_srgb": [
+        137,
+        135,
+        121
+      ],
+      "roughness": 0.94,
+      "emission_mask": 0.0,
+      "wet_mask": 0.8,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "timber.door",
+      "albedo_srgb": [
+        129,
+        86,
+        49
+      ],
+      "roughness": 0.8,
+      "emission_mask": 0.0,
+      "wet_mask": 0.45,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "timber.window_frames",
+      "albedo_srgb": [
+        112,
+        78,
+        48
+      ],
+      "roughness": 0.74,
+      "emission_mask": 0.0,
+      "wet_mask": 0.5,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "glass.opaque",
+      "albedo_srgb": [
+        95,
+        119,
+        116
+      ],
+      "roughness": 0.35,
+      "emission_mask": 0.0,
+      "wet_mask": 0.15,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "metal.lantern_housing",
+      "albedo_srgb": [
+        83,
+        89,
+        87
+      ],
+      "roughness": 0.62,
+      "emission_mask": 0.0,
+      "wet_mask": 0.3,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "chimney.fieldstone",
+      "albedo_srgb": [
+        148,
+        139,
+        120
+      ],
+      "roughness": 0.92,
+      "emission_mask": 0.0,
+      "wet_mask": 0.8,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "props.barrel_wood",
+      "albedo_srgb": [
+        119,
+        83,
+        52
+      ],
+      "roughness": 0.82,
+      "emission_mask": 0.0,
+      "wet_mask": 0.6,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "props.bucket_wood",
+      "albedo_srgb": [
+        132,
+        96,
+        59
+      ],
+      "roughness": 0.82,
+      "emission_mask": 0.0,
+      "wet_mask": 0.6,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "props.bench_wood",
+      "albedo_srgb": [
+        123,
+        89,
+        56
+      ],
+      "roughness": 0.82,
+      "emission_mask": 0.0,
+      "wet_mask": 0.65,
+      "caster_mask": 1.0
+    },
+    {
+      "id": "fence.wood",
+      "albedo_srgb": [
+        141,
+        108,
+        73
+      ],
+      "roughness": 0.86,
+      "emission_mask": 0.0,
+      "wet_mask": 0.75,
+      "caster_mask": 1.0
+    }
+  ],
+  "triangle_materials": [
+    {
+      "triangle_id": "roof.visible.0",
+      "material_id": "roof.slate"
+    },
+    {
+      "triangle_id": "roof.visible.1",
+      "material_id": "roof.slate"
+    },
+    {
+      "triangle_id": "roof.left_edge.0",
+      "material_id": "roof.slate"
+    },
+    {
+      "triangle_id": "roof.left_edge.1",
+      "material_id": "roof.slate"
+    },
+    {
+      "triangle_id": "gable.front.0",
+      "material_id": "walls.plaster"
+    },
+    {
+      "triangle_id": "ridge.cap.0",
+      "material_id": "roof.slate"
+    },
+    {
+      "triangle_id": "ridge.cap.1",
+      "material_id": "roof.slate"
+    },
+    {
+      "triangle_id": "trim.front_left.0",
+      "material_id": "timber.trim"
+    },
+    {
+      "triangle_id": "trim.front_left.1",
+      "material_id": "timber.trim"
+    },
+    {
+      "triangle_id": "trim.front_right.0",
+      "material_id": "timber.trim"
+    },
+    {
+      "triangle_id": "trim.front_right.1",
+      "material_id": "timber.trim"
+    },
+    {
+      "triangle_id": "eave.right_lip.0",
+      "material_id": "timber.trim"
+    },
+    {
+      "triangle_id": "eave.right_lip.1",
+      "material_id": "timber.trim"
+    },
+    {
+      "triangle_id": "wall.front.0",
+      "material_id": "walls.plaster"
+    },
+    {
+      "triangle_id": "wall.front.1",
+      "material_id": "walls.plaster"
+    },
+    {
+      "triangle_id": "wall.side.0",
+      "material_id": "walls.plaster"
+    },
+    {
+      "triangle_id": "wall.side.1",
+      "material_id": "walls.plaster"
+    },
+    {
+      "triangle_id": "stone.side.0",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.side.1",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.front_left.0",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.front_left.1",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.front_right.0",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.front_right.1",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.left_return.0",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.left_return.1",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.left_pier.0",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "stone.left_pier.1",
+      "material_id": "base.fieldstone"
+    },
+    {
+      "triangle_id": "door.panel.0",
+      "material_id": "timber.door"
+    },
+    {
+      "triangle_id": "door.panel.1",
+      "material_id": "timber.door"
+    },
+    {
+      "triangle_id": "window.front.frame.0",
+      "material_id": "timber.window_frames"
+    },
+    {
+      "triangle_id": "window.front.frame.1",
+      "material_id": "timber.window_frames"
+    },
+    {
+      "triangle_id": "window.front.glass.0",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "window.front.glass.1",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "window.side_near.frame.0",
+      "material_id": "timber.window_frames"
+    },
+    {
+      "triangle_id": "window.side_near.frame.1",
+      "material_id": "timber.window_frames"
+    },
+    {
+      "triangle_id": "window.side_near.glass.0",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "window.side_near.glass.1",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "window.side_far.frame.0",
+      "material_id": "timber.window_frames"
+    },
+    {
+      "triangle_id": "window.side_far.frame.1",
+      "material_id": "timber.window_frames"
+    },
+    {
+      "triangle_id": "window.side_far.glass.0",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "window.side_far.glass.1",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "lantern.housing.0",
+      "material_id": "metal.lantern_housing"
+    },
+    {
+      "triangle_id": "lantern.housing.1",
+      "material_id": "metal.lantern_housing"
+    },
+    {
+      "triangle_id": "lantern.housing.2",
+      "material_id": "metal.lantern_housing"
+    },
+    {
+      "triangle_id": "lantern.housing.3",
+      "material_id": "metal.lantern_housing"
+    },
+    {
+      "triangle_id": "lantern.glass.0",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "lantern.glass.1",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "lantern.glass.2",
+      "material_id": "glass.opaque"
+    },
+    {
+      "triangle_id": "chimney.left.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.left.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.right.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.right.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim0.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim0.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim1.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim1.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim2.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim2.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim3.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.rim3.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.dark_floor.0",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "chimney.dark_floor.1",
+      "material_id": "chimney.fieldstone"
+    },
+    {
+      "triangle_id": "step.left.0",
+      "material_id": "steps.fieldstone"
+    },
+    {
+      "triangle_id": "step.left.1",
+      "material_id": "steps.fieldstone"
+    },
+    {
+      "triangle_id": "step.middle.0",
+      "material_id": "steps.fieldstone"
+    },
+    {
+      "triangle_id": "step.middle.1",
+      "material_id": "steps.fieldstone"
+    },
+    {
+      "triangle_id": "step.right.0",
+      "material_id": "steps.fieldstone"
+    },
+    {
+      "triangle_id": "step.right.1",
+      "material_id": "steps.fieldstone"
+    },
+    {
+      "triangle_id": "barrel.top.0",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.top.1",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.top.2",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.top.3",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.left.0",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.left.1",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.right.0",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "barrel.right.1",
+      "material_id": "props.barrel_wood"
+    },
+    {
+      "triangle_id": "bucket.top.0",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.top.1",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.top.2",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.top.3",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.top.4",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.top.5",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment0.0",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment0.1",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment1.0",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment1.1",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment2.0",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment2.1",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment3.0",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bucket.body.segment3.1",
+      "material_id": "props.bucket_wood"
+    },
+    {
+      "triangle_id": "bench.seat.0",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.seat.1",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.front_edge.0",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.front_edge.1",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.leg_left.0",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.leg_left.1",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.leg_right.0",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "bench.leg_right.1",
+      "material_id": "props.bench_wood"
+    },
+    {
+      "triangle_id": "fence.left_post_near.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_post_near.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_post_middle.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_post_middle.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_post_far.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_post_far.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_rail_low.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_rail_low.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_rail_high.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.left_rail_high.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.right_post.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.right_post.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.right_rail_high.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.right_rail_high.1",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.right_rail_low.0",
+      "material_id": "fence.wood"
+    },
+    {
+      "triangle_id": "fence.right_rail_low.1",
+      "material_id": "fence.wood"
+    }
+  ],
+  "authoring": {
+    "author": "Codex-authored provisional flat material palette for Ribterra",
+    "colour_encoding": "authored sRGB byte triplets; not measured reflectance",
+    "alpha_policy": "opaque 255 on every declared geometry triangle; no painted RGBA copied",
+    "lighting_policy": "no baked sun/night tint, contact shadow or glow; AO retained separately from source",
+    "glass_policy": "opaque coloured proxy; transmission/refraction OPEN",
+    "emission_policy": "all emission_mask values and emission_radiance zero; schedules/local lights OPEN",
+    "proposed_export_mode": "authored-xyz-triangle-materials-v1"
+  },
+  "geometry_source": {
+    "path": "art-source/production-materials-v1/house/master.json",
+    "sha256": "0e602fa94a406ee3aefd9c62550679434f2a75a87e37030312b2170d77299d9b",
+    "triangle_count": 114,
+    "numeric_probe_count": 20,
+    "sky_triangle_count": 10,
+    "unchanged": [
+      "XYZ",
+      "triangle IDs/order/winding",
+      "topology",
+      "ao",
+      "sky_shadow_triangles",
+      "local_occluders",
+      "export",
+      "probes"
+    ]
+  },
+  "source_registration_target": {
+    "legacy_key": "building.house.ready",
+    "original_page": "assets/art/concept-houses-low.png",
+    "original_rect": [
+      106,
+      37,
+      529,
+      428
+    ],
+    "normalized_pivot": [
+      0.5,
+      0.98
+    ],
+    "kind": "original-catalog-screen-v1",
+    "png_sha256": "c232e87e5891e37b3ebfd90f214c70bea6628b2ce6c2c6521e086d947a0af7f9",
+    "catalog_entry_sha256": "45d5827d29a0eef1ed8c49824e20126f28cfe408cf34d53b0df363e2dd5ce0d5",
+    "source_size": [
+      529,
+      428
+    ],
+    "pivot_px": [
+      264.5,
+      419.44000244140625
+    ],
+    "reference_width": 529,
+    "caster_alpha_policy": "painted-alpha-times-authored-mask",
+    "active_registration": false,
+    "extent_policy": "future explicit geometry export must retain this crop extent/pivot/eppp; default unregistered master bounds are not a new collection"
+  },
+  "original_visual_provenance": {
+    "license": "LicenseRef-Proprietary",
+    "author": "Ribterra project / OpenAI image generation",
+    "source": "project",
+    "notice_path": "licenses/Ribterra-Assets.txt",
+    "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+    "asset_source_sha256": "bcf940719c37d2f8138fefc2bb918533a81093fc92b0798af6ef972d99ac89f3"
+  },
+  "source_geometry_provenance": {
+    "kind": "authored-proxy-xyz-v1",
+    "author": "Ribterra project / Codex authored registered proxy draft"
+  },
+  "references": [
+    {
+      "path": "art-source/concept-rebuild/houses-low-cottages-prompt.md",
+      "sha256": "30fe9b641ff709d93cd76c8e6361416c3b6b5abec68673b40973c2d9b9c1e80a",
+      "purpose": "visual-only"
+    },
+    {
+      "path": "docs/visual-targets/images/target-0262.png",
+      "sha256": "31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d",
+      "purpose": "visual-only"
+    },
+    {
+      "path": "docs/visual-targets/images/target-0261.png",
+      "sha256": "12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554",
+      "purpose": "visual-only"
+    },
+    {
+      "path": "art-source/production-materials-v1/house/landmarks.json",
+      "sha256": "2ca26a33c09e4b52275161afabcbd53212e67a8a68c02cb8c7647aa995dde2b7",
+      "purpose": "visual-only"
+    },
+    {
+      "path": "art-source/production-materials-v1/house/GEOMETRY_ASSUMPTIONS_UA.md",
+      "sha256": "d1c949159fc35a08be58ffe491ccb0e2507022c960e98f20946eadf172abde59",
+      "purpose": "visual-only"
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "art-source/production-materials-v1/house/master.json",
+      "bytes": 74855,
+      "sha256": "0e602fa94a406ee3aefd9c62550679434f2a75a87e37030312b2170d77299d9b"
+    },
+    {
+      "path": "art-source/production-materials-v1/house/landmarks.json",
+      "bytes": 268229,
+      "sha256": "2ca26a33c09e4b52275161afabcbd53212e67a8a68c02cb8c7647aa995dde2b7"
+    },
+    {
+      "path": "art-source/production-materials-v1/house/GEOMETRY_ASSUMPTIONS_UA.md",
+      "bytes": 8440,
+      "sha256": "d1c949159fc35a08be58ffe491ccb0e2507022c960e98f20946eadf172abde59"
+    },
+    {
+      "path": "art-source/production-materials-v1/house-collection.json",
+      "bytes": 2556,
+      "sha256": "cd37d0b9936fa938213bdb26a151c2d4795141c0fab287cdd9d0c6cc636937a1"
+    },
+    {
+      "path": "assets/art/concept-houses-low.png",
+      "bytes": 2541080,
+      "sha256": "c232e87e5891e37b3ebfd90f214c70bea6628b2ce6c2c6521e086d947a0af7f9"
+    },
+    {
+      "path": "assets/art/world.json",
+      "bytes": 251358,
+      "sha256": "cc653196e5bc4ee049df9abb9dc3de6baaf63faecf3a9cd038ca6e4efc4b73ee"
+    },
+    {
+      "path": "content/asset_sources.json",
+      "bytes": 26832,
+      "sha256": "89c2850aad7351778ecfb07074a53cc1eabe2ac3e3b0c3d35740fbb6669ae403"
+    },
+    {
+      "path": "licenses/Ribterra-Assets.txt",
+      "bytes": 416,
+      "sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9"
+    },
+    {
+      "path": "art-source/concept-rebuild/houses-low-cottages-prompt.md",
+      "bytes": 2553,
+      "sha256": "30fe9b641ff709d93cd76c8e6361416c3b6b5abec68673b40973c2d9b9c1e80a"
+    },
+    {
+      "path": "docs/visual-targets/images/target-0262.png",
+      "bytes": 3319519,
+      "sha256": "31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"
+    },
+    {
+      "path": "docs/visual-targets/images/target-0261.png",
+      "bytes": 3307936,
+      "sha256": "12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554"
+    }
+  ],
+  "draft_notice": {
+    "path": "art-source/production-materials-v1/house-neutral-draft/NOTICE.txt",
+    "sha256": "6eabc21b411354101d6062e3712e184dbe5c676c0252617e428ccf7dbd6af2a9"
+  },
+  "legacy_alpha_gap": {
+    "source_nonzero_alpha_pixels": 147212,
+    "source_pixels_supported_by_old_geometry": 127563,
+    "source_pixels_unsupported_by_old_geometry": 19649,
+    "source_map": "art-source/production-materials-v1/house/landmarks.json",
+    "neutral_output_alpha_measured": false,
+    "policy": "preserved geometry does not fill halos or remaining edges/props; no reference acceptance"
+  },
+  "open_delivery": [
+    "explicit neutral exporter/loader mode and source-record/hash/alpha validation",
+    "actual channel export and native lighting/anchor/occlusion",
+    "geometry silhouette completion and new alpha picks/typed outline integration",
+    "production material and reference acceptance",
+    "glass transparency and emission/local-light tuning",
+    "other seven material masters, resident/cargo/tier/season families",
+    "full engine and FPS"
+  ]
+}

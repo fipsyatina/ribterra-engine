@@ -1,0 +1,83 @@
+#building-panel { position: absolute; right: 24dp; top: 150dp; width: 390dp; max-width: 45%; max-height: 72%; padding: 24dp; background-color: #101c26fa; border: 1dp #c5a66c;  pointer-events: auto; overflow-y: auto; }
+#building-panel .bp-header { display: flex; align-items: center; padding-bottom: 18dp; border-bottom: 1dp #52606a; }
+#building-panel .bp-art { width: 88dp; height: 92dp; margin-right: 18dp; }
+#building-panel h1 { font-family: Cormorant; font-size: 27dp; color: #f4e6ca; margin: 0 20dp 6dp 0; }
+#building-panel .bp-level { color: #c4c7c7; font-size: 18dp; }
+#bp-close, #br-close { position: absolute; right: 12dp; top: 8dp; width: 30dp; height: 32dp; padding: 0; border-width: 0; background-color: #00000000; color: #d8bf8a; font-size: 28dp; }
+#building-panel .bp-section { padding: 18dp 0; border-bottom: 1dp #45525c; }
+#building-panel .bp-row { display: flex; justify-content: space-between; margin: 7dp 0; }
+#building-panel .bp-row span { color: #b5c0ca; }
+#building-panel p { margin: 9dp 0; font-size: 15dp; color: #b9c5cf; }
+#bp-status { color: #aed29c; font-size: 21dp; margin-bottom: 14dp; }
+#building-panel select, #building-panel input { background-color: #16232e; color: #f2ece0; border: 1dp #62717c; padding: 7dp 9dp; height: 24dp; }
+#bp-recipe, #bp-scope { width: 210dp; }
+#bp-quantity { width: 72dp; text-align: center; }
+#building-panel button.bp-main { width: 100%; height: 47dp; margin: 12dp 0 2dp; color: #fff4dc; background-color: #85693b; border: 1dp #d0ae6f; border-radius: 3dp; font-family: Cormorant; font-size: 20dp; }
+#building-panel button.bp-main:hover { background-color: #a8874f; }
+#building-panel button:disabled { color: #8d9497; background-color: #343a3a; border-color: #667077; }
+#bp-feedback { color: #e4be7d; }
+#bp-upgrade { padding-top: 18dp; display: flex; align-items: center; justify-content: space-between; }
+#bp-upgrade p { font-size: 13dp; margin-bottom: 0; }
+#bp-research { color: #b5d7e8; border-width: 0; border-bottom: 1dp #b5d7e8; background-color: #00000000; padding: 3dp; font-size: 14dp; }
+.bp-meter { height: 8dp; background-color: #293740; border: 1dp #53616a; border-radius: 3dp; margin: 12dp 0; }
+.bp-fill { height: 100%; background-color: #caa153; }
+#building-research { position: absolute; left: 12%; top: 13%; width: 72%; max-height: 73%; padding: 26dp; background-color: #101c26fa; border: 1dp #c5a66c;  pointer-events: auto; overflow-y: auto; }
+#building-research h1 { font-family: Cormorant; color: #f4e6ca; font-size: 34dp; margin: 0 0 8dp; }
+#building-research p { color: #b7c5d0; margin: 10dp 0; }
+.br-layout { display: flex; margin-top: 18dp; }
+#br-cards { width: 56%; max-height: 400dp; overflow-y: auto; display: flex; flex-wrap: wrap; }
+#br-cards button { width: 44%; min-height: 85dp; margin: 0 8dp 10dp 0; padding: 12dp; background-color: #182a38; border: 1dp #455c6e; color: #eee5d5; font-family: Cormorant; font-size: 18dp; }
+#br-cards button.active { border: 2dp #e6b858; background-color: #705a35; }
+#br-detail { width: 39%; padding: 18dp; border: 1dp #526270; background-color: #13212b; }
+#br-detail h2 { font-family: Cormorant; font-size: 26dp; color: #f4e6ca; margin: 0 0 12dp; }
+#br-detail button { width: 100%; margin-top: 20dp; padding: 12dp; background-color: #665435; color: #b6b4ac; border: 1dp #9a8052; }
+#building-panel { box-sizing: border-box; width: 440dp; padding: 22dp; font-size: 16dp; max-height: 70%; background-color: #101c26; }
+#building-panel .bp-header { padding-bottom: 12dp; }
+#building-panel .bp-art { height: 82dp; width: 82dp; }
+#building-panel .bp-section { padding: 12dp 0; }
+#building-panel .bp-row { margin: 5dp 0; align-items: center; }
+#building-panel select, #building-panel input { height: 36dp; padding: 6dp 9dp; margin: 0; font-size: 16dp; }
+#building-panel select selectarrow { width: 18dp; height: 18dp; margin-right: 5dp; decorator: none; background-color: #9e854f; }
+#building-panel p { font-size: 13dp; margin: 8dp 0; }
+#building-panel button.bp-main { text-align: center; height: 44dp; margin-top: 10dp; }
+#building-panel #bp-upgrade { padding-top: 14dp; }
+#bp-upgrade > div { width: 64%; }
+#building-panel #bp-research { width: 34%; margin-top: 0; text-align: right; }
+#bp-close, #br-close { text-align: center; }
+#bp-status { margin-bottom: 10dp; }
+#building-research { background-color: #101c26; }
+#br-cards button { display: flex; align-items: center; }
+#br-cards img { width: 60dp; height: 64dp; margin-right: 10dp; }
+#br-cards span { display: block; }
+#br-detail button { text-align: center; }
+#building-panel .hidden { display: none; }
+#building-panel select selectarrow { width: 0; height: 0; border-top: 6dp #ceb67e; border-left: 5dp #00000000; border-right: 5dp #00000000; background-color: #00000000; margin-top: 10dp; }
+#bp-extra select { width: 210dp; }
+#bp-extra input { width: 140dp; }
+#bp-extra .bp-secondary { height: 36dp; padding: 5dp; margin: 8dp 0; text-align: center; }
+
+/* 0.25.8: readable explanations within the existing inspector. */
+#building-panel { top: 110dp; max-height: 78%; }
+#building-panel .bp-row { align-items: flex-start; }
+#building-panel .bp-row > span { width: 44%; padding-right: 10dp; }
+#building-panel .bp-row > b { width: 54%; text-align: right; font-weight: normal; color: #f0e6d2; }
+#building-panel #bp-info { color: #ead6ae; font-size: 15dp; margin: 6dp 0 14dp; }
+#bp-owner { color: #bcc9d4; font-size: 14dp; }
+#building-panel #bp-purpose { font-size: 15dp; }
+#bp-status { font-size: 20dp; }
+#bp-recipe, #bp-scope { width: 54%; }
+
+#bp-status.bp-waiting { color: #efc583; }
+
+#building-panel #bp-worker-row { display: block; }
+#building-panel #bp-worker-label { display: block; width: 100%; margin-bottom: 5dp; }
+#building-panel #bp-worker { width: 100%; }
+#bp-worker-manage { padding: 7dp; margin: 4dp 0; }
+#bp-group-feedback { max-height: 210dp; overflow-y: auto; }
+#bp-group-feedback h2 { font-size: 17dp; }
+
+/* Upgrade uses the same worker controls and authoritative order lifecycle. */
+#bp-upgrade { display: block; }
+#bp-upgrade > div { width: 100%; }
+#building-panel #bp-upgrade-note { color: #ead6ae; font-size: 15dp; }
+#bp-upgrade-hint { color: #efc583; }

@@ -1,0 +1,45 @@
+{
+  "fixture": "world_save_v3_current.ribsave",
+  "source": {
+    "release": "0.5",
+    "code_commit": "d9e35cc",
+    "capture_repo_head": "1be1bb6746b59243c535d757a2b0b135250ce36f",
+    "executable": "build/engine-windows/RibterraServer.exe",
+    "arguments": [
+      "--bind", "127.0.0.1",
+      "--port", "27138",
+      "--world", "tests/fixtures/world_save_v3_current.ribsave",
+      "--seed", "606060",
+      "--population", "7",
+      "--ticks", "43"
+    ]
+  },
+  "container": {
+    "bytes": 519560,
+    "file_sha256": "b2fa49877b647cbb346a5f6773be86ff8bbe585c003a001b35904e7a7e4e5412",
+    "magic": "RIBSV2\\r\\n",
+    "header_version": 2,
+    "flags": 1,
+    "format_version": 3,
+    "rules_version": 2,
+    "generator_version": 2,
+    "decompressed_bytes": 1585328,
+    "compressed_bytes": 519464,
+    "container_checksum": 17627244320456123438,
+    "content_hash": "939da049dcdef8353b0f8dc774e8334f135fbe9c49edb1a5a2becfe2e3617c0c"
+  },
+  "expected_state": {
+    "world_id": "dd8c1d1491f74794a63f78c3db6166a8",
+    "seed": 606060,
+    "ticks": 43,
+    "checksum": 12949178985423304140,
+    "population": 7,
+    "building_count": 1,
+    "next_building_id": 2,
+    "chunk_count": 128,
+    "portal_count": 1,
+    "resources": {"wood": 80, "stone": 40, "food": 100},
+    "tutorial_step": 0,
+    "event_count": 1
+  }
+}

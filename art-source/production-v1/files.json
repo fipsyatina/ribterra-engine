@@ -1,0 +1,112 @@
+[
+  {
+    "id": "buildings-core",
+    "file": "buildings-core.png",
+    "width": 1402,
+    "height": 1122,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "2915e624e8da414207e52fcc760d1fb36544f251715259ba2e95fc0c1a098086",
+    "bytes": 2365350,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-009c03be-67ad-4678-a48f-be2867331b2e.png"
+  },
+  {
+    "id": "buildings-civic",
+    "file": "buildings-civic.png",
+    "width": 1402,
+    "height": 1122,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "fea62699c412d4594c659bba3ca79584d401177db22690adada119ee824db8fb",
+    "bytes": 2472775,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-adc03ba9-be76-494e-b1cc-90239039a3f1.png"
+  },
+  {
+    "id": "buildings-production",
+    "file": "buildings-production.png",
+    "width": 1619,
+    "height": 971,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "274ba64ad5d9aa08e053f954fa87169bfcfd5fd9c1f55028af87142753941bf2",
+    "bytes": 2295263,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-d33d7d90-fe12-4921-93b0-3e95d6b161be.png"
+  },
+  {
+    "id": "units",
+    "file": "units.png",
+    "width": 1536,
+    "height": 1024,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "d8afaeada54d6fa6813acd9f90113aa5bf0367f8f4d1f813245e5f0a1e8efd9c",
+    "bytes": 1778271,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-6fb92a7f-869c-4f83-9ef2-d32a137f5942.png"
+  },
+  {
+    "id": "nature",
+    "file": "nature.png",
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "6fa1e01a4fafcf05bba5bc55e1e1c3c35caf08a9dedc7f28f3e7814a6a25fc07",
+    "bytes": 2210726,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-3dc40d91-93f8-48a4-9bd3-f06cd36d2688.png"
+  },
+  {
+    "id": "rocks-mountains",
+    "file": "rocks-mountains.png",
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "863b402444d6f42b4818eb0354064ffbd616303a92ed50c8ec50166b540d8f29",
+    "bytes": 2360342,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-ad94daf6-c8ff-480f-8322-e870ea5cc568.png"
+  },
+  {
+    "id": "terrain-materials",
+    "file": "terrain-materials.png",
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "46b270c12b583a1389dce95a718db615a96d7c67beda8aeec83a00b3bc4965c4",
+    "bytes": 3223576,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-e552d501-da8d-491f-ba8b-e536b3d66e88.png"
+  },
+  {
+    "id": "ui-kit",
+    "file": "ui-kit.png",
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "481203131cb05470663208cf489037530ace8d4718c913704837bb25a3de31ed",
+    "bytes": 1229512,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-f8bdad33-9531-4221-927f-0f91ab277308.png"
+  },
+  {
+    "id": "icons-cursors",
+    "file": "icons-cursors.png",
+    "width": 1374,
+    "height": 1145,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "8021dde1e4a2abb91112949a4ff1bf3a0f3ea676620755a05df13e7bf585cf0e",
+    "bytes": 1674396,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-b369d4b9-714e-4276-86ad-86b480f60cfd.png"
+  },
+  {
+    "id": "fog-masks",
+    "file": "fog-masks.png",
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 2,
+    "hasAlpha": false,
+    "sha256": "2d8acee52fc3697368eee0e1106e7d9b78dd4b34a37051143cf6e5a98d6df7a2",
+    "bytes": 1446820,
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a0862a-e5a9-77a0-bf29-bea610341c96\\exec-7b123579-2578-4863-a1fe-eb7ed541ae7a.png"
+  }
+]

@@ -1,0 +1,7 @@
+# Concept meadow — 2026-09-30
+
+Source: built-in OpenAI image generation; user's reference `docs/visual-targets/images/target-0262.png`. Output `assets/art/concept-meadow.png`; original `exec-93e126c1-63bf-4394-803b-676254a02f92.png`. Opaque 1254×1254 PNG, replaces the previously muted photographic meadow material in the runtime atlas.
+
+## Prompt
+
+Use case: stylized-concept. Production terrain material for the Ribterra game, not a mockup. Use supplied concept image as exact rendering/palette reference, especially the grassy ground around the central stockyard and pine trees. Create a square seamless tileable grass-and-earth ground albedo texture, orthographic directly overhead, filling whole image, opaque. Soft painterly polished 3D storybook strategy-game material matching concept. Sunlit fresh spring moss/jade/yellow-green grasses, small irregular beige dry soil patches between clumps, slightly darker leaf-green sheltered patches, tiny restrained clover leaves. Broad readable low-frequency organic color forms; avoid photographic grain, noisy microtexture, brown olive desaturation and repetitive tufts. No perspective, no horizon, no isometric diamond or tile border, no trees, no shrubs, no buildings, no rocks, no water, no strong shadows or baked directional gradients, no UI, no text. Grass and earth are on one continuous flat material patch intended to be projected onto a true elevated terrain mesh; balanced detail readable at game zoom. Grass covers about 85 percent, beige soil 15 percent. Match reference palette faithfully, not neon green.

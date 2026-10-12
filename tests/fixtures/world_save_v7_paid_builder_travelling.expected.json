@@ -1,0 +1,3253 @@
+{
+  "metadata": {
+    "world_id": [
+      242,
+      56,
+      139,
+      184,
+      34,
+      221,
+      79,
+      223,
+      156,
+      105,
+      93,
+      8,
+      235,
+      85,
+      141,
+      217
+    ],
+    "seed": 70421,
+    "ticks": 350,
+    "next_building_id": 3,
+    "has_moved": true,
+    "has_gathered": false,
+    "has_built": false
+  },
+  "resources": {
+    "wood": 50,
+    "stone": 25,
+    "food": 90
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 40.0,
+      "y": 33.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 92,
+          "familiarity_debt": 0,
+          "last_practice_tick": 91
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 2,
+      "name": "Taras",
+      "x": 40.0,
+      "y": 33.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 3,
+      "name": "Oles",
+      "x": 40.0,
+      "y": 33.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 4,
+      "name": "Iryna",
+      "x": 40.0,
+      "y": 33.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 5,
+      "name": "Bohdan",
+      "x": 40.0,
+      "y": 33.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 6,
+      "name": "Nadia",
+      "x": 40.0,
+      "y": 39.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 7,
+      "name": "Lev",
+      "x": 40.0,
+      "y": 39.875,
+      "target_x": 20,
+      "target_y": 20,
+      "job": "Build",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "Unassigned",
+        "next_evaluation_tick": 359
+      }
+    },
+    {
+      "id": 8,
+      "name": "Sofiia",
+      "x": 40.0,
+      "y": 35.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 9,
+      "name": "Marko",
+      "x": 40.0,
+      "y": 36.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    },
+    {
+      "id": 10,
+      "name": "Vira",
+      "x": 40.0,
+      "y": 37.375,
+      "target_x": 40,
+      "target_y": 40,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 91
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    },
+    {
+      "id": 2,
+      "kind": "House",
+      "x": 20,
+      "y": 20,
+      "progress": 0.0092,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 2,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 3,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 4,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 5,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 6,
+      "cells": [
+        {
+          "x": 27,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 7,
+      "cells": [
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 8,
+      "cells": [
+        {
+          "x": 22,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 9,
+      "cells": [
+        {
+          "x": 23,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 32,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 10,
+      "cells": [
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 40,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 40,
+        "y": 40,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp.",
+    "House construction started.",
+    "Move order issued."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 14,
+  "topology_revision": 1,
+  "path_batches": [],
+  "path_results": [
+    {
+      "path_batch_id": 1,
+      "command": "Build",
+      "accepted": true,
+      "failure": "None",
+      "message": "Path applied."
+    },
+    {
+      "path_batch_id": 12,
+      "command": "Move",
+      "accepted": true,
+      "failure": "None",
+      "message": "Path applied."
+    }
+  ],
+  "next_item_stack_id": 9,
+  "next_item_reservation_id": 6,
+  "next_logistics_task_id": 6,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 50,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 25,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 90,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [
+    {
+      "task_id": 1,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 2,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 2,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 3,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 3,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 4,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 4,
+      "destination_building_id": 2,
+      "source_stack_id": 2,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Stone",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 5,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 5,
+      "destination_building_id": 2,
+      "source_stack_id": 2,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Stone",
+      "quantity": 5,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "construction_orders": [
+    {
+      "building_id": 2,
+      "kind": "House",
+      "site": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      },
+      "owner_nation": 1,
+      "required": {
+        "wood": 30,
+        "stone": 15,
+        "food": 0
+      },
+      "delivered": {
+        "wood": 30,
+        "stone": 15,
+        "food": 0
+      },
+      "phase": "Work",
+      "originating_path_batch_id": 1
+    }
+  ],
+  "next_work_intent_id": 2,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 2,
+  "work_intents": [
+    {
+      "intent_id": 1,
+      "kind": "BuildAssignment",
+      "phase": "Complete",
+      "completion": "Started",
+      "failure": "None",
+      "resident_id": 7,
+      "building_id": 2,
+      "owner_nation": 1,
+      "target": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      },
+      "job": "Build",
+      "expected_terrain": "Grass",
+      "created_tick": 349,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1549,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 1
+    }
+  ],
+  "profession_cursor_id": 1
+}

@@ -1,0 +1,98 @@
+{
+  "fixture": "world_save_v4_builds.ribsave",
+  "source": {
+    "release": "0.6.0",
+    "code_commit": "1ef93e9128b512a020d37b191d8135e54685d26d",
+    "capture_repo_head": "3b15a771877fb468f4bae870ae83ea05000a0f04",
+    "method": "Standalone capture linked to unchanged release SimCore.lib/Foundation.lib; original headers copied before 0.7 edits. No serializer or binary fixture rewriting.",
+    "capture_source": "capture_world_save_v4.cpp",
+    "capture_executable_sha256": "b3a25d518b813bdc08a7a117c3705a4292770364f6b571b8947dca9b9317dd2d",
+    "sim_core_library_sha256": "5c02e6149d85f9597919e7a6c190133ea2261d6d1ad049fd1c5d8d99d6cae7ce",
+    "foundation_library_sha256": "5f67c3944c6696dcb8b59ece09c58e724e48a79a51edc83681879e577cdbf863",
+    "schema": "schemas/baseline/world_save_v4.fbs",
+    "schema_sha256": "119cf5c3afb779f973235f987b7550b14851ea2a7800b0895cbb6596495e5901",
+    "validation": "0.6 save/load checksum matched before migration. First House path commits and pays; next Farm remains queued with reserved cost."
+  },
+  "container": {
+    "bytes": 526972,
+    "file_sha256": "394268f0e8e3efe8a31b22db99821ad1ccfce200939088ecb5697f465e35923a",
+    "magic": "RIBSV2\\r\\n",
+    "header_version": 2,
+    "flags": 1,
+    "format_version": 4,
+    "rules_version": 3,
+    "generator_version": 2,
+    "decompressed_bytes": 1591008,
+    "compressed_bytes": 526876,
+    "container_checksum": 780699881815019026,
+    "content_hash": "de55d4ba8a19c142b2abf3a0f7492cc195ec601fc02171b6c370df382a8cb401"
+  },
+  "expected_state": {
+    "buildings": [
+      {
+        "id": 1,
+        "kind": 0,
+        "progress": 1.0,
+        "x": 24,
+        "y": 24
+      },
+      {
+        "id": 2,
+        "kind": 1,
+        "progress": 0.009999999776482582,
+        "x": 21,
+        "y": 21
+      }
+    ],
+    "checksum": 6719804785311316421,
+    "content_hash": "de55d4ba8a19c142b2abf3a0f7492cc195ec601fc02171b6c370df382a8cb401",
+    "next_building_id": 4,
+    "next_path_batch_id": 3,
+    "path_batches": [
+      {
+        "building_id": 3,
+        "id": 2,
+        "kind": 2,
+        "phase": 0,
+        "reserved": {
+          "food": 5,
+          "stone": 10,
+          "wood": 20
+        },
+        "resident_ids": [
+          4,
+          5,
+          6
+        ],
+        "x": 22,
+        "y": 21
+      }
+    ],
+    "population": 10,
+    "resources": {
+      "food": 100,
+      "stone": 25,
+      "wood": 50
+    },
+    "seed": 707070,
+    "ticks": 1,
+    "world_id": [
+      131,
+      67,
+      150,
+      37,
+      251,
+      120,
+      76,
+      0,
+      167,
+      148,
+      68,
+      100,
+      70,
+      119,
+      180,
+      234
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+/* Ribterra concept palette: restrained gold metal, blue enamel, ivory type. */
+.card { decorator: none; background: #101d27f5; border: 1dp #ba965a; border-radius: 0; }
+button { decorator: none; background: #15232eee; border: 1dp #987b4d; border-radius: 3dp; color: #efe3c5; }
+button:hover, button:focus { decorator: none; background: #204e77; border-color: #e3c586; }
+button.active, button:active { decorator: none; background: #145da0; border-color: #e8ce91; }
+button:disabled { decorator: none; background: #101b25; color: #78868b; border-color: #4b5153; }
+h1, h2, #catalog-title, #build-title { font-family: Cormorant; font-weight: normal; color: #e8ce91; }
+h2 { font-size: 27dp; }
+.button-icon { width: 32dp; height: 32dp; vertical-align: middle; margin-right: 14dp; }
+#menu-landscape { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+#menu-card { left: 3.2%; top: 32%; width: 24%; max-width: none; padding: 0; border: 0; decorator: none; background: transparent; }
+#app-title, #menu-subtitle { display: none; }
+#menu-card button { display: flex; align-items: center; height: 57dp; margin-top: 9dp; padding: 7dp 19dp; font-family: Cormorant; font-size: 27dp; }
+#menu-card button .button-icon { flex-shrink: 0; width: 26dp; height: 26dp; margin-right: 23dp; }
+#menu-card #open-online { display: block; text-align: left; padding-left: 68dp; }
+#continue-game { background: #17436bed; border-color: #d3b67b; }
+#menu-status { left: 32%; bottom: 4%; width: 63%; font-size: 14dp; }
+#settings-card, #help-card { background: #0d1c2af8; }
+#topbar { display: block; height: 92dp; padding: 0 8dp; border: 1dp #ba965a; border-radius: 5dp; background: #101a22f8; }
+.resource-row { display: flex; width: 100%; height: 45dp; align-items: center; }
+.resource-row + .resource-row { border-top: 1dp #5f533d; }
+.resource { display: flex; flex: 1; min-width: 0; align-items: center; margin: 0; height: 29dp; padding: 0 13dp; border-right: 1dp #706044; font-family: Cormorant; font-size: 21dp; }
+.resource:last-child { border-right: 0; }
+.resource-icon { width: 31dp; height: 31dp; margin-right: 11dp; flex-shrink: 0; }
+.resource-count { margin-left: auto; padding-left: 6dp; color: #ffffff; font-family: Noto; font-size: 16dp; }
+.future-resource .resource-count { color: #9da9af; }
+.calendar { font-size: 17dp; }
+#day { margin-left: auto; padding-left: 8dp; font-family: Noto; font-size: 12dp; }
+#layerbar { position: absolute; right: 16dp; top: 99dp; display: flex; pointer-events: auto; }
+#hud-title { display: none; }
+#surface-tab, #mine-tab { font-family: Cormorant; font-size: 19dp; width: 108dp; padding: 4dp; }
+#chat { top: 139dp; width: 240dp; padding: 11dp; }
+#chat-title { font-family: Cormorant; font-size: 23dp; }
+#chat-log { height: 83dp; background: #060e17a0; }
+#chat-input, #chat-send { font-size: 13dp; padding: 6dp; }
+#selection-panel { left: 100dp; top: 108dp; width: 250dp; padding: 15dp; max-height: 62%; }
+#selection-title { font-size: 25dp; }
+#menu-rail { position: absolute; left: 12dp; top: 108dp; width: 76dp; padding: 5dp; z-index: 5; }
+#menu-rail button { display: block; width: 64dp; height: 70dp; margin: 0 0 5dp; padding: 8dp; }
+#menu-rail .button-icon { display: block; width: 38dp; height: 38dp; margin: 6dp auto; }
+#menu-rail span { display: none; }
+#buildbar { position: relative; left: 0; bottom: auto; width: 100%; max-width: none; display: flex; padding: 8dp 0; clear: both; }
+#buildbar button { display: block; width: 16.66%; margin: 0; padding: 6dp 1dp; font-family: Cormorant; font-size: 18dp; height: 82dp; text-align: center; border-color: #53606a; }
+#buildbar button.active, #buildbar button:hover { border-color: #dfbf78; }
+#buildbar .button-icon { display: block; width: 30dp; height: 30dp; margin: 0 auto 5dp; }
+#controls { right: 16dp; bottom: 18dp; width: 200dp; padding: 9dp; }
+#controls button { font-size: 13dp; padding: 5dp; margin-top: 4dp; }
+#pause { margin-top: 0; }
+#status { left: 200dp; bottom: 18dp; width: 54%; z-index: 3; font-size: 13dp; padding: 7dp; }
+#building-catalog { left: 100dp; top: 108dp; width: 65%; max-width: 850dp; bottom: auto; max-height: 78%; z-index: 4; background: #0d1a26fa; }
+#catalog-title { font-size: 27dp; }
+.building-card { width: 31%; height: 146dp; border-color: #53606a; }
+.building-card.hidden { display: none; }
+.building-icon { width: 54dp; height: 54dp; }
+.building-name { font-family: Cormorant; font-size: 22dp; line-height: 25dp; }
+.building-price { font-size: 13dp; line-height: 18dp; color: #e3d7bd; }
+#bridge-help { clear: both; color: #ddc491; font-size: 12dp; margin: 4dp 6dp 10dp; }
+#stocks-panel { top: 105dp; height: 73%; width: 43%; left: 28%; padding: 14dp; }
+.stock-row { padding: 3dp 0; }
+#stocks-table { max-height: 44%; overflow-y: auto; padding-right: 14dp; }
+#future-resources-note { font-size: 11dp; color: #adbac3; margin: 8dp 0; }
+#profession-panel, #orders-panel { top: 105dp; height: 72%; }
+#food-warning { top: 108dp; left: 28%; width: 43%; font-size: 13dp; }
+
+#nav-production { font-size: 18dp; }
+
+/* Calendar and temperature share the concept's second resource row. */
+.calendar { flex: 0.85; white-space: nowrap; }
+.temperature { flex: 0.65; font-family: Noto; font-size: 17dp; white-space: nowrap; }
+#day { color: #e8ce91; align-self: center; margin: 0 12dp 0 0; font-size: 13dp; }
+.thermometer { position: relative; width: 7dp; height: 23dp; border: 2dp #eee2c9; border-radius: 5dp; margin: 0 14dp 4dp 5dp; flex-shrink: 0; }
+.thermometer-fill { position: absolute; left: 2dp; bottom: 0; width: 3dp; height: 13dp; background: #eee2c9; }
+.thermometer-bulb { position: absolute; left: -4dp; bottom: -7dp; width: 11dp; height: 11dp; background: #eee2c9; border: 2dp #eee2c9; border-radius: 9dp; }
+
+.calendar { flex: 1.3; padding-left: 9dp; padding-right: 9dp; }
+.calendar-text { display: flex; flex-direction: column; justify-content: center; }
+#season { line-height: 20dp; }
+#day { display: block; align-self: flex-start; padding: 0; margin: 0; font-size: 10dp; line-height: 13dp; color: #d6c7a7; }
+
+.resource-row + .resource-row .resource { padding-left: 9dp; padding-right: 9dp; font-size: 19dp; }
+.resource-row + .resource-row .resource-icon { width: 26dp; height: 26dp; margin-right: 8dp; }
+
+/* Live lobby: illustrated hall and independent interactive player cards. */
+#lobby-card { position: absolute; left: 0; top: 0; width: 100%; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: #0b141e; }
+#lobby-backdrop { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+#lobby-content { position: absolute; left: 7%; top: 3%; width: 86%; height: 94%; display: flex; flex-direction: column; }
+#lobby-title { font-family: Cormorant; font-size: 42dp; margin: 0 0 12dp 0; color: #f2e5c4; }
+#lobby-motto { position: absolute; right: 0; top: 12dp; color: #d4b87e; font-size: 12dp; }
+#lobby-players { display: flex; flex: 1.2; min-height: 230dp; margin: 0 0 12dp 0; }
+.lobby-slot { display: flex; flex-direction: column; flex: 1; min-width: 0; margin: 0 5dp; border: 2dp #a48a59; background: #111e29ee; padding: 3dp; }
+.lobby-portrait { position: relative; flex: 1; min-height: 75dp; overflow: hidden; border-bottom: 1dp #bca16b; }
+.lobby-portrait img { position: absolute; top: 0; width: 400%; height: 100%; }
+.lobby-slot h2 { font-family: Cormorant; font-size: 25dp; text-align: center; margin: 5dp 0 2dp 0; overflow: hidden; height: 30dp; color: #f0e7d0; }
+.lobby-state { height: 24dp; font-size: 13dp; text-align: center; color: #a4d087; }
+#lobby-card .slot-action { width: 100%; height: 34dp; min-height: 0; margin: 4dp 0 0 0; padding: 3dp; font-size: 12dp; }
+#lobby-card .bot-team { height: 30dp; margin: 0; font-size: 13dp; }
+#lobby-lower { display: flex; flex: 1; min-height: 195dp; margin-bottom: 12dp; }
+#lobby-world-preview { position: relative; width: 58%; border: 2dp #a48a59; margin-right: 12dp; overflow: hidden; }
+#lobby-world-preview img { position: absolute; width: 100%; height: 100%; }
+#lobby-world-caption { position: absolute; left: 0; bottom: 0; width: 100%; box-sizing: border-box; padding: 12dp; font-family: Cormorant; font-size: 24dp; color: #f1dfb6; background: #0b1624d9; }
+#lobby-settings { flex: 1; min-width: 0; border: 2dp #a48a59; background: #111d25f2; padding: 12dp; overflow-y: auto; }
+#lobby-settings h2 { font-size: 23dp; margin-bottom: 6dp; }
+#lobby-rules { font-size: 13dp; line-height: 1.4; color: #dacbac; margin-bottom: 8dp; }
+#lobby-card #lobby-team { width: 100%; height: 32dp; margin: 0 0 6dp 0; font-size: 15dp; }
+#lobby-team-label { font-size: 13dp; }
+#lobby-address { font-size: 11dp; margin: 0; color: #a9becd; }
+#lobby-actions { display: flex; height: 48dp; flex-shrink: 0; }
+#lobby-actions button { display: block; flex: 1; width: auto; height: 48dp; margin: 0 6dp; font-family: Cormorant; font-size: 25dp; padding: 4dp; }
+#lobby-actions #lobby-start { background: #785525ef; border: 2dp #dfb76c; }
+@media (max-width: 1000px) { #lobby-content { left: 3%; width: 94%; } #lobby-title { font-size: 31dp; } .lobby-slot h2 { font-size: 20dp; } #lobby-motto { display: none; } #lobby-card .slot-action { font-size: 10dp; } }
+
+#lobby-card .hidden { display: none; }
+
+#lobby-backdrop { z-index: 0; }
+#lobby-content { z-index: 1; }
+.lobby-portrait { z-index: 0; }
+.lobby-portrait img { z-index: 1; }
+
+.lobby-portrait img { left: 0; width: 100%; }
+.lobby-slot-info { height: 124dp; flex-shrink: 0; }
+#lobby-actions button { text-align: center; }
+
+.ready-check { display: inline-block; width: 9dp; height: 5dp; border-left: 2dp #98d676; border-bottom: 2dp #98d676; transform: rotate(-45deg); margin-right: 8dp; vertical-align: middle; }
+
+@media (max-width: 1000px) { #lobby-actions button { font-size: 18dp; } }
+
+/* The online entry screen uses the same hall and cards as the ready room. */
+#online-card { position: absolute; left: 0; top: 0; width: 100%; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; overflow: hidden; background: #0b141e; }
+.online-backdrop { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 0; }
+#online-content { position: absolute; left: 7%; top: 3%; width: 86%; height: 94%; display: flex; flex-direction: column; z-index: 1; }
+#online-title { font-family: Cormorant; font-size: 42dp; margin: 0 0 12dp 0; color: #f2e5c4; }
+#online-roster { display: flex; flex: 1; min-height: 200dp; margin-bottom: 12dp; }
+.online-seat { display: flex; flex-direction: column; flex: 1; min-width: 0; margin: 0 5dp; border: 2dp #a48a59; background: #111e29ee; padding: 3dp; }
+.online-seat img { width: 100%; flex: 1; min-height: 80dp; }
+.online-seat h2 { font-family: Cormorant; font-size: 25dp; text-align: center; margin: 5dp 0 2dp 0; height: 30dp; color: #f0e7d0; overflow: hidden; }
+.online-seat p { text-align: center; font-size: 13dp; color: #a4c0d0; height: 24dp; margin: 0; }
+#online-lower { display: flex; flex: 1.1; min-height: 280dp; }
+#online-valley { position: relative; width: 56%; border: 2dp #a48a59; margin-right: 12dp; }
+#online-valley img { position: absolute; width: 100%; height: 100%; }
+#online-caption { position: absolute; left: 0; bottom: 0; width: 100%; box-sizing: border-box; padding: 10dp; font-family: Cormorant; font-size: 23dp; color: #f1dfb6; background: #0b1624d9; }
+#online-settings { flex: 1; min-width: 0; border: 2dp #a48a59; background: #111d25f2; padding: 12dp; overflow-y: auto; }
+#online-settings h2 { font-size: 23dp; margin: 0 0 8dp 0; }
+#online-settings label { font-size: 12dp; margin: 0 0 3dp 0; }
+#online-settings input, #online-settings select { box-sizing: border-box; width: 100%; height: 33dp; font-size: 16dp; padding: 4dp 8dp; margin: 0 0 6dp 0; }
+#online-help { font-size: 13dp; color: #e4d3ad; background: #101d27d9; padding: 5dp 8dp; margin: 8dp 0; }
+#online-actions { display: flex; height: 48dp; flex-shrink: 0; }
+#online-actions button { display: block; flex: 1; width: auto; height: 48dp; margin: 0 5dp; font-family: Cormorant; font-size: 23dp; padding: 4dp; text-align: center; }
+#online-actions #online-host { background: #785525ef; border: 2dp #dfb76c; }
+#online-card.hidden { display: none; }
+@media (max-width: 1000px) { #online-content { left: 3%; width: 94%; } #online-title { font-size: 30dp; } #online-roster { min-height: 145dp; } #online-lower { min-height: 260dp; } #online-actions button { font-size: 17dp; } #online-help { font-size: 11dp; } }
+
+#online-card .hidden { display: none; }
+
+#menu-status { z-index: 10; left: 30%; width: 66%; bottom: 10%; pointer-events: none; }

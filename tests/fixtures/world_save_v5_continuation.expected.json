@@ -1,0 +1,148 @@
+{
+  "fixture": "world_save_v5_continuation.ribsave",
+  "source": {
+    "release": "0.7.0",
+    "code_commit": "8f23e512b1990d5d4dd5b3ed2c13d647a9a21bfb",
+    "capture_repo_head": "9ed268772c8a5cda4230b8875e5885792e8af4cd",
+    "method": "Normal World gather/build commands using a standalone capture linked to unchanged 0.7 SimCore/Foundation libraries and copied headers; no state import or binary rewriting.",
+    "capture_source": "capture_world_save_v5.cpp",
+    "capture_executable_sha256": "98a204ab3a6cd5739c061c156ed12a3f55cd2fb7a001c34ed37ff93218e98e7a",
+    "sim_core_library_sha256": "14b887e5713ea24a506c61b938e9a020aa0ea0fcba5ca2a377a30a08c2d3c23f",
+    "foundation_library_sha256": "01aae42df1d1d584f302c2964c267ebf2269e79184f901978ec53df9fc4451aa",
+    "schema": "schemas/baseline/world_save_v5.fbs",
+    "schema_sha256": "e0f5d36b38a0e7ad3ad7c9ff646bf92d4d38915de60103bf8cd837482121c734",
+    "validation": "Original 0.7 save/load checksum matched for this state before migration."
+  },
+  "container": {
+    "bytes": 521649,
+    "file_sha256": "7a38f70b18accc6565c4ee101b7736838911c24186862fe7ac1667b4746e76df",
+    "magic": "RIBSV2\\r\\n",
+    "header_version": 2,
+    "flags": 1,
+    "format_version": 5,
+    "rules_version": 4,
+    "generator_version": 2,
+    "decompressed_bytes": 1588456,
+    "compressed_bytes": 521553,
+    "container_checksum": 10689929279710222493,
+    "content_hash": "52e02f82fa53d54c22b9b3384f91d05a3ef01ef5373ce30c4e3698f52d7abf53"
+  },
+  "expected_state": {
+    "checksum": 5908086720614312586,
+    "construction_orders": [],
+    "item_stacks": [
+      {
+        "cell": [
+          0,
+          0,
+          0
+        ],
+        "entity_id": 1,
+        "id": 1,
+        "item": 0,
+        "location_kind": 1,
+        "owner": 1,
+        "quantity": 83
+      },
+      {
+        "cell": [
+          0,
+          0,
+          0
+        ],
+        "entity_id": 1,
+        "id": 2,
+        "item": 1,
+        "location_kind": 1,
+        "owner": 1,
+        "quantity": 40
+      },
+      {
+        "cell": [
+          0,
+          0,
+          0
+        ],
+        "entity_id": 1,
+        "id": 3,
+        "item": 2,
+        "location_kind": 1,
+        "owner": 1,
+        "quantity": 100
+      }
+    ],
+    "next_building_id": 2,
+    "next_item_reservation_id": 1,
+    "next_item_stack_id": 5,
+    "next_logistics_task_id": 2,
+    "next_path_batch_id": 4,
+    "path_batches": [
+      {
+        "building_id": 0,
+        "command": 4,
+        "frontier_count": 0,
+        "id": 3,
+        "job": 2,
+        "node_count": 0,
+        "phase": 0,
+        "residents": [
+          1
+        ],
+        "target": [
+          22,
+          19,
+          0
+        ],
+        "work_units": 0
+      }
+    ],
+    "population": 10,
+    "resources": [
+      83,
+      40,
+      100
+    ],
+    "seed": 70421,
+    "tasks": [
+      {
+        "carry_stack": 0,
+        "destination": 1,
+        "failure": 0,
+        "id": 1,
+        "item": 0,
+        "kind": 0,
+        "path_batch": 3,
+        "phase": 3,
+        "quantity": 3,
+        "reservation": 0,
+        "resident_id": 1,
+        "resume_job": 2,
+        "resume_target": [
+          22,
+          19,
+          0
+        ],
+        "source_stack": 0
+      }
+    ],
+    "ticks": 115,
+    "world_id": [
+      116,
+      186,
+      164,
+      69,
+      181,
+      171,
+      79,
+      6,
+      181,
+      35,
+      33,
+      31,
+      79,
+      216,
+      9,
+      207
+    ]
+  }
+}

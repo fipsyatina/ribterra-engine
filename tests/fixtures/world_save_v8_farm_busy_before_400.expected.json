@@ -1,0 +1,8405 @@
+{
+  "metadata": {
+    "world_id": [
+      30,
+      17,
+      171,
+      61,
+      227,
+      14,
+      67,
+      237,
+      135,
+      99,
+      4,
+      112,
+      6,
+      174,
+      20,
+      117
+    ],
+    "seed": 70421,
+    "ticks": 399,
+    "next_building_id": 3,
+    "has_moved": false,
+    "has_gathered": false,
+    "has_built": true
+  },
+  "resources": {
+    "wood": 60,
+    "stone": 30,
+    "food": 85
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 45.125,
+      "y": 20.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 2000,
+          "familiarity_debt": 0,
+          "last_practice_tick": 199
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 2,
+      "name": "Taras",
+      "x": 45.125,
+      "y": 20.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 3,
+      "name": "Oles",
+      "x": 45.125,
+      "y": 20.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 4,
+      "name": "Iryna",
+      "x": 45.125,
+      "y": 20.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 5,
+      "name": "Bohdan",
+      "x": 49.125,
+      "y": 21.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 6,
+      "name": "Nadia",
+      "x": 50.125,
+      "y": 21.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 7,
+      "name": "Lev",
+      "x": 51.125,
+      "y": 21.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 8,
+      "name": "Sofiia",
+      "x": 45.125,
+      "y": 22.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 9,
+      "name": "Marko",
+      "x": 46.125,
+      "y": 22.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    },
+    {
+      "id": 10,
+      "name": "Vira",
+      "x": 47.125,
+      "y": 22.0,
+      "target_x": 90,
+      "target_y": 90,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 199
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    },
+    {
+      "id": 2,
+      "kind": "Farm",
+      "x": 20,
+      "y": 20,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 2,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 3,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 4,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 5,
+      "cells": [
+        {
+          "x": 26,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 6,
+      "cells": [
+        {
+          "x": 27,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 7,
+      "cells": [
+        {
+          "x": 28,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 8,
+      "cells": [
+        {
+          "x": 22,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 9,
+      "cells": [
+        {
+          "x": 23,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 24,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 10,
+      "cells": [
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 35,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 36,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 37,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 38,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 39,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 40,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 41,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 42,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 43,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 44,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 45,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 46,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 47,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 48,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 49,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 50,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 51,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 52,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 53,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 54,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 55,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 56,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 57,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 58,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 59,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 60,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 61,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 62,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 63,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 64,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 65,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 66,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 67,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 68,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 69,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 70,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 71,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 72,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 73,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 74,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 75,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 76,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 77,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 78,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 79,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 80,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 81,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 82,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 83,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 84,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 85,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 86,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 87,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 88,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 89,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 34,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 35,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 36,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 37,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 38,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 39,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 40,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 41,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 42,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 43,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 44,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 45,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 46,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 47,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 48,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 49,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 50,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 51,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 52,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 53,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 54,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 55,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 56,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 57,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 58,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 59,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 60,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 61,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 62,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 63,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 64,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 65,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 66,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 67,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 68,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 69,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 70,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 71,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 72,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 73,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 74,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 75,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 76,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 77,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 78,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 79,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 80,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 81,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 82,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 83,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 84,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 85,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 86,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 87,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 88,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 89,
+          "layer": "Surface"
+        },
+        {
+          "x": 90,
+          "y": 90,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp.",
+    "Farm construction started.",
+    "Farm completed."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 11,
+  "topology_revision": 1,
+  "path_batches": [],
+  "path_results": [
+    {
+      "path_batch_id": 1,
+      "command": "Build",
+      "accepted": true,
+      "failure": "None",
+      "message": "Path applied."
+    }
+  ],
+  "next_item_stack_id": 8,
+  "next_item_reservation_id": 5,
+  "next_logistics_task_id": 5,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 60,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 30,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 85,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [
+    {
+      "task_id": 1,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 2,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 2,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 3,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 3,
+      "destination_building_id": 2,
+      "source_stack_id": 2,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Stone",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 4,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 4,
+      "destination_building_id": 2,
+      "source_stack_id": 3,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Food",
+      "quantity": 5,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "construction_orders": [
+    {
+      "building_id": 2,
+      "kind": "Farm",
+      "site": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      },
+      "owner_nation": 1,
+      "required": {
+        "wood": 20,
+        "stone": 10,
+        "food": 5
+      },
+      "delivered": {
+        "wood": 20,
+        "stone": 10,
+        "food": 5
+      },
+      "phase": "Complete",
+      "originating_path_batch_id": 1
+    }
+  ],
+  "next_work_intent_id": 1,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 2,
+  "work_intents": [],
+  "profession_cursor_id": 1,
+  "next_manual_order_id": 11,
+  "manual_order_cursor_id": 1,
+  "manual_orders": [
+    {
+      "order_id": 1,
+      "resident_id": 1,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 2,
+      "resident_id": 2,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 3,
+      "resident_id": 3,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 4,
+      "resident_id": 4,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 5,
+      "resident_id": 5,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 6,
+      "resident_id": 6,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 7,
+      "resident_id": 7,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 8,
+      "resident_id": 8,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 9,
+      "resident_id": 9,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 10,
+      "resident_id": 10,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 90,
+        "y": 90,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 3
+      },
+      "issued_tick": 199,
+      "legacy_compatibility": false,
+      "executor": "Route",
+      "executor_id": 0,
+      "activated_tick": 200,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "Documentation gallery only; not game/runtime verification",
+  "assets": 13,
+  "publicVersions": 11,
+  "weatherVariants": 2,
+  "localMarkdownLinks": 38,
+  "allHashesMatch": true,
+  "allImagesDecoded": true,
+  "gallerySelectNextPreviousKeyboard": true,
+  "viewports": [
+    {
+      "width": 1280,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1920,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "horizontalOverflow": false
+    }
+  ],
+  "jsErrors": []
+}

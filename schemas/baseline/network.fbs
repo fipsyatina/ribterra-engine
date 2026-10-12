@@ -1,0 +1,40 @@
+namespace ribterra.wire;
+
+table Versions { protocol:uint; rules:uint; content:string (required); }
+table Hello { name:string (required); versions:Versions (required); resume_token:string; password_proof:string; }
+table Challenge { nonce:string (required); password_required:bool; versions:Versions (required); }
+table Welcome { player:uint; resume_token:string (required); world_id:[ubyte] (required); next_request:ulong = 1; }
+table Rejected { reason:string (required); }
+enum CommandType:ubyte { Move, Gather, Build }
+table Command { request_id:ulong; author:uint; issued_tick:ulong; kind:CommandType; residents:[int]; x:int; y:int; building:ubyte; }
+table Reply { request_id:ulong; applied_tick:ulong; author:uint; accepted:bool; reason:string (required); }
+struct Tile { index:uint; amount:int; terrain:ubyte; explored:bool; }
+table Resident { id:int; name:string (required); x:float; y:float; target_x:int; target_y:int; job:ubyte; progress:float; health:int; hunger:float; wood_xp:int; mining_xp:int; farming_xp:int; }
+struct Building { id:int; x:int; y:int; progress:float; kind:ubyte; }
+struct Resources { wood:int; stone:int; food:int; }
+table Snapshot {
+  world_id:[ubyte] (required);
+  revision:ulong;
+  baseline:ulong;
+  tick:ulong;
+  full:bool;
+  tiles:[Tile] (required);
+  residents:[Resident] (required);
+  buildings:[Building] (required);
+  removed_residents:[int];
+  removed_buildings:[int];
+  resources:Resources (required);
+  housing:int;
+  day:int;
+  winter:bool;
+  tutorial_step:int;
+}
+table SnapshotAck { revision:ulong; resync:bool; }
+table ChatSend { text:string (required); }
+table Chat { sequence:ulong; author:uint; name:string (required); text:string (required); }
+table Ping { value:ulong; }
+table ReplyAck { request_id:ulong; requests:[ulong]; }
+union Payload { Hello, Challenge, Welcome, Rejected, Command, Reply, Snapshot, SnapshotAck, ChatSend, Chat, Ping, ReplyAck }
+table Packet { protocol:uint; sequence:ulong; payload:Payload (required); }
+root_type Packet;
+file_identifier "RBTN";

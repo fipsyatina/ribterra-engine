@@ -1,0 +1,26 @@
+{
+  "scope": "Documentation/image gallery verification; not proof of new game graphics",
+  "stages": 6,
+  "baselineByteIdentical": true,
+  "original13ImagesUnchanged": true,
+  "localMarkdownLinks": 120,
+  "allImagesDecoded": true,
+  "compareNavigationKeyboard": true,
+  "desktopGalleryAllImagesAndLinks": true,
+  "archivedGallery13": true,
+  "viewports": [
+    {
+      "width": 390,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1280,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 1920,
+      "horizontalOverflow": false
+    }
+  ],
+  "jsErrors": []
+}

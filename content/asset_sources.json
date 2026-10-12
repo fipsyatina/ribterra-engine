@@ -1,0 +1,493 @@
+{
+  "schema": 1,
+  "project_groups": [
+    "ui",
+    "locales",
+    "shaders",
+    "buildings",
+    "art"
+  ],
+  "project_notice": "licenses/Ribterra-Assets.txt",
+  "project_author": "Ribterra project",
+  "overrides": {
+    "art/concept-snow.png": {
+      "id":"art.concept.snow","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/snow-surface-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0261.png","sha256":"12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554"}]
+    },
+    "art/concept-ground-details.png": {
+      "id":"art.concept.ground-details","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/ground-details-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-houses-low.png": {
+      "id":"art.concept.houses-low","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/houses-low-cottages-prompt.md",
+      "source_images":[
+        {"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"},
+        {"path":"docs/visual-targets/images/target-0261.png","sha256":"12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554"}
+      ]
+    },
+    "art/concept-residents-walk.png": {
+      "id":"art.concept.residents-walk","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/residents-walk-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-residents-logs.png": {
+      "id":"art.concept.residents-logs","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/residents-logs-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-residents-sack.png": {
+      "id":"art.concept.residents-sack","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/residents-sack-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-residents-cart.png": {
+      "id":"art.concept.residents-cart","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/residents-cart-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-construction-home.png": {
+      "id":"art.concept.construction-home","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/construction-home-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-construction-rural.png": {
+      "id":"art.concept.construction-rural","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/construction-rural-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-construction-services.png": {
+      "id":"art.concept.construction-services","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/construction-services-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-construction-service-repairs.png": {
+      "id":"art.concept.construction-service-repairs","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/construction-service-repairs-prompt.md",
+      "source_images":[{"path":"art/concept-construction-services.png","sha256":"b5976ecffa248c4a858c28e7bd778073ee3ea77407992b911fb9f2b45f7a584d"}]
+    },
+    "art/concept-bridge-clay.png": {
+      "id":"art.concept.bridge-clay","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt_file":"art-source/concept-rebuild/bridge-clay-prompt.md",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-nature-winter.png": {
+      "id":"art.concept.nature-winter","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-village-winter.png": {
+      "id":"art.concept.village-winter","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-village.png": {
+      "id":"art.concept.village","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-terrain.png": {
+      "id":"art.concept.terrain","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-grass.png": {
+      "id":"art.concept.grass","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-houses.png": {
+      "id":"art.concept.houses","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-services.png": {
+      "id":"art.concept.services","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt":"Production Ribterra building atlas copied faithfully in style from attached approved summer concept and accepted new houses. Transparent 2 by2 atlas four complete isolated sprites with LARGE empty alpha gutters. Orthographic isometric camera 35deg, warm afternoon from upper-left, polished hand-painted 3D timber/stone/slate, cool bluegray roof tiles, honeybrown timber, pale plaster, amber windows. TOP LEFT KITCHEN: match tall timber-framed building at upper-right center of concept, steep blue slate roof and tall chimney, multiple warm lit windows, sheltered doorway, round baskets, barrels and small herb bundles. TOP RIGHT GRAIN MILL: little timber stone-bottom slate-roof grain mill, waterwheel on left, sacks of flour and grain baskets, modest footprint, same world style. BOTTOM LEFT WORKSHOP II: enlarged/upgraded version of the open-front smith/workshop in concept, two large working bays, visible warm orange forge at back, two anvils, workbenches, robust stone chimney, attached storage lean-to and blue standard bearing crossed small gold tools. Distinctly bigger and richer than a normal workshop but clearly same architectural family. BOTTOM RIGHT FISHING HUT: simple small timber/slate building with covered open lean-to, fishing nets hanging on posts, baskets and barrels, short timber platform under building ONLY, no water, no whole landscape. Objects centered, fully contained within own equal quadrant, all parts within cell leaving at least50pxtransparentmargin, no overlap. No people, no labels, no UI, no surrounding ground rectangles, no big bakedgroundshadow, no selectionhalos. Native fully transparent alpha outside objects."
+    },
+    "art/concept-services-winter.png": {
+      "id":"art.concept.services-winter","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "prompt":"Edit image 1 (the transparent four-building Ribterra services atlas) into its WINTER seasonal variant, using image2 solely for snow/color art direction. Preserve the exact canvas, object positions, object scale, all four complete building silhouettes, the two-by-two atlas layout, the empty alpha gutters, architecture, props, lighting direction, and fully transparent background. Add thick but believable white-blue snow on slate roofs, ridge beams, chimney rims, awnings, barrels and other upward-facing surfaces. No snow floating outside the objects, no ground rectangle, no sky, no UI, no people, no text. Keep warm amber windows and workshop forge. Cool exposed timber slightly. Do not move, crop, resize, replace or add buildings; kitchen top left, grain watermill top right, upgraded forge bottom left, fishing hut bottom right. Genuine transparent alpha outside the objects.",
+      "source_images":[{"path":"art/concept-services.png","sha256":"f01012e4f7dd19016d87f1edf20e62535759082786a9fe1a4d489084a60f5c81"},{"path":"docs/visual-targets/images/target-0261.png","sha256":"12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554"}]
+    },
+    "fonts/PTSerif-Regular.ttf": {
+      "id":"font.pt-serif.regular","license":"OFL-1.1","author":"ParaType Ltd.",
+      "source":"https://github.com/google/fonts/blob/main/ofl/ptserif/PT_Serif-Web-Regular.ttf",
+      "notice":"licenses/PTSerif-OFL.txt"
+    },
+    "ui/art/concept-panel.png": {
+      "id":"ui.concept.panel","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-meadow.png": {
+      "id":"art.concept.meadow","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-nature-summer.png": {
+      "id":"art.concept.nature-summer","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/concept-nature-variety-summer.png": {
+      "id":"art.concept.nature-variety-summer","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "generated_source":"art-source/concept-rebuild/nature-variety-summer-2026-10-05.png",
+      "generated_source_sha256":"a5b1b9a7a9a4c755d7539c142146fd440f3e4525d741acb0338d38043dd77faa",
+      "prompt_file":"art-source/concept-rebuild/nature-variety-2026-10-05.prompt.txt",
+      "prompt_sha256":"469929fefd96a17c81c44dff92c4597003c012e4dc7ba98ae5341c3b6c8cf7fa",
+      "source_images":[{"path":"docs/visual-targets/images/target-0262.png","sha256":"31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d"}]
+    },
+    "art/concept-nature-variety-winter.png": {
+      "id":"art.concept.nature-variety-winter","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt",
+      "generated_source":"art-source/concept-rebuild/nature-variety-winter-2026-10-05.png",
+      "generated_source_sha256":"dfc8eb5ef78d44217691fa8a82c399a57b81d519960850ae547fecc087b5a345",
+      "prompt_file":"art-source/concept-rebuild/nature-variety-winter-2026-10-05.prompt.txt",
+      "prompt_sha256":"67ca01e8ba37ba6ff3619c55bc84f19fd91bb2e44e2173b389c4b3d3e30f82fb",
+      "source_images":[
+        {"path":"art/concept-nature-variety-summer.png","sha256":"a5b1b9a7a9a4c755d7539c142146fd440f3e4525d741acb0338d38043dd77faa"},
+        {"path":"docs/visual-targets/images/target-0261.png","sha256":"12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554"}
+      ]
+    },
+    "ui/art/concept-hud-icons.png": {
+      "id":"ui.concept.hud-icons","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/rework-meadow.png": {
+      "id":"art.rework.meadow","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/rework-house-level2-winter.png": {
+      "id":"art.rework.house-level2-winter","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "art/rework-workshop-level2-winter.png": {
+      "id":"art.rework.workshop-level2-winter","license":"LicenseRef-Proprietary",
+      "author":"Ribterra project / OpenAI image generation","source":"project","notice":"licenses/Ribterra-Assets.txt"
+    },
+    "fonts/NotoSans-Regular.ttf": {
+      "id": "font.noto-sans.regular",
+      "license": "OFL-1.1",
+      "author": "The Noto Project Authors",
+      "source": "https://github.com/notofonts/noto-fonts",
+      "notice": "licenses/Noto-OFL.txt"
+    },
+    "fonts/CormorantGaramond.ttf": {
+      "id": "font.cormorant-garamond",
+      "license": "OFL-1.1",
+      "author": "Christian Thalmann and the Cormorant Project Authors",
+      "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond",
+      "notice": "licenses/Cormorant-OFL.txt"
+    },
+    "art/living-018-0.png": {
+      "id": "art.living.018",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/wildlife-024.png": {
+      "id": "art.wildlife.024",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "ui/art/lobby-hall.png": {
+      "id": "ui.lobby-hall",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project",
+      "source": "Generated from user-provided lobby concept with OpenAI imagegen",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "ui/art/lobby-portraits.png": {
+      "id": "ui.lobby-portraits",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project",
+      "source": "Generated from user-provided lobby concept with OpenAI imagegen",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "ui/art/lobby-valley.png": {
+      "id": "ui.lobby-valley",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project",
+      "source": "Generated from user-provided lobby concept with OpenAI imagegen",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-house.png": {
+      "id": "art.reference-refresh.house",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-camp.png": {
+      "id": "art.reference-refresh.camp",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-farm.png": {
+      "id": "art.reference-refresh.farm",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-stockpile.png": {
+      "id": "art.reference-refresh.stockpile",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-mine.png": {
+      "id": "art.reference-refresh.mine",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-workshop.png": {
+      "id": "art.reference-refresh.workshop",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-temple.png": {
+      "id": "art.reference-refresh.temple",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-tavern.png": {
+      "id": "art.reference-refresh.tavern",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-cartographer.png": {
+      "id": "art.reference-refresh.cartographer",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-research.png": {
+      "id": "art.reference-refresh.research",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-smelter.png": {
+      "id": "art.reference-refresh.smelter",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-fishing.png": {
+      "id": "art.reference-refresh.fishing",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-library.png": {
+      "id": "art.reference-refresh.library",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-barracks.png": {
+      "id": "art.reference-refresh.barracks",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-bridge.png": {
+      "id": "art.reference-refresh.bridge",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-lumbermill.png": {
+      "id": "art.reference-refresh.lumbermill",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-mill.png": {
+      "id": "art.reference-refresh.mill",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-kitchen.png": {
+      "id": "art.reference-refresh.kitchen",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-claypit.png": {
+      "id": "art.reference-refresh.claypit",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-road.png": {
+      "id": "art.reference-refresh.road",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-materials.png": {
+      "id": "art.reference-refresh.materials",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-grass.png": {
+      "id": "art.reference-refresh.grass",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-trees.png": {
+      "id": "art.reference-refresh.trees",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-rocks.png": {
+      "id": "art.reference-refresh.rocks",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-detail.png": {
+      "id": "art.reference-refresh.detail",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-effects.png": {
+      "id": "art.reference-refresh.effects",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-walk-blue.png": {
+      "id": "art.reference-refresh.walk-blue",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-walk-earth.png": {
+      "id": "art.reference-refresh.walk-earth",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-animals-summer.png": {
+      "id": "art.reference-refresh.animals-summer",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/refresh-animals-winter.png": {
+      "id": "art.reference-refresh.animals-winter",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-man-walk.png": {
+      "id": "art.directional-residents.resident8-man-walk",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-man-logs.png": {
+      "id": "art.directional-residents.resident8-man-logs",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-man-sack.png": {
+      "id": "art.directional-residents.resident8-man-sack",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-man-cart.png": {
+      "id": "art.directional-residents.resident8-man-cart",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-woman-walk.png": {
+      "id": "art.directional-residents.resident8-woman-walk",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-woman-logs.png": {
+      "id": "art.directional-residents.resident8-woman-logs",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-woman-sack.png": {
+      "id": "art.directional-residents.resident8-woman-sack",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    },
+    "art/resident8-woman-cart.png": {
+      "id": "art.directional-residents.resident8-woman-cart",
+      "license": "LicenseRef-Proprietary",
+      "author": "Ribterra project / OpenAI image generation",
+      "source": "project",
+      "notice": "licenses/Ribterra-Assets.txt"
+    }
+  }
+}

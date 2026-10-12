@@ -1,0 +1,686 @@
+{
+  "metadata": {
+    "world_id": [
+      37,
+      7,
+      65,
+      253,
+      76,
+      82,
+      67,
+      157,
+      155,
+      193,
+      165,
+      226,
+      138,
+      125,
+      203,
+      105
+    ],
+    "seed": 70421,
+    "ticks": 1720,
+    "next_building_id": 2,
+    "has_moved": false,
+    "has_gathered": true,
+    "has_built": false
+  },
+  "resources": {
+    "wood": 116,
+    "stone": 40,
+    "food": 92
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 24.0,
+      "y": 23.0,
+      "target_x": 24,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 12,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Idle",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": []
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp.",
+    "Gather order issued."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 25,
+  "topology_revision": 1,
+  "path_batches": [],
+  "path_results": [],
+  "next_item_stack_id": 16,
+  "next_item_reservation_id": 1,
+  "next_logistics_task_id": 13,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 116,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 40,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 92,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [
+    {
+      "task_id": 1,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10113,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 2,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10269,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 3,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10409,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 4,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10549,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 5,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10689,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 6,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10829,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 7,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10969,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 8,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 11109,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 9,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 11249,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 10,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 11389,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 11,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 11529,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 12,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 11669,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "construction_orders": [],
+  "next_work_intent_id": 13,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 1,
+  "work_intents": [
+    {
+      "intent_id": 1,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 179,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1379,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 2,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 319,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1519,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 3,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 459,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1659,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 4,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 599,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1799,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 5,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 739,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1939,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 6,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 879,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2079,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 7,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1019,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2219,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 8,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1159,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2359,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 9,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1299,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2499,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 10,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1439,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2639,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 11,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Superseded",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1579,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2779,
+      "path_batch_id": 0,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    },
+    {
+      "intent_id": 12,
+      "kind": "GatherContinuation",
+      "phase": "Complete",
+      "completion": "Exhausted",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 30,
+        "y": 22,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 1719,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 2919,
+      "path_batch_id": 0,
+      "attempts": 0,
+      "last_attempt_topology_revision": 1
+    }
+  ]
+}

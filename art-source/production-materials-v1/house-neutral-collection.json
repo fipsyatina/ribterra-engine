@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "kind": "ribterra-material-collection-v1",
+  "items": [
+    {
+      "geometry_provenance": {
+        "author": "Diagnostic test fixture authored in material_collection_export_tests.py",
+        "kind": "authored-proxy-xyz-v1"
+      },
+      "legacy_key": "resident.man.walk.2.1",
+      "master_path": "build/material-collection-tests-2026-10-08-attempt02/fixtures/fixture.resident.json",
+      "master_sha256": "6c0e1fce735e91362a048fea33f01a7f2b2c490b6fdf6e9e2de1c550ee1e63c0",
+      "namespace": "fixture.resident",
+      "provenance": {
+        "asset_source_sha256": "540abed24bc5037e208b11e196a2186ba12a7d463a614a8a7d646d63c55e7a3d",
+        "author": "Ribterra project / OpenAI image generation",
+        "license": "LicenseRef-Proprietary",
+        "notice_path": "licenses/Ribterra-Assets.txt",
+        "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+        "source": "project"
+      },
+      "references": [
+        {
+          "path": "art-source/engine-calibration/material-master.json",
+          "purpose": "visual-only",
+          "sha256": "6b362340248c1b8eef3a6ebe850fb01d1962485d910d9605a6d25b087b923359"
+        }
+      ],
+      "registration": {
+        "caster_alpha_policy": "painted-alpha-times-authored-mask",
+        "catalog_entry_sha256": "dea750152021038ec92d985f1f5af0530b94ab2c572ba8dfe20c37b5761925dc",
+        "kind": "original-catalog-screen-v1",
+        "pivot_px": [
+          66.49996185302734,
+          209.49998474121094
+        ],
+        "png_sha256": "d33beae42f545f6b47570841c6dd226b361938d9d41e8554fedc5a2187aa4ef3",
+        "reference_width": 222.0,
+        "source_size": [
+          139,
+          213
+        ]
+      }
+    },
+    {
+      "namespace": "production.house.neutral.draft",
+      "legacy_key": "building.house.ready",
+      "master_path": "art-source/production-materials-v1/house-neutral-draft/master.json",
+      "master_sha256": "8cf6eee816fde808c4aed26685cd251c05c08659ec7eea15a266a72951497131",
+      "registration": {
+        "kind": "original-catalog-screen-v1",
+        "png_sha256": "c232e87e5891e37b3ebfd90f214c70bea6628b2ce6c2c6521e086d947a0af7f9",
+        "catalog_entry_sha256": "45d5827d29a0eef1ed8c49824e20126f28cfe408cf34d53b0df363e2dd5ce0d5",
+        "source_size": [
+          529,
+          428
+        ],
+        "pivot_px": [
+          264.5,
+          419.44000244140625
+        ],
+        "reference_width": 529,
+        "caster_alpha_policy": "authored-mask"
+      },
+      "provenance": {
+        "license": "LicenseRef-Proprietary",
+        "author": "Ribterra project / OpenAI image generation",
+        "source": "project",
+        "notice_path": "licenses/Ribterra-Assets.txt",
+        "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+        "asset_source_sha256": "bcf940719c37d2f8138fefc2bb918533a81093fc92b0798af6ef972d99ac89f3"
+      },
+      "geometry_provenance": {
+        "kind": "authored-proxy-xyz-v1",
+        "author": "Ribterra project / Codex authored registered proxy draft"
+      },
+      "references": [
+        {
+          "path": "art-source/concept-rebuild/houses-low-cottages-prompt.md",
+          "sha256": "30fe9b641ff709d93cd76c8e6361416c3b6b5abec68673b40973c2d9b9c1e80a",
+          "purpose": "visual-only"
+        },
+        {
+          "path": "docs/visual-targets/images/target-0262.png",
+          "sha256": "31eb5802e2219fa3805acecd5dc95caf0cdb755c9f28063f1fe8244d1085991d",
+          "purpose": "visual-only"
+        },
+        {
+          "path": "docs/visual-targets/images/target-0261.png",
+          "sha256": "12a3ef634d2b17e84c8b92d32c5ec9a077e203332c3b6b246794078a60cfe554",
+          "purpose": "visual-only"
+        },
+        {
+          "path": "art-source/production-materials-v1/house/landmarks.json",
+          "sha256": "2ca26a33c09e4b52275161afabcbd53212e67a8a68c02cb8c7647aa995dde2b7",
+          "purpose": "visual-only"
+        },
+        {
+          "path": "art-source/production-materials-v1/house/GEOMETRY_ASSUMPTIONS_UA.md",
+          "sha256": "d1c949159fc35a08be58ffe491ccb0e2507022c960e98f20946eadf172abde59",
+          "purpose": "visual-only"
+        }
+      ],
+      "albedo_source": {
+        "kind": "authored-xyz-triangle-materials-v1",
+        "palette_path": "art-source/production-materials-v1/house-neutral-draft/palette.json",
+        "palette_sha256": "8510fa982771d16afbbb98fc2cbaffc87ae0bb8b3aba8483df0c5792050d06f1",
+        "provenance": {
+          "license": "LicenseRef-Proprietary",
+          "author": "Codex-authored provisional flat material palette for Ribterra",
+          "source": "project",
+          "notice_path": "art-source/production-materials-v1/house-neutral-draft/NOTICE.txt",
+          "notice_sha256": "6eabc21b411354101d6062e3712e184dbe5c676c0252617e428ccf7dbd6af2a9"
+        }
+      }
+    }
+  ]
+}

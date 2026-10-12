@@ -1,0 +1,202 @@
+body {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    color: #eee2c5;
+    font-family: Noto;
+    font-size: 18dp;
+    pointer-events: none;
+}
+div, h1, h2, p, label { display: block; }
+.screen { background: #07101b; }
+.card {
+    display: block;
+    box-sizing: border-box;
+    background: #0c1826f5;
+    border: 1dp #b89049;
+    padding: 18dp;
+    pointer-events: auto;
+}
+#menu-card { position: absolute; left: 8%; top: 12%; width: 42%; max-width: 560dp; padding: 26dp; }
+h1 { color: #e6b354; font-size: 42dp; margin: 0 0 8dp 0; }
+h2 { color: #e6b354; font-size: 24dp; margin: 0 0 14dp 0; }
+p { color: #b7c1bc; margin: 0 0 16dp 0; }
+label { margin-top: 14dp; }
+button, select, input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 8dp;
+    padding: 10dp;
+    background: #192d3e;
+    border: 1dp #64737c;
+    color: #eee2c5;
+    pointer-events: auto;
+}
+button:hover { background: #203f57; border-color: #9db1bd; }
+button:focus, select:focus, input:focus { background: #285b84; border-color: #f4c053; }
+button { tab-index: auto; }
+.hidden { display: none; }
+#settings-card, #help-card { position: absolute; left: 24%; top: 12%; width: 52%; padding: 26dp; }
+#settings-card { max-height: 76%; overflow-y: auto; }
+#settings-card .settings-section-title { margin-top: 24dp; }
+#presentation-requested, #presentation-effective { margin: 8dp 0 0 0; }
+#presentation-explanation { color: #f0bf7c; margin: 8dp 0 0 0; }
+#presentation-actions { display: flex; }
+#presentation-actions button { width: 48%; }
+#presentation-reset { margin-right: 4%; }
+#menu-status { position: absolute; left: 8%; bottom: 8%; width: 60%; color: #f0bf7c; }
+#topbar {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 66dp;
+    background: #0c1826f8;
+    border-bottom: 1dp #b89049;
+    padding: 12dp 20dp;
+    font-size: 16dp;
+    pointer-events: auto;
+}
+#hud-title { color: #e6b354; font-size: 22dp; margin-right: 18dp; }
+.resource { display: block; margin-left: 14dp; white-space: nowrap; }
+#buildbar { position: absolute; left: 20dp; bottom: 20dp; width: 58%; max-width: 760dp; }
+#build-title { display: block; color: #e6b354; margin-bottom: 4dp; }
+#buildbar button { display: inline-block; width: 23%; margin-right: 1%; font-size: 16dp; }
+#controls { position: absolute; right: 20dp; bottom: 20dp; width: 310dp; padding: 14dp; font-size: 16dp; }
+#controls button { padding: 7dp; margin-top: 6dp; }
+#speed-1, #speed-2, #speed-4 { display: inline-block; width: 30%; margin-right: 2%; }
+#save, #load, #hud-help, #hud-menu { display: inline-block; width: 47%; margin-right: 2%; }
+#chat { position: absolute; right: 20dp; top: 86dp; width: 310dp; padding: 14dp; font-size: 16dp; }
+#chat-title { font-size: 20dp; margin-bottom: 10dp; }
+#chat-log { height: 120dp; overflow-y: auto; background: #050b12; padding: 8dp; }
+.chat-entry { margin-bottom: 5dp; color: #d5ded8; }
+#chat-input, #chat-send { padding: 7dp; }
+#status { position: absolute; left: 20dp; bottom: 180dp; width: 52%; padding: 10dp; pointer-events: none; }
+#selection-panel { position: absolute; left: 20dp; top: 86dp; width: 270dp; font-size: 16dp; }
+#selection-title { font-size: 20dp; margin-bottom: 12dp; }
+#resident-name { color: #f1c56f; margin-bottom: 8dp; font-size: 20dp; }
+#selection-count, #selection-pending, #resident-order, #resident-health, #resident-hunger { margin-top: 6dp; }
+#selection-pending { color: #f1c56f; }
+#resident-order-detail { font-size: 14dp; color: #f0bf7c; margin-top: 4dp; }
+button.active { background: #285b84; border-color: #f4c053; }
+#surface-tab, #mine-tab { display: block; width: 108dp; margin-top: 0; margin-left: 8dp; padding: 6dp; font-size: 16dp; }
+#surface-tab { margin-left: auto; }
+#resident-layer { font-size: 14dp; color: #b6c5cd; margin-bottom: 4dp; }
+#stocks-toggle { width: auto; margin: 0; padding: 6dp 10dp; font-size: 16dp; }
+#stocks-panel { position: absolute; display: flex; flex-direction: column; left: 31%; top: 86dp; width: 38%; height: 70%; padding: 18dp; font-size: 15dp; z-index: 2; }
+#stocks-panel.hidden, #delivery-pages.hidden { display: none; }
+#stocks-panel > h2, #stocks-explanation, #stocks-table, #stocks-carrying, #delivery-pages, #stocks-close { flex-shrink: 0; }
+#deliveries-list { flex: 1; min-height: 0; overflow-y: auto; }
+scrollbarvertical { width: 12dp; }
+scrollbarhorizontal { height: 12dp; }
+scrollbarvertical slidertrack, scrollbarhorizontal slidertrack { background: #192d3e; }
+scrollbarvertical sliderbar, scrollbarhorizontal sliderbar { background: #64737c; min-height: 24dp; }
+scrollbarvertical sliderbar:hover, scrollbarvertical sliderbar:active { background: #b89049; }
+#stocks-explanation { color: #b6c5cd; margin-bottom: 12dp; }
+.stock-row { display: flex; padding: 7dp 0; border-bottom: 1dp #304354; }
+.stock-row span { display: block; width: 18%; text-align: right; }
+.stock-row .stock-name { width: 28%; text-align: left; }
+#stocks-body { flex: 1; min-height: 0; overflow-y: auto; }
+#stocks-body #deliveries-list { overflow: visible; }
+.stock-head { color: #b6c5cd; font-size: 13dp; }
+#stocks-carrying { margin-top: 10dp; color: #f1c56f; }
+#deliveries-title { margin: 20dp 0 8dp 0; font-size: 19dp; }
+.delivery-entry { padding: 8dp 0; border-bottom: 1dp #304354; }
+.delivery-name { color: #f1c56f; }
+.delivery-detail { font-size: 14dp; color: #b6c5cd; margin-top: 4dp; }
+#delivery-pages { display: flex; align-items: center; margin-top: 10dp; }
+#delivery-prev, #delivery-next { width: 35%; padding: 6dp; margin: 0; }
+#delivery-page { display: block; width: 30%; text-align: center; }
+#resident-carry, #resident-logistics { margin-top: 6dp; color: #b6c5cd; font-size: 14dp; }
+#resident-logistics-failure { margin-top: 4dp; color: #f0bf7c; font-size: 14dp; }
+#resident-work { margin-top: 6dp; color: #f1c56f; font-size: 14dp; }
+#resident-work-detail { margin-top: 4dp; color: #b6c5cd; font-size: 14dp; }
+
+#selection-panel { max-height: 60%; overflow-y: auto; }
+#profession-panel { position: absolute; display: flex; flex-direction: column; left: 27%; top: 80dp; width: 46%; height: 75%; padding: 18dp; font-size: 15dp; z-index: 3; }
+#profession-panel.hidden { display: none; }
+#profession-title, #profession-person, #profession-state, #profession-close { flex-shrink: 0; }
+#profession-person { color: #f1c56f; margin-bottom: 6dp; }
+#profession-state { color: #b6c5cd; margin-bottom: 10dp; }
+#profession-form { flex: 1; min-height: 0; overflow-y: auto; padding-right: 10dp; }
+#profession-priority-hint, #profession-skill-hint { color: #b6c5cd; font-size: 13dp; margin: 8dp 0; }
+#profession-priorities { display: flex; flex-wrap: wrap; }
+.profession-priority { display: block; width: 48%; margin-right: 2%; }
+.profession-priority label { font-size: 13dp; }
+.profession-priority select { margin-top: 4dp; padding: 5dp; }
+#profession-buttons { display: flex; flex-wrap: wrap; margin: 4dp 0 14dp; }
+#profession-buttons button { width: 48%; margin-right: 2%; padding: 7dp; font-size: 14dp; }
+#profession-skill-list { display: flex; flex-wrap: wrap; }
+.profession-skill { width: 48%; margin-right: 2%; padding: 7dp; font-size: 13dp; text-align: left; }
+#profession-breakdown { padding: 12dp; background: #050b12; margin-top: 10dp; line-height: 1.5; }
+
+#orders-panel { position: absolute; display: flex; flex-direction: column; left: 27%; top: 80dp; width: 46%; height: 75%; padding: 18dp; font-size: 15dp; z-index: 3; }
+#orders-panel.hidden { display: none; }
+#orders-title, #orders-person, #orders-control, #orders-close { flex-shrink: 0; }
+#orders-title { font-size: 23dp; }
+#orders-person { color: #f1c56f; margin-bottom: 6dp; }
+#orders-control { color: #b6c5cd; margin-bottom: 12dp; white-space: pre-line; }
+#orders-body { flex: 1; min-height: 0; overflow-y: auto; padding-right: 10dp; }
+#orders-hint { line-height: 1.4; color: #eee2c5; }
+#orders-policy-hint, #orders-release-hint { color: #b6c5cd; font-size: 13dp; margin: 8dp 0 12dp; }
+#orders-queue-title { font-size: 19dp; margin: 16dp 0 8dp; }
+.manual-row { padding: 10dp 0; border-bottom: 1dp #304354; }
+.manual-name { color: #f1c56f; }
+.manual-detail { color: #b6c5cd; font-size: 13dp; margin-top: 5dp; }
+.manual-row button { width: 50%; padding: 6dp; font-size: 13dp; }
+#orders-authority { margin-top: 16dp; }
+#orders-control-buttons { display: flex; }
+#orders-control-buttons button { width: 48%; margin-right: 2%; padding: 7dp; font-size: 14dp; }
+button:disabled { color: #839098; background: #14222e; border-color: #394b59; }
+#speed-1:disabled, #speed-2:disabled, #speed-4:disabled { focus: none; tab-index: none; }
+
+#building-catalog { position: absolute; left: 20dp; bottom: 138dp; width: 58%; max-width: 760dp; max-height: 62%; padding: 16dp; overflow-y: auto; }
+#catalog-title { display: block; font-size: 22dp; margin-bottom: 12dp; color: #e8cf8b; }
+#catalog-close { float: right; width: 80dp; font-size: 13dp; }
+#catalog-grid { width: 100%; clear: both; }
+.building-card { display: inline-block; vertical-align: top; width: 23%; height: 110dp; margin: 3dp 1%; padding: 6dp 2dp; text-align: center; }
+.building-icon { display: block; width: 44dp; height: 44dp; margin: 0dp auto 3dp; }
+.building-name { display: block; font-size: 13dp; line-height: 16dp; }
+.building-price { display: block; font-size: 10dp; line-height: 13dp; color: #a5bdc8; margin-top: 4dp; }
+
+#farm-help { clear: both; font-size: 12dp; line-height: 16dp; color: #c4d2d5; margin: 6dp 6dp 10dp; }
+
+#food-warning { position:absolute; left:29%; top:80dp; width:40%; box-sizing:border-box; padding:10dp 14dp; background:#201e19ed; border:1dp #c7964f; color:#ffce85; font-size:14dp; line-height:19dp; pointer-events:none; }
+#resident-health-reason { margin-top:8dp; font-size:13dp; line-height:18dp; color:#ffce85; }
+
+#settlement-open { padding: 0px 5px; margin: 0px; border-width: 0px; background: transparent; }
+#settlement-panel { position: absolute; left: 27%; top: 120px; width: 46%; height: 610px; padding: 18px; z-index: 40; }
+#settlement-body { height: 490px; overflow-y: auto; padding-right: 12px; }
+#settlement-panel button { width: 100%; margin-top: 8px; margin-bottom: 8px; }
+#settlement-panel p { margin-top: 10px; margin-bottom: 8px; }
+.settlement-meter { height: 12px; background: #273541; margin-top: 8px; margin-bottom: 8px; }
+#settlement-meter-fill { height: 100%; background: #cf9746; width: 0%; }
+.settlement-young { border-bottom: 1px #43515c; padding: 8px 0px; }
+
+#economy-open { position:absolute; left:12px; bottom:62px; width:175px; height:38px; }
+#economy-panel { position:absolute; left:16%; top:120px; width:68%; height:610px; padding:18px; z-index:45; }
+#economy-body { position:absolute; top:175px; bottom:62px; left:18px; right:18px; height:auto; overflow-y:auto; margin:0; }
+#economy-stock { margin:8px 0; padding:8px; background:#202f39; }
+.economy-site { margin:12px 0; padding:10px; border-top:1px #a68c51; }
+.economy-site button { display:block; width:96%; margin:5px 0; min-height:32px; }
+#economy-close { position:absolute; bottom:16px; left:18px; width:94%; height:38px; }
+#economy-quantity { width:90px; }
+
+#online-card, #lobby-card { position: absolute; left: 50%; top: 12%; width: 440px; margin-left: -244px; padding: 24px; max-height: 76%; overflow-y: auto; }
+#online-card label, #online-card input, #online-card select, #lobby-card label, #lobby-card select { display: block; width: 100%; margin-bottom: 8px; }
+#online-card button, #lobby-card button { display: block; width: 100%; margin-top: 8px; }
+#lobby-players { margin: 12px 0; } .lobby-row { padding: 6px 0; border-bottom: 1px #685735; }
+
+#lobby-coop { color: #ead6ae; font-size: 16dp; margin: 6dp 0; }
+#lobby-actions #lobby-invite { font-family: Noto; font-size: 15dp; line-height: 18dp; }
+
+/* Deferred alpha controls stay hidden despite the concept theme display rules. */
+.resource.hidden, #nav-defense.hidden, #bp-upgrade.hidden, #bp-research.hidden,
+#settlement-discontent-meter.hidden, #settlement-night.hidden,
+#profession-skill-list .profession-skill.hidden { display: none; }

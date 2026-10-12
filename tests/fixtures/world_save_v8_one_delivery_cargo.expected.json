@@ -1,0 +1,321 @@
+{
+  "metadata": {
+    "world_id": [
+      123,
+      143,
+      68,
+      70,
+      220,
+      8,
+      72,
+      138,
+      187,
+      205,
+      250,
+      70,
+      67,
+      110,
+      158,
+      54
+    ],
+    "seed": 70421,
+    "ticks": 61,
+    "next_building_id": 2,
+    "has_moved": false,
+    "has_gathered": true,
+    "has_built": false
+  },
+  "resources": {
+    "wood": 83,
+    "stone": 40,
+    "food": 100
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 21.0,
+      "y": 19.0,
+      "target_x": 22,
+      "target_y": 19,
+      "job": "Haul",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 1,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 61
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 0
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": []
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 2,
+  "topology_revision": 0,
+  "path_batches": [],
+  "path_results": [],
+  "next_item_stack_id": 5,
+  "next_item_reservation_id": 1,
+  "next_logistics_task_id": 2,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 80,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 40,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 100,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 4,
+      "item": "Wood",
+      "quantity": 3,
+      "owner_nation": 1,
+      "location_kind": "Carried",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [
+    {
+      "task_id": 1,
+      "kind": "HaulToStorage",
+      "phase": "ToDropoff",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 4,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10061,
+      "resume_job": "Woodcut",
+      "resume_target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "construction_orders": [],
+  "next_work_intent_id": 1,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 1,
+  "work_intents": [],
+  "profession_cursor_id": 1,
+  "next_manual_order_id": 3,
+  "manual_order_cursor_id": 1,
+  "manual_orders": [
+    {
+      "order_id": 1,
+      "resident_id": 1,
+      "owner_nation": 1,
+      "kind": "Gather",
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "gather_completion": "OneDelivery",
+      "phase": "Active",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 1
+      },
+      "issued_tick": 0,
+      "legacy_compatibility": false,
+      "executor": "Logistics",
+      "executor_id": 1,
+      "activated_tick": 1,
+      "next_attempt_tick": 0,
+      "attempts": 1
+    },
+    {
+      "order_id": 2,
+      "resident_id": 1,
+      "owner_nation": 1,
+      "kind": "Move",
+      "target": {
+        "x": 27,
+        "y": 25,
+        "layer": "Surface"
+      },
+      "gather_completion": "UntilExhausted",
+      "phase": "Queued",
+      "failure": "None",
+      "completion": "None",
+      "issuer": {
+        "player_id": 17,
+        "request_id": 2
+      },
+      "issued_tick": 0,
+      "legacy_compatibility": false,
+      "executor": "None",
+      "executor_id": 0,
+      "activated_tick": null,
+      "next_attempt_tick": 0,
+      "attempts": 0
+    }
+  ]
+}

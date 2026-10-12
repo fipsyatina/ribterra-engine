@@ -1,0 +1,54 @@
+{
+  "date": "2026-09-27",
+  "scope": "One native baseline; five future-stage AI mockups",
+  "assets": [
+    {
+      "id": "V00",
+      "path": "progress/v00-baseline.png",
+      "kind": "Справжній кадр 0.26.0",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "72967b91fcce75f192676d0dff35e71171277d9d4640d7f4f2b17e33a69bca5f"
+    },
+    {
+      "id": "V01",
+      "path": "progress/v01-ui.png",
+      "kind": "Цільовий макет · не реалізація",
+      "width": 1505,
+      "height": 1045,
+      "sha256": "b1fba7ccbf4e7b6e0e1054468e9111031df8a1258a7e8c56bee000ff636ea386"
+    },
+    {
+      "id": "V02",
+      "path": "progress/v02-terrain.png",
+      "kind": "Цільовий макет · не реалізація",
+      "width": 1506,
+      "height": 1045,
+      "sha256": "0902754e2c8be9ce605d01935f95a7f3438688f16be066dee4297cb3fdb33bda"
+    },
+    {
+      "id": "V03",
+      "path": "progress/v03-objects.png",
+      "kind": "Цільовий макет · не реалізація",
+      "width": 1506,
+      "height": 1045,
+      "sha256": "616bad0363d75506c180e61ba990938023a905350502079875884d1ffefebf90"
+    },
+    {
+      "id": "V04",
+      "path": "progress/v04-rain.png",
+      "kind": "Цільовий макет · не реалізація",
+      "width": 1506,
+      "height": 1045,
+      "sha256": "69afe81e9fc64b9058184d2f4c4b634570fa35ae4e92787fd55c4a4f7d797480"
+    },
+    {
+      "id": "V05",
+      "path": "progress/v05-winter.png",
+      "kind": "Цільовий макет · не реалізація",
+      "width": 1506,
+      "height": 1045,
+      "sha256": "9ced64614554d78b94efd45472b5f451853c99f079686bd54bb3f3dad6a3c5f5"
+    }
+  ]
+}

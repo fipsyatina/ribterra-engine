@@ -1,0 +1,608 @@
+{
+  "schema": 1,
+  "page_size": 2048,
+  "padding": 3,
+  "max_pages": 4,
+  "images": [
+    {
+      "id": "walk.0.0.0",
+      "path": "sprites/walk.0.0.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.0.1",
+      "path": "sprites/walk.0.0.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.0.2",
+      "path": "sprites/walk.0.0.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.0.3",
+      "path": "sprites/walk.0.0.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.1.0",
+      "path": "sprites/walk.0.1.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.1.1",
+      "path": "sprites/walk.0.1.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.1.2",
+      "path": "sprites/walk.0.1.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.0.1.3",
+      "path": "sprites/walk.0.1.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.0.0",
+      "path": "sprites/walk.1.0.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.0.1",
+      "path": "sprites/walk.1.0.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.0.2",
+      "path": "sprites/walk.1.0.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.0.3",
+      "path": "sprites/walk.1.0.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.1.0",
+      "path": "sprites/walk.1.1.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.1.1",
+      "path": "sprites/walk.1.1.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.1.2",
+      "path": "sprites/walk.1.1.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.1.1.3",
+      "path": "sprites/walk.1.1.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.0.0",
+      "path": "sprites/walk.2.0.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.0.1",
+      "path": "sprites/walk.2.0.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.0.2",
+      "path": "sprites/walk.2.0.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.0.3",
+      "path": "sprites/walk.2.0.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.1.0",
+      "path": "sprites/walk.2.1.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.1.1",
+      "path": "sprites/walk.2.1.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.1.2",
+      "path": "sprites/walk.2.1.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.2.1.3",
+      "path": "sprites/walk.2.1.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.0.0",
+      "path": "sprites/walk.3.0.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.0.1",
+      "path": "sprites/walk.3.0.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.0.2",
+      "path": "sprites/walk.3.0.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.0.3",
+      "path": "sprites/walk.3.0.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.1.0",
+      "path": "sprites/walk.3.1.0.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.1.1",
+      "path": "sprites/walk.3.1.1.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.1.2",
+      "path": "sprites/walk.3.1.2.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "walk.3.1.3",
+      "path": "sprites/walk.3.1.3.png",
+      "pivot": [
+        0.5,
+        0.9625
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.0",
+      "path": "sprites/trees.018.0.png",
+      "pivot": [
+        0.5,
+        0.9857142857142858
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.1",
+      "path": "sprites/trees.018.1.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.2",
+      "path": "sprites/trees.018.2.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.3",
+      "path": "sprites/trees.018.3.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.4",
+      "path": "sprites/trees.018.4.png",
+      "pivot": [
+        0.5,
+        0.985239852398524
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.5",
+      "path": "sprites/trees.018.5.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.6",
+      "path": "sprites/trees.018.6.png",
+      "pivot": [
+        0.5,
+        0.9864406779661017
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.7",
+      "path": "sprites/trees.018.7.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.8",
+      "path": "sprites/trees.018.8.png",
+      "pivot": [
+        0.5,
+        0.9856115107913669
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.9",
+      "path": "sprites/trees.018.9.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.10",
+      "path": "sprites/trees.018.10.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "trees.018.11",
+      "path": "sprites/trees.018.11.png",
+      "pivot": [
+        0.5,
+        0.987012987012987
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "grass.018.0",
+      "path": "sprites/grass.018.0.png",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "grass.018.1",
+      "path": "sprites/grass.018.1.png",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "grass.018.2",
+      "path": "sprites/grass.018.2.png",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "grass.018.3",
+      "path": "sprites/grass.018.3.png",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "grass.018.4",
+      "path": "sprites/grass.018.4.png",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "grass.018.5",
+      "path": "sprites/grass.018.5.png",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    }
+  ]
+}

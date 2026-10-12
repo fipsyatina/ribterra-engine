@@ -1,0 +1,79 @@
+{
+  "content": "d86e8e0d5fae865742ffbe7b7b63785980952a6810481e2e574359621c53a63d",
+  "fixtures": [
+    {
+      "bytes": 5888401,
+      "name": "historical",
+      "sha256": "6ba4259d44259fe5bc722292ce1691a12d49b9cc3cc2faac9a4a3dcefaf94307",
+      "supported": true
+    },
+    {
+      "bytes": 5887720,
+      "name": "rations",
+      "sha256": "642f67cd6f335c43c326523a2bd408906407e7270cd5530809476041c1c9f5e4",
+      "supported": true
+    },
+    {
+      "bytes": 5888397,
+      "name": "attack",
+      "sha256": "ce9f56b866440f4c3e851a52df78b335913aaa7842c06d4d9e605dd9555f6bdf",
+      "supported": true
+    },
+    {
+      "bytes": 5888460,
+      "name": "cargo",
+      "sha256": "4ef08762c74620be61e0242e6ce10606754a0132ec9cbe11b74d9c0944a50d0f",
+      "supported": true
+    },
+    {
+      "bytes": 5887456,
+      "name": "combined",
+      "sha256": "31f668a5182f223d6a179b6980622c0f33b59b1687af2b654a3fced005ef554a",
+      "supported": true
+    },
+    {
+      "bytes": 5884987,
+      "name": "expedition-travel",
+      "sha256": "8e1cf98914c4d8366546f606fc7fad98fd8c18ee02f90976428b5912d627db20",
+      "supported": false
+    },
+    {
+      "bytes": 5884988,
+      "name": "expedition-hunt",
+      "sha256": "5d1a78a03ac04b4765091f3d58252fb0e6fce1e01506aaf1a4c744fb35131efe",
+      "supported": false
+    },
+    {
+      "bytes": 5884990,
+      "name": "expedition-returning",
+      "sha256": "0cb5f02862fe0223a8713689b123f15b86b02e35ea5a187199595d1c939727f2",
+      "supported": false
+    },
+    {
+      "bytes": 5884989,
+      "name": "expedition-defence",
+      "sha256": "7cb09e3866dee104299189946f138a7d376acbae49284bc9750e181029aa6e59",
+      "supported": false
+    }
+  ],
+  "generator": 5,
+  "method": "Synthetic states validated and saved by frozen 0.25.7; ordinary cargo produced by real production",
+  "rules": 14,
+  "source_commit": "0fe2454f45aeb4087f5832fe0c42d7b8303bac99",
+  "writer": "0.25.7",
+  "frozen_sources": {
+    "include/ribterra/foundation.hpp": "b8e58579da2f2a17134dc6e690da0b0f10962622",
+    "include/ribterra/world.hpp": "68dbdc91b97704efae7e3f783fe3675dba8f74e1",
+    "include/ribterra/world_state.hpp": "c91e72bc79304f36ba9f763dc66502d9af5e8a07",
+    "include/ribterra/economy.hpp": "f10d87c3b7cd39143cfb56199ba69e3200b5e1da",
+    "schemas/world_save.fbs": "67bf69866e04569a530be452442e9a9cec48c8d6",
+    "src/sim/world.cpp": "6dcc2d8f397ea8b0c0f79ed8587e807f883fa410",
+    "src/sim/world_save.cpp": "d306e53765d8ef1894d853ab0f0baba75966908d",
+    "src/foundation/economy.cpp": "973a345f828a4277f5186f605797864baf172a15"
+  },
+  "frozen_libraries": {
+    "SimCore.lib": "8f2f36ba54b215b86343b38963476e761717f778682188a470283e05a0cbac07",
+    "Foundation.lib": "8901b67b7f511a5339a277603a39ee6ee9fd0ee8bfa8480027897f0131f52a6a",
+    "Alpha0257Capture.exe": "b8cfec1e18de9f511ae36318e86ffcd24cf1f20043d0a65915828205911b4b26"
+  }
+}

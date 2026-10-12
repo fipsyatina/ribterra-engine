@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "coordinate_system": "ribterra-world-xyz-v1",
+  "purpose": "Minimal diagnostic editable triangle geometry; not concept-ready art",
+  "ids": {
+    "material_off": "calibration.material.off",
+    "material_on": "calibration.material.on",
+    "sprite_off": "calibration.off",
+    "sprite_on": "calibration.on"
+  },
+  "emission_radiance": [1.0, 0.35, 0.08, 1.0],
+  "export": {
+    "export_pixels_per_reference_pixel": 4,
+    "padding_export_pixels": 8
+  },
+  "local_occluders": [
+    {
+      "shape": "obb",
+      "center_xy": [1.0, 1.0],
+      "axis_x": [1.0, 0.0],
+      "axis_y": [0.0, 1.0],
+      "half_extent_x": 1.0,
+      "half_extent_y": 1.0,
+      "base_z": 0.0,
+      "top_z": 2.4
+    }
+  ],
+  "sky_shadow_triangles": [
+    {"id":"facade_x.sun","vertices":[[2,0,0],[2,2,0],[2,1.65,1.6]],"source_mask":1},
+    {"id":"gable_y.moon","vertices":[[2,2,1.6],[0,2,1.6],[0.72,2,2.4]],"source_mask":2},
+    {"id":"roof_x.shared.a","vertices":[[0.72,0,2.4],[2,0,1.6],[2,2,1.6]],"source_mask":3},
+    {"id":"roof_x.shared.b","vertices":[[0.72,0,2.4],[2,2,1.6],[0.72,2,2.4]],"source_mask":3},
+    {"id":"roof_neg_x.sun","vertices":[[0,0,1.6],[0.72,0,2.4],[0.72,2,2.4]],"source_mask":1},
+    {"id":"roof_neg_x.moon","vertices":[[0,0,1.6],[0.72,2,2.4],[0,2,1.6]],"source_mask":2}
+  ],
+  "triangles": [
+    {"id":"facade_x.bottom.a","vertices":[[2,0,0],[2,2,0],[2,2,0.55]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.bottom.b","vertices":[[2,0,0],[2,2,0.55],[2,0,0.55]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.top.a","vertices":[[2,0,1.25],[2,2,1.25],[2,2,1.6]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.top.b","vertices":[[2,0,1.25],[2,2,1.6],[2,0,1.6]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.left.a","vertices":[[2,0,0.55],[2,0.65,0.55],[2,0.65,1.25]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.left.b","vertices":[[2,0,0.55],[2,0.65,1.25],[2,0,1.25]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.right.a","vertices":[[2,1.35,0.55],[2,2,0.55],[2,2,1.25]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_x.right.b","vertices":[[2,1.35,0.55],[2,2,1.25],[2,1.35,1.25]],"albedo":[104,112,120,255],"roughness":0.78,"ao":1.0,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"window.a","vertices":[[2,0.65,0.55],[2,1.35,0.55],[2,1.35,1.25]],"albedo":[104,112,120,255],"roughness":0.32,"ao":1.0,"emission_mask":1.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"window.b","vertices":[[2,0.65,0.55],[2,1.35,1.25],[2,0.65,1.25]],"albedo":[104,112,120,255],"roughness":0.32,"ao":1.0,"emission_mask":1.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_y.a","vertices":[[2,2,0],[0,2,0],[0,2,1.6]],"albedo":[92,101,110,255],"roughness":0.82,"ao":0.96,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"facade_y.b","vertices":[[2,2,0],[0,2,1.6],[2,2,1.6]],"albedo":[92,101,110,255],"roughness":0.82,"ao":0.96,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"gable_y","vertices":[[2,2,1.6],[0,2,1.6],[1,2,2.4]],"albedo":[96,105,114,255],"roughness":0.82,"ao":0.96,"emission_mask":0.0,"wet_mask":0.0,"caster_mask":1.0},
+    {"id":"roof_x.a","vertices":[[1,0,2.4],[2,0,1.6],[2,2,1.6]],"albedo":[76,84,94,255],"roughness":0.9,"ao":1.0,"emission_mask":0.0,"wet_mask":0.15,"caster_mask":1.0},
+    {"id":"roof_x.b","vertices":[[1,0,2.4],[2,2,1.6],[1,2,2.4]],"albedo":[76,84,94,255],"roughness":0.9,"ao":1.0,"emission_mask":0.0,"wet_mask":0.15,"caster_mask":1.0},
+    {"id":"roof_neg_x.a","vertices":[[0,0,1.6],[1,0,2.4],[1,2,2.4]],"albedo":[70,78,88,255],"roughness":0.9,"ao":1.0,"emission_mask":0.0,"wet_mask":0.15,"caster_mask":1.0},
+    {"id":"roof_neg_x.b","vertices":[[0,0,1.6],[1,2,2.4],[0,2,1.6]],"albedo":[70,78,88,255],"roughness":0.9,"ao":1.0,"emission_mask":0.0,"wet_mask":0.15,"caster_mask":1.0},
+    {"id":"slope.a","vertices":[[-2,-6,-0.15],[-0.4,-4.4,0.15],[-2,-4.4,0.05]],"albedo":[82,96,86,255],"roughness":0.94,"ao":1.0,"emission_mask":0.0,"wet_mask":0.28,"caster_mask":1.0},
+    {"id":"slope.b","vertices":[[-2,-6,-0.15],[-0.4,-6,-0.05],[-0.4,-4.4,0.15]],"albedo":[82,96,86,255],"roughness":0.94,"ao":1.0,"emission_mask":0.0,"wet_mask":0.28,"caster_mask":1.0}
+  ],
+  "probes": [
+    {"id":"facade_x_1","triangle_id":"facade_x.bottom.a","barycentric":[0.25,0.35,0.4]},
+    {"id":"facade_x_2","triangle_id":"facade_x.bottom.b","barycentric":[0.3,0.35,0.35]},
+    {"id":"facade_x_3","triangle_id":"facade_x.top.a","barycentric":[0.25,0.35,0.4]},
+    {"id":"window_1","triangle_id":"window.a","barycentric":[0.3,0.3,0.4]},
+    {"id":"window_2","triangle_id":"window.b","barycentric":[0.3,0.35,0.35]},
+    {"id":"facade_y_1","triangle_id":"facade_y.a","barycentric":[0.25,0.35,0.4]},
+    {"id":"facade_y_2","triangle_id":"facade_y.b","barycentric":[0.3,0.35,0.35]},
+    {"id":"gable_y_1","triangle_id":"gable_y","barycentric":[0.3,0.3,0.4]},
+    {"id":"roof_1","triangle_id":"roof_x.a","barycentric":[0.3,0.3,0.4]},
+    {"id":"roof_2","triangle_id":"roof_x.b","barycentric":[0.3,0.35,0.35]},
+    {"id":"slope_1","triangle_id":"slope.a","barycentric":[0.3,0.3,0.4]},
+    {"id":"slope_2","triangle_id":"slope.b","barycentric":[0.3,0.35,0.35]}
+  ]
+}

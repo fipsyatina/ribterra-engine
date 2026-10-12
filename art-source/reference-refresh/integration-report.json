@@ -1,0 +1,272 @@
+[
+  {
+    "id": "house",
+    "file": "assets/art/refresh-house.png",
+    "source_sha256": "38f37051c69b997119a509cbbf49c98b056bd86a5121b098beacd0a81e62169b",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "camp",
+    "file": "assets/art/refresh-camp.png",
+    "source_sha256": "78a11dbd9e3c5ae0eaa7081ef1ab00a8cbb5d282f1fc99b969ba63a2faa2a29f",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "farm",
+    "file": "assets/art/refresh-farm.png",
+    "source_sha256": "9afb0d916cd40343562872cd002e8e78728bb88be4bc34cdffc2be6451280dc7",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "stockpile",
+    "file": "assets/art/refresh-stockpile.png",
+    "source_sha256": "53f410f1b58bc0a7eb06df2b26256d0cdf9950e18396365959f8a6e689c4c006",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "mine",
+    "file": "assets/art/refresh-mine.png",
+    "source_sha256": "821f2147c96bb4ab88e3e183527792c7a63ad0be442ea39d6dcde865093fcc6b",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "workshop",
+    "file": "assets/art/refresh-workshop.png",
+    "source_sha256": "9ff9262ad52a4c62dcf406b7d9e7187456c56856b70fe299b27e6a326e9a7d05",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "temple",
+    "file": "assets/art/refresh-temple.png",
+    "source_sha256": "cbd06cb5581c3cd8b08ab2e2a4e92d13a6e85261495ded0fdf707de380fdd1af",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "tavern",
+    "file": "assets/art/refresh-tavern.png",
+    "source_sha256": "87bc740a5363e935b4b979756d41d4b7c5cd27d7db9796b354e02122787d085e",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "cartographer",
+    "file": "assets/art/refresh-cartographer.png",
+    "source_sha256": "6963080915214fc0e4e9f3aa01abe388dad5e7a0199f3e58fabb43593e2016d2",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "research",
+    "file": "assets/art/refresh-research.png",
+    "source_sha256": "0676e833e2d6f99757d5a6d3bcbc6f773e8208dc28f07e039b9c2aaa9c26a8c2",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "smelter",
+    "file": "assets/art/refresh-smelter.png",
+    "source_sha256": "fa96c2a61602b422c0b6708629474e04931931b2714e5bbc4231ffc02341e0a3",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "fishing",
+    "file": "assets/art/refresh-fishing.png",
+    "source_sha256": "2b8d28568cd9bac8735bcb042a8678c3a36ae4617a3e70d83cfcfc14696e0d79",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "library",
+    "file": "assets/art/refresh-library.png",
+    "source_sha256": "abad1e3892a9694056e8095de65ceee1d2166560a62f33654603f99b872b4565",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "barracks",
+    "file": "assets/art/refresh-barracks.png",
+    "source_sha256": "fbd30989b984a3b82fafd355c495e9ff1c28ddfef40ce02e276e34bbb1b54445",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "bridge",
+    "file": "assets/art/refresh-bridge.png",
+    "source_sha256": "e2d0d9cedab81904f3c8ade1aaf62d1dca89278e70eb802766f205a54d32f40a",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "lumbermill",
+    "file": "assets/art/refresh-lumbermill.png",
+    "source_sha256": "3412ca00e44c0f42c40d831bb9d0321e83b0a78c5393dbd4c39e93fb88c07185",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "mill",
+    "file": "assets/art/refresh-mill.png",
+    "source_sha256": "24573070cb760bddc0def26cff30160dbe6c236d957e2a1e91d6612ef6088be5",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "kitchen",
+    "file": "assets/art/refresh-kitchen.png",
+    "source_sha256": "4715cb74dbc7a337c5fc2b89223a2f80fc848bde12b5cafd388d1a8f58fa7293",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "claypit",
+    "file": "assets/art/refresh-claypit.png",
+    "source_sha256": "f369e580ab93e056f15e91ba0bacbb0358443c26e6de3386df3483cf96b36476",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "road",
+    "file": "assets/art/refresh-road.png",
+    "source_sha256": "d4f9bbfbfb6be3e81f53fa264864a0aa55963d555253efec398149154c8f470a",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "materials",
+    "file": "assets/art/refresh-materials.png",
+    "source_sha256": "57ecb3d4760df3faf244d9fedb683f587e7d72f015cb9b11839804e03750b9c3",
+    "width": 1254,
+    "height": 1254,
+    "sprites": 16,
+    "alpha_mode": ""
+  },
+  {
+    "id": "grass",
+    "file": "assets/art/refresh-grass.png",
+    "source_sha256": "1b39b106088491dfdf0b77fcbb74f88cc880e17b5e906c8fa3ef3f10f4c26980",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 6,
+    "alpha_mode": ""
+  },
+  {
+    "id": "trees",
+    "file": "assets/art/refresh-trees.png",
+    "source_sha256": "f9338f62afdad63367c0850c9b51a5a542e68e5338300d20b8badd9caf4f51e1",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 12,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "rocks",
+    "file": "assets/art/refresh-rocks.png",
+    "source_sha256": "121d554a3989b0d0e6eb319b05a37327d1361a9af05315259fce78f053cb1e79",
+    "width": 1254,
+    "height": 1254,
+    "sprites": 16,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "detail",
+    "file": "assets/art/refresh-detail.png",
+    "source_sha256": "72d6046ab22b966c521b8ff8515172fbb134aaa8a773841fa4c5f1b8c960a91c",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 14,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "effects",
+    "file": "assets/art/refresh-effects.png",
+    "source_sha256": "ae0fb6c2a3f39ad844dbb5b558efc2bf43b537a4fb2ed084767a5e0ee4e4888a",
+    "width": 1536,
+    "height": 1024,
+    "sprites": 8,
+    "alpha_mode": "luminance"
+  },
+  {
+    "id": "walk-blue",
+    "file": "assets/art/refresh-walk-blue.png",
+    "source_sha256": "1ca067bdca22e2c130d9012b8de379c208986a8df6eb56dccc5bd1e19cd21403",
+    "width": 1254,
+    "height": 1254,
+    "sprites": 16,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "walk-earth",
+    "file": "assets/art/refresh-walk-earth.png",
+    "source_sha256": "c0c2b57986483afaa65fb06751941e291cb3a17fab0873b8f6e7291a2757f44d",
+    "width": 1254,
+    "height": 1254,
+    "sprites": 16,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "animals-summer",
+    "file": "assets/art/refresh-animals-summer.png",
+    "source_sha256": "d838f9b0dd64af213bd52873fa05209200988309986a7e024c3216219f038d8e",
+    "width": 1254,
+    "height": 1254,
+    "sprites": 16,
+    "alpha_mode": "magenta"
+  },
+  {
+    "id": "animals-winter",
+    "file": "assets/art/refresh-animals-winter.png",
+    "source_sha256": "d61923137ae74c64de00af481713660eaa215dc86ab5199449166ce43b9f9d75",
+    "width": 1254,
+    "height": 1254,
+    "sprites": 16,
+    "alpha_mode": "magenta"
+  }
+]

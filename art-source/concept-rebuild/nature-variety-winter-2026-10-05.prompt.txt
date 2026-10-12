@@ -1,0 +1,6 @@
+Use case: lighting-weather
+Asset type: matching winter version of an existing transparent Ribterra sprite atlas.
+Image 1 is the EDIT TARGET: the eight-sprite summer sheet. Image 2 is ONLY the approved winter material/color reference target-0261.
+Change only season and snow. Preserve Image 1's exact canvas dimensions, 4-column by 2-row layout, object positions, individual shapes, camera, physical scale, rock structure, bush branches, ground-contact anchor and transparent gutters. Do not replace or rearrange any object.
+Apply the reference's cold blue-gray winter stone and natural opaque white snow caps on horizontal rock tops, with rock sides and deep crevices still visible. Four berry bushes keep their exact stems and uneven silhouettes but get darker cold-green leaves with a light natural dusting of snow and a few visible red berry clusters. No yellow-green moss showing through broad snow caps. Snow must sit on each object, not become a ground tile or broad white base.
+Keep genuinely transparent RGBA background and clean antialiased edges. No cast ground shadow, sky, river, scene, falling particles, painted checkerboard, labels, text, UI, grid lines, glow or extra sprites. Soft upper-left illumination, same orthographic 45-degree azimuth / 30-degree elevation. Output only the edited winter sheet.

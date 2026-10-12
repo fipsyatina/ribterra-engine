@@ -1,0 +1,1366 @@
+{
+  "content_sha256": "5a27f828610495e631067d87c50431c9c8dbf50347dc8d2d5b0d253c4c80eaec",
+  "entries": [
+    {
+      "author": "Ribterra project",
+      "id": "grass.018.0",
+      "input": "sprites/grass.018.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "rect": [
+        813,
+        317,
+        256,
+        256
+      ],
+      "source": "project",
+      "uv": [
+        0.39697265625,
+        0.15478515625,
+        0.52197265625,
+        0.27978515625
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "grass.018.1",
+      "input": "sprites/grass.018.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "rect": [
+        1075,
+        317,
+        256,
+        256
+      ],
+      "source": "project",
+      "uv": [
+        0.52490234375,
+        0.15478515625,
+        0.64990234375,
+        0.27978515625
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "grass.018.2",
+      "input": "sprites/grass.018.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "rect": [
+        1337,
+        317,
+        256,
+        256
+      ],
+      "source": "project",
+      "uv": [
+        0.65283203125,
+        0.15478515625,
+        0.77783203125,
+        0.27978515625
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "grass.018.3",
+      "input": "sprites/grass.018.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "rect": [
+        1599,
+        317,
+        256,
+        256
+      ],
+      "source": "project",
+      "uv": [
+        0.78076171875,
+        0.15478515625,
+        0.90576171875,
+        0.27978515625
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "grass.018.4",
+      "input": "sprites/grass.018.4.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "rect": [
+        3,
+        603,
+        256,
+        256
+      ],
+      "source": "project",
+      "uv": [
+        0.00146484375,
+        0.29443359375,
+        0.12646484375,
+        0.41943359375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "grass.018.5",
+      "input": "sprites/grass.018.5.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "rect": [
+        265,
+        603,
+        256,
+        256
+      ],
+      "source": "project",
+      "uv": [
+        0.12939453125,
+        0.29443359375,
+        0.25439453125,
+        0.41943359375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.0",
+      "input": "sprites/trees.018.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9857142567634583
+      ],
+      "rect": [
+        3,
+        317,
+        264,
+        280
+      ],
+      "source": "project",
+      "uv": [
+        0.00146484375,
+        0.15478515625,
+        0.13037109375,
+        0.29150390625
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.1",
+      "input": "sprites/trees.018.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        1357,
+        3,
+        186,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.66259765625,
+        0.00146484375,
+        0.75341796875,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.10",
+      "input": "sprites/trees.018.10.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        735,
+        3,
+        211,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.35888671875,
+        0.00146484375,
+        0.4619140625,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.11",
+      "input": "sprites/trees.018.11.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        260,
+        3,
+        234,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.126953125,
+        0.00146484375,
+        0.2412109375,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.2",
+      "input": "sprites/trees.018.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        1156,
+        3,
+        195,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.564453125,
+        0.00146484375,
+        0.65966796875,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.3",
+      "input": "sprites/trees.018.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        500,
+        3,
+        229,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.244140625,
+        0.00146484375,
+        0.35595703125,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.4",
+      "input": "sprites/trees.018.4.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9852398633956909
+      ],
+      "rect": [
+        543,
+        317,
+        264,
+        271
+      ],
+      "source": "project",
+      "uv": [
+        0.26513671875,
+        0.15478515625,
+        0.39404296875,
+        0.287109375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.5",
+      "input": "sprites/trees.018.5.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        952,
+        3,
+        198,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.46484375,
+        0.00146484375,
+        0.5615234375,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.6",
+      "input": "sprites/trees.018.6.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9864406585693359
+      ],
+      "rect": [
+        1738,
+        3,
+        264,
+        295
+      ],
+      "source": "project",
+      "uv": [
+        0.8486328125,
+        0.00146484375,
+        0.9775390625,
+        0.1455078125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.7",
+      "input": "sprites/trees.018.7.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        3,
+        3,
+        251,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.00146484375,
+        0.00146484375,
+        0.1240234375,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.8",
+      "input": "sprites/trees.018.8.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9856114983558655
+      ],
+      "rect": [
+        273,
+        317,
+        264,
+        278
+      ],
+      "source": "project",
+      "uv": [
+        0.13330078125,
+        0.15478515625,
+        0.26220703125,
+        0.29052734375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "trees.018.9",
+      "input": "sprites/trees.018.9.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9870129823684692
+      ],
+      "rect": [
+        1549,
+        3,
+        183,
+        308
+      ],
+      "source": "project",
+      "uv": [
+        0.75634765625,
+        0.00146484375,
+        0.845703125,
+        0.15185546875
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.0.0",
+      "input": "sprites/walk.0.0.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        527,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.25732421875,
+        0.29443359375,
+        0.30419921875,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.0.1",
+      "input": "sprites/walk.0.0.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        629,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.30712890625,
+        0.29443359375,
+        0.35400390625,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.0.2",
+      "input": "sprites/walk.0.0.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        731,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.35693359375,
+        0.29443359375,
+        0.40380859375,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.0.3",
+      "input": "sprites/walk.0.0.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        833,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.40673828125,
+        0.29443359375,
+        0.45361328125,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.1.0",
+      "input": "sprites/walk.0.1.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        935,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.45654296875,
+        0.29443359375,
+        0.50341796875,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.1.1",
+      "input": "sprites/walk.0.1.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1037,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.50634765625,
+        0.29443359375,
+        0.55322265625,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.1.2",
+      "input": "sprites/walk.0.1.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1139,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.55615234375,
+        0.29443359375,
+        0.60302734375,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.0.1.3",
+      "input": "sprites/walk.0.1.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1241,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.60595703125,
+        0.29443359375,
+        0.65283203125,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.0.0",
+      "input": "sprites/walk.1.0.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1343,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.65576171875,
+        0.29443359375,
+        0.70263671875,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.0.1",
+      "input": "sprites/walk.1.0.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1445,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.70556640625,
+        0.29443359375,
+        0.75244140625,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.0.2",
+      "input": "sprites/walk.1.0.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1547,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.75537109375,
+        0.29443359375,
+        0.80224609375,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.0.3",
+      "input": "sprites/walk.1.0.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1649,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.80517578125,
+        0.29443359375,
+        0.85205078125,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.1.0",
+      "input": "sprites/walk.1.1.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1751,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.85498046875,
+        0.29443359375,
+        0.90185546875,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.1.1",
+      "input": "sprites/walk.1.1.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1853,
+        603,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.90478515625,
+        0.29443359375,
+        0.95166015625,
+        0.37255859375
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.1.2",
+      "input": "sprites/walk.1.1.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        3,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.00146484375,
+        0.42236328125,
+        0.04833984375,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.1.1.3",
+      "input": "sprites/walk.1.1.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        105,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.05126953125,
+        0.42236328125,
+        0.09814453125,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.0.0",
+      "input": "sprites/walk.2.0.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        207,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.10107421875,
+        0.42236328125,
+        0.14794921875,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.0.1",
+      "input": "sprites/walk.2.0.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        309,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.15087890625,
+        0.42236328125,
+        0.19775390625,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.0.2",
+      "input": "sprites/walk.2.0.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        411,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.20068359375,
+        0.42236328125,
+        0.24755859375,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.0.3",
+      "input": "sprites/walk.2.0.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        513,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.25048828125,
+        0.42236328125,
+        0.29736328125,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.1.0",
+      "input": "sprites/walk.2.1.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        615,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.30029296875,
+        0.42236328125,
+        0.34716796875,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.1.1",
+      "input": "sprites/walk.2.1.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        717,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.35009765625,
+        0.42236328125,
+        0.39697265625,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.1.2",
+      "input": "sprites/walk.2.1.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        819,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.39990234375,
+        0.42236328125,
+        0.44677734375,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.2.1.3",
+      "input": "sprites/walk.2.1.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        921,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.44970703125,
+        0.42236328125,
+        0.49658203125,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.0.0",
+      "input": "sprites/walk.3.0.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1023,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.49951171875,
+        0.42236328125,
+        0.54638671875,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.0.1",
+      "input": "sprites/walk.3.0.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1125,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.54931640625,
+        0.42236328125,
+        0.59619140625,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.0.2",
+      "input": "sprites/walk.3.0.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1227,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.59912109375,
+        0.42236328125,
+        0.64599609375,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.0.3",
+      "input": "sprites/walk.3.0.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1329,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.64892578125,
+        0.42236328125,
+        0.69580078125,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.1.0",
+      "input": "sprites/walk.3.1.0.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1431,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.69873046875,
+        0.42236328125,
+        0.74560546875,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.1.1",
+      "input": "sprites/walk.3.1.1.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1533,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.74853515625,
+        0.42236328125,
+        0.79541015625,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.1.2",
+      "input": "sprites/walk.3.1.2.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1635,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.79833984375,
+        0.42236328125,
+        0.84521484375,
+        0.50048828125
+      ]
+    },
+    {
+      "author": "Ribterra project",
+      "id": "walk.3.1.3",
+      "input": "sprites/walk.3.1.3.png",
+      "license": "LicenseRef-Proprietary",
+      "notice": "notices/ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9.txt",
+      "notice_input": "NOTICE.txt",
+      "notice_sha256": "ca14f2c54c511542928e26d3903b8acbc1f7f5d48410f440787cec87271479e9",
+      "page": 0,
+      "pivot": [
+        0.5,
+        0.9624999761581421
+      ],
+      "rect": [
+        1737,
+        865,
+        96,
+        160
+      ],
+      "source": "project",
+      "uv": [
+        0.84814453125,
+        0.42236328125,
+        0.89501953125,
+        0.50048828125
+      ]
+    }
+  ],
+  "padding": 3,
+  "page_size": 2048,
+  "pages": [
+    {
+      "height": 2048,
+      "path": "atlas-0.png",
+      "sha256": "3ed05a9b54a1e61b493cf4478fd145607d37a8c37c96f05034bf75417bca7056",
+      "width": 2048
+    }
+  ],
+  "schema": 1
+}

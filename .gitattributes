@@ -1,0 +1,23 @@
+* text=auto
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.fbs text eol=lf
+*.cmake text eol=lf
+*.hlsl text eol=lf
+*.json text eol=lf
+CMakeLists.txt text eol=lf
+.gitignore text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.png binary
+*.ttf binary
+*.docx binary
+# Preserve the exact bytes of hash-linked historical evidence.
+docs/evidence/manual-v8-writer-snapshot.json -text whitespace=cr-at-eol
+docs/evidence/manual-v8-fixture-review.json -text whitespace=cr-at-eol
+# Keep timestamped CI output verbatim, including blank-line spaces.
+docs/evidence/manual-ci-*.txt whitespace=-blank-at-eol

@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ribterra — галерея цільових макетів</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #071017;
+      --depth: #0b151e;
+      --panel: #101d27;
+      --panel-2: #172734;
+      --line: #75613d;
+      --brass: #b79256;
+      --brass-light: #dec27f;
+      --ivory: #f2e6c9;
+      --muted: #b7c0bd;
+      --blue: #285d92;
+      --danger: #8b3438;
+      --shadow: rgba(0, 0, 0, 0.48);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--ink); }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 50% -20%, rgba(63, 93, 108, 0.22), transparent 46rem),
+        linear-gradient(180deg, #0a151d 0%, var(--ink) 72%);
+      color: var(--ivory);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: var(--brass-light); }
+    a:hover { color: #f4dda8; }
+
+    button, select, a { -webkit-tap-highlight-color: transparent; }
+
+    button:focus-visible,
+    select:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #7bb8ed;
+      outline-offset: 3px;
+    }
+
+    .page {
+      width: min(1540px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      padding: 18px 20px;
+      border: 1px solid var(--brass);
+      background: rgba(11, 21, 30, 0.96);
+      box-shadow: 0 18px 48px var(--shadow), inset 0 1px 0 rgba(242, 230, 201, 0.08);
+    }
+
+    .eyebrow,
+    .target-label,
+    .scene-kind,
+    .note-label {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--brass-light);
+      font-size: 0.75rem;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.85rem, 4vw, 3.4rem);
+      font-weight: 500;
+      line-height: 1.04;
+    }
+
+    .subtitle {
+      max-width: 74ch;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .doc-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .doc-links a,
+    .full-link {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      text-decoration: none;
+      font-size: 0.84rem;
+    }
+
+    .truth-banner {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 14px 0;
+      padding: 10px 14px;
+      border-left: 4px solid var(--brass-light);
+      background: rgba(23, 39, 52, 0.86);
+      color: var(--ivory);
+    }
+
+    .truth-banner strong { color: var(--brass-light); }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .hero-card,
+    .scene-panel,
+    .notes,
+    .thumb-section {
+      border: 1px solid var(--line);
+      background: rgba(16, 29, 39, 0.96);
+      box-shadow: 0 16px 42px var(--shadow);
+    }
+
+    .hero-card { overflow: hidden; }
+
+    .hero-image-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #02070b;
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(222, 194, 127, 0.18), inset 0 -80px 100px rgba(0, 0, 0, 0.12);
+    }
+
+    #heroImage {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #02070b;
+    }
+
+    .target-label {
+      position: absolute;
+      z-index: 2;
+      left: 14px;
+      top: 14px;
+      max-width: calc(100% - 28px);
+      padding: 8px 11px;
+      border: 1px solid var(--brass-light);
+      background: rgba(7, 16, 23, 0.92);
+      color: #f6dda4;
+      font-size: clamp(0.62rem, 1.4vw, 0.82rem);
+      line-height: 1.25;
+    }
+
+    .missing-note {
+      position: absolute;
+      z-index: 3;
+      inset: 50% auto auto 50%;
+      width: min(78%, 480px);
+      transform: translate(-50%, -50%);
+      padding: 16px;
+      border: 1px solid var(--brass);
+      background: rgba(7, 16, 23, 0.96);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .missing-note[hidden] { display: none; }
+
+    .hero-caption {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 15px 18px 17px;
+      border-top: 1px solid var(--line);
+    }
+
+    .scene-kind {
+      margin: 0 0 3px;
+      color: var(--brass-light);
+      font-size: 0.68rem;
+    }
+
+    #sceneTitle {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .scene-panel {
+      padding: 18px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .scene-panel h2 {
+      margin-bottom: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    .counter {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      margin-bottom: 15px;
+      padding: 4px 9px;
+      border: 1px solid var(--line);
+      color: var(--brass-light);
+      font-variant-numeric: tabular-nums;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    select {
+      width: 100%;
+      min-height: 46px;
+      padding: 8px 10px;
+      border: 1px solid var(--brass);
+      border-radius: 0;
+      background: var(--depth);
+      color: var(--ivory);
+      font: inherit;
+    }
+
+    .nav-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .nav-button {
+      min-height: 46px;
+      padding: 8px 10px;
+      border: 1px solid var(--brass);
+      border-radius: 0;
+      background: var(--panel-2);
+      color: var(--ivory);
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .nav-button:hover { background: #21445f; }
+    .nav-button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .keyboard-hint,
+    .weather-note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .weather-note {
+      padding: 10px;
+      border: 1px solid var(--line);
+      background: var(--depth);
+    }
+
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 16px;
+      background: var(--line);
+    }
+
+    .note {
+      min-height: 142px;
+      padding: 16px 18px;
+      background: var(--panel);
+    }
+
+    .note-label {
+      margin-bottom: 7px;
+      color: var(--brass-light);
+      font-size: 0.67rem;
+    }
+
+    .note p { margin-bottom: 0; color: var(--muted); }
+
+    .thumb-section {
+      margin-top: 16px;
+      padding: 18px;
+    }
+
+    .thumb-heading {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .thumb-heading h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+    }
+
+    .counts { color: var(--muted); font-size: 0.83rem; }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+      gap: 10px;
+    }
+
+    .thumb {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      width: 100%;
+      min-width: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid #4d5360;
+      border-radius: 0;
+      background: var(--depth);
+      color: var(--ivory);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .thumb:hover { border-color: var(--brass-light); transform: translateY(-1px); }
+    .thumb[aria-current="true"] { border: 2px solid var(--brass-light); background: #183448; }
+
+    .thumb img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #03080c;
+    }
+
+    .thumb-copy { padding: 9px 10px 11px; }
+    .thumb-id { color: var(--brass-light); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; }
+    .thumb-title { display: block; margin-top: 2px; font-size: 0.82rem; line-height: 1.25; }
+
+    .footer {
+      margin-top: 16px;
+      padding: 14px 2px 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1050px) {
+      .masthead { grid-template-columns: 1fr; align-items: start; }
+      .doc-links { justify-content: flex-start; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .scene-panel { position: static; }
+      .scene-panel-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: end; }
+      .scene-panel h2, .counter { grid-column: 1 / -1; }
+      .weather-note, .keyboard-hint { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(100% - 18px, 1540px); padding-top: 9px; }
+      .masthead { padding: 15px; }
+      .truth-banner { align-items: flex-start; }
+      .hero-caption { grid-template-columns: 1fr; }
+      .full-link { justify-self: start; }
+      .notes { grid-template-columns: 1fr; }
+      .scene-panel-grid { grid-template-columns: 1fr; }
+      .thumb-section { padding: 12px; }
+      .thumb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .doc-links a { flex: 1 1 auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      .thumb:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Ribterra · 11 версій + 2 погодні стани</p>
+        <h1>Галерея цільових макетів</h1>
+        <p class="subtitle">Локальні художні орієнтири для майбутньої розробки. Зображення задають композицію й атмосферу; готовність доводять тільки native runtime-кадри, відео, тести та перевірений пакет.</p>
+      </div>
+      <nav class="doc-links" aria-label="Документи серії">
+        <a href="GRAPHICS_ENGINE_PLAN_V2_UA.md">План рушія V2 · 24 етапи</a>
+        <a href="NEXT_UPDATES_DETAILED_UA.md">Детальні оновлення</a>
+        <a href="AGENT_VISUAL_CONTRACT_UA.md">Контракт агентів</a>
+        <a href="README.md">README серії</a>
+      </nav>
+    </header>
+
+    <div class="truth-banner" role="note">
+      <strong>ЦІЛЬОВИЙ МАКЕТ · ІЛЮСТРАТИВНІ ДАНІ</strong>
+      <span>Це не скриншот поточної гри й не доказ реалізованої функції. План V2 спочатку вимагає native proof світла, тіней, води, димки й слідів. Літній, зимовий і погодний вигляд різних макетів не задає хронологію проходження.</span>
+    </div>
+
+    <section class="hero-layout" aria-label="Вибраний цільовий макет">
+      <article class="hero-card">
+        <div class="hero-image-wrap">
+          <img id="heroImage" src="images/target-0261.png" alt="Цільовий макет S01 для оновлення 0.26.1 Живий світ">
+          <p id="missingNote" class="missing-note" hidden>PNG ще не знайдено в локальній папці. Галерея автоматично покаже його після додавання файла.</p>
+        </div>
+        <div class="hero-caption">
+          <div>
+            <p id="sceneKind" class="scene-kind">Публічна ціль · S01</p>
+            <h2 id="sceneTitle">0.26.1 «Живий світ»</h2>
+          </div>
+          <a id="fullLink" class="full-link" href="images/target-0261.png" target="_blank" rel="noopener">Відкрити повний PNG</a>
+        </div>
+      </article>
+
+      <aside class="scene-panel" aria-label="Навігація галереї">
+        <div class="scene-panel-grid">
+          <h2>Навігація</h2>
+          <div id="sceneCounter" class="counter" aria-live="polite">01 / 13</div>
+          <div>
+            <label for="sceneSelect">Вибрати сцену</label>
+            <select id="sceneSelect" aria-label="Вибрати цільовий макет"></select>
+          </div>
+          <div class="nav-row">
+            <button id="prevButton" class="nav-button" type="button" aria-label="Попередній макет">← Попередній</button>
+            <button id="nextButton" class="nav-button" type="button" aria-label="Наступний макет">Наступний →</button>
+          </div>
+          <p class="keyboard-hint">Клавіші: ← / →, Home / End.</p>
+          <p id="weatherNote" class="weather-note" hidden>Альтернативний погодний стан S01. Це не наступна версія й не буквальна хронологічна зміна сезону.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="notes" aria-label="Нотатки для агента">
+      <article class="note">
+        <div class="note-label">Що має бути видимо</div>
+        <p id="visibleNote">Жива долина, авторитетна погода й температура, сніг, компактний HUD, мінімапа та світ без ручних доріг.</p>
+      </article>
+      <article class="note">
+        <div class="note-label">Що зберегти незмінним</div>
+        <p id="preserveNote">Без палива й утеплення, фортеці, армії, ворогів та нових руд. Міст і підтриманий demo loop залишаються.</p>
+      </article>
+      <article class="note">
+        <div class="note-label">Який доказ потрібний</div>
+        <p id="evidenceNote">Native 720p/1080p/1440p, літо/зима й день/ніч, немонтоване відео бурі, same-seed before/after, save/network/UI/weather тести.</p>
+      </article>
+    </section>
+
+    <section class="thumb-section" aria-labelledby="thumbTitle">
+      <div class="thumb-heading">
+        <h2 id="thumbTitle">Усі 13 макетів</h2>
+        <div class="counts">11 публічних цілей · 2 альтернативні погодні стани</div>
+      </div>
+      <div id="thumbGrid" class="thumb-grid"></div>
+    </section>
+
+    <noscript>
+      <p class="truth-banner">Для інтерактивної навігації потрібен JavaScript. PNG-файли можна відкрити безпосередньо з папки <strong>images/</strong>.</p>
+    </noscript>
+
+    <footer class="footer">Згенеровані ілюстрації не є runtime evidence. Порівняння виконується за правилами AGENT_VISUAL_CONTRACT_UA.md.</footer>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const scenes = [
+        {
+          id: "S01",
+          version: "0.26.1",
+          title: "Живий світ",
+          kind: "Публічна ціль",
+          image: "images/target-0261.png",
+          alt: "Цільовий макет S01 для оновлення 0.26.1 Живий світ",
+          visible: "Жива долина, авторитетна погода й температура, сніг, компактний HUD, мінімапа та світ без ручних доріг.",
+          preserve: "Без палива й утеплення, фортеці, армії, ворогів та нових руд. Міст і підтриманий demo loop залишаються.",
+          evidence: "Native 720p/1080p/1440p, літо/зима й день/ніч, немонтоване відео бурі, same-seed before/after, save/network/UI/weather тести."
+        },
+        {
+          id: "S02",
+          version: "0.26.2",
+          title: "Житло й поповнення",
+          kind: "Публічна ціль",
+          image: "images/target-0262.png",
+          alt: "Цільовий макет S02 для оновлення 0.26.2 Житло й поповнення",
+          visible: "House II, реальні зайняті й вільні місця, pending arrival та одна зрозуміла дія прийому мешканця.",
+          preserve: "Світ і HUD 0.26.1. Без сімей, народжень, меблів, опалення та вигаданої місткості.",
+          evidence: "Кадри 10/10, після House і House II, одночасні запити на останнє місце, settlement/save/network/UI тести."
+        },
+        {
+          id: "S03",
+          version: "0.26.3",
+          title: "Режими ферми",
+          kind: "Публічна ціль",
+          image: "images/target-0263.png",
+          alt: "Цільовий макет S03 для оновлення 0.26.3 Режими ферми",
+          visible: "Активний режим ферми, готова їжа або сировина, працівники, вихід і безпечне завершення доставки перед перемиканням.",
+          preserve: "Без нової професії кухаря, нового farming engine чи подвійного випуску. Художній напрям S01 не змінюється.",
+          evidence: "Native кадри обох режимів, відео перемикання під час роботи й перенесення, save/load, host/guest та economy/UI тести."
+        },
+        {
+          id: "S04",
+          version: "0.26.4",
+          title: "Стале базове харчування",
+          kind: "Публічна ціль",
+          image: "images/target-0264.png",
+          alt: "Цільовий макет S04 для оновлення 0.26.4 Стале базове харчування",
+          visible: "Чесний доступний запас готової їжі, зрозуміле споживання або оцінка часу без майбутніх надходжень, нормальний цикл дня й ночі.",
+          preserve: "Їжа у вантажі не стає доступною. Без рейдів, нових нічних подій і прихованих готових ресурсів.",
+          evidence: "Два повні cycle runs на контрольних картах, delivered/consumed/hunger metrics, ключове runtime-відео та balance tests."
+        },
+        {
+          id: "S05",
+          version: "0.26.5",
+          title: "Млин і кухня з доведеною користю",
+          kind: "Публічна ціль",
+          image: "images/target-0265.png",
+          alt: "Цільовий макет S05 для оновлення 0.26.5 Млин і кухня з доведеною користю",
+          visible: "Ланцюг зерно → борошно → кухня → їжа, дрова, працівники й доставлений результат читаються у світі та UI.",
+          preserve: "Без якості їжі, вітамінів, псування та нових продуктів. Кухня не стає обов'язковою в перші хвилини.",
+          evidence: "Кадр повного ланцюга, відео вантажів і recovery після нестачі дров, парний вимір користі, economy/save tests."
+        },
+        {
+          id: "S06",
+          version: "0.26.6",
+          title: "Логістика й розширення",
+          kind: "Публічна ціль",
+          image: "images/target-0266.png",
+          alt: "Цільовий макет S06 для оновлення 0.26.6 Логістика й розширення",
+          visible: "Загальний запас, власний стан вибраного складу, carried/ground/reserved, пункт доставки, міст і підтриманий перехід шахти.",
+          preserve: "Без ручного планування маршрутів, караванів, пріоритетів складів, нових металів і будованих доріг.",
+          evidence: "Два склади з різним вмістом, video delivery near/far, міст/шахта, save/load, path/logistics/storage UI tests."
+        },
+        {
+          id: "S07",
+          version: "0.26.7",
+          title: "Навчання і перша внутрішня альфа",
+          kind: "Публічна ціль",
+          image: "images/target-0267.png",
+          alt: "Цільовий макет S07 для оновлення 0.26.7 Навчання і перша внутрішня альфа",
+          visible: "Одна коротка контекстна підказка, м'який highlight потрібного об'єкта й повністю відкритий робочий світ.",
+          preserve: "Без модальних стін тексту, експедицій, Research-кроків і фальшивого прогресу за кліком.",
+          evidence: "Повний запис first session двох нових гравців, event completion, save/load tutorial state, localization/UI tests і список реальних блокерів."
+        },
+        {
+          id: "S08",
+          version: "0.26.8",
+          title: "Автозбереження й відновлення",
+          kind: "Публічна ціль",
+          image: "images/target-0268.png",
+          alt: "Цільовий макет S08 для оновлення 0.26.8 Автозбереження й відновлення",
+          visible: "Ненав'язливий час останнього успіху, окрема persistent-помилка та доступне відновлення останньої справної backup.",
+          preserve: "Manual Save/Load залишаються. Без cloud saves, великого slot manager і success до завершення writer.",
+          evidence: "Native success/error/recovery states, fault injection, backup load, measured save time, persistence та packaged save/load tests."
+        },
+        {
+          id: "S09",
+          version: "0.26.9",
+          title: "Стійкий кооператив",
+          kind: "Публічна ціль",
+          image: "images/target-0269.png",
+          alt: "Цільовий макет S09 для оновлення 0.26.9 Стійкий кооператив",
+          visible: "Зрозумілі connecting/waiting/reconnecting/resumed states, повернений control і однакові ресурси та погода двох гравців.",
+          preserve: "Без host migration, relay, matchmaking, Steam invites, competitive nations і bot armies.",
+          evidence: "Два фізичні Windows-ПК, 60 хвилин гри, disconnect під час delivery, reconnect, host restart і cross-network evidence."
+        },
+        {
+          id: "S10",
+          version: "0.26.10",
+          title: "Windows-кандидат",
+          kind: "Публічна ціль",
+          image: "images/target-02610.png",
+          alt: "Цільовий макет S10 для оновлення 0.26.10 Windows-кандидат",
+          visible: "Звичайна gameplay-сцена й compact diagnostics із version/build placeholder, renderer, log action та known limitations.",
+          preserve: "Механіки й art заморожені. Без dev console, абсолютних шляхів і нового контенту під час packaging.",
+          evidence: "Capture з розпакованого ZIP/launcher, build/commit/hash, український шлях, Save/Continue/Host/Join, full CTest і package checks."
+        },
+        {
+          id: "S11",
+          version: "0.27.0",
+          title: "Перше зовнішнє демо",
+          kind: "Публічна ціль",
+          image: "images/target-0270.png",
+          alt: "Цільовий макет S11 для оновлення 0.27.0 Перше зовнішнє демо",
+          visible: "Реалістичне поселення 16–20 людей із food/material chains, Level II, мостом, погодою й двома player markers.",
+          preserve: "Той самий accepted candidate без нової будівлі, ресурсу, ворога чи редизайну перед релізом.",
+          evidence: "Фінальний package hash, дві незалежні coop-пари, один solo tester, cross-network run і двогодинна сесія без нового blocker."
+        },
+        {
+          id: "W01",
+          version: "0.26.1",
+          title: "Дощ у живій долині",
+          kind: "Альтернативний погодний стан S01",
+          image: "images/target-0261-rain.png",
+          alt: "Альтернативний погодний цільовий макет W01 із дощем для оновлення 0.26.1",
+          weather: true,
+          visible: "Та сама долина й HUD S01 під фактичним дощем: мокрі поверхні, читабельні мешканці, Rain у прогнозі та узгоджена поточна температура.",
+          preserve: "Це альтернативний стан, а не наступна версія або обов'язкова хронологія сезону. Немає нових механік чи зміненого поселення.",
+          evidence: "Native weather transition video, snapshot temperature/precipitation match, host/guest equality, wetness readability та atmosphere/weather tests."
+        },
+        {
+          id: "W02",
+          version: "0.26.1",
+          title: "Снігова буря",
+          kind: "Альтернативний погодний стан S01",
+          image: "images/target-0261-storm.png",
+          alt: "Альтернативний погодний цільовий макет W02 зі сніговою бурею для оновлення 0.26.1",
+          weather: true,
+          visible: "Та сама долина S01 у справжньому Storm interval: сніг, вітер, зростання cover, точний countdown і пояснений Surface work-rate.",
+          preserve: "Без палива, утеплення, шкоди здоров'ю, льоду й фальшивої аварії. Це не наступний сезон і не нова публічна версія.",
+          evidence: "Немонтоване clear→storm→clear video, save/load посеред бурі, reconnect, authoritative forecast/countdown і cover/work-rate tests."
+        }
+      ];
+
+      const elements = {
+        heroImage: document.getElementById("heroImage"),
+        missingNote: document.getElementById("missingNote"),
+        sceneKind: document.getElementById("sceneKind"),
+        sceneTitle: document.getElementById("sceneTitle"),
+        fullLink: document.getElementById("fullLink"),
+        sceneCounter: document.getElementById("sceneCounter"),
+        sceneSelect: document.getElementById("sceneSelect"),
+        prevButton: document.getElementById("prevButton"),
+        nextButton: document.getElementById("nextButton"),
+        weatherNote: document.getElementById("weatherNote"),
+        visibleNote: document.getElementById("visibleNote"),
+        preserveNote: document.getElementById("preserveNote"),
+        evidenceNote: document.getElementById("evidenceNote"),
+        thumbGrid: document.getElementById("thumbGrid")
+      };
+
+      let current = 0;
+      const thumbButtons = [];
+
+      function pad(value) {
+        return String(value).padStart(2, "0");
+      }
+
+      function render(index, focusThumb = false) {
+        current = Math.max(0, Math.min(scenes.length - 1, index));
+        const scene = scenes[current];
+
+        elements.missingNote.hidden = true;
+        elements.heroImage.hidden = false;
+        elements.heroImage.src = scene.image;
+        elements.heroImage.alt = scene.alt;
+        elements.sceneKind.textContent = `${scene.kind} · ${scene.id}`;
+        elements.sceneTitle.textContent = `${scene.version} «${scene.title}»`;
+        elements.fullLink.href = scene.image;
+        elements.fullLink.setAttribute("aria-label", `Відкрити повний PNG ${scene.id}: ${scene.title}`);
+        elements.sceneCounter.textContent = `${pad(current + 1)} / ${pad(scenes.length)}`;
+        elements.sceneSelect.value = String(current);
+        elements.weatherNote.hidden = !scene.weather;
+        elements.visibleNote.textContent = scene.visible;
+        elements.preserveNote.textContent = scene.preserve;
+        elements.evidenceNote.textContent = scene.evidence;
+        elements.prevButton.disabled = current === 0;
+        elements.nextButton.disabled = current === scenes.length - 1;
+
+        thumbButtons.forEach((button, position) => {
+          button.setAttribute("aria-current", position === current ? "true" : "false");
+        });
+
+        if (focusThumb && thumbButtons[current]) {
+          thumbButtons[current].focus({ preventScroll: true });
+        }
+
+        document.title = `${scene.id} · ${scene.version} ${scene.title} — Ribterra`;
+      }
+
+      function makeOptions() {
+        scenes.forEach((scene, index) => {
+          const option = document.createElement("option");
+          option.value = String(index);
+          option.textContent = `${scene.id} · ${scene.version} — ${scene.title}`;
+          elements.sceneSelect.appendChild(option);
+        });
+      }
+
+      function makeThumbnails() {
+        scenes.forEach((scene, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "thumb";
+          button.setAttribute("aria-label", `Показати ${scene.id}: ${scene.version} ${scene.title}`);
+          button.setAttribute("aria-current", index === current ? "true" : "false");
+
+          const image = document.createElement("img");
+          image.src = scene.image;
+          image.alt = `Мініатюра цільового макета ${scene.id}: ${scene.title}`;
+          image.loading = index < 4 ? "eager" : "lazy";
+
+          const copy = document.createElement("span");
+          copy.className = "thumb-copy";
+
+          const id = document.createElement("span");
+          id.className = "thumb-id";
+          id.textContent = `${scene.id} · ${scene.version}`;
+
+          const title = document.createElement("span");
+          title.className = "thumb-title";
+          title.textContent = scene.title;
+
+          copy.append(id, title);
+          button.append(image, copy);
+          button.addEventListener("click", () => render(index));
+          elements.thumbGrid.appendChild(button);
+          thumbButtons.push(button);
+        });
+      }
+
+      elements.heroImage.addEventListener("error", () => {
+        elements.heroImage.hidden = true;
+        elements.missingNote.hidden = false;
+      });
+
+      elements.heroImage.addEventListener("load", () => {
+        elements.heroImage.hidden = false;
+        elements.missingNote.hidden = true;
+      });
+
+      elements.sceneSelect.addEventListener("change", (event) => {
+        render(Number(event.target.value));
+      });
+
+      elements.prevButton.addEventListener("click", () => render(current - 1));
+      elements.nextButton.addEventListener("click", () => render(current + 1));
+
+      document.addEventListener("keydown", (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        const tag = document.activeElement && document.activeElement.tagName;
+        if (tag === "SELECT") return;
+
+        if (event.key === "ArrowLeft" && current > 0) {
+          event.preventDefault();
+          render(current - 1);
+        } else if (event.key === "ArrowRight" && current < scenes.length - 1) {
+          event.preventDefault();
+          render(current + 1);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          render(0);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          render(scenes.length - 1);
+        }
+      });
+
+      makeOptions();
+      makeThumbnails();
+      render(0);
+    })();
+  </script>
+</body>
+</html>

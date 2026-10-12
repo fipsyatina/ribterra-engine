@@ -1,0 +1,82 @@
+[
+  {
+    "file": "assets/art/resident8-man-walk.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "14b087cb57d30efe7b60e58c46333a223c214b01e2360f0a322de5be917442ca",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-man-logs.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "4d937693ec4232ca348978dc500d09ebe340f521922b60a5e87b0647e81f2750",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-man-sack.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "b0346a4d91f2aa932dd5acefdc8355810f00c22f4a7029f1cc051037e9814060",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-man-cart.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "a01a8bd01281f24a011ce1d9b10340352c932aa883380195eb045789bc13f208",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-woman-walk.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "3464af03af0d00d99256e07dc12baa88b7dc4400a5dfb96c468f0f4921b38780",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-woman-logs.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "e001fabbc76e8176b84028b8cbdda5c2562df936ea35340748a8daaddadd11aa",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-woman-sack.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "e2be6cfd70c1764a95f44140a6677b1990273263d2d49a054d589192e1aa31db",
+    "alpha_mode": "source-alpha"
+  },
+  {
+    "file": "assets/art/resident8-woman-cart.png",
+    "size": [
+      1774,
+      887
+    ],
+    "sprites": 32,
+    "sha256": "af50ad24198919a3e2cd8c54fb2b580f9fdb248dfa37fac6d1e016bbf00ea314",
+    "alpha_mode": "magenta"
+  }
+]

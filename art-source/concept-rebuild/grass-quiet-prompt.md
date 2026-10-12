@@ -1,0 +1,7 @@
+# Fine meadow material
+
+Reference: approved target-0262.png. Built-in image generation, opaque original preserved unchanged as assets/art/concept-grass.png. Source: exec-b40aefa3-e102-480c-8850-2d0b5350ae43.png. Replaces the too-large leafy microtexture, not the approved reference.
+
+## Exact prompt
+
+Use case: stylized-concept. Asset type: Ribterra ground albedo material, square opaque seamless terrain texture, viewed straight vertically down. Reference image1 is the approved village concept: match ONLY the soft short meadow GRASS growing between its dirt paths, at the fine scale of the distant grass. Do not copy buildings or layout. Create a quiet warm natural meadow ground microtexture with very small thin grass blades over an even olive green sod base. 85 percent of image is low-contrast softly textured mossy/grass turf. Occasional fine short blade tufts, sparse tiny pale dry strands, subtle organic color variation. This is ground seen from20meters away, NOT a closeup of leaves. Absolutely NO broad leaves, NO large plants, NO flowers, NO clover, NO ornamental foliage, NO sharp dark patches, NO repeating diagonal pattern, NO checkerboard, NO paths, NO big dirt blotches, NO objects, NO horizon, NO isometric diamond. Muted medium warm grassy olive green with restrained sunlit yellow-green detail, not lime/neon, not dark forest green. Polished hand-painted3D strategy game softness, consistent scale, extremely gentle uniform diffuse lighting, no cast shadows. Fill all pixels opaque. Edges must tile seamlessly.

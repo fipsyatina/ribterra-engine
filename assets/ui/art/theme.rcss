@@ -1,0 +1,12 @@
+@spritesheet art0 { src: ui-kit.0.png; outer0: 0px 0px 285px 104px; inner0: 24px 24px 237px 56px; }
+@spritesheet art1 { src: ui-kit.1.png; outer1: 0px 0px 286px 104px; inner1: 24px 24px 238px 56px; }
+@spritesheet art2 { src: ui-kit.2.png; outer2: 0px 0px 289px 107px; inner2: 24px 24px 241px 59px; }
+@spritesheet art3 { src: ui-kit.3.png; outer3: 0px 0px 285px 103px; inner3: 24px 24px 237px 55px; }
+@spritesheet art4 { src: ui-kit.4.png; outer4: 0px 0px 287px 268px; inner4: 24px 24px 239px 220px; }
+@spritesheet art5 { src: ui-kit.5.png; outer5: 0px 0px 290px 269px; inner5: 24px 24px 242px 221px; }
+.card { background: transparent; border-color: transparent; decorator: ninepatch(outer4, inner4, 16dp) border-box; }
+button { background: transparent; border-color: transparent; decorator: ninepatch(outer0, inner0, 9dp) border-box; }
+button:hover { background: transparent; border-color: transparent; decorator: ninepatch(outer1, inner1, 9dp) border-box; }
+button:focus, button:active, button.active { background: transparent; border-color: transparent; decorator: ninepatch(outer2, inner2, 9dp) border-box; }
+button:disabled { background: transparent; border-color: transparent; decorator: ninepatch(outer3, inner3, 9dp) border-box; }
+.resource-icon { width: 26dp; height: 26dp; vertical-align: middle; margin-right: 5dp; }

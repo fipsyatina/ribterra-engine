@@ -1,0 +1,36 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "windows-release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/engine-windows",
+      "toolchainFile": "${sourceDir}/.deps/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "VCPKG_TARGET_TRIPLET": "x64-windows-release",
+        "VCPKG_MANIFEST_FEATURES": "renderer",
+        "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets",
+        "VCPKG_OVERLAY_PORTS": "${sourceDir}/vcpkg-overlays",
+        "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed",
+        "CMAKE_PREFIX_PATH": "${sourceDir}/.deps/SDL3-3.4.16;${sourceDir}/.deps/SDL3_ttf-3.2.2",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/dist/releases/0.23.0/Ribterra"
+      }
+    },
+    {
+      "name": "headless",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/headless",
+      "toolchainFile": "${sourceDir}/.deps/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "cacheVariables": {"CMAKE_BUILD_TYPE": "Release", "RIBTERRA_BUILD_CLIENT": "OFF", "VCPKG_OVERLAY_PORTS": "${sourceDir}/vcpkg-overlays"}
+    },
+    {
+      "name": "headless-ubsan",
+      "inherits": "headless",
+      "binaryDir": "${sourceDir}/build/headless-ubsan",
+      "cacheVariables": {"RIBTERRA_ENABLE_UBSAN": "ON"}
+    }
+  ],
+  "buildPresets": [{"name": "windows-release", "configurePreset": "windows-release"}, {"name": "headless", "configurePreset": "headless"}, {"name": "headless-ubsan", "configurePreset": "headless-ubsan"}],
+  "testPresets": [{"name": "windows-release", "configurePreset": "windows-release", "output": {"outputOnFailure": true}}, {"name": "headless", "configurePreset": "headless", "output": {"outputOnFailure": true}}, {"name": "headless-ubsan", "configurePreset": "headless-ubsan", "output": {"outputOnFailure": true}}]
+}

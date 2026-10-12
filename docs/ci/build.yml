@@ -1,0 +1,55 @@
+name: Build and verify
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+env:
+  VCPKG_BINARY_SOURCES: "clear;files,${{ github.workspace }}/.cache/vcpkg,readwrite"
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        id: dependencies
+        with:
+          path: .cache/vcpkg
+          key: windows-vcpkg-${{ hashFiles('vcpkg.json', 'triplets/**', 'vcpkg-overlays/**') }}
+          restore-keys: windows-vcpkg-
+      - name: Build, test and package Windows client
+        shell: powershell
+        run: ./scripts/build.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Ribterra-Windows-x64
+          path: dist/releases/**/Ribterra/
+          if-no-files-found: error
+      - uses: actions/cache/save@v4
+        if: always() && !cancelled() && steps.dependencies.outputs.cache-hit != 'true'
+        with:
+          path: .cache/vcpkg
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+  sim-portability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache/restore@v4
+        id: dependencies
+        with:
+          path: .cache/vcpkg
+          key: linux-vcpkg-${{ hashFiles('vcpkg.json', 'triplets/**', 'vcpkg-overlays/**') }}
+          restore-keys: linux-vcpkg-
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build autoconf automake libtool pkg-config
+      - run: bash scripts/bootstrap-engine.sh
+      - run: cmake --preset headless
+      - run: cmake --build --preset headless
+      - run: ctest --preset headless --stop-on-failure
+      - name: Verify simulation and persistence with UBSan
+        run: |
+          cmake --preset headless-ubsan
+          cmake --build --preset headless-ubsan --target SimCoreTests ChunkTests PathPlannerTests LogisticsTests LogisticsAdversarialTests WorkIntentTests SkillTests ProfessionTests ManualOrderTests ManualOrderPersistenceTests WorldValidationTests PersistenceTests NetworkSessionTests --parallel 2
+          ctest --preset headless-ubsan -R '^(sim_core|chunks|path_planner|logistics|logistics_adversarial|work_intents|skills|professions|manual_orders|manual_order_persistence|world_validation|persistence|network_session)$'
+      - uses: actions/cache/save@v4
+        if: always() && !cancelled() && steps.dependencies.outputs.cache-hit != 'true'
+        with:
+          path: .cache/vcpkg
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}

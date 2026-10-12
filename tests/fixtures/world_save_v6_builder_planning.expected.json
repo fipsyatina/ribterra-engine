@@ -1,0 +1,1937 @@
+{
+  "metadata": {
+    "world_id": [
+      247,
+      120,
+      205,
+      7,
+      209,
+      60,
+      70,
+      225,
+      152,
+      142,
+      96,
+      212,
+      25,
+      163,
+      95,
+      49
+    ],
+    "seed": 70421,
+    "ticks": 253,
+    "next_building_id": 3,
+    "has_moved": true,
+    "has_gathered": false,
+    "has_built": false
+  },
+  "resources": {
+    "wood": 50,
+    "stone": 25,
+    "food": 90
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 34.0,
+      "y": 27.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 2,
+      "name": "Taras",
+      "x": 34.0,
+      "y": 27.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 3,
+      "name": "Oles",
+      "x": 34.0,
+      "y": 27.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 4,
+      "name": "Iryna",
+      "x": 34.0,
+      "y": 27.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 5,
+      "name": "Bohdan",
+      "x": 34.0,
+      "y": 27.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 6,
+      "name": "Nadia",
+      "x": 34.0,
+      "y": 33.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 7,
+      "name": "Lev",
+      "x": 34.0,
+      "y": 34.0,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 13
+    },
+    {
+      "id": 8,
+      "name": "Sofiia",
+      "x": 34.0,
+      "y": 29.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 9,
+      "name": "Marko",
+      "x": 34.0,
+      "y": 30.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    },
+    {
+      "id": 10,
+      "name": "Vira",
+      "x": 34.0,
+      "y": 31.25,
+      "target_x": 34,
+      "target_y": 34,
+      "job": "Move",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Active",
+      "path_failure": "None",
+      "pending_path_batch": 0
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    },
+    {
+      "id": 2,
+      "kind": "House",
+      "x": 20,
+      "y": 20,
+      "progress": 0.01,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 2,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 3,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 4,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 5,
+      "cells": [
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 6,
+      "cells": [
+        {
+          "x": 27,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 7,
+      "cells": [
+        {
+          "x": 28,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 21,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 8,
+      "cells": [
+        {
+          "x": 22,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 9,
+      "cells": [
+        {
+          "x": 23,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    },
+    {
+      "cursor": 20,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 10,
+      "cells": [
+        {
+          "x": 24,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 25,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 26,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 27,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 28,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 29,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 30,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 31,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 32,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 33,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 22,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 23,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 25,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 26,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 27,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 28,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 29,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 30,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 31,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 32,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 33,
+          "layer": "Surface"
+        },
+        {
+          "x": 34,
+          "y": 34,
+          "layer": "Surface"
+        }
+      ],
+      "work": {
+        "x": 34,
+        "y": 34,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp.",
+    "House construction started.",
+    "Move order issued."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 14,
+  "topology_revision": 1,
+  "path_batches": [
+    {
+      "path_batch_id": 13,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        7
+      ],
+      "target": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Build",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 253,
+      "deadline_tick": 1453,
+      "search_topology_revision": 1,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 20,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 19,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 20,
+          "layer": "Surface"
+        },
+        {
+          "x": 20,
+          "y": 21,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 7,
+          "start": {
+            "x": 34,
+            "y": 34,
+            "layer": "Surface"
+          },
+          "start_x": 34.0,
+          "start_y": 34.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 34,
+            "y": 34,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    }
+  ],
+  "path_results": [],
+  "next_item_stack_id": 9,
+  "next_item_reservation_id": 6,
+  "next_logistics_task_id": 6,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 50,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 25,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 90,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [
+    {
+      "task_id": 1,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 2,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 2,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 3,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 3,
+      "destination_building_id": 2,
+      "source_stack_id": 1,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 4,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 4,
+      "destination_building_id": 2,
+      "source_stack_id": 2,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Stone",
+      "quantity": 10,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    },
+    {
+      "task_id": 5,
+      "kind": "DeliverConstruction",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 5,
+      "destination_building_id": 2,
+      "source_stack_id": 2,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Stone",
+      "quantity": 5,
+      "deadline_tick": 10000,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "construction_orders": [
+    {
+      "building_id": 2,
+      "kind": "House",
+      "site": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      },
+      "owner_nation": 1,
+      "required": {
+        "wood": 30,
+        "stone": 15,
+        "food": 0
+      },
+      "delivered": {
+        "wood": 30,
+        "stone": 15,
+        "food": 0
+      },
+      "phase": "Work",
+      "originating_path_batch_id": 1
+    }
+  ],
+  "next_work_intent_id": 2,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 2,
+  "work_intents": [
+    {
+      "intent_id": 1,
+      "kind": "BuildAssignment",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 7,
+      "building_id": 2,
+      "owner_nation": 1,
+      "target": {
+        "x": 20,
+        "y": 20,
+        "layer": "Surface"
+      },
+      "job": "Build",
+      "expected_terrain": "Grass",
+      "created_tick": 253,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1453,
+      "path_batch_id": 13,
+      "attempts": 1,
+      "last_attempt_topology_revision": 1
+    }
+  ]
+}

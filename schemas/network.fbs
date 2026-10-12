@@ -1,0 +1,166 @@
+namespace ribterra.wire;
+
+table Versions { protocol:uint; rules:uint; content:string (required); }
+table Hello { name:string (required); versions:Versions (required); resume_token:string; password_proof:string; }
+table Challenge { nonce:string (required); password_required:bool; versions:Versions (required); }
+table Welcome { player:uint; resume_token:string (required); world_id:[ubyte] (required); next_request:ulong = 1; }
+table Rejected { reason:string (required); }
+enum CommandType:ubyte { Move, Gather, Build, CancelConstruction, AssignProfession, Stop, CancelManualOrder, ReleaseControl, TransferControl, Recruit, NightShift, YouthWork, Production, Upgrade, CancelProduction, Wilderness, Lobby }
+enum ManualOrderKind:ubyte { Move, Gather, Legacy }
+enum ManualQueueMode:ubyte { Replace, Append }
+enum GatherCompletion:ubyte { UntilExhausted, OneDelivery }
+enum ManualOrderPhase:ubyte { Queued, WaitingBoundary, PathPending, Active, Complete, Failed, Cancelled }
+enum ManualOrderCompletion:ubyte { None, Arrived, Delivered, Exhausted, Replaced, Stopped, Released, LegacyFinished, Cancelled }
+enum ControlFailure:ubyte { None, HeldByAnother, NotController, TargetUnavailable, StaleEpoch }
+struct ResidentControlRejection { resident_id:int; failure:ControlFailure; }
+enum OrderPhase:ubyte { Idle, PathPending, Active, PathFailed }
+enum PathFailure:ubyte { None, Unreachable, Timeout, TopologyChanged, LimitExceeded, ResidentUnavailable, TargetInvalid, ReservationConflict }
+enum Profession:ubyte { Unassigned, Woodcutter, Miner, Forager, Builder, Hauler, Farmer, Smith, Medic, Guard }
+enum ProfessionWaitReason:ubyte { None, Unassigned, Stopped, ManualOrder, DeliveryBoundary, NoCompatibleWork, WorksiteUnavailable, QueuePressure, PathFailed, Incapacitated, PendingOrder, Strolling, Socializing, SelfGathering }
+table ProfessionAssignment { profession:Profession; worksite:LayerCell; priorities:[ubyte] (required); automation_enabled:bool = true; }
+enum ResidentCommandStatus:ubyte { Applied, Deferred, Rejected }
+struct ResidentCommandOutcome { resident_id:int; status:ResidentCommandStatus; failure:PathFailure; }
+table Command { request_id:ulong; author:uint; issued_tick:ulong; kind:CommandType; residents:[int]; x:int; y:int; building:ubyte; layer:ubyte; building_id:int; assignment:ProfessionAssignment; manual_queue_mode:ManualQueueMode; gather_completion:GatherCompletion; manual_order_id:ulong; target_player:uint; control_epoch:ulong; settlement_revision:ulong; }
+enum CommandReplyStatus:ubyte { Invalid, Queued, Applied, Rejected }
+table Reply { request_id:ulong; applied_tick:ulong; author:uint; accepted:bool; reason:string (required); status:CommandReplyStatus; failure:PathFailure; residents:[ResidentCommandOutcome]; resident_order_ids:[ulong]; control_rejections:[ResidentControlRejection]; }
+// Local indices fit in 10 bits. Keep the expanded tile at 12 wire bytes.
+struct Tile { index:ushort; elevation_delta:short; amount:int; terrain:ubyte; explored:bool; biome:ubyte; trail_wear:ubyte; }
+table Resident { id:int; name:string (required); x:float; y:float; target_x:int; target_y:int; job:ubyte; progress:float; health:int; hunger:float; wood_xp:int; mining_xp:int; farming_xp:int; layer:ubyte; nation:uint = 1; order_phase:OrderPhase; path_failure:PathFailure; pending_path_batch:ulong; }
+struct Building { id:int; x:int; y:int; progress:float; kind:ubyte; }
+struct ChunkKey { cx:int; cy:int; layer:ubyte; }
+table ChunkPatch { key:ChunkKey (required); revision:ulong; tiles:[Tile] (required); }
+table LayeredBuilding { id:int; x:int; y:int; progress:float; kind:ubyte; layer:ubyte; nation:uint = 1; }
+struct LayerCell { x:int; y:int; layer:ubyte; }
+table Portal { surface:LayerCell (required); mine:LayerCell (required); }
+struct Resources { wood:int; stone:int; food:int; }
+enum ItemKind:ubyte { Wood, Stone, Food, Planks, Clay, Bricks, Grain, Vegetables, Fish, Meat, Flour, Tools, Firewood, Hide, Spear }
+enum LogisticsPhase:ubyte { Queued, ToPickup, ToDropoff, Complete, Failed }
+enum LogisticsFailure:ubyte { None, Unreachable, Timeout, ResidentUnavailable, StorageFull, Cancelled, LimitExceeded, TargetInvalid }
+enum ConstructionPhase:ubyte { Planned, Delivery, Work, Complete, Cancelled }
+enum WorkIntentKind:ubyte { GatherContinuation, BuildAssignment }
+enum WorkIntentPhase:ubyte { Waiting, PathPending, Complete, Failed }
+enum WorkCompletionReason:ubyte { None, Started, Exhausted, Superseded, Cancelled }
+enum ConstructionWorkerPhase:ubyte { None, Waiting, Travelling, Working, Planning }
+table InventorySummary {
+  total:Resources (required); available:Resources (required); reserved:Resources (required);
+  stored:Resources (required); carried:Resources (required);
+}
+table StorageView { building_id:int; used:uint; capacity:uint; }
+table ResidentLogistics {
+  resident_id:int; item:ItemKind; quantity:uint; capacity:uint;
+  phase:LogisticsPhase; failure:LogisticsFailure;
+}
+table ResidentWork {
+  resident_id:int; kind:WorkIntentKind; phase:WorkIntentPhase; failure:PathFailure;
+  completion:WorkCompletionReason; attempts:ushort;
+}
+enum Skill:ubyte { Woodcutting, Mining, Farming, Construction, Hauling, Smithing, Medicine, Combat }
+struct ModifierBreakdown { skill_sum_bp:int; ability_sum_bp:int; familiarity_bp:int; uncapped_bp:int; applied_bp:int; speed_bp:int; capped:bool; }
+table ResidentSkill { skill:Skill; experience:int; modifier:ModifierBreakdown (required); }
+table ResidentProfession {
+  resident_id:int; assignment:ProfessionAssignment (required);
+  manual_override:bool; deferred:bool; wait_reason:ProfessionWaitReason;
+  skills:[ResidentSkill] (required);
+}
+table ConstructionSite {
+  building_id:int; kind:ubyte; site:LayerCell (required);
+  required:Resources (required); delivered:Resources (required); work:float;
+  phase:ConstructionPhase; failure:LogisticsFailure;
+  worker_phase:ConstructionWorkerPhase; worker_failure:PathFailure; assigned_workers:uint;
+}
+table ManualOrder {
+  order_id:ulong; resident_id:int; kind:ManualOrderKind; target:LayerCell;
+  gather_completion:GatherCompletion; phase:ManualOrderPhase; failure:PathFailure;
+  completion:ManualOrderCompletion;
+}
+table ResidentControl {
+  resident_id:int; holder_id:uint; holder_name:string (required);
+  held_by_recipient:bool; disconnected_grace:bool; revision:ulong;
+}
+table ControlPlayer { player_id:uint; name:string (required); }
+struct YoungResident { resident_id:int; adult_tick:ulong; forced_work:bool; }
+table Settlement { revision:ulong; arrival_tick:ulong; forced_night:ulong; night_discontent:int; youth_discontent:int; young:[YoungResident]; reduced_rations:bool; }
+enum WeatherKind:ubyte { Clear, Cloudy, Precipitation, Storm }
+enum PrecipitationKind:ubyte { None, Rain, Snow }
+enum PrecipitationSummary:ubyte { None, Rain, Snow, Mixed }
+enum WindDirection:ubyte { N, NE, E, SE, S, SW, W, NW }
+enum WeatherWorkReason:ubyte { None, Cold, Rain, Snow, Storm }
+enum ClimateProfileId:ushort { TemperateValley = 1 }
+enum ClimateScenarioId:ushort { Standard, FirstWinterStorm }
+table WeatherSample {
+  kind:WeatherKind; precipitation:PrecipitationKind; wind_direction:WindDirection;
+  work_reason:WeatherWorkReason; temperature_deci_c:short;
+  precipitation_permille:ushort; wind_permille:ushort; outdoor_work_rate_bp:ushort;
+  period_start_calendar_tick:ulong; period_end_calendar_tick:ulong;
+}
+struct WeatherInterval { start_tick_in_day:uint; end_tick_in_day:uint; kind:WeatherKind; }
+table WeatherDayForecast {
+  calendar_day:uint; minimum_temperature_deci_c:short; maximum_temperature_deci_c:short;
+  dominant_kind:WeatherKind; precipitation_summary:PrecipitationSummary; has_storm:bool;
+  intervals:[WeatherInterval] (required);
+}
+table WeatherView {
+  known:bool; algorithm_version:ushort; climate_profile:ClimateProfileId = TemperateValley; scenario:ClimateScenarioId;
+  calendar_offset_ticks:ulong; evaluated_simulation_tick:ulong; calendar_tick:ulong;
+  current:WeatherSample (required); snow_cover_permille:ushort;
+  wetness_permille:ushort; wetness_remainder:long;
+  next_storm_start_calendar_tick:ulong; next_storm_end_calendar_tick:ulong;
+  forecast:[WeatherDayForecast] (required);
+}
+table Snapshot {
+  world_id:[ubyte] (required);
+  revision:ulong;
+  baseline:ulong;
+  tick:ulong;
+  full:bool;
+  tiles:[Tile] (required);
+  residents:[Resident] (required);
+  buildings:[Building] (required);
+  removed_residents:[int];
+  removed_buildings:[int];
+  resources:Resources (required);
+  housing:int;
+  day:uint;
+  winter:bool;
+  tutorial_step:int;
+  chunks:[ChunkPatch];
+  removed_chunks:[ChunkKey];
+  layered_buildings:[LayeredBuilding];
+  part_index:uint;
+  part_count:uint = 1;
+  portals:[Portal];
+  inventory:InventorySummary (required);
+  resident_logistics:[ResidentLogistics];
+  construction_sites:[ConstructionSite];
+  removed_resident_logistics:[int];
+  removed_construction_sites:[int];
+  resident_work:[ResidentWork];
+  removed_resident_work:[int];
+  resident_professions:[ResidentProfession];
+  removed_resident_professions:[int];
+  manual_orders:[ManualOrder];
+  removed_manual_orders:[ulong];
+  resident_controls:[ResidentControl];
+  removed_resident_controls:[int];
+  control_players:[ControlPlayer];
+  control_epoch:ulong;
+  settlement:Settlement;
+  economy:string;
+  lobby:string;
+  // Zero is never a valid terrain profile. Keeping it as the wire default
+  // makes an omitted field fail closed instead of silently becoming Gen7/8.
+  terrain_generator:uint = 0;
+  storages:[StorageView];
+  removed_storages:[int];
+  weather:WeatherView (required);
+}
+table SnapshotAck { revision:ulong; resync:bool; }
+table ChatSend { text:string (required); }
+table Chat { sequence:ulong; author:uint; name:string (required); text:string (required); }
+table Ping { value:ulong; }
+struct ReplyReceipt { request_id:ulong; status:CommandReplyStatus; }
+table ReplyAck { request_id:ulong; requests:[ulong]; receipts:[ReplyReceipt]; }
+union Payload { Hello, Challenge, Welcome, Rejected, Command, Reply, Snapshot, SnapshotAck, ChatSend, Chat, Ping, ReplyAck }
+table Packet { protocol:uint; sequence:ulong; payload:Payload (required); }
+root_type Packet;
+file_identifier "RBTN";

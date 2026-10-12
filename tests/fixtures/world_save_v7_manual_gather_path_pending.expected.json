@@ -1,0 +1,461 @@
+{
+  "metadata": {
+    "world_id": [
+      166,
+      189,
+      116,
+      84,
+      108,
+      91,
+      68,
+      8,
+      189,
+      17,
+      225,
+      139,
+      241,
+      246,
+      125,
+      178
+    ],
+    "seed": 70421,
+    "ticks": 119,
+    "next_building_id": 2,
+    "has_moved": false,
+    "has_gathered": true,
+    "has_built": false
+  },
+  "resources": {
+    "wood": 83,
+    "stone": 40,
+    "food": 100
+  },
+  "residents": [
+    {
+      "id": 1,
+      "name": "Marta",
+      "x": 24.0,
+      "y": 23.0,
+      "target_x": 24,
+      "target_y": 24,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 1,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "PathPending",
+      "path_failure": "None",
+      "pending_path_batch": 3,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 60
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": true,
+        "deferred": false,
+        "wait_reason": "ManualOrder",
+        "next_evaluation_tick": 118
+      }
+    },
+    {
+      "id": 2,
+      "name": "Taras",
+      "x": 22.0,
+      "y": 21.0,
+      "target_x": 22,
+      "target_y": 21,
+      "job": "Idle",
+      "progress": 0.0,
+      "health": 100,
+      "hunger": 0.0,
+      "wood_xp": 0,
+      "mining_xp": 0,
+      "farming_xp": 0,
+      "layer": "Surface",
+      "nation": 1,
+      "order_phase": "Idle",
+      "path_failure": "None",
+      "pending_path_batch": 0,
+      "additional_xp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "skill_practice": [
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        },
+        {
+          "experience_remainder": 0,
+          "familiarity_debt": 0,
+          "last_practice_tick": 0
+        }
+      ],
+      "abilities_bp": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "profession": {
+        "profession": "Unassigned",
+        "priorities": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "automation_enabled": true,
+        "manual_override": false,
+        "deferred": false,
+        "wait_reason": "Unassigned",
+        "next_evaluation_tick": 121
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": 1,
+      "kind": "Camp",
+      "x": 24,
+      "y": 24,
+      "progress": 1.0,
+      "layer": "Surface",
+      "nation": 1
+    }
+  ],
+  "routes": [
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 1,
+      "cells": []
+    },
+    {
+      "cursor": 0,
+      "work_x": -1,
+      "work_y": -1,
+      "resident_id": 2,
+      "cells": []
+    }
+  ],
+  "events": [
+    "The expedition founded Ribterra camp.",
+    "Gather order issued."
+  ],
+  "portals": [
+    {
+      "first": {
+        "x": 28,
+        "y": 24,
+        "layer": "Surface"
+      },
+      "second": {
+        "x": 28,
+        "y": 24,
+        "layer": "Mine"
+      }
+    }
+  ],
+  "next_path_batch_id": 4,
+  "topology_revision": 0,
+  "path_batches": [
+    {
+      "path_batch_id": 3,
+      "command": "Work",
+      "phase": "Queued",
+      "resident_ids": [
+        1
+      ],
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "to_adjacent": true,
+      "assigned_job": "Woodcut",
+      "build_kind": null,
+      "building_id": 0,
+      "reserved_cost": {
+        "wood": 0,
+        "stone": 0,
+        "food": 0
+      },
+      "enqueued_tick": 119,
+      "deadline_tick": 1319,
+      "search_topology_revision": 0,
+      "restart_count": 0,
+      "work_units_done": 0,
+      "roots": [
+        {
+          "x": 22,
+          "y": 18,
+          "layer": "Surface"
+        },
+        {
+          "x": 21,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "layer": "Surface"
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "layer": "Surface"
+        }
+      ],
+      "search_storage_reserved": false,
+      "frontier": [],
+      "frontier_cursor": 0,
+      "nodes": [],
+      "drafts": [
+        {
+          "resident_id": 1,
+          "start": {
+            "x": 24,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "start_x": 24.0,
+          "start_y": 23.0,
+          "storage_reserved": false,
+          "reconstruction_cursor": {
+            "x": 24,
+            "y": 23,
+            "layer": "Surface"
+          },
+          "staged": []
+        }
+      ],
+      "reconstruction_resident": 0,
+      "stage_cursor": 0
+    }
+  ],
+  "path_results": [
+    {
+      "path_batch_id": 1,
+      "command": "Gather",
+      "accepted": true,
+      "failure": "None",
+      "message": "Path applied."
+    }
+  ],
+  "next_item_stack_id": 5,
+  "next_item_reservation_id": 1,
+  "next_logistics_task_id": 2,
+  "item_stacks": [
+    {
+      "stack_id": 1,
+      "item": "Wood",
+      "quantity": 83,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 2,
+      "item": "Stone",
+      "quantity": 40,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    },
+    {
+      "stack_id": 3,
+      "item": "Food",
+      "quantity": 100,
+      "owner_nation": 1,
+      "location_kind": "Storage",
+      "cell": {
+        "x": 0,
+        "y": 0,
+        "layer": "Surface"
+      },
+      "entity_id": 1
+    }
+  ],
+  "storages": [
+    {
+      "building_id": 1,
+      "capacity": 10000,
+      "accepted_items": 7,
+      "priority": 0
+    }
+  ],
+  "item_reservations": [],
+  "logistics_tasks": [
+    {
+      "task_id": 1,
+      "kind": "HaulToStorage",
+      "phase": "Complete",
+      "failure": "None",
+      "resident_id": 1,
+      "destination_building_id": 1,
+      "source_stack_id": 0,
+      "reservation_id": 0,
+      "carry_stack_id": 0,
+      "path_batch_id": 0,
+      "item": "Wood",
+      "quantity": 3,
+      "deadline_tick": 10060,
+      "resume_job": "Idle",
+      "resume_target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      }
+    }
+  ],
+  "construction_orders": [],
+  "next_work_intent_id": 2,
+  "work_intent_cursor_id": 1,
+  "work_building_cursor_id": 1,
+  "work_intents": [
+    {
+      "intent_id": 1,
+      "kind": "GatherContinuation",
+      "phase": "PathPending",
+      "completion": "None",
+      "failure": "None",
+      "resident_id": 1,
+      "building_id": 0,
+      "owner_nation": 1,
+      "target": {
+        "x": 22,
+        "y": 19,
+        "layer": "Surface"
+      },
+      "job": "Woodcut",
+      "expected_terrain": "Forest",
+      "created_tick": 118,
+      "next_attempt_tick": 0,
+      "admission_deadline_tick": 1318,
+      "path_batch_id": 3,
+      "attempts": 1,
+      "last_attempt_topology_revision": 0
+    }
+  ],
+  "profession_cursor_id": 1
+}

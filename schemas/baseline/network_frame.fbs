@@ -1,0 +1,5 @@
+namespace ribterra.wire;
+enum Compression:ubyte { None, Zstd }
+table Frame { protocol:uint; compression:Compression; expanded_size:uint; data:[ubyte] (required); content_sha256:string (required); }
+root_type Frame;
+file_identifier "RBNF";

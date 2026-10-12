@@ -1,0 +1,233 @@
+namespace ribterra.save;
+
+enum Terrain : byte { Grass, Water, Forest, Rock, MineFloor, MineOre }
+enum BuildingKind : byte { Camp, House, Farm, Stockpile }
+enum Job : byte { Idle, Move, Woodcut, Mine, Forage, Build, Haul }
+enum Layer : byte { Surface, Mine }
+enum OrderPhase : byte { Idle, PathPending, Active, PathFailed }
+enum PathFailure : byte { None, Unreachable, Timeout, TopologyChanged, LimitExceeded, ResidentUnavailable, TargetInvalid, ReservationConflict }
+enum PathCommandKind : byte { Move, Gather, Build, Replan, Logistics }
+enum PathPlannerPhase : byte { Queued, Search, Reconstruct, Stage }
+enum ItemKind : ubyte { Wood, Stone, Food }
+enum ItemLocationKind : ubyte { Ground, Storage, Carried, Construction }
+enum LogisticsTaskKind : ubyte { HaulToStorage, DeliverConstruction }
+enum LogisticsPhase : ubyte { Queued, ToPickup, ToDropoff, Complete, Failed }
+enum LogisticsFailure : ubyte { None, Unreachable, Timeout, ResidentUnavailable, StorageFull, Cancelled, LimitExceeded, TargetInvalid }
+enum ConstructionPhase : ubyte { Planned, Delivery, Work, Complete, Cancelled }
+
+struct Point {
+  x:short;
+  y:short;
+}
+
+struct Cell {
+  x:short;
+  y:short;
+  layer:Layer;
+}
+
+table Metadata {
+  world_id:[ubyte] (required);
+  seed:uint;
+  ticks:ulong;
+  next_building_id:int;
+  has_moved:bool;
+  has_gathered:bool;
+  has_built:bool;
+}
+
+table Resources {
+  wood:int;
+  stone:int;
+  food:int;
+}
+
+table Tile {
+  terrain:Terrain;
+  amount:int;
+  explored:bool;
+}
+
+table Resident {
+  id:int;
+  name:string (required);
+  x:float;
+  y:float;
+  target_x:int;
+  target_y:int;
+  job:Job;
+  progress:float;
+  health:int;
+  hunger:float;
+  wood_xp:int;
+  mining_xp:int;
+  farming_xp:int;
+  layer:Layer = Surface;
+  nation:uint = 1;
+  order_phase:OrderPhase = Idle;
+  path_failure:PathFailure = None;
+  pending_path_batch:ulong;
+}
+
+table Building {
+  id:int;
+  kind:BuildingKind;
+  x:int;
+  y:int;
+  progress:float;
+  layer:Layer = Surface;
+  nation:uint = 1;
+}
+
+table Route {
+  points:[Point];
+  cursor:uint;
+  work_x:int = -1;
+  work_y:int = -1;
+  resident_id:int;
+  cells:[Cell];
+  work:Cell;
+}
+
+table Chunk {
+  layer:Layer;
+  cx:short;
+  cy:short;
+  revision:ulong;
+  tiles:[Tile] (required);
+}
+
+table Portal {
+  first:Cell;
+  second:Cell;
+}
+
+table PathSearchNode {
+  cell:Cell;
+  next:Cell;
+}
+
+table PathRouteDraft {
+  resident_id:int;
+  start:Cell;
+  start_x:float;
+  start_y:float;
+  storage_reserved:bool;
+  reconstruction_cursor:Cell;
+  staged:[Cell];
+}
+
+table PathBatch {
+  path_batch_id:ulong;
+  command:PathCommandKind;
+  phase:PathPlannerPhase;
+  resident_ids:[int];
+  target:Cell;
+  to_adjacent:bool;
+  assigned_job:Job;
+  build_kind:BuildingKind = null;
+  building_id:int;
+  reserved_cost:Resources;
+  enqueued_tick:ulong;
+  deadline_tick:ulong;
+  search_topology_revision:ulong;
+  restart_count:ubyte;
+  work_units_done:ulong;
+  roots:[Cell];
+  search_storage_reserved:bool;
+  frontier:[Cell];
+  frontier_cursor:ulong;
+  nodes:[PathSearchNode];
+  drafts:[PathRouteDraft];
+  reconstruction_resident:ulong;
+  stage_cursor:ulong;
+}
+
+table PathBatchOutcome {
+  path_batch_id:ulong;
+  command:PathCommandKind;
+  accepted:bool;
+  failure:PathFailure;
+  message:string;
+}
+
+table ItemStack {
+  stack_id:ulong;
+  item:ItemKind;
+  quantity:uint;
+  owner_nation:uint = 1;
+  location_kind:ItemLocationKind;
+  cell:Cell;
+  entity_id:int;
+}
+
+table Storage {
+  building_id:int;
+  capacity:uint;
+  accepted_items:ubyte;
+  priority:int;
+}
+
+table ItemReservation {
+  reservation_id:ulong;
+  stack_id:ulong;
+  task_id:ulong;
+  quantity:uint;
+  owner_nation:uint = 1;
+}
+
+table LogisticsTask {
+  task_id:ulong;
+  kind:LogisticsTaskKind;
+  phase:LogisticsPhase;
+  failure:LogisticsFailure;
+  resident_id:int;
+  destination_building_id:int;
+  source_stack_id:ulong;
+  reservation_id:ulong;
+  carry_stack_id:ulong;
+  path_batch_id:ulong;
+  item:ItemKind;
+  quantity:uint;
+  deadline_tick:ulong;
+  resume_job:Job;
+  resume_target:Cell;
+}
+
+table ConstructionOrder {
+  building_id:int;
+  kind:BuildingKind;
+  site:Cell;
+  owner_nation:uint = 1;
+  required:Resources (required);
+  delivered:Resources (required);
+  phase:ConstructionPhase;
+  originating_path_batch_id:ulong;
+}
+
+table WorldSave {
+  metadata:Metadata (required);
+  resources:Resources (required);
+  tiles:[Tile] (required);
+  residents:[Resident] (required);
+  buildings:[Building] (required);
+  routes:[Route] (required);
+  events:[string] (required);
+  chunks:[Chunk];
+  portals:[Portal];
+  next_path_batch_id:ulong = 1;
+  topology_revision:ulong;
+  path_batches:[PathBatch];
+  path_results:[PathBatchOutcome];
+  next_item_stack_id:ulong = 1;
+  next_item_reservation_id:ulong = 1;
+  next_logistics_task_id:ulong = 1;
+  item_stacks:[ItemStack];
+  storages:[Storage];
+  item_reservations:[ItemReservation];
+  logistics_tasks:[LogisticsTask];
+  construction_orders:[ConstructionOrder];
+}
+
+root_type WorldSave;
+file_identifier "RBTW";

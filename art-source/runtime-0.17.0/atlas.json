@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "page_size": 2048,
+  "padding": 3,
+  "max_pages": 1,
+  "images": [
+    {
+      "id": "building.bridge.stage1",
+      "path": "sprites/building.bridge.stage1.png",
+      "pivot": [
+        0.5,
+        0.43
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "building.bridge.stage2",
+      "path": "sprites/building.bridge.stage2.png",
+      "pivot": [
+        0.5,
+        0.43
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "building.bridge.stage3",
+      "path": "sprites/building.bridge.stage3.png",
+      "pivot": [
+        0.5,
+        0.43
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "building.bridge.ready",
+      "path": "sprites/building.bridge.ready.png",
+      "pivot": [
+        0.5,
+        0.43
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    },
+    {
+      "id": "building.bridge.winter",
+      "path": "sprites/building.bridge.winter.png",
+      "pivot": [
+        0.5,
+        0.43
+      ],
+      "license": "LicenseRef-Proprietary",
+      "source": "project",
+      "author": "Ribterra project",
+      "notice": "NOTICE.txt"
+    }
+  ]
+}

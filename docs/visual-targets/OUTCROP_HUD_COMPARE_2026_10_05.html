@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="uk">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ribterra — кам’яні виступи та HUD, 05.10.2026</title>
+<style>
+body{margin:0;padding:24px;background:#0c1826;color:#eee2c5;font:18px/1.5 Georgia,serif}main{max-width:1800px;margin:auto}h1{font-size:28px}p{max-width:1100px}figure{margin:20px 0}img{display:block;width:100%;height:auto}figcaption{padding:8px 0}a{color:#99d2ed}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}.viewer{position:relative;aspect-ratio:16/9;border:1px solid #bd975d}.viewer img{position:absolute;inset:0}.viewer .after{clip-path:inset(0 50% 0 0)}label{display:block;margin:12px 0}input{width:min(600px,100%)}@media(max-width:900px){.pair{grid-template-columns:1fr}}
+</style>
+<main>
+<h1>Кам’яні виступи на схилах і читабельніший HUD</h1>
+<p>Проміжна перевірка, не завершення V01–V03. Кадри отримані з прихованого native D3D12 вікна; відкритою грою користувача не керували. Звичайний старт — один табір і 10 мешканців. Постановочне поселення позначено окремо.</p>
+<p><a href="OUTCROP_HUD_CHECK_2026_10_05_UA.md">Результати перевірок і межі висновків</a> · <a href="RELIEF_FACE_COMPARE_2026_10_05.html">Попередній матеріальний прохід</a></p>
+<h2>Seed 1337: до / після</h2>
+<div class="pair">
+<figure><img src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-1337-uk-100-1920x1080.png" alt="До: однорідна кам’яна поверхня схилу"><figcaption>До: кам’яний матеріал уже повторює справжню висоту.</figcaption></figure>
+<figure><img src="../../artifacts/outcrop-hud-2026-10-05/ordinary-outcrops/ordinary-seed-1337-uk-100-1920x1080.png" alt="Після: рідкі кам’яні групи на схилі та виразніші рамки HUD"><figcaption>Після: окремі виступи й менше трави на оголеному камені. Більші цифри, іконки та декоративні краї.</figcaption></figure>
+</div>
+<label for="wipe">Межа порівняння: після ліворуч / до праворуч</label>
+<input id="wipe" type="range" min="0" max="100" value="50">
+<label><input id="overlay" type="checkbox" style="width:auto"> Напівпрозоре накладання 50/50</label>
+<div class="viewer">
+<img src="../../artifacts/relief-face-2026-10-05/ordinary-rock-face/ordinary-seed-1337-uk-100-1920x1080.png" alt="Попередній native кадр seed 1337">
+<img class="after" src="../../artifacts/outcrop-hud-2026-10-05/ordinary-outcrops/ordinary-seed-1337-uk-100-1920x1080.png" alt="Новий native кадр seed 1337 поверх попереднього">
+</div>
+<p>Камера та seed збігаються. Це візуальне порівняння, не доказ побітово тотожного стану: звіт звичайних стартів не містить повного per-capture checksum/погодного паспорта. Контент змінився через RCSS.</p>
+<h2>Інший seed та зимові пари</h2>
+<div class="pair">
+<figure><img src="../../artifacts/outcrop-hud-2026-10-05/ordinary-outcrops/ordinary-seed-70421-uk-100-1920x1080.png" alt="Звичайний старт seed 70421"><figcaption>Seed 70421, звичайна нова гра. Каміння прив’язане до фактичного схилу, а не однаково розкладене по кожному seed.</figcaption></figure>
+<figure><img src="../../artifacts/outcrop-hud-2026-10-05/matrix-outcrops/uk-85-1280x720-staged-winter-selected-stockpile.png" alt="Зимове постановочне поселення в 720p"><figcaption>Зима, постановочне поселення, UI 85%: сніг і зимові парні силуети збережені.</figcaption></figure>
+</div>
+<h2>Ціль та актуальне постановочне поселення</h2>
+<div class="pair">
+<figure><img src="images/target-0262.png" alt="Цільовий концепт 0.26.2"><figcaption>Концепт: щільна цілісна композиція, скельні маси, зв’язки між спорудами.</figcaption></figure>
+<figure><img src="../../artifacts/outcrop-hud-2026-10-05/matrix-outcrops/en-100-1920x1080-staged-selected-stockpile.png" alt="Актуальний native рендер літнього постановочного поселення"><figcaption>Поточна гра: рамки ближчі до цілі, але композиція світу, межа розвідки й природне вростання скель ще не відповідають концепту. Прогноз і температура не підмінені вигаданими даними.</figcaption></figure>
+</div>
+<h2>720p, збільшений UI 130%</h2>
+<figure><img src="../../artifacts/outcrop-hud-2026-10-05/matrix-outcrops/uk-130-1280x720-staged-selected-stockpile.png" alt="Український інтерфейс 130% у 1280 на 720"><figcaption>Компактні назви ресурсів, картка складу над панеллю дій; мінікарта не перекриває кнопки.</figcaption></figure>
+</main>
+<script>
+const wipe=document.getElementById('wipe'),overlay=document.getElementById('overlay'),after=document.querySelector('.viewer .after');
+function refresh(){after.style.clipPath=overlay.checked?'none':`inset(0 ${100-Number(wipe.value)}% 0 0)`;after.style.opacity=overlay.checked?'.5':'1';wipe.disabled=overlay.checked;}
+wipe.addEventListener('input',refresh);overlay.addEventListener('change',refresh);
+</script>
+</html>

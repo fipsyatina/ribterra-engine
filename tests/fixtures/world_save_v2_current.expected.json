@@ -1,0 +1,41 @@
+{
+  "fixture": "world_save_v2_current.ribsave",
+  "source": {
+    "release": "0.4",
+    "executable": "RibterraServer.exe",
+    "arguments": [
+      "--bind", "127.0.0.1",
+      "--port", "27137",
+      "--world", "tests/fixtures/world_save_v2_current.ribsave",
+      "--seed", "424242",
+      "--population", "6",
+      "--ticks", "37"
+    ]
+  },
+  "container": {
+    "bytes": 14071,
+    "file_sha256": "a84c8db20201f00590cb3e5b312ac5b0a05371b78f8036313a2e7f5c166d360c",
+    "magic": "RIBSV2\\r\\n",
+    "header_version": 2,
+    "flags": 1,
+    "format_version": 2,
+    "rules_version": 1,
+    "generator_version": 1,
+    "decompressed_bytes": 27440,
+    "compressed_bytes": 13975,
+    "container_checksum": 13673428736348882842,
+    "content_hash": "74022768476accf5160ac236bfb85a43337b96195a29c21c83d1d594e29fdeaa"
+  },
+  "expected_state": {
+    "world_id": "8dc73478cae84dd0811efdfb31813482",
+    "seed": 424242,
+    "ticks": 37,
+    "checksum": 12133217791966963841,
+    "population": 6,
+    "building_count": 1,
+    "next_building_id": 2,
+    "resources": {"wood": 80, "stone": 40, "food": 100},
+    "tutorial_step": 0,
+    "event_count": 1
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "walk-blue",
+    "cols": 4,
+    "rows": 4,
+    "mode": "magenta",
+    "prompt": "Production isometric game walking sprite sheet, exact1024x1024, 4columns 4rows. Sixteen whole-body sprites of medieval villagers with realistic adult proportions matching reference. Row1: same man in muted blue wool tunic, brown trousers, boots, walking southeast facing camera. Row2: SAME man walking northeast away from camera. Row3: same woman in muted gray-blue medieval dress and linen headscarf walking southeast. Row4: SAME woman walking northeast. Columns in each row are 4 successive slow walking gait frames: left foot forward, passing, right foot forward, passing. Keep identity, outfit, camera35degree elevation, body height EXACT180pixels and planted foot midpoint at x128 y224 within each256cell. No bobbing scale changes, no props/weapons, no text, no shadows, no tilebases. Pure solid magenta RGB255,0,255 background including body gaps, no checkerboard. Fine cloth and face shading readable at smallgame scale.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-eeca08b6-a05c-4e90-adf5-f96cb8174be1.png"
+  },
+  {
+    "id": "walk-earth",
+    "cols": 4,
+    "rows": 4,
+    "mode": "magenta",
+    "prompt": "Production isometric game walking sprite sheet, exact1024x1024, 4columns 4rows. Sixteen wholebody sprites realistic medieval villagers. Row1: same bearded man in earth brown work tunic and ochre trousers walking southeast facing camera. Row2: SAME man walking northeast away. Row3: same woman in muted burgundy wool dress and tan shawl walking southeast. Row4: SAME woman walking northeast. Each row four successive slowwalk gait poses: left foot forward, passing, right foot forward, passing. Identical adult proportions, body height180px and footanchor x128y224 in each256cell, orthographic35degree elevation, fine cloth natural lighting. NO objects/shadows/labels/UI. Pure flat solid magenta RGB255,0,255 background and gaps, no checkerboard.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-7a735550-3ad9-45de-95a9-e9d2e7c2cd60.png"
+  },
+  {
+    "id": "animals-summer",
+    "cols": 4,
+    "rows": 4,
+    "mode": "magenta",
+    "prompt": "Production wildlife walk animation atlas 1024x1024 exact4columns4rows. Isometric35degree camera realistic miniature animals matching medieval nature reference. Row1: brown deer with modest antlers; row2: small brown hare; row3: stocky wild boar; row4: gray wolf. In every row SAME individual animal facing southeast in four successive smooth walking poses leftstep passing rightstep passing. All four frames of each species identical body size, footanchor x128y220 in each256cell, wholebody including antlers within30pxpadding. Natural realistic fur, no anthropomorphic features, no people/weapons/backgroundscene/shadow/text. Empty background exact solid puremagenta RGB255,0,255 including gaps.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-f8f70baa-29c1-4799-a7f0-d3732d25d086.png"
+  },
+  {
+    "id": "animals-winter",
+    "cols": 4,
+    "rows": 4,
+    "mode": "magenta",
+    "prompt": "Production WINTER wildlife walking animation atlas1024x1024 exact4columns4rows. Isometric35degree camera realistic miniature animals. Row1 brown deer with thick winter coat and modest antlers; row2 winter hare with white coat; row3 wildboar with thick darkbristles; row4 wolf with thick palegray winterfur. All animals face southeast. Each row sameindividual in four successive walk poses leftstep passing rightstep passing; same silhouette scale per species no bobbing zoom. Footanchor x128y220 each256cell wholeanimalpadding30px. No snow falling or snowground,no scene,no text,no UI. Pure flatmagentaRGB255,0,255 in all emptyspaces; no checkerboard.",
+    "source": "C:\\Users\\fipst\\.codex\\generated_images\\01a092bc-2bec-7980-a823-b201a58cd0a8\\exec-ce5d63fa-a69e-420c-9a95-4860401c9bd4.png"
+  }
+]
